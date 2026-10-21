@@ -1,0 +1,4 @@
+.env
+.local_agent_docs/
+sample.txt
+.DS_Store
