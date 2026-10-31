@@ -6,10 +6,9 @@ from app.providers.diarization.pyannote import (
     COMMUNITY_1,
     import_pyannote,
     inference_lock,
-    load_waveform,
     model_load_error,
 )
-from app.utils.audio import SAMPLE_RATE
+from app.utils.audio import SAMPLE_RATE, crop_samples, read_wav_samples
 
 
 class PyannoteEmbedder:
@@ -26,23 +25,15 @@ class PyannoteEmbedder:
         audio: Path,
         spans: list[tuple[float, float]] | None = None,
     ) -> list[float]:
-        import torch
-
         inference = load_inference(self.model, self.hf_token)
-        waveform = load_waveform(audio)
+        samples = read_wav_samples(audio)
         if spans is not None:
-            waveform = torch.cat(
-                [
-                    waveform[:, int(start * SAMPLE_RATE):int(end * SAMPLE_RATE)]
-                    for start, end in spans
-                ],
-                dim=1,
-            )
-        if waveform.shape[1] == 0:
+            samples = crop_samples(samples, spans)
+        if samples.size == 0:
             raise InvalidAudioError("목소리 구간이 없습니다.")
 
         with inference_lock:
-            vector = inference({"waveform": waveform, "sample_rate": SAMPLE_RATE})
+            vector = inference({"waveform": to_tensor(samples), "sample_rate": SAMPLE_RATE})
         return [float(x) for x in vector.reshape(-1)]
 
 
@@ -54,3 +45,9 @@ def load_inference(model: str, hf_token: str):
     except Exception as exc:
         raise model_load_error(exc) from exc
     return audio.Inference(embedding, window="whole")
+
+
+def to_tensor(samples):
+    import torch
+
+    return torch.from_numpy(samples).unsqueeze(0)
