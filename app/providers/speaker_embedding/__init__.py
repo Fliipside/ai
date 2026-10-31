@@ -14,4 +14,7 @@ def create_embedder(settings: Settings) -> SpeakerEmbedder:
 
     from app.providers.speaker_embedding.sherpa_onnx import SherpaOnnxEmbedder
 
-    return SherpaOnnxEmbedder(model=settings.sherpa_embedding_model)
+    return SherpaOnnxEmbedder(
+        model=settings.sherpa_embedding_model,
+        num_threads=settings.sherpa_num_threads,
+    )

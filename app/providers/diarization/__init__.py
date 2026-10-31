@@ -17,4 +17,6 @@ def create_diarizer(settings: Settings) -> SpeakerDiarizer:
     return SherpaOnnxDiarizer(
         segmentation_model=settings.sherpa_segmentation_model,
         embedding_model=settings.sherpa_embedding_model,
+        cluster_threshold=settings.sherpa_cluster_threshold,
+        num_threads=settings.sherpa_num_threads,
     )
