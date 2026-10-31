@@ -4,7 +4,7 @@ from pathlib import Path
 
 from app.core.errors import AppError
 from app.features.voice.merge import assign_speakers
-from app.features.voice.speaker_id import identify_roles
+from app.features.voice.speaker_id import identify_roles, longest_spans
 from app.providers.diarization.base import SpeakerDiarizer
 from app.providers.speaker_embedding.base import SpeakerEmbedder
 from app.providers.stt.base import SpeechToText
@@ -17,6 +17,9 @@ from app.schemas.voice import (
     Voiceprint,
 )
 from app.utils.audio import AudioChunk, split_wav, to_wav_16k_mono
+
+# Seconds of each speaker's audio compared with the voiceprint.
+SPEAKER_EMBED_SECONDS = 60
 
 
 class VoicePipeline:
@@ -107,7 +110,9 @@ class VoicePipeline:
         for turn in turns:
             spans.setdefault(turn.speaker, []).append((turn.start, turn.end))
         embeddings = {
-            speaker: await asyncio.to_thread(self.embedder.embed, wav, speaker_spans)
+            speaker: await asyncio.to_thread(
+                self.embedder.embed, wav, longest_spans(speaker_spans, SPEAKER_EMBED_SECONDS)
+            )
             for speaker, speaker_spans in spans.items()
         }
         return identify_roles(

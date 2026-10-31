@@ -1,6 +1,6 @@
 import pytest
 
-from app.features.voice.speaker_id import cosine_similarity, identify_roles
+from app.features.voice.speaker_id import cosine_similarity, identify_roles, longest_spans
 from app.schemas.voice import Voiceprint
 
 VOICEPRINT = Voiceprint(engine="pyannote", vector=[1.0, 0.0])
@@ -32,3 +32,10 @@ def test_cosine_similarity() -> None:
     assert cosine_similarity([0, 0], [1, 0]) == 0.0
     with pytest.raises(ValueError):
         cosine_similarity([1, 0], [1, 0, 0])
+
+
+def test_longest_spans_caps_total_seconds() -> None:
+    spans = [(0.0, 2.0), (3.0, 13.0), (20.0, 25.0), (30.0, 31.0)]
+
+    assert longest_spans(spans, max_seconds=12) == [(3.0, 13.0), (20.0, 22.0)]
+    assert longest_spans(spans, max_seconds=100) == sorted(spans)
