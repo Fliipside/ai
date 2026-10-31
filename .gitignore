@@ -2,3 +2,11 @@
 .local_agent_docs/
 sample.txt
 .DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+models/
+data/
+.vscode/
