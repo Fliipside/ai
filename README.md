@@ -53,7 +53,7 @@ python -m pip install -e ".[voice-sherpa]"
 uvicorn app.main:app --reload
 ```
 
-`.env.example`을 참고해 `.env`를 만듭니다. pyannote는 Hugging Face에서 `pyannote/speaker-diarization-community-1` 약관에 동의한 뒤 `HF_TOKEN`을 설정해야 합니다. 오디오 변환에는 `ffmpeg`가 필요합니다.
+`.env.example`을 참고해 `.env`를 만듭니다. `.env`는 실행 위치에서 상위 폴더 방향으로 찾으므로, 저장소 루트에 두면 그 아래 모든 worktree가 함께 씁니다. pyannote는 Hugging Face에서 `pyannote/speaker-diarization-community-1` 약관에 동의한 뒤 `HF_TOKEN`을 설정해야 합니다. 모델은 처음 실행할 때 Hugging Face 캐시(`HF_HUB_CACHE`)에 받으며, 받은 뒤에는 토큰 없이도 로드됩니다. pyannote의 사용 통계 전송은 기본으로 끕니다(`PYANNOTE_METRICS_ENABLED=false`). 오디오 변환에는 `ffmpeg`가 필요합니다.
 
 ## 현재 API 상태
 
@@ -70,6 +70,7 @@ uvicorn app.main:app --reload
 | `utils/audio.py` (16kHz 모노 변환, 10분 단위 분할) | 구현 |
 | `providers/stt/groq.py` (Groq Whisper) | 구현 |
 | `features/voice/` (합치기, "나" 식별, 처리 흐름) | 구현 |
-| `providers/diarization/`, `providers/speaker_embedding/` | 미구현 |
+| `providers/diarization/pyannote.py`, `providers/speaker_embedding/pyannote.py` (community-1) | 구현 |
+| `providers/diarization/sherpa_onnx.py`, `providers/speaker_embedding/sherpa_onnx.py` | 미구현 |
 
-화자 분리 엔진이 구현될 때까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.
+API 연결 전까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.

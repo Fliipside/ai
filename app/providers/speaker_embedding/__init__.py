@@ -7,7 +7,10 @@ def create_embedder(settings: Settings) -> SpeakerEmbedder:
     if settings.diarization_engine == "pyannote":
         from app.providers.speaker_embedding.pyannote import PyannoteEmbedder
 
-        return PyannoteEmbedder(hf_token=settings.hf_token.get_secret_value())
+        return PyannoteEmbedder(
+            hf_token=settings.hf_token.get_secret_value(),
+            model=settings.pyannote_model,
+        )
 
     from app.providers.speaker_embedding.sherpa_onnx import SherpaOnnxEmbedder
 

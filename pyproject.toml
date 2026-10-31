@@ -17,7 +17,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-voice-pyannote = ["pyannote.audio>=4,<5"]
+# torchaudio no longer pins torch; keep the pair on the version tested together (2.11).
+voice-pyannote = ["pyannote.audio>=4,<5", "torch>=2.8,<2.12", "torchaudio>=2.8,<2.12"]
 voice-sherpa = ["sherpa-onnx>=1.12,<2", "soundfile>=0.12,<1"]
 dev = ["pytest>=8,<10"]
 

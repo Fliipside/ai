@@ -7,7 +7,10 @@ def create_diarizer(settings: Settings) -> SpeakerDiarizer:
     if settings.diarization_engine == "pyannote":
         from app.providers.diarization.pyannote import PyannoteDiarizer
 
-        return PyannoteDiarizer(hf_token=settings.hf_token.get_secret_value())
+        return PyannoteDiarizer(
+            hf_token=settings.hf_token.get_secret_value(),
+            model=settings.pyannote_model,
+        )
 
     from app.providers.diarization.sherpa_onnx import SherpaOnnxDiarizer
 

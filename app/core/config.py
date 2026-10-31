@@ -26,6 +26,8 @@ class Settings(BaseSettings):
 
     diarization_engine: Literal["pyannote", "sherpa_onnx"] = "pyannote"
     hf_token: SecretStr = SecretStr("")
+    # Hugging Face repo id or a local directory with the same layout.
+    pyannote_model: str = "pyannote/speaker-diarization-community-1"
     sherpa_segmentation_model: str = ""
     sherpa_embedding_model: str = ""
 
