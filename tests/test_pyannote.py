@@ -71,17 +71,19 @@ def test_diarize_uses_exclusive_turns(tmp_path, monkeypatch) -> None:
     )
     calls = []
 
-    def pipeline(file):
-        calls.append(file)
+    def pipeline(file, num_speakers=None):
+        calls.append((file, num_speakers))
         return output
 
     monkeypatch.setattr(diarization, "load_pipeline", lambda model, token: pipeline)
 
-    turns = diarization.PyannoteDiarizer(hf_token="").diarize(wav)
+    turns = diarization.PyannoteDiarizer(hf_token="").diarize(wav, num_speakers=2)
 
     assert [(t.start, t.end, t.speaker) for t in turns] == [(0.0, 0.5, "A"), (0.5, 1.0, "B")]
-    assert calls[0]["sample_rate"] == SAMPLE_RATE
-    assert tuple(calls[0]["waveform"].shape) == (1, SAMPLE_RATE)
+    file, num_speakers = calls[0]
+    assert file["sample_rate"] == SAMPLE_RATE
+    assert tuple(file["waveform"].shape) == (1, SAMPLE_RATE)
+    assert num_speakers == 2
 
 
 def test_embed_only_given_spans(tmp_path, monkeypatch) -> None:

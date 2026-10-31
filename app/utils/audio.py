@@ -64,3 +64,27 @@ def split_wav(
             start += frames_per_chunk
         return chunks
 
+
+
+def read_wav_samples(path: Path):
+    """Read a 16kHz mono 16-bit WAV (see `to_wav_16k_mono`) as float32 samples in [-1, 1].
+
+    Needs numpy, which comes with the diarization extras.
+    """
+    import numpy as np
+
+    with wave.open(str(path), "rb") as wav:
+        if (wav.getframerate(), wav.getnchannels(), wav.getsampwidth()) != (SAMPLE_RATE, 1, 2):
+            raise ValueError(f"expected 16kHz mono 16-bit WAV: {path}")
+        frames = wav.readframes(wav.getnframes())
+    return np.frombuffer(frames, dtype=np.int16).astype(np.float32) / 32768.0
+
+
+def crop_samples(samples, spans: list[tuple[float, float]]):
+    """Concatenate the given (start, end) spans in seconds."""
+    import numpy as np
+
+    return np.concatenate(
+        [samples[int(start * SAMPLE_RATE):int(end * SAMPLE_RATE)] for start, end in spans]
+        or [samples[:0]]
+    )

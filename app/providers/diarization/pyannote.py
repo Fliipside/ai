@@ -1,13 +1,12 @@
 import logging
 import os
 import threading
-import wave
 from functools import lru_cache
 from pathlib import Path
 
 from app.core.errors import AppError
 from app.schemas.voice import SpeakerTurn
-from app.utils.audio import SAMPLE_RATE
+from app.utils.audio import SAMPLE_RATE, read_wav_samples
 
 logger = logging.getLogger(__name__)
 
@@ -24,11 +23,14 @@ class PyannoteDiarizer:
         self.hf_token = hf_token
         self.model = model
 
-    def diarize(self, audio: Path) -> list[SpeakerTurn]:
+    def diarize(self, audio: Path, num_speakers: int | None = None) -> list[SpeakerTurn]:
         pipeline = load_pipeline(self.model, self.hf_token)
         waveform = load_waveform(audio)
         with inference_lock:
-            output = pipeline({"waveform": waveform, "sample_rate": SAMPLE_RATE})
+            output = pipeline(
+                {"waveform": waveform, "sample_rate": SAMPLE_RATE},
+                num_speakers=num_speakers,
+            )
 
         # Exclusive diarization has one speaker at a time, which suits matching STT segments.
         return [
@@ -72,13 +74,7 @@ def model_load_error(exc: Exception) -> AppError:
 
 
 def load_waveform(audio: Path):
-    """Read a 16kHz mono 16-bit WAV (see `to_wav_16k_mono`) as a (1, samples) tensor."""
-    import numpy as np
+    """Read a 16kHz mono WAV as a (1, samples) tensor."""
     import torch
 
-    with wave.open(str(audio), "rb") as wav:
-        if (wav.getframerate(), wav.getnchannels(), wav.getsampwidth()) != (SAMPLE_RATE, 1, 2):
-            raise ValueError(f"expected 16kHz mono 16-bit WAV: {audio}")
-        frames = wav.readframes(wav.getnframes())
-    samples = np.frombuffer(frames, dtype=np.int16).astype(np.float32) / 32768.0
-    return torch.from_numpy(samples).unsqueeze(0)
+    return torch.from_numpy(read_wav_samples(audio)).unsqueeze(0)
