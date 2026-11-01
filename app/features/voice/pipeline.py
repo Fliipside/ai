@@ -2,7 +2,7 @@ import asyncio
 import tempfile
 from pathlib import Path
 
-from app.core.errors import AppError
+from app.core.errors import AppError, InvalidAudioError
 from app.features.voice.merge import assign_speakers
 from app.features.voice.speaker_id import identify_roles, longest_spans
 from app.providers.diarization.base import SpeakerDiarizer
@@ -109,12 +109,19 @@ class VoicePipeline:
         spans: dict[str, list[tuple[float, float]]] = {}
         for turn in turns:
             spans.setdefault(turn.speaker, []).append((turn.start, turn.end))
-        embeddings = {
-            speaker: await asyncio.to_thread(
-                self.embedder.embed, wav, longest_spans(speaker_spans, SPEAKER_EMBED_SECONDS)
-            )
-            for speaker, speaker_spans in spans.items()
-        }
+        
+        embeddings: dict[str, list[float]] = {}
+
+        for speaker, speaker_spans in spans.items():
+            try:
+                embeddings[speaker] = await asyncio.to_thread(
+                    self.embedder.embed,
+                    wav,
+                    longest_spans(speaker_spans, SPEAKER_EMBED_SECONDS),
+                )
+            except InvalidAudioError:
+                continue
+        
         return identify_roles(
             embeddings,
             voiceprint,
