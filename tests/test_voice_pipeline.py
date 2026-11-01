@@ -17,7 +17,7 @@ class FakeStt:
 
 
 class FakeDiarizer:
-    def diarize(self, audio):
+    def diarize(self, audio, num_speakers=None):
         return [
             SpeakerTurn(start=0.0, end=2.0, speaker="S0"),
             SpeakerTurn(start=2.0, end=4.0, speaker="S1"),

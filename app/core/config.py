@@ -26,8 +26,13 @@ class Settings(BaseSettings):
 
     diarization_engine: Literal["pyannote", "sherpa_onnx"] = "pyannote"
     hf_token: SecretStr = SecretStr("")
+    # Hugging Face repo id or a local directory with the same layout.
+    pyannote_model: str = "pyannote/speaker-diarization-community-1"
     sherpa_segmentation_model: str = ""
     sherpa_embedding_model: str = ""
+    # Cosine distance for merging speakers when the speaker count is not given.
+    sherpa_cluster_threshold: float = 0.5
+    sherpa_num_threads: int = 4
 
     # Cosine similarity needed to label a speaker as "me"; set after engine comparison.
     voice_match_threshold: float | None = None

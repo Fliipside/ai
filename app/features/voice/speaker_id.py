@@ -29,6 +29,23 @@ def identify_roles(
     return {speaker: "me" if speaker == me else "customer" for speaker in scores}
 
 
+def longest_spans(
+    spans: list[tuple[float, float]],
+    max_seconds: float,
+) -> list[tuple[float, float]]:
+    # Embedding a whole meeting per speaker is slow and some models reject very long input;
+    # the longest turns (least likely to include the other voice) are enough to compare.
+    picked = []
+    total = 0.0
+    for start, end in sorted(spans, key=lambda span: span[1] - span[0], reverse=True):
+        if total >= max_seconds:
+            break
+        end = min(end, start + max_seconds - total)
+        picked.append((start, end))
+        total += end - start
+    return sorted(picked)
+
+
 def cosine_similarity(a: list[float], b: list[float]) -> float:
     if len(a) != len(b):
         raise ValueError(f"embedding size mismatch: {len(a)} != {len(b)}")

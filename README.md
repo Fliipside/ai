@@ -37,7 +37,20 @@ tests/
                화자별 대화록
 ```
 
-화자 분리 엔진은 `DIARIZATION_ENGINE`(`pyannote` | `sherpa_onnx`)으로 고릅니다. 사용자 목소리 임베딩은 같은 엔진으로 만든 것끼리만 비교할 수 있습니다.
+화자 분리 엔진은 `DIARIZATION_ENGINE`(`pyannote` | `sherpa_onnx`)으로 고릅니다. 사용자 목소리 임베딩은 같은 엔진으로 만든 것끼리만 비교할 수 있습니다. sherpa-onnx는 임베딩 모델을 바꿀 수 있으므로 엔진 이름에 모델명이 들어갑니다(예: `sherpa_onnx:wespeaker_en_voxceleb_resnet34_LM`).
+
+sherpa-onnx 모델은 [k2-fsa/sherpa-onnx releases](https://github.com/k2-fsa/sherpa-onnx/releases)에서 받아 `SHERPA_SEGMENTATION_MODEL`(`speaker-segmentation-models`의 `sherpa-onnx-pyannote-segmentation-3-0/model.onnx`)과 `SHERPA_EMBEDDING_MODEL`(`speaker-recongition-models`의 `.onnx`)에 경로를 적습니다. 화자 수를 모를 때는 `SHERPA_CLUSTER_THRESHOLD`로 화자를 묶습니다.
+
+### 엔진 비교
+
+```bash
+python scripts/voice_benchmark.py data/voice/*.m4a \
+    --engines pyannote sherpa_onnx \
+    --sherpa-embedding <임베딩 모델.onnx> ... \
+    --num-speakers auto 2 --enroll <내 목소리.wav> --out result.json
+```
+
+정답 라벨 없이 속도(실시간 대비 배율), 찾은 화자 수, 엔진 간 구간 일치율, 등록 목소리와의 유사도를 출력합니다.
 
 ## 로컬 실행
 
@@ -53,7 +66,7 @@ python -m pip install -e ".[voice-sherpa]"
 uvicorn app.main:app --reload
 ```
 
-`.env.example`을 참고해 `.env`를 만듭니다. pyannote는 Hugging Face에서 `pyannote/speaker-diarization-community-1` 약관에 동의한 뒤 `HF_TOKEN`을 설정해야 합니다. 오디오 변환에는 `ffmpeg`가 필요합니다.
+`.env.example`을 참고해 `.env`를 만듭니다. `.env`는 실행 위치에서 상위 폴더 방향으로 찾으므로, 저장소 루트에 두면 그 아래 모든 worktree가 함께 씁니다. pyannote는 Hugging Face에서 `pyannote/speaker-diarization-community-1` 약관에 동의한 뒤 `HF_TOKEN`을 설정해야 합니다. 모델은 처음 실행할 때 Hugging Face 캐시(`HF_HUB_CACHE`)에 받으며, 받은 뒤에는 토큰 없이도 로드됩니다. pyannote의 사용 통계 전송은 기본으로 끕니다(`PYANNOTE_METRICS_ENABLED=false`). 오디오 변환에는 `ffmpeg`가 필요합니다.
 
 ## 현재 API 상태
 
@@ -70,6 +83,8 @@ uvicorn app.main:app --reload
 | `utils/audio.py` (16kHz 모노 변환, 10분 단위 분할) | 구현 |
 | `providers/stt/groq.py` (Groq Whisper) | 구현 |
 | `features/voice/` (합치기, "나" 식별, 처리 흐름) | 구현 |
-| `providers/diarization/`, `providers/speaker_embedding/` | 미구현 |
+| `providers/diarization/pyannote.py`, `providers/speaker_embedding/pyannote.py` (community-1) | 구현 |
+| `providers/diarization/sherpa_onnx.py`, `providers/speaker_embedding/sherpa_onnx.py` | 구현 |
+| `scripts/voice_benchmark.py` (엔진 비교) | 구현 |
 
-화자 분리 엔진이 구현될 때까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.
+API 연결 전까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.
