@@ -21,7 +21,7 @@ dependencies = [
 voice-pyannote = ["pyannote.audio>=4,<5", "torch>=2.8,<2.12", "torchaudio>=2.8,<2.12"]
 voice-sherpa = ["sherpa-onnx>=1.12,<2", "soundfile>=0.12,<1"]
 memory = ["sentence-transformers>=3,<6", "torch>=2.8,<2.12"]
-# Only for scripts that load and search the memory_sandbox schema; the service itself stores nothing.
+# Only for retrieval_eval.py --backend pg; the service itself stores nothing.
 memory-db = ["psycopg[binary]>=3.2,<4"]
 dev = ["pytest>=8,<10"]
 

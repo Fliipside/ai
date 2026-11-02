@@ -77,21 +77,24 @@ python scripts/retrieval_eval.py --model BAAI/bge-m3 --k 5 --max-chars 300 --ove
 
 `fixtures/sales/`의 대화를 청크로 나누고 임베딩한 뒤, 정답 질문마다 pgvector 검색과 같은 방식(고객사·권한 필터 → 코사인 유사도 순)으로 상위 k개를 골라 hit@k, recall@k, MRR, 권한 위반 건수를 출력합니다. 청크 앞에는 고객사·날짜·대화 제목 머리말을 붙여 임베딩합니다(`--no-context`로 끔). `--rerank BAAI/bge-reranker-v2-m3`는 벡터 검색 상위 `--pool`개를 재정렬 모델로 다시 정렬하고, `--no-company-filter`는 사용자가 볼 수 있는 모든 고객사에서 검색합니다.
 
-### pgvector sandbox
+### pgvector 스키마 `memory`
 
-실제 SQL 검색은 별도 스키마 `memory_sandbox`에서 실험합니다. 운영 테이블은 backend 마이그레이션으로 만듭니다.
+대화 기억 검색 데이터는 DB의 별도 스키마 `memory`에 둡니다. backend의 `public` 테이블과 섞이지 않으며, 최종 구조는 backend와 합의한 뒤 마이그레이션으로 옮깁니다.
 
-1. DBeaver에서 `scripts/sql/00_check.sql`(확인용, 읽기만 함)과 `scripts/sql/01_sandbox_schema.sql`(스키마 생성)을 실행합니다.
-2. SSH 터널을 열고 `.env`에 `MEMORY_DB_URL`을 적습니다 (`.env.example` 참고).
-3. 적재하고 SQL로 평가합니다.
+| 파일 | 하는 일 |
+| ---- | ---- |
+| `scripts/sql/00_check.sql` | 서버 확인 (읽기만 함): 버전, pgvector, 기존 테이블, 권한 |
+| `scripts/sql/01_memory_schema.sql` | 스키마 `memory`와 테이블·인덱스 생성 (다시 실행해도 안전) |
+| `scripts/load_memory_fixtures.py` | `fixtures/sales`를 청크·임베딩해 적재 SQL 파일 생성. 실행하면 더미 데이터 행만 지우고 다시 넣음 |
+| `scripts/sql/02_inspect.sql` | 적재 결과, 고객별 타임라인, 미완료 약속, 벡터 유사도 조회 |
+| `scripts/sql/03_clear.sql` | 테이블 구조는 두고 `memory`의 데이터만 모두 비움 |
 
 ```bash
-python -m pip install -e ".[memory,memory-db]"
-python scripts/load_memory_sandbox.py              # memory_sandbox 테이블을 비우고 다시 채움
-python scripts/retrieval_eval.py --backend pg --k 3
+python -m pip install -e ".[memory]"
+python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 ```
 
-`scripts/sql/02_inspect.sql`로 적재 결과, 고객별 타임라인, 미완료 약속을 DBeaver에서 확인합니다. `DROP SCHEMA memory_sandbox CASCADE`로 전부 지울 수 있습니다.
+만든 SQL 파일은 DBeaver에서 열어 스크립트 전체 실행(`⌥ + X`)하거나, 서버의 DB 컨테이너 안에서 `psql`로 실행합니다. 적재에는 DB 비밀번호가 필요 없습니다. SQL 검색 평가(`retrieval_eval.py --backend pg`)만 SSH 터널과 `.env`의 `MEMORY_DB_URL`이 필요합니다(`python -m pip install -e ".[memory-db]"`).
 
 ## 로컬 실행
 
@@ -131,7 +134,7 @@ uvicorn app.main:app --reload
 | `scripts/voice_benchmark.py` (엔진 비교) | 구현 |
 | `fixtures/sales/` (가상 영업 시나리오 10개와 정답셋, [형식](fixtures/sales/README.md)) | 구현 |
 | `features/memory/chunking.py`, `providers/text_embedding/` (청크 생성, 텍스트 임베딩) | 구현 |
-| `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/load_memory_sandbox.py`, `scripts/sql/` (pgvector sandbox) | 구현 |
+| `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
 | 임베딩 API, pgvector 저장·검색 (backend) | 미구현 |
 
 API 연결 전까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.
