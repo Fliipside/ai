@@ -37,6 +37,8 @@ tests/
                화자별 대화록
 ```
 
+분석 결과는 사람별로 나눕니다. 사용자 목소리와 가장 비슷한 화자(유사도가 `VOICE_MATCH_THRESHOLD` 이상)는 `me`, 나머지는 대화록에서 처음 말한 순서대로 `speaker_1`, `speaker_2`… 입니다. 역할(`role`)은 `me` / `customer` / `unknown`이고, `speakers`에 사람별 역할과 발화 시간(초)이 들어갑니다. 화자 수는 정하지 않고 엔진이 추정합니다.
+
 화자 분리 엔진은 `DIARIZATION_ENGINE`(`pyannote` | `sherpa_onnx`)으로 고릅니다. 사용자 목소리 임베딩은 같은 엔진으로 만든 것끼리만 비교할 수 있습니다. sherpa-onnx는 임베딩 모델을 바꿀 수 있으므로 엔진 이름에 모델명이 들어갑니다(예: `sherpa_onnx:wespeaker_en_voxceleb_resnet34_LM`).
 
 sherpa-onnx 모델은 [k2-fsa/sherpa-onnx releases](https://github.com/k2-fsa/sherpa-onnx/releases)에서 받아 `SHERPA_SEGMENTATION_MODEL`(`speaker-segmentation-models`의 `sherpa-onnx-pyannote-segmentation-3-0/model.onnx`)과 `SHERPA_EMBEDDING_MODEL`(`speaker-recongition-models`의 `.onnx`)에 경로를 적습니다. 화자 수를 모를 때는 `SHERPA_CLUSTER_THRESHOLD`로 화자를 묶습니다.

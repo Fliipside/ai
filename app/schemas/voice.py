@@ -20,12 +20,19 @@ class SpeakerTurn(BaseModel):
 class Utterance(BaseModel):
     start: float
     end: float
-    speaker: str
+    speaker: str  # "me", or "speaker_1", "speaker_2"... per person
     role: SpeakerRole
     text: str
 
 
+class Speaker(BaseModel):
+    speaker: str
+    role: SpeakerRole
+    speech_seconds: float
+
+
 class VoiceAnalysis(BaseModel):
+    speakers: list[Speaker]
     utterances: list[Utterance]
 
 

@@ -1,4 +1,5 @@
 import math
+from collections.abc import Iterable
 
 from app.schemas.voice import SpeakerRole, Voiceprint
 
@@ -27,6 +28,25 @@ def identify_roles(
         # The user was not found, so we cannot tell who the customer is either.
         return {speaker: "unknown" for speaker in scores}
     return {speaker: "me" if speaker == me else "customer" for speaker in scores}
+
+
+def label_speakers(
+    speakers: Iterable[str],
+    roles: dict[str, SpeakerRole],
+) -> dict[str, str]:
+    # Engine labels (e.g. "SPEAKER_01") are arbitrary per run; name the user "me" and
+    # everyone else "speaker_1", "speaker_2"... in the order given (first appearance).
+    labels: dict[str, str] = {}
+    others = 0
+    for speaker in speakers:
+        if speaker in labels:
+            continue
+        if roles.get(speaker) == "me":
+            labels[speaker] = "me"
+        else:
+            others += 1
+            labels[speaker] = f"speaker_{others}"
+    return labels
 
 
 def longest_spans(
