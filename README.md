@@ -21,6 +21,8 @@ app/
 ├── core/                # 환경 설정과 공통 오류
 └── utils/               # 오디오 변환 등 공통 도구
 scripts/                 # 벤치마크 스크립트
+fixtures/
+└── sales/               # 가상 영업 대화 시나리오와 정답셋 (검색·추출 평가용)
 tests/
 ```
 
@@ -86,5 +88,6 @@ uvicorn app.main:app --reload
 | `providers/diarization/pyannote.py`, `providers/speaker_embedding/pyannote.py` (community-1) | 구현 |
 | `providers/diarization/sherpa_onnx.py`, `providers/speaker_embedding/sherpa_onnx.py` | 구현 |
 | `scripts/voice_benchmark.py` (엔진 비교) | 구현 |
+| `fixtures/sales/` (가상 영업 시나리오 10개와 정답셋, [형식](fixtures/sales/README.md)) | 구현 |
 
 API 연결 전까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.
