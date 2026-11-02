@@ -24,7 +24,7 @@ def test_missing_pyannote_is_not_configured(monkeypatch) -> None:
     monkeypatch.setitem(sys.modules, "pyannote.audio", None)
 
     with pytest.raises(AppError) as exc:
-        diarization.load_pipeline("model", "")
+        diarization.load_pipeline("model", "", 0.5)
 
     assert exc.value.status_code == 503
     assert exc.value.code == "DIARIZATION_NOT_CONFIGURED"
@@ -38,7 +38,7 @@ def test_model_load_failure_is_not_configured(monkeypatch) -> None:
     monkeypatch.setattr(diarization, "import_pyannote", lambda: fake)
 
     with pytest.raises(AppError) as exc:
-        diarization.load_pipeline("model", "bad-token")
+        diarization.load_pipeline("model", "bad-token", 0.5)
 
     assert exc.value.status_code == 503
     assert exc.value.code == "DIARIZATION_NOT_CONFIGURED"
@@ -75,7 +75,7 @@ def test_diarize_uses_exclusive_turns(tmp_path, monkeypatch) -> None:
         calls.append((file, num_speakers))
         return output
 
-    monkeypatch.setattr(diarization, "load_pipeline", lambda model, token: pipeline)
+    monkeypatch.setattr(diarization, "load_pipeline", lambda model, token, step: pipeline)
 
     turns = diarization.PyannoteDiarizer(hf_token="").diarize(wav, num_speakers=2)
 
@@ -111,3 +111,13 @@ def test_embed_rejects_empty_spans(tmp_path, monkeypatch) -> None:
 
     with pytest.raises(InvalidAudioError):
         embedding.PyannoteEmbedder(hf_token="").embed(wav, [(0.5, 0.5)])
+
+
+def test_load_pipeline_sets_window_step(monkeypatch) -> None:
+    inference = SimpleNamespace(duration=10.0, step=1.0)
+    loaded = SimpleNamespace(_segmentation=inference)
+    fake = SimpleNamespace(Pipeline=SimpleNamespace(from_pretrained=lambda *args, **kwargs: loaded))
+    monkeypatch.setattr(diarization, "import_pyannote", lambda: fake)
+
+    assert diarization.load_pipeline("model", "", 0.5) is loaded
+    assert inference.step == 5.0

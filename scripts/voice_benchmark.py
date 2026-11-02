@@ -39,7 +39,7 @@ def build_engines(names: list[str], sherpa_embeddings: list[str]) -> dict:
 
         token = settings.hf_token.get_secret_value()
         engines["pyannote"] = (
-            PyannoteDiarizer(token, settings.pyannote_model),
+            PyannoteDiarizer(token, settings.pyannote_model, settings.pyannote_segmentation_step),
             PyannoteEmbedder(token, settings.pyannote_model),
         )
     if "sherpa_onnx" in names:

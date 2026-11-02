@@ -1,6 +1,11 @@
 import pytest
 
-from app.features.voice.speaker_id import cosine_similarity, identify_roles, longest_spans
+from app.features.voice.speaker_id import (
+    cosine_similarity,
+    identify_roles,
+    label_speakers,
+    longest_spans,
+)
 from app.schemas.voice import Voiceprint
 
 VOICEPRINT = Voiceprint(engine="pyannote", vector=[1.0, 0.0])
@@ -39,3 +44,19 @@ def test_longest_spans_caps_total_seconds() -> None:
 
     assert longest_spans(spans, max_seconds=12) == [(3.0, 13.0), (20.0, 22.0)]
     assert longest_spans(spans, max_seconds=100) == sorted(spans)
+
+
+def test_label_speakers_names_each_person_in_order_of_appearance() -> None:
+    order = ["SPEAKER_01", "SPEAKER_00", "SPEAKER_01", "SPEAKER_02"]
+    roles = {"SPEAKER_00": "me", "SPEAKER_01": "customer", "SPEAKER_02": "customer"}
+
+    assert label_speakers(order, roles) == {
+        "SPEAKER_01": "speaker_1",
+        "SPEAKER_00": "me",
+        "SPEAKER_02": "speaker_2",
+    }
+    assert label_speakers(order, {}) == {
+        "SPEAKER_01": "speaker_1",
+        "SPEAKER_00": "speaker_2",
+        "SPEAKER_02": "speaker_3",
+    }

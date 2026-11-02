@@ -37,6 +37,8 @@ tests/
                화자별 대화록
 ```
 
+분석 결과는 사람별로 나눕니다. 사용자 목소리와 가장 비슷한 화자(유사도가 `VOICE_MATCH_THRESHOLD` 이상)는 `me`, 나머지는 대화록에서 처음 말한 순서대로 `speaker_1`, `speaker_2`… 입니다. 역할(`role`)은 `me` / `customer` / `unknown`이고, `speakers`에 사람별 역할과 발화 시간(초)이 들어갑니다. 화자 수는 정하지 않고 엔진이 추정합니다.
+
 화자 분리 엔진은 `DIARIZATION_ENGINE`(`pyannote` | `sherpa_onnx`)으로 고릅니다. 사용자 목소리 임베딩은 같은 엔진으로 만든 것끼리만 비교할 수 있습니다. sherpa-onnx는 임베딩 모델을 바꿀 수 있으므로 엔진 이름에 모델명이 들어갑니다(예: `sherpa_onnx:wespeaker_en_voxceleb_resnet34_LM`).
 
 sherpa-onnx 모델은 [k2-fsa/sherpa-onnx releases](https://github.com/k2-fsa/sherpa-onnx/releases)에서 받아 `SHERPA_SEGMENTATION_MODEL`(`speaker-segmentation-models`의 `sherpa-onnx-pyannote-segmentation-3-0/model.onnx`)과 `SHERPA_EMBEDDING_MODEL`(`speaker-recongition-models`의 `.onnx`)에 경로를 적습니다. 화자 수를 모를 때는 `SHERPA_CLUSTER_THRESHOLD`로 화자를 묶습니다.
@@ -66,7 +68,7 @@ python -m pip install -e ".[voice-sherpa]"
 uvicorn app.main:app --reload
 ```
 
-`.env.example`을 참고해 `.env`를 만듭니다. `.env`는 실행 위치에서 상위 폴더 방향으로 찾으므로, 저장소 루트에 두면 그 아래 모든 worktree가 함께 씁니다. pyannote는 Hugging Face에서 `pyannote/speaker-diarization-community-1` 약관에 동의한 뒤 `HF_TOKEN`을 설정해야 합니다. 모델은 처음 실행할 때 Hugging Face 캐시(`HF_HUB_CACHE`)에 받으며, 받은 뒤에는 토큰 없이도 로드됩니다. pyannote의 사용 통계 전송은 기본으로 끕니다(`PYANNOTE_METRICS_ENABLED=false`). 오디오 변환에는 `ffmpeg`가 필요합니다.
+`.env.example`을 참고해 `.env`를 만듭니다. `.env`는 실행 위치에서 상위 폴더 방향으로 찾으므로, 저장소 루트에 두면 그 아래 모든 worktree가 함께 씁니다. pyannote는 Hugging Face에서 `pyannote/speaker-diarization-community-1` 약관에 동의한 뒤 `HF_TOKEN`을 설정해야 합니다. 모델은 처음 실행할 때 Hugging Face 캐시(`HF_HUB_CACHE`)에 받으며, 받은 뒤에는 토큰 없이도 로드됩니다. pyannote의 사용 통계 전송은 기본으로 끕니다(`PYANNOTE_METRICS_ENABLED=false`). 분석 창(10초)을 옮기는 간격 `PYANNOTE_SEGMENTATION_STEP`은 기본 0.5입니다. pyannote 기본값 0.1보다 약 5배 빠르고, 실제 회의 녹음에서 결과가 98% 같았습니다. 오디오 변환에는 `ffmpeg`가 필요합니다.
 
 ## 현재 API 상태
 

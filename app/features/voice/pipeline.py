@@ -3,12 +3,13 @@ import tempfile
 from pathlib import Path
 
 from app.core.errors import AppError, InvalidAudioError
-from app.features.voice.merge import assign_speakers
-from app.features.voice.speaker_id import identify_roles, longest_spans
+from app.features.voice.merge import UNKNOWN_SPEAKER, assign_speakers
+from app.features.voice.speaker_id import identify_roles, label_speakers, longest_spans
 from app.providers.diarization.base import SpeakerDiarizer
 from app.providers.speaker_embedding.base import SpeakerEmbedder
 from app.providers.stt.base import SpeechToText
 from app.schemas.voice import (
+    Speaker,
     SpeakerRole,
     SpeakerTurn,
     TranscriptSegment,
@@ -64,17 +65,36 @@ class VoicePipeline:
             )
             roles = await self._identify_roles(wav, turns, voiceprint)
 
+        merged = assign_speakers(transcript, turns)
+        # Number speakers in the order they first speak in the transcript; speakers
+        # with no transcribed sentence come after.
+        labels = label_speakers(
+            [speaker for _, speaker in merged if speaker != UNKNOWN_SPEAKER]
+            + [turn.speaker for turn in sorted(turns, key=lambda turn: turn.start)],
+            roles,
+        )
+        speech: dict[str, float] = {}
+        for turn in turns:
+            speech[turn.speaker] = speech.get(turn.speaker, 0.0) + turn.end - turn.start
         return VoiceAnalysis(
+            speakers=[
+                Speaker(
+                    speaker=label,
+                    role=roles.get(speaker, "unknown"),
+                    speech_seconds=round(speech[speaker], 1),
+                )
+                for speaker, label in labels.items()
+            ],
             utterances=[
                 Utterance(
                     start=segment.start,
                     end=segment.end,
-                    speaker=speaker,
+                    speaker=labels.get(speaker, speaker),
                     role=roles.get(speaker, "unknown"),
                     text=segment.text,
                 )
-                for segment, speaker in assign_speakers(transcript, turns)
-            ]
+                for segment, speaker in merged
+            ],
         )
 
     async def enroll(self, audio: Path) -> Voiceprint:

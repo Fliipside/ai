@@ -10,6 +10,7 @@ def create_diarizer(settings: Settings) -> SpeakerDiarizer:
         return PyannoteDiarizer(
             hf_token=settings.hf_token.get_secret_value(),
             model=settings.pyannote_model,
+            segmentation_step=settings.pyannote_segmentation_step,
         )
 
     from app.providers.diarization.sherpa_onnx import SherpaOnnxDiarizer

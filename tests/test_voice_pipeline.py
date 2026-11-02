@@ -52,8 +52,12 @@ def test_analyze_shifts_chunks_and_labels_roles(tmp_path: Path, monkeypatch) -> 
     result = asyncio.run(make_pipeline().analyze(audio, voiceprint))
 
     assert [(u.start, u.end, u.speaker, u.role, u.text) for u in result.utterances] == [
-        (0.5, 1.5, "S0", "me", "audio_000"),
-        (2.5, 3.5, "S1", "customer", "audio_001"),
+        (0.5, 1.5, "me", "me", "audio_000"),
+        (2.5, 3.5, "speaker_1", "customer", "audio_001"),
+    ]
+    assert [(s.speaker, s.role, s.speech_seconds) for s in result.speakers] == [
+        ("me", "me", 2.0),
+        ("speaker_1", "customer", 2.0),
     ]
 
 
@@ -63,7 +67,8 @@ def test_analyze_without_voiceprint(tmp_path: Path) -> None:
 
     result = asyncio.run(make_pipeline().analyze(audio))
 
-    assert [(u.speaker, u.role) for u in result.utterances] == [("S0", "unknown")]
+    assert [(u.speaker, u.role) for u in result.utterances] == [("speaker_1", "unknown")]
+    assert [s.speaker for s in result.speakers] == ["speaker_1", "speaker_2"]
 
 
 @requires_ffmpeg
