@@ -37,6 +37,9 @@ class Settings(BaseSettings):
     # Cosine similarity needed to label a speaker as "me"; set after engine comparison.
     voice_match_threshold: float | None = None
 
+    # Hugging Face sentence-transformers model for conversation memory search.
+    text_embedding_model: str = "BAAI/bge-m3"
+
 
 @lru_cache
 def get_settings() -> Settings:

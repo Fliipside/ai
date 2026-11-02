@@ -1,0 +1,574 @@
+{
+  "scenario_id": "S002",
+  "description": "식품 제조사(한결식품)에 라인메이트를 제안했으나 HACCP 기록 기능 부재와 가격 차이로 경쟁 제품에 실패한 딜. 실패 사유와 재접촉 시점이 핵심.",
+  "fictional": true,
+  "as_of": "2026-11-02",
+  "deal_status": "lost",
+  "seller": {
+    "user_id": 1,
+    "team_id": 1,
+    "name": "이준서",
+    "company": "플로우웍스",
+    "product": "라인메이트 (생산 실적·설비 가동 관리 SaaS)"
+  },
+  "users": [
+    {
+      "user_id": 1,
+      "team_id": 1
+    }
+  ],
+  "company": {
+    "id": "S002-CO1",
+    "name": "한결식품",
+    "industry": "냉장 반찬·간편식 제조",
+    "size": "직원 약 120명, 생산 라인 2개"
+  },
+  "contacts": [
+    {
+      "id": "S002-C1",
+      "name": "오세진",
+      "title": "품질관리팀 과장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S002-C2",
+      "name": "윤재석",
+      "title": "생산팀장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S002-C3",
+      "name": "서명훈",
+      "title": "대표이사",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S002-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-20T10:00:00+09:00",
+      "title": "첫 방문 미팅",
+      "owner_user_id": 1,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S002-C1",
+        "S002-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S002-I1-U00",
+          "start": 2.0,
+          "end": 10.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "오늘 뵙게 돼서 반갑습니다. 생산 실적이랑 설비 관리 쪽 고민이 있으시다고 들었습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I1-U01",
+          "start": 11.3,
+          "end": 20.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 라인이 두 개인데 실적은 그럭저럭 엑셀로 하고 있어요. 사실 더 급한 건 품질 쪽이에요.",
+          "contact_id": "S002-C2"
+        },
+        {
+          "id": "S002-I1-U02",
+          "start": 21.4,
+          "end": 33.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "저희가 HACCP 인증 업체라서 중요관리점 온도를 하루에 몇 번씩 손으로 기록하거든요. 냉장창고랑 가열 공정 온도요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I1-U03",
+          "start": 33.8,
+          "end": 45.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "심사 때 그 일지를 다 보여줘야 하는데, 빠진 칸이 있으면 지적을 받아요. 이걸 자동으로 남기는 게 제일 필요합니다.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I1-U04",
+          "start": 46.2,
+          "end": 54.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "온도 센서 연동은 가능해서 자동으로 기록하고 이탈하면 알림을 드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I1-U05",
+          "start": 54.8,
+          "end": 63.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그럼 HACCP 일지 양식 그대로 출력도 되나요? 심사관이 보는 양식이 정해져 있어서요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I1-U06",
+          "start": 64.3,
+          "end": 75.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "솔직히 말씀드리면 HACCP 일지 양식 출력은 아직 지원하지 않습니다. 내년 1분기 개발 일정에 들어가 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I1-U07",
+          "start": 76.4,
+          "end": 81.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "아, 그게 안 되면 결국 다시 옮겨 적어야 하는데요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I1-U08",
+          "start": 82.3,
+          "end": 87.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "실적 쪽은 괜찮아 보이는데, 가격은 어느 정도예요?",
+          "contact_id": "S002-C2"
+        },
+        {
+          "id": "S002-I1-U09",
+          "start": 88.0,
+          "end": 96.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "라인당 월 30만 원이라 두 라인이면 월 60만 원이고, 온도 센서는 별도입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I1-U10",
+          "start": 96.8,
+          "end": 106.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "센서까지 하면 생각보다 나가겠네요. 대표님께 올리려면 비교 자료가 좀 있어야 할 것 같아요.",
+          "contact_id": "S002-C2"
+        }
+      ]
+    },
+    {
+      "id": "S002-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-03T14:30:00+09:00",
+      "title": "가격 협상 통화",
+      "owner_user_id": 1,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S002-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S002-I2-U00",
+          "start": 2.0,
+          "end": 10.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "과장 오세진입니다. 내부적으로 검토해 봤는데요, 솔직히 다른 데랑 같이 보고 있어요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I2-U01",
+          "start": 11.1,
+          "end": 14.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 어떤 쪽을 같이 보고 계세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I2-U02",
+          "start": 15.2,
+          "end": 24.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "푸드체크라고 HACCP 전용 프로그램이요. 그쪽은 월 35만 원에 일지 출력까지 바로 돼요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I2-U03",
+          "start": 25.1,
+          "end": 34.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 제품은 품질 기록 위주라 생산 실적이나 설비 가동 관리는 안 되는 걸로 알고 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I2-U04",
+          "start": 34.8,
+          "end": 48.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "맞아요, 그래서 고민인 거예요. 대표님은 일단 심사가 급하다고 보시고요. 가격을 30% 정도 맞춰주실 수 있으면 얘기가 될 것 같아요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I2-U05",
+          "start": 49.0,
+          "end": 54.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "30%는 어렵고, 연간 계약하시면 15%까지는 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I2-U06",
+          "start": 55.4,
+          "end": 59.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "음, 그 정도면 차이가 여전히 크네요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I2-U07",
+          "start": 59.8,
+          "end": 70.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 대표님 보고하실 때 쓰시도록 두 제품 기능이랑 1년 비용 비교표를 다음 주 화요일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I2-U08",
+          "start": 71.3,
+          "end": 78.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그거 있으면 좋겠어요. 결정은 대표님이 9월 안에 하실 거예요.",
+          "contact_id": "S002-C1"
+        }
+      ]
+    },
+    {
+      "id": "S002-I3",
+      "kind": "call",
+      "occurred_at": "2026-09-22T11:00:00+09:00",
+      "title": "결과 통보",
+      "owner_user_id": 1,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S002-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S002-I3-U00",
+          "start": 2.0,
+          "end": 8.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "말씀드리기 좀 죄송한데요, 이번에는 푸드체크로 하기로 했어요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I3-U01",
+          "start": 8.8,
+          "end": 16.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "아 그렇군요. 혹시 결정에 가장 크게 작용한 게 뭐였는지 여쭤봐도 될까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I3-U02",
+          "start": 16.9,
+          "end": 28.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "제일 큰 건 HACCP 일지가 바로 나온다는 거였어요. 다음 달에 정기 심사가 있어서요. 그다음이 가격이고요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I3-U03",
+          "start": 28.6,
+          "end": 37.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "보내주신 비교표는 대표님도 잘 보셨어요. 생산 쪽 관리는 라인메이트가 낫다고 하시더라고요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I3-U04",
+          "start": 38.3,
+          "end": 46.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그렇게 봐주셔서 감사합니다. 생산 실적 관리는 지금 계속 엑셀로 하시는 거죠?",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I3-U05",
+          "start": 46.7,
+          "end": 56.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그건 그대로예요. 내년 3월에 심사 한 번 더 끝나면 생산 쪽은 다시 볼 수도 있어요.",
+          "contact_id": "S002-C1"
+        },
+        {
+          "id": "S002-I3-U06",
+          "start": 56.6,
+          "end": 64.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희 HACCP 일지 기능이 내년 2월쯤 나오면 그때 먼저 연락드려도 될까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S002-I3-U07",
+          "start": 65.0,
+          "end": 72.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그때 연락 주세요. 그 기능 있으면 저는 라인메이트 쓰고 싶어요.",
+          "contact_id": "S002-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S002-F01",
+      "interaction_id": "S002-I1",
+      "type": "requirement",
+      "said_by": "S002-C1",
+      "content": "HACCP 중요관리점(냉장창고·가열 공정) 온도를 수기로 기록하고 있어 자동 기록이 가장 필요하다.",
+      "source_utterance_ids": [
+        "S002-I1-U02",
+        "S002-I1-U03",
+        "S002-I1-U04"
+      ]
+    },
+    {
+      "id": "S002-F02",
+      "interaction_id": "S002-I1",
+      "type": "requirement",
+      "said_by": "S002-C1",
+      "content": "심사관이 보는 HACCP 일지 양식 그대로 출력되어야 한다. 현재 미지원(내년 1분기 개발 예정).",
+      "source_utterance_ids": [
+        "S002-I1-U05",
+        "S002-I1-U06",
+        "S002-I1-U07"
+      ]
+    },
+    {
+      "id": "S002-F03",
+      "interaction_id": "S002-I1",
+      "type": "price_reaction",
+      "said_by": "S002-C2",
+      "content": "라인당 월 30만 원(2라인 월 60만 원)에 온도 센서 비용이 별도라 생각보다 비싸다고 했다.",
+      "source_utterance_ids": [
+        "S002-I1-U09",
+        "S002-I1-U10"
+      ]
+    },
+    {
+      "id": "S002-F04",
+      "interaction_id": "S002-I1",
+      "type": "decision",
+      "said_by": "S002-C2",
+      "content": "대표 보고를 위해 비교 자료가 필요하다.",
+      "source_utterance_ids": [
+        "S002-I1-U10"
+      ]
+    },
+    {
+      "id": "S002-F05",
+      "interaction_id": "S002-I2",
+      "type": "decision",
+      "said_by": "S002-C1",
+      "content": "HACCP 전용 프로그램 푸드체크(월 35만 원, 일지 출력 지원)와 비교 중이다.",
+      "source_utterance_ids": [
+        "S002-I2-U00",
+        "S002-I2-U02"
+      ]
+    },
+    {
+      "id": "S002-F06",
+      "interaction_id": "S002-I2",
+      "type": "price_reaction",
+      "said_by": "S002-C1",
+      "content": "30% 할인을 요구했고, 연간 계약 15% 할인으로는 차이가 크다고 했다.",
+      "source_utterance_ids": [
+        "S002-I2-U04",
+        "S002-I2-U05",
+        "S002-I2-U06"
+      ]
+    },
+    {
+      "id": "S002-F07",
+      "interaction_id": "S002-I2",
+      "type": "decision",
+      "said_by": "S002-C1",
+      "content": "대표는 HACCP 심사 대응을 가장 급하게 본다.",
+      "source_utterance_ids": [
+        "S002-I2-U04"
+      ]
+    },
+    {
+      "id": "S002-F08",
+      "interaction_id": "S002-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "두 제품의 기능과 1년 비용 비교표를 보낸다.",
+      "source_utterance_ids": [
+        "S002-I2-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-08",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S002-I3"
+    },
+    {
+      "id": "S002-F09",
+      "interaction_id": "S002-I2",
+      "type": "purchase_timing",
+      "said_by": "S002-C1",
+      "content": "대표가 9월 안에 결정한다.",
+      "source_utterance_ids": [
+        "S002-I2-U08"
+      ]
+    },
+    {
+      "id": "S002-F10",
+      "interaction_id": "S002-I3",
+      "type": "decision",
+      "said_by": "S002-C1",
+      "content": "푸드체크로 결정했다. HACCP 일지 즉시 출력(다음 달 정기 심사)과 가격이 주된 이유다.",
+      "source_utterance_ids": [
+        "S002-I3-U00",
+        "S002-I3-U02"
+      ]
+    },
+    {
+      "id": "S002-F11",
+      "interaction_id": "S002-I3",
+      "type": "buying_signal",
+      "said_by": "S002-C1",
+      "content": "대표도 생산 관리는 라인메이트가 낫다고 평가했고, 담당자는 HACCP 일지 기능이 생기면 라인메이트를 쓰고 싶다고 했다.",
+      "source_utterance_ids": [
+        "S002-I3-U03",
+        "S002-I3-U07"
+      ]
+    },
+    {
+      "id": "S002-F12",
+      "interaction_id": "S002-I3",
+      "type": "purchase_timing",
+      "said_by": "S002-C1",
+      "content": "내년 3월 심사 이후 생산 실적 관리 도입을 다시 검토할 수 있다.",
+      "source_utterance_ids": [
+        "S002-I3-U05"
+      ]
+    },
+    {
+      "id": "S002-F13",
+      "interaction_id": "S002-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "HACCP 일지 기능이 나오면 먼저 연락한다.",
+      "source_utterance_ids": [
+        "S002-I3-U06",
+        "S002-I3-U07"
+      ],
+      "owner": "me",
+      "due_at": "2027-02-01",
+      "due_text": "내년 2월쯤",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S002-Q01",
+      "question": "한결식품은 왜 우리를 선택하지 않았어?",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I3-U00",
+        "S002-I3-U02"
+      ],
+      "answer": "다음 달 정기 심사 때문에 HACCP 일지를 바로 출력할 수 있는 푸드체크를 택했고, 가격도 이유였다."
+    },
+    {
+      "id": "S002-Q02",
+      "question": "한결식품이 비교한 경쟁 제품 가격은?",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I2-U02"
+      ],
+      "answer": "HACCP 전용 프로그램 푸드체크, 월 35만 원이다."
+    },
+    {
+      "id": "S002-Q03",
+      "question": "한결식품은 할인을 얼마나 요구했어?",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I2-U04",
+        "S002-I2-U05",
+        "S002-I2-U06"
+      ],
+      "answer": "30%를 요구했고 우리는 연간 계약 15%까지 제안했다."
+    },
+    {
+      "id": "S002-Q04",
+      "question": "한결식품의 HACCP 관련 요구사항이 뭐였지?",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I1-U02",
+        "S002-I1-U03",
+        "S002-I1-U05"
+      ],
+      "answer": "중요관리점 온도 자동 기록과 심사용 HACCP 일지 양식 출력."
+    },
+    {
+      "id": "S002-Q05",
+      "question": "한결식품에 다시 연락할 만한 시점이 있어?",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I3-U05",
+        "S002-I3-U06",
+        "S002-I3-U07"
+      ],
+      "answer": "내년 3월 심사 후 생산 쪽을 재검토할 수 있고, HACCP 일지 기능이 나오는 내년 2월쯤 연락하기로 했다."
+    },
+    {
+      "id": "S002-Q06",
+      "question": "한결식품 건에서 남아 있는 우리 쪽 할 일은?",
+      "kind": "structured",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_fact_ids": [
+        "S002-F13"
+      ],
+      "answer": "HACCP 일지 기능 출시 시(내년 2월쯤) 먼저 연락하기."
+    }
+  ]
+}
