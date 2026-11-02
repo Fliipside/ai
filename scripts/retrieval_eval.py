@@ -58,6 +58,8 @@ def build_chunks(scenarios: list[dict], max_chars: int, overlap: int, context: b
                         interaction["title"],
                     ) if context else chunk.text,
                     "utterance_ids": set(chunk.utterance_ids),
+                    "start": chunk.start,
+                    "end": chunk.end,
                 })
     return chunks
 
@@ -99,7 +101,7 @@ def memory_search(chunks, vectors, embedder, company_filter):
 
 PG_SEARCH = """
 SELECT company_id, interaction_id, content, embed_text, utterance_ids
-FROM memory_sandbox.memory_chunks
+FROM memory.memory_chunks
 WHERE embedding_model = %(model)s
   AND (%(company)s::text IS NULL OR company_id = %(company)s)
   AND (owner_user_id = %(viewer)s OR (visibility = 'team' AND team_id = %(team)s))
@@ -109,7 +111,7 @@ LIMIT %(limit)s
 
 
 def pg_search(conn, embedder, company_filter):
-    """Run the real pgvector query against the sandbox filled by load_memory_sandbox.py."""
+    """Run the real pgvector query against schema `memory` filled by load_memory_fixtures.py."""
 
     def search(query: dict, teams: dict[int, int], limit: int) -> list[dict]:
         viewer = query["viewer_user_id"]
@@ -125,6 +127,52 @@ def pg_search(conn, embedder, company_filter):
         return [
             {"company_id": r[0], "interaction_id": r[1], "text": r[2], "embed_text": r[3],
              "utterance_ids": set(r[4])}
+            for r in rows
+        ]
+
+    return search
+
+
+PSQL_SEARCH = """
+SET hnsw.iterative_scan = strict_order;
+SELECT coalesce(jsonb_agg(t), '[]'::jsonb) FROM (
+    SELECT company_id, interaction_id, content, embed_text, utterance_ids
+    FROM memory.memory_chunks
+    WHERE embedding_model = {model}
+      AND ({company} IS NULL OR company_id = {company})
+      AND (owner_user_id = {viewer} OR (visibility = 'team' AND team_id = {team}))
+    ORDER BY embedding <=> {q}::vector
+    LIMIT {limit}
+) t;
+"""
+
+
+def psql_search(psql: list[str], embedder, company_filter):
+    """Same query as pg_search, sent to a psql command (e.g. over SSH into the DB container).
+
+    Needs no DB password when psql runs inside the container.
+    """
+    import subprocess
+
+    def quote(value) -> str:
+        return "NULL::text" if value is None else "'" + str(value).replace("'", "''") + "'"
+
+    def search(query: dict, teams: dict[int, int], limit: int) -> list[dict]:
+        viewer = query["viewer_user_id"]
+        sql = PSQL_SEARCH.format(
+            model=quote(embedder.name),
+            company=quote(query["company_id"] if company_filter else None),
+            viewer=int(viewer),
+            team=int(teams[viewer]),
+            q=quote(to_vector_literal(embedder.embed_query(query["question"]))),
+            limit=int(limit),
+        )
+        out = subprocess.run(psql + ["-q", "-t", "-A", "-v", "ON_ERROR_STOP=1"],
+                             input=sql, capture_output=True, text=True, check=True).stdout
+        rows = json.loads(out.strip())
+        return [
+            {"company_id": r["company_id"], "interaction_id": r["interaction_id"], "text": r["content"],
+             "embed_text": r["embed_text"], "utterance_ids": set(r["utterance_ids"])}
             for r in rows
         ]
 
@@ -223,8 +271,10 @@ def main() -> None:
     parser.add_argument("--rerank", metavar="MODEL",
                         help="cross-encoder that reorders the top --pool vector matches, e.g. BAAI/bge-reranker-v2-m3")
     parser.add_argument("--pool", type=int, default=10)
-    parser.add_argument("--backend", choices=["memory", "pg"], default="memory",
-                        help="pg searches memory_sandbox via MEMORY_DB_URL (fill it with load_memory_sandbox.py)")
+    parser.add_argument("--backend", choices=["memory", "pg", "psql"], default="memory",
+                        help="pg: schema memory via MEMORY_DB_URL; psql: schema memory via --psql command")
+    parser.add_argument("--psql", help="psql command for --backend psql, e.g. "
+                        "\"ssh <server> docker exec -i <db-container> psql -U <user> -d <db>\"")
     parser.add_argument("--out", type=Path, help="write per-query results as JSON")
     args = parser.parse_args()
 
@@ -232,10 +282,17 @@ def main() -> None:
     embedder = SentenceTransformerEmbedder(args.model)
     company_filter = not args.no_company_filter
 
-    if args.backend == "pg":
+    if args.backend == "psql":
+        import shlex
+
+        if not args.psql:
+            sys.exit("--backend psql에는 --psql 명령이 필요합니다.")
+        search = psql_search(shlex.split(args.psql), embedder, company_filter)
+        print(f"{embedder.name}: pgvector memory 스키마 검색 (psql)")
+    elif args.backend == "pg":
         conn = connect()
         search = pg_search(conn, embedder, company_filter)
-        print(f"{embedder.name}: pgvector memory_sandbox 검색")
+        print(f"{embedder.name}: pgvector memory 스키마 검색")
     else:
         chunks = build_chunks(scenarios, args.max_chars, args.overlap, not args.no_context)
         started = time.perf_counter()
