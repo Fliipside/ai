@@ -28,6 +28,8 @@ class Settings(BaseSettings):
     hf_token: SecretStr = SecretStr("")
     # Hugging Face repo id or a local directory with the same layout.
     pyannote_model: str = "pyannote/speaker-diarization-community-1"
+    # Window step as a ratio of the 10s window (pyannote default 0.1); larger is faster.
+    pyannote_segmentation_step: float = 0.5
     sherpa_segmentation_model: str = ""
     sherpa_embedding_model: str = ""
     # Cosine distance for merging speakers when the speaker count is not given.
