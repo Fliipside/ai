@@ -1,5 +1,5 @@
--- Run after scripts/load_memory_sandbox.py has filled the sandbox.
-SET search_path = memory_sandbox, public;
+-- Run after loading data (scripts/load_memory_fixtures.py).
+SET search_path = memory, public;
 
 -- Row counts
 SELECT 'companies' AS t, count(*) FROM companies

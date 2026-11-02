@@ -11,7 +11,7 @@ SELECT name, default_version, installed_version
 FROM pg_available_extensions
 WHERE name IN ('vector', 'pg_trgm');
 
--- Existing schemas and tables (so the sandbox does not collide with anything)
+-- Existing schemas and tables (so schema memory does not collide with anything)
 SELECT table_schema, table_name
 FROM information_schema.tables
 WHERE table_schema NOT IN ('pg_catalog', 'information_schema')

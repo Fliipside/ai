@@ -1,11 +1,11 @@
--- Sandbox for vector search experiments with fixtures/sales.
--- Everything lives in schema memory_sandbox; DROP SCHEMA memory_sandbox CASCADE removes it all.
--- Real tables belong in backend migrations once the design is settled.
+-- Schema `memory`: conversation memory search (chunks + vectors) and its source data.
+-- Safe to re-run (IF NOT EXISTS). To empty the data but keep the tables, use 03_clear.sql.
+-- Agree on the final design with the backend before moving it into migrations.
 
 CREATE EXTENSION IF NOT EXISTS vector;
 
-CREATE SCHEMA IF NOT EXISTS memory_sandbox;
-SET search_path = memory_sandbox, public;
+CREATE SCHEMA IF NOT EXISTS memory;
+SET search_path = memory, public;
 
 -- Source data (ids are the fixture ids, e.g. S001-I2-U08)
 CREATE TABLE IF NOT EXISTS app_users (
