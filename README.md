@@ -29,15 +29,22 @@ tests/
 ## 음성 분석 구성
 
 ```text
-녹음 파일
-  ├─▶ Groq Whisper API (large-v3) ──▶ 문장 + 시작/끝 시간
-  └─▶ 화자 분리 (pyannote 또는 sherpa-onnx, CPU)
-         + 사용자 목소리 비교 ──▶ 화자 구간 (나 / 고객)
+녹음 파일 (최대 60분)
+  ① Groq Whisper API (large-v3) ──▶ 문장 + 시작/끝 시간
+  ② 화자 분리 (pyannote 또는 sherpa-onnx, CPU)
+         + 사용자 목소리 비교 ──▶ 화자 구간 (me / A / B …)
                     ↓ 시간 기준으로 합치기
                화자별 대화록
 ```
 
-분석 결과는 사람별로 나눕니다. 사용자 목소리와 가장 비슷한 화자(유사도가 `VOICE_MATCH_THRESHOLD` 이상)는 `me`, 나머지는 대화록에서 처음 말한 순서대로 `speaker_1`, `speaker_2`… 입니다. 역할(`role`)은 `me` / `customer` / `unknown`이고, `speakers`에 사람별 역할과 발화 시간(초)이 들어갑니다. 화자 수는 정하지 않고 엔진이 추정합니다.
+분석 결과는 사람별로 나눕니다. 사용자 목소리와 가장 비슷한 화자(유사도가 `VOICE_MATCH_THRESHOLD` 이상)는 `me`, 나머지는 대화록에서 처음 말한 순서대로 `A`, `B`, `C`…(26명 넘으면 `AA`, `AB`…)입니다. 목소리 정보가 없거나 기준을 넘는 화자가 없으면 `me` 없이 모두 `A`, `B`…이고 역할은 `unknown`입니다. 역할(`role`)은 `me` / `customer` / `unknown`이고, `speakers`에 사람별 역할과 발화 시간(초)이 들어갑니다. 화자 수는 정하지 않고 엔진이 추정합니다.
+
+처리 규칙:
+
+- STT를 먼저 하고 화자 분리를 합니다. Groq 한도(429)에 걸리면 몇 분짜리 화자 분리를 하기 전에 실패하고, Groq의 `Retry-After`를 그대로 전달합니다.
+- 분석은 한 번에 하나만 합니다. 분석 중에 다시 요청하면 503 `VOICE_BUSY`와 `Retry-After`(`VOICE_BUSY_RETRY_SECONDS`, 기본 60초)를 돌려줍니다. 목소리 등록은 별도 lock을 써서 분석 중에도 바로 처리됩니다.
+- 녹음은 `VOICE_MAX_AUDIO_SECONDS`(기본 3600초)까지 받습니다. 넘으면 모델을 돌리기 전에 400 `AUDIO_TOO_LONG`입니다. 등록 음성은 `VOICE_ENROLL_MIN_SECONDS`(기본 5초) 이상이어야 합니다.
+- 서버 시작 시 모델을 미리 불러오려면 `VOICE_PRELOAD_MODELS=true`로 둡니다(운영 권장).
 
 화자 분리 엔진은 `DIARIZATION_ENGINE`(`pyannote` | `sherpa_onnx`)으로 고릅니다. 사용자 목소리 임베딩은 같은 엔진으로 만든 것끼리만 비교할 수 있습니다. sherpa-onnx는 임베딩 모델을 바꿀 수 있으므로 엔진 이름에 모델명이 들어갑니다(예: `sherpa_onnx:wespeaker_en_voxceleb_resnet34_LM`).
 
@@ -75,8 +82,8 @@ uvicorn app.main:app --reload
 | 경로                         | 입력                  | 현재 동작 |
 | ---------------------------- | --------------------- | --------- |
 | `GET /health`                | 없음                  | 200       |
-| `POST /api/v1/voice/analyze` | `file` 오디오 업로드  | 501       |
-| `POST /api/v1/voice/enroll`  | `file` 오디오 업로드  | 501       |
+| `POST /api/v1/voice/analyze` | `file` 오디오 + 선택 `voiceprint`(JSON 문자열) | 200 (몇 분 걸림) |
+| `POST /api/v1/voice/enroll`  | `file` 사용자 혼자 말한 오디오(5초 이상) | 200       |
 
 구현 상태:
 
@@ -89,4 +96,4 @@ uvicorn app.main:app --reload
 | `providers/diarization/sherpa_onnx.py`, `providers/speaker_embedding/sherpa_onnx.py` | 구현 |
 | `scripts/voice_benchmark.py` (엔진 비교) | 구현 |
 
-API 연결 전까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.
+"나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 기본 0.5입니다. 실제 회의 녹음에서 사용자는 약 0.84, 다른 사람은 약 0.2였습니다(녹음 2개, 한 사람 기준).
