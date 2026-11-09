@@ -20,7 +20,7 @@ def format_utterance(utterance: StoredUtterance) -> str:
 
 def chunk_utterances(
     utterances: list[StoredUtterance],
-    max_chars: int = 300,
+    max_chars: int = 500,
     overlap: int = 1,
 ) -> list[MemoryChunk]:
     """Group consecutive utterances into search chunks of about max_chars.

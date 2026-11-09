@@ -60,7 +60,7 @@ python scripts/voice_benchmark.py data/voice/*.m4a \
 ## 대화 기억 검색 구성
 
 ```text
-화자별 대화록 ──▶ 청크 (발화 여러 개를 약 300자로 묶고 앞 청크와 발화 1개 겹침, 시작/끝 시간 유지)
+화자별 대화록 ──▶ 청크 (발화 여러 개를 약 500자로 묶고 앞 청크와 발화 1개 겹침, 시작/끝 시간 유지)
                     ↓ 텍스트 임베딩 (기본 BAAI/bge-m3, 1024차원, 정규화)
                  pgvector 저장 (backend)
 질문 ──▶ 임베딩 ──▶ 고객사·권한 필터 후 코사인 유사도 상위 k개 ──▶ 근거 발화와 시점
@@ -71,11 +71,20 @@ python scripts/voice_benchmark.py data/voice/*.m4a \
 ### 검색 품질 평가
 
 ```bash
-python scripts/retrieval_eval.py --model BAAI/bge-m3 --k 5 --max-chars 300 --overlap 1 \
+python scripts/retrieval_eval.py --model BAAI/bge-m3 --k 5 --max-chars 500 --overlap 1 \
     --out data/eval/result.json
 ```
 
 `fixtures/sales/`의 대화를 청크로 나누고 임베딩한 뒤, 정답 질문마다 pgvector 검색과 같은 방식(고객사·권한 필터 → 코사인 유사도 순)으로 상위 k개를 골라 hit@k, recall@k, MRR, 권한 위반 건수를 출력합니다. 청크 앞에는 고객사·날짜·대화 제목 머리말을 붙여 임베딩합니다(`--no-context`로 끔). `--rerank BAAI/bge-reranker-v2-m3`는 벡터 검색 상위 `--pool`개를 재정렬 모델로 다시 정렬하고, `--no-company-filter`는 사용자가 볼 수 있는 모든 고객사에서 검색합니다.
+
+### 임베딩 모델·청킹 비교
+
+```bash
+python scripts/compare_embeddings.py models                             # 후보 모델 7개 (500자, 겹침 1)
+python scripts/compare_embeddings.py chunking --model BAAI/bge-m3         # 크기·겹침·머리말 24가지
+```
+
+같은 정답셋으로 hit@1·hit@3·recall@3·MRR과 질문 1개 임베딩 시간을 비교합니다. `open@1`은 고객사·권한 필터 없이 전체 청크에서 찾은 점수로, 모델 간 차이를 더 크게 드러냅니다. 청크가 클수록 후보 수가 줄어 무작위로 골라도 맞힐 확률(`random@1`)이 올라가므로, 청크 크기는 `hit@1 - random@1`과 `open@1`로 비교합니다. 작을수록 정확한 위치를 찾고 클수록 상위 3개에 근거가 빠짐없이 들어가며, 상위 결과를 LLM에 넘기는 구조라 기본값을 500자로 둡니다.
 
 ### pgvector 스키마 `memory`
 
@@ -134,7 +143,7 @@ uvicorn app.main:app --reload
 | `scripts/voice_benchmark.py` (엔진 비교) | 구현 |
 | `fixtures/sales/` (가상 영업 시나리오 10개와 정답셋, [형식](fixtures/sales/README.md)) | 구현 |
 | `features/memory/chunking.py`, `providers/text_embedding/` (청크 생성, 텍스트 임베딩) | 구현 |
-| `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
+| `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/compare_embeddings.py` (모델·청킹 비교), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
 | 임베딩 API, pgvector 저장·검색 (backend) | 미구현 |
 
 API 연결 전까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.

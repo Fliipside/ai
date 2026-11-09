@@ -10,7 +10,7 @@ rank by cosine similarity, keep the top k.
     leaks     top-k chunks from interactions the viewer must not see (must be 0)
 
 Usage:
-    python scripts/retrieval_eval.py --model BAAI/bge-m3 --k 5 --max-chars 300 --overlap 1
+    python scripts/retrieval_eval.py --model BAAI/bge-m3 --k 5 --max-chars 500 --overlap 1
     python scripts/retrieval_eval.py --rerank BAAI/bge-reranker-v2-m3 --pool 10
     python scripts/retrieval_eval.py --no-company-filter   # search all of the viewer's customers
 """
@@ -269,7 +269,7 @@ def main() -> None:
     parser.add_argument("fixtures", nargs="*", type=Path, help="scenario JSON files (default: all)")
     parser.add_argument("--model", default=BGE_M3)
     parser.add_argument("--k", type=int, default=5)
-    parser.add_argument("--max-chars", type=int, default=300)
+    parser.add_argument("--max-chars", type=int, default=500)
     parser.add_argument("--overlap", type=int, default=1)
     parser.add_argument("--no-company-filter", action="store_true")
     parser.add_argument("--no-context", action="store_true",
