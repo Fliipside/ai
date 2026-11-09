@@ -1,3 +1,4 @@
+import math
 from pathlib import Path
 
 import httpx
@@ -63,6 +64,7 @@ class GroqSpeechToText:
                 status_code=429,
                 code="STT_RATE_LIMITED",
                 message="음성 인식 사용량 한도를 초과했습니다. 잠시 후 다시 시도해 주세요.",
+                headers=_retry_after(response),
             )
         if response.status_code != 200:
             raise AppError(
@@ -96,3 +98,12 @@ class GroqSpeechToText:
                 code="STT_FAILED",
                 message="음성 인식 서버에 연결할 수 없습니다.",
             ) from exc
+
+
+def _retry_after(response: httpx.Response) -> dict[str, str] | None:
+    # Pass Groq's wait time on so backend retries when the quota frees up.
+    try:
+        seconds = math.ceil(float(response.headers["retry-after"]))
+    except (KeyError, ValueError):
+        return None
+    return {"Retry-After": str(max(seconds, 0))}

@@ -61,3 +61,16 @@ def test_transcribe_requires_api_key(tmp_path: Path) -> None:
         asyncio.run(stt.transcribe(tmp_path / "a.wav"))
 
     assert exc.value.code == "STT_NOT_CONFIGURED"
+
+
+def test_rate_limit_passes_retry_after(tmp_path: Path) -> None:
+    audio = tmp_path / "a.wav"
+    audio.write_bytes(b"RIFF")
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(429, headers={"retry-after": "7.2"}, json={})
+
+    with pytest.raises(AppError) as exc:
+        asyncio.run(make_stt(handler).transcribe(audio))
+
+    assert exc.value.headers == {"Retry-After": "8"}
