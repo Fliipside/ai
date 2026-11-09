@@ -569,6 +569,150 @@
         "S002-F13"
       ],
       "answer": "HACCP 일지 기능 출시 시(내년 2월쯤) 먼저 연락하기."
+    },
+    {
+      "id": "S002-Q01-P1",
+      "question": "한결식품 건 왜 놓쳤지?",
+      "paraphrase_of": "S002-Q01",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I3-U00",
+        "S002-I3-U02"
+      ],
+      "answer": "다음 달 정기 심사 때문에 HACCP 일지를 바로 출력할 수 있는 푸드체크를 택했고, 가격도 이유였다."
+    },
+    {
+      "id": "S002-Q01-P2",
+      "question": "한결식품이 다른 데로 간 이유가 뭐야?",
+      "paraphrase_of": "S002-Q01",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I3-U00",
+        "S002-I3-U02"
+      ],
+      "answer": "다음 달 정기 심사 때문에 HACCP 일지를 바로 출력할 수 있는 푸드체크를 택했고, 가격도 이유였다."
+    },
+    {
+      "id": "S002-Q02-P1",
+      "question": "푸드체크는 얼마래?",
+      "paraphrase_of": "S002-Q02",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I2-U02"
+      ],
+      "answer": "HACCP 전용 프로그램 푸드체크, 월 35만 원이다."
+    },
+    {
+      "id": "S002-Q02-P2",
+      "question": "한결식품이 같이 본 HACCP 프로그램 월 비용은?",
+      "paraphrase_of": "S002-Q02",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I2-U02"
+      ],
+      "answer": "HACCP 전용 프로그램 푸드체크, 월 35만 원이다."
+    },
+    {
+      "id": "S002-Q03-P1",
+      "question": "한결식품이 몇 퍼센트 깎아 달라고 했지?",
+      "paraphrase_of": "S002-Q03",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I2-U04",
+        "S002-I2-U05",
+        "S002-I2-U06"
+      ],
+      "answer": "30%를 요구했고 우리는 연간 계약 15%까지 제안했다."
+    },
+    {
+      "id": "S002-Q03-P2",
+      "question": "한결식품 가격 맞춰 달라는 요구 수준이 어느 정도였어?",
+      "paraphrase_of": "S002-Q03",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I2-U04",
+        "S002-I2-U05",
+        "S002-I2-U06"
+      ],
+      "answer": "30%를 요구했고 우리는 연간 계약 15%까지 제안했다."
+    },
+    {
+      "id": "S002-Q04-P1",
+      "question": "한결식품은 심사 대비해서 뭐가 필요하다고 했어?",
+      "paraphrase_of": "S002-Q04",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I1-U02",
+        "S002-I1-U03",
+        "S002-I1-U05"
+      ],
+      "answer": "중요관리점 온도 자동 기록과 심사용 HACCP 일지 양식 출력."
+    },
+    {
+      "id": "S002-Q04-P2",
+      "question": "온도 기록 관련해서 뭘 원했지?",
+      "paraphrase_of": "S002-Q04",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I1-U02",
+        "S002-I1-U03",
+        "S002-I1-U05"
+      ],
+      "answer": "중요관리점 온도 자동 기록과 심사용 HACCP 일지 양식 출력."
+    },
+    {
+      "id": "S002-Q05-P1",
+      "question": "한결식품 언제 다시 찔러보면 돼?",
+      "paraphrase_of": "S002-Q05",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I3-U05",
+        "S002-I3-U06",
+        "S002-I3-U07"
+      ],
+      "answer": "내년 3월 심사 후 생산 쪽을 재검토할 수 있고, HACCP 일지 기능이 나오는 내년 2월쯤 연락하기로 했다."
+    },
+    {
+      "id": "S002-Q05-P2",
+      "question": "한결식품이랑 재접촉 기회 있어?",
+      "paraphrase_of": "S002-Q05",
+      "kind": "semantic",
+      "company_id": "S002-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S002-I3-U05",
+        "S002-I3-U06",
+        "S002-I3-U07"
+      ],
+      "answer": "내년 3월 심사 후 생산 쪽을 재검토할 수 있고, HACCP 일지 기능이 나오는 내년 2월쯤 연락하기로 했다."
     }
   ]
 }

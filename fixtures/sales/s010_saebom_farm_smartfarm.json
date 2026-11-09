@@ -474,6 +474,152 @@
         "S010-F11"
       ],
       "answer": "11월 16일 이후 설치 일정을 잡아 확정 날짜 안내."
+    },
+    {
+      "id": "S010-Q01-P1",
+      "question": "새봄농원은 뭐 때문에 환경제어가 필요하대?",
+      "paraphrase_of": "S010-Q01",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I1-U00",
+        "S010-I1-U01",
+        "S010-I1-U03"
+      ],
+      "answer": "작년 겨울 냉해 피해(2동), 난방비 부담, 새벽마다 손으로 하던 창 개폐를 원격으로 하려고."
+    },
+    {
+      "id": "S010-Q01-P2",
+      "question": "작년 겨울 냉해 얘기 뭐였지?",
+      "paraphrase_of": "S010-Q01",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I1-U00",
+        "S010-I1-U01",
+        "S010-I1-U03"
+      ],
+      "answer": "작년 겨울 냉해 피해(2동), 난방비 부담, 새벽마다 손으로 하던 창 개폐를 원격으로 하려고."
+    },
+    {
+      "id": "S010-Q02-P1",
+      "question": "새봄농원 지원사업 선정됐어?",
+      "paraphrase_of": "S010-Q02",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I1-U06",
+        "S010-I1-U08",
+        "S010-I3-U00",
+        "S010-I3-U01"
+      ],
+      "answer": "50% 보조 지원사업에 선정됐지만 4동분만 지원되어 올해는 4동만 설치한다."
+    },
+    {
+      "id": "S010-Q02-P2",
+      "question": "정부 지원금 몇 동까지 나왔어?",
+      "paraphrase_of": "S010-Q02",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I1-U06",
+        "S010-I1-U08",
+        "S010-I3-U00",
+        "S010-I3-U01"
+      ],
+      "answer": "50% 보조 지원사업에 선정됐지만 4동분만 지원되어 올해는 4동만 설치한다."
+    },
+    {
+      "id": "S010-Q03-P1",
+      "question": "새봄농원 장비 언제 설치하러 가면 돼?",
+      "paraphrase_of": "S010-Q03",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I3-U03",
+        "S010-I3-U04"
+      ],
+      "answer": "정식 후 모종이 자리 잡는 11월 중순(16일) 이후."
+    },
+    {
+      "id": "S010-Q03-P2",
+      "question": "모종 심은 뒤 설치 가능한 시기가 언제야?",
+      "paraphrase_of": "S010-Q03",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I3-U03",
+        "S010-I3-U04"
+      ],
+      "answer": "정식 후 모종이 자리 잡는 11월 중순(16일) 이후."
+    },
+    {
+      "id": "S010-Q04-P1",
+      "question": "염 대표님이 불안해하는 게 뭐야?",
+      "paraphrase_of": "S010-Q04",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I1-U04",
+        "S010-I3-U05"
+      ],
+      "answer": "기계를 잘 못 믿어 수동 조작이 가능해야 하고, 겨울에 고장 나면 큰 피해라 빠른 출장 수리를 원한다."
+    },
+    {
+      "id": "S010-Q04-P2",
+      "question": "새봄농원 사장님이 기계에 대해 뭐라고 했지?",
+      "paraphrase_of": "S010-Q04",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I1-U04",
+        "S010-I3-U05"
+      ],
+      "answer": "기계를 잘 못 믿어 수동 조작이 가능해야 하고, 겨울에 고장 나면 큰 피해라 빠른 출장 수리를 원한다."
+    },
+    {
+      "id": "S010-Q05-P1",
+      "question": "고장 나면 며칠 안에 가기로 했어?",
+      "paraphrase_of": "S010-Q05",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I3-U05",
+        "S010-I3-U06"
+      ],
+      "answer": "첫해 고장 접수 후 24시간 이내 방문, 계약서에 명시."
+    },
+    {
+      "id": "S010-Q05-P2",
+      "question": "새봄농원 수리 출동 조건이 뭐야?",
+      "paraphrase_of": "S010-Q05",
+      "kind": "semantic",
+      "company_id": "S010-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 8,
+      "relevant_utterance_ids": [
+        "S010-I3-U05",
+        "S010-I3-U06"
+      ],
+      "answer": "첫해 고장 접수 후 24시간 이내 방문, 계약서에 명시."
     }
   ]
 }

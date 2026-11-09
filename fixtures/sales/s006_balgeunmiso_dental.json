@@ -509,6 +509,142 @@
         "S006-F11"
       ],
       "answer": "11월 10일 설치와 첫 교육."
+    },
+    {
+      "id": "S006-Q01-P1",
+      "question": "밝은미소치과가 구강 스캐너 필요하다고 한 이유가 뭐야?",
+      "paraphrase_of": "S006-Q01",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I1-U00",
+        "S006-I1-U01"
+      ],
+      "answer": "인상재 본뜨기 시 환자 불편과 기공소 왕복 3일로 인한 추가 내원을 줄이기 위해서다."
+    },
+    {
+      "id": "S006-Q01-P2",
+      "question": "본뜨기 때문에 생긴 불편이 뭐였지?",
+      "paraphrase_of": "S006-Q01",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I1-U00",
+        "S006-I1-U01"
+      ],
+      "answer": "인상재 본뜨기 시 환자 불편과 기공소 왕복 3일로 인한 추가 내원을 줄이기 위해서다."
+    },
+    {
+      "id": "S006-Q02-P1",
+      "question": "스캔원 견적은 얼마였어?",
+      "paraphrase_of": "S006-Q02",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I1-U05"
+      ],
+      "answer": "스캔원 3,200만 원."
+    },
+    {
+      "id": "S006-Q02-P2",
+      "question": "밝은미소치과가 받은 다른 업체 장비 가격은?",
+      "paraphrase_of": "S006-Q02",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I1-U05"
+      ],
+      "answer": "스캔원 3,200만 원."
+    },
+    {
+      "id": "S006-Q03-P1",
+      "question": "밝은미소치과 계약 내용 정리해줘",
+      "paraphrase_of": "S006-Q03",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I3-U01",
+        "S006-I3-U02"
+      ],
+      "answer": "본원 1대를 36개월 리스로 계약했고, 나머지 2개 지점은 내년 상반기에 검토한다."
+    },
+    {
+      "id": "S006-Q03-P2",
+      "question": "밝은미소치과는 구매야 리스야?",
+      "paraphrase_of": "S006-Q03",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I3-U01",
+        "S006-I3-U02"
+      ],
+      "answer": "본원 1대를 36개월 리스로 계약했고, 나머지 2개 지점은 내년 상반기에 검토한다."
+    },
+    {
+      "id": "S006-Q04-P1",
+      "question": "치과 위생사들이 새 장비에 대해 불안해한 게 있어?",
+      "paraphrase_of": "S006-Q04",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I2-U01"
+      ],
+      "answer": "새 장비 사용법을 배우는 부담. 설치 시 교육 2회를 약속했다."
+    },
+    {
+      "id": "S006-Q04-P2",
+      "question": "밝은미소치과 직원 교육 얘기 나왔어?",
+      "paraphrase_of": "S006-Q04",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I2-U01"
+      ],
+      "answer": "새 장비 사용법을 배우는 부담. 설치 시 교육 2회를 약속했다."
+    },
+    {
+      "id": "S006-Q05-P1",
+      "question": "2주 빌려준 장비 써보고 뭐래?",
+      "paraphrase_of": "S006-Q05",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I2-U00",
+        "S006-I2-U01"
+      ],
+      "answer": "임플란트 환자 반응이 매우 좋았고 대표원장도 만족했다."
+    },
+    {
+      "id": "S006-Q05-P2",
+      "question": "환자들이 스캐너 써보고 어땠대?",
+      "paraphrase_of": "S006-Q05",
+      "kind": "semantic",
+      "company_id": "S006-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 5,
+      "relevant_utterance_ids": [
+        "S006-I2-U00",
+        "S006-I2-U01"
+      ],
+      "answer": "임플란트 환자 반응이 매우 좋았고 대표원장도 만족했다."
     }
   ]
 }

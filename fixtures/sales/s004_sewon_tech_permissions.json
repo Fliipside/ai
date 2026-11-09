@@ -486,6 +486,196 @@
         "S004-F11"
       ],
       "answer": "조아라 대리가 11월 3일까지 장비 로그 반출 보안 승인 요청서 양식을 보내기로 했다."
+    },
+    {
+      "id": "S004-Q01-P1",
+      "question": "세원테크 시범 운영 언제 시작해?",
+      "paraphrase_of": "S004-Q01",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S004-I3-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S004-I1",
+        "S004-I2"
+      ],
+      "answer": "11월 9일부터 2주간 마운터 2대로 진행한다."
+    },
+    {
+      "id": "S004-Q01-P2",
+      "question": "세원테크 테스트 기간은 며칠이야?",
+      "paraphrase_of": "S004-Q01",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S004-I3-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S004-I1",
+        "S004-I2"
+      ],
+      "answer": "11월 9일부터 2주간 마운터 2대로 진행한다."
+    },
+    {
+      "id": "S004-Q02-P1",
+      "question": "세원테크가 망설이는 이유가 뭐야?",
+      "paraphrase_of": "S004-Q02",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S004-I3-U00",
+        "S004-I3-U01"
+      ],
+      "forbidden_interaction_ids": [
+        "S004-I1",
+        "S004-I2"
+      ],
+      "answer": "기존 MES와 기능이 겹쳐 중복 투자로 보이는 것을 걱정한다."
+    },
+    {
+      "id": "S004-Q02-P2",
+      "question": "세원테크 쪽 우려사항 있어?",
+      "paraphrase_of": "S004-Q02",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S004-I3-U00",
+        "S004-I3-U01"
+      ],
+      "forbidden_interaction_ids": [
+        "S004-I1",
+        "S004-I2"
+      ],
+      "answer": "기존 MES와 기능이 겹쳐 중복 투자로 보이는 것을 걱정한다."
+    },
+    {
+      "id": "S004-Q03-P1",
+      "question": "세원테크가 망설이는 이유가 뭐야?",
+      "paraphrase_of": "S004-Q03",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 2,
+      "relevant_utterance_ids": [
+        "S004-I1-U04",
+        "S004-I3-U00",
+        "S004-I3-U01"
+      ],
+      "answer": "기존 MES와 기능이 겹쳐 중복 투자로 보이는 것을 걱정한다."
+    },
+    {
+      "id": "S004-Q03-P2",
+      "question": "세원테크 쪽 우려사항 있어?",
+      "paraphrase_of": "S004-Q03",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 2,
+      "relevant_utterance_ids": [
+        "S004-I1-U04",
+        "S004-I3-U00",
+        "S004-I3-U01"
+      ],
+      "answer": "기존 MES와 기능이 겹쳐 중복 투자로 보이는 것을 걱정한다."
+    },
+    {
+      "id": "S004-Q04-P1",
+      "question": "세원테크 임 과장님 계속 담당하시는 거 맞아?",
+      "paraphrase_of": "S004-Q04",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 2,
+      "relevant_utterance_ids": [
+        "S004-I2-U00",
+        "S004-I2-U02"
+      ],
+      "answer": "다음 달 조직 개편으로 임하준 과장 자리가 불확실하며, 조아라 대리가 이어받을 수 있다."
+    },
+    {
+      "id": "S004-Q04-P2",
+      "question": "세원테크 쪽 인사 이동 얘기 있었어?",
+      "paraphrase_of": "S004-Q04",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 2,
+      "relevant_utterance_ids": [
+        "S004-I2-U00",
+        "S004-I2-U02"
+      ],
+      "answer": "다음 달 조직 개편으로 임하준 과장 자리가 불확실하며, 조아라 대리가 이어받을 수 있다."
+    },
+    {
+      "id": "S004-Q05-P1",
+      "question": "세원테크 임 과장님 계속 담당하시는 거 맞아?",
+      "paraphrase_of": "S004-Q05",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S004-I1",
+        "S004-I2"
+      ],
+      "answer": "볼 수 있는 기록이 없다. (해당 내용은 김도윤의 비공개 통화)"
+    },
+    {
+      "id": "S004-Q05-P2",
+      "question": "세원테크 쪽 인사 이동 얘기 있었어?",
+      "paraphrase_of": "S004-Q05",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S004-I1",
+        "S004-I2"
+      ],
+      "answer": "볼 수 있는 기록이 없다. (해당 내용은 김도윤의 비공개 통화)"
+    },
+    {
+      "id": "S004-Q06-P1",
+      "question": "세원테크 시범 운영 언제 시작해?",
+      "paraphrase_of": "S004-Q06",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S004-I1",
+        "S004-I2",
+        "S004-I3"
+      ],
+      "answer": "볼 수 있는 기록이 없다. (다른 팀)"
+    },
+    {
+      "id": "S004-Q06-P2",
+      "question": "세원테크 테스트 기간은 며칠이야?",
+      "paraphrase_of": "S004-Q06",
+      "kind": "semantic",
+      "company_id": "S004-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S004-I1",
+        "S004-I2",
+        "S004-I3"
+      ],
+      "answer": "볼 수 있는 기록이 없다. (다른 팀)"
     }
   ]
 }

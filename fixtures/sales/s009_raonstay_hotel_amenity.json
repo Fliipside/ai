@@ -425,6 +425,142 @@
         "S009-F11"
       ],
       "answer": "탁수아 매니저가 대표 보고 후 '다음 주 중에'(10/26~10/30) 답하기로 했으나 아직 없다."
+    },
+    {
+      "id": "S009-Q01-P1",
+      "question": "라온스테이가 플라스틱 어메니티 없애려는 이유는?",
+      "paraphrase_of": "S009-Q01",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I1-U00"
+      ],
+      "answer": "객실 일회용품 무상 제공 규제 때문에 플라스틱 어메니티를 바꿔야 한다."
+    },
+    {
+      "id": "S009-Q01-P2",
+      "question": "호텔 일회용품 규제 때문에 바꾸는 거야?",
+      "paraphrase_of": "S009-Q01",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I1-U00"
+      ],
+      "answer": "객실 일회용품 무상 제공 규제 때문에 플라스틱 어메니티를 바꿔야 한다."
+    },
+    {
+      "id": "S009-Q02-P1",
+      "question": "종이 튜브 습기 문제 어떻게 됐어?",
+      "paraphrase_of": "S009-Q02",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I2-U00",
+        "S009-I2-U01"
+      ],
+      "answer": "종이 튜브가 욕실 습기에 눅눅해졌다. 방습 코팅으로 개선했고 이후 문제없었다."
+    },
+    {
+      "id": "S009-Q02-P2",
+      "question": "라온스테이가 샘플 보고 지적한 거 뭐였지?",
+      "paraphrase_of": "S009-Q02",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I2-U00",
+        "S009-I2-U01"
+      ],
+      "answer": "종이 튜브가 욕실 습기에 눅눅해졌다. 방습 코팅으로 개선했고 이후 문제없었다."
+    },
+    {
+      "id": "S009-Q03-P1",
+      "question": "라온스테이 세트당 가격 지금 얼마로 제안했어?",
+      "paraphrase_of": "S009-Q03",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I2-U02",
+        "S009-I3-U01",
+        "S009-I3-U02"
+      ],
+      "answer": "기존 280원, 첫 제안 420원, 고객 목표 350원 이하, 현재 코팅 포함 360원 제안 후 대표 승인 대기."
+    },
+    {
+      "id": "S009-Q03-P2",
+      "question": "라온스테이가 원하는 단가랑 우리 제안 차이는?",
+      "paraphrase_of": "S009-Q03",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I2-U02",
+        "S009-I3-U01",
+        "S009-I3-U02"
+      ],
+      "answer": "기존 280원, 첫 제안 420원, 고객 목표 350원 이하, 현재 코팅 포함 360원 제안 후 대표 승인 대기."
+    },
+    {
+      "id": "S009-Q04-P1",
+      "question": "라온스테이 첫 적용 지점은 어디야?",
+      "paraphrase_of": "S009-Q04",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I3-U03"
+      ],
+      "answer": "승인되면 성수점 한 곳에서 12월부터 먼저 쓴다."
+    },
+    {
+      "id": "S009-Q04-P2",
+      "question": "라온스테이 언제부터 쓰기 시작한대?",
+      "paraphrase_of": "S009-Q04",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I3-U03"
+      ],
+      "answer": "승인되면 성수점 한 곳에서 12월부터 먼저 쓴다."
+    },
+    {
+      "id": "S009-Q05-P1",
+      "question": "라온스테이 도입은 누가 승인해?",
+      "paraphrase_of": "S009-Q05",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I2-U03"
+      ],
+      "answer": "대표가 최종 결정한다."
+    },
+    {
+      "id": "S009-Q05-P2",
+      "question": "총지배인이 결정하는 거야?",
+      "paraphrase_of": "S009-Q05",
+      "kind": "semantic",
+      "company_id": "S009-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S009-I2-U03"
+      ],
+      "answer": "대표가 최종 결정한다."
     }
   ]
 }

@@ -586,6 +586,120 @@
         "S003-F17"
       ],
       "answer": "신예린 매니저가 설 명절 패키지 관련해 12월 초에 연락하기로 했다."
+    },
+    {
+      "id": "S003-Q01-P1",
+      "question": "온새미로 가격 올리는 건 결국 몇 퍼센트로 합의했어?",
+      "paraphrase_of": "S003-Q01",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U01",
+        "S003-I2-U02",
+        "S003-I3-U04"
+      ],
+      "answer": "8% 인상을 통보했으나 연간 24만 개 약정 조건으로 4%로 낮췄고, 대표 결재로 11월 발주분부터 적용된다."
+    },
+    {
+      "id": "S003-Q01-P2",
+      "question": "원지 값 오른 거 온새미로가 받아들였어?",
+      "paraphrase_of": "S003-Q01",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U01",
+        "S003-I2-U02",
+        "S003-I3-U04"
+      ],
+      "answer": "8% 인상을 통보했으나 연간 24만 개 약정 조건으로 4%로 낮췄고, 대표 결재로 11월 발주분부터 적용된다."
+    },
+    {
+      "id": "S003-Q02-P1",
+      "question": "크리스마스 박스 언제까지 넣어야 돼?",
+      "paraphrase_of": "S003-Q02",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U07",
+        "S003-I3-U02",
+        "S003-I3-U03"
+      ],
+      "answer": "11월 20일 매장 배치를 위해 11월 18일까지 물류센터 입고로 약속했다."
+    },
+    {
+      "id": "S003-Q02-P2",
+      "question": "케이크 상자 물류센터 입고일이 며칠이야?",
+      "paraphrase_of": "S003-Q02",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U07",
+        "S003-I3-U02",
+        "S003-I3-U03"
+      ],
+      "answer": "11월 20일 매장 배치를 위해 11월 18일까지 물류센터 입고로 약속했다."
+    },
+    {
+      "id": "S003-Q03-P1",
+      "question": "온새미로 월 평균 물량은?",
+      "paraphrase_of": "S003-Q03",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I1-U01"
+      ],
+      "answer": "월 평균 2만 개."
+    },
+    {
+      "id": "S003-Q03-P2",
+      "question": "온새미로가 보통 한 번에 얼마나 받아 가?",
+      "paraphrase_of": "S003-Q03",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I1-U01"
+      ],
+      "answer": "월 평균 2만 개."
+    },
+    {
+      "id": "S003-Q04-P1",
+      "question": "크리스마스 상자 시안은 누가 골라?",
+      "paraphrase_of": "S003-Q04",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U09",
+        "S003-I3-U00"
+      ],
+      "answer": "신예린 매니저가 시안을 고르며 B안으로 결정했다."
+    },
+    {
+      "id": "S003-Q04-P2",
+      "question": "한정판 박스 디자인 결정권자는 누구야?",
+      "paraphrase_of": "S003-Q04",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U09",
+        "S003-I3-U00"
+      ],
+      "answer": "신예린 매니저가 시안을 고르며 B안으로 결정했다."
     }
   ]
 }

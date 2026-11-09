@@ -1265,6 +1265,254 @@
         "S001-F32"
       ],
       "answer": "박지훈 대리가 11월 4일까지 파일럿 2주 차 데이터를 공유하기로 했다."
+    },
+    {
+      "id": "S001-Q01-P1",
+      "question": "누리정밀 쪽에서 비싸다는 말 했어?",
+      "paraphrase_of": "S001-Q01",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I2-U08",
+        "S001-I2-U09",
+        "S001-I3-U02",
+        "S001-I3-U03",
+        "S001-I3-U04",
+        "S001-I3-U05"
+      ],
+      "answer": "라인당 월 30만 원은 연 1천만 원이 넘어 부담스럽다고 했고, 연간 15% 할인은 긍정적이지만 별도 구축비 200만 원이 걸림돌이라고 했다."
+    },
+    {
+      "id": "S001-Q01-P2",
+      "question": "금액 제시했을 때 상대 쪽 분위기 어땠지?",
+      "paraphrase_of": "S001-Q01",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I2-U08",
+        "S001-I2-U09",
+        "S001-I3-U02",
+        "S001-I3-U03",
+        "S001-I3-U04",
+        "S001-I3-U05"
+      ],
+      "answer": "라인당 월 30만 원은 연 1천만 원이 넘어 부담스럽다고 했고, 연간 15% 할인은 긍정적이지만 별도 구축비 200만 원이 걸림돌이라고 했다."
+    },
+    {
+      "id": "S001-Q02-P1",
+      "question": "누리정밀 도입은 누가 최종 승인해?",
+      "paraphrase_of": "S001-Q02",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I2-U11",
+        "S001-I2-U13",
+        "S001-I4-U01",
+        "S001-I4-U03"
+      ],
+      "answer": "공장장 정태호 상무가 승인하며, 정량적 효과와 작업자 입력이 하루 10분 이내인지를 기준으로 본다."
+    },
+    {
+      "id": "S001-Q02-P2",
+      "question": "그 회사 윗선은 뭘 보고 판단한대?",
+      "paraphrase_of": "S001-Q02",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I2-U11",
+        "S001-I2-U13",
+        "S001-I4-U01",
+        "S001-I4-U03"
+      ],
+      "answer": "공장장 정태호 상무가 승인하며, 정량적 효과와 작업자 입력이 하루 10분 이내인지를 기준으로 본다."
+    },
+    {
+      "id": "S001-Q03-P1",
+      "question": "더존이랑 붙이는 거 가능하다고 했나?",
+      "paraphrase_of": "S001-Q03",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I1-U10",
+        "S001-I2-U05",
+        "S001-I2-U06",
+        "S001-I3-U02"
+      ],
+      "answer": "더존 ERP 연동이 필수 요구였고, 확인 결과 API 연동이 가능하지만 구축비 200만 원이 별도로 든다."
+    },
+    {
+      "id": "S001-Q03-P2",
+      "question": "기존 전산 시스템 연결 문제는 결론 났어?",
+      "paraphrase_of": "S001-Q03",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I1-U10",
+        "S001-I2-U05",
+        "S001-I2-U06",
+        "S001-I3-U02"
+      ],
+      "answer": "더존 ERP 연동이 필수 요구였고, 확인 결과 API 연동이 가능하지만 구축비 200만 원이 별도로 든다."
+    },
+    {
+      "id": "S001-Q04-P1",
+      "question": "처음 얘기한 적용 범위에서 달라진 거 있어?",
+      "paraphrase_of": "S001-Q04",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I1-U02",
+        "S001-I3-U07"
+      ],
+      "answer": "처음에는 3개 라인이었지만 내년 상반기 증설로 5개 라인 기준으로 바뀌었다."
+    },
+    {
+      "id": "S001-Q04-P2",
+      "question": "몇 개 라인에 넣는 걸로 바뀌었지?",
+      "paraphrase_of": "S001-Q04",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I1-U02",
+        "S001-I3-U07"
+      ],
+      "answer": "처음에는 3개 라인이었지만 내년 상반기 증설로 5개 라인 기준으로 바뀌었다."
+    },
+    {
+      "id": "S001-Q05-P1",
+      "question": "다른 업체랑 비교하고 있대?",
+      "paraphrase_of": "S001-Q05",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I4-U06",
+        "S001-I4-U07",
+        "S001-I4-U08"
+      ],
+      "answer": "스마트공장 지원사업 연계 MES 패키지 업체 견적을 받았고, 초기 비용은 거의 없지만 구축에 3개월이 걸린다."
+    },
+    {
+      "id": "S001-Q05-P2",
+      "question": "우리 말고 견적 받은 데 있어?",
+      "paraphrase_of": "S001-Q05",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I4-U06",
+        "S001-I4-U07",
+        "S001-I4-U08"
+      ],
+      "answer": "스마트공장 지원사업 연계 MES 패키지 업체 견적을 받았고, 초기 비용은 거의 없지만 구축에 3개월이 걸린다."
+    },
+    {
+      "id": "S001-Q06-P1",
+      "question": "누리정밀 결재는 언제 나?",
+      "paraphrase_of": "S001-Q06",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I3-U09",
+        "S001-I4-U11"
+      ],
+      "answer": "예산은 11월 초 편성, 파일럿 결과가 괜찮으면 12월 결재 후 1월부터 사용한다."
+    },
+    {
+      "id": "S001-Q06-P2",
+      "question": "계약 시점 대충 언제쯤으로 보고 있어?",
+      "paraphrase_of": "S001-Q06",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I3-U09",
+        "S001-I4-U11"
+      ],
+      "answer": "예산은 11월 초 편성, 파일럿 결과가 괜찮으면 12월 결재 후 1월부터 사용한다."
+    },
+    {
+      "id": "S001-Q07-P1",
+      "question": "반장님들이 입력하는 거 힘들어하진 않아?",
+      "paraphrase_of": "S001-Q07",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I2-U01",
+        "S001-I4-U01",
+        "S001-I5-U00",
+        "S001-I5-U02"
+      ],
+      "answer": "처음엔 입력 거부감이 걱정이었지만 파일럿에서 하루 5분이면 입력이 끝나 반응이 좋고, 불량 코드 찾기만 번거롭다고 한다."
+    },
+    {
+      "id": "S001-Q07-P2",
+      "question": "공장 쪽 실사용자들 평가는 어때?",
+      "paraphrase_of": "S001-Q07",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I2-U01",
+        "S001-I4-U01",
+        "S001-I5-U00",
+        "S001-I5-U02"
+      ],
+      "answer": "처음엔 입력 거부감이 걱정이었지만 파일럿에서 하루 5분이면 입력이 끝나 반응이 좋고, 불량 코드 찾기만 번거롭다고 한다."
+    },
+    {
+      "id": "S001-Q08-P1",
+      "question": "클라우드에 데이터 올리는 거 괜찮다고 했어?",
+      "paraphrase_of": "S001-Q08",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I4-U04",
+        "S001-I4-U05",
+        "S001-I5-U04"
+      ],
+      "answer": "도면·단가가 외부에 저장되는 것을 우려했고, 실적·설비 데이터만 국내 리전에 저장한다는 보안 자료를 보내 상무가 괜찮다고 했다."
+    },
+    {
+      "id": "S001-Q08-P2",
+      "question": "도면이나 단가 같은 정보 유출 걱정한 적 있어?",
+      "paraphrase_of": "S001-Q08",
+      "kind": "semantic",
+      "company_id": "S001-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [
+        "S001-I4-U04",
+        "S001-I4-U05",
+        "S001-I5-U04"
+      ],
+      "answer": "도면·단가가 외부에 저장되는 것을 우려했고, 실적·설비 데이터만 국내 리전에 저장한다는 보안 자료를 보내 상무가 괜찮다고 했다."
     }
   ]
 }

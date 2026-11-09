@@ -76,6 +76,19 @@ def test_queries_point_to_existing_evidence(scenario) -> None:
             assert set(query["relevant_fact_ids"]) <= facts
 
 
+def test_paraphrases_share_the_original_answer(scenario) -> None:
+    queries = {q["id"]: q for q in scenario["gold_queries"]}
+    for query in scenario["gold_queries"]:
+        if "paraphrase_of" not in query:
+            continue
+        original = queries[query["paraphrase_of"]]
+        assert "paraphrase_of" not in original
+        assert query["question"] != original["question"]
+        for key in ("kind", "company_id", "viewer_user_id", "relevant_utterance_ids",
+                    "forbidden_interaction_ids"):
+            assert query.get(key) == original.get(key), key
+
+
 def can_view(interaction: dict, viewer: dict, teams: dict[int, int]) -> bool:
     if interaction["owner_user_id"] == viewer["user_id"]:
         return True

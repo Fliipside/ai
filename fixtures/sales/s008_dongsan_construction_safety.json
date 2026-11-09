@@ -502,6 +502,148 @@
         "S008-F11"
       ],
       "answer": "장유진 대리가 11월 4일까지 현장별 착용 인원 명단을 주기로 했다."
+    },
+    {
+      "id": "S008-Q01-P1",
+      "question": "노 소장님은 뭐가 불만이었어?",
+      "paraphrase_of": "S008-Q01",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I2-U00",
+        "S008-I2-U02",
+        "S008-I2-U04"
+      ],
+      "answer": "안전모가 무거워지거나 매일 충전해야 하면 현장에서 안 쓰고, 위치 추적도 반대한다."
+    },
+    {
+      "id": "S008-Q01-P2",
+      "question": "동산건설 현장 책임자가 반대한 이유는?",
+      "paraphrase_of": "S008-Q01",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I2-U00",
+        "S008-I2-U02",
+        "S008-I2-U04"
+      ],
+      "answer": "안전모가 무거워지거나 매일 충전해야 하면 현장에서 안 쓰고, 위치 추적도 반대한다."
+    },
+    {
+      "id": "S008-Q02-P1",
+      "question": "작업자분들이 안전모 센서 어떻게 생각해?",
+      "paraphrase_of": "S008-Q02",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I2-U03"
+      ],
+      "answer": "위치를 다 보는 감시라며 반발했다."
+    },
+    {
+      "id": "S008-Q02-P2",
+      "question": "동산건설 인부들이 감시당한다고 느낀대?",
+      "paraphrase_of": "S008-Q02",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I2-U03"
+      ],
+      "answer": "위치를 다 보는 감시라며 반발했다."
+    },
+    {
+      "id": "S008-Q03-P1",
+      "question": "근로자 위치 추적 문제는 결론 났어?",
+      "paraphrase_of": "S008-Q03",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I2-U05",
+        "S008-I3-U00",
+        "S008-I3-U01",
+        "S008-I3-U02"
+      ],
+      "answer": "평소에는 저장하지 않고 사고 알림 때만 조회하며, 이 조건을 계약서에 명시한다."
+    },
+    {
+      "id": "S008-Q03-P2",
+      "question": "노조랑 위치 데이터 조건 어떻게 합의했지?",
+      "paraphrase_of": "S008-Q03",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I2-U05",
+        "S008-I3-U00",
+        "S008-I3-U01",
+        "S008-I3-U02"
+      ],
+      "answer": "평소에는 저장하지 않고 사고 알림 때만 조회하며, 이 조건을 계약서에 명시한다."
+    },
+    {
+      "id": "S008-Q04-P1",
+      "question": "동산건설 첫 계약 인원은?",
+      "paraphrase_of": "S008-Q04",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I1-U05",
+        "S008-I3-U03"
+      ],
+      "answer": "고위험 현장 3곳, 150명으로 6개월."
+    },
+    {
+      "id": "S008-Q04-P2",
+      "question": "동산건설 몇 개 현장부터 시작해?",
+      "paraphrase_of": "S008-Q04",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I1-U05",
+        "S008-I3-U03"
+      ],
+      "answer": "고위험 현장 3곳, 150명으로 6개월."
+    },
+    {
+      "id": "S008-Q05-P1",
+      "question": "센서 충전 주기가 어떻게 돼?",
+      "paraphrase_of": "S008-Q05",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I2-U01"
+      ],
+      "answer": "1회 충전 7일, 센서 무게 38g."
+    },
+    {
+      "id": "S008-Q05-P2",
+      "question": "안전모 센서 무게랑 사용 시간 얼마라고 했지?",
+      "paraphrase_of": "S008-Q05",
+      "kind": "semantic",
+      "company_id": "S008-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 7,
+      "relevant_utterance_ids": [
+        "S008-I2-U01"
+      ],
+      "answer": "1회 충전 7일, 센서 무게 38g."
     }
   ]
 }

@@ -205,6 +205,7 @@ def evaluate(scenarios, search, k, reranker=None, pool=10) -> list[dict]:
                 "scenario_id": scenario["scenario_id"],
                 "query_id": query["id"],
                 "question": query["question"],
+                "paraphrase": "paraphrase_of" in query,
                 "viewer_user_id": query["viewer_user_id"],
                 "expects_nothing": not relevant,
                 "hit": first is not None,
@@ -239,6 +240,11 @@ def print_report(summary, results, k) -> None:
           f"recall@{k} {summary['recall@k']:.1%}  MRR {summary['mrr']:.3f}")
     print(f"권한 위반 {summary['leaks']}건  다른 고객사 청크 {summary['other_company_chunks']}건  "
           f"접근 불가 질문 {summary['no_access_queries_ok']}/{summary['no_access_queries']} 통과")
+    for label, para in (("원래 질문", False), ("바꿔 말한 질문", True)):
+        rows = [r for r in results if not r["expects_nothing"] and r["paraphrase"] == para]
+        if rows:
+            print(f"  {label} {len(rows)}개  hit@{k} {sum(r['hit'] for r in rows) / len(rows):.1%}  "
+                  f"MRR {sum(r['rr'] for r in rows) / len(rows):.3f}")
 
     by_scenario = defaultdict(list)
     for r in results:

@@ -550,6 +550,142 @@
         "S005-F09"
       ],
       "answer": "김민수 과장의 WMS API 문서(10/27 기한, 기한 지남)."
+    },
+    {
+      "id": "S005-Q01-P1",
+      "question": "바른로지스에서 창고 시스템 연결 얘기 꺼낸 분이 누구였지?",
+      "paraphrase_of": "S005-Q01",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I1-U07",
+        "S005-I1-U09"
+      ],
+      "answer": "IT팀 김민수 과장. 자체 WMS API 연동과 사람 확인 단계를 요구했다."
+    },
+    {
+      "id": "S005-Q01-P2",
+      "question": "바른로지스 IT 쪽 요구는 누가 했어?",
+      "paraphrase_of": "S005-Q01",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I1-U07",
+        "S005-I1-U09"
+      ],
+      "answer": "IT팀 김민수 과장. 자체 WMS API 연동과 사람 확인 단계를 요구했다."
+    },
+    {
+      "id": "S005-Q02-P1",
+      "question": "바른로지스에서 월 고정 요금 원한 분은?",
+      "paraphrase_of": "S005-Q02",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I1-U12",
+        "S005-I2-U04"
+      ],
+      "answer": "재무팀 김민지 과장. 장당 과금은 성수기·비수기 물량 차이로 예산 편성이 어렵기 때문이다."
+    },
+    {
+      "id": "S005-Q02-P2",
+      "question": "건당 과금 싫다고 한 사람 누구야?",
+      "paraphrase_of": "S005-Q02",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I1-U12",
+        "S005-I2-U04"
+      ],
+      "answer": "재무팀 김민지 과장. 장당 과금은 성수기·비수기 물량 차이로 예산 편성이 어렵기 때문이다."
+    },
+    {
+      "id": "S005-Q03-P1",
+      "question": "바른로지스 윗분은 뭘 보고 판단해?",
+      "paraphrase_of": "S005-Q03",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I1-U15"
+      ],
+      "answer": "인식률 95% 이상과 3개월 내 효과."
+    },
+    {
+      "id": "S005-Q03-P2",
+      "question": "박 이사님 도입 기준이 뭐야?",
+      "paraphrase_of": "S005-Q03",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I1-U15"
+      ],
+      "answer": "인식률 95% 이상과 3개월 내 효과."
+    },
+    {
+      "id": "S005-Q04-P1",
+      "question": "샘플 인수증 돌려본 정확도 몇 나왔어?",
+      "paraphrase_of": "S005-Q04",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I2-U01",
+        "S005-I2-U02"
+      ],
+      "answer": "96.4%로 기준을 통과했고, 손글씨 서명란이 가장 낮았다."
+    },
+    {
+      "id": "S005-Q04-P2",
+      "question": "OCR 시험 결과 기준 넘었어?",
+      "paraphrase_of": "S005-Q04",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I2-U01",
+        "S005-I2-U02"
+      ],
+      "answer": "96.4%로 기준을 통과했고, 손글씨 서명란이 가장 낮았다."
+    },
+    {
+      "id": "S005-Q05-P1",
+      "question": "바른로지스 결재 시점이 언제야?",
+      "paraphrase_of": "S005-Q05",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I2-U06"
+      ],
+      "answer": "11월 셋째 주 임원 회의에서 박정우 이사가 결정한다."
+    },
+    {
+      "id": "S005-Q05-P2",
+      "question": "바른로지스 임원 회의 언제 열려?",
+      "paraphrase_of": "S005-Q05",
+      "kind": "semantic",
+      "company_id": "S005-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 4,
+      "relevant_utterance_ids": [
+        "S005-I2-U06"
+      ],
+      "answer": "11월 셋째 주 임원 회의에서 박정우 이사가 결정한다."
     }
   ]
 }

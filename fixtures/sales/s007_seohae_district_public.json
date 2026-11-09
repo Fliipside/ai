@@ -469,6 +469,146 @@
         "S007-F10"
       ],
       "answer": "11월 13일까지 견적서, CSAP 인증서 사본, 직접생산확인증명서 발송."
+    },
+    {
+      "id": "S007-Q01-P1",
+      "question": "서해구청 개인정보 관련 조건 있었어?",
+      "paraphrase_of": "S007-Q01",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I1-U02",
+        "S007-I2-U00"
+      ],
+      "answer": "챗봇에서 주민등록번호 등 개인정보를 받지 말 것, 클라우드 보안인증(CSAP)이 있을 것."
+    },
+    {
+      "id": "S007-Q01-P2",
+      "question": "구청에서 인증 같은 거 요구했어?",
+      "paraphrase_of": "S007-Q01",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I1-U02",
+        "S007-I2-U00"
+      ],
+      "answer": "챗봇에서 주민등록번호 등 개인정보를 받지 말 것, 클라우드 보안인증(CSAP)이 있을 것."
+    },
+    {
+      "id": "S007-Q02-P1",
+      "question": "서해구청 처음엔 전 부서였는데 지금은?",
+      "paraphrase_of": "S007-Q02",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I1-U04",
+        "S007-I2-U04",
+        "S007-I2-U05"
+      ],
+      "answer": "처음엔 전 부서(연 4,800만 원)였지만 입찰을 피하려고 민원여권과만(연 1,900만 원) 먼저 하기로 했다."
+    },
+    {
+      "id": "S007-Q02-P2",
+      "question": "구청 챗봇 적용 범위 줄었어?",
+      "paraphrase_of": "S007-Q02",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I1-U04",
+        "S007-I2-U04",
+        "S007-I2-U05"
+      ],
+      "answer": "처음엔 전 부서(연 4,800만 원)였지만 입찰을 피하려고 민원여권과만(연 1,900만 원) 먼저 하기로 했다."
+    },
+    {
+      "id": "S007-Q03-P1",
+      "question": "서해구청 계약은 언제쯤 가능해?",
+      "paraphrase_of": "S007-Q03",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I3-U01"
+      ],
+      "answer": "12월 중순 의회 심의로 예산이 확정되면 1월 초 수의계약."
+    },
+    {
+      "id": "S007-Q03-P2",
+      "question": "구청 예산 확정되는 게 언제야?",
+      "paraphrase_of": "S007-Q03",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I3-U01"
+      ],
+      "answer": "12월 중순 의회 심의로 예산이 확정되면 1월 초 수의계약."
+    },
+    {
+      "id": "S007-Q04-P1",
+      "question": "구청이 입찰 피하려는 이유가 뭐야?",
+      "paraphrase_of": "S007-Q04",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I1-U06",
+        "S007-I2-U04",
+        "S007-I2-U05"
+      ],
+      "answer": "2천만 원을 넘으면 입찰을 거쳐야 해서 일정이 길어지기 때문이다."
+    },
+    {
+      "id": "S007-Q04-P2",
+      "question": "서해구청 수의계약 한도 얘기 뭐였지?",
+      "paraphrase_of": "S007-Q04",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I1-U06",
+        "S007-I2-U04",
+        "S007-I2-U05"
+      ],
+      "answer": "2천만 원을 넘으면 입찰을 거쳐야 해서 일정이 길어지기 때문이다."
+    },
+    {
+      "id": "S007-Q05-P1",
+      "question": "구청에 하루 문의 전화 몇 통 와?",
+      "paraphrase_of": "S007-Q05",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I1-U00"
+      ],
+      "answer": "하루 약 400통, 절반 이상이 반복 질문."
+    },
+    {
+      "id": "S007-Q05-P2",
+      "question": "서해구청 반복 질문 많다는 게 어느 정도야?",
+      "paraphrase_of": "S007-Q05",
+      "kind": "semantic",
+      "company_id": "S007-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 6,
+      "relevant_utterance_ids": [
+        "S007-I1-U00"
+      ],
+      "answer": "하루 약 400통, 절반 이상이 반복 질문."
     }
   ]
 }

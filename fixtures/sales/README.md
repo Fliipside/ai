@@ -48,6 +48,8 @@ gold_queries[]
                     forbidden_interaction_ids: 이 사용자에게 절대 나오면 안 되는 대화
                     (relevant가 비어 있으면 "볼 수 있는 기록 없음"이 정답)
   kind=structured   facts 조회로 답할 질문 → relevant_fact_ids
+  paraphrase_of     같은 질문을 대화에 없는 단어로 바꿔 말한 변형이면 원래 질문 id
+                    (정답·질문자·권한은 원래 질문과 같음. 의미 검색 질문마다 2개씩)
   answer            기대 답변 요약
 ```
 
