@@ -36,8 +36,16 @@ class Settings(BaseSettings):
     sherpa_cluster_threshold: float = 0.5
     sherpa_num_threads: int = 4
 
-    # Cosine similarity needed to label a speaker as "me"; set after engine comparison.
-    voice_match_threshold: float | None = None
+    # Cosine similarity needed to label a speaker as "me". On our recordings (pyannote)
+    # the user scored about 0.84 and other people about 0.2.
+    voice_match_threshold: float | None = 0.5
+    # Longer recordings are rejected before any model runs (Groq allows 7,200 audio s/hour).
+    voice_max_audio_seconds: float = 3600
+    voice_enroll_min_seconds: float = 5
+    # Retry-After sent while another analysis is running.
+    voice_busy_retry_seconds: int = 60
+    # Load models at startup so the first request does not wait for them.
+    voice_preload_models: bool = False
 
 
 @lru_cache

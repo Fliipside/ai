@@ -4,7 +4,7 @@ import wave
 from dataclasses import dataclass
 from pathlib import Path
 
-from app.core.errors import InvalidAudioError
+from app.core.errors import AppError, InvalidAudioError
 
 SAMPLE_RATE = 16_000
 # 16kHz mono 16-bit WAV is 32KB/s, so 10 minutes (19.2MB) stays under Groq's 25MB limit.
@@ -20,7 +20,11 @@ class AudioChunk:
 def to_wav_16k_mono(source: Path, dest: Path) -> Path:
     ffmpeg = shutil.which("ffmpeg")
     if ffmpeg is None:
-        raise RuntimeError("ffmpeg is not installed")
+        raise AppError(
+            status_code=503,
+            code="FFMPEG_NOT_CONFIGURED",
+            message="ffmpeg가 설치되지 않았습니다.",
+        )
 
     result = subprocess.run(
         [

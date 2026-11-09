@@ -1,4 +1,7 @@
+import asyncio
 import logging
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -8,6 +11,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.api.v1.router import router as api_router
 from app.core.config import Settings, get_settings
 from app.core.errors import AppError
+from app.features.voice.pipeline import build_voice_pipeline, preload_models
 from app.schemas.response import ApiResponse
 
 
@@ -39,8 +43,21 @@ def create_error_content(code: str, message: str) -> dict[str, object]:
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
-    app = FastAPI(title=settings.app_name)
+    pipeline = build_voice_pipeline(settings)
+
+    @asynccontextmanager
+    async def lifespan(_app: FastAPI) -> AsyncIterator[None]:
+        if settings.voice_preload_models:
+            try:
+                await asyncio.to_thread(preload_models, pipeline)
+            except Exception:
+                # Keep serving /health; voice requests report the real error themselves.
+                logger.exception("Failed to preload voice models")
+        yield
+
+    app = FastAPI(title=settings.app_name, lifespan=lifespan)
     app.state.settings = settings
+    app.state.voice_pipeline = pipeline
 
     @app.exception_handler(AppError)
     async def app_error_handler(
@@ -53,6 +70,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 code=exc.code,
                 message=exc.message,
             ),
+            headers=exc.headers,
         )
 
     @app.exception_handler(RequestValidationError)

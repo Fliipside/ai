@@ -5,6 +5,7 @@ from app.features.voice.speaker_id import (
     identify_roles,
     label_speakers,
     longest_spans,
+    speaker_letters,
 )
 from app.schemas.voice import Voiceprint
 
@@ -51,12 +52,18 @@ def test_label_speakers_names_each_person_in_order_of_appearance() -> None:
     roles = {"SPEAKER_00": "me", "SPEAKER_01": "customer", "SPEAKER_02": "customer"}
 
     assert label_speakers(order, roles) == {
-        "SPEAKER_01": "speaker_1",
+        "SPEAKER_01": "A",
         "SPEAKER_00": "me",
-        "SPEAKER_02": "speaker_2",
+        "SPEAKER_02": "B",
     }
     assert label_speakers(order, {}) == {
-        "SPEAKER_01": "speaker_1",
-        "SPEAKER_00": "speaker_2",
-        "SPEAKER_02": "speaker_3",
+        "SPEAKER_01": "A",
+        "SPEAKER_00": "B",
+        "SPEAKER_02": "C",
     }
+
+
+def test_speaker_letters_continue_after_z() -> None:
+    assert [speaker_letters(i) for i in (0, 1, 25, 26, 27, 701, 702)] == [
+        "A", "B", "Z", "AA", "AB", "ZZ", "AAA",
+    ]

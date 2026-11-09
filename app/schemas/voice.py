@@ -20,7 +20,7 @@ class SpeakerTurn(BaseModel):
 class Utterance(BaseModel):
     start: float
     end: float
-    speaker: str  # "me", or "speaker_1", "speaker_2"... per person
+    speaker: str  # "me", or "A", "B", "C"... per person
     role: SpeakerRole
     text: str
 

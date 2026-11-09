@@ -35,7 +35,7 @@ def label_speakers(
     roles: dict[str, SpeakerRole],
 ) -> dict[str, str]:
     # Engine labels (e.g. "SPEAKER_01") are arbitrary per run; name the user "me" and
-    # everyone else "speaker_1", "speaker_2"... in the order given (first appearance).
+    # everyone else "A", "B", "C"... in the order given (first appearance).
     labels: dict[str, str] = {}
     others = 0
     for speaker in speakers:
@@ -44,9 +44,19 @@ def label_speakers(
         if roles.get(speaker) == "me":
             labels[speaker] = "me"
         else:
+            labels[speaker] = speaker_letters(others)
             others += 1
-            labels[speaker] = f"speaker_{others}"
     return labels
+
+
+def speaker_letters(index: int) -> str:
+    """0 -> A, 25 -> Z, 26 -> AA, like spreadsheet columns."""
+    letters = ""
+    index += 1
+    while index:
+        index, remainder = divmod(index - 1, 26)
+        letters = chr(ord("A") + remainder) + letters
+    return letters
 
 
 def longest_spans(
