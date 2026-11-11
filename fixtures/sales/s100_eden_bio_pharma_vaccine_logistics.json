@@ -1,0 +1,799 @@
+{
+  "scenario_id": "S100",
+  "description": "제약사 백신 콜드체인 운송 계약 성사 딜. 의약품 GDP 온도 규정, 운송 적격성 평가와 QA 실사, 시정조치, 독감철 물량 조건을 거쳐 2년 계약으로 확정된다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "won",
+  "seller": {
+    "user_id": 38,
+    "team_id": 37,
+    "name": "소윤재",
+    "company": "프레시로드",
+    "product": "냉장·냉동 화물 운송"
+  },
+  "users": [
+    {
+      "user_id": 38,
+      "team_id": 37
+    }
+  ],
+  "company": {
+    "id": "S100-CO1",
+    "name": "이든바이오제약",
+    "industry": "제약사 (백신 물류)",
+    "size": "직원 420명, 이천 물류센터"
+  },
+  "contacts": [
+    {
+      "id": "S100-C1",
+      "name": "어진우",
+      "title": "물류팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S100-C2",
+      "name": "도세라",
+      "title": "QA팀장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S100-C3",
+      "name": "빈현철",
+      "title": "구매팀장",
+      "role_in_deal": "procurement"
+    },
+    {
+      "id": "S100-C4",
+      "name": "제갈민",
+      "title": "상무",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S100-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-13T14:00:00+09:00",
+      "title": "첫 미팅: 백신 운송사 교체와 GDP 요건",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S100-C1",
+        "S100-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S100-I1-U00",
+          "start": 2.0,
+          "end": 14.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희가 독감 백신이랑 대상포진 백신을 이천 물류센터에서 전국 도매 열두 곳에 보내는데, 올해 말에 운송사를 바꾸려고 해요.",
+          "contact_id": "S100-C1"
+        },
+        {
+          "id": "S100-I1-U01",
+          "start": 14.8,
+          "end": 32.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "QA팀장입니다. 의약품 GDP 규정상 2도에서 8도 유지가 기본이고, 운송 적격성 평가 자료가 없으면 계약 자체가 안 돼요. 한 번이라도 8도를 넘으면 그 박스는 전량 폐기고요.",
+          "contact_id": "S100-C2"
+        },
+        {
+          "id": "S100-I1-U02",
+          "start": 33.2,
+          "end": 40.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희 차량은 정기 밸리데이션을 받았고, 온도 로거는 5분 간격으로 기록됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S100-I1-U03",
+          "start": 41.5,
+          "end": 43.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "이탈하면 어떻게 하시죠?",
+          "contact_id": "S100-C2"
+        },
+        {
+          "id": "S100-I1-U04",
+          "start": 44.4,
+          "end": 50.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "이탈 즉시 알림을 드리고, 일탈 보고서를 24시간 안에 드립니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S100-I1-U05",
+          "start": 51.5,
+          "end": 55.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "실사 나가서 차량하고 창고 확인해도 되죠?",
+          "contact_id": "S100-C2"
+        },
+        {
+          "id": "S100-I1-U06",
+          "start": 56.2,
+          "end": 65.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "물론입니다. 운송 적격성 평가서랑 차량 밸리데이션 성적서를 다음 주 금요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S100-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-10T15:00:00+09:00",
+      "title": "QA 실사 결과와 단가 논의",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S100-C2",
+        "S100-C1",
+        "S100-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S100-I2-U00",
+          "start": 2.0,
+          "end": 10.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "자료 받아서 지난주에 용인 차고하고 창고 실사 다녀왔는데, 지적 사항이 두 건 있어요.",
+          "contact_id": "S100-C2"
+        },
+        {
+          "id": "S100-I2-U01",
+          "start": 11.2,
+          "end": 20.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "하나는 예비 냉동 팩 보관 기록이 없었고, 하나는 운전기사 교육 기록에 서명이 빠졌어요.",
+          "contact_id": "S100-C2"
+        },
+        {
+          "id": "S100-I2-U02",
+          "start": 20.6,
+          "end": 28.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "바로 보완하겠습니다. 시정조치 보고서를 다음 주 수요일까지 제출하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S100-I2-U03",
+          "start": 28.6,
+          "end": 36.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "실사 통과되면 가격 논의 들어가죠. 현재 업체는 건당 평균 32만 원입니다.",
+          "contact_id": "S100-C1"
+        },
+        {
+          "id": "S100-I2-U04",
+          "start": 36.8,
+          "end": 42.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 건당 평균 29만 원으로 제안드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S100-I2-U05",
+          "start": 42.8,
+          "end": 52.7,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "구매팀장입니다. 29만 원이면 괜찮은 수준인데, 연간 단가 고정이 되나요? 유류 할증이 걱정이에요.",
+          "contact_id": "S100-C3"
+        },
+        {
+          "id": "S100-I2-U06",
+          "start": 53.3,
+          "end": 61.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "유류 할증은 경유 가격이 10퍼센트 넘게 변동할 때만 적용하는 걸로 하겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S100-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-08T10:30:00+09:00",
+      "title": "실사 통과와 계약 조건 협의",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S100-C2",
+        "S100-C1",
+        "S100-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S100-I3-U00",
+          "start": 2.0,
+          "end": 6.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "시정조치 보고서 확인했고 실사는 최종 통과입니다.",
+          "contact_id": "S100-C2"
+        },
+        {
+          "id": "S100-I3-U01",
+          "start": 7.5,
+          "end": 12.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "이제 계약 조건 정리하죠. 기간은 얼마로 보세요?",
+          "contact_id": "S100-C1"
+        },
+        {
+          "id": "S100-I3-U02",
+          "start": 13.0,
+          "end": 19.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "24개월에 월평균 80회 기준으로 건당 29만 원을 제안드립니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S100-I3-U03",
+          "start": 20.1,
+          "end": 28.6,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "물량이 독감철에 몰려서 10월부터 12월은 월 120회까지 같은 단가가 되어야 해요.",
+          "contact_id": "S100-C3"
+        },
+        {
+          "id": "S100-I3-U04",
+          "start": 29.2,
+          "end": 37.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 120회까지 같은 단가로 하겠습니다. 대신 연 최소 800회 보장을 부탁드립니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S100-I3-U05",
+          "start": 38.3,
+          "end": 44.2,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "연 최소 800회는 가능합니다. 상무님 결재 올려보겠습니다.",
+          "contact_id": "S100-C3"
+        }
+      ]
+    },
+    {
+      "id": "S100-I4",
+      "kind": "meeting",
+      "occurred_at": "2026-10-27T16:00:00+09:00",
+      "title": "상무 결재와 계약 확정",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S100-C4",
+        "S100-C3",
+        "S100-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S100-I4-U00",
+          "start": 2.0,
+          "end": 15.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "상무입니다. 보고 다 받았습니다. 24개월, 건당 평균 29만 원, 연 최소 800회, 유류 할증은 경유 10퍼센트 변동 시 적용, 맞죠?",
+          "contact_id": "S100-C4"
+        },
+        {
+          "id": "S100-I4-U01",
+          "start": 16.5,
+          "end": 22.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "맞습니다. 총 계약 규모는 연 약 2억 3천만 원부터입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S100-I4-U02",
+          "start": 23.0,
+          "end": 32.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋습니다. 계약서에 서명하죠. 2027년 1월 1일부터 2028년 12월 31일까지입니다.",
+          "contact_id": "S100-C4"
+        },
+        {
+          "id": "S100-I4-U03",
+          "start": 32.6,
+          "end": 37.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "서명본은 11월 6일 금요일까지 보내겠습니다.",
+          "contact_id": "S100-C3"
+        },
+        {
+          "id": "S100-I4-U04",
+          "start": 37.7,
+          "end": 44.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 운영 시작 전에 12월 중순 시범 운송을 두 번 돌려보겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S100-I4-U05",
+          "start": 45.3,
+          "end": 51.2,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "시범 운송 때 온도 로거 데이터는 제가 직접 검토하겠습니다.",
+          "contact_id": "S100-C2"
+        },
+        {
+          "id": "S100-I4-U06",
+          "start": 51.8,
+          "end": 57.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "시범 운송 계획서는 11월 13일 금요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S100-F01",
+      "interaction_id": "S100-I1",
+      "type": "requirement",
+      "said_by": "S100-C1",
+      "content": "이천 물류센터에서 전국 도매 12곳으로 독감·대상포진 백신을 보내며 올해 말 운송사를 교체한다.",
+      "source_utterance_ids": [
+        "S100-I1-U00"
+      ]
+    },
+    {
+      "id": "S100-F02",
+      "interaction_id": "S100-I1",
+      "type": "requirement",
+      "said_by": "S100-C2",
+      "content": "GDP 규정상 2~8도 유지와 운송 적격성 평가 자료가 필수이며 8도를 넘으면 해당 박스는 전량 폐기한다.",
+      "source_utterance_ids": [
+        "S100-I1-U01"
+      ]
+    },
+    {
+      "id": "S100-F03",
+      "interaction_id": "S100-I1",
+      "type": "decision",
+      "said_by": "me",
+      "content": "온도 이탈 시 즉시 알림을 주고 24시간 안에 일탈 보고서를 제공하기로 했다.",
+      "source_utterance_ids": [
+        "S100-I1-U04"
+      ]
+    },
+    {
+      "id": "S100-F04",
+      "interaction_id": "S100-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "운송 적격성 평가서와 차량 밸리데이션 성적서를 보낸다.",
+      "source_utterance_ids": [
+        "S100-I1-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-21",
+      "due_text": "다음 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S100-I2"
+    },
+    {
+      "id": "S100-F05",
+      "interaction_id": "S100-I2",
+      "type": "requirement",
+      "said_by": "S100-C2",
+      "content": "QA 실사에서 예비 냉동 팩 보관 기록 부재와 운전기사 교육 기록 서명 누락 두 건이 지적되었다.",
+      "source_utterance_ids": [
+        "S100-I2-U00",
+        "S100-I2-U01"
+      ]
+    },
+    {
+      "id": "S100-F06",
+      "interaction_id": "S100-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "실사 지적에 대한 시정조치 보고서를 제출한다.",
+      "source_utterance_ids": [
+        "S100-I2-U02"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-16",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S100-I3"
+    },
+    {
+      "id": "S100-F07",
+      "interaction_id": "S100-I2",
+      "type": "price_reaction",
+      "said_by": "S100-C1",
+      "content": "현재 운송사는 건당 평균 32만 원이며 실사 통과 후 가격을 논의하자고 했다.",
+      "source_utterance_ids": [
+        "S100-I2-U03"
+      ]
+    },
+    {
+      "id": "S100-F08",
+      "interaction_id": "S100-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "건당 평균 29만 원을 제안했다.",
+      "source_utterance_ids": [
+        "S100-I2-U04"
+      ]
+    },
+    {
+      "id": "S100-F09",
+      "interaction_id": "S100-I2",
+      "type": "price_reaction",
+      "said_by": "S100-C3",
+      "content": "29만 원은 괜찮은 수준이나 연간 단가 고정과 유류 할증이 걱정이다.",
+      "source_utterance_ids": [
+        "S100-I2-U05"
+      ]
+    },
+    {
+      "id": "S100-F10",
+      "interaction_id": "S100-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "유류 할증은 경유 가격이 10퍼센트 넘게 변동할 때만 적용하기로 했다.",
+      "source_utterance_ids": [
+        "S100-I2-U06"
+      ]
+    },
+    {
+      "id": "S100-F11",
+      "interaction_id": "S100-I3",
+      "type": "decision",
+      "said_by": "S100-C2",
+      "content": "시정조치 보고서를 확인했고 실사가 최종 통과되었다.",
+      "source_utterance_ids": [
+        "S100-I3-U00"
+      ]
+    },
+    {
+      "id": "S100-F12",
+      "interaction_id": "S100-I3",
+      "type": "requirement",
+      "said_by": "S100-C3",
+      "content": "독감철 10~12월에는 월 120회까지 같은 단가가 적용되어야 한다.",
+      "source_utterance_ids": [
+        "S100-I3-U03"
+      ]
+    },
+    {
+      "id": "S100-F13",
+      "interaction_id": "S100-I3",
+      "type": "decision",
+      "said_by": "S100-C3",
+      "content": "월 120회까지 같은 단가를 받고 연 최소 800회 보장을 수락해 상무 결재를 올린다.",
+      "source_utterance_ids": [
+        "S100-I3-U04",
+        "S100-I3-U05"
+      ]
+    },
+    {
+      "id": "S100-F14",
+      "interaction_id": "S100-I4",
+      "type": "decision",
+      "said_by": "S100-C4",
+      "content": "최종 계약: 2027-01-01부터 2028-12-31까지 24개월, 건당 평균 29만 원, 연 최소 800회(연 약 2억 3천만 원부터), 경유 10퍼센트 변동 시 유류 할증, 상무 서명.",
+      "source_utterance_ids": [
+        "S100-I4-U00",
+        "S100-I4-U01",
+        "S100-I4-U02"
+      ]
+    },
+    {
+      "id": "S100-F15",
+      "interaction_id": "S100-I4",
+      "type": "promise",
+      "said_by": "S100-C3",
+      "content": "계약 서명본을 보낸다.",
+      "source_utterance_ids": [
+        "S100-I4-U03"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S100-F16",
+      "interaction_id": "S100-I4",
+      "type": "promise",
+      "said_by": "me",
+      "content": "12월 중순 시범 운송 2회의 계획서를 보낸다. QA팀장이 온도 로거 데이터를 직접 검토한다.",
+      "source_utterance_ids": [
+        "S100-I4-U04",
+        "S100-I4-U05",
+        "S100-I4-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-13",
+      "due_text": "11월 13일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S100-Q01",
+      "question": "이든바이오제약 품질 요건이 뭐야?",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I1-U01",
+        "S100-I1-U02",
+        "S100-I1-U04"
+      ],
+      "answer": "GDP 기준 2~8도 유지와 적격성 평가 자료가 필수, 이탈 시 박스 전량 폐기. 이탈 즉시 알림과 24시간 내 보고서로 대응."
+    },
+    {
+      "id": "S100-Q02",
+      "question": "QA 실사에서 뭐가 문제였고 어떻게 해결됐어?",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I2-U00",
+        "S100-I2-U01",
+        "S100-I2-U02",
+        "S100-I3-U00"
+      ],
+      "answer": "예비 냉동 팩 보관 기록 없음과 기사 교육 기록 서명 누락 두 건이 지적됐고 시정조치 보고서 제출 후 최종 통과했다."
+    },
+    {
+      "id": "S100-Q03",
+      "question": "이든바이오제약 가격은 어떻게 합의됐어?",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I2-U03",
+        "S100-I2-U04",
+        "S100-I2-U05",
+        "S100-I2-U06",
+        "S100-I3-U02"
+      ],
+      "answer": "기존 건당 32만 원 대비 평균 29만 원 제안, 유류 할증은 경유 10퍼센트 넘게 변동 시에만 적용, 24개월 월평균 80회 기준."
+    },
+    {
+      "id": "S100-Q04",
+      "question": "독감철 물량은 어떻게 처리하기로 했어?",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I3-U03",
+        "S100-I3-U04",
+        "S100-I3-U05"
+      ],
+      "answer": "10~12월 월 120회까지 같은 단가를 적용하는 대신 연 최소 800회 보장."
+    },
+    {
+      "id": "S100-Q05",
+      "question": "이든바이오제약 최종 계약 조건은?",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I4-U00",
+        "S100-I4-U01",
+        "S100-I4-U02"
+      ],
+      "answer": "2027-01-01~2028-12-31 24개월, 건당 평균 29만 원, 연 최소 800회, 경유 10퍼센트 변동 시 할증. 상무 서명."
+    },
+    {
+      "id": "S100-Q06",
+      "question": "이든바이오제약이 해야 할 일은?",
+      "kind": "structured",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_fact_ids": [
+        "S100-F15"
+      ],
+      "answer": "구매팀장이 계약 서명본을 11월 6일까지 보내기로 했다."
+    },
+    {
+      "id": "S100-Q07",
+      "question": "이든바이오제약에 내가 남긴 약속은?",
+      "kind": "structured",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_fact_ids": [
+        "S100-F16"
+      ],
+      "answer": "12월 중순 시범 운송 계획서를 11월 13일까지 보내야 한다."
+    },
+    {
+      "id": "S100-Q01-P1",
+      "question": "백신 운송에서 기온 관리 규정과 문제 발생 시 대응 약속은?",
+      "paraphrase_of": "S100-Q01",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I1-U01",
+        "S100-I1-U02",
+        "S100-I1-U04"
+      ],
+      "answer": "GDP 기준 2~8도 유지와 적격성 평가 자료가 필수, 이탈 시 박스 전량 폐기. 이탈 즉시 알림과 24시간 내 보고서로 대응."
+    },
+    {
+      "id": "S100-Q01-P2",
+      "question": "제약 고객이 계약 전에 반드시 요구하는 서류와 이상 시 조치를 알려줘.",
+      "paraphrase_of": "S100-Q01",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I1-U01",
+        "S100-I1-U02",
+        "S100-I1-U04"
+      ],
+      "answer": "GDP 기준 2~8도 유지와 적격성 평가 자료가 필수, 이탈 시 박스 전량 폐기. 이탈 즉시 알림과 24시간 내 보고서로 대응."
+    },
+    {
+      "id": "S100-Q02-P1",
+      "question": "현장 점검에서 나온 지적 항목과 보완 후 결과는?",
+      "paraphrase_of": "S100-Q02",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I2-U00",
+        "S100-I2-U01",
+        "S100-I2-U02",
+        "S100-I3-U00"
+      ],
+      "answer": "예비 냉동 팩 보관 기록 없음과 기사 교육 기록 서명 누락 두 건이 지적됐고 시정조치 보고서 제출 후 최종 통과했다."
+    },
+    {
+      "id": "S100-Q02-P2",
+      "question": "차고와 창고 방문 심사의 부족한 부분을 어떻게 메웠지?",
+      "paraphrase_of": "S100-Q02",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I2-U00",
+        "S100-I2-U01",
+        "S100-I2-U02",
+        "S100-I3-U00"
+      ],
+      "answer": "예비 냉동 팩 보관 기록 없음과 기사 교육 기록 서명 누락 두 건이 지적됐고 시정조치 보고서 제출 후 최종 통과했다."
+    },
+    {
+      "id": "S100-Q03-P1",
+      "question": "현재 업체 요금과 우리 금액, 기름값 변동 조건을 알려줘.",
+      "paraphrase_of": "S100-Q03",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I2-U03",
+        "S100-I2-U04",
+        "S100-I2-U05",
+        "S100-I2-U06",
+        "S100-I3-U02"
+      ],
+      "answer": "기존 건당 32만 원 대비 평균 29만 원 제안, 유류 할증은 경유 10퍼센트 넘게 변동 시에만 적용, 24개월 월평균 80회 기준."
+    },
+    {
+      "id": "S100-Q03-P2",
+      "question": "한 건당 운임과 연료비 연동 방식이 어떻게 정해졌어?",
+      "paraphrase_of": "S100-Q03",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I2-U03",
+        "S100-I2-U04",
+        "S100-I2-U05",
+        "S100-I2-U06",
+        "S100-I3-U02"
+      ],
+      "answer": "기존 건당 32만 원 대비 평균 29만 원 제안, 유류 할증은 경유 10퍼센트 넘게 변동 시에만 적용, 24개월 월평균 80회 기준."
+    },
+    {
+      "id": "S100-Q04-P1",
+      "question": "가을·겨울 성수기에 급증하는 운행에 대한 가격 약속은?",
+      "paraphrase_of": "S100-Q04",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I3-U03",
+        "S100-I3-U04",
+        "S100-I3-U05"
+      ],
+      "answer": "10~12월 월 120회까지 같은 단가를 적용하는 대신 연 최소 800회 보장."
+    },
+    {
+      "id": "S100-Q04-P2",
+      "question": "수요가 몰리는 시기의 단가와 그 대가로 요구한 최소 건수는?",
+      "paraphrase_of": "S100-Q04",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I3-U03",
+        "S100-I3-U04",
+        "S100-I3-U05"
+      ],
+      "answer": "10~12월 월 120회까지 같은 단가를 적용하는 대신 연 최소 800회 보장."
+    },
+    {
+      "id": "S100-Q05-P1",
+      "question": "서명 확정된 기간, 금액, 보장 횟수를 정리해줘.",
+      "paraphrase_of": "S100-Q05",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I4-U00",
+        "S100-I4-U01",
+        "S100-I4-U02"
+      ],
+      "answer": "2027-01-01~2028-12-31 24개월, 건당 평균 29만 원, 연 최소 800회, 경유 10퍼센트 변동 시 할증. 상무 서명."
+    },
+    {
+      "id": "S100-Q05-P2",
+      "question": "성사된 계약의 개시일부터 종료일, 그리고 요금 구조는 어떻게 돼?",
+      "paraphrase_of": "S100-Q05",
+      "kind": "semantic",
+      "company_id": "S100-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S100-I4-U00",
+        "S100-I4-U01",
+        "S100-I4-U02"
+      ],
+      "answer": "2027-01-01~2028-12-31 24개월, 건당 평균 29만 원, 연 최소 800회, 경유 10퍼센트 변동 시 할증. 상무 서명."
+    }
+  ]
+}

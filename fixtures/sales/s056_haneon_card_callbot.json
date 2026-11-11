@@ -1,0 +1,866 @@
+{
+  "scenario_id": "S056",
+  "description": "카드사 콜센터에 AI 콜봇. 금융권 규제(녹취 5년, 개인정보 마스킹, 금융보안원 클라우드 보고, 망분리로 외부 STT 불가, AI 고지 의무), 20개 업무 → 3개 업무 야간 파일럿으로 범위 축소, 신기술 도입 심의 대기 (대화 4건)",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 24,
+    "team_id": 23,
+    "name": "권태양",
+    "company": "보이스온",
+    "product": "AI 콜봇·상담 자동화"
+  },
+  "users": [
+    {
+      "user_id": 24,
+      "team_id": 23
+    }
+  ],
+  "company": {
+    "id": "S056-CO1",
+    "name": "한온카드",
+    "industry": "카드사 콜센터",
+    "size": "상담사 320명, 월 18만 콜"
+  },
+  "contacts": [
+    {
+      "id": "S056-C1",
+      "name": "윤정훈",
+      "title": "고객서비스부 부장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S056-C2",
+      "name": "설하윤",
+      "title": "고객센터 운영 대리",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S056-C3",
+      "name": "천성호",
+      "title": "정보보호팀 과장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S056-C4",
+      "name": "정혜미",
+      "title": "구매팀 대리",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S056-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-07T14:00:00+09:00",
+      "title": "콜봇 도입 첫 미팅",
+      "owner_user_id": 24,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S056-C2",
+        "S056-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S056-I1-U00",
+          "start": 2.0,
+          "end": 6.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 인입 콜 규모부터 말씀해 주실 수 있을까요.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I1-U01",
+          "start": 7.3,
+          "end": 14.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "설하윤 대리입니다. 월 18만 콜이고, 이 중 단순 문의가 60% 정도예요.",
+          "contact_id": "S056-C2"
+        },
+        {
+          "id": "S056-I1-U02",
+          "start": 15.5,
+          "end": 27.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "윤정훈 부장입니다. 결제일 변경, 한도 조회, 분실 신고, 카드 배송 문의 같은 20개 업무를 봇으로 돌리고 싶습니다.",
+          "contact_id": "S056-C1"
+        },
+        {
+          "id": "S056-I1-U03",
+          "start": 28.0,
+          "end": 34.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "20개 시나리오 전부 하시려면 구축에 4개월 정도 잡으셔야 해요.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I1-U04",
+          "start": 35.1,
+          "end": 45.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "네. 그런데 금융권이라 규제가 많아요. 상담 녹취를 5년 보관해야 하고 개인정보는 마스킹 처리해야 합니다.",
+          "contact_id": "S056-C1"
+        },
+        {
+          "id": "S056-I1-U05",
+          "start": 46.3,
+          "end": 54.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 주민번호, 카드번호 자동 마스킹 되고 녹취 원본은 고객사 서버에 저장합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I1-U06",
+          "start": 55.2,
+          "end": 64.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "클라우드 STT를 쓰면 금융보안원 클라우드 이용 보고도 해야 해서 그것도 확인이 필요해요.",
+          "contact_id": "S056-C2"
+        },
+        {
+          "id": "S056-I1-U07",
+          "start": 64.8,
+          "end": 71.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "정보보호팀 요건서를 주시면 거기에 맞춰서 답변서를 만들어 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I1-U08",
+          "start": 72.4,
+          "end": 77.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "정보보호팀에 요청해서 다음 주 수요일까지 보내드릴게요.",
+          "contact_id": "S056-C2"
+        },
+        {
+          "id": "S056-I1-U09",
+          "start": 78.4,
+          "end": 89.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "가격은 콜 단가제로 건당 220원이고, 봇 처리 월 11만 건 기준 월 2,400만 원 정도 예상하시면 됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I1-U10",
+          "start": 90.2,
+          "end": 93.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "일단 요건서 보고 다시 얘기하죠.",
+          "contact_id": "S056-C1"
+        }
+      ]
+    },
+    {
+      "id": "S056-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-09T11:00:00+09:00",
+      "title": "정보보호팀 요건 확인",
+      "owner_user_id": 24,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S056-C3",
+        "S056-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S056-I2-U00",
+          "start": 2.0,
+          "end": 11.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "정보보호팀 천성호입니다. 요건서는 보냈고요, 결론부터 말하면 외부 클라우드 STT는 안 됩니다.",
+          "contact_id": "S056-C3"
+        },
+        {
+          "id": "S056-I2-U01",
+          "start": 12.1,
+          "end": 17.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "망분리 때문이군요. 온프레미스 설치형으로 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I2-U02",
+          "start": 17.9,
+          "end": 25.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "설치형이면 서버는 저희가 구매하는 거죠? GPU 서버 사양이 어떻게 되나요?",
+          "contact_id": "S056-C3"
+        },
+        {
+          "id": "S056-I2-U03",
+          "start": 26.1,
+          "end": 33.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "GPU 서버 2대 이중화 기준이고 약 1억 2천만 원 정도 잡으셔야 합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I2-U04",
+          "start": 34.3,
+          "end": 38.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "서버 비용이 추가되면 예산이 달라지는데요.",
+          "contact_id": "S056-C2"
+        },
+        {
+          "id": "S056-I2-U05",
+          "start": 39.0,
+          "end": 47.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 금융당국 모범규준에 따라 AI 상담 시 고객에게 AI라고 먼저 고지해야 합니다.",
+          "contact_id": "S056-C3"
+        },
+        {
+          "id": "S056-I2-U06",
+          "start": 48.2,
+          "end": 52.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "도입부 멘트에 AI 상담 안내를 넣겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I2-U07",
+          "start": 53.1,
+          "end": 61.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "보안성 검토서 양식 12쪽짜리를 드릴 테니 답변해 주세요. 다음 주 금요일까지요.",
+          "contact_id": "S056-C3"
+        },
+        {
+          "id": "S056-I2-U08",
+          "start": 61.8,
+          "end": 66.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 9월 18일까지 작성해서 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S056-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-06T15:00:00+09:00",
+      "title": "견적 검토와 범위 축소",
+      "owner_user_id": 24,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S056-C1",
+        "S056-C2",
+        "S056-C4"
+      ],
+      "utterances": [
+        {
+          "id": "S056-I3-U00",
+          "start": 2.0,
+          "end": 7.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "보안성 검토서 답변이랑 온프레미스 견적서 초안 가져왔습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I3-U01",
+          "start": 8.5,
+          "end": 17.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "서버값이 크네요. 첫해에 1억 2천에 라이선스까지 하면 임원 보고 통과가 어렵습니다.",
+          "contact_id": "S056-C1"
+        },
+        {
+          "id": "S056-I3-U02",
+          "start": 17.6,
+          "end": 34.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그래서 범위를 줄이는 걸 생각해 봤어요. 20개 업무 말고 결제일 변경, 한도 조회, 카드 배송 조회 이 세 가지만 먼저요. 분실 신고는 본인확인 이슈가 있어서 제외하고요.",
+          "contact_id": "S056-C2"
+        },
+        {
+          "id": "S056-I3-U03",
+          "start": 35.5,
+          "end": 42.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "3개 업무면 GPU 서버 1대로 가능하고 구축은 6주 안쪽입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I3-U04",
+          "start": 42.6,
+          "end": 49.3,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "구매 담당 정혜미입니다. 3개 업무 파일럿 총액을 정리해서 주세요.",
+          "contact_id": "S056-C4"
+        },
+        {
+          "id": "S056-I3-U05",
+          "start": 49.9,
+          "end": 57.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "서버 포함 총 6,800만 원에 월 운영비 900만 원 정도로 정리해 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I3-U06",
+          "start": 58.4,
+          "end": 64.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋아요. 야간 시간대부터 적용해서 3개월 보고 확대합시다.",
+          "contact_id": "S056-C1"
+        },
+        {
+          "id": "S056-I3-U07",
+          "start": 64.8,
+          "end": 72.0,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "서버는 저희 IT에서 구매 발주할게요. 10월 중으로 품의 올리겠습니다.",
+          "contact_id": "S056-C4"
+        },
+        {
+          "id": "S056-I3-U08",
+          "start": 72.6,
+          "end": 77.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "견적서는 이번 주 금요일까지 정식으로 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S056-I4",
+      "kind": "call",
+      "occurred_at": "2026-10-29T10:30:00+09:00",
+      "title": "신기술 도입 심의 준비",
+      "owner_user_id": 24,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S056-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S056-I4-U00",
+          "start": 2.0,
+          "end": 8.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "하윤입니다. 신기술 도입 심의위원회가 11월 20일로 잡혔어요.",
+          "contact_id": "S056-C2"
+        },
+        {
+          "id": "S056-I4-U01",
+          "start": 8.9,
+          "end": 11.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네. 필요한 서류는요?",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I4-U02",
+          "start": 11.7,
+          "end": 20.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "ISMS-P 인증서 사본이랑 개인정보 처리 위탁 계약서 초안, 모의 상담 시연 영상이요.",
+          "contact_id": "S056-C2"
+        },
+        {
+          "id": "S056-I4-U03",
+          "start": 21.1,
+          "end": 31.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "인증서랑 계약서 초안은 11월 6일까지 보내드리겠습니다. 시연 영상은 다음 주 중에 찍어서 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S056-I4-U04",
+          "start": 31.8,
+          "end": 38.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "서버 품의는 아직 구매팀에서 검토 중인데 11월 초에 끝날 거래요.",
+          "contact_id": "S056-C2"
+        },
+        {
+          "id": "S056-I4-U05",
+          "start": 39.1,
+          "end": 43.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 심의 전에 한 번 더 통화하죠.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S056-F01",
+      "interaction_id": "S056-I1",
+      "type": "requirement",
+      "said_by": "S056-C1",
+      "content": "결제일 변경, 한도 조회, 분실 신고, 카드 배송 문의 등 20개 업무를 콜봇으로 처리하고 싶다.",
+      "source_utterance_ids": [
+        "S056-I1-U02"
+      ]
+    },
+    {
+      "id": "S056-F02",
+      "interaction_id": "S056-I1",
+      "type": "requirement",
+      "said_by": "S056-C1",
+      "content": "금융권 규정상 상담 녹취를 5년 보관해야 하고 개인정보는 마스킹해야 한다.",
+      "source_utterance_ids": [
+        "S056-I1-U04"
+      ]
+    },
+    {
+      "id": "S056-F03",
+      "interaction_id": "S056-I1",
+      "type": "requirement",
+      "said_by": "S056-C2",
+      "content": "클라우드 STT를 쓰면 금융보안원 클라우드 이용 보고가 필요해 확인이 필요하다.",
+      "source_utterance_ids": [
+        "S056-I1-U06"
+      ]
+    },
+    {
+      "id": "S056-F04",
+      "interaction_id": "S056-I1",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "콜 단가제 건당 220원, 봇 처리 월 11만 건 기준 월 2,400만 원 정도를 안내했다.",
+      "source_utterance_ids": [
+        "S056-I1-U09"
+      ]
+    },
+    {
+      "id": "S056-F05",
+      "interaction_id": "S056-I1",
+      "type": "promise",
+      "said_by": "S056-C2",
+      "content": "정보보호팀 요건서를 받아 전달하기로 했다.",
+      "source_utterance_ids": [
+        "S056-I1-U08"
+      ],
+      "owner": "customer",
+      "due_at": "2026-08-12",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S056-I2"
+    },
+    {
+      "id": "S056-F06",
+      "interaction_id": "S056-I2",
+      "type": "requirement",
+      "said_by": "S056-C3",
+      "content": "망분리 때문에 외부 클라우드 STT는 불가해 온프레미스 설치형이어야 한다.",
+      "source_utterance_ids": [
+        "S056-I2-U00"
+      ]
+    },
+    {
+      "id": "S056-F07",
+      "interaction_id": "S056-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "GPU 서버 2대 이중화 기준 서버 비용은 약 1억 2천만 원이다.",
+      "source_utterance_ids": [
+        "S056-I2-U03"
+      ]
+    },
+    {
+      "id": "S056-F08",
+      "interaction_id": "S056-I2",
+      "type": "requirement",
+      "said_by": "S056-C3",
+      "content": "금융당국 모범규준에 따라 AI 상담임을 고객에게 먼저 고지해야 한다.",
+      "source_utterance_ids": [
+        "S056-I2-U05"
+      ]
+    },
+    {
+      "id": "S056-F09",
+      "interaction_id": "S056-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "12쪽 분량의 보안성 검토서 답변을 작성해 주기로 했다.",
+      "source_utterance_ids": [
+        "S056-I2-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-18",
+      "due_text": "다음 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S056-I3"
+    },
+    {
+      "id": "S056-F10",
+      "interaction_id": "S056-I3",
+      "type": "requirement",
+      "said_by": "S056-C2",
+      "content": "결제일 변경, 한도 조회, 카드 배송 조회 3개 업무로 먼저 시작하고 분실 신고는 본인확인 이슈로 제외한다.",
+      "source_utterance_ids": [
+        "S056-I3-U02"
+      ],
+      "supersedes": "S056-F01"
+    },
+    {
+      "id": "S056-F11",
+      "interaction_id": "S056-I3",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "3개 업무 파일럿은 서버 포함 총 6,800만 원에 월 운영비 약 900만 원이다.",
+      "source_utterance_ids": [
+        "S056-I3-U05"
+      ]
+    },
+    {
+      "id": "S056-F12",
+      "interaction_id": "S056-I3",
+      "type": "decision",
+      "said_by": "S056-C1",
+      "content": "야간 시간대부터 적용해 3개월 성과를 보고 확대하기로 했다.",
+      "source_utterance_ids": [
+        "S056-I3-U06"
+      ]
+    },
+    {
+      "id": "S056-F13",
+      "interaction_id": "S056-I3",
+      "type": "promise",
+      "said_by": "S056-C4",
+      "content": "서버 구매 품의를 올리기로 했다.",
+      "source_utterance_ids": [
+        "S056-I3-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-31",
+      "due_text": "10월 중으로",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S056-F14",
+      "interaction_id": "S056-I4",
+      "type": "purchase_timing",
+      "said_by": "S056-C2",
+      "content": "신기술 도입 심의위원회가 11월 20일에 열린다.",
+      "source_utterance_ids": [
+        "S056-I4-U00"
+      ]
+    },
+    {
+      "id": "S056-F15",
+      "interaction_id": "S056-I4",
+      "type": "promise",
+      "said_by": "me",
+      "content": "ISMS-P 인증서 사본과 개인정보 처리 위탁 계약서 초안을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S056-I4-U03"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S056-F16",
+      "interaction_id": "S056-I4",
+      "type": "promise",
+      "said_by": "me",
+      "content": "모의 상담 시연 영상을 촬영해 전달하기로 했다.",
+      "source_utterance_ids": [
+        "S056-I4-U03"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "다음 주 중에",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S056-Q01",
+      "question": "한온카드가 지켜야 하는 금융 규제나 보안 조건은?",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U04",
+        "S056-I1-U06",
+        "S056-I2-U00",
+        "S056-I2-U05"
+      ],
+      "answer": "녹취 5년 보관과 개인정보 마스킹, 금융보안원 클라우드 보고, 망분리로 외부 클라우드 STT 불가(온프레미스), AI 상담 사전 고지."
+    },
+    {
+      "id": "S056-Q02",
+      "question": "도입 범위가 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U02",
+        "S056-I3-U02",
+        "S056-I3-U03",
+        "S056-I3-U06"
+      ],
+      "answer": "처음 20개 업무에서 결제일 변경·한도 조회·카드 배송 조회 3개로 줄이고 분실 신고는 제외, 야간부터 3개월 시범."
+    },
+    {
+      "id": "S056-Q03",
+      "question": "비용과 서버 부담은 얼마로 이야기됐어?",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U09",
+        "S056-I2-U03",
+        "S056-I3-U01",
+        "S056-I3-U05"
+      ],
+      "answer": "건당 220원·월 약 2,400만 원, 서버 2대 약 1억 2천만 원, 축소 후 서버 포함 6,800만 원에 월 운영비 900만 원."
+    },
+    {
+      "id": "S056-Q04",
+      "question": "신기술 도입 심의는 언제고 뭐가 필요해?",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I4-U00",
+        "S056-I4-U02",
+        "S056-I4-U04"
+      ],
+      "answer": "11월 20일 심의위원회, ISMS-P 인증서 사본, 개인정보 처리 위탁 계약서 초안, 모의 상담 시연 영상 필요."
+    },
+    {
+      "id": "S056-Q05",
+      "question": "처음 문의 규모와 상담 환경은?",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U01",
+        "S056-I1-U02"
+      ],
+      "answer": "월 18만 콜이고 단순 문의가 약 60%, 결제일 변경·한도·분실 신고·배송 문의 등."
+    },
+    {
+      "id": "S056-Q06",
+      "question": "내가 아직 못 끝낸 약속들은?",
+      "kind": "structured",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_fact_ids": [
+        "S056-F15",
+        "S056-F16"
+      ],
+      "answer": "인증서·위탁 계약서 초안(11월 6일까지)과 시연 영상 전달이 열려 있음."
+    },
+    {
+      "id": "S056-Q07",
+      "question": "고객 쪽에서 밀리고 있는 일이 있어?",
+      "kind": "structured",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_fact_ids": [
+        "S056-F13"
+      ],
+      "answer": "정혜미 대리가 10월 중 올리기로 한 서버 구매 품의가 기한을 넘겨 열려 있음."
+    },
+    {
+      "id": "S056-Q01-P1",
+      "question": "법적 요건과 정보보호 요구사항을 정리해줘.",
+      "paraphrase_of": "S056-Q01",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U04",
+        "S056-I1-U06",
+        "S056-I2-U00",
+        "S056-I2-U05"
+      ],
+      "answer": "녹취 5년 보관과 개인정보 마스킹, 금융보안원 클라우드 보고, 망분리로 외부 클라우드 STT 불가(온프레미스), AI 상담 사전 고지."
+    },
+    {
+      "id": "S056-Q01-P2",
+      "question": "감독 기관 때문에 신경 써야 하는 점이 뭐였지?",
+      "paraphrase_of": "S056-Q01",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U04",
+        "S056-I1-U06",
+        "S056-I2-U00",
+        "S056-I2-U05"
+      ],
+      "answer": "녹취 5년 보관과 개인정보 마스킹, 금융보안원 클라우드 보고, 망분리로 외부 클라우드 STT 불가(온프레미스), AI 상담 사전 고지."
+    },
+    {
+      "id": "S056-Q02-P1",
+      "question": "처음 구상과 현재 시범 대상 업무의 차이는?",
+      "paraphrase_of": "S056-Q02",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U02",
+        "S056-I3-U02",
+        "S056-I3-U03",
+        "S056-I3-U06"
+      ],
+      "answer": "처음 20개 업무에서 결제일 변경·한도 조회·카드 배송 조회 3개로 줄이고 분실 신고는 제외, 야간부터 3개월 시범."
+    },
+    {
+      "id": "S056-Q02-P2",
+      "question": "자동화하려는 문의 종류가 몇 개에서 몇 개로 줄었지?",
+      "paraphrase_of": "S056-Q02",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U02",
+        "S056-I3-U02",
+        "S056-I3-U03",
+        "S056-I3-U06"
+      ],
+      "answer": "처음 20개 업무에서 결제일 변경·한도 조회·카드 배송 조회 3개로 줄이고 분실 신고는 제외, 야간부터 3개월 시범."
+    },
+    {
+      "id": "S056-Q03-P1",
+      "question": "들어가는 돈을 단계별로 알려줘.",
+      "paraphrase_of": "S056-Q03",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U09",
+        "S056-I2-U03",
+        "S056-I3-U01",
+        "S056-I3-U05"
+      ],
+      "answer": "건당 220원·월 약 2,400만 원, 서버 2대 약 1억 2천만 원, 축소 후 서버 포함 6,800만 원에 월 운영비 900만 원."
+    },
+    {
+      "id": "S056-Q03-P2",
+      "question": "장비 구입비와 월 사용료 이야기를 요약해줘.",
+      "paraphrase_of": "S056-Q03",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U09",
+        "S056-I2-U03",
+        "S056-I3-U01",
+        "S056-I3-U05"
+      ],
+      "answer": "건당 220원·월 약 2,400만 원, 서버 2대 약 1억 2천만 원, 축소 후 서버 포함 6,800만 원에 월 운영비 900만 원."
+    },
+    {
+      "id": "S056-Q04-P1",
+      "question": "위원회 개최일과 제출 자료를 알려줘.",
+      "paraphrase_of": "S056-Q04",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I4-U00",
+        "S056-I4-U02",
+        "S056-I4-U04"
+      ],
+      "answer": "11월 20일 심의위원회, ISMS-P 인증서 사본, 개인정보 처리 위탁 계약서 초안, 모의 상담 시연 영상 필요."
+    },
+    {
+      "id": "S056-Q04-P2",
+      "question": "승인 회의 전에 갖춰야 할 서류가 뭐야?",
+      "paraphrase_of": "S056-Q04",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I4-U00",
+        "S056-I4-U02",
+        "S056-I4-U04"
+      ],
+      "answer": "11월 20일 심의위원회, ISMS-P 인증서 사본, 개인정보 처리 위탁 계약서 초안, 모의 상담 시연 영상 필요."
+    },
+    {
+      "id": "S056-Q05-P1",
+      "question": "전화가 한 달에 얼마나 들어오고 어떤 내용이 많아?",
+      "paraphrase_of": "S056-Q05",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U01",
+        "S056-I1-U02"
+      ],
+      "answer": "월 18만 콜이고 단순 문의가 약 60%, 결제일 변경·한도·분실 신고·배송 문의 등."
+    },
+    {
+      "id": "S056-Q05-P2",
+      "question": "자동화 후보가 되는 문의 비중이 얼마였지?",
+      "paraphrase_of": "S056-Q05",
+      "kind": "semantic",
+      "company_id": "S056-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S056-I1-U01",
+        "S056-I1-U02"
+      ],
+      "answer": "월 18만 콜이고 단순 문의가 약 60%, 결제일 변경·한도·분실 신고·배송 문의 등."
+    }
+  ]
+}

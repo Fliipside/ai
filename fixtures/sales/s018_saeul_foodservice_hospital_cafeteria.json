@@ -1,0 +1,794 @@
+{
+  "scenario_id": "S018",
+  "description": "대학병원 직원식당을 위탁 운영하는 급식사 새울푸드서비스에 식기세척기 렌탈을 제안. 고객 4명이 한 자리에 참석하고(성이 같은 한지수 영양사와 한도영 조리장, 짧은 맞장구), 병동 환자식 식기까지 맡게 되면서 컨베이어 1대 2,500식이 2대 4,000식으로 요구가 바뀐다.",
+  "fictional": true,
+  "as_of": "2026-11-04",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 11,
+    "team_id": 10,
+    "name": "오재혁",
+    "company": "클린웨이브",
+    "product": "업소용 식기세척기 렌탈·관리"
+  },
+  "users": [
+    {
+      "user_id": 11,
+      "team_id": 10
+    }
+  ],
+  "company": {
+    "id": "S018-CO1",
+    "name": "새울푸드서비스",
+    "industry": "대학병원 직원식당 위탁 급식사",
+    "size": "병원 직원식당 하루 약 2,500식, 11월부터 환자식 추가"
+  },
+  "contacts": [
+    {
+      "id": "S018-C1",
+      "name": "한지수",
+      "title": "영양팀 영양사",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S018-C2",
+      "name": "한도영",
+      "title": "조리장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S018-C3",
+      "name": "우민재",
+      "title": "구매 담당",
+      "role_in_deal": "procurement"
+    },
+    {
+      "id": "S018-C4",
+      "name": "감동혁",
+      "title": "사업본부장",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S018-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-26T10:00:00+09:00",
+      "title": "급식 현장 미팅",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S018-C1",
+        "S018-C2",
+        "S018-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S018-I1-U00",
+          "start": 2.0,
+          "end": 5.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "새울푸드서비스 영양팀 한지수입니다.",
+          "contact_id": "S018-C1"
+        },
+        {
+          "id": "S018-I1-U01",
+          "start": 6.0,
+          "end": 12.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "조리장 한도영입니다. 지수 영양사님하고는 성만 같고 남이에요.",
+          "contact_id": "S018-C2"
+        },
+        {
+          "id": "S018-I1-U02",
+          "start": 12.7,
+          "end": 19.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "하하, 클린웨이브 오재혁입니다. 반갑습니다. 식수는 어느 정도세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S018-I1-U03",
+          "start": 20.0,
+          "end": 26.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "직원 식수가 하루 2,500식이에요. 아침 점심 저녁 3끼요.",
+          "contact_id": "S018-C1"
+        },
+        {
+          "id": "S018-I1-U04",
+          "start": 26.7,
+          "end": 33.7,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "구매 우민재입니다. 병원 계약이라 공급업체 등록 서류가 꽤 까다로워요.",
+          "contact_id": "S018-C3"
+        },
+        {
+          "id": "S018-I1-U05",
+          "start": 34.3,
+          "end": 41.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "세척기는 식판 전용 컨베이어 한 대를 쓰는데, 점심 때 줄이 막혀요.",
+          "contact_id": "S018-C2"
+        },
+        {
+          "id": "S018-I1-U06",
+          "start": 41.7,
+          "end": 42.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그렇죠.",
+          "contact_id": "S018-C1"
+        },
+        {
+          "id": "S018-I1-U07",
+          "start": 43.3,
+          "end": 48.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "식판 세척 후 소독 온도 기록은 병원에서 요구하나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S018-I1-U08",
+          "start": 49.1,
+          "end": 55.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 감염관리팀이 최종 헹굼 82도 이상인지 매일 기록을 확인해요.",
+          "contact_id": "S018-C1"
+        },
+        {
+          "id": "S018-I1-U09",
+          "start": 56.4,
+          "end": 66.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 온도를 자동 기록해서 출력하는 모델이 있습니다. 컨베이어형 한 대 기준으로 먼저 견적 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S018-I1-U10",
+          "start": 66.9,
+          "end": 70.3,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "네, 서류도 같이 안내 부탁합니다.",
+          "contact_id": "S018-C3"
+        },
+        {
+          "id": "S018-I1-U11",
+          "start": 70.9,
+          "end": 77.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "견적서와 업체 등록 서류 목록을 다음 주 수요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S018-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-23T14:00:00+09:00",
+      "title": "환자식 추가 건 통화",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S018-C1",
+        "S018-C4",
+        "S018-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S018-I2-U00",
+          "start": 2.0,
+          "end": 7.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "서류 목록이랑 견적 잘 봤어요. 그런데 상황이 바뀌었어요.",
+          "contact_id": "S018-C1"
+        },
+        {
+          "id": "S018-I2-U01",
+          "start": 8.4,
+          "end": 16.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "사업본부장 감동혁입니다. 병동 환자식 식기 세척도 저희가 11월부터 맡게 됐습니다.",
+          "contact_id": "S018-C4"
+        },
+        {
+          "id": "S018-I2-U02",
+          "start": 17.3,
+          "end": 23.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그래서 하루 식수가 2,500식에서 4,000식 가까이 돼요.",
+          "contact_id": "S018-C1"
+        },
+        {
+          "id": "S018-I2-U03",
+          "start": 24.0,
+          "end": 32.6,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "컨베이어 한 대로는 안 되고 두 대는 있어야 해요. 환자식 쪽은 트레이 규격도 달라요.",
+          "contact_id": "S018-C2"
+        },
+        {
+          "id": "S018-I2-U04",
+          "start": 33.2,
+          "end": 43.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 두 대 기준으로 다시 견적 내고 트레이 규격도 확인하겠습니다. 다음 주 목요일까지 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S018-I2-U05",
+          "start": 44.2,
+          "end": 48.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "두 대 기준 월 렌탈료는 얼마쯤 예상하세요?",
+          "contact_id": "S018-C4"
+        },
+        {
+          "id": "S018-I2-U06",
+          "start": 49.1,
+          "end": 58.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "대당 월 210만 원이라 두 대면 420만 원인데, 묶음으로 380만 원까지 검토해 보겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S018-I2-U07",
+          "start": 59.2,
+          "end": 67.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "400 안쪽이면 괜찮아요. 병원 감사 때문에 10월 안에 입찰 서류가 필요하고요.",
+          "contact_id": "S018-C4"
+        }
+      ]
+    },
+    {
+      "id": "S018-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-21T15:00:00+09:00",
+      "title": "조건 확정 미팅",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S018-C2",
+        "S018-C4",
+        "S018-C3",
+        "S018-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S018-I3-U00",
+          "start": 2.0,
+          "end": 6.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "10월 1일에 보낸 두 대 견적 보셨죠?",
+          "contact_id": null
+        },
+        {
+          "id": "S018-I3-U01",
+          "start": 6.6,
+          "end": 13.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네. 환자식 트레이 샘플은 제가 10월 28일까지 가져다 드릴게요.",
+          "contact_id": "S018-C2"
+        },
+        {
+          "id": "S018-I3-U02",
+          "start": 13.9,
+          "end": 19.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "월 380만 원이면 저희 예산 안이에요. 36개월로 하죠.",
+          "contact_id": "S018-C4"
+        },
+        {
+          "id": "S018-I3-U03",
+          "start": 20.3,
+          "end": 29.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "36개월 월 380만 원, 두 대로 하고 설치는 병동 식당 오픈 전인 11월 9일로 하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S018-I3-U04",
+          "start": 30.4,
+          "end": 40.1,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "구매 쪽은 병원 업체 등록용으로 사업자등록증이랑 위생 인증서 사본을 11월 2일까지 주셔야 해요.",
+          "contact_id": "S018-C3"
+        },
+        {
+          "id": "S018-I3-U05",
+          "start": 40.7,
+          "end": 44.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 11월 2일까지 보내겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S018-I3-U06",
+          "start": 44.7,
+          "end": 52.6,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "감염관리팀 확인을 한 번만 더 받을게요. 온도 기록 출력 샘플을 시연해 주세요.",
+          "contact_id": "S018-C1"
+        },
+        {
+          "id": "S018-I3-U07",
+          "start": 53.2,
+          "end": 56.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "시연은 설치할 때 같이 하겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S018-F01",
+      "interaction_id": "S018-I1",
+      "type": "requirement",
+      "said_by": "S018-C1",
+      "content": "직원 식수가 하루 2,500식(3끼)이다.",
+      "source_utterance_ids": [
+        "S018-I1-U03"
+      ]
+    },
+    {
+      "id": "S018-F02",
+      "interaction_id": "S018-I1",
+      "type": "requirement",
+      "said_by": "S018-C2",
+      "content": "식판 전용 컨베이어 세척기 한 대를 쓰며 점심 때 정체가 생긴다.",
+      "source_utterance_ids": [
+        "S018-I1-U05"
+      ]
+    },
+    {
+      "id": "S018-F03",
+      "interaction_id": "S018-I1",
+      "type": "requirement",
+      "said_by": "S018-C1",
+      "content": "병원 감염관리팀이 최종 헹굼 82도 이상 기록을 매일 확인한다.",
+      "source_utterance_ids": [
+        "S018-I1-U08"
+      ]
+    },
+    {
+      "id": "S018-F04",
+      "interaction_id": "S018-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "견적서와 업체 등록 서류 목록을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S018-I1-U11"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-02",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S018-I2"
+    },
+    {
+      "id": "S018-F05",
+      "interaction_id": "S018-I2",
+      "type": "requirement",
+      "said_by": "S018-C4",
+      "content": "11월부터 병동 환자식 식기 세척도 맡게 되었다.",
+      "source_utterance_ids": [
+        "S018-I2-U01"
+      ]
+    },
+    {
+      "id": "S018-F06",
+      "interaction_id": "S018-I2",
+      "type": "requirement",
+      "said_by": "S018-C1",
+      "content": "환자식 추가로 하루 식수가 약 4,000식이 된다.",
+      "source_utterance_ids": [
+        "S018-I2-U02"
+      ],
+      "supersedes": "S018-F01"
+    },
+    {
+      "id": "S018-F07",
+      "interaction_id": "S018-I2",
+      "type": "requirement",
+      "said_by": "S018-C2",
+      "content": "컨베이어 한 대로는 부족해 두 대가 필요하고 환자식 트레이 규격이 다르다.",
+      "source_utterance_ids": [
+        "S018-I2-U03"
+      ],
+      "supersedes": "S018-F02"
+    },
+    {
+      "id": "S018-F08",
+      "interaction_id": "S018-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "두 대 기준 견적과 트레이 규격 확인 결과를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S018-I2-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-01",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S018-I3"
+    },
+    {
+      "id": "S018-F09",
+      "interaction_id": "S018-I2",
+      "type": "price_reaction",
+      "said_by": "S018-C4",
+      "content": "두 대 월 400만 원 안쪽이면 괜찮다는 반응이다(우리 제안은 묶음 380만 원 검토).",
+      "source_utterance_ids": [
+        "S018-I2-U07"
+      ]
+    },
+    {
+      "id": "S018-F10",
+      "interaction_id": "S018-I2",
+      "type": "purchase_timing",
+      "said_by": "S018-C4",
+      "content": "병원 감사 때문에 10월 안에 입찰 서류가 필요하다.",
+      "source_utterance_ids": [
+        "S018-I2-U07"
+      ]
+    },
+    {
+      "id": "S018-F11",
+      "interaction_id": "S018-I3",
+      "type": "promise",
+      "said_by": "S018-C2",
+      "content": "환자식 트레이 샘플을 가져다주기로 했다.",
+      "source_utterance_ids": [
+        "S018-I3-U01"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-28",
+      "due_text": "10월 28일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S018-F12",
+      "interaction_id": "S018-I3",
+      "type": "decision",
+      "said_by": "S018-C4",
+      "content": "36개월, 두 대, 월 380만 원 조건으로 진행하기로 했다.",
+      "source_utterance_ids": [
+        "S018-I3-U02"
+      ]
+    },
+    {
+      "id": "S018-F13",
+      "interaction_id": "S018-I3",
+      "type": "purchase_timing",
+      "said_by": "me",
+      "content": "설치는 병동 식당 오픈 전인 11월 9일로 잡았다.",
+      "source_utterance_ids": [
+        "S018-I3-U03"
+      ]
+    },
+    {
+      "id": "S018-F14",
+      "interaction_id": "S018-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "병원 업체 등록용 사업자등록증과 위생 인증서 사본을 구매 담당에게 보내기로 했다.",
+      "source_utterance_ids": [
+        "S018-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-02",
+      "due_text": "11월 2일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S018-F15",
+      "interaction_id": "S018-I3",
+      "type": "requirement",
+      "said_by": "S018-C1",
+      "content": "감염관리팀 확인을 위해 온도 기록 출력 샘플 시연을 요청했다.",
+      "source_utterance_ids": [
+        "S018-I3-U06"
+      ]
+    },
+    {
+      "id": "S018-F16",
+      "interaction_id": "S018-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "온도 기록 출력 시연을 설치 때 함께 하기로 했다.",
+      "source_utterance_ids": [
+        "S018-I3-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-09",
+      "due_text": "설치할 때",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S018-Q01",
+      "question": "병원에서 세척기에 요구하는 위생 기준이 뭐야?",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I1-U08",
+        "S018-I1-U09"
+      ],
+      "answer": "감염관리팀이 최종 헹굼 82도 이상을 매일 기록으로 확인하므로 온도 자동 기록과 출력 기능이 필요하다."
+    },
+    {
+      "id": "S018-Q02",
+      "question": "요구 규모가 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I1-U03",
+        "S018-I1-U05",
+        "S018-I2-U01",
+        "S018-I2-U02",
+        "S018-I2-U03"
+      ],
+      "answer": "직원식당 2,500식과 컨베이어 1대에서 환자식 추가로 약 4,000식, 2대로 늘었다."
+    },
+    {
+      "id": "S018-Q03",
+      "question": "렌탈 가격은 얼마로 정해졌어?",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U06",
+        "S018-I2-U07",
+        "S018-I3-U02",
+        "S018-I3-U03"
+      ],
+      "answer": "대당 월 210만 원(2대 420만 원)에서 묶음 380만 원으로 36개월 합의, 고객 상한은 400만 원 안쪽."
+    },
+    {
+      "id": "S018-Q04",
+      "question": "설치와 서류 일정은 어떻게 돼?",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U07",
+        "S018-I3-U03",
+        "S018-I3-U04",
+        "S018-I3-U05"
+      ],
+      "answer": "설치는 11월 9일, 입찰·업체 등록 서류는 11월 2일까지(사업자등록증, 위생 인증서 사본)."
+    },
+    {
+      "id": "S018-Q05",
+      "question": "조리장이 말한 환자식 쪽 특이사항은?",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U03",
+        "S018-I3-U01"
+      ],
+      "answer": "환자식 트레이 규격이 달라 2대가 필요하며 트레이 샘플을 10월 28일까지 가져다 주기로 했다."
+    },
+    {
+      "id": "S018-Q06",
+      "question": "내가 아직 못 한 약속은?",
+      "kind": "structured",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_fact_ids": [
+        "S018-F14",
+        "S018-F16"
+      ],
+      "answer": "11월 2일까지 보낼 서류(기한 초과)와 설치 때 온도 기록 출력 시연이 남아 있다."
+    },
+    {
+      "id": "S018-Q07",
+      "question": "고객이 약속한 일 중 확인 안 된 건?",
+      "kind": "structured",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_fact_ids": [
+        "S018-F11"
+      ],
+      "answer": "조리장의 환자식 트레이 샘플 전달(10월 28일까지)을 확인해야 한다."
+    },
+    {
+      "id": "S018-Q01-P1",
+      "question": "의료기관 쪽에서 소독 관련해서 점검하는 항목은?",
+      "paraphrase_of": "S018-Q01",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I1-U08",
+        "S018-I1-U09"
+      ],
+      "answer": "감염관리팀이 최종 헹굼 82도 이상을 매일 기록으로 확인하므로 온도 자동 기록과 출력 기능이 필요하다."
+    },
+    {
+      "id": "S018-Q01-P2",
+      "question": "뜨거운 물 온도 기록과 관련된 고객 조건을 알려줘.",
+      "paraphrase_of": "S018-Q01",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I1-U08",
+        "S018-I1-U09"
+      ],
+      "answer": "감염관리팀이 최종 헹굼 82도 이상을 매일 기록으로 확인하므로 온도 자동 기록과 출력 기능이 필요하다."
+    },
+    {
+      "id": "S018-Q02-P1",
+      "question": "처음 계획보다 하루 처리량과 장비 대수가 어떻게 달라졌지?",
+      "paraphrase_of": "S018-Q02",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I1-U03",
+        "S018-I1-U05",
+        "S018-I2-U01",
+        "S018-I2-U02",
+        "S018-I2-U03"
+      ],
+      "answer": "직원식당 2,500식과 컨베이어 1대에서 환자식 추가로 약 4,000식, 2대로 늘었다."
+    },
+    {
+      "id": "S018-Q02-P2",
+      "question": "병동 식사 추가 후 필요한 용량 변동을 알려줘.",
+      "paraphrase_of": "S018-Q02",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I1-U03",
+        "S018-I1-U05",
+        "S018-I2-U01",
+        "S018-I2-U02",
+        "S018-I2-U03"
+      ],
+      "answer": "직원식당 2,500식과 컨베이어 1대에서 환자식 추가로 약 4,000식, 2대로 늘었다."
+    },
+    {
+      "id": "S018-Q03-P1",
+      "question": "두 대 월 이용료 협의 결과가 어떻게 됐어?",
+      "paraphrase_of": "S018-Q03",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U06",
+        "S018-I2-U07",
+        "S018-I3-U02",
+        "S018-I3-U03"
+      ],
+      "answer": "대당 월 210만 원(2대 420만 원)에서 묶음 380만 원으로 36개월 합의, 고객 상한은 400만 원 안쪽."
+    },
+    {
+      "id": "S018-Q03-P2",
+      "question": "고객이 받아들인 요금 수준과 약정 기간은?",
+      "paraphrase_of": "S018-Q03",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U06",
+        "S018-I2-U07",
+        "S018-I3-U02",
+        "S018-I3-U03"
+      ],
+      "answer": "대당 월 210만 원(2대 420만 원)에서 묶음 380만 원으로 36개월 합의, 고객 상한은 400만 원 안쪽."
+    },
+    {
+      "id": "S018-Q04-P1",
+      "question": "장비 들어오는 날짜와 제출해야 할 문서 마감은?",
+      "paraphrase_of": "S018-Q04",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U07",
+        "S018-I3-U03",
+        "S018-I3-U04",
+        "S018-I3-U05"
+      ],
+      "answer": "설치는 11월 9일, 입찰·업체 등록 서류는 11월 2일까지(사업자등록증, 위생 인증서 사본)."
+    },
+    {
+      "id": "S018-Q04-P2",
+      "question": "병원 쪽 등록 절차에 필요한 자료와 시기를 알려줘.",
+      "paraphrase_of": "S018-Q04",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U07",
+        "S018-I3-U03",
+        "S018-I3-U04",
+        "S018-I3-U05"
+      ],
+      "answer": "설치는 11월 9일, 입찰·업체 등록 서류는 11월 2일까지(사업자등록증, 위생 인증서 사본)."
+    },
+    {
+      "id": "S018-Q05-P1",
+      "question": "병동용 식판에 대해 주방 책임자가 한 말은?",
+      "paraphrase_of": "S018-Q05",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U03",
+        "S018-I3-U01"
+      ],
+      "answer": "환자식 트레이 규격이 달라 2대가 필요하며 트레이 샘플을 10월 28일까지 가져다 주기로 했다."
+    },
+    {
+      "id": "S018-Q05-P2",
+      "question": "쟁반 크기 차이와 관련된 약속이 뭐였지?",
+      "paraphrase_of": "S018-Q05",
+      "kind": "semantic",
+      "company_id": "S018-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S018-I2-U03",
+        "S018-I3-U01"
+      ],
+      "answer": "환자식 트레이 규격이 달라 2대가 필요하며 트레이 샘플을 10월 28일까지 가져다 주기로 했다."
+    }
+  ]
+}

@@ -1,0 +1,856 @@
+{
+  "scenario_id": "S034",
+  "description": "케어센스(유다인)가 지점 6곳의 요양원 체인 본부와 센서 150대·배회 감지 게이트 6세트 계약을 성사시킨 딜. 운영이사와의 비공개 대화 2건(구매부장 관련 우려, 내부 단가 하한선)과 팀 공유 공식 미팅 2건을 섞어, 같은 팀 동료(115)는 팀 공유 대화만, 다른 팀 사용자(1)는 아무것도 볼 수 없는지 검증한다. 최종 계약 금액·기간·설치 시작일을 포함한다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "won",
+  "seller": {
+    "user_id": 16,
+    "team_id": 15,
+    "name": "유다인",
+    "company": "케어센스",
+    "product": "요양시설 낙상·배회 감지 센서"
+  },
+  "users": [
+    {
+      "user_id": 16,
+      "team_id": 15
+    },
+    {
+      "user_id": 115,
+      "team_id": 15
+    },
+    {
+      "user_id": 1,
+      "team_id": 1
+    }
+  ],
+  "company": {
+    "id": "S034-CO1",
+    "name": "늘봄케어그룹",
+    "industry": "요양원 체인",
+    "size": "6개 지점, 입소자 약 210명"
+  },
+  "contacts": [
+    {
+      "id": "S034-C1",
+      "name": "조현우",
+      "title": "운영이사",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S034-C2",
+      "name": "노상철",
+      "title": "구매부장",
+      "role_in_deal": "procurement"
+    },
+    {
+      "id": "S034-C3",
+      "name": "신동희",
+      "title": "본부장",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S034-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-19T12:30:00+09:00",
+      "title": "운영이사와 점심 미팅 (비공개)",
+      "owner_user_id": 16,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S034-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S034-I1-U00",
+          "start": 2.0,
+          "end": 15.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "오늘은 편하게 말씀드릴게요. 지난달 부산 지점에서 낙상 사고가 있었는데 보호자가 민사를 걸겠다고 해서 본부장님이 많이 신경 쓰고 계세요.",
+          "contact_id": "S034-C1"
+        },
+        {
+          "id": "S034-I1-U01",
+          "start": 16.3,
+          "end": 24.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "민감한 얘기인데 말씀해 주셔서 감사합니다. 저희가 어떤 도움이 될 수 있을까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I1-U02",
+          "start": 24.8,
+          "end": 38.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "여섯 개 지점 전부에 센서를 깔고 싶은데, 구매팀 노 부장이 예전부터 쓰던 업체를 밀 거예요. 거기랑 뒷거래가 있다는 소문도 있고요.",
+          "contact_id": "S034-C1"
+        },
+        {
+          "id": "S034-I1-U03",
+          "start": 38.7,
+          "end": 48.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 부분은 제가 따로 언급하지 않겠습니다. 비교 기준이 투명해지도록 저희 사양서를 먼저 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I1-U04",
+          "start": 49.0,
+          "end": 55.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그래 주시면 좋겠어요. 이건 저희끼리만 아는 걸로 해주세요.",
+          "contact_id": "S034-C1"
+        },
+        {
+          "id": "S034-I1-U05",
+          "start": 56.1,
+          "end": 57.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "물론이죠.",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I1-U06",
+          "start": 57.7,
+          "end": 64.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "예산은 올해 안전 투자비로 오천만 원까지 본부장님이 승인한 상태예요.",
+          "contact_id": "S034-C1"
+        },
+        {
+          "id": "S034-I1-U07",
+          "start": 65.1,
+          "end": 74.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "오천만 원이면 여섯 지점 전부 가능한 범위입니다. 지점별 침상 스물다섯 대 정도로 보면 될까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I1-U08",
+          "start": 75.2,
+          "end": 83.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그 정도예요. 다음 주 공식 미팅에는 구매팀이랑 본부장님이 같이 나오실 거예요.",
+          "contact_id": "S034-C1"
+        },
+        {
+          "id": "S034-I1-U09",
+          "start": 84.3,
+          "end": 91.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 공식 미팅 전에 사양 비교표를 이번 주 금요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S034-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-08-27T14:00:00+09:00",
+      "title": "공식 미팅: 본부장·구매부장 참석",
+      "owner_user_id": 16,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S034-C3",
+        "S034-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S034-I2-U00",
+          "start": 2.0,
+          "end": 12.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "본부장입니다. 여섯 지점 입소자가 모두 이백십 명인데 올해 안에 전 지점 도입을 목표로 하고 있습니다.",
+          "contact_id": "S034-C3"
+        },
+        {
+          "id": "S034-I2-U01",
+          "start": 12.9,
+          "end": 25.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지점별 침상 센서 스물다섯 대와 출입구 배회 감지 게이트 하나씩, 총 센서 백오십 대와 게이트 여섯 세트로 견적을 드렸습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I2-U02",
+          "start": 26.1,
+          "end": 34.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "견적은 봤는데 지금 쓰는 업체 제품은 대당 십이만 원이에요. 십팔만 원은 많이 비싸네요.",
+          "contact_id": "S034-C2"
+        },
+        {
+          "id": "S034-I2-U03",
+          "start": 35.5,
+          "end": 44.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 오작동 알림을 줄이는 보정 기능이 들어가고 삼 년 무상 AS가 포함돼 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I2-U04",
+          "start": 44.7,
+          "end": 51.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "무상 AS 삼 년은 거기도 해줘요. 가격을 더 맞춰서 다시 주세요.",
+          "contact_id": "S034-C2"
+        },
+        {
+          "id": "S034-I2-U05",
+          "start": 52.0,
+          "end": 63.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "노 부장, 가격만 보지 말고 사고를 줄이는 성능을 비교해 봅시다. 두 업체 모두 한 지점씩 시범을 해보고 판단하죠.",
+          "contact_id": "S034-C3"
+        },
+        {
+          "id": "S034-I2-U06",
+          "start": 64.1,
+          "end": 71.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "좋습니다. 대구 지점에 저희 센서 스물다섯 대를 이 주간 시범 설치하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I2-U07",
+          "start": 72.4,
+          "end": 78.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그럼 비교 평가서는 저희가 구월 십오일까지 정리해서 알려드리죠.",
+          "contact_id": "S034-C2"
+        }
+      ]
+    },
+    {
+      "id": "S034-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-06T18:00:00+09:00",
+      "title": "운영이사 비공개 통화: 평가 결과와 단가",
+      "owner_user_id": 16,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S034-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S034-I3-U00",
+          "start": 2.0,
+          "end": 13.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "평가 결과 나왔어요. 오작동 건수가 선생님 쪽이 절반이라 본부장님이 기울었는데, 노 부장이 가격을 더 깎으라고 합니다.",
+          "contact_id": "S034-C1"
+        },
+        {
+          "id": "S034-I3-U01",
+          "start": 14.5,
+          "end": 16.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "얼마까지 말하던가요?",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I3-U02",
+          "start": 17.1,
+          "end": 23.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대당 십오만 원 선이요. 기존 업체가 그렇게 맞춰 준다고 했대요.",
+          "contact_id": "S034-C1"
+        },
+        {
+          "id": "S034-I3-U03",
+          "start": 24.2,
+          "end": 34.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "사실 저희 내부 하한선이 대당 십오만 오천 원이라 십오만 원은 어렵습니다. 이건 우리끼리만 알아두세요.",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I3-U04",
+          "start": 35.1,
+          "end": 45.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "알겠습니다. 십오만 오천 원에 게이트 값을 조금 내려 주시면 노 부장을 설득할 수 있을 것 같아요.",
+          "contact_id": "S034-C1"
+        },
+        {
+          "id": "S034-I3-U05",
+          "start": 45.6,
+          "end": 56.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "게이트를 세트당 삼백오십만 원에서 삼백만 원으로 해드리죠. 팀장님 승인은 내일까지 받아서 알려드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S034-I4",
+      "kind": "meeting",
+      "occurred_at": "2026-10-28T14:00:00+09:00",
+      "title": "계약 협의 미팅",
+      "owner_user_id": 16,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S034-C2",
+        "S034-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S034-I4-U00",
+          "start": 2.0,
+          "end": 13.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "승인받아 최종안 가져왔습니다. 센서 백오십 대는 대당 십오만 오천 원, 게이트 여섯 세트는 세트당 삼백만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I4-U01",
+          "start": 14.1,
+          "end": 23.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "합쳐서 사천백이십오만 원이네요. 기존 업체보다 조금 높지만 성능 때문에 본부장님이 결정하셨어요.",
+          "contact_id": "S034-C2"
+        },
+        {
+          "id": "S034-I4-U02",
+          "start": 24.2,
+          "end": 34.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "계약합시다. 설치는 십이월 첫째 주 대구 지점부터 순차로 해서 내년 일월 중순까지 여섯 지점을 마쳐주세요.",
+          "contact_id": "S034-C3"
+        },
+        {
+          "id": "S034-I4-U03",
+          "start": 35.4,
+          "end": 46.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 십이월 칠일 대구 지점부터 시작해서 매주 한 지점씩 설치하겠습니다. 월 관리비는 센서 한 대당 사천 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S034-I4-U04",
+          "start": 47.5,
+          "end": 52.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "대금은 설치 완료 지점별로 지급하는 걸로 합시다.",
+          "contact_id": "S034-C3"
+        },
+        {
+          "id": "S034-I4-U05",
+          "start": 53.0,
+          "end": 58.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "계약서 날인본은 제가 다음 주 금요일까지 먼저 보내겠습니다.",
+          "contact_id": "S034-C2"
+        },
+        {
+          "id": "S034-I4-U06",
+          "start": 59.5,
+          "end": 64.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저는 지점별 상세 설치 일정표를 같은 날까지 드릴게요.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S034-F01",
+      "interaction_id": "S034-I1",
+      "type": "requirement",
+      "said_by": "S034-C1",
+      "content": "지난달 부산 지점 낙상 사고로 보호자가 민사 소송을 예고해 본부장이 신경 쓰고 있다.",
+      "source_utterance_ids": [
+        "S034-I1-U00"
+      ]
+    },
+    {
+      "id": "S034-F02",
+      "interaction_id": "S034-I1",
+      "type": "requirement",
+      "said_by": "S034-C1",
+      "content": "6개 지점 전부에 설치하고 싶으나 구매부장이 기존 거래 업체를 밀 것이라 우려하며 뒷거래 소문도 있다고 비공개로 알려줬다.",
+      "source_utterance_ids": [
+        "S034-I1-U02"
+      ]
+    },
+    {
+      "id": "S034-F03",
+      "interaction_id": "S034-I1",
+      "type": "requirement",
+      "said_by": "S034-C1",
+      "content": "올해 안전 투자비 예산을 본부장이 5천만 원까지 승인했고 지점별 침상 약 25대 규모다.",
+      "source_utterance_ids": [
+        "S034-I1-U06",
+        "S034-I1-U08"
+      ]
+    },
+    {
+      "id": "S034-F04",
+      "interaction_id": "S034-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "공식 미팅 전에 사양 비교표를 이번 주 금요일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S034-I1-U09"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-21",
+      "due_text": "이번 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S034-I2"
+    },
+    {
+      "id": "S034-F05",
+      "interaction_id": "S034-I2",
+      "type": "requirement",
+      "said_by": "S034-C3",
+      "content": "6개 지점 입소자 210명 전체에 올해 안에 도입하는 것이 목표다.",
+      "source_utterance_ids": [
+        "S034-I2-U00"
+      ]
+    },
+    {
+      "id": "S034-F06",
+      "interaction_id": "S034-I2",
+      "type": "price_reaction",
+      "said_by": "S034-C2",
+      "content": "기존 업체는 대당 12만 원이라며 대당 18만 원은 비싸다고 했다.",
+      "source_utterance_ids": [
+        "S034-I2-U02"
+      ]
+    },
+    {
+      "id": "S034-F07",
+      "interaction_id": "S034-I2",
+      "type": "decision",
+      "said_by": "S034-C3",
+      "content": "가격만 보지 않고 두 업체 모두 한 지점씩 시범 후 성능으로 판단하기로 했다.",
+      "source_utterance_ids": [
+        "S034-I2-U05"
+      ]
+    },
+    {
+      "id": "S034-F08",
+      "interaction_id": "S034-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "대구 지점에 센서 25대를 2주간 시범 설치하기로 했다.",
+      "source_utterance_ids": [
+        "S034-I2-U06"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "이 주간 시범 설치",
+      "status": "done",
+      "resolved_in": "S034-I3"
+    },
+    {
+      "id": "S034-F09",
+      "interaction_id": "S034-I2",
+      "type": "promise",
+      "said_by": "S034-C2",
+      "content": "구매부장이 비교 평가서를 9월 15일까지 정리해 알려주기로 했다.",
+      "source_utterance_ids": [
+        "S034-I2-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-15",
+      "due_text": "구월 십오일까지",
+      "status": "done",
+      "resolved_in": "S034-I3"
+    },
+    {
+      "id": "S034-F10",
+      "interaction_id": "S034-I3",
+      "type": "buying_signal",
+      "said_by": "S034-C1",
+      "content": "시범 결과 우리 제품의 오작동이 절반이라 본부장이 우리 쪽으로 기울었다.",
+      "source_utterance_ids": [
+        "S034-I3-U00"
+      ]
+    },
+    {
+      "id": "S034-F11",
+      "interaction_id": "S034-I3",
+      "type": "price_reaction",
+      "said_by": "S034-C1",
+      "content": "구매부장이 대당 15만 원을 요구했으나 우리 내부 하한선은 15만 5천 원이어서 게이트 값 인하로 설득하기로 했다.",
+      "source_utterance_ids": [
+        "S034-I3-U02",
+        "S034-I3-U03",
+        "S034-I3-U04"
+      ]
+    },
+    {
+      "id": "S034-F12",
+      "interaction_id": "S034-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "게이트를 세트당 300만 원으로 낮추는 안을 팀장 승인받아 내일까지 알려주기로 했다.",
+      "source_utterance_ids": [
+        "S034-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-07",
+      "due_text": "내일까지",
+      "status": "done",
+      "resolved_in": "S034-I4"
+    },
+    {
+      "id": "S034-F13",
+      "interaction_id": "S034-I4",
+      "type": "decision",
+      "said_by": "S034-C3",
+      "content": "센서 150대 대당 15만 5천 원, 게이트 6세트 세트당 300만 원, 총 4,125만 원에 계약하기로 했다. 월 관리비는 센서 대당 4천 원이다.",
+      "source_utterance_ids": [
+        "S034-I4-U00",
+        "S034-I4-U01",
+        "S034-I4-U02"
+      ]
+    },
+    {
+      "id": "S034-F14",
+      "interaction_id": "S034-I4",
+      "type": "purchase_timing",
+      "said_by": "S034-C3",
+      "content": "12월 7일 대구 지점부터 매주 한 지점씩 설치해 내년 1월 중순까지 마치며, 대금은 설치 완료 지점별로 지급한다.",
+      "source_utterance_ids": [
+        "S034-I4-U02",
+        "S034-I4-U03",
+        "S034-I4-U04"
+      ]
+    },
+    {
+      "id": "S034-F15",
+      "interaction_id": "S034-I4",
+      "type": "promise",
+      "said_by": "S034-C2",
+      "content": "구매부장이 계약서 날인본을 다음 주 금요일(11월 6일)까지 먼저 보내기로 했다.",
+      "source_utterance_ids": [
+        "S034-I4-U05"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-06",
+      "due_text": "다음 주 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S034-F16",
+      "interaction_id": "S034-I4",
+      "type": "promise",
+      "said_by": "me",
+      "content": "지점별 상세 설치 일정표를 11월 6일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S034-I4-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "같은 날까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S034-Q01",
+      "question": "구매부장 때문에 걱정되는 점이 뭐라고 했지?",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 16,
+      "relevant_utterance_ids": [
+        "S034-I1-U02"
+      ],
+      "answer": "구매부장이 예전부터 쓰던 업체를 밀 것이며 그 업체와 뒷거래가 있다는 소문이 있다고 운영이사가 비공개로 말했다."
+    },
+    {
+      "id": "S034-Q02",
+      "question": "구매부장 때문에 걱정되는 점이 뭐라고 했지?",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 115,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I3"
+      ],
+      "answer": "동료에게 공개된 팀 공유 기록에는 해당 내용이 없다. 비공개 대화는 보여주면 안 된다."
+    },
+    {
+      "id": "S034-Q03",
+      "question": "단가 협상에서 우리 하한선과 고객 요구는 얼마였어?",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 16,
+      "relevant_utterance_ids": [
+        "S034-I3-U02",
+        "S034-I3-U03",
+        "S034-I3-U04",
+        "S034-I3-U05"
+      ],
+      "answer": "고객은 대당 15만 원을 요구했고 우리 하한선은 15만 5천 원이어서 게이트를 세트당 300만 원으로 낮추기로 했다."
+    },
+    {
+      "id": "S034-Q04",
+      "question": "최종 계약 조건이 어떻게 돼?",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 115,
+      "relevant_utterance_ids": [
+        "S034-I4-U00",
+        "S034-I4-U01",
+        "S034-I4-U02",
+        "S034-I4-U03",
+        "S034-I4-U04"
+      ],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I3"
+      ],
+      "answer": "센서 150대 대당 15만 5천 원, 게이트 6세트 세트당 300만 원, 총 4,125만 원. 12월 7일 대구부터 순차 설치, 지점별 완료 후 지급."
+    },
+    {
+      "id": "S034-Q05",
+      "question": "이 고객의 예산과 계약 조건이 어떻게 돼?",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I2",
+        "S034-I3",
+        "S034-I4"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없다."
+    },
+    {
+      "id": "S034-Q06",
+      "question": "아직 끝나지 않은 약속이 뭐가 있어?",
+      "kind": "structured",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 16,
+      "relevant_fact_ids": [
+        "S034-F15",
+        "S034-F16"
+      ],
+      "answer": "고객: 계약서 날인본 송부(11/6). 우리: 지점별 상세 설치 일정표 송부(11/6)."
+    },
+    {
+      "id": "S034-Q07",
+      "question": "우리가 고객에게 줘야 할 자료는 뭐야?",
+      "kind": "structured",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 16,
+      "relevant_fact_ids": [
+        "S034-F16"
+      ],
+      "answer": "지점별 상세 설치 일정표를 11월 6일까지 보낸다."
+    },
+    {
+      "id": "S034-Q01-P1",
+      "question": "조달 부서 책임자가 기존 거래처 쪽으로 기울어 있다는 얘기가 뭐였지?",
+      "paraphrase_of": "S034-Q01",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 16,
+      "relevant_utterance_ids": [
+        "S034-I1-U02"
+      ],
+      "answer": "구매부장이 예전부터 쓰던 업체를 밀 것이며 그 업체와 뒷거래가 있다는 소문이 있다고 운영이사가 비공개로 말했다."
+    },
+    {
+      "id": "S034-Q01-P2",
+      "question": "내부 사정상 경쟁 업체에 유리할 수 있다는 우려가 뭐라고 들었어?",
+      "paraphrase_of": "S034-Q01",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 16,
+      "relevant_utterance_ids": [
+        "S034-I1-U02"
+      ],
+      "answer": "구매부장이 예전부터 쓰던 업체를 밀 것이며 그 업체와 뒷거래가 있다는 소문이 있다고 운영이사가 비공개로 말했다."
+    },
+    {
+      "id": "S034-Q02-P1",
+      "question": "조달 부서 책임자가 기존 거래처 쪽으로 기울어 있다는 얘기가 뭐였지?",
+      "paraphrase_of": "S034-Q02",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 115,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I3"
+      ],
+      "answer": "동료에게 공개된 팀 공유 기록에는 해당 내용이 없다. 비공개 대화는 보여주면 안 된다."
+    },
+    {
+      "id": "S034-Q02-P2",
+      "question": "내부 사정상 경쟁 업체에 유리할 수 있다는 우려가 뭐라고 들었어?",
+      "paraphrase_of": "S034-Q02",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 115,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I3"
+      ],
+      "answer": "동료에게 공개된 팀 공유 기록에는 해당 내용이 없다. 비공개 대화는 보여주면 안 된다."
+    },
+    {
+      "id": "S034-Q03-P1",
+      "question": "가격을 두고 상대가 부른 값과 우리가 버틴 최저 금액이 얼마야?",
+      "paraphrase_of": "S034-Q03",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 16,
+      "relevant_utterance_ids": [
+        "S034-I3-U02",
+        "S034-I3-U03",
+        "S034-I3-U04",
+        "S034-I3-U05"
+      ],
+      "answer": "고객은 대당 15만 원을 요구했고 우리 하한선은 15만 5천 원이어서 게이트를 세트당 300만 원으로 낮추기로 했다."
+    },
+    {
+      "id": "S034-Q03-P2",
+      "question": "깎아 달라는 요청에 어떻게 맞췄는지 알려줘",
+      "paraphrase_of": "S034-Q03",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 16,
+      "relevant_utterance_ids": [
+        "S034-I3-U02",
+        "S034-I3-U03",
+        "S034-I3-U04",
+        "S034-I3-U05"
+      ],
+      "answer": "고객은 대당 15만 원을 요구했고 우리 하한선은 15만 5천 원이어서 게이트를 세트당 300만 원으로 낮추기로 했다."
+    },
+    {
+      "id": "S034-Q04-P1",
+      "question": "체결된 금액과 장비 수량, 시공 일정이 어떻게 됐지?",
+      "paraphrase_of": "S034-Q04",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 115,
+      "relevant_utterance_ids": [
+        "S034-I4-U00",
+        "S034-I4-U01",
+        "S034-I4-U02",
+        "S034-I4-U03",
+        "S034-I4-U04"
+      ],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I3"
+      ],
+      "answer": "센서 150대 대당 15만 5천 원, 게이트 6세트 세트당 300만 원, 총 4,125만 원. 12월 7일 대구부터 순차 설치, 지점별 완료 후 지급."
+    },
+    {
+      "id": "S034-Q04-P2",
+      "question": "마지막에 합의한 구매 내역과 대금 지급 방식을 알려줘",
+      "paraphrase_of": "S034-Q04",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 115,
+      "relevant_utterance_ids": [
+        "S034-I4-U00",
+        "S034-I4-U01",
+        "S034-I4-U02",
+        "S034-I4-U03",
+        "S034-I4-U04"
+      ],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I3"
+      ],
+      "answer": "센서 150대 대당 15만 5천 원, 게이트 6세트 세트당 300만 원, 총 4,125만 원. 12월 7일 대구부터 순차 설치, 지점별 완료 후 지급."
+    },
+    {
+      "id": "S034-Q05-P1",
+      "question": "이 회사 사업비와 체결 내용을 알려줘",
+      "paraphrase_of": "S034-Q05",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I2",
+        "S034-I3",
+        "S034-I4"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없다."
+    },
+    {
+      "id": "S034-Q05-P2",
+      "question": "고객사가 책정한 돈과 합의 사항이 뭐야?",
+      "paraphrase_of": "S034-Q05",
+      "kind": "semantic",
+      "company_id": "S034-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S034-I1",
+        "S034-I2",
+        "S034-I3",
+        "S034-I4"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없다."
+    }
+  ]
+}

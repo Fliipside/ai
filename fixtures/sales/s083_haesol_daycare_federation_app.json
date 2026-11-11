@@ -1,0 +1,816 @@
+{
+  "scenario_id": "S083",
+  "description": "구립 어린이집 18곳 연합회와 구청 보육지원팀에 통합 관리 앱을 제안. 연 2천만 원 이하 수의계약 한도, 내년도 예산 확정 후 계약, 아동 개인정보 보호, 보육통합정보시스템 연동 같은 공공 조건이 일정을 좌우한다. 구청이 약속한 원아·교사 현황 자료와 연합회장이 약속한 총회 공문 사본이 기한을 넘겨 아직 오지 않았다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 33,
+    "team_id": 32,
+    "name": "연지호",
+    "company": "키즈노트북",
+    "product": "어린이집·유치원 관리 앱"
+  },
+  "users": [
+    {
+      "user_id": 33,
+      "team_id": 32
+    }
+  ],
+  "company": {
+    "id": "S083-CO1",
+    "name": "해솔구 어린이집연합회",
+    "industry": "구립 어린이집 연합",
+    "size": "구립 어린이집 18곳, 구청 보육지원팀이 사업 지원"
+  },
+  "contacts": [
+    {
+      "id": "S083-C1",
+      "name": "도미경",
+      "title": "연합회장(원장)",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S083-C2",
+      "name": "양진석",
+      "title": "구청 보육지원팀 주무관",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S083-C3",
+      "name": "문서영",
+      "title": "구청 계약팀 팀장",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S083-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-20T14:00:00+09:00",
+      "title": "연합회·구청 첫 미팅",
+      "owner_user_id": 33,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S083-C1",
+        "S083-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S083-I1-U00",
+          "start": 2.0,
+          "end": 10.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "해솔구 어린이집연합회장 도미경입니다. 저희는 구립 어린이집 열여덟 곳이 모인 연합회예요.",
+          "contact_id": "S083-C1"
+        },
+        {
+          "id": "S083-I1-U01",
+          "start": 11.4,
+          "end": 18.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "구청 보육지원팀 양진석 주무관입니다. 연합회 사업 지원을 맡고 있습니다.",
+          "contact_id": "S083-C2"
+        },
+        {
+          "id": "S083-I1-U02",
+          "start": 19.2,
+          "end": 26.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "키즈노트북 연지호입니다. 알림장, 출결, 투약 요청 앱을 만들고 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I1-U03",
+          "start": 27.2,
+          "end": 36.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "지금은 어린이집마다 쓰는 앱이 달라서 학부모님들이 혼란스러워하세요. 한 가지로 통일하고 싶어요.",
+          "contact_id": "S083-C1"
+        },
+        {
+          "id": "S083-I1-U04",
+          "start": 37.3,
+          "end": 44.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "구에서 통합하면 좋긴 한데, 예산 사업으로 진행해야 해서 절차가 있습니다.",
+          "contact_id": "S083-C2"
+        },
+        {
+          "id": "S083-I1-U05",
+          "start": 45.3,
+          "end": 52.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "어린이집당 월 9만 원이고 열여덟 곳이면 연 1,944만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I1-U06",
+          "start": 52.6,
+          "end": 58.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "연 2천만 원 이하면 수의계약이 가능한 범위라 그건 잘 맞네요.",
+          "contact_id": "S083-C2"
+        },
+        {
+          "id": "S083-I1-U07",
+          "start": 59.5,
+          "end": 64.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "근데 아이들 정보라서 개인정보 보호가 제일 걱정이에요.",
+          "contact_id": "S083-C1"
+        },
+        {
+          "id": "S083-I1-U08",
+          "start": 65.5,
+          "end": 73.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "개인정보 처리 방식과 보안 점검 자료를 정리해서 9월 4일까지 보내겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I1-U09",
+          "start": 73.7,
+          "end": 77.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "보육통합정보시스템이랑 출결 연동은 되나요?",
+          "contact_id": "S083-C2"
+        },
+        {
+          "id": "S083-I1-U10",
+          "start": 78.4,
+          "end": 84.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "연동 가능 여부를 확인해서 다음 만남 때 답변드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I1-U11",
+          "start": 84.8,
+          "end": 94.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "저는 원아 수와 교사 수 현황을 정리해서 9월 15일까지 드리겠습니다. 견적 맞추는 데 쓰세요.",
+          "contact_id": "S083-C2"
+        }
+      ]
+    },
+    {
+      "id": "S083-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-17T11:00:00+09:00",
+      "title": "계약 절차와 예산 시점 확인",
+      "owner_user_id": 33,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S083-C2",
+        "S083-C3",
+        "S083-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S083-I2-U00",
+          "start": 2.0,
+          "end": 7.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "양진석 주무관님, 보내드린 보안 점검 자료는 받으셨죠?",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I2-U01",
+          "start": 8.0,
+          "end": 16.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 받았어요. 그런데 원아·교사 현황은 아직 못 드렸네요. 부서 내 취합이 늦어져서요.",
+          "contact_id": "S083-C2"
+        },
+        {
+          "id": "S083-I2-U02",
+          "start": 17.4,
+          "end": 34.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 그 자료가 있어야 정확한 견적이 나옵니다. 그리고 출결 연동은 구 단위 공문이 있어야 가능하다고 확인했습니다. 공문 양식을 다음 주 목요일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I2-U03",
+          "start": 34.6,
+          "end": 42.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "계약팀 문서영입니다. 수의계약은 1인 견적 사유서와 소기업 확인서가 필요해요.",
+          "contact_id": "S083-C3"
+        },
+        {
+          "id": "S083-I2-U04",
+          "start": 42.9,
+          "end": 47.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "소기업 확인서와 사업자 서류는 준비되어 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I2-U05",
+          "start": 48.4,
+          "end": 57.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그리고 내년도 사업이라 내년 1월에 예산이 확정돼야 계약이 돼요. 올해 예산은 못 써요.",
+          "contact_id": "S083-C3"
+        },
+        {
+          "id": "S083-I2-U06",
+          "start": 57.8,
+          "end": 63.0,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "그럼 3월 새 학기 전에 쓰려면 일정이 빡빡하겠네요.",
+          "contact_id": "S083-C1"
+        },
+        {
+          "id": "S083-I2-U07",
+          "start": 63.6,
+          "end": 68.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "1월 중순에 확정되니까 2월 초 계약은 가능해요.",
+          "contact_id": "S083-C3"
+        },
+        {
+          "id": "S083-I2-U08",
+          "start": 69.1,
+          "end": 77.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 2월 초 계약하고 3월 2일 학기 시작에 맞춰 온보딩하는 일정으로 가겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S083-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-22T15:00:00+09:00",
+      "title": "총회 의결 결과와 범위 조정",
+      "owner_user_id": 33,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S083-C2",
+        "S083-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S083-I3-U00",
+          "start": 2.0,
+          "end": 8.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "연동 공문 양식은 9월 24일에 보냈는데 구청에서 검토하셨나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I3-U01",
+          "start": 8.9,
+          "end": 17.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 내부 결재 중이에요. 보육통합정보시스템 쪽 회신은 11월 중순쯤 온다고 합니다.",
+          "contact_id": "S083-C2"
+        },
+        {
+          "id": "S083-I3-U02",
+          "start": 18.0,
+          "end": 26.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "연합회 총회에서 앱 통일 안건을 의결했어요. 열여덟 곳 중 열여섯 곳이 찬성했습니다.",
+          "contact_id": "S083-C1"
+        },
+        {
+          "id": "S083-I3-U03",
+          "start": 27.1,
+          "end": 30.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "나머지 두 곳은 반대하셨나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I3-U04",
+          "start": 30.6,
+          "end": 38.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "한 곳은 기존 앱 계약이 내년 5월까지 남았고, 한 곳은 원장님이 반대세요.",
+          "contact_id": "S083-C1"
+        },
+        {
+          "id": "S083-I3-U05",
+          "start": 38.8,
+          "end": 52.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 열여섯 곳으로 먼저 시작하고 나머지는 나중에 추가하는 방식도 가능합니다. 열여섯 곳이면 월 144만 원, 연 1,728만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S083-I3-U06",
+          "start": 53.1,
+          "end": 56.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그러면 수의계약 기준에도 문제없네요.",
+          "contact_id": "S083-C2"
+        },
+        {
+          "id": "S083-I3-U07",
+          "start": 57.3,
+          "end": 63.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "총회 의결 결과 공문 사본은 제가 10월 30일까지 드릴게요.",
+          "contact_id": "S083-C1"
+        },
+        {
+          "id": "S083-I3-U08",
+          "start": 64.0,
+          "end": 69.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "열여섯 곳 기준 견적서를 11월 10일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S083-F01",
+      "interaction_id": "S083-I1",
+      "type": "requirement",
+      "said_by": "S083-C1",
+      "content": "구립 어린이집 18곳이 서로 다른 앱을 써서 학부모 혼란이 커 한 가지 앱으로 통일하길 원한다.",
+      "source_utterance_ids": [
+        "S083-I1-U00",
+        "S083-I1-U03"
+      ]
+    },
+    {
+      "id": "S083-F02",
+      "interaction_id": "S083-I1",
+      "type": "requirement",
+      "said_by": "S083-C2",
+      "content": "구 통합 도입은 예산 사업 절차를 거쳐야 한다.",
+      "source_utterance_ids": [
+        "S083-I1-U04"
+      ]
+    },
+    {
+      "id": "S083-F03",
+      "interaction_id": "S083-I1",
+      "type": "price_reaction",
+      "said_by": "S083-C2",
+      "content": "어린이집당 월 9만 원, 18곳 연 1,944만 원은 연 2천만 원 이하 수의계약 범위라 적합하다고 봤다.",
+      "source_utterance_ids": [
+        "S083-I1-U05",
+        "S083-I1-U06"
+      ]
+    },
+    {
+      "id": "S083-F04",
+      "interaction_id": "S083-I1",
+      "type": "requirement",
+      "said_by": "S083-C1",
+      "content": "아동 정보라 개인정보 보호가 가장 큰 걱정이다.",
+      "source_utterance_ids": [
+        "S083-I1-U07"
+      ]
+    },
+    {
+      "id": "S083-F05",
+      "interaction_id": "S083-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "개인정보 처리 방식과 보안 점검 자료를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S083-I1-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-04",
+      "due_text": "9월 4일까지",
+      "status": "done",
+      "resolved_in": "S083-I2"
+    },
+    {
+      "id": "S083-F06",
+      "interaction_id": "S083-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "보육통합정보시스템 출결 연동 가능 여부를 확인해 답하기로 했다.",
+      "source_utterance_ids": [
+        "S083-I1-U09",
+        "S083-I1-U10"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "다음 만남 때",
+      "status": "done",
+      "resolved_in": "S083-I2"
+    },
+    {
+      "id": "S083-F07",
+      "interaction_id": "S083-I1",
+      "type": "promise",
+      "said_by": "S083-C2",
+      "content": "구청이 원아 수와 교사 수 현황 자료를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S083-I1-U11"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-15",
+      "due_text": "9월 15일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S083-F08",
+      "interaction_id": "S083-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "출결 연동에 필요한 구 단위 공문 양식을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S083-I2-U02"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-24",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S083-I3"
+    },
+    {
+      "id": "S083-F09",
+      "interaction_id": "S083-I2",
+      "type": "requirement",
+      "said_by": "S083-C3",
+      "content": "수의계약에는 1인 견적 사유서와 소기업 확인서가 필요하다.",
+      "source_utterance_ids": [
+        "S083-I2-U03"
+      ]
+    },
+    {
+      "id": "S083-F10",
+      "interaction_id": "S083-I2",
+      "type": "purchase_timing",
+      "said_by": "S083-C3",
+      "content": "내년도 사업이라 1월 중순 예산 확정 후 2월 초에 계약할 수 있고 올해 예산은 쓸 수 없다.",
+      "source_utterance_ids": [
+        "S083-I2-U05",
+        "S083-I2-U07"
+      ]
+    },
+    {
+      "id": "S083-F11",
+      "interaction_id": "S083-I3",
+      "type": "decision",
+      "said_by": "S083-C1",
+      "content": "연합회 총회에서 18곳 중 16곳이 찬성해 앱 통일 안건이 의결됐다.",
+      "source_utterance_ids": [
+        "S083-I3-U02"
+      ]
+    },
+    {
+      "id": "S083-F12",
+      "interaction_id": "S083-I3",
+      "type": "requirement",
+      "said_by": "S083-C1",
+      "content": "기존 앱 계약이 남은 곳과 원장이 반대한 곳을 빼고 16곳으로 먼저 도입한다.",
+      "source_utterance_ids": [
+        "S083-I3-U04",
+        "S083-I3-U05"
+      ],
+      "supersedes": "S083-F01"
+    },
+    {
+      "id": "S083-F13",
+      "interaction_id": "S083-I3",
+      "type": "price_reaction",
+      "said_by": "S083-C2",
+      "content": "16곳 월 144만 원, 연 1,728만 원이면 수의계약 기준에 문제가 없다고 확인했다.",
+      "source_utterance_ids": [
+        "S083-I3-U05",
+        "S083-I3-U06"
+      ]
+    },
+    {
+      "id": "S083-F14",
+      "interaction_id": "S083-I3",
+      "type": "promise",
+      "said_by": "S083-C1",
+      "content": "연합회 총회 의결 결과 공문 사본을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S083-I3-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-30",
+      "due_text": "10월 30일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S083-F15",
+      "interaction_id": "S083-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "16곳 기준 견적서를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S083-I3-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-10",
+      "due_text": "11월 10일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S083-F16",
+      "interaction_id": "S083-I3",
+      "type": "purchase_timing",
+      "said_by": "S083-C2",
+      "content": "출결 연동 공문은 구청 내부 결재 중이고 보육통합정보시스템 회신은 11월 중순쯤 예상된다.",
+      "source_utterance_ids": [
+        "S083-I3-U01"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S083-Q01",
+      "question": "연합회가 앱을 도입하려는 이유가 뭐야?",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U00",
+        "S083-I1-U03"
+      ],
+      "answer": "구립 어린이집 18곳이 서로 다른 앱을 쓰니 학부모 혼란이 커서 하나로 통일하려 한다."
+    },
+    {
+      "id": "S083-Q02",
+      "question": "계약 방식과 예산 시점 제약은 어떻게 돼?",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U04",
+        "S083-I1-U06",
+        "S083-I2-U03",
+        "S083-I2-U05",
+        "S083-I2-U07"
+      ],
+      "answer": "연 2천만 원 이하 수의계약이 가능하고 1인 견적 사유서와 소기업 확인서가 필요하며, 내년 1월 예산 확정 후 2월 초 계약이 가능하다."
+    },
+    {
+      "id": "S083-Q03",
+      "question": "아동 정보와 연동 쪽 우려는 어떻게 다뤄졌어?",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U07",
+        "S083-I1-U09",
+        "S083-I2-U02",
+        "S083-I3-U01"
+      ],
+      "answer": "개인정보 보호가 가장 걱정이라 보안 점검 자료를 보냈고, 출결 연동은 구 공문이 필요해 구청 결재 중이며 회신은 11월 중순쯤 예상된다."
+    },
+    {
+      "id": "S083-Q04",
+      "question": "도입 범위는 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I3-U02",
+        "S083-I3-U04",
+        "S083-I3-U05"
+      ],
+      "answer": "18곳에서 총회 찬성 16곳으로 줄었고 기존 앱 계약이 남은 곳과 반대하는 원장 한 곳은 나중에 추가한다."
+    },
+    {
+      "id": "S083-Q05",
+      "question": "가격은 어떻게 제시했고 반응은?",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U05",
+        "S083-I1-U06",
+        "S083-I3-U05",
+        "S083-I3-U06"
+      ],
+      "answer": "18곳 월 9만 원씩 연 1,944만 원, 16곳이면 월 144만 원 연 1,728만 원이며 둘 다 수의계약 범위로 문제없다고 했다."
+    },
+    {
+      "id": "S083-Q06",
+      "question": "고객이 하기로 했는데 아직 안 한 일은?",
+      "kind": "structured",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_fact_ids": [
+        "S083-F07",
+        "S083-F14"
+      ],
+      "answer": "구청 원아·교사 현황 자료(9/15)와 연합회장의 총회 의결 공문 사본(10/30)을 아직 받지 못했다."
+    },
+    {
+      "id": "S083-Q07",
+      "question": "우리가 남겨 둔 약속은?",
+      "kind": "structured",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_fact_ids": [
+        "S083-F15"
+      ],
+      "answer": "16곳 기준 견적서를 11월 10일까지 보내야 한다."
+    },
+    {
+      "id": "S083-Q01-P1",
+      "question": "왜 하나의 서비스로 합치려는 거였지?",
+      "paraphrase_of": "S083-Q01",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U00",
+        "S083-I1-U03"
+      ],
+      "answer": "구립 어린이집 18곳이 서로 다른 앱을 쓰니 학부모 혼란이 커서 하나로 통일하려 한다."
+    },
+    {
+      "id": "S083-Q01-P2",
+      "question": "원 단위로 제각각인 소프트웨어 때문에 생긴 문제가 뭐야?",
+      "paraphrase_of": "S083-Q01",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U00",
+        "S083-I1-U03"
+      ],
+      "answer": "구립 어린이집 18곳이 서로 다른 앱을 쓰니 학부모 혼란이 커서 하나로 통일하려 한다."
+    },
+    {
+      "id": "S083-Q02-P1",
+      "question": "관공서 쪽에서 요구하는 계약 절차와 시기를 알려줘.",
+      "paraphrase_of": "S083-Q02",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U04",
+        "S083-I1-U06",
+        "S083-I2-U03",
+        "S083-I2-U05",
+        "S083-I2-U07"
+      ],
+      "answer": "연 2천만 원 이하 수의계약이 가능하고 1인 견적 사유서와 소기업 확인서가 필요하며, 내년 1월 예산 확정 후 2월 초 계약이 가능하다."
+    },
+    {
+      "id": "S083-Q02-P2",
+      "question": "공공 발주 규정상 서류와 한도, 서명 가능 시점이 어떻게 돼?",
+      "paraphrase_of": "S083-Q02",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U04",
+        "S083-I1-U06",
+        "S083-I2-U03",
+        "S083-I2-U05",
+        "S083-I2-U07"
+      ],
+      "answer": "연 2천만 원 이하 수의계약이 가능하고 1인 견적 사유서와 소기업 확인서가 필요하며, 내년 1월 예산 확정 후 2월 초 계약이 가능하다."
+    },
+    {
+      "id": "S083-Q03-P1",
+      "question": "아이들 자료 안전 문제와 시스템 접속 건은 어디까지 진행됐어?",
+      "paraphrase_of": "S083-Q03",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U07",
+        "S083-I1-U09",
+        "S083-I2-U02",
+        "S083-I3-U01"
+      ],
+      "answer": "개인정보 보호가 가장 걱정이라 보안 점검 자료를 보냈고, 출결 연동은 구 공문이 필요해 구청 결재 중이며 회신은 11월 중순쯤 예상된다."
+    },
+    {
+      "id": "S083-Q03-P2",
+      "question": "정보 보호와 외부 시스템 연결 관련 상황을 정리해줘.",
+      "paraphrase_of": "S083-Q03",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U07",
+        "S083-I1-U09",
+        "S083-I2-U02",
+        "S083-I3-U01"
+      ],
+      "answer": "개인정보 보호가 가장 걱정이라 보안 점검 자료를 보냈고, 출결 연동은 구 공문이 필요해 구청 결재 중이며 회신은 11월 중순쯤 예상된다."
+    },
+    {
+      "id": "S083-Q04-P1",
+      "question": "처음 계획보다 참여 기관이 몇 곳으로 줄었어?",
+      "paraphrase_of": "S083-Q04",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I3-U02",
+        "S083-I3-U04",
+        "S083-I3-U05"
+      ],
+      "answer": "18곳에서 총회 찬성 16곳으로 줄었고 기존 앱 계약이 남은 곳과 반대하는 원장 한 곳은 나중에 추가한다."
+    },
+    {
+      "id": "S083-Q04-P2",
+      "question": "빠진 곳들은 무슨 사정이야?",
+      "paraphrase_of": "S083-Q04",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I3-U02",
+        "S083-I3-U04",
+        "S083-I3-U05"
+      ],
+      "answer": "18곳에서 총회 찬성 16곳으로 줄었고 기존 앱 계약이 남은 곳과 반대하는 원장 한 곳은 나중에 추가한다."
+    },
+    {
+      "id": "S083-Q05-P1",
+      "question": "요금 안내와 구청 쪽 평가를 알려줘.",
+      "paraphrase_of": "S083-Q05",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U05",
+        "S083-I1-U06",
+        "S083-I3-U05",
+        "S083-I3-U06"
+      ],
+      "answer": "18곳 월 9만 원씩 연 1,944만 원, 16곳이면 월 144만 원 연 1,728만 원이며 둘 다 수의계약 범위로 문제없다고 했다."
+    },
+    {
+      "id": "S083-Q05-P2",
+      "question": "기관당 이용료와 연간 총액이 얼마였지?",
+      "paraphrase_of": "S083-Q05",
+      "kind": "semantic",
+      "company_id": "S083-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 33,
+      "relevant_utterance_ids": [
+        "S083-I1-U05",
+        "S083-I1-U06",
+        "S083-I3-U05",
+        "S083-I3-U06"
+      ],
+      "answer": "18곳 월 9만 원씩 연 1,944만 원, 16곳이면 월 144만 원 연 1,728만 원이며 둘 다 수의계약 범위로 문제없다고 했다."
+    }
+  ]
+}

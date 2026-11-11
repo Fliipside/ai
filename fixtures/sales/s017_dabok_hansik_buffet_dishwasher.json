@@ -1,0 +1,720 @@
+{
+  "scenario_id": "S017",
+  "description": "대형 한식 뷔페 다복한상에 업소용 식기세척기 렌탈을 제안. 총주방장과 대표의 구어체 대화가 중심이고, 월 렌탈료가 185만 원에서 175만, 165만 원으로 여러 번 오가며 경쟁사 월 160만 원 견적(세제 별도)과 비교된다. 구두 합의 후 계약서 발송과 기존 기계 철거 약속이 남아 있다.",
+  "fictional": true,
+  "as_of": "2026-11-08",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 11,
+    "team_id": 10,
+    "name": "오재혁",
+    "company": "클린웨이브",
+    "product": "업소용 식기세척기 렌탈·관리"
+  },
+  "users": [
+    {
+      "user_id": 11,
+      "team_id": 10
+    }
+  ],
+  "company": {
+    "id": "S017-CO1",
+    "name": "다복한상",
+    "industry": "대형 한식 뷔페",
+    "size": "좌석 400석, 평일 하루 약 1,200명"
+  },
+  "contacts": [
+    {
+      "id": "S017-C1",
+      "name": "허달수",
+      "title": "총주방장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S017-C2",
+      "name": "라미숙",
+      "title": "대표",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S017-C3",
+      "name": "오영철",
+      "title": "경리 부장",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S017-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-19T15:00:00+09:00",
+      "title": "주방 현장 방문",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S017-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S017-I1-U00",
+          "start": 2.0,
+          "end": 7.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "어서 와요. 총주방장 허달수예요. 주방 보면서 얘기합시다.",
+          "contact_id": "S017-C1"
+        },
+        {
+          "id": "S017-I1-U01",
+          "start": 8.4,
+          "end": 14.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "클린웨이브 오재혁입니다. 지금 쓰시는 세척기가 어떤 거예요?",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I1-U02",
+          "start": 14.9,
+          "end": 25.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저기 컨베이어 보이죠? 15년 된 거예요. 하루에 한 번씩은 서고, 작년에 수리비로만 600만 원 나갔어요.",
+          "contact_id": "S017-C1"
+        },
+        {
+          "id": "S017-I1-U03",
+          "start": 26.3,
+          "end": 29.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "하루에 손님은 얼마나 오세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I1-U04",
+          "start": 29.8,
+          "end": 42.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "점심 저녁 합쳐서 평일에 1,200명이고 주말엔 2천 명 넘어요. 피크 때는 설거지가 감당이 안 돼서 알바 4명이 붙어요.",
+          "contact_id": "S017-C1"
+        },
+        {
+          "id": "S017-I1-U05",
+          "start": 42.6,
+          "end": 50.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "처리량 큰 컨베이어형 새 장비를 렌탈하시면 수리 걱정 없고 정기 점검도 포함됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I1-U06",
+          "start": 51.5,
+          "end": 58.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "렌탈이 좋긴 한데 얼마나 해요? 우리 대표님이 돈 얘기엔 민감하세요.",
+          "contact_id": "S017-C1"
+        },
+        {
+          "id": "S017-I1-U07",
+          "start": 58.9,
+          "end": 64.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "36개월 약정이면 월 185만 원이고 세제 포함입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I1-U08",
+          "start": 64.9,
+          "end": 73.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "음, 185는 좀 세네. 일단 견적서 한 장 주고 설치할 자리 실측도 하고 가요.",
+          "contact_id": "S017-C1"
+        },
+        {
+          "id": "S017-I1-U09",
+          "start": 73.6,
+          "end": 78.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "견적서랑 실측은 이번 주 금요일까지 해드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S017-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-16T10:00:00+09:00",
+      "title": "경쟁 견적 비교 통화",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S017-C1",
+        "S017-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S017-I2-U00",
+          "start": 2.0,
+          "end": 9.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "실측하고 견적서는 받았지요. 우리 대표님이 다른 데 견적이랑 비교하시더라고요.",
+          "contact_id": "S017-C1"
+        },
+        {
+          "id": "S017-I2-U01",
+          "start": 10.3,
+          "end": 17.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "대표 라미숙이에요. 다른 데는 월 160만 원 준다는데요. 185는 비싸요.",
+          "contact_id": "S017-C2"
+        },
+        {
+          "id": "S017-I2-U02",
+          "start": 18.5,
+          "end": 29.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그쪽은 세제가 별도일 수 있어요. 저희는 세제랑 월 1회 점검, 고장 나면 24시간 안에 출동까지 포함입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I2-U03",
+          "start": 30.1,
+          "end": 38.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "세제를 따로 사면 월 25만 원쯤 들긴 하죠. 그래도 170은 돼야 생각해 보죠.",
+          "contact_id": "S017-C2"
+        },
+        {
+          "id": "S017-I2-U04",
+          "start": 38.8,
+          "end": 48.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 175만 원에 설치비 면제로 맞춰 보겠습니다. 본사 승인받아서 다음 주 수요일까지 말씀드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I2-U05",
+          "start": 49.3,
+          "end": 55.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "설치는 10월 중에 해야 돼요. 단풍철에 손님 몰리기 전에요.",
+          "contact_id": "S017-C1"
+        },
+        {
+          "id": "S017-I2-U06",
+          "start": 56.0,
+          "end": 59.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "본사 승인 나오면 다시 전화 줘요.",
+          "contact_id": "S017-C2"
+        }
+      ]
+    },
+    {
+      "id": "S017-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-14T14:00:00+09:00",
+      "title": "계약 조건 최종 협의",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S017-C2",
+        "S017-C3",
+        "S017-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S017-I3-U00",
+          "start": 2.0,
+          "end": 9.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "본사 승인받아서 9월 23일에 월 175만 원, 설치비 면제로 말씀드렸고요.",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I3-U01",
+          "start": 10.2,
+          "end": 15.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네. 근데 약정을 48개월로 늘리면 얼마까지 돼요?",
+          "contact_id": "S017-C2"
+        },
+        {
+          "id": "S017-I3-U02",
+          "start": 15.8,
+          "end": 24.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "48개월이면 월 165만 원까지 가능합니다. 세제랑 점검 포함이고 설치비도 면제예요.",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I3-U03",
+          "start": 24.9,
+          "end": 35.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "경리 오영철 부장입니다. 경쟁사 160에 세제 25를 더하면 185니까 165가 훨씬 싸네요. 이걸로 하죠.",
+          "contact_id": "S017-C3"
+        },
+        {
+          "id": "S017-I3-U04",
+          "start": 36.3,
+          "end": 42.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋아요. 48개월에 월 165만 원, 설치비 면제로 계약합시다.",
+          "contact_id": "S017-C2"
+        },
+        {
+          "id": "S017-I3-U05",
+          "start": 43.2,
+          "end": 50.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "계약서는 10월 21일까지 보내드리겠습니다. 설치는 11월 5일로 잡을까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S017-I3-U06",
+          "start": 51.4,
+          "end": 58.2,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "11월 5일 좋아요. 기존 기계 철거는 설치 전날 우리가 해놓을게요.",
+          "contact_id": "S017-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S017-F01",
+      "interaction_id": "S017-I1",
+      "type": "requirement",
+      "said_by": "S017-C1",
+      "content": "15년 된 컨베이어 세척기가 하루 한 번씩 멈추고 작년 수리비가 600만 원이었다.",
+      "source_utterance_ids": [
+        "S017-I1-U02"
+      ]
+    },
+    {
+      "id": "S017-F02",
+      "interaction_id": "S017-I1",
+      "type": "requirement",
+      "said_by": "S017-C1",
+      "content": "평일 약 1,200명, 주말 2천 명 이상이 방문해 피크 때 알바 4명이 설거지에 붙는다.",
+      "source_utterance_ids": [
+        "S017-I1-U04"
+      ]
+    },
+    {
+      "id": "S017-F03",
+      "interaction_id": "S017-I1",
+      "type": "price_reaction",
+      "said_by": "S017-C1",
+      "content": "36개월 월 185만 원(세제 포함) 제안에 비싸다고 반응했다.",
+      "source_utterance_ids": [
+        "S017-I1-U08"
+      ]
+    },
+    {
+      "id": "S017-F04",
+      "interaction_id": "S017-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "견적서를 보내고 설치 위치를 실측하기로 했다.",
+      "source_utterance_ids": [
+        "S017-I1-U09"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-21",
+      "due_text": "이번 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S017-I2"
+    },
+    {
+      "id": "S017-F05",
+      "interaction_id": "S017-I2",
+      "type": "price_reaction",
+      "said_by": "S017-C2",
+      "content": "경쟁사가 월 160만 원을 제시했다며 185만 원은 비싸다고 했다.",
+      "source_utterance_ids": [
+        "S017-I2-U01"
+      ]
+    },
+    {
+      "id": "S017-F06",
+      "interaction_id": "S017-I2",
+      "type": "price_reaction",
+      "said_by": "S017-C2",
+      "content": "세제를 따로 사면 월 25만 원 정도 들지만 월 170만 원은 돼야 고려한다고 했다.",
+      "source_utterance_ids": [
+        "S017-I2-U03"
+      ]
+    },
+    {
+      "id": "S017-F07",
+      "interaction_id": "S017-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "월 175만 원에 설치비 면제 조건의 본사 승인 결과를 알려주기로 했다.",
+      "source_utterance_ids": [
+        "S017-I2-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-23",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S017-I3"
+    },
+    {
+      "id": "S017-F08",
+      "interaction_id": "S017-I2",
+      "type": "purchase_timing",
+      "said_by": "S017-C1",
+      "content": "단풍철 손님이 몰리기 전인 10월 중 설치를 원한다.",
+      "source_utterance_ids": [
+        "S017-I2-U05"
+      ]
+    },
+    {
+      "id": "S017-F09",
+      "interaction_id": "S017-I3",
+      "type": "buying_signal",
+      "said_by": "S017-C2",
+      "content": "약정을 48개월로 늘리면 얼마까지 가능한지 먼저 물었다.",
+      "source_utterance_ids": [
+        "S017-I3-U01"
+      ]
+    },
+    {
+      "id": "S017-F10",
+      "interaction_id": "S017-I3",
+      "type": "price_reaction",
+      "said_by": "S017-C3",
+      "content": "경쟁사 160만 원에 세제 25만 원을 더하면 185만 원이라 월 165만 원이 훨씬 유리하다고 판단했다.",
+      "source_utterance_ids": [
+        "S017-I3-U03"
+      ]
+    },
+    {
+      "id": "S017-F11",
+      "interaction_id": "S017-I3",
+      "type": "decision",
+      "said_by": "S017-C2",
+      "content": "48개월 약정, 월 165만 원, 설치비 면제 조건으로 계약하기로 구두 합의했다.",
+      "source_utterance_ids": [
+        "S017-I3-U04"
+      ]
+    },
+    {
+      "id": "S017-F12",
+      "interaction_id": "S017-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "계약서를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S017-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-21",
+      "due_text": "10월 21일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S017-F13",
+      "interaction_id": "S017-I3",
+      "type": "promise",
+      "said_by": "S017-C1",
+      "content": "설치 전날 기존 세척기를 철거해 두기로 했다.",
+      "source_utterance_ids": [
+        "S017-I3-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-04",
+      "due_text": "설치 전날",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S017-F14",
+      "interaction_id": "S017-I3",
+      "type": "purchase_timing",
+      "said_by": "S017-C1",
+      "content": "설치일을 11월 5일로 정했다.",
+      "source_utterance_ids": [
+        "S017-I3-U06"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S017-Q01",
+      "question": "다복한상이 지금 쓰는 세척기는 어떤 상태야?",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U02",
+        "S017-I1-U04"
+      ],
+      "answer": "15년 된 컨베이어형이 하루 한 번씩 멈추고 작년 수리비 600만 원, 피크 때 알바 4명이 붙는다."
+    },
+    {
+      "id": "S017-Q02",
+      "question": "경쟁사 견적과 어떻게 비교됐어?",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I2-U01",
+        "S017-I2-U02",
+        "S017-I2-U03",
+        "S017-I3-U03"
+      ],
+      "answer": "경쟁사는 월 160만 원이지만 세제 월 25만 원이 별도여서 합치면 185만 원이라 우리 165만 원이 더 유리하다고 판단했다."
+    },
+    {
+      "id": "S017-Q03",
+      "question": "가격 협상이 어떻게 오갔어?",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U07",
+        "S017-I1-U08",
+        "S017-I2-U04",
+        "S017-I3-U02",
+        "S017-I3-U04"
+      ],
+      "answer": "36개월 월 185만 원에서 175만 원(설치비 면제)을 거쳐 48개월 월 165만 원으로 합의했다."
+    },
+    {
+      "id": "S017-Q04",
+      "question": "설치 일정은 어떻게 잡혔어?",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I2-U05",
+        "S017-I3-U05",
+        "S017-I3-U06"
+      ],
+      "answer": "단풍철 전에 설치하길 원했고 11월 5일로 정했으며 기존 기계는 전날 고객이 철거한다."
+    },
+    {
+      "id": "S017-Q05",
+      "question": "렌탈 가격에 뭐가 포함돼 있어?",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U05",
+        "S017-I1-U07",
+        "S017-I2-U02"
+      ],
+      "answer": "세제, 월 1회 정기 점검, 고장 시 24시간 내 출동이 포함이다."
+    },
+    {
+      "id": "S017-Q06",
+      "question": "내가 아직 못 한 약속은?",
+      "kind": "structured",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_fact_ids": [
+        "S017-F12"
+      ],
+      "answer": "10월 21일까지 보내기로 한 계약서가 미완료다."
+    },
+    {
+      "id": "S017-Q07",
+      "question": "고객이 해주기로 한 일은?",
+      "kind": "structured",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_fact_ids": [
+        "S017-F13"
+      ],
+      "answer": "설치 전날(11월 4일) 기존 세척기 철거."
+    },
+    {
+      "id": "S017-Q01-P1",
+      "question": "기존 기계 노후 상태와 고장 빈도가 어때?",
+      "paraphrase_of": "S017-Q01",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U02",
+        "S017-I1-U04"
+      ],
+      "answer": "15년 된 컨베이어형이 하루 한 번씩 멈추고 작년 수리비 600만 원, 피크 때 알바 4명이 붙는다."
+    },
+    {
+      "id": "S017-Q01-P2",
+      "question": "그 식당의 그릇 닦는 설비 문제와 인력 투입을 알려줘.",
+      "paraphrase_of": "S017-Q01",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U02",
+        "S017-I1-U04"
+      ],
+      "answer": "15년 된 컨베이어형이 하루 한 번씩 멈추고 작년 수리비 600만 원, 피크 때 알바 4명이 붙는다."
+    },
+    {
+      "id": "S017-Q02-P1",
+      "question": "다른 업체 제안가와 부가 비용을 합산해 본 결과는?",
+      "paraphrase_of": "S017-Q02",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I2-U01",
+        "S017-I2-U02",
+        "S017-I2-U03",
+        "S017-I3-U03"
+      ],
+      "answer": "경쟁사는 월 160만 원이지만 세제 월 25만 원이 별도여서 합치면 185만 원이라 우리 165만 원이 더 유리하다고 판단했다."
+    },
+    {
+      "id": "S017-Q02-P2",
+      "question": "라이벌의 월 금액과 우리 조건 비교 결과를 알려줘.",
+      "paraphrase_of": "S017-Q02",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I2-U01",
+        "S017-I2-U02",
+        "S017-I2-U03",
+        "S017-I3-U03"
+      ],
+      "answer": "경쟁사는 월 160만 원이지만 세제 월 25만 원이 별도여서 합치면 185만 원이라 우리 165만 원이 더 유리하다고 판단했다."
+    },
+    {
+      "id": "S017-Q03-P1",
+      "question": "렌탈료가 단계적으로 어떻게 조정됐는지 정리해줘.",
+      "paraphrase_of": "S017-Q03",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U07",
+        "S017-I1-U08",
+        "S017-I2-U04",
+        "S017-I3-U02",
+        "S017-I3-U04"
+      ],
+      "answer": "36개월 월 185만 원에서 175만 원(설치비 면제)을 거쳐 48개월 월 165만 원으로 합의했다."
+    },
+    {
+      "id": "S017-Q03-P2",
+      "question": "처음 제시액에서 최종 합의액까지 변화 과정은?",
+      "paraphrase_of": "S017-Q03",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U07",
+        "S017-I1-U08",
+        "S017-I2-U04",
+        "S017-I3-U02",
+        "S017-I3-U04"
+      ],
+      "answer": "36개월 월 185만 원에서 175만 원(설치비 면제)을 거쳐 48개월 월 165만 원으로 합의했다."
+    },
+    {
+      "id": "S017-Q04-P1",
+      "question": "장비 들어오는 날과 기존 장비 처리 방식은?",
+      "paraphrase_of": "S017-Q04",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I2-U05",
+        "S017-I3-U05",
+        "S017-I3-U06"
+      ],
+      "answer": "단풍철 전에 설치하길 원했고 11월 5일로 정했으며 기존 기계는 전날 고객이 철거한다."
+    },
+    {
+      "id": "S017-Q04-P2",
+      "question": "시공 날짜와 사전 준비 사항을 알려줘.",
+      "paraphrase_of": "S017-Q04",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I2-U05",
+        "S017-I3-U05",
+        "S017-I3-U06"
+      ],
+      "answer": "단풍철 전에 설치하길 원했고 11월 5일로 정했으며 기존 기계는 전날 고객이 철거한다."
+    },
+    {
+      "id": "S017-Q05-P1",
+      "question": "월 요금 안에 들어간 서비스 항목이 뭐였지?",
+      "paraphrase_of": "S017-Q05",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U05",
+        "S017-I1-U07",
+        "S017-I2-U02"
+      ],
+      "answer": "세제, 월 1회 정기 점검, 고장 시 24시간 내 출동이 포함이다."
+    },
+    {
+      "id": "S017-Q05-P2",
+      "question": "유지관리와 소모품은 어디까지 해주기로 했어?",
+      "paraphrase_of": "S017-Q05",
+      "kind": "semantic",
+      "company_id": "S017-CO1",
+      "as_of": "2026-11-08",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S017-I1-U05",
+        "S017-I1-U07",
+        "S017-I2-U02"
+      ],
+      "answer": "세제, 월 1회 정기 점검, 고장 시 24시간 내 출동이 포함이다."
+    }
+  ]
+}

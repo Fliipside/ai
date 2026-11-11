@@ -87,7 +87,7 @@ backend 흐름:
 2. 질문이 오면 `/embed-query`로 벡터를 받아, 고객사·권한으로 거른 뒤 같은 `model`의 청크 중 코사인 거리(`<=>`) 상위 10개를 고릅니다.
 3. 그 10개의 `embed_text`를 `/rerank`에 보내 다시 정렬하고 상위 결과를 사용합니다.
 
-정답셋 153개 질문 기준으로 1위 정답률은 벡터 검색만 75.2%, 재정렬 후 85.6%입니다. 로컬 CPU(Apple Silicon)에서 모델을 불러온 뒤 응답 시간은 `/embed-query` 약 50ms, `/rerank`(후보 10개) 약 300ms, `/chunks`(대화 1건) 약 140ms입니다.
+정답셋 1,467개 질문(시나리오 100개, 바꿔 말한 질문 978개 포함) 기준으로 1위 정답률은 벡터 검색만 80.9%, 재정렬 후 87.5%입니다. 권한 위반과 다른 고객사 결과는 0건입니다. 로컬 CPU(Apple Silicon)에서 모델을 불러온 뒤 응답 시간은 `/embed-query` 약 50ms, `/rerank`(후보 10개) 약 300ms, `/chunks`(대화 1건) 약 140ms입니다.
 
 ### 검색 품질 평가
 
@@ -194,7 +194,7 @@ uvicorn app.main:app --reload
 | `providers/diarization/pyannote.py`, `providers/speaker_embedding/pyannote.py` (community-1) | 구현 |
 | `providers/diarization/sherpa_onnx.py`, `providers/speaker_embedding/sherpa_onnx.py` | 구현 |
 | `scripts/voice_benchmark.py` (엔진 비교) | 구현 |
-| `fixtures/sales/` (가상 영업 시나리오 10개와 정답셋, [형식](fixtures/sales/README.md)) | 구현 |
+| `fixtures/sales/` (가상 영업 시나리오 100개와 정답셋, [형식](fixtures/sales/README.md)) | 구현 |
 | `features/memory/chunking.py`, `providers/text_embedding/` (청크 생성, 텍스트 임베딩) | 구현 |
 | `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/compare_embeddings.py` (모델·청킹 비교), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
 | `api/v1/memory.py`, `features/memory/service.py`, `providers/rerank/` (대화 기억 API) | 구현 |

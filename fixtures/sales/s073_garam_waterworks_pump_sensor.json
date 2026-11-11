@@ -1,0 +1,699 @@
+{
+  "scenario_id": "S073",
+  "description": "시 상수도사업소에 가압장 펌프 진동 센서 판매. 수의계약 한도 2,000만 원, 11월 추경, 조달청 디지털서비스몰 등록·정보화담당관 보안 검토 등 공공 조건. 제안서 제출과 조달 등록 약속이 두 번 연기되어 새 약속이 이전 약속을 대체. 전체 12곳에서 1차 6곳으로 축소.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 29,
+    "team_id": 28,
+    "name": "국민재",
+    "company": "센서플로우",
+    "product": "설비 예지보전 IoT 진동 센서"
+  },
+  "users": [
+    {
+      "user_id": 29,
+      "team_id": 28
+    }
+  ],
+  "company": {
+    "id": "S073-CO1",
+    "name": "가람시 상수도사업소",
+    "industry": "상수도 사업소",
+    "size": "직원 120명"
+  },
+  "contacts": [
+    {
+      "id": "S073-C1",
+      "name": "윤서진",
+      "title": "시설 주무관",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S073-C2",
+      "name": "한기석",
+      "title": "시설팀장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S073-C3",
+      "name": "정미라",
+      "title": "계약 주무관",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S073-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-26T14:00:00+09:00",
+      "title": "가압장 펌프 모니터링 소개 미팅",
+      "owner_user_id": 29,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S073-C1",
+        "S073-C2",
+        "S073-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S073-I1-U00",
+          "start": 2.0,
+          "end": 11.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희가 가압장이 열두 곳인데요, 야간에 펌프 이상이 나도 당직자가 직접 가서 확인하는 구조예요.",
+          "contact_id": "S073-C1"
+        },
+        {
+          "id": "S073-I1-U01",
+          "start": 12.1,
+          "end": 22.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "펌프 모터 베어링에 센서를 붙여서 이상 징후를 원격으로 알려드립니다. 한 곳에 펌프가 몇 대씩 있나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S073-I1-U02",
+          "start": 23.0,
+          "end": 29.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대부분 두 대씩이고요, 두 곳은 세 대입니다. 그럼 스물여섯 대네요.",
+          "contact_id": "S073-C1"
+        },
+        {
+          "id": "S073-I1-U03",
+          "start": 30.4,
+          "end": 37.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "공공이라 인증이 중요한데, 제품에 KC 인증이나 조달청 등록 있나요?",
+          "contact_id": "S073-C2"
+        },
+        {
+          "id": "S073-I1-U04",
+          "start": 37.8,
+          "end": 48.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "KC 전파인증은 받았고 조달청 디지털서비스몰 등록은 지금 신청 중입니다. 10월 말에 나올 예정입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S073-I1-U05",
+          "start": 48.7,
+          "end": 62.6,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "계약 담당 정미라입니다. 올해 잔여 예산이 3,800만 원인데 수의계약 한도가 2,000만 원이라, 금액을 쪼개거나 경쟁입찰을 해야 해요.",
+          "contact_id": "S073-C3"
+        },
+        {
+          "id": "S073-I1-U06",
+          "start": 63.2,
+          "end": 74.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 2,000만 원 이내 1차 범위와 전체 범위로 나눠서 제안서 드리겠습니다. 9월 중순까지 보내겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S073-I1-U07",
+          "start": 74.6,
+          "end": 82.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "보안 쪽도 정보화담당관 확인이 필요해서, 망 분리 구성도도 같이 부탁드려요.",
+          "contact_id": "S073-C1"
+        },
+        {
+          "id": "S073-I1-U08",
+          "start": 82.8,
+          "end": 85.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 구성도 포함하겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S073-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-30T11:00:00+09:00",
+      "title": "제안서 지연 사과와 예산 일정 확인",
+      "owner_user_id": 29,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S073-C1",
+        "S073-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S073-I2-U00",
+          "start": 2.0,
+          "end": 8.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "윤서진입니다. 제안서가 9월 중순이라고 하셨는데 아직 못 받았어요.",
+          "contact_id": "S073-C1"
+        },
+        {
+          "id": "S073-I2-U01",
+          "start": 9.3,
+          "end": 20.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "죄송합니다. 망 분리 구성도를 정보화담당관 양식에 맞추느라 늦어졌습니다. 10월 7일까지 꼭 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S073-I2-U02",
+          "start": 20.9,
+          "end": 30.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그리고 의회 추경이 11월에 있어서 예산 반영이 되려면 10월 안에는 견적이 확정돼야 해요.",
+          "contact_id": "S073-C1"
+        },
+        {
+          "id": "S073-I2-U03",
+          "start": 31.2,
+          "end": 45.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 견적서는 2,000만 원 이내 1차 안, 가압장 6곳 1,980만 원이랑 전체 12곳 3,780만 원 안 두 가지로 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S073-I2-U04",
+          "start": 46.0,
+          "end": 53.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "센서 설치할 때 가압장 출입이 사전 신청이라서, 일주일 전에 알려주셔야 합니다.",
+          "contact_id": "S073-C2"
+        },
+        {
+          "id": "S073-I2-U05",
+          "start": 54.5,
+          "end": 59.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 일정 확정되면 일주일 전에 요청드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S073-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-28T15:00:00+09:00",
+      "title": "견적 검토와 조달 등록 지연 협의",
+      "owner_user_id": 29,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S073-C1",
+        "S073-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S073-I3-U00",
+          "start": 2.0,
+          "end": 8.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "견적서랑 구성도는 잘 받았어요. 정보화담당관 검토도 통과했습니다.",
+          "contact_id": "S073-C1"
+        },
+        {
+          "id": "S073-I3-U01",
+          "start": 9.1,
+          "end": 21.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그런데 조달청 등록이 심사 보완 요청이 나와서 11월 둘째 주로 밀렸습니다. 11월 13일까지 등록증 사본을 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S073-I3-U02",
+          "start": 21.9,
+          "end": 31.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "등록이 안 되면 나라장터로 수의계약을 못 해요. 등록증 확인되기 전에 품의를 올릴 수는 없습니다.",
+          "contact_id": "S073-C3"
+        },
+        {
+          "id": "S073-I3-U03",
+          "start": 32.2,
+          "end": 41.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그럼 1차 6곳 1,980만 원으로 먼저 가요. 나머지 6곳은 내년 예산으로 보겠습니다.",
+          "contact_id": "S073-C1"
+        },
+        {
+          "id": "S073-I3-U04",
+          "start": 41.6,
+          "end": 52.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "등록증이 나오고 나서 계약이라 설치는 12월 이후겠네요. 한도 2,000만 원 안이라 경쟁입찰은 안 해도 돼요.",
+          "contact_id": "S073-C3"
+        },
+        {
+          "id": "S073-I3-U05",
+          "start": 53.4,
+          "end": 57.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "등록증 나오는 대로 바로 사본 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S073-F01",
+      "interaction_id": "S073-I1",
+      "type": "requirement",
+      "said_by": "S073-C1",
+      "content": "가압장 12곳은 야간 펌프 이상 시 당직자가 직접 가서 확인하고 있어 원격 감시가 필요하다.",
+      "source_utterance_ids": [
+        "S073-I1-U00"
+      ]
+    },
+    {
+      "id": "S073-F02",
+      "interaction_id": "S073-I1",
+      "type": "requirement",
+      "said_by": "S073-C1",
+      "content": "가압장 12곳에 펌프가 총 26대 있다.",
+      "source_utterance_ids": [
+        "S073-I1-U02"
+      ]
+    },
+    {
+      "id": "S073-F03",
+      "interaction_id": "S073-I1",
+      "type": "requirement",
+      "said_by": "S073-C2",
+      "content": "공공기관이라 KC 인증이나 조달청 등록이 있는 제품이어야 한다.",
+      "source_utterance_ids": [
+        "S073-I1-U03"
+      ]
+    },
+    {
+      "id": "S073-F04",
+      "interaction_id": "S073-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "조달청 디지털서비스몰 등록을 완료한다.",
+      "source_utterance_ids": [
+        "S073-I1-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-31",
+      "due_text": "10월 말에 나올 예정",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S073-F05",
+      "interaction_id": "S073-I1",
+      "type": "requirement",
+      "said_by": "S073-C3",
+      "content": "올해 잔여 예산은 3,800만 원이고 수의계약 한도는 2,000만 원이라 금액을 나누거나 경쟁입찰이 필요하다.",
+      "source_utterance_ids": [
+        "S073-I1-U05"
+      ]
+    },
+    {
+      "id": "S073-F06",
+      "interaction_id": "S073-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "2,000만 원 이내 1차 범위와 전체 범위로 나눈 제안서를 보낸다.",
+      "source_utterance_ids": [
+        "S073-I1-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-15",
+      "due_text": "9월 중순까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S073-F07",
+      "interaction_id": "S073-I1",
+      "type": "requirement",
+      "said_by": "S073-C1",
+      "content": "정보화담당관 보안 확인을 위해 망 분리 구성도를 제안서에 포함해야 한다.",
+      "source_utterance_ids": [
+        "S073-I1-U07",
+        "S073-I1-U08"
+      ]
+    },
+    {
+      "id": "S073-F08",
+      "interaction_id": "S073-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "제안서 지연을 사과하고 망 분리 구성도를 포함한 제안서를 다시 보낸다.",
+      "source_utterance_ids": [
+        "S073-I2-U01"
+      ],
+      "supersedes": "S073-F06",
+      "owner": "me",
+      "due_at": "2026-10-07",
+      "due_text": "10월 7일까지",
+      "status": "done",
+      "resolved_in": "S073-I3"
+    },
+    {
+      "id": "S073-F09",
+      "interaction_id": "S073-I2",
+      "type": "purchase_timing",
+      "said_by": "S073-C1",
+      "content": "11월 의회 추경에 예산을 반영하려면 10월 안에 견적이 확정되어야 한다.",
+      "source_utterance_ids": [
+        "S073-I2-U02"
+      ]
+    },
+    {
+      "id": "S073-F10",
+      "interaction_id": "S073-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "가압장 6곳 1,980만 원 안과 전체 12곳 3,780만 원 안, 두 가지 견적서를 보낸다.",
+      "source_utterance_ids": [
+        "S073-I2-U03"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": null,
+      "status": "done",
+      "resolved_in": "S073-I3"
+    },
+    {
+      "id": "S073-F11",
+      "interaction_id": "S073-I2",
+      "type": "requirement",
+      "said_by": "S073-C2",
+      "content": "가압장 출입은 사전 신청제라 설치 일주일 전에 알려야 한다.",
+      "source_utterance_ids": [
+        "S073-I2-U04",
+        "S073-I2-U05"
+      ]
+    },
+    {
+      "id": "S073-F12",
+      "interaction_id": "S073-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "조달청 등록이 보완 요청으로 밀려 등록증 사본을 보낸다.",
+      "source_utterance_ids": [
+        "S073-I3-U01"
+      ],
+      "supersedes": "S073-F04",
+      "owner": "me",
+      "due_at": "2026-11-13",
+      "due_text": "11월 13일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S073-F13",
+      "interaction_id": "S073-I3",
+      "type": "decision",
+      "said_by": "S073-C1",
+      "content": "1차로 가압장 6곳 1,980만 원 안으로 진행하고 나머지 6곳은 내년 예산으로 본다.",
+      "source_utterance_ids": [
+        "S073-I3-U03"
+      ]
+    },
+    {
+      "id": "S073-F14",
+      "interaction_id": "S073-I3",
+      "type": "requirement",
+      "said_by": "S073-C3",
+      "content": "조달청 등록증이 확인되기 전에는 품의와 수의계약을 진행할 수 없다.",
+      "source_utterance_ids": [
+        "S073-I3-U02"
+      ]
+    },
+    {
+      "id": "S073-F15",
+      "interaction_id": "S073-I3",
+      "type": "purchase_timing",
+      "said_by": "S073-C3",
+      "content": "등록증이 나온 뒤 계약하므로 설치는 12월 이후이며, 2,000만 원 이내라 경쟁입찰은 필요 없다.",
+      "source_utterance_ids": [
+        "S073-I3-U04"
+      ]
+    },
+    {
+      "id": "S073-F16",
+      "interaction_id": "S073-I3",
+      "type": "buying_signal",
+      "said_by": "S073-C1",
+      "content": "견적서와 구성도를 받았고 정보화담당관 보안 검토를 통과했다.",
+      "source_utterance_ids": [
+        "S073-I3-U00"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S073-Q01",
+      "question": "가람시 상수도사업소 계약은 어떤 방식으로 해야 해?",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U05",
+        "S073-I3-U02",
+        "S073-I3-U04"
+      ],
+      "answer": "수의계약 한도가 2,000만 원이라 1차 1,980만 원으로 나누고, 조달청 등록증이 확인된 뒤 품의·계약한다."
+    },
+    {
+      "id": "S073-Q02",
+      "question": "가람시 상수도사업소 일정이 왜 밀렸어?",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I2-U00",
+        "S073-I2-U01",
+        "S073-I3-U01"
+      ],
+      "answer": "제안서는 망 분리 구성도 양식 맞추느라 늦었고, 조달청 등록은 심사 보완 요청으로 11월 둘째 주로 밀렸다."
+    },
+    {
+      "id": "S073-Q03",
+      "question": "가람시 상수도사업소 예산은 언제 어떻게 확정돼?",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U05",
+        "S073-I2-U02"
+      ],
+      "answer": "올해 잔여 예산 3,800만 원이며 11월 의회 추경 반영을 위해 10월 안에 견적을 확정해야 했다."
+    },
+    {
+      "id": "S073-Q04",
+      "question": "가람시 상수도사업소 1차 범위는 어떻게 정해졌어?",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I2-U03",
+        "S073-I3-U03"
+      ],
+      "answer": "가압장 6곳 1,980만 원으로 먼저 진행하고 나머지 6곳은 내년 예산으로 본다."
+    },
+    {
+      "id": "S073-Q05",
+      "question": "가람시 상수도사업소 보안 쪽 요구는 뭐였어?",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U07",
+        "S073-I1-U08",
+        "S073-I3-U00"
+      ],
+      "answer": "정보화담당관 확인을 위해 망 분리 구성도가 필요했고 10월 28일 기준 검토를 통과했다."
+    },
+    {
+      "id": "S073-Q06",
+      "question": "가람시 상수도사업소에 우리가 아직 해야 할 약속은?",
+      "kind": "structured",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_fact_ids": [
+        "S073-F12"
+      ],
+      "answer": "11월 13일까지 조달청 등록증 사본을 보내야 한다."
+    },
+    {
+      "id": "S073-Q01-P1",
+      "question": "가람시 상수도사업소와 거래하려면 어떤 구매 절차를 밟아야 해?",
+      "paraphrase_of": "S073-Q01",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U05",
+        "S073-I3-U02",
+        "S073-I3-U04"
+      ],
+      "answer": "수의계약 한도가 2,000만 원이라 1차 1,980만 원으로 나누고, 조달청 등록증이 확인된 뒤 품의·계약한다."
+    },
+    {
+      "id": "S073-Q01-P2",
+      "question": "가람시 상수도사업소 쪽 발주 형태와 한도 조건이 뭐였지?",
+      "paraphrase_of": "S073-Q01",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U05",
+        "S073-I3-U02",
+        "S073-I3-U04"
+      ],
+      "answer": "수의계약 한도가 2,000만 원이라 1차 1,980만 원으로 나누고, 조달청 등록증이 확인된 뒤 품의·계약한다."
+    },
+    {
+      "id": "S073-Q02-P1",
+      "question": "가람시 상수도사업소 건이 지연된 사유가 뭐야?",
+      "paraphrase_of": "S073-Q02",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I2-U00",
+        "S073-I2-U01",
+        "S073-I3-U01"
+      ],
+      "answer": "제안서는 망 분리 구성도 양식 맞추느라 늦었고, 조달청 등록은 심사 보완 요청으로 11월 둘째 주로 밀렸다."
+    },
+    {
+      "id": "S073-Q02-P2",
+      "question": "가람시 상수도사업소에 늦어진 서류 두 가지가 뭐였지?",
+      "paraphrase_of": "S073-Q02",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I2-U00",
+        "S073-I2-U01",
+        "S073-I3-U01"
+      ],
+      "answer": "제안서는 망 분리 구성도 양식 맞추느라 늦었고, 조달청 등록은 심사 보완 요청으로 11월 둘째 주로 밀렸다."
+    },
+    {
+      "id": "S073-Q03-P1",
+      "question": "가람시 상수도사업소 재원은 얼마이고 반영 시점은?",
+      "paraphrase_of": "S073-Q03",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U05",
+        "S073-I2-U02"
+      ],
+      "answer": "올해 잔여 예산 3,800만 원이며 11월 의회 추경 반영을 위해 10월 안에 견적을 확정해야 했다."
+    },
+    {
+      "id": "S073-Q03-P2",
+      "question": "가람시 상수도사업소의 돈 마련 시기와 규모는?",
+      "paraphrase_of": "S073-Q03",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U05",
+        "S073-I2-U02"
+      ],
+      "answer": "올해 잔여 예산 3,800만 원이며 11월 의회 추경 반영을 위해 10월 안에 견적을 확정해야 했다."
+    },
+    {
+      "id": "S073-Q04-P1",
+      "question": "가람시 상수도사업소에 우선 깔기로 한 규모는?",
+      "paraphrase_of": "S073-Q04",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I2-U03",
+        "S073-I3-U03"
+      ],
+      "answer": "가압장 6곳 1,980만 원으로 먼저 진행하고 나머지 6곳은 내년 예산으로 본다."
+    },
+    {
+      "id": "S073-Q04-P2",
+      "question": "가람시 상수도사업소 이번에 설치할 곳은 몇 곳이야?",
+      "paraphrase_of": "S073-Q04",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I2-U03",
+        "S073-I3-U03"
+      ],
+      "answer": "가압장 6곳 1,980만 원으로 먼저 진행하고 나머지 6곳은 내년 예산으로 본다."
+    },
+    {
+      "id": "S073-Q05-P1",
+      "question": "가람시 상수도사업소 정보 보호 관련 확인 절차는 어땠어?",
+      "paraphrase_of": "S073-Q05",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U07",
+        "S073-I1-U08",
+        "S073-I3-U00"
+      ],
+      "answer": "정보화담당관 확인을 위해 망 분리 구성도가 필요했고 10월 28일 기준 검토를 통과했다."
+    },
+    {
+      "id": "S073-Q05-P2",
+      "question": "가람시 상수도사업소 네트워크 분리 서류는 통과됐어?",
+      "paraphrase_of": "S073-Q05",
+      "kind": "semantic",
+      "company_id": "S073-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 29,
+      "relevant_utterance_ids": [
+        "S073-I1-U07",
+        "S073-I1-U08",
+        "S073-I3-U00"
+      ],
+      "answer": "정보화담당관 확인을 위해 망 분리 구성도가 필요했고 10월 28일 기준 검토를 통과했다."
+    }
+  ]
+}

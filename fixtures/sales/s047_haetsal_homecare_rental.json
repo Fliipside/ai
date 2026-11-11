@@ -1,0 +1,659 @@
+{
+  "scenario_id": "S047",
+  "description": "방문 간호 업체의 법인 차량 렌트. 40대에서 서울 3개 센터 15대 파일럿으로 범위 축소, 월 62만에서 57만까지 여러 번 가격 협상.",
+  "fictional": true,
+  "as_of": "2026-11-02",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 21,
+    "team_id": 20,
+    "name": "신가영",
+    "company": "모빌리티원",
+    "product": "법인 차량 장기렌트·차량관제"
+  },
+  "users": [
+    {
+      "user_id": 21,
+      "team_id": 20
+    }
+  ],
+  "company": {
+    "id": "S047-CO1",
+    "name": "햇살재가간호",
+    "industry": "방문 간호 서비스",
+    "size": "간호사 70명, 센터 6곳"
+  },
+  "contacts": [
+    {
+      "id": "S047-C1",
+      "name": "반수정",
+      "title": "운영이사",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S047-C2",
+      "name": "노기석",
+      "title": "총무팀장",
+      "role_in_deal": "procurement"
+    },
+    {
+      "id": "S047-C3",
+      "name": "심준혁",
+      "title": "대표",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S047-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-25T14:00:00+09:00",
+      "title": "방문 간호 차량 도입 상담",
+      "owner_user_id": 21,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S047-C1",
+        "S047-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S047-I1-U00",
+          "start": 2.0,
+          "end": 16.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희 방문간호사가 70명인데 지금은 자차로 다니시고 유류비 보조로 월 20만 원씩 드려요. 사고 나면 정산이 너무 복잡해서 법인 차량으로 바꾸려고요.",
+          "contact_id": "S047-C1"
+        },
+        {
+          "id": "S047-I1-U01",
+          "start": 17.5,
+          "end": 19.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "몇 대 정도 생각하세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S047-I1-U02",
+          "start": 20.4,
+          "end": 26.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "우선 40대요. 소형 SUV가 주차하기 좋아서 그쪽으로요.",
+          "contact_id": "S047-C1"
+        },
+        {
+          "id": "S047-I1-U03",
+          "start": 26.8,
+          "end": 38.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 GPS 관제는 필요한데, 근무 시간에만 위치를 보게 해야 해요. 간호사분들이 감시당한다고 느끼면 안 되니까요.",
+          "contact_id": "S047-C1"
+        },
+        {
+          "id": "S047-I1-U04",
+          "start": 39.1,
+          "end": 49.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "근무 시간 외에는 위치가 수집되지 않게 설정할 수 있습니다. 36개월 기준 월 62만 원, 보험 포함입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S047-I1-U05",
+          "start": 50.5,
+          "end": 58.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "총무 노기석입니다. 62만 원은 좀 부담이네요. 48개월 견적도 같이 보고 싶어요.",
+          "contact_id": "S047-C2"
+        },
+        {
+          "id": "S047-I1-U06",
+          "start": 59.4,
+          "end": 66.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "36개월과 48개월 비교 견적을 다음 주 화요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S047-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-22T11:00:00+09:00",
+      "title": "가격·범위 조정 통화",
+      "owner_user_id": 21,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S047-C3",
+        "S047-C1",
+        "S047-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S047-I2-U00",
+          "start": 2.0,
+          "end": 10.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대표 심준혁입니다. 비교 견적 봤어요. 대형 렌터카 회사는 월 55만 원을 부르던데요.",
+          "contact_id": "S047-C3"
+        },
+        {
+          "id": "S047-I2-U01",
+          "start": 11.2,
+          "end": 24.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 정비 대차와 관제를 포함한 금액이라 구성이 다릅니다. 그래도 58만 원까지 낮추고 관제 요금은 6개월 면제해 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S047-I2-U02",
+          "start": 24.8,
+          "end": 33.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "솔직히 40대는 무리예요. 아직 효과를 모르니까 서울 센터 3곳에 15대만 먼저 하죠.",
+          "contact_id": "S047-C3"
+        },
+        {
+          "id": "S047-I2-U03",
+          "start": 34.0,
+          "end": 39.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "맞아요, 파일럿으로 해보고 괜찮으면 늘리는 걸로요.",
+          "contact_id": "S047-C1"
+        },
+        {
+          "id": "S047-I2-U04",
+          "start": 39.6,
+          "end": 47.2,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "보험은 만 26세 이상으로 한정하고 자차 면책금은 30만 원으로 해 주세요.",
+          "contact_id": "S047-C2"
+        },
+        {
+          "id": "S047-I2-U05",
+          "start": 47.8,
+          "end": 55.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "좋습니다. 그럼 운전자 명단과 면허 확인 서류만 주시면 보험 심사를 진행합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S047-I2-U06",
+          "start": 56.3,
+          "end": 60.3,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "그건 제가 10월 6일까지 보내겠습니다.",
+          "contact_id": "S047-C2"
+        }
+      ]
+    },
+    {
+      "id": "S047-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-20T10:00:00+09:00",
+      "title": "최종 조건 미팅",
+      "owner_user_id": 21,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S047-C2",
+        "S047-C3",
+        "S047-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S047-I3-U00",
+          "start": 2.0,
+          "end": 7.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "서류는 지난달에 보내드렸죠. 이제 가격만 마무리하면 됩니다.",
+          "contact_id": "S047-C2"
+        },
+        {
+          "id": "S047-I3-U01",
+          "start": 8.5,
+          "end": 18.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "58만 원에서 1만 원만 더 깎아 주세요. 57만 원에 관제 포함이면 15대 36개월로 서명하겠습니다.",
+          "contact_id": "S047-C3"
+        },
+        {
+          "id": "S047-I3-U02",
+          "start": 19.4,
+          "end": 31.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "관제 포함 57만 원이면 저희 내부 승인이 필요한데, 15대 규모라면 가능하게 해보겠습니다. 승인 받고 알려드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S047-I3-U03",
+          "start": 31.7,
+          "end": 41.1,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "12월 1일에 1차 인도가 되면 좋겠어요. 야간 긴급 방문용 예비차 1대도 따로 부탁드립니다.",
+          "contact_id": "S047-C1"
+        },
+        {
+          "id": "S047-I3-U04",
+          "start": 41.7,
+          "end": 52.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "57만 원 관제 포함, 12월 1일 인도로 확정합니다. 계약서 초안은 다음 주 화요일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S047-I3-U05",
+          "start": 52.6,
+          "end": 63.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "이사회 보고 거쳐서 11월 10일까지 서명하겠습니다. 파일럿 결과가 좋으면 내년 3월에 25대 더 검토하죠.",
+          "contact_id": "S047-C3"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S047-F01",
+      "interaction_id": "S047-I1",
+      "type": "requirement",
+      "said_by": "S047-C1",
+      "content": "방문간호사 70명이 자차로 다니며 월 20만 원 유류 보조를 받고, 사고 정산이 복잡해 법인 차량으로 바꾸려 한다.",
+      "source_utterance_ids": [
+        "S047-I1-U00"
+      ]
+    },
+    {
+      "id": "S047-F02",
+      "interaction_id": "S047-I1",
+      "type": "requirement",
+      "said_by": "S047-C1",
+      "content": "우선 소형 SUV 40대를 원한다.",
+      "source_utterance_ids": [
+        "S047-I1-U02"
+      ]
+    },
+    {
+      "id": "S047-F03",
+      "interaction_id": "S047-I1",
+      "type": "requirement",
+      "said_by": "S047-C1",
+      "content": "GPS 관제는 근무 시간에만 위치를 보게 해 간호사의 감시 우려를 줄여야 한다.",
+      "source_utterance_ids": [
+        "S047-I1-U03"
+      ]
+    },
+    {
+      "id": "S047-F04",
+      "interaction_id": "S047-I1",
+      "type": "price_reaction",
+      "said_by": "S047-C2",
+      "content": "36개월 월 62만 원(보험 포함)은 부담이고 48개월 견적도 보고 싶다고 했다.",
+      "source_utterance_ids": [
+        "S047-I1-U04",
+        "S047-I1-U05"
+      ]
+    },
+    {
+      "id": "S047-F05",
+      "interaction_id": "S047-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "36개월·48개월 비교 견적을 보낸다.",
+      "source_utterance_ids": [
+        "S047-I1-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-01",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S047-I2"
+    },
+    {
+      "id": "S047-F06",
+      "interaction_id": "S047-I2",
+      "type": "price_reaction",
+      "said_by": "S047-C3",
+      "content": "대형 렌터카 업체가 월 55만 원을 제시했다고 했다.",
+      "source_utterance_ids": [
+        "S047-I2-U00"
+      ]
+    },
+    {
+      "id": "S047-F07",
+      "interaction_id": "S047-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "월 58만 원으로 낮추고 관제 요금 6개월 면제를 제안했다.",
+      "source_utterance_ids": [
+        "S047-I2-U01"
+      ]
+    },
+    {
+      "id": "S047-F08",
+      "interaction_id": "S047-I2",
+      "type": "decision",
+      "said_by": "S047-C3",
+      "content": "40대는 무리라 서울 센터 3곳 15대 파일럿으로 줄인다.",
+      "source_utterance_ids": [
+        "S047-I2-U02"
+      ],
+      "supersedes": "S047-F02"
+    },
+    {
+      "id": "S047-F09",
+      "interaction_id": "S047-I2",
+      "type": "requirement",
+      "said_by": "S047-C2",
+      "content": "보험은 만 26세 이상 한정, 자차 면책금 30만 원으로 해달라고 했다.",
+      "source_utterance_ids": [
+        "S047-I2-U04"
+      ]
+    },
+    {
+      "id": "S047-F10",
+      "interaction_id": "S047-I2",
+      "type": "promise",
+      "said_by": "S047-C2",
+      "content": "운전자 명단과 면허 확인 서류를 보낸다.",
+      "source_utterance_ids": [
+        "S047-I2-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-06",
+      "due_text": "10월 6일까지",
+      "status": "done",
+      "resolved_in": "S047-I3"
+    },
+    {
+      "id": "S047-F11",
+      "interaction_id": "S047-I3",
+      "type": "price_reaction",
+      "said_by": "S047-C3",
+      "content": "관제 포함 월 57만 원이면 15대 36개월로 서명하겠다고 했다.",
+      "source_utterance_ids": [
+        "S047-I3-U01"
+      ]
+    },
+    {
+      "id": "S047-F12",
+      "interaction_id": "S047-I3",
+      "type": "requirement",
+      "said_by": "S047-C1",
+      "content": "12월 1일 1차 인도와 야간 긴급 방문용 예비차 1대가 필요하다.",
+      "source_utterance_ids": [
+        "S047-I3-U03"
+      ]
+    },
+    {
+      "id": "S047-F13",
+      "interaction_id": "S047-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "관제 포함 월 57만 원, 12월 1일 인도 조건의 계약서 초안을 보낸다.",
+      "source_utterance_ids": [
+        "S047-I3-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-27",
+      "due_text": "다음 주 화요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S047-F14",
+      "interaction_id": "S047-I3",
+      "type": "promise",
+      "said_by": "S047-C3",
+      "content": "이사회 보고 후 계약서에 서명한다. 파일럿 결과가 좋으면 내년 3월 25대 추가를 검토한다.",
+      "source_utterance_ids": [
+        "S047-I3-U05"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-10",
+      "due_text": "11월 10일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S047-Q01",
+      "question": "햇살재가간호가 렌트를 하려는 이유는?",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U00"
+      ],
+      "answer": "간호사 자차 이용 시 유류 보조와 사고 정산이 번거로워서."
+    },
+    {
+      "id": "S047-Q02",
+      "question": "위치 추적에 대한 고객 입장은?",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U03"
+      ],
+      "answer": "근무 시간에만 보도록 설정해 감시 느낌을 피해야 함."
+    },
+    {
+      "id": "S047-Q03",
+      "question": "가격 협상은 어떻게 흘러갔어?",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U04",
+        "S047-I1-U05",
+        "S047-I2-U00",
+        "S047-I2-U01",
+        "S047-I3-U01",
+        "S047-I3-U04"
+      ],
+      "answer": "62만 → 경쟁 55만 언급 → 58만+관제 6개월 면제 → 관제 포함 57만 확정."
+    },
+    {
+      "id": "S047-Q04",
+      "question": "도입 규모가 왜 줄었어?",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I2-U02"
+      ],
+      "answer": "효과를 모르니 40대 대신 서울 3개 센터 15대 파일럿으로 축소."
+    },
+    {
+      "id": "S047-Q05",
+      "question": "인도 시기와 추가 도입 계획은?",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I3-U03",
+        "S047-I3-U05"
+      ],
+      "answer": "12월 1일 1차 인도, 예비차 1대, 결과가 좋으면 내년 3월 25대 검토."
+    },
+    {
+      "id": "S047-Q06",
+      "question": "햇살재가간호 건 아직 열린 약속은?",
+      "kind": "structured",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_fact_ids": [
+        "S047-F13",
+        "S047-F14"
+      ],
+      "answer": "우리: 계약서 초안(10/27 기한 지남). 고객: 11/10까지 서명."
+    },
+    {
+      "id": "S047-Q01-P1",
+      "question": "왜 직원 자가용 대신 회사 차를 쓰려고 해?",
+      "paraphrase_of": "S047-Q01",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U00"
+      ],
+      "answer": "간호사 자차 이용 시 유류 보조와 사고 정산이 번거로워서."
+    },
+    {
+      "id": "S047-Q01-P2",
+      "question": "현재 이동 방식의 불편이 뭐래?",
+      "paraphrase_of": "S047-Q01",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U00"
+      ],
+      "answer": "간호사 자차 이용 시 유류 보조와 사고 정산이 번거로워서."
+    },
+    {
+      "id": "S047-Q02-P1",
+      "question": "간호사들 프라이버시는 어떻게 하자고 했어?",
+      "paraphrase_of": "S047-Q02",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U03"
+      ],
+      "answer": "근무 시간에만 보도록 설정해 감시 느낌을 피해야 함."
+    },
+    {
+      "id": "S047-Q02-P2",
+      "question": "GPS 사용 시 조심할 점은?",
+      "paraphrase_of": "S047-Q02",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U03"
+      ],
+      "answer": "근무 시간에만 보도록 설정해 감시 느낌을 피해야 함."
+    },
+    {
+      "id": "S047-Q03-P1",
+      "question": "월 요금이 어떻게 변해 왔지?",
+      "paraphrase_of": "S047-Q03",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U04",
+        "S047-I1-U05",
+        "S047-I2-U00",
+        "S047-I2-U01",
+        "S047-I3-U01",
+        "S047-I3-U04"
+      ],
+      "answer": "62만 → 경쟁 55만 언급 → 58만+관제 6개월 면제 → 관제 포함 57만 확정."
+    },
+    {
+      "id": "S047-Q03-P2",
+      "question": "렌트료 조정 과정을 알려줘.",
+      "paraphrase_of": "S047-Q03",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I1-U04",
+        "S047-I1-U05",
+        "S047-I2-U00",
+        "S047-I2-U01",
+        "S047-I3-U01",
+        "S047-I3-U04"
+      ],
+      "answer": "62만 → 경쟁 55만 언급 → 58만+관제 6개월 면제 → 관제 포함 57만 확정."
+    },
+    {
+      "id": "S047-Q04-P1",
+      "question": "처음 40대였던 게 15대로 된 사정은?",
+      "paraphrase_of": "S047-Q04",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I2-U02"
+      ],
+      "answer": "효과를 모르니 40대 대신 서울 3개 센터 15대 파일럿으로 축소."
+    },
+    {
+      "id": "S047-Q04-P2",
+      "question": "단계적으로 시작하자고 한 이유가 뭐야?",
+      "paraphrase_of": "S047-Q04",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I2-U02"
+      ],
+      "answer": "효과를 모르니 40대 대신 서울 3개 센터 15대 파일럿으로 축소."
+    },
+    {
+      "id": "S047-Q05-P1",
+      "question": "차량은 언제 받고 이후에는 어떻게 늘려?",
+      "paraphrase_of": "S047-Q05",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I3-U03",
+        "S047-I3-U05"
+      ],
+      "answer": "12월 1일 1차 인도, 예비차 1대, 결과가 좋으면 내년 3월 25대 검토."
+    },
+    {
+      "id": "S047-Q05-P2",
+      "question": "확장 가능성에 대해 뭐라고 했지?",
+      "paraphrase_of": "S047-Q05",
+      "kind": "semantic",
+      "company_id": "S047-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S047-I3-U03",
+        "S047-I3-U05"
+      ],
+      "answer": "12월 1일 1차 인도, 예비차 1대, 결과가 좋으면 내년 3월 25대 검토."
+    }
+  ]
+}

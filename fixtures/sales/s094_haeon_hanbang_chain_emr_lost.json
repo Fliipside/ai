@@ -1,0 +1,697 @@
+{
+  "scenario_id": "S094",
+  "description": "한의원 8개 지점 체인에 전자차트를 제안했으나 약재 재고·첩약 연동 기능 부족과 가격 경쟁으로 실패한 딜. 세 차례 가격 인하, 실패 사유, 2027년 신규 지점 시점의 재접촉 약속.",
+  "fictional": true,
+  "as_of": "2026-11-02",
+  "deal_status": "lost",
+  "seller": {
+    "user_id": 36,
+    "team_id": 35,
+    "name": "공지민",
+    "company": "메디차트",
+    "product": "의원급 전자차트(EMR)"
+  },
+  "users": [
+    {
+      "user_id": 36,
+      "team_id": 35
+    }
+  ],
+  "company": {
+    "id": "S094-CO1",
+    "name": "해온한방네트워크",
+    "industry": "한의원 체인",
+    "size": "서울·경기 8개 지점"
+  },
+  "contacts": [
+    {
+      "id": "S094-C1",
+      "name": "방지훈",
+      "title": "운영본부장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S094-C2",
+      "name": "서은혜",
+      "title": "대표원장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S094-C3",
+      "name": "배진수",
+      "title": "경영지원팀장",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S094-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-19T14:00:00+09:00",
+      "title": "첫 미팅: 지점 차트 통합",
+      "owner_user_id": 36,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S094-C1",
+        "S094-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S094-I1-U00",
+          "start": 2.0,
+          "end": 10.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희가 서울·경기에 한의원이 여덟 곳인데 지점마다 차트가 다 달라서 통합하고 싶어요.",
+          "contact_id": "S094-C1"
+        },
+        {
+          "id": "S094-I1-U01",
+          "start": 11.1,
+          "end": 18.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지점 통합 조회와 환자 이력 공유가 되는 클라우드 방식으로 보여드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S094-I1-U02",
+          "start": 18.9,
+          "end": 27.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "한의원은 첩약 처방이랑 약재 재고 관리, 침 치료 기록이 핵심이에요. 그게 되나요?",
+          "contact_id": "S094-C1"
+        },
+        {
+          "id": "S094-I1-U03",
+          "start": 27.8,
+          "end": 37.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "처방은 되는데 약재 재고는 지금은 엑셀 연동까지만 됩니다. 한의 특화 모듈은 내년 1분기에 나옵니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S094-I1-U04",
+          "start": 38.5,
+          "end": 41.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아... 그게 제일 중요한데요.",
+          "contact_id": "S094-C1"
+        },
+        {
+          "id": "S094-I1-U05",
+          "start": 42.2,
+          "end": 47.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "일단 가격부터 볼게요. 8개 지점 기준으로 견적 주세요.",
+          "contact_id": "S094-C3"
+        },
+        {
+          "id": "S094-I1-U06",
+          "start": 48.4,
+          "end": 56.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지점당 설치비 150만 원에 월 12만 원 기준으로 첫 제안을 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S094-I1-U07",
+          "start": 56.6,
+          "end": 62.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "이번 달 28일 금요일까지 8개 지점 견적서 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S094-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-23T10:00:00+09:00",
+      "title": "가격 재협상 통화",
+      "owner_user_id": 36,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S094-C3",
+        "S094-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S094-I2-U00",
+          "start": 2.0,
+          "end": 13.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "견적이 설치비 1,200만 원에 월 96만 원인데, 경쟁사 한 곳은 지점당 설치비 100만 원에 월 9만 원이라던데요.",
+          "contact_id": "S094-C3"
+        },
+        {
+          "id": "S094-I2-U01",
+          "start": 14.5,
+          "end": 26.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그쪽은 약재 재고 기능이 포함인가요? 저희는 8곳 일괄 계약이면 설치비 120만 원에 월 10만 원까지 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S094-I2-U02",
+          "start": 26.6,
+          "end": 32.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그래도 여전히 높아요. 그쪽은 약재 재고가 기본이라서요.",
+          "contact_id": "S094-C3"
+        },
+        {
+          "id": "S094-I2-U03",
+          "start": 32.8,
+          "end": 41.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 설치비 110만 원, 월 9만 5천 원, 36개월 약정으로 한 번 더 내리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S094-I2-U04",
+          "start": 42.2,
+          "end": 48.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "가격은 많이 따라오셨는데, 약재 재고가 엑셀이면 현장 반발이 커요.",
+          "contact_id": "S094-C1"
+        },
+        {
+          "id": "S094-I2-U05",
+          "start": 49.5,
+          "end": 58.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "1분기 모듈 나오기 전까지 임시로 재고 연동 스크립트를 따로 만들어드리는 건 어떨까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S094-I2-U06",
+          "start": 58.7,
+          "end": 66.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대표원장님께 두 가지 안 같이 올릴게요. 10월 중순에 결과 알려드릴게요.",
+          "contact_id": "S094-C3"
+        }
+      ]
+    },
+    {
+      "id": "S094-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-21T11:00:00+09:00",
+      "title": "결과 통보와 재접촉 약속",
+      "owner_user_id": 36,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S094-C3",
+        "S094-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S094-I3-U00",
+          "start": 2.0,
+          "end": 10.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대표원장님이 한의 특화 기능이 있는 쪽으로 가기로 하셨어요. 경쟁사로 결정됐습니다.",
+          "contact_id": "S094-C3"
+        },
+        {
+          "id": "S094-I3-U01",
+          "start": 10.9,
+          "end": 15.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "아쉽네요. 결정에 가장 큰 이유가 뭐였을까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S094-I3-U02",
+          "start": 16.0,
+          "end": 27.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "약재 재고랑 첩약 조제 연동이 기본으로 되는 게 컸고, 가격도 그쪽이 설치비 90만 원에 월 8만 원까지 줬어요.",
+          "contact_id": "S094-C3"
+        },
+        {
+          "id": "S094-I3-U03",
+          "start": 27.9,
+          "end": 37.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "저는 솔직히 기능만 맞으면 조금 더 줘도 됐는데, 현장에서 재고 기능은 포기 못 하겠다고 해서요.",
+          "contact_id": "S094-C2"
+        },
+        {
+          "id": "S094-I3-U04",
+          "start": 38.2,
+          "end": 44.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "내년 1분기에 한의 특화 모듈이 나오면 다시 소개드려도 될까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S094-I3-U05",
+          "start": 45.1,
+          "end": 53.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "네, 신규 지점 두 곳이 2027년 3월에 열 예정이니까 그때 한번 연락 주세요.",
+          "contact_id": "S094-C2"
+        },
+        {
+          "id": "S094-I3-U06",
+          "start": 53.8,
+          "end": 58.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 2027년 2월 말에 연락드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S094-F01",
+      "interaction_id": "S094-I1",
+      "type": "requirement",
+      "said_by": "S094-C1",
+      "content": "서울·경기 한의원 8개 지점의 서로 다른 차트를 하나로 통합하고 싶다.",
+      "source_utterance_ids": [
+        "S094-I1-U00"
+      ]
+    },
+    {
+      "id": "S094-F02",
+      "interaction_id": "S094-I1",
+      "type": "requirement",
+      "said_by": "S094-C1",
+      "content": "첩약 처방, 약재 재고 관리, 침 치료 기록이 핵심이며 약재 재고가 가장 중요하다.",
+      "source_utterance_ids": [
+        "S094-I1-U02",
+        "S094-I1-U04"
+      ]
+    },
+    {
+      "id": "S094-F03",
+      "interaction_id": "S094-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "8개 지점 기준 견적서를 보낸다. 첫 제안은 지점당 설치비 150만 원, 월 12만 원이다.",
+      "source_utterance_ids": [
+        "S094-I1-U06",
+        "S094-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-28",
+      "due_text": "이번 달 28일 금요일까지",
+      "status": "done",
+      "resolved_in": "S094-I2"
+    },
+    {
+      "id": "S094-F04",
+      "interaction_id": "S094-I2",
+      "type": "price_reaction",
+      "said_by": "S094-C3",
+      "content": "견적 설치비 1,200만 원, 월 96만 원이 경쟁사의 지점당 설치비 100만 원, 월 9만 원보다 높다.",
+      "source_utterance_ids": [
+        "S094-I2-U00"
+      ]
+    },
+    {
+      "id": "S094-F05",
+      "interaction_id": "S094-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "8곳 일괄 계약 조건으로 설치비 120만 원, 월 10만 원을 제안했다.",
+      "source_utterance_ids": [
+        "S094-I2-U01"
+      ]
+    },
+    {
+      "id": "S094-F06",
+      "interaction_id": "S094-I2",
+      "type": "price_reaction",
+      "said_by": "S094-C3",
+      "content": "그래도 높다. 경쟁사는 약재 재고가 기본 포함이다.",
+      "source_utterance_ids": [
+        "S094-I2-U02"
+      ]
+    },
+    {
+      "id": "S094-F07",
+      "interaction_id": "S094-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "설치비 110만 원, 월 9만 5천 원, 36개월 약정으로 한 번 더 인하해 제안했다.",
+      "source_utterance_ids": [
+        "S094-I2-U03"
+      ]
+    },
+    {
+      "id": "S094-F08",
+      "interaction_id": "S094-I2",
+      "type": "requirement",
+      "said_by": "S094-C1",
+      "content": "약재 재고가 엑셀 연동 수준이면 현장 반발이 크다.",
+      "source_utterance_ids": [
+        "S094-I2-U04"
+      ]
+    },
+    {
+      "id": "S094-F09",
+      "interaction_id": "S094-I2",
+      "type": "promise",
+      "said_by": "S094-C3",
+      "content": "대표원장에게 두 가지 안을 올려 결과를 알려준다.",
+      "source_utterance_ids": [
+        "S094-I2-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-15",
+      "due_text": "10월 중순에",
+      "status": "done",
+      "resolved_in": "S094-I3"
+    },
+    {
+      "id": "S094-F10",
+      "interaction_id": "S094-I3",
+      "type": "decision",
+      "said_by": "S094-C3",
+      "content": "대표원장이 한의 특화 기능이 있는 경쟁사로 결정했다.",
+      "source_utterance_ids": [
+        "S094-I3-U00"
+      ]
+    },
+    {
+      "id": "S094-F11",
+      "interaction_id": "S094-I3",
+      "type": "requirement",
+      "said_by": "S094-C3",
+      "content": "탈락 사유는 약재 재고와 첩약 조제 연동이 기본이 아닌 점과 가격 차이다.",
+      "source_utterance_ids": [
+        "S094-I3-U02"
+      ]
+    },
+    {
+      "id": "S094-F12",
+      "interaction_id": "S094-I3",
+      "type": "price_reaction",
+      "said_by": "S094-C3",
+      "content": "경쟁사가 설치비 90만 원, 월 8만 원까지 제시했다.",
+      "source_utterance_ids": [
+        "S094-I3-U02"
+      ]
+    },
+    {
+      "id": "S094-F13",
+      "interaction_id": "S094-I3",
+      "type": "price_reaction",
+      "said_by": "S094-C2",
+      "content": "기능만 맞으면 조금 더 줘도 됐지만 현장이 재고 기능을 포기하지 못한다.",
+      "source_utterance_ids": [
+        "S094-I3-U03"
+      ]
+    },
+    {
+      "id": "S094-F14",
+      "interaction_id": "S094-I3",
+      "type": "purchase_timing",
+      "said_by": "S094-C2",
+      "content": "신규 지점 2곳이 2027년 3월에 열리므로 그때 다시 연락해도 좋다.",
+      "source_utterance_ids": [
+        "S094-I3-U05"
+      ]
+    },
+    {
+      "id": "S094-F15",
+      "interaction_id": "S094-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "한의 특화 모듈 출시 후 재접촉한다.",
+      "source_utterance_ids": [
+        "S094-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2027-02-28",
+      "due_text": "2027년 2월 말에",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S094-Q01",
+      "question": "해온한방네트워크 딜은 왜 놓쳤어?",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I3-U00",
+        "S094-I3-U02",
+        "S094-I3-U03"
+      ],
+      "answer": "약재 재고·첩약 조제 연동이 기본인 경쟁사를 대표원장이 선택했고 가격도 경쟁사가 더 낮았다."
+    },
+    {
+      "id": "S094-Q02",
+      "question": "해온한방네트워크와 가격은 어떻게 오갔어?",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U06",
+        "S094-I2-U00",
+        "S094-I2-U01",
+        "S094-I2-U03",
+        "S094-I3-U02"
+      ],
+      "answer": "지점당 150만 원·월 12만 원에서 120만·10만, 다시 110만·9만 5천 원(36개월)으로 내렸으나 경쟁사는 90만·8만 원까지 제시했다."
+    },
+    {
+      "id": "S094-Q03",
+      "question": "우리 제품에서 한의원에 모자란 기능이 뭐였지?",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U02",
+        "S094-I1-U03",
+        "S094-I1-U04",
+        "S094-I2-U04"
+      ],
+      "answer": "약재 재고 관리가 엑셀 연동까지만 되며 한의 특화 모듈은 내년 1분기 출시 예정이라 현장 반발이 컸다."
+    },
+    {
+      "id": "S094-Q04",
+      "question": "해온한방네트워크는 언제 다시 연락하면 돼?",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I3-U04",
+        "S094-I3-U05",
+        "S094-I3-U06"
+      ],
+      "answer": "신규 지점 2곳이 2027년 3월에 열리므로 2027년 2월 말에 연락하기로 했다."
+    },
+    {
+      "id": "S094-Q05",
+      "question": "해온한방네트워크는 어떤 규모의 도입을 원했어?",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U00",
+        "S094-I1-U05"
+      ],
+      "answer": "서울·경기 8개 지점의 서로 다른 차트를 하나로 통합하는 것."
+    },
+    {
+      "id": "S094-Q06",
+      "question": "해온한방네트워크에 내가 남긴 약속은?",
+      "kind": "structured",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_fact_ids": [
+        "S094-F15"
+      ],
+      "answer": "2027년 2월 말에 한의 특화 모듈 출시 소식과 함께 재접촉하기로 했다."
+    },
+    {
+      "id": "S094-Q01-P1",
+      "question": "이 한의원 체인이 다른 업체로 간 이유가 뭐야?",
+      "paraphrase_of": "S094-Q01",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I3-U00",
+        "S094-I3-U02",
+        "S094-I3-U03"
+      ],
+      "answer": "약재 재고·첩약 조제 연동이 기본인 경쟁사를 대표원장이 선택했고 가격도 경쟁사가 더 낮았다."
+    },
+    {
+      "id": "S094-Q01-P2",
+      "question": "우리가 탈락한 결정적 원인을 정리해줘.",
+      "paraphrase_of": "S094-Q01",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I3-U00",
+        "S094-I3-U02",
+        "S094-I3-U03"
+      ],
+      "answer": "약재 재고·첩약 조제 연동이 기본인 경쟁사를 대표원장이 선택했고 가격도 경쟁사가 더 낮았다."
+    },
+    {
+      "id": "S094-Q02-P1",
+      "question": "제시 금액을 몇 번 깎았고 상대 업체 조건은 어땠어?",
+      "paraphrase_of": "S094-Q02",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U06",
+        "S094-I2-U00",
+        "S094-I2-U01",
+        "S094-I2-U03",
+        "S094-I3-U02"
+      ],
+      "answer": "지점당 150만 원·월 12만 원에서 120만·10만, 다시 110만·9만 5천 원(36개월)으로 내렸으나 경쟁사는 90만·8만 원까지 제시했다."
+    },
+    {
+      "id": "S094-Q02-P2",
+      "question": "초기 제안가부터 마지막 인하안, 그리고 라이벌의 최저 조건을 알려줘.",
+      "paraphrase_of": "S094-Q02",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U06",
+        "S094-I2-U00",
+        "S094-I2-U01",
+        "S094-I2-U03",
+        "S094-I3-U02"
+      ],
+      "answer": "지점당 150만 원·월 12만 원에서 120만·10만, 다시 110만·9만 5천 원(36개월)으로 내렸으나 경쟁사는 90만·8만 원까지 제시했다."
+    },
+    {
+      "id": "S094-Q03-P1",
+      "question": "한방 병원 업무에 맞지 않았던 제품의 약점은?",
+      "paraphrase_of": "S094-Q03",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U02",
+        "S094-I1-U03",
+        "S094-I1-U04",
+        "S094-I2-U04"
+      ],
+      "answer": "약재 재고 관리가 엑셀 연동까지만 되며 한의 특화 모듈은 내년 1분기 출시 예정이라 현장 반발이 컸다."
+    },
+    {
+      "id": "S094-Q03-P2",
+      "question": "고객이 가장 중요하게 본 업종 전용 기능과 우리 상황을 알려줘.",
+      "paraphrase_of": "S094-Q03",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U02",
+        "S094-I1-U03",
+        "S094-I1-U04",
+        "S094-I2-U04"
+      ],
+      "answer": "약재 재고 관리가 엑셀 연동까지만 되며 한의 특화 모듈은 내년 1분기 출시 예정이라 현장 반발이 컸다."
+    },
+    {
+      "id": "S094-Q04-P1",
+      "question": "다음 접촉 적기와 그렇게 잡은 배경이 뭐야?",
+      "paraphrase_of": "S094-Q04",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I3-U04",
+        "S094-I3-U05",
+        "S094-I3-U06"
+      ],
+      "answer": "신규 지점 2곳이 2027년 3월에 열리므로 2027년 2월 말에 연락하기로 했다."
+    },
+    {
+      "id": "S094-Q04-P2",
+      "question": "새 매장 오픈에 맞춰 다시 제안할 시점은 언제로 합의했지?",
+      "paraphrase_of": "S094-Q04",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I3-U04",
+        "S094-I3-U05",
+        "S094-I3-U06"
+      ],
+      "answer": "신규 지점 2곳이 2027년 3월에 열리므로 2027년 2월 말에 연락하기로 했다."
+    },
+    {
+      "id": "S094-Q05-P1",
+      "question": "몇 개 점포를 대상으로 시스템을 하나로 묶으려 했어?",
+      "paraphrase_of": "S094-Q05",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U00",
+        "S094-I1-U05"
+      ],
+      "answer": "서울·경기 8개 지점의 서로 다른 차트를 하나로 통합하는 것."
+    },
+    {
+      "id": "S094-Q05-P2",
+      "question": "고객이 처음에 기대한 도입 범위가 어땠지?",
+      "paraphrase_of": "S094-Q05",
+      "kind": "semantic",
+      "company_id": "S094-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S094-I1-U00",
+        "S094-I1-U05"
+      ],
+      "answer": "서울·경기 8개 지점의 서로 다른 차트를 하나로 통합하는 것."
+    }
+  ]
+}

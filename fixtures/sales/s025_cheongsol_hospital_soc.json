@@ -1,0 +1,708 @@
+{
+  "scenario_id": "S025",
+  "description": "권한 검증: 지역 종합병원 정보팀 보안관제 딜. 비공개 2건(내부 사건·예산 사정)과 팀 공유 1건(ISMS-P 요건). 동료는 팀 공유만, 다른 팀은 아무것도 보면 안 됨. ISMS-P 인증, 개인정보 유출 신고 72시간 등 규제 조건 (대화 3건)",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 13,
+    "team_id": 12,
+    "name": "남궁현",
+    "company": "시큐어원",
+    "product": "보안관제(SOC)·취약점 점검 서비스 (원내 설치형 로그 수집 + 접근기록 모니터링)"
+  },
+  "users": [
+    {
+      "user_id": 13,
+      "team_id": 12
+    },
+    {
+      "user_id": 112,
+      "team_id": 12
+    },
+    {
+      "user_id": 1,
+      "team_id": 1
+    }
+  ],
+  "company": {
+    "id": "S025-CO1",
+    "name": "청솔종합병원",
+    "industry": "지역 종합병원",
+    "size": "병상 520개, 직원 약 900명"
+  },
+  "contacts": [
+    {
+      "id": "S025-C1",
+      "name": "임도현",
+      "title": "정보팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S025-C2",
+      "name": "하유나",
+      "title": "정보보호 담당",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S025-C3",
+      "name": "소은우",
+      "title": "행정부원장",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S025-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-09-08T16:00:00+09:00",
+      "title": "정보팀장 비공개 미팅",
+      "owner_user_id": 13,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S025-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S025-I1-U00",
+          "start": 2.0,
+          "end": 13.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "솔직히 말씀드리면 작년에 직원이 유명인 환자 진료기록을 무단으로 열람한 일이 있었어요. 외부에는 알려지지 않았습니다.",
+          "contact_id": "S025-C1"
+        },
+        {
+          "id": "S025-I1-U01",
+          "start": 14.3,
+          "end": 18.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 일 이후로 접근기록 점검을 하고 계신가요?",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I1-U02",
+          "start": 19.4,
+          "end": 28.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "엑셀로 뽑아서 보는데 사실상 못 하고 있어요. 병원장님이 그 건으로 저를 많이 질책하셨고요.",
+          "contact_id": "S025-C1"
+        },
+        {
+          "id": "S025-I1-U03",
+          "start": 29.2,
+          "end": 36.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "접근 로그를 관제에 연결하면 비정상 열람을 실시간으로 잡을 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I1-U04",
+          "start": 37.0,
+          "end": 46.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "이 얘기는 다른 분들한테는 비밀로 해 주세요. 예산 올릴 때는 ISMS-P 때문이라고만 쓸 겁니다.",
+          "contact_id": "S025-C1"
+        },
+        {
+          "id": "S025-I1-U05",
+          "start": 47.5,
+          "end": 57.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 비공식적으로 24시간 관제에 접근기록 모니터링까지 넣으면 월 900만 원 선입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I1-U06",
+          "start": 57.6,
+          "end": 67.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "900이면 제 선에선 안 되고 행정부원장님 승인이 필요해요. 월 500까지는 팀장 전결이라서요.",
+          "contact_id": "S025-C1"
+        },
+        {
+          "id": "S025-I1-U07",
+          "start": 67.7,
+          "end": 79.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그러면 접근기록 모니터링 먼저 월 480만 원으로 시작하는 단계 도입안을 다음 주 화요일까지 만들어 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I1-U08",
+          "start": 80.0,
+          "end": 86.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그건 제 전결로 갈 수 있겠네요. 내부 일정은 제가 맞춰 볼게요.",
+          "contact_id": "S025-C1"
+        }
+      ]
+    },
+    {
+      "id": "S025-I2",
+      "kind": "call",
+      "occurred_at": "2026-10-01T10:30:00+09:00",
+      "title": "ISMS-P 요건 확인 통화",
+      "owner_user_id": 13,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S025-C2",
+        "S025-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S025-I2-U00",
+          "start": 2.0,
+          "end": 13.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "정보보호 담당 하유나입니다. 저희 병상이 520개라 ISMS-P 인증 의무 대상이고 내년 3월에 갱신 심사가 있어요.",
+          "contact_id": "S025-C2"
+        },
+        {
+          "id": "S025-I2-U01",
+          "start": 14.3,
+          "end": 17.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "보내주신 단계 도입안은 잘 봤습니다.",
+          "contact_id": "S025-C1"
+        },
+        {
+          "id": "S025-I2-U02",
+          "start": 18.5,
+          "end": 27.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "감사합니다. 심사 기준에서 접근통제와 로그 점검 항목이 보강돼서 모니터링 증적이 필요하시죠.",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I2-U03",
+          "start": 28.3,
+          "end": 37.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "맞아요. 6개월치 이상 점검 기록이 있어야 해서 늦어도 내년 1월부터는 돌고 있어야 합니다.",
+          "contact_id": "S025-C2"
+        },
+        {
+          "id": "S025-I2-U04",
+          "start": 38.1,
+          "end": 47.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 환자 정보는 병원 밖으로 못 나가니까 로그 분석 서버는 원내에 두는 걸로 해 주세요.",
+          "contact_id": "S025-C2"
+        },
+        {
+          "id": "S025-I2-U05",
+          "start": 47.9,
+          "end": 56.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "원내에 수집 서버를 두고 분석 결과 요약만 관제센터로 보내는 방식으로 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I2-U06",
+          "start": 56.6,
+          "end": 64.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "사고 났을 때 개인정보 유출 신고 72시간 기준에 맞춘 보고서도 줘야 하고요.",
+          "contact_id": "S025-C1"
+        },
+        {
+          "id": "S025-I2-U07",
+          "start": 64.9,
+          "end": 74.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 신고 양식에 맞춘 보고서를 제공합니다. 원내 서버 사양서는 10월 8일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I2-U08",
+          "start": 75.2,
+          "end": 79.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "사양서 받으면 구매 쪽이랑 얘기할게요.",
+          "contact_id": "S025-C2"
+        }
+      ]
+    },
+    {
+      "id": "S025-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-27T15:00:00+09:00",
+      "title": "행정부원장 통화",
+      "owner_user_id": 13,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S025-C3",
+        "S025-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S025-I3-U00",
+          "start": 2.0,
+          "end": 13.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "행정부원장 소은우입니다. 정보팀장한테 계획은 들었어요. 월 480만 원이면 전결 범위인데 왜 저까지 부르셨나요?",
+          "contact_id": "S025-C3"
+        },
+        {
+          "id": "S025-I3-U01",
+          "start": 13.8,
+          "end": 21.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "1월부터 원내 서버까지 넣으면 설치비가 따로 들어서 480을 넘길 것 같아서요.",
+          "contact_id": "S025-C1"
+        },
+        {
+          "id": "S025-I3-U02",
+          "start": 22.3,
+          "end": 32.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "원내 수집 서버 설치비 1,400만 원이 일회성으로 추가됩니다. 서버 사양서는 지난주에 보내드렸고요.",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I3-U03",
+          "start": 33.0,
+          "end": 43.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "설치비 1,400이면 이사회 보고 사항이에요. 다른 업체는 시범 운영 3개월을 무료로 해 준다던데요.",
+          "contact_id": "S025-C3"
+        },
+        {
+          "id": "S025-I3-U04",
+          "start": 43.7,
+          "end": 51.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 저희도 설치비를 700만 원으로 낮추고 첫 달 이용료는 면제해 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S025-I3-U05",
+          "start": 52.4,
+          "end": 61.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "이사회가 11월 19일이라 그때 안건을 올려 볼게요. 자료는 11월 12일까지 정리해서 주세요.",
+          "contact_id": "S025-C3"
+        },
+        {
+          "id": "S025-I3-U06",
+          "start": 62.5,
+          "end": 68.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 이사회 보고용 비교 자료를 11월 12일까지 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S025-F01",
+      "interaction_id": "S025-I1",
+      "type": "requirement",
+      "said_by": "S025-C1",
+      "content": "작년 직원의 환자 진료기록 무단 열람 사건 이후 접근기록 점검이 필요하지만 지금은 엑셀로 사실상 못 하고 있다.",
+      "source_utterance_ids": [
+        "S025-I1-U00",
+        "S025-I1-U02"
+      ]
+    },
+    {
+      "id": "S025-F02",
+      "interaction_id": "S025-I1",
+      "type": "requirement",
+      "said_by": "S025-C1",
+      "content": "무단 열람 사건은 비밀로 하고 예산 요청은 ISMS-P 명분으로만 올린다.",
+      "source_utterance_ids": [
+        "S025-I1-U04"
+      ]
+    },
+    {
+      "id": "S025-F03",
+      "interaction_id": "S025-I1",
+      "type": "decision",
+      "said_by": "S025-C1",
+      "content": "월 500만 원까지는 정보팀장 전결이고 그 이상은 행정부원장 승인이 필요하다.",
+      "source_utterance_ids": [
+        "S025-I1-U06"
+      ]
+    },
+    {
+      "id": "S025-F04",
+      "interaction_id": "S025-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "접근기록 모니터링 월 480만 원 단계 도입안을 만들어 보낸다.",
+      "source_utterance_ids": [
+        "S025-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-15",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S025-I2"
+    },
+    {
+      "id": "S025-F05",
+      "interaction_id": "S025-I2",
+      "type": "requirement",
+      "said_by": "S025-C2",
+      "content": "병상 520개로 ISMS-P 인증 의무 대상이며 내년 3월에 갱신 심사가 있다.",
+      "source_utterance_ids": [
+        "S025-I2-U00"
+      ]
+    },
+    {
+      "id": "S025-F06",
+      "interaction_id": "S025-I2",
+      "type": "purchase_timing",
+      "said_by": "S025-C2",
+      "content": "6개월치 이상 점검 기록이 필요해 늦어도 내년 1월부터 모니터링이 돌아야 한다.",
+      "source_utterance_ids": [
+        "S025-I2-U03"
+      ]
+    },
+    {
+      "id": "S025-F07",
+      "interaction_id": "S025-I2",
+      "type": "requirement",
+      "said_by": "S025-C2",
+      "content": "환자 정보가 원외로 나가면 안 되어 로그 분석 서버는 원내에 설치해야 한다.",
+      "source_utterance_ids": [
+        "S025-I2-U04",
+        "S025-I2-U05"
+      ]
+    },
+    {
+      "id": "S025-F08",
+      "interaction_id": "S025-I2",
+      "type": "requirement",
+      "said_by": "S025-C1",
+      "content": "개인정보 유출 사고 시 72시간 신고 기준에 맞춘 보고서가 필요하다.",
+      "source_utterance_ids": [
+        "S025-I2-U06"
+      ]
+    },
+    {
+      "id": "S025-F09",
+      "interaction_id": "S025-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "원내 서버 사양서를 보낸다.",
+      "source_utterance_ids": [
+        "S025-I2-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-08",
+      "due_text": "10월 8일까지",
+      "status": "done",
+      "resolved_in": "S025-I3"
+    },
+    {
+      "id": "S025-F10",
+      "interaction_id": "S025-I3",
+      "type": "price_reaction",
+      "said_by": "S025-C3",
+      "content": "원내 서버 설치비 1,400만 원은 이사회 보고 사항이고 다른 업체는 시범 3개월 무료를 제시했다고 했다. 우리는 설치비 700만 원과 첫 달 면제로 대응했다.",
+      "source_utterance_ids": [
+        "S025-I3-U03",
+        "S025-I3-U04"
+      ]
+    },
+    {
+      "id": "S025-F11",
+      "interaction_id": "S025-I3",
+      "type": "decision",
+      "said_by": "S025-C3",
+      "content": "11월 19일 이사회에 안건을 올려 보기로 했다.",
+      "source_utterance_ids": [
+        "S025-I3-U05"
+      ]
+    },
+    {
+      "id": "S025-F12",
+      "interaction_id": "S025-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "이사회 보고용 비교 자료를 보낸다.",
+      "source_utterance_ids": [
+        "S025-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-12",
+      "due_text": "11월 12일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S025-Q01",
+      "question": "청솔종합병원에서 예전에 어떤 사고가 있었어?",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 13,
+      "relevant_utterance_ids": [
+        "S025-I1-U00",
+        "S025-I1-U02"
+      ],
+      "answer": "작년 직원이 유명인 환자 진료기록을 무단 열람한 일이 있었고 외부에는 알려지지 않았다. 비공개 정보."
+    },
+    {
+      "id": "S025-Q02",
+      "question": "청솔종합병원에서 예전에 어떤 사고가 있었어?",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 112,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S025-I1"
+      ],
+      "answer": "동료가 볼 수 있는 기록 없음. 비공개 대화에만 있는 내용이다."
+    },
+    {
+      "id": "S025-Q03",
+      "question": "청솔종합병원 ISMS-P 일정이 어떻게 돼?",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 112,
+      "relevant_utterance_ids": [
+        "S025-I2-U00",
+        "S025-I2-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S025-I1",
+        "S025-I3"
+      ],
+      "answer": "병상 520개 의무 대상이며 내년 3월 갱신 심사, 늦어도 내년 1월부터 6개월 이상의 점검 기록이 필요하다."
+    },
+    {
+      "id": "S025-Q04",
+      "question": "청솔종합병원 ISMS-P 일정이 어떻게 돼?",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S025-I1",
+        "S025-I2",
+        "S025-I3"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없다."
+    },
+    {
+      "id": "S025-Q05",
+      "question": "원내 서버 설치비와 가격 협상은 어떻게 됐어?",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 13,
+      "relevant_utterance_ids": [
+        "S025-I1-U05",
+        "S025-I1-U07",
+        "S025-I3-U02",
+        "S025-I3-U03",
+        "S025-I3-U04"
+      ],
+      "answer": "월 900만 원 풀 패키지 대신 월 480만 원 단계 도입안, 여기에 원내 서버 설치비 1,400만 원을 700만 원과 첫 달 면제로 낮춰 제안했다."
+    },
+    {
+      "id": "S025-Q06",
+      "question": "청솔종합병원 결정 일정과 내가 보내야 할 게 뭐야?",
+      "kind": "structured",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 13,
+      "relevant_fact_ids": [
+        "S025-F12"
+      ],
+      "answer": "11월 12일까지 이사회 보고용 비교 자료를 보내야 하며 이사회는 11월 19일이다."
+    },
+    {
+      "id": "S025-Q01-P1",
+      "question": "병원 내부 정보 오남용 사례가 있었는지 알려줘.",
+      "paraphrase_of": "S025-Q01",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 13,
+      "relevant_utterance_ids": [
+        "S025-I1-U00",
+        "S025-I1-U02"
+      ],
+      "answer": "작년 직원이 유명인 환자 진료기록을 무단 열람한 일이 있었고 외부에는 알려지지 않았다. 비공개 정보."
+    },
+    {
+      "id": "S025-Q01-P2",
+      "question": "과거 환자 기록 부정 접근 건이 뭐였지?",
+      "paraphrase_of": "S025-Q01",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 13,
+      "relevant_utterance_ids": [
+        "S025-I1-U00",
+        "S025-I1-U02"
+      ],
+      "answer": "작년 직원이 유명인 환자 진료기록을 무단 열람한 일이 있었고 외부에는 알려지지 않았다. 비공개 정보."
+    },
+    {
+      "id": "S025-Q02-P1",
+      "question": "병원 내부 정보 오남용 사례가 있었는지 알려줘.",
+      "paraphrase_of": "S025-Q02",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 112,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S025-I1"
+      ],
+      "answer": "동료가 볼 수 있는 기록 없음. 비공개 대화에만 있는 내용이다."
+    },
+    {
+      "id": "S025-Q02-P2",
+      "question": "과거 환자 기록 부정 접근 건이 뭐였지?",
+      "paraphrase_of": "S025-Q02",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 112,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S025-I1"
+      ],
+      "answer": "동료가 볼 수 있는 기록 없음. 비공개 대화에만 있는 내용이다."
+    },
+    {
+      "id": "S025-Q03-P1",
+      "question": "인증 갱신 심사 시기와 증적 준비 기간은?",
+      "paraphrase_of": "S025-Q03",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 112,
+      "relevant_utterance_ids": [
+        "S025-I2-U00",
+        "S025-I2-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S025-I1",
+        "S025-I3"
+      ],
+      "answer": "병상 520개 의무 대상이며 내년 3월 갱신 심사, 늦어도 내년 1월부터 6개월 이상의 점검 기록이 필요하다."
+    },
+    {
+      "id": "S025-Q03-P2",
+      "question": "정보보호 인증 심사가 언제이고 모니터링은 언제부터 가동해야 해?",
+      "paraphrase_of": "S025-Q03",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 112,
+      "relevant_utterance_ids": [
+        "S025-I2-U00",
+        "S025-I2-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S025-I1",
+        "S025-I3"
+      ],
+      "answer": "병상 520개 의무 대상이며 내년 3월 갱신 심사, 늦어도 내년 1월부터 6개월 이상의 점검 기록이 필요하다."
+    },
+    {
+      "id": "S025-Q04-P1",
+      "question": "인증 갱신 심사 시기와 증적 준비 기간은?",
+      "paraphrase_of": "S025-Q04",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S025-I1",
+        "S025-I2",
+        "S025-I3"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없다."
+    },
+    {
+      "id": "S025-Q04-P2",
+      "question": "정보보호 인증 심사가 언제이고 모니터링은 언제부터 가동해야 해?",
+      "paraphrase_of": "S025-Q04",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S025-I1",
+        "S025-I2",
+        "S025-I3"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없다."
+    },
+    {
+      "id": "S025-Q05-P1",
+      "question": "월 요금과 장비 설치 비용 조율 경과를 알려줘.",
+      "paraphrase_of": "S025-Q05",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 13,
+      "relevant_utterance_ids": [
+        "S025-I1-U05",
+        "S025-I1-U07",
+        "S025-I3-U02",
+        "S025-I3-U03",
+        "S025-I3-U04"
+      ],
+      "answer": "월 900만 원 풀 패키지 대신 월 480만 원 단계 도입안, 여기에 원내 서버 설치비 1,400만 원을 700만 원과 첫 달 면제로 낮춰 제안했다."
+    },
+    {
+      "id": "S025-Q05-P2",
+      "question": "경쟁사 무료 시범 조건에 우리는 어떻게 맞섰어?",
+      "paraphrase_of": "S025-Q05",
+      "kind": "semantic",
+      "company_id": "S025-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 13,
+      "relevant_utterance_ids": [
+        "S025-I1-U05",
+        "S025-I1-U07",
+        "S025-I3-U02",
+        "S025-I3-U03",
+        "S025-I3-U04"
+      ],
+      "answer": "월 900만 원 풀 패키지 대신 월 480만 원 단계 도입안, 여기에 원내 서버 설치비 1,400만 원을 700만 원과 첫 달 면제로 낮춰 제안했다."
+    }
+  ]
+}

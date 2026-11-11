@@ -1,0 +1,692 @@
+{
+  "scenario_id": "S045",
+  "description": "제약사 마케팅팀의 학술대회 판촉물. 여러 명(김 과장·김 대리 포함)이 동시에 말하고 가격이 여러 번 오간 뒤 2,750원에 합의.",
+  "fictional": true,
+  "as_of": "2026-11-03",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 20,
+    "team_id": 19,
+    "name": "엄태준",
+    "company": "프린트랩",
+    "product": "기업 판촉물·인쇄물 제작"
+  },
+  "users": [
+    {
+      "user_id": 20,
+      "team_id": 19
+    }
+  ],
+  "company": {
+    "id": "S045-CO1",
+    "name": "다온제약",
+    "industry": "제약사 마케팅팀",
+    "size": "직원 480명"
+  },
+  "contacts": [
+    {
+      "id": "S045-C1",
+      "name": "김지안",
+      "title": "마케팅 과장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S045-C2",
+      "name": "김도훈",
+      "title": "마케팅 대리",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S045-C3",
+      "name": "이채영",
+      "title": "마케팅팀장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S045-C4",
+      "name": "최영만",
+      "title": "구매팀 차장",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S045-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-20T11:00:00+09:00",
+      "title": "학술대회 판촉물 상담",
+      "owner_user_id": 20,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S045-C1",
+        "S045-C2",
+        "S045-C4"
+      ],
+      "utterances": [
+        {
+          "id": "S045-I1-U00",
+          "start": 2.0,
+          "end": 14.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "안녕하세요, 마케팅 김지안 과장입니다. 11월 26일 추계 학술대회 부스에 나눠줄 혈압 기록 수첩이랑 볼펜 세트가 필요해요.",
+          "contact_id": "S045-C1"
+        },
+        {
+          "id": "S045-I1-U01",
+          "start": 15.0,
+          "end": 17.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "수량은 얼마나 생각하세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S045-I1-U02",
+          "start": 18.1,
+          "end": 23.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "5,000세트요. 저희 제품 이름은 작게 들어가야 하고요.",
+          "contact_id": "S045-C1"
+        },
+        {
+          "id": "S045-I1-U03",
+          "start": 24.5,
+          "end": 36.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "저는 같은 팀 김도훈 대리예요. 브로셔도 8,000부 필요해요. 임상 자료 들어가고, 심의필 번호 문구를 꼭 넣어야 해서요.",
+          "contact_id": "S045-C2"
+        },
+        {
+          "id": "S045-I1-U04",
+          "start": 37.5,
+          "end": 41.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "맞아요, 심의필 문구 빠지면 안 돼요.",
+          "contact_id": "S045-C1"
+        },
+        {
+          "id": "S045-I1-U05",
+          "start": 41.9,
+          "end": 52.0,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "구매팀 최영만입니다. 의료인께 드리는 판촉물은 공정경쟁규약상 소비자가 기준 1만 원 이하여야 합니다.",
+          "contact_id": "S045-C4"
+        },
+        {
+          "id": "S045-I1-U06",
+          "start": 52.6,
+          "end": 57.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "세트당 3,200원으로 견적을 드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S045-I1-U07",
+          "start": 58.1,
+          "end": 63.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "음, 생각보다 비싸네요. 다시 맞춰봐 주시겠어요?",
+          "contact_id": "S045-C1"
+        },
+        {
+          "id": "S045-I1-U08",
+          "start": 63.6,
+          "end": 68.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 수정 견적은 다음 주 목요일까지 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S045-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-17T15:30:00+09:00",
+      "title": "단가 협의 미팅",
+      "owner_user_id": 20,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S045-C3",
+        "S045-C1",
+        "S045-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S045-I2-U00",
+          "start": 2.0,
+          "end": 12.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "마케팅팀장 이채영입니다. 수정 견적 봤는데 세트당 2,400원 정도로 맞춰야 부스 예산에 들어갑니다.",
+          "contact_id": "S045-C3"
+        },
+        {
+          "id": "S045-I2-U01",
+          "start": 12.7,
+          "end": 21.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "5,000세트로는 어려운 금액입니다. 8,000세트로 늘리시면 2,950원까지 가능해요.",
+          "contact_id": null
+        },
+        {
+          "id": "S045-I2-U02",
+          "start": 22.1,
+          "end": 27.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "8,000세트는 너무 많아요. 남으면 재고 부담이라서요.",
+          "contact_id": "S045-C1"
+        },
+        {
+          "id": "S045-I2-U03",
+          "start": 28.3,
+          "end": 35.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 5,000세트는 유지합시다. 그러면 2,600원은 안 될까요?",
+          "contact_id": "S045-C3"
+        },
+        {
+          "id": "S045-I2-U04",
+          "start": 35.6,
+          "end": 45.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "2,600원은 원가 아래입니다. 샘플 실물을 보시고 다시 이야기해요. 9월 25일까지 보내드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S045-I2-U05",
+          "start": 46.1,
+          "end": 52.2,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "심의필 번호 문구 최종본은 제가 10월 2일까지 드리겠습니다.",
+          "contact_id": "S045-C2"
+        },
+        {
+          "id": "S045-I2-U06",
+          "start": 52.8,
+          "end": 56.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋아요. 샘플 보고 다시 이야기합시다.",
+          "contact_id": "S045-C3"
+        }
+      ]
+    },
+    {
+      "id": "S045-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-22T10:00:00+09:00",
+      "title": "최종 단가 통화",
+      "owner_user_id": 20,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S045-C3",
+        "S045-C1",
+        "S045-C4"
+      ],
+      "utterances": [
+        {
+          "id": "S045-I3-U00",
+          "start": 2.0,
+          "end": 11.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "샘플은 만족스러웠어요. 심의필 문구도 반영됐고요. 단가만 마무리하죠. 2,600원에 해주세요.",
+          "contact_id": "S045-C3"
+        },
+        {
+          "id": "S045-I3-U01",
+          "start": 12.0,
+          "end": 22.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "팀장님, 2,600원은 정말 어렵고 2,750원이면 가능합니다. 대신 납기는 11월 20일까지 맞추겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S045-I3-U02",
+          "start": 23.4,
+          "end": 31.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "2,750원에 5,000세트면 1,375만 원이죠? 그러면 그걸로 하겠습니다.",
+          "contact_id": "S045-C3"
+        },
+        {
+          "id": "S045-I3-U03",
+          "start": 31.7,
+          "end": 35.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "네, 맞아요. 저희 쪽도 진행해요.",
+          "contact_id": "S045-C1"
+        },
+        {
+          "id": "S045-I3-U04",
+          "start": 35.7,
+          "end": 40.4,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "발주서는 제가 10월 30일까지 발행하겠습니다.",
+          "contact_id": "S045-C4"
+        },
+        {
+          "id": "S045-I3-U05",
+          "start": 41.0,
+          "end": 49.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "올해 학회가 세 번인데 이번 성과가 좋으면 내년에는 연간 계약도 생각해 보겠습니다.",
+          "contact_id": "S045-C3"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S045-F01",
+      "interaction_id": "S045-I1",
+      "type": "requirement",
+      "said_by": "S045-C1",
+      "content": "11월 26일 추계 학술대회 부스용 혈압 기록 수첩·볼펜 세트가 필요하다.",
+      "source_utterance_ids": [
+        "S045-I1-U00",
+        "S045-I1-U02"
+      ]
+    },
+    {
+      "id": "S045-F02",
+      "interaction_id": "S045-I1",
+      "type": "requirement",
+      "said_by": "S045-C2",
+      "content": "임상 자료가 들어가는 브로셔 8,000부에 심의필 번호 문구를 넣어야 한다.",
+      "source_utterance_ids": [
+        "S045-I1-U03"
+      ]
+    },
+    {
+      "id": "S045-F03",
+      "interaction_id": "S045-I1",
+      "type": "price_reaction",
+      "said_by": "S045-C1",
+      "content": "세트당 3,200원 견적이 생각보다 비싸다고 했다.",
+      "source_utterance_ids": [
+        "S045-I1-U07"
+      ]
+    },
+    {
+      "id": "S045-F04",
+      "interaction_id": "S045-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "수정 견적을 보낸다.",
+      "source_utterance_ids": [
+        "S045-I1-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-27",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S045-I2"
+    },
+    {
+      "id": "S045-F05",
+      "interaction_id": "S045-I2",
+      "type": "price_reaction",
+      "said_by": "S045-C3",
+      "content": "부스 예산상 세트당 2,400원 정도로 맞춰야 한다고 했다.",
+      "source_utterance_ids": [
+        "S045-I2-U00"
+      ]
+    },
+    {
+      "id": "S045-F06",
+      "interaction_id": "S045-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "8,000세트로 늘리면 세트당 2,950원까지 가능하다고 제안했다.",
+      "source_utterance_ids": [
+        "S045-I2-U01"
+      ]
+    },
+    {
+      "id": "S045-F07",
+      "interaction_id": "S045-I2",
+      "type": "decision",
+      "said_by": "S045-C3",
+      "content": "재고 부담 때문에 5,000세트를 유지하고 2,600원을 다시 요구했다.",
+      "source_utterance_ids": [
+        "S045-I2-U03"
+      ]
+    },
+    {
+      "id": "S045-F08",
+      "interaction_id": "S045-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "샘플 실물을 보낸다.",
+      "source_utterance_ids": [
+        "S045-I2-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-25",
+      "due_text": "9월 25일까지",
+      "status": "done",
+      "resolved_in": "S045-I3"
+    },
+    {
+      "id": "S045-F09",
+      "interaction_id": "S045-I2",
+      "type": "promise",
+      "said_by": "S045-C2",
+      "content": "심의필 번호 문구 최종본을 보낸다.",
+      "source_utterance_ids": [
+        "S045-I2-U05"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-02",
+      "due_text": "10월 2일까지",
+      "status": "done",
+      "resolved_in": "S045-I3"
+    },
+    {
+      "id": "S045-F10",
+      "interaction_id": "S045-I3",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "2,600원은 어렵고 2,750원이면 납기 11월 20일로 가능하다고 했다.",
+      "source_utterance_ids": [
+        "S045-I3-U01"
+      ]
+    },
+    {
+      "id": "S045-F11",
+      "interaction_id": "S045-I3",
+      "type": "decision",
+      "said_by": "S045-C3",
+      "content": "세트당 2,750원, 5,000세트 합계 1,375만 원으로 진행하기로 했다.",
+      "source_utterance_ids": [
+        "S045-I3-U02"
+      ],
+      "supersedes": "S045-F07"
+    },
+    {
+      "id": "S045-F12",
+      "interaction_id": "S045-I3",
+      "type": "promise",
+      "said_by": "S045-C4",
+      "content": "발주서를 발행한다.",
+      "source_utterance_ids": [
+        "S045-I3-U04"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-30",
+      "due_text": "10월 30일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S045-F13",
+      "interaction_id": "S045-I3",
+      "type": "purchase_timing",
+      "said_by": "me",
+      "content": "학술대회 개최 전인 11월 20일까지 납품한다.",
+      "source_utterance_ids": [
+        "S045-I3-U01"
+      ]
+    },
+    {
+      "id": "S045-F14",
+      "interaction_id": "S045-I3",
+      "type": "buying_signal",
+      "said_by": "S045-C3",
+      "content": "올해 학회가 세 번이고 이번 성과가 좋으면 내년 연간 계약을 검토하겠다고 했다.",
+      "source_utterance_ids": [
+        "S045-I3-U05"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S045-Q01",
+      "question": "학술대회에 어떤 물품이 필요하다고 했어?",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U00",
+        "S045-I1-U02",
+        "S045-I1-U03"
+      ],
+      "answer": "혈압 기록 수첩·볼펜 5,000세트와 브로셔 8,000부(심의필 문구 포함)."
+    },
+    {
+      "id": "S045-Q02",
+      "question": "의약품 관련 법적·규약 조건은?",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U03",
+        "S045-I1-U00"
+      ],
+      "answer": "브로셔에 심의필 번호 문구 필수."
+    },
+    {
+      "id": "S045-Q03",
+      "question": "가격 협상이 어떻게 진행됐어?",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U07",
+        "S045-I2-U00",
+        "S045-I2-U01",
+        "S045-I3-U01",
+        "S045-I3-U02"
+      ],
+      "answer": "3,200원 → 고객 2,400원 요구 → 8,000세트 2,950원 제안(거절) → 2,750원, 5,000세트 1,375만 원 합의."
+    },
+    {
+      "id": "S045-Q04",
+      "question": "8,000세트로 늘리자는 제안에 고객 반응은?",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I2-U01",
+        "S045-I2-U03"
+      ],
+      "answer": "재고 부담으로 거절하고 5,000세트 유지."
+    },
+    {
+      "id": "S045-Q05",
+      "question": "납기와 발주 시기는?",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I3-U01",
+        "S045-I3-U04"
+      ],
+      "answer": "11월 20일 납기, 발주서는 10월 30일까지 고객이 발행."
+    },
+    {
+      "id": "S045-Q06",
+      "question": "다온제약 건 고객이 아직 안 지킨 약속은?",
+      "kind": "structured",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_fact_ids": [
+        "S045-F12"
+      ],
+      "answer": "구매팀 최영만의 발주서 발행(10/30 기한 지남)."
+    },
+    {
+      "id": "S045-Q01-P1",
+      "question": "학회 부스에서 나눠줄 게 뭐래?",
+      "paraphrase_of": "S045-Q01",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U00",
+        "S045-I1-U02",
+        "S045-I1-U03"
+      ],
+      "answer": "혈압 기록 수첩·볼펜 5,000세트와 브로셔 8,000부(심의필 문구 포함)."
+    },
+    {
+      "id": "S045-Q01-P2",
+      "question": "주문하려는 제작물 종류와 수량은?",
+      "paraphrase_of": "S045-Q01",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U00",
+        "S045-I1-U02",
+        "S045-I1-U03"
+      ],
+      "answer": "혈압 기록 수첩·볼펜 5,000세트와 브로셔 8,000부(심의필 문구 포함)."
+    },
+    {
+      "id": "S045-Q02-P1",
+      "question": "제품 자료에 반드시 들어가야 하는 문구는?",
+      "paraphrase_of": "S045-Q02",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U03",
+        "S045-I1-U00"
+      ],
+      "answer": "브로셔에 심의필 번호 문구 필수."
+    },
+    {
+      "id": "S045-Q02-P2",
+      "question": "광고 심사와 관련해 신경 쓸 점이 뭐야?",
+      "paraphrase_of": "S045-Q02",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U03",
+        "S045-I1-U00"
+      ],
+      "answer": "브로셔에 심의필 번호 문구 필수."
+    },
+    {
+      "id": "S045-Q03-P1",
+      "question": "단가가 오간 과정을 알려줘.",
+      "paraphrase_of": "S045-Q03",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U07",
+        "S045-I2-U00",
+        "S045-I2-U01",
+        "S045-I3-U01",
+        "S045-I3-U02"
+      ],
+      "answer": "3,200원 → 고객 2,400원 요구 → 8,000세트 2,950원 제안(거절) → 2,750원, 5,000세트 1,375만 원 합의."
+    },
+    {
+      "id": "S045-Q03-P2",
+      "question": "최종적으로 얼마에 합의했어?",
+      "paraphrase_of": "S045-Q03",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I1-U07",
+        "S045-I2-U00",
+        "S045-I2-U01",
+        "S045-I3-U01",
+        "S045-I3-U02"
+      ],
+      "answer": "3,200원 → 고객 2,400원 요구 → 8,000세트 2,950원 제안(거절) → 2,750원, 5,000세트 1,375만 원 합의."
+    },
+    {
+      "id": "S045-Q04-P1",
+      "question": "물량을 늘리자는 말에 뭐라 했어?",
+      "paraphrase_of": "S045-Q04",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I2-U01",
+        "S045-I2-U03"
+      ],
+      "answer": "재고 부담으로 거절하고 5,000세트 유지."
+    },
+    {
+      "id": "S045-Q04-P2",
+      "question": "수량 확대 제안은 받아들여졌나?",
+      "paraphrase_of": "S045-Q04",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I2-U01",
+        "S045-I2-U03"
+      ],
+      "answer": "재고 부담으로 거절하고 5,000세트 유지."
+    },
+    {
+      "id": "S045-Q05-P1",
+      "question": "언제까지 납품하고 주문서는 언제 나오지?",
+      "paraphrase_of": "S045-Q05",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I3-U01",
+        "S045-I3-U04"
+      ],
+      "answer": "11월 20일 납기, 발주서는 10월 30일까지 고객이 발행."
+    },
+    {
+      "id": "S045-Q05-P2",
+      "question": "생산 마감과 구매 서류 시점 알려줘.",
+      "paraphrase_of": "S045-Q05",
+      "kind": "semantic",
+      "company_id": "S045-CO1",
+      "as_of": "2026-11-03",
+      "viewer_user_id": 20,
+      "relevant_utterance_ids": [
+        "S045-I3-U01",
+        "S045-I3-U04"
+      ],
+      "answer": "11월 20일 납기, 발주서는 10월 30일까지 고객이 발행."
+    }
+  ]
+}

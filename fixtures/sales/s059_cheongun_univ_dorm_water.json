@@ -1,0 +1,777 @@
+{
+  "scenario_id": "S059",
+  "description": "국립대 기숙사 3개 동 저수조·정수 설비 개선. 나라장터 경쟁입찰(추정가격 2천만 원 초과), 법정 저수조 청소 연 2회, 위생안전 인증 등 공공 조건, 방학 공사 시기와 예산 축소(1.2억 → 8천만 원, 3동만), 실측 보고서 기한이 9/25에서 10/21로 다시 정해짐",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 25,
+    "team_id": 24,
+    "name": "문서준",
+    "company": "아쿠아텍",
+    "product": "건물 정수·급수 설비 설치·관리"
+  },
+  "users": [
+    {
+      "user_id": 25,
+      "team_id": 24
+    }
+  ],
+  "company": {
+    "id": "S059-CO1",
+    "name": "청운대학교 생활관",
+    "industry": "국립대 기숙사",
+    "size": "3개 동 1,200실"
+  },
+  "contacts": [
+    {
+      "id": "S059-C1",
+      "name": "연서진",
+      "title": "생활관 시설 주무관",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S059-C2",
+      "name": "마상철",
+      "title": "생활관장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S059-C3",
+      "name": "곽보람",
+      "title": "회계과 계약 담당",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S059-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-28T10:00:00+09:00",
+      "title": "기숙사 수질 문제 첫 상담",
+      "owner_user_id": 25,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S059-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S059-I1-U00",
+          "start": 2.0,
+          "end": 10.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "연서진 주무관입니다. 생활관 3개 동 총 1,200실인데 저수조가 25년 넘었어요.",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I1-U01",
+          "start": 10.9,
+          "end": 14.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "녹물이나 수질 민원이 있으셨나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I1-U02",
+          "start": 14.7,
+          "end": 24.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "지난 학기 3동에서 녹물 민원이 열일곱 건 들어왔고요, 수질검사에서 탁도가 기준 근처까지 나왔어요.",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I1-U03",
+          "start": 25.2,
+          "end": 34.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저수조 전체 교체 말고 우선 필터와 자외선 살균, 수질 실시간 모니터링 구성이 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I1-U04",
+          "start": 34.8,
+          "end": 42.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "문제는 저희가 국립대라 예산이 정해져 있고 계약을 나라장터로 해야 해요.",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I1-U05",
+          "start": 42.6,
+          "end": 45.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "금액이 얼마 넘으면 경쟁입찰이죠?",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I1-U06",
+          "start": 46.4,
+          "end": 54.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "추정가격 2천만 원 초과면 경쟁이에요. 수의계약은 2천만 원 이하만 가능해요.",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I1-U07",
+          "start": 54.7,
+          "end": 62.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 규격서 작성은 저희가 도움 드릴게요. 특정 업체 규격이 되지 않게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I1-U08",
+          "start": 62.7,
+          "end": 69.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그러려면 현장 실측이 필요해요. 9월 11일에 와 보실래요?",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I1-U09",
+          "start": 69.8,
+          "end": 74.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "9월 11일 금요일 오전에 실측 가겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I1-U10",
+          "start": 74.7,
+          "end": 83.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아, 그리고 지난 3년 수질검사 성적서는 제가 다음 주 화요일까지 메일로 드릴게요.",
+          "contact_id": "S059-C1"
+        }
+      ]
+    },
+    {
+      "id": "S059-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-16T14:00:00+09:00",
+      "title": "실측 후 일정과 예산 확인",
+      "owner_user_id": 25,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S059-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S059-I2-U00",
+          "start": 2.0,
+          "end": 7.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "실측 와주셔서 감사했어요. 성적서는 보냈는데 보셨죠?",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I2-U01",
+          "start": 7.8,
+          "end": 16.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 받았습니다. 3동 탁도가 4월에 기준치 0.5NTU 중 0.4까지 올라갔더군요.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I2-U02",
+          "start": 16.9,
+          "end": 25.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "맞아요. 그래서 저수조 청소 주기도 지금 연 1회인데 법정 연 2회로 맞춰야 해서요.",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I2-U03",
+          "start": 26.0,
+          "end": 37.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "법정 기준에 맞춘 청소 계획이랑 같이 제안서에 넣을게요. 실측 보고서와 개략 견적은 9월 25일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I2-U04",
+          "start": 37.9,
+          "end": 44.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "공사는 겨울방학에 해야 하니까 12월 21일 이후만 가능해요.",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I2-U05",
+          "start": 44.6,
+          "end": 50.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 입찰 공고가 11월 초에는 나와야 시간이 맞아요.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I2-U06",
+          "start": 50.6,
+          "end": 59.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "예산은 올해 시설 유지 예산 1억 2천에서 쓸 거고, 3개 동 다 하기엔 모자랄 수 있어요.",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I2-U07",
+          "start": 60.4,
+          "end": 64.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "일단 견적은 동별로 나눠서 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S059-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-14T15:00:00+09:00",
+      "title": "보고서 지연과 예산·입찰 일정",
+      "owner_user_id": 25,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S059-C1",
+        "S059-C2",
+        "S059-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S059-I3-U00",
+          "start": 2.0,
+          "end": 11.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "약속드린 실측 보고서를 아직 못 드려서 죄송합니다. 3동 배관 상태를 추가로 확인하느라요.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I3-U01",
+          "start": 11.6,
+          "end": 18.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "괜찮아요. 근데 지연된 김에 3동 배관 내시경 결과도 넣어주세요.",
+          "contact_id": "S059-C1"
+        },
+        {
+          "id": "S059-I3-U02",
+          "start": 18.7,
+          "end": 26.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 그럼 10월 21일 수요일까지 보고서와 동별 견적 같이 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I3-U03",
+          "start": 26.7,
+          "end": 36.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "생활관장 마상철입니다. 올해 시설 예산이 8천만 원으로 줄어서 3동만 먼저 해야 할 것 같아요.",
+          "contact_id": "S059-C2"
+        },
+        {
+          "id": "S059-I3-U04",
+          "start": 36.8,
+          "end": 49.6,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "회계과 곽보람입니다. 추정가격이 2천만 원 넘으니까 나라장터 경쟁입찰이고, 공고는 학교 예산 확정 후라 11월 말이 될 거예요.",
+          "contact_id": "S059-C3"
+        },
+        {
+          "id": "S059-I3-U05",
+          "start": 50.2,
+          "end": 56.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 12월 말 공사는 빠듯하겠네요. 언제까지 마무리해야 하나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I3-U06",
+          "start": 57.3,
+          "end": 62.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "3월 학기 시작 전인 2월 20일까지 끝나야 해요.",
+          "contact_id": "S059-C2"
+        },
+        {
+          "id": "S059-I3-U07",
+          "start": 62.9,
+          "end": 71.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 입찰 참여를 위해 위생안전기준 인증서랑 조달 등록 서류도 준비해두겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S059-I3-U08",
+          "start": 72.1,
+          "end": 76.2,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "입찰 공고 나가면 제가 바로 연락드릴게요.",
+          "contact_id": "S059-C3"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S059-F01",
+      "interaction_id": "S059-I1",
+      "type": "requirement",
+      "said_by": "S059-C1",
+      "content": "생활관 3개 동 1,200실이고 저수조가 25년 넘게 노후했다.",
+      "source_utterance_ids": [
+        "S059-I1-U00"
+      ]
+    },
+    {
+      "id": "S059-F02",
+      "interaction_id": "S059-I1",
+      "type": "requirement",
+      "said_by": "S059-C1",
+      "content": "지난 학기 3동에서 녹물 민원이 17건 들어왔고 수질검사 탁도가 기준 근처까지 올랐다.",
+      "source_utterance_ids": [
+        "S059-I1-U02"
+      ]
+    },
+    {
+      "id": "S059-F03",
+      "interaction_id": "S059-I1",
+      "type": "requirement",
+      "said_by": "S059-C1",
+      "content": "국립대라 나라장터로 계약해야 하며 추정가격 2천만 원 초과는 경쟁입찰, 수의계약은 2천만 원 이하만 가능하다.",
+      "source_utterance_ids": [
+        "S059-I1-U04",
+        "S059-I1-U06"
+      ]
+    },
+    {
+      "id": "S059-F04",
+      "interaction_id": "S059-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "현장 실측을 위해 9월 11일 금요일 오전에 방문하기로 했다.",
+      "source_utterance_ids": [
+        "S059-I1-U09"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-11",
+      "due_text": "9월 11일 금요일 오전",
+      "status": "done",
+      "resolved_in": "S059-I2"
+    },
+    {
+      "id": "S059-F05",
+      "interaction_id": "S059-I1",
+      "type": "promise",
+      "said_by": "S059-C1",
+      "content": "지난 3년 수질검사 성적서를 메일로 보내기로 했다.",
+      "source_utterance_ids": [
+        "S059-I1-U10"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-01",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S059-I2"
+    },
+    {
+      "id": "S059-F06",
+      "interaction_id": "S059-I2",
+      "type": "requirement",
+      "said_by": "S059-C1",
+      "content": "저수조 청소 주기를 연 1회에서 법정 연 2회로 맞춰야 한다.",
+      "source_utterance_ids": [
+        "S059-I2-U02"
+      ]
+    },
+    {
+      "id": "S059-F07",
+      "interaction_id": "S059-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "실측 보고서와 개략 견적을 9월 25일까지 주기로 했다.",
+      "source_utterance_ids": [
+        "S059-I2-U03"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-25",
+      "due_text": "9월 25일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S059-F08",
+      "interaction_id": "S059-I2",
+      "type": "purchase_timing",
+      "said_by": "S059-C1",
+      "content": "공사는 겨울방학인 12월 21일 이후에만 가능하다.",
+      "source_utterance_ids": [
+        "S059-I2-U04"
+      ]
+    },
+    {
+      "id": "S059-F09",
+      "interaction_id": "S059-I2",
+      "type": "requirement",
+      "said_by": "S059-C1",
+      "content": "예산은 올해 시설 유지 예산 1억 2천만 원 안에서 쓰며 3개 동 모두는 모자랄 수 있다.",
+      "source_utterance_ids": [
+        "S059-I2-U06"
+      ]
+    },
+    {
+      "id": "S059-F10",
+      "interaction_id": "S059-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "3동 배관 내시경 결과를 포함한 실측 보고서와 동별 견적을 다시 정한 기한까지 주기로 했다.",
+      "source_utterance_ids": [
+        "S059-I3-U02"
+      ],
+      "supersedes": "S059-F07",
+      "owner": "me",
+      "due_at": "2026-10-21",
+      "due_text": "10월 21일 수요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S059-F11",
+      "interaction_id": "S059-I3",
+      "type": "requirement",
+      "said_by": "S059-C2",
+      "content": "시설 예산이 8천만 원으로 줄어 3동만 먼저 시공하게 된다.",
+      "source_utterance_ids": [
+        "S059-I3-U03"
+      ],
+      "supersedes": "S059-F09"
+    },
+    {
+      "id": "S059-F12",
+      "interaction_id": "S059-I3",
+      "type": "purchase_timing",
+      "said_by": "S059-C3",
+      "content": "나라장터 경쟁입찰 공고는 학교 예산 확정 후인 11월 말이 될 예정이다.",
+      "source_utterance_ids": [
+        "S059-I3-U04"
+      ]
+    },
+    {
+      "id": "S059-F13",
+      "interaction_id": "S059-I3",
+      "type": "purchase_timing",
+      "said_by": "S059-C2",
+      "content": "3월 학기 시작 전인 2월 20일까지 공사를 끝내야 한다.",
+      "source_utterance_ids": [
+        "S059-I3-U06"
+      ],
+      "supersedes": "S059-F08"
+    },
+    {
+      "id": "S059-F14",
+      "interaction_id": "S059-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "입찰 참여용 위생안전기준 인증서와 조달 등록 서류를 준비하기로 했다.",
+      "source_utterance_ids": [
+        "S059-I3-U07"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "준비해두겠습니다",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S059-F15",
+      "interaction_id": "S059-I3",
+      "type": "promise",
+      "said_by": "S059-C3",
+      "content": "입찰 공고가 나가면 바로 연락하기로 했다.",
+      "source_utterance_ids": [
+        "S059-I3-U08"
+      ],
+      "owner": "customer",
+      "due_at": null,
+      "due_text": "입찰 공고 나가면",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S059-Q01",
+      "question": "기숙사 수질 문제가 어느 정도야?",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I1-U00",
+        "S059-I1-U02",
+        "S059-I2-U01"
+      ],
+      "answer": "저수조 25년 넘음, 3동 녹물 민원 17건, 탁도가 기준 0.5NTU 중 0.4까지 상승."
+    },
+    {
+      "id": "S059-Q02",
+      "question": "공공 계약 절차와 조건은 어떻게 돼?",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I1-U04",
+        "S059-I1-U06",
+        "S059-I3-U04",
+        "S059-I3-U07"
+      ],
+      "answer": "나라장터 이용, 추정가격 2천만 원 초과 경쟁입찰, 공고는 11월 말, 위생안전기준 인증서와 조달 등록 서류 필요."
+    },
+    {
+      "id": "S059-Q03",
+      "question": "공사 시기는 언제까지로 정해졌어?",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U04",
+        "S059-I3-U04",
+        "S059-I3-U06"
+      ],
+      "answer": "겨울방학 12월 21일 이후 가능하며, 입찰 공고가 11월 말이라 2월 20일 학기 시작 전까지 완료해야 함."
+    },
+    {
+      "id": "S059-Q04",
+      "question": "예산은 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U06",
+        "S059-I3-U03"
+      ],
+      "answer": "시설 유지 예산 1억 2천만 원에서 8천만 원으로 줄어 3동만 먼저 진행."
+    },
+    {
+      "id": "S059-Q05",
+      "question": "실측 보고서 약속은 왜 늦어졌고 새 기한은?",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U03",
+        "S059-I3-U00",
+        "S059-I3-U01",
+        "S059-I3-U02"
+      ],
+      "answer": "9월 25일 약속이었으나 3동 배관을 추가 확인하느라 지연, 내시경 결과를 넣어 10월 21일로 재설정."
+    },
+    {
+      "id": "S059-Q06",
+      "question": "내가 아직 해야 할 일은?",
+      "kind": "structured",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_fact_ids": [
+        "S059-F10",
+        "S059-F14"
+      ],
+      "answer": "10월 21일 보고서·동별 견적 전달 약속과 인증서·조달 서류 준비가 열려 있음."
+    },
+    {
+      "id": "S059-Q07",
+      "question": "고객이 해주기로 한 건?",
+      "kind": "structured",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_fact_ids": [
+        "S059-F15"
+      ],
+      "answer": "곽보람 계약 담당이 입찰 공고가 나가면 바로 연락하기로 함."
+    },
+    {
+      "id": "S059-Q01-P1",
+      "question": "청운대 생활관 물 상태가 왜 문제라고 했지?",
+      "paraphrase_of": "S059-Q01",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I1-U00",
+        "S059-I1-U02",
+        "S059-I2-U01"
+      ],
+      "answer": "저수조 25년 넘음, 3동 녹물 민원 17건, 탁도가 기준 0.5NTU 중 0.4까지 상승."
+    },
+    {
+      "id": "S059-Q01-P2",
+      "question": "오래된 물탱크와 민원 건수를 알려줘.",
+      "paraphrase_of": "S059-Q01",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I1-U00",
+        "S059-I1-U02",
+        "S059-I2-U01"
+      ],
+      "answer": "저수조 25년 넘음, 3동 녹물 민원 17건, 탁도가 기준 0.5NTU 중 0.4까지 상승."
+    },
+    {
+      "id": "S059-Q02-P1",
+      "question": "관급 입찰에서 지켜야 할 규칙을 정리해줘.",
+      "paraphrase_of": "S059-Q02",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I1-U04",
+        "S059-I1-U06",
+        "S059-I3-U04",
+        "S059-I3-U07"
+      ],
+      "answer": "나라장터 이용, 추정가격 2천만 원 초과 경쟁입찰, 공고는 11월 말, 위생안전기준 인증서와 조달 등록 서류 필요."
+    },
+    {
+      "id": "S059-Q02-P2",
+      "question": "수의계약이 가능한 한도와 제출 서류는?",
+      "paraphrase_of": "S059-Q02",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I1-U04",
+        "S059-I1-U06",
+        "S059-I3-U04",
+        "S059-I3-U07"
+      ],
+      "answer": "나라장터 이용, 추정가격 2천만 원 초과 경쟁입찰, 공고는 11월 말, 위생안전기준 인증서와 조달 등록 서류 필요."
+    },
+    {
+      "id": "S059-Q03-P1",
+      "question": "시공 가능 기간과 마감일을 알려줘.",
+      "paraphrase_of": "S059-Q03",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U04",
+        "S059-I3-U04",
+        "S059-I3-U06"
+      ],
+      "answer": "겨울방학 12월 21일 이후 가능하며, 입찰 공고가 11월 말이라 2월 20일 학기 시작 전까지 완료해야 함."
+    },
+    {
+      "id": "S059-Q03-P2",
+      "question": "방학 중 언제부터 언제까지 작업할 수 있어?",
+      "paraphrase_of": "S059-Q03",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U04",
+        "S059-I3-U04",
+        "S059-I3-U06"
+      ],
+      "answer": "겨울방학 12월 21일 이후 가능하며, 입찰 공고가 11월 말이라 2월 20일 학기 시작 전까지 완료해야 함."
+    },
+    {
+      "id": "S059-Q04-P1",
+      "question": "쓸 수 있는 금액이 줄었다는 얘기가 있었나?",
+      "paraphrase_of": "S059-Q04",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U06",
+        "S059-I3-U03"
+      ],
+      "answer": "시설 유지 예산 1억 2천만 원에서 8천만 원으로 줄어 3동만 먼저 진행."
+    },
+    {
+      "id": "S059-Q04-P2",
+      "question": "전 동이 아니라 일부만 먼저 하는 이유가 뭐지?",
+      "paraphrase_of": "S059-Q04",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U06",
+        "S059-I3-U03"
+      ],
+      "answer": "시설 유지 예산 1억 2천만 원에서 8천만 원으로 줄어 3동만 먼저 진행."
+    },
+    {
+      "id": "S059-Q05-P1",
+      "question": "조사 결과 문서 전달이 밀린 사연은?",
+      "paraphrase_of": "S059-Q05",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U03",
+        "S059-I3-U00",
+        "S059-I3-U01",
+        "S059-I3-U02"
+      ],
+      "answer": "9월 25일 약속이었으나 3동 배관을 추가 확인하느라 지연, 내시경 결과를 넣어 10월 21일로 재설정."
+    },
+    {
+      "id": "S059-Q05-P2",
+      "question": "원래 약속한 날짜와 다시 잡은 날짜가 뭐야?",
+      "paraphrase_of": "S059-Q05",
+      "kind": "semantic",
+      "company_id": "S059-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 25,
+      "relevant_utterance_ids": [
+        "S059-I2-U03",
+        "S059-I3-U00",
+        "S059-I3-U01",
+        "S059-I3-U02"
+      ],
+      "answer": "9월 25일 약속이었으나 3동 배관을 추가 확인하느라 지연, 내시경 결과를 넣어 10월 21일로 재설정."
+    }
+  ]
+}

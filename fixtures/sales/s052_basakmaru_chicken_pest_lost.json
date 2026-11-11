@@ -1,0 +1,738 @@
+{
+  "scenario_id": "S052",
+  "description": "치킨 프랜차이즈 본사(가맹점 178곳)에 방역 정기 서비스 제안. 비공개 대화 2건 + 팀 공유 1건(권한 검증), 법무 검토에서 권장업체 등록이 사실상 강제로 판단되고 기존 협력사와 가격 차이로 실패, 2027년 2월 말 재접촉",
+  "fictional": true,
+  "as_of": "2026-10-30",
+  "deal_status": "lost",
+  "seller": {
+    "user_id": 22,
+    "team_id": 21,
+    "name": "표상훈",
+    "company": "위생지킴이",
+    "product": "방역·해충 관리 정기 서비스"
+  },
+  "users": [
+    {
+      "user_id": 22,
+      "team_id": 21
+    },
+    {
+      "user_id": 122,
+      "team_id": 21
+    },
+    {
+      "user_id": 1,
+      "team_id": 1
+    }
+  ],
+  "company": {
+    "id": "S052-CO1",
+    "name": "바삭마루치킨",
+    "industry": "프랜차이즈 치킨 본사",
+    "size": "가맹점 178곳, 본사 직원 60명"
+  },
+  "contacts": [
+    {
+      "id": "S052-C1",
+      "name": "육진수",
+      "title": "가맹지원팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S052-C2",
+      "name": "도소영",
+      "title": "운영본부장",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S052-I1",
+      "kind": "call",
+      "occurred_at": "2026-08-20T10:30:00+09:00",
+      "title": "가맹점 방역 최초 문의 (비공개 메모)",
+      "owner_user_id": 22,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S052-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S052-I1-U00",
+          "start": 2.0,
+          "end": 11.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "육진수입니다. 가맹점 위생 점검에서 해충 문제가 자꾸 나와서 방역 서비스를 알아보는 중이에요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I1-U01",
+          "start": 12.0,
+          "end": 14.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "가맹점이 몇 곳이나 되세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I1-U02",
+          "start": 15.3,
+          "end": 20.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "전국에 178개고요, 이 중에 수도권이 100개쯤 돼요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I1-U03",
+          "start": 21.5,
+          "end": 26.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "본사에서 일괄 계약하는 방식을 원하시는 건가요?",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I1-U04",
+          "start": 26.8,
+          "end": 39.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그게 이상적인데... 지금 쓰는 협력사 대표님이 우리 대표님이랑 오래된 사이라 좀 조심스러워요. 이건 우리끼리만 알고 계세요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I1-U05",
+          "start": 40.0,
+          "end": 44.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 알겠습니다. 외부에는 말씀 안 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I1-U06",
+          "start": 45.5,
+          "end": 50.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "일단 가맹점당 월 얼마 정도 되는지 견적부터 주세요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I1-U07",
+          "start": 51.3,
+          "end": 57.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "점포 평수별로 정리해서 다음 주 목요일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I1-U08",
+          "start": 57.8,
+          "end": 68.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그리고 저희는 가맹사업법 때문에 가맹점에 강제는 못 해요. 권장 업체로 등록하는 형태가 될 거예요.",
+          "contact_id": "S052-C1"
+        }
+      ]
+    },
+    {
+      "id": "S052-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-17T15:00:00+09:00",
+      "title": "견적 설명 (팀 공유)",
+      "owner_user_id": 22,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S052-C2",
+        "S052-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S052-I2-U00",
+          "start": 2.0,
+          "end": 10.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "가맹점 평균 15평 기준으로 방문 월 1회, 가맹점당 월 9만 5천 원 견적입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I2-U01",
+          "start": 10.9,
+          "end": 19.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "운영본부장 도소영입니다. 지금 협력사는 8만 원인데 1만 5천 원 차이가 크네요.",
+          "contact_id": "S052-C2"
+        },
+        {
+          "id": "S052-I2-U02",
+          "start": 19.6,
+          "end": 30.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "야간 긴급 출동이랑 점포별 점검 리포트가 포함입니다. 본사에서 한 화면으로 전 점포 현황을 보실 수 있고요.",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I2-U03",
+          "start": 31.0,
+          "end": 35.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "본사 입장에서는 그 대시보드가 마음에 들어요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I2-U04",
+          "start": 36.1,
+          "end": 45.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대시보드는 좋은데, 가맹점주분들이 비용에 민감해서 본사가 권장한다고 해도 따라올지가 문제예요.",
+          "contact_id": "S052-C2"
+        },
+        {
+          "id": "S052-I2-U05",
+          "start": 46.1,
+          "end": 51.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 신규 오픈 점포부터 시범으로 해보시는 건 어떠세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I2-U06",
+          "start": 52.3,
+          "end": 61.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "일단 법무팀 검토를 받아야 해요. 권장 업체 등록이 필수품목 지정으로 보일 수 있다고 해서요.",
+          "contact_id": "S052-C2"
+        },
+        {
+          "id": "S052-I2-U07",
+          "start": 62.3,
+          "end": 68.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "법무 검토는 제가 올려서 10월 15일까지 결과 알려드릴게요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I2-U08",
+          "start": 69.0,
+          "end": 76.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네 기다리겠습니다. 저는 신규 점포 시범 패키지 조건 정리해서 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S052-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-22T16:30:00+09:00",
+      "title": "불발 통보와 재접촉 시기 (비공개 메모)",
+      "owner_user_id": 22,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S052-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S052-I3-U00",
+          "start": 2.0,
+          "end": 14.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "표 팀장님, 안 좋은 소식이에요. 법무팀에서 본사가 특정 방역업체를 권장 등록하면 사실상 강제로 볼 소지가 있다고 해서요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I3-U01",
+          "start": 14.8,
+          "end": 19.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "아, 그렇군요. 신규 점포 시범도 어렵나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I3-U02",
+          "start": 19.7,
+          "end": 27.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "신규 점포는 기존 협력사가 개점 패키지로 이미 묶여 있어서 그것도 어려워요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I3-U03",
+          "start": 27.9,
+          "end": 30.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "가격 때문은 아닌가요?",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I3-U04",
+          "start": 30.7,
+          "end": 38.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "가격도 이유긴 해요. 월 1만 5천 원 차이를 점주들이 납득 못 할 것 같고요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I3-U05",
+          "start": 39.2,
+          "end": 44.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 다시 연락드릴 수 있는 시기가 있을까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S052-I3-U06",
+          "start": 45.0,
+          "end": 51.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "내년 3월에 협력사 계약이 끝나요. 2월 말쯤 다시 연락 주세요.",
+          "contact_id": "S052-C1"
+        },
+        {
+          "id": "S052-I3-U07",
+          "start": 52.1,
+          "end": 57.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 2027년 2월 말에 다시 연락드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S052-F01",
+      "interaction_id": "S052-I1",
+      "type": "requirement",
+      "said_by": "S052-C1",
+      "content": "가맹점 위생 점검에서 해충 문제가 반복돼 방역 서비스를 찾는다. 가맹점은 전국 178곳, 수도권 약 100곳이다.",
+      "source_utterance_ids": [
+        "S052-I1-U00",
+        "S052-I1-U02"
+      ]
+    },
+    {
+      "id": "S052-F02",
+      "interaction_id": "S052-I1",
+      "type": "requirement",
+      "said_by": "S052-C1",
+      "content": "가맹사업법 때문에 가맹점에 강제할 수 없어 권장 업체로 등록하는 형태가 되어야 한다.",
+      "source_utterance_ids": [
+        "S052-I1-U08"
+      ]
+    },
+    {
+      "id": "S052-F03",
+      "interaction_id": "S052-I1",
+      "type": "requirement",
+      "said_by": "S052-C1",
+      "content": "현 협력사 대표가 고객사 대표와 오래된 사이라 조심스러우며 이 사정은 외부에 비공개로 해달라고 했다.",
+      "source_utterance_ids": [
+        "S052-I1-U04"
+      ]
+    },
+    {
+      "id": "S052-F04",
+      "interaction_id": "S052-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "점포 평수별 가맹점당 월 견적을 정리해 보내기로 했다.",
+      "source_utterance_ids": [
+        "S052-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-27",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S052-I2"
+    },
+    {
+      "id": "S052-F05",
+      "interaction_id": "S052-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "가맹점 평균 15평, 월 1회 방문 기준 가맹점당 월 9만 5천 원을 제시했다.",
+      "source_utterance_ids": [
+        "S052-I2-U00"
+      ]
+    },
+    {
+      "id": "S052-F06",
+      "interaction_id": "S052-I2",
+      "type": "price_reaction",
+      "said_by": "S052-C2",
+      "content": "현 협력사는 월 8만 원이어서 1만 5천 원 차이가 크다고 했다.",
+      "source_utterance_ids": [
+        "S052-I2-U01"
+      ]
+    },
+    {
+      "id": "S052-F07",
+      "interaction_id": "S052-I2",
+      "type": "buying_signal",
+      "said_by": "S052-C1",
+      "content": "전 점포 현황을 한 화면에서 보는 대시보드가 마음에 든다고 했다.",
+      "source_utterance_ids": [
+        "S052-I2-U03"
+      ]
+    },
+    {
+      "id": "S052-F08",
+      "interaction_id": "S052-I2",
+      "type": "requirement",
+      "said_by": "S052-C2",
+      "content": "가맹점주들이 비용에 민감해 본사가 권장해도 따라올지가 걱정이다.",
+      "source_utterance_ids": [
+        "S052-I2-U04"
+      ]
+    },
+    {
+      "id": "S052-F09",
+      "interaction_id": "S052-I2",
+      "type": "promise",
+      "said_by": "S052-C1",
+      "content": "권장 업체 등록에 대한 법무팀 검토 결과를 알려주기로 했다.",
+      "source_utterance_ids": [
+        "S052-I2-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-15",
+      "due_text": "10월 15일까지",
+      "status": "done",
+      "resolved_in": "S052-I3"
+    },
+    {
+      "id": "S052-F10",
+      "interaction_id": "S052-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "신규 점포 시범 패키지 조건을 정리해 보내기로 했다.",
+      "source_utterance_ids": [
+        "S052-I2-U08"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "정리해서 보내겠습니다",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S052-F11",
+      "interaction_id": "S052-I3",
+      "type": "decision",
+      "said_by": "S052-C1",
+      "content": "법무팀이 본사의 권장 업체 등록을 사실상 강제로 볼 소지가 있다고 판단해 도입이 무산됐다.",
+      "source_utterance_ids": [
+        "S052-I3-U00"
+      ]
+    },
+    {
+      "id": "S052-F12",
+      "interaction_id": "S052-I3",
+      "type": "decision",
+      "said_by": "S052-C1",
+      "content": "신규 점포 시범도 기존 협력사의 개점 패키지에 묶여 있어 불가하다.",
+      "source_utterance_ids": [
+        "S052-I3-U02"
+      ]
+    },
+    {
+      "id": "S052-F13",
+      "interaction_id": "S052-I3",
+      "type": "price_reaction",
+      "said_by": "S052-C1",
+      "content": "월 1만 5천 원 차이를 가맹점주들이 납득하기 어렵다는 점이 실패 이유 중 하나다.",
+      "source_utterance_ids": [
+        "S052-I3-U04"
+      ]
+    },
+    {
+      "id": "S052-F14",
+      "interaction_id": "S052-I3",
+      "type": "purchase_timing",
+      "said_by": "S052-C1",
+      "content": "기존 협력사 계약이 2027년 3월에 끝나므로 2월 말에 다시 연락하면 된다.",
+      "source_utterance_ids": [
+        "S052-I3-U06"
+      ]
+    },
+    {
+      "id": "S052-F15",
+      "interaction_id": "S052-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "2027년 2월 말에 다시 연락하기로 했다.",
+      "source_utterance_ids": [
+        "S052-I3-U07"
+      ],
+      "owner": "me",
+      "due_at": "2027-02-28",
+      "due_text": "2027년 2월 말",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S052-Q01",
+      "question": "바삭마루치킨 딜은 왜 실패했어?",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I3-U00",
+        "S052-I3-U02",
+        "S052-I3-U04"
+      ],
+      "answer": "법무팀이 권장 업체 등록을 사실상 강제로 볼 수 있다고 했고, 신규 점포는 기존 협력사에 묶여 있으며 월 1만 5천 원 가격 차이도 부담."
+    },
+    {
+      "id": "S052-Q02",
+      "question": "다시 연락해야 하는 시기는 언제야?",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I3-U06",
+        "S052-I3-U07"
+      ],
+      "answer": "기존 협력사 계약이 끝나는 2027년 3월 직전인 2월 말."
+    },
+    {
+      "id": "S052-Q03",
+      "question": "고객사가 조심스러워하던 내부 사정이 뭐였지?",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I1-U04"
+      ],
+      "answer": "현 협력사 대표가 고객사 대표와 오랜 지인이라 조심스러우며 비공개를 요청함."
+    },
+    {
+      "id": "S052-Q04",
+      "question": "본사에 제안한 가맹점당 견적과 반응은?",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 122,
+      "relevant_utterance_ids": [
+        "S052-I2-U00",
+        "S052-I2-U01",
+        "S052-I2-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S052-I1",
+        "S052-I3"
+      ],
+      "answer": "가맹점당 월 9만 5천 원 제안, 현 협력사 8만 원 대비 1만 5천 원 차이가 크다는 반응, 대시보드는 호평."
+    },
+    {
+      "id": "S052-Q05",
+      "question": "바삭마루치킨 영업 기록을 보여줘.",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S052-I1",
+        "S052-I2",
+        "S052-I3"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없어야 함."
+    },
+    {
+      "id": "S052-Q06",
+      "question": "우리가 해야 하는 남은 약속은?",
+      "kind": "structured",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_fact_ids": [
+        "S052-F10",
+        "S052-F15"
+      ],
+      "answer": "신규 점포 시범 패키지 조건 발송(기한 모호)과 2027년 2월 말 재연락이 열려 있음."
+    },
+    {
+      "id": "S052-Q01-P1",
+      "question": "이 건이 무산된 까닭을 정리해줘.",
+      "paraphrase_of": "S052-Q01",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I3-U00",
+        "S052-I3-U02",
+        "S052-I3-U04"
+      ],
+      "answer": "법무팀이 권장 업체 등록을 사실상 강제로 볼 수 있다고 했고, 신규 점포는 기존 협력사에 묶여 있으며 월 1만 5천 원 가격 차이도 부담."
+    },
+    {
+      "id": "S052-Q01-P2",
+      "question": "치킨 본사 제안이 성사되지 못한 원인은?",
+      "paraphrase_of": "S052-Q01",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I3-U00",
+        "S052-I3-U02",
+        "S052-I3-U04"
+      ],
+      "answer": "법무팀이 권장 업체 등록을 사실상 강제로 볼 수 있다고 했고, 신규 점포는 기존 협력사에 묶여 있으며 월 1만 5천 원 가격 차이도 부담."
+    },
+    {
+      "id": "S052-Q02-P1",
+      "question": "재접근하기 좋은 때가 언제라고 했지?",
+      "paraphrase_of": "S052-Q02",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I3-U06",
+        "S052-I3-U07"
+      ],
+      "answer": "기존 협력사 계약이 끝나는 2027년 3월 직전인 2월 말."
+    },
+    {
+      "id": "S052-Q02-P2",
+      "question": "다음에 연락 드릴 적기를 알려줘.",
+      "paraphrase_of": "S052-Q02",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I3-U06",
+        "S052-I3-U07"
+      ],
+      "answer": "기존 협력사 계약이 끝나는 2027년 3월 직전인 2월 말."
+    },
+    {
+      "id": "S052-Q03-P1",
+      "question": "담당자가 말을 아끼던 인간관계 문제는?",
+      "paraphrase_of": "S052-Q03",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I1-U04"
+      ],
+      "answer": "현 협력사 대표가 고객사 대표와 오랜 지인이라 조심스러우며 비공개를 요청함."
+    },
+    {
+      "id": "S052-Q03-P2",
+      "question": "기존 거래처와의 관계에서 주의하라고 한 점이 뭐야?",
+      "paraphrase_of": "S052-Q03",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S052-I1-U04"
+      ],
+      "answer": "현 협력사 대표가 고객사 대표와 오랜 지인이라 조심스러우며 비공개를 요청함."
+    },
+    {
+      "id": "S052-Q04-P1",
+      "question": "점포당 월 비용 제시와 고객 반응이 어땠어?",
+      "paraphrase_of": "S052-Q04",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 122,
+      "relevant_utterance_ids": [
+        "S052-I2-U00",
+        "S052-I2-U01",
+        "S052-I2-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S052-I1",
+        "S052-I3"
+      ],
+      "answer": "가맹점당 월 9만 5천 원 제안, 현 협력사 8만 원 대비 1만 5천 원 차이가 크다는 반응, 대시보드는 호평."
+    },
+    {
+      "id": "S052-Q04-P2",
+      "question": "한 매장 기준으로 얼마를 불렀고 뭐라고 했는지 알려줘.",
+      "paraphrase_of": "S052-Q04",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 122,
+      "relevant_utterance_ids": [
+        "S052-I2-U00",
+        "S052-I2-U01",
+        "S052-I2-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S052-I1",
+        "S052-I3"
+      ],
+      "answer": "가맹점당 월 9만 5천 원 제안, 현 협력사 8만 원 대비 1만 5천 원 차이가 크다는 반응, 대시보드는 호평."
+    },
+    {
+      "id": "S052-Q05-P1",
+      "question": "이 프랜차이즈와 나눈 대화 내용을 알려줘.",
+      "paraphrase_of": "S052-Q05",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S052-I1",
+        "S052-I2",
+        "S052-I3"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없어야 함."
+    },
+    {
+      "id": "S052-Q05-P2",
+      "question": "치킨 본사 미팅 요약 좀 해줘.",
+      "paraphrase_of": "S052-Q05",
+      "kind": "semantic",
+      "company_id": "S052-CO1",
+      "as_of": "2026-10-30",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S052-I1",
+        "S052-I2",
+        "S052-I3"
+      ],
+      "answer": "다른 팀 사용자는 볼 수 있는 기록이 없어야 함."
+    }
+  ]
+}

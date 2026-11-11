@@ -1,0 +1,737 @@
+{
+  "scenario_id": "S011",
+  "description": "온라인 패션 쇼핑몰 모아스타일 물류센터에 WMS SaaS를 제안. 대화마다 사람 이름(자기소개, 다른 사람 언급)이 많이 나와 말한 사람과 언급된 사람을 혼동하지 않는지 본다. 이천 1곳 30명에서 이천+김포 2곳 50명으로 요구가 바뀌고, 월 요금이 300만 원에서 265만 원으로 조정된다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 9,
+    "team_id": 8,
+    "name": "강도윤",
+    "company": "로지큐브",
+    "product": "창고관리(WMS) SaaS"
+  },
+  "users": [
+    {
+      "user_id": 9,
+      "team_id": 8
+    }
+  ],
+  "company": {
+    "id": "S011-CO1",
+    "name": "모아스타일",
+    "industry": "온라인 패션 쇼핑몰 물류센터",
+    "size": "물류센터 1곳(이천), 11월 김포 신규 오픈, SKU 약 1만 2천 개"
+  },
+  "contacts": [
+    {
+      "id": "S011-C1",
+      "name": "위서윤",
+      "title": "물류팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S011-C2",
+      "name": "반도현",
+      "title": "재고관리 대리",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S011-C3",
+      "name": "설태우",
+      "title": "대표",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S011-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-18T14:00:00+09:00",
+      "title": "WMS 도입 첫 미팅",
+      "owner_user_id": 9,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S011-C1",
+        "S011-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S011-I1-U00",
+          "start": 2.0,
+          "end": 11.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "안녕하세요, 모아스타일 물류팀 위서윤입니다. 저희 재고 담당 반도현 대리도 같이 들어왔어요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I1-U01",
+          "start": 11.8,
+          "end": 23.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "반도현입니다. 서윤 팀장님 말씀대로 지금 엑셀로 재고를 맞추는데, 반품이 하루 400건씩 들어와서 감당이 안 돼요.",
+          "contact_id": "S011-C2"
+        },
+        {
+          "id": "S011-I1-U02",
+          "start": 23.9,
+          "end": 34.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "로지큐브 강도윤입니다. 반품 입고랑 재고 위치 관리가 저희 WMS 핵심 기능이라 잘 맞을 것 같습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S011-I1-U03",
+          "start": 34.8,
+          "end": 44.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "물류센터는 경기 이천에 한 곳이고 SKU가 1만 2천 개예요. 일단 이천센터만 먼저 쓰려고 해요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I1-U04",
+          "start": 45.1,
+          "end": 48.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 이용하실 분은 몇 분 정도예요?",
+          "contact_id": null
+        },
+        {
+          "id": "S011-I1-U05",
+          "start": 49.3,
+          "end": 58.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "현장 직원 30명이 핸드 스캐너를 쓸 거예요. 스캐너는 저희가 이미 20대 갖고 있고요.",
+          "contact_id": "S011-C2"
+        },
+        {
+          "id": "S011-I1-U06",
+          "start": 58.7,
+          "end": 66.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 스캐너 호환 목록을 확인해서 이번 주 금요일까지 메일로 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S011-I1-U07",
+          "start": 67.0,
+          "end": 77.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네. 설태우 대표님께 보고하려면 9월 중순 전에 견적이 필요하고요, 추석 연휴 전에는 계약하고 싶어요.",
+          "contact_id": "S011-C1"
+        }
+      ]
+    },
+    {
+      "id": "S011-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-15T11:00:00+09:00",
+      "title": "범위 변경과 견적",
+      "owner_user_id": 9,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S011-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S011-I2-U00",
+          "start": 2.0,
+          "end": 10.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "강 과장님, 위서윤이에요. 반도현 대리는 오늘 김포센터에 나가 있어서 저만 들어왔어요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I2-U01",
+          "start": 11.2,
+          "end": 18.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네 팀장님. 스캐너 호환 목록은 8월 21일에 메일로 드렸는데 확인하셨어요?",
+          "contact_id": null
+        },
+        {
+          "id": "S011-I2-U02",
+          "start": 19.4,
+          "end": 35.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 우리 스캐너 20대 다 된다고 해서 안심했어요. 그런데 계획이 바뀌었어요. 11월에 김포에 센터를 새로 열어서 이천이랑 김포 두 곳에 같이 넣어야 해요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I2-U03",
+          "start": 35.8,
+          "end": 43.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "사용자도 30명에서 50명으로 늘고요, 김포는 스캐너를 15대 새로 사야 해요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I2-U04",
+          "start": 44.3,
+          "end": 54.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그러면 센터당 월 100만 원에 사용자 1인당 월 2만 원이라서, 합계 월 300만 원 정도 됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S011-I2-U05",
+          "start": 55.0,
+          "end": 62.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "300만 원은 좀 높네요. 설태우 대표님은 250만 원 안쪽을 생각하고 계세요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I2-U06",
+          "start": 63.5,
+          "end": 71.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "두 센터 묶음 조건으로 다시 계산해서 이번 주 금요일까지 재견적 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S011-I2-U07",
+          "start": 71.8,
+          "end": 79.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아, 그리고 패션몰에서 실제로 쓰는 레퍼런스가 있으면 대표님이 보고 싶어 하세요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I2-U08",
+          "start": 80.5,
+          "end": 85.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "한 곳 소개해서 통화하실 수 있게 연결해 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S011-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-13T15:00:00+09:00",
+      "title": "대표 참석 최종 조율",
+      "owner_user_id": 9,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S011-C1",
+        "S011-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S011-I3-U00",
+          "start": 2.0,
+          "end": 11.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "지난달 18일에 주신 재견적 280만 원 안을 설태우 대표님이 보셨어요. 대표님 직접 말씀하세요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I3-U01",
+          "start": 12.3,
+          "end": 21.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "설태우입니다. 서윤 팀장한테 얘기 많이 들었어요. 280도 부담이라 250만 원에 안 될까요?",
+          "contact_id": "S011-C3"
+        },
+        {
+          "id": "S011-I3-U02",
+          "start": 22.3,
+          "end": 29.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희가 낼 수 있는 최선은, 12개월 약정을 해주시면 월 265만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S011-I3-U03",
+          "start": 30.5,
+          "end": 40.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "265만 원이면 좋아요. 그걸로 하죠. 김포 오픈이 11월 16일이라 그 전에 설치가 끝나야 해요.",
+          "contact_id": "S011-C3"
+        },
+        {
+          "id": "S011-I3-U04",
+          "start": 41.0,
+          "end": 46.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 계약서는 10월 20일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S011-I3-U05",
+          "start": 47.2,
+          "end": 55.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저는 반도현 대리랑 11월 2일까지 김포센터 SKU 마스터 엑셀을 정리해서 드릴게요.",
+          "contact_id": "S011-C1"
+        },
+        {
+          "id": "S011-I3-U06",
+          "start": 56.3,
+          "end": 64.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "도입은 이걸로 결정하고, 계약서 오면 법무 검토를 거쳐서 10월 말에 날인하겠습니다.",
+          "contact_id": "S011-C3"
+        },
+        {
+          "id": "S011-I3-U07",
+          "start": 65.4,
+          "end": 70.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "감사합니다. 김포 오픈 전에 차질 없도록 하겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S011-F01",
+      "interaction_id": "S011-I1",
+      "type": "requirement",
+      "said_by": "S011-C2",
+      "content": "반품이 하루 400건씩 들어와 엑셀 재고 관리가 한계에 이르렀다.",
+      "source_utterance_ids": [
+        "S011-I1-U01"
+      ]
+    },
+    {
+      "id": "S011-F02",
+      "interaction_id": "S011-I1",
+      "type": "requirement",
+      "said_by": "S011-C1",
+      "content": "이천센터 한 곳만 먼저 도입하며 SKU는 약 1만 2천 개다.",
+      "source_utterance_ids": [
+        "S011-I1-U03"
+      ]
+    },
+    {
+      "id": "S011-F03",
+      "interaction_id": "S011-I1",
+      "type": "requirement",
+      "said_by": "S011-C2",
+      "content": "현장 직원 30명이 쓰고 핸드 스캐너 20대는 이미 보유하고 있다.",
+      "source_utterance_ids": [
+        "S011-I1-U05"
+      ]
+    },
+    {
+      "id": "S011-F04",
+      "interaction_id": "S011-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "스캐너 호환 목록을 메일로 보내기로 했다.",
+      "source_utterance_ids": [
+        "S011-I1-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-21",
+      "due_text": "이번 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S011-I2"
+    },
+    {
+      "id": "S011-F05",
+      "interaction_id": "S011-I1",
+      "type": "purchase_timing",
+      "said_by": "S011-C1",
+      "content": "대표 보고를 위해 9월 중순 전에 견적이 필요하고 추석 연휴 전 계약을 원한다.",
+      "source_utterance_ids": [
+        "S011-I1-U07"
+      ]
+    },
+    {
+      "id": "S011-F06",
+      "interaction_id": "S011-I2",
+      "type": "requirement",
+      "said_by": "S011-C1",
+      "content": "11월 김포 신규 센터가 열려 이천과 김포 두 곳에 함께 도입해야 한다.",
+      "source_utterance_ids": [
+        "S011-I2-U02"
+      ],
+      "supersedes": "S011-F02"
+    },
+    {
+      "id": "S011-F07",
+      "interaction_id": "S011-I2",
+      "type": "requirement",
+      "said_by": "S011-C1",
+      "content": "사용자가 30명에서 50명으로 늘고 김포용 스캐너 15대를 새로 구매한다.",
+      "source_utterance_ids": [
+        "S011-I2-U03"
+      ],
+      "supersedes": "S011-F03"
+    },
+    {
+      "id": "S011-F08",
+      "interaction_id": "S011-I2",
+      "type": "price_reaction",
+      "said_by": "S011-C1",
+      "content": "월 300만 원은 높고 대표는 월 250만 원 안쪽을 원한다.",
+      "source_utterance_ids": [
+        "S011-I2-U05"
+      ]
+    },
+    {
+      "id": "S011-F09",
+      "interaction_id": "S011-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "두 센터 묶음 조건으로 재견적을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S011-I2-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-18",
+      "due_text": "이번 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S011-I3"
+    },
+    {
+      "id": "S011-F10",
+      "interaction_id": "S011-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "패션 쇼핑몰 레퍼런스 고객과 통화를 연결해 주기로 했다.",
+      "source_utterance_ids": [
+        "S011-I2-U08"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "연결해 드리겠습니다",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S011-F11",
+      "interaction_id": "S011-I3",
+      "type": "price_reaction",
+      "said_by": "S011-C3",
+      "content": "대표는 월 280만 원도 부담스러워 250만 원을 요청했다.",
+      "source_utterance_ids": [
+        "S011-I3-U01"
+      ]
+    },
+    {
+      "id": "S011-F12",
+      "interaction_id": "S011-I3",
+      "type": "decision",
+      "said_by": "S011-C3",
+      "content": "12개월 약정에 월 265만 원으로 도입을 결정했고 김포 오픈일 11월 16일 전 설치가 필요하다.",
+      "source_utterance_ids": [
+        "S011-I3-U03"
+      ]
+    },
+    {
+      "id": "S011-F13",
+      "interaction_id": "S011-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "계약서를 10월 20일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S011-I3-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-20",
+      "due_text": "10월 20일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S011-F14",
+      "interaction_id": "S011-I3",
+      "type": "promise",
+      "said_by": "S011-C1",
+      "content": "김포센터 SKU 마스터 엑셀을 정리해 전달하기로 했다.",
+      "source_utterance_ids": [
+        "S011-I3-U05"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-02",
+      "due_text": "11월 2일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S011-F15",
+      "interaction_id": "S011-I3",
+      "type": "purchase_timing",
+      "said_by": "S011-C3",
+      "content": "계약서를 받으면 법무 검토 후 10월 말에 날인할 계획이다.",
+      "source_utterance_ids": [
+        "S011-I3-U06"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S011-Q01",
+      "question": "모아스타일이 지금 재고 관리에서 겪는 문제가 뭐야?",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U01"
+      ],
+      "answer": "엑셀로 재고를 맞추는데 반품이 하루 400건씩 들어와 감당이 안 된다."
+    },
+    {
+      "id": "S011-Q02",
+      "question": "도입 범위가 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U03",
+        "S011-I2-U02",
+        "S011-I2-U03"
+      ],
+      "answer": "처음엔 이천 1곳 30명이었으나 김포 신규 센터가 더해져 2곳 50명으로 늘었다."
+    },
+    {
+      "id": "S011-Q03",
+      "question": "가격 협상은 어떻게 진행됐어?",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I2-U04",
+        "S011-I2-U05",
+        "S011-I3-U01",
+        "S011-I3-U02",
+        "S011-I3-U03"
+      ],
+      "answer": "월 300만 원 제시, 대표는 250만 원 희망, 재견적 280만 원을 거쳐 12개월 약정 조건 265만 원으로 합의했다."
+    },
+    {
+      "id": "S011-Q04",
+      "question": "설태우 대표는 어떤 조건에서 승인했어?",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I3-U03",
+        "S011-I3-U06"
+      ],
+      "answer": "12개월 약정 월 265만 원이면 도입하며, 김포 오픈(11/16) 전 설치와 10월 말 날인을 원한다."
+    },
+    {
+      "id": "S011-Q05",
+      "question": "계약과 구축 시기는 언제로 잡혀 있어?",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U07",
+        "S011-I3-U03",
+        "S011-I3-U06"
+      ],
+      "answer": "처음엔 추석 전 계약을 원했고, 최종은 10월 말 날인, 김포 오픈 11월 16일 전 설치다."
+    },
+    {
+      "id": "S011-Q06",
+      "question": "우리가 아직 못 지킨 약속이 뭐야?",
+      "kind": "structured",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_fact_ids": [
+        "S011-F10",
+        "S011-F13"
+      ],
+      "answer": "패션몰 레퍼런스 연결과 10월 20일까지 보내기로 한 계약서가 미완료다."
+    },
+    {
+      "id": "S011-Q07",
+      "question": "모아스타일이 하기로 하고 아직 안 한 일은?",
+      "kind": "structured",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_fact_ids": [
+        "S011-F14"
+      ],
+      "answer": "11월 2일까지 김포센터 SKU 마스터 엑셀을 주기로 했으나 아직 받지 못했다."
+    },
+    {
+      "id": "S011-Q01-P1",
+      "question": "그쪽 창고 업무가 왜 힘들다고 했지?",
+      "paraphrase_of": "S011-Q01",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U01"
+      ],
+      "answer": "엑셀로 재고를 맞추는데 반품이 하루 400건씩 들어와 감당이 안 된다."
+    },
+    {
+      "id": "S011-Q01-P2",
+      "question": "모아스타일 현장에서 수작업 때문에 생기는 부담이 뭐야?",
+      "paraphrase_of": "S011-Q01",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U01"
+      ],
+      "answer": "엑셀로 재고를 맞추는데 반품이 하루 400건씩 들어와 감당이 안 된다."
+    },
+    {
+      "id": "S011-Q02-P1",
+      "question": "처음엔 한 군데만 한다더니 지금은 사업장이 몇 개고 몇 명이 쓰기로 했어?",
+      "paraphrase_of": "S011-Q02",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U03",
+        "S011-I2-U02",
+        "S011-I2-U03"
+      ],
+      "answer": "처음엔 이천 1곳 30명이었으나 김포 신규 센터가 더해져 2곳 50명으로 늘었다."
+    },
+    {
+      "id": "S011-Q02-P2",
+      "question": "사업장 수와 이용 인원이 달라진 내용을 알려줘.",
+      "paraphrase_of": "S011-Q02",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U03",
+        "S011-I2-U02",
+        "S011-I2-U03"
+      ],
+      "answer": "처음엔 이천 1곳 30명이었으나 김포 신규 센터가 더해져 2곳 50명으로 늘었다."
+    },
+    {
+      "id": "S011-Q03-P1",
+      "question": "월 사용료가 얼마로 정해졌고 거기까지 어떤 숫자가 오갔어?",
+      "paraphrase_of": "S011-Q03",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I2-U04",
+        "S011-I2-U05",
+        "S011-I3-U01",
+        "S011-I3-U02",
+        "S011-I3-U03"
+      ],
+      "answer": "월 300만 원 제시, 대표는 250만 원 희망, 재견적 280만 원을 거쳐 12개월 약정 조건 265만 원으로 합의했다."
+    },
+    {
+      "id": "S011-Q03-P2",
+      "question": "비용 조율이 어떻게 마무리됐는지 알려줘.",
+      "paraphrase_of": "S011-Q03",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I2-U04",
+        "S011-I2-U05",
+        "S011-I3-U01",
+        "S011-I3-U02",
+        "S011-I3-U03"
+      ],
+      "answer": "월 300만 원 제시, 대표는 250만 원 희망, 재견적 280만 원을 거쳐 12개월 약정 조건 265만 원으로 합의했다."
+    },
+    {
+      "id": "S011-Q04-P1",
+      "question": "최종 결재자가 오케이한 조건이 뭐야?",
+      "paraphrase_of": "S011-Q04",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I3-U03",
+        "S011-I3-U06"
+      ],
+      "answer": "12개월 약정 월 265만 원이면 도입하며, 김포 오픈(11/16) 전 설치와 10월 말 날인을 원한다."
+    },
+    {
+      "id": "S011-Q04-P2",
+      "question": "사장님이 확정한 이유와 계약 일정을 알려줘.",
+      "paraphrase_of": "S011-Q04",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I3-U03",
+        "S011-I3-U06"
+      ],
+      "answer": "12개월 약정 월 265만 원이면 도입하며, 김포 오픈(11/16) 전 설치와 10월 말 날인을 원한다."
+    },
+    {
+      "id": "S011-Q05-P1",
+      "question": "서명과 설치는 언제까지 끝내야 해?",
+      "paraphrase_of": "S011-Q05",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U07",
+        "S011-I3-U03",
+        "S011-I3-U06"
+      ],
+      "answer": "처음엔 추석 전 계약을 원했고, 최종은 10월 말 날인, 김포 오픈 11월 16일 전 설치다."
+    },
+    {
+      "id": "S011-Q05-P2",
+      "question": "일정상 마감 시점들을 정리해줘.",
+      "paraphrase_of": "S011-Q05",
+      "kind": "semantic",
+      "company_id": "S011-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 9,
+      "relevant_utterance_ids": [
+        "S011-I1-U07",
+        "S011-I3-U03",
+        "S011-I3-U06"
+      ],
+      "answer": "처음엔 추석 전 계약을 원했고, 최종은 10월 말 날인, 김포 오픈 11월 16일 전 설치다."
+    }
+  ]
+}

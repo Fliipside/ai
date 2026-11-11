@@ -1,0 +1,694 @@
+{
+  "scenario_id": "S030",
+  "description": "300명 규모 건설사에 급여·근태 SaaS 판매. 일용직 노무비 신고 기능 지연과 기존 ERP 업체의 무상 모듈 제안으로 실패. 인당 단가가 4,500원에서 3,500원까지 세 번 내려갔고 내년 3월 이후 재접촉 (대화 3건)",
+  "fictional": true,
+  "as_of": "2026-11-04",
+  "deal_status": "lost",
+  "seller": {
+    "user_id": 15,
+    "team_id": 14,
+    "name": "백지원",
+    "company": "스마트HR",
+    "product": "급여·근태 관리 SaaS (정규직 + 일용직 공수)"
+  },
+  "users": [
+    {
+      "user_id": 15,
+      "team_id": 14
+    }
+  ],
+  "company": {
+    "id": "S030-CO1",
+    "name": "다온건설",
+    "industry": "중견 건설사",
+    "size": "정규직 300명, 현장 14곳, 일용직 월 최대 150명"
+  },
+  "contacts": [
+    {
+      "id": "S030-C1",
+      "name": "손재민",
+      "title": "경영지원 차장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S030-C2",
+      "name": "이강훈",
+      "title": "관리이사",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S030-C3",
+      "name": "용미라",
+      "title": "재무 과장",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S030-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-25T14:00:00+09:00",
+      "title": "본사 첫 미팅",
+      "owner_user_id": 15,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S030-C1",
+        "S030-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S030-I1-U00",
+          "start": 2.0,
+          "end": 14.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희는 정규직이 300명인데 현장이 14곳이라 근태 확인이 힘들어요. 일용직은 별도로 한 달에 많게는 150명씩 들어오고요.",
+          "contact_id": "S030-C1"
+        },
+        {
+          "id": "S030-I1-U01",
+          "start": 15.0,
+          "end": 23.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "정규직 급여·근태는 저희 서비스로 일원화하실 수 있고, 일용직도 공수 기록은 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I1-U02",
+          "start": 24.4,
+          "end": 33.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "일용직 노무비 신고랑 퇴직공제 부금 계산도 되나요? 현장에서 가장 번거로운 부분이에요.",
+          "contact_id": "S030-C3"
+        },
+        {
+          "id": "S030-I1-U03",
+          "start": 33.6,
+          "end": 41.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "퇴직공제 일수 집계는 되는데 신고 파일 자동 생성은 올해 말 업데이트 예정입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I1-U04",
+          "start": 42.3,
+          "end": 48.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그게 안 되면 결국 엑셀로 하게 되는 거라 효과가 반감돼요.",
+          "contact_id": "S030-C3"
+        },
+        {
+          "id": "S030-I1-U05",
+          "start": 48.8,
+          "end": 58.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "정규직 300명 기준 1인당 월 4,500원이고 연간 계약입니다. 일용직은 건당 과금이에요.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I1-U06",
+          "start": 58.6,
+          "end": 68.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "4,500원이면 지금 쓰는 ERP 근태 모듈 연 유지비보다 비싼 것 같아요. 얼마인지 확인해 볼게요.",
+          "contact_id": "S030-C1"
+        },
+        {
+          "id": "S030-I1-U07",
+          "start": 69.3,
+          "end": 75.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "기존 ERP 유지비를 알려주시면 비교표를 만들어 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I1-U08",
+          "start": 76.0,
+          "end": 80.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "총무에 확인해서 다음 주 월요일까지 알려드릴게요.",
+          "contact_id": "S030-C1"
+        }
+      ]
+    },
+    {
+      "id": "S030-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-22T11:00:00+09:00",
+      "title": "가격 비교 통화",
+      "owner_user_id": 15,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S030-C1",
+        "S030-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S030-I2-U00",
+          "start": 2.0,
+          "end": 11.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알려주신 ERP 유지비가 연 1,500만 원이었죠. 저희 4,500원은 연 1,620만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I2-U01",
+          "start": 12.3,
+          "end": 20.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "맞아요. 그래서 120만 원 차이가 있는데, 신고 파일 기능이 없다는 게 문제예요.",
+          "contact_id": "S030-C1"
+        },
+        {
+          "id": "S030-I2-U02",
+          "start": 21.2,
+          "end": 30.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "2년 약정으로 하시면 1인당 3,900원, 연 1,404만 원으로 내려서 드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I2-U03",
+          "start": 31.0,
+          "end": 39.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그건 ERP보다 싸지네요. 근데 신고 파일 자동 생성은 정말 올해 안에 나옵니까?",
+          "contact_id": "S030-C3"
+        },
+        {
+          "id": "S030-I2-U04",
+          "start": 39.7,
+          "end": 46.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "12월 업데이트 예정이라고 개발팀에서 들었습니다. 확정은 아닙니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I2-U05",
+          "start": 47.0,
+          "end": 51.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "확정이 아니면 이사님께 설명하기 어려워요.",
+          "contact_id": "S030-C3"
+        },
+        {
+          "id": "S030-I2-U06",
+          "start": 51.7,
+          "end": 58.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 개발팀 일정을 서면으로 받아서 10월 9일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I2-U07",
+          "start": 58.8,
+          "end": 61.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "이사님 보고는 그걸 보고 하죠.",
+          "contact_id": "S030-C1"
+        }
+      ]
+    },
+    {
+      "id": "S030-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-29T10:00:00+09:00",
+      "title": "결과 통보 통화",
+      "owner_user_id": 15,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S030-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S030-I3-U00",
+          "start": 2.0,
+          "end": 7.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "관리이사 이강훈입니다. 손 차장한테 보고는 들었습니다.",
+          "contact_id": "S030-C2"
+        },
+        {
+          "id": "S030-I3-U01",
+          "start": 8.0,
+          "end": 19.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "개발 일정표를 받았는데 신고 파일 기능이 내년 2월로 밀렸더군요. 저희는 연말 결산 전에 현장 노무 기능이 필요합니다.",
+          "contact_id": "S030-C2"
+        },
+        {
+          "id": "S030-I3-U02",
+          "start": 20.5,
+          "end": 29.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 사이 퇴직공제 일수 집계만이라도 쓰시고, 3,500원까지 내려 드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I3-U03",
+          "start": 29.6,
+          "end": 39.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "3,500원이어도 ERP 업체가 노무 모듈을 무상으로 얹어 주기로 했어요. 연장 계약 조건이라서요.",
+          "contact_id": "S030-C2"
+        },
+        {
+          "id": "S030-I3-U04",
+          "start": 40.1,
+          "end": 43.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "아, 그러면 이미 결정하신 건가요?",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I3-U05",
+          "start": 44.1,
+          "end": 49.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 이번엔 ERP를 유지하기로 했습니다. 죄송합니다.",
+          "contact_id": "S030-C2"
+        },
+        {
+          "id": "S030-I3-U06",
+          "start": 50.1,
+          "end": 56.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 신고 파일 기능이 나오면 다시 연락드려도 될까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S030-I3-U07",
+          "start": 56.8,
+          "end": 66.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "내년 3월 이후에 다시 연락 주세요. ERP 계약이 1년 단위라 그때 다시 볼 수 있습니다.",
+          "contact_id": "S030-C2"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S030-F01",
+      "interaction_id": "S030-I1",
+      "type": "requirement",
+      "said_by": "S030-C1",
+      "content": "정규직 300명, 현장 14곳이고 일용직은 월 최대 150명이 들어와 근태 확인이 어렵다.",
+      "source_utterance_ids": [
+        "S030-I1-U00"
+      ]
+    },
+    {
+      "id": "S030-F02",
+      "interaction_id": "S030-I1",
+      "type": "requirement",
+      "said_by": "S030-C3",
+      "content": "일용직 노무비 신고와 퇴직공제 부금 계산이 현장에서 가장 번거로워 자동화가 필요하다.",
+      "source_utterance_ids": [
+        "S030-I1-U02",
+        "S030-I1-U04"
+      ]
+    },
+    {
+      "id": "S030-F03",
+      "interaction_id": "S030-I1",
+      "type": "price_reaction",
+      "said_by": "S030-C1",
+      "content": "정규직 1인당 월 4,500원은 기존 ERP 근태 모듈 연 유지비보다 비싼 것 같다고 했다.",
+      "source_utterance_ids": [
+        "S030-I1-U05",
+        "S030-I1-U06"
+      ]
+    },
+    {
+      "id": "S030-F04",
+      "interaction_id": "S030-I1",
+      "type": "promise",
+      "said_by": "S030-C1",
+      "content": "기존 ERP 연 유지비를 확인해 알려준다.",
+      "source_utterance_ids": [
+        "S030-I1-U08"
+      ],
+      "owner": "customer",
+      "due_at": "2026-08-31",
+      "due_text": "다음 주 월요일까지",
+      "status": "done",
+      "resolved_in": "S030-I2"
+    },
+    {
+      "id": "S030-F05",
+      "interaction_id": "S030-I2",
+      "type": "price_reaction",
+      "said_by": "S030-C3",
+      "content": "2년 약정 1인당 3,900원(연 1,404만 원)은 ERP 유지비 연 1,500만 원보다 싸다고 했다.",
+      "source_utterance_ids": [
+        "S030-I2-U00",
+        "S030-I2-U02",
+        "S030-I2-U03"
+      ]
+    },
+    {
+      "id": "S030-F06",
+      "interaction_id": "S030-I2",
+      "type": "requirement",
+      "said_by": "S030-C3",
+      "content": "신고 파일 자동 생성 시기가 확정되지 않으면 이사에게 설명하기 어렵다.",
+      "source_utterance_ids": [
+        "S030-I2-U04",
+        "S030-I2-U05"
+      ]
+    },
+    {
+      "id": "S030-F07",
+      "interaction_id": "S030-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "신고 파일 기능 개발 일정을 서면으로 받아 전달한다.",
+      "source_utterance_ids": [
+        "S030-I2-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-09",
+      "due_text": "10월 9일까지",
+      "status": "done",
+      "resolved_in": "S030-I3"
+    },
+    {
+      "id": "S030-F08",
+      "interaction_id": "S030-I3",
+      "type": "decision",
+      "said_by": "S030-C2",
+      "content": "신고 파일 기능이 내년 2월로 밀려 연말 결산 전 현장 노무 기능 요구를 충족하지 못한다.",
+      "source_utterance_ids": [
+        "S030-I3-U01"
+      ]
+    },
+    {
+      "id": "S030-F09",
+      "interaction_id": "S030-I3",
+      "type": "price_reaction",
+      "said_by": "S030-C2",
+      "content": "3,500원 제안에도 ERP 업체가 연장 계약 조건으로 노무 모듈을 무상 제공하기로 했다.",
+      "source_utterance_ids": [
+        "S030-I3-U02",
+        "S030-I3-U03"
+      ]
+    },
+    {
+      "id": "S030-F10",
+      "interaction_id": "S030-I3",
+      "type": "decision",
+      "said_by": "S030-C2",
+      "content": "이번에는 ERP를 유지하기로 했다.",
+      "source_utterance_ids": [
+        "S030-I3-U05"
+      ]
+    },
+    {
+      "id": "S030-F11",
+      "interaction_id": "S030-I3",
+      "type": "purchase_timing",
+      "said_by": "S030-C2",
+      "content": "ERP 계약이 1년 단위라 내년 3월 이후에 다시 연락해 달라고 했다.",
+      "source_utterance_ids": [
+        "S030-I3-U07"
+      ]
+    },
+    {
+      "id": "S030-F12",
+      "interaction_id": "S030-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "신고 파일 기능이 나오면 다시 연락한다.",
+      "source_utterance_ids": [
+        "S030-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "기능이 나오면 / 내년 3월 이후",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S030-Q01",
+      "question": "다온건설과의 딜은 왜 실패했어?",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I3-U01",
+        "S030-I3-U03",
+        "S030-I3-U05"
+      ],
+      "answer": "신고 파일 기능이 내년 2월로 밀렸고 ERP 업체가 노무 모듈을 연장 조건으로 무상 제공해 ERP를 유지하기로 했다."
+    },
+    {
+      "id": "S030-Q02",
+      "question": "단가 협상은 어떻게 내려왔어?",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U05",
+        "S030-I2-U00",
+        "S030-I2-U02",
+        "S030-I3-U02"
+      ],
+      "answer": "1인당 월 4,500원에서 2년 약정 3,900원, 마지막에 3,500원까지 내렸다."
+    },
+    {
+      "id": "S030-Q03",
+      "question": "건설사라서 특별히 필요했던 기능은?",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U02",
+        "S030-I1-U03",
+        "S030-I1-U04"
+      ],
+      "answer": "일용직 노무비 신고와 퇴직공제 부금 계산. 일수 집계는 되지만 신고 파일 자동 생성은 업데이트 예정이었다."
+    },
+    {
+      "id": "S030-Q04",
+      "question": "기존 ERP와의 비용 비교는 어땠어?",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U06",
+        "S030-I2-U00",
+        "S030-I2-U01",
+        "S030-I2-U03"
+      ],
+      "answer": "ERP 유지비는 연 1,500만 원, 우리 4,500원은 연 1,620만 원으로 120만 원 비쌌고, 3,900원 연 1,404만 원이면 더 싸다고 인정했다."
+    },
+    {
+      "id": "S030-Q05",
+      "question": "언제 다시 연락해야 해?",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I3-U06",
+        "S030-I3-U07"
+      ],
+      "answer": "ERP 계약이 1년 단위라 내년 3월 이후에 신고 파일 기능이 나오면 다시 연락한다."
+    },
+    {
+      "id": "S030-Q06",
+      "question": "다온건설에 우리가 남긴 약속이 있어?",
+      "kind": "structured",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_fact_ids": [
+        "S030-F12"
+      ],
+      "answer": "신고 파일 기능이 나오면 내년 3월 이후 다시 연락하겠다고 했다."
+    },
+    {
+      "id": "S030-Q01-P1",
+      "question": "수주하지 못한 원인이 뭐야?",
+      "paraphrase_of": "S030-Q01",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I3-U01",
+        "S030-I3-U03",
+        "S030-I3-U05"
+      ],
+      "answer": "신고 파일 기능이 내년 2월로 밀렸고 ERP 업체가 노무 모듈을 연장 조건으로 무상 제공해 ERP를 유지하기로 했다."
+    },
+    {
+      "id": "S030-Q01-P2",
+      "question": "경쟁 업체 쪽으로 간 결정적 이유를 알려줘.",
+      "paraphrase_of": "S030-Q01",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I3-U01",
+        "S030-I3-U03",
+        "S030-I3-U05"
+      ],
+      "answer": "신고 파일 기능이 내년 2월로 밀렸고 ERP 업체가 노무 모듈을 연장 조건으로 무상 제공해 ERP를 유지하기로 했다."
+    },
+    {
+      "id": "S030-Q02-P1",
+      "question": "요금 제안이 어떤 순서로 낮아졌어?",
+      "paraphrase_of": "S030-Q02",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U05",
+        "S030-I2-U00",
+        "S030-I2-U02",
+        "S030-I3-U02"
+      ],
+      "answer": "1인당 월 4,500원에서 2년 약정 3,900원, 마지막에 3,500원까지 내렸다."
+    },
+    {
+      "id": "S030-Q02-P2",
+      "question": "사람당 월 이용료 변천을 정리해 줘.",
+      "paraphrase_of": "S030-Q02",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U05",
+        "S030-I2-U00",
+        "S030-I2-U02",
+        "S030-I3-U02"
+      ],
+      "answer": "1인당 월 4,500원에서 2년 약정 3,900원, 마지막에 3,500원까지 내렸다."
+    },
+    {
+      "id": "S030-Q03-P1",
+      "question": "현장 근로자 관련 법정 신고 요구가 뭐였지?",
+      "paraphrase_of": "S030-Q03",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U02",
+        "S030-I1-U03",
+        "S030-I1-U04"
+      ],
+      "answer": "일용직 노무비 신고와 퇴직공제 부금 계산. 일수 집계는 되지만 신고 파일 자동 생성은 업데이트 예정이었다."
+    },
+    {
+      "id": "S030-Q03-P2",
+      "question": "공사 현장 인력 정산에서 고객이 가장 번거로워한 건?",
+      "paraphrase_of": "S030-Q03",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U02",
+        "S030-I1-U03",
+        "S030-I1-U04"
+      ],
+      "answer": "일용직 노무비 신고와 퇴직공제 부금 계산. 일수 집계는 되지만 신고 파일 자동 생성은 업데이트 예정이었다."
+    },
+    {
+      "id": "S030-Q04-P1",
+      "question": "현행 시스템 연간 비용과 우리 견적의 차이를 알려줘.",
+      "paraphrase_of": "S030-Q04",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U06",
+        "S030-I2-U00",
+        "S030-I2-U01",
+        "S030-I2-U03"
+      ],
+      "answer": "ERP 유지비는 연 1,500만 원, 우리 4,500원은 연 1,620만 원으로 120만 원 비쌌고, 3,900원 연 1,404만 원이면 더 싸다고 인정했다."
+    },
+    {
+      "id": "S030-Q04-P2",
+      "question": "연 금액으로 따졌을 때 어느 쪽이 유리했어?",
+      "paraphrase_of": "S030-Q04",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I1-U06",
+        "S030-I2-U00",
+        "S030-I2-U01",
+        "S030-I2-U03"
+      ],
+      "answer": "ERP 유지비는 연 1,500만 원, 우리 4,500원은 연 1,620만 원으로 120만 원 비쌌고, 3,900원 연 1,404만 원이면 더 싸다고 인정했다."
+    },
+    {
+      "id": "S030-Q05-P1",
+      "question": "다음 접촉 적기가 언제야?",
+      "paraphrase_of": "S030-Q05",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I3-U06",
+        "S030-I3-U07"
+      ],
+      "answer": "ERP 계약이 1년 단위라 내년 3월 이후에 신고 파일 기능이 나오면 다시 연락한다."
+    },
+    {
+      "id": "S030-Q05-P2",
+      "question": "재영업 시점에 대해 이사가 한 말은?",
+      "paraphrase_of": "S030-Q05",
+      "kind": "semantic",
+      "company_id": "S030-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 15,
+      "relevant_utterance_ids": [
+        "S030-I3-U06",
+        "S030-I3-U07"
+      ],
+      "answer": "ERP 계약이 1년 단위라 내년 3월 이후에 신고 파일 기능이 나오면 다시 연락한다."
+    }
+  ]
+}

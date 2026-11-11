@@ -1,0 +1,702 @@
+{
+  "scenario_id": "S014",
+  "description": "중견 보험사 새한라이프 영업교육팀에 LMS와 교육 콘텐츠를 제안. 팀 공유 2건과 비공개 1건(담당자가 예산 사정과 축소안을 사적으로 털어놓은 통화)이 섞여 동료와 다른 팀 사용자의 열람 권한을 검증한다. 전사 3,200명에서 신입 설계사 400명 파일럿으로 범위가 줄어든다.",
+  "fictional": true,
+  "as_of": "2026-11-06",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 10,
+    "team_id": 9,
+    "name": "서민아",
+    "company": "에듀링크",
+    "product": "기업 교육 LMS·온라인 교육 콘텐츠"
+  },
+  "users": [
+    {
+      "user_id": 10,
+      "team_id": 9
+    },
+    {
+      "user_id": 109,
+      "team_id": 9
+    },
+    {
+      "user_id": 1,
+      "team_id": 1
+    }
+  ],
+  "company": {
+    "id": "S014-CO1",
+    "name": "새한라이프",
+    "industry": "중견 생명보험사 영업교육팀",
+    "size": "소속 설계사 약 3,200명"
+  },
+  "contacts": [
+    {
+      "id": "S014-C1",
+      "name": "어소영",
+      "title": "영업교육팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S014-C2",
+      "name": "도건우",
+      "title": "인사본부 상무",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S014-C3",
+      "name": "황가온",
+      "title": "구매팀 대리",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S014-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-20T10:00:00+09:00",
+      "title": "교육 플랫폼 요구사항 미팅",
+      "owner_user_id": 10,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S014-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S014-I1-U00",
+          "start": 2.0,
+          "end": 11.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "새한라이프 영업교육팀 어소영입니다. 저희 설계사가 3,200명인데 교육 이수 관리가 제각각이에요.",
+          "contact_id": "S014-C1"
+        },
+        {
+          "id": "S014-I1-U01",
+          "start": 12.3,
+          "end": 17.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "에듀링크 서민아입니다. 지금은 어떻게 관리하세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I1-U02",
+          "start": 17.8,
+          "end": 30.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "지점별로 출석부 엑셀이랑 오프라인 집합교육이에요. 신입은 위촉 후 필수 교육 시간을 못 채워서 등록이 늦어지는 경우도 있고요.",
+          "contact_id": "S014-C1"
+        },
+        {
+          "id": "S014-I1-U03",
+          "start": 31.0,
+          "end": 42.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "LMS에서 이수 시간이 자동 집계되고 미이수자에게 알림이 갑니다. 상품 교육 콘텐츠 제작도 같이 해드릴 수 있어요.",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I1-U04",
+          "start": 43.1,
+          "end": 49.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "모바일로 들을 수 있어야 해요. 설계사들은 대부분 외근이라서요.",
+          "contact_id": "S014-C1"
+        },
+        {
+          "id": "S014-I1-U05",
+          "start": 50.0,
+          "end": 54.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "앱 설치 없이 웹으로도 바로 재생됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I1-U06",
+          "start": 54.6,
+          "end": 61.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋네요. 전사 3,200명 대상으로 내년 1월에 시작하는 게 목표예요.",
+          "contact_id": "S014-C1"
+        },
+        {
+          "id": "S014-I1-U07",
+          "start": 62.2,
+          "end": 68.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 전사 기준 제안서를 다음 주 목요일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I1-U08",
+          "start": 68.9,
+          "end": 76.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네. 도건우 상무님께 보고할 거라 보안과 안정성 자료도 같이 부탁드려요.",
+          "contact_id": "S014-C1"
+        }
+      ]
+    },
+    {
+      "id": "S014-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-17T16:00:00+09:00",
+      "title": "비공식 예산 상담 통화",
+      "owner_user_id": 10,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S014-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S014-I2-U00",
+          "start": 2.0,
+          "end": 7.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "제안서 8월 27일에 드렸는데 상무님께 보고하셨어요?",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I2-U01",
+          "start": 7.8,
+          "end": 21.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네. 솔직히 말씀드리면 전사 기준 연 2억 4천만 원이라 상무님이 부담스러워하세요. 올해 교육 예산이 1억 5천밖에 안 남았다고 하셨어요.",
+          "contact_id": "S014-C1"
+        },
+        {
+          "id": "S014-I2-U02",
+          "start": 22.3,
+          "end": 27.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 우선 일부 인원부터 시작하는 방법도 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I2-U03",
+          "start": 27.9,
+          "end": 37.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "신입 설계사 과정 위주로 하면 어떨까 생각 중이에요. 이건 아직 팀 밖에는 얘기하지 마세요.",
+          "contact_id": "S014-C1"
+        },
+        {
+          "id": "S014-I2-U04",
+          "start": 37.7,
+          "end": 44.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 신입 과정 기준 견적을 다음 주 수요일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I2-U05",
+          "start": 45.1,
+          "end": 50.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "다른 곳은 인당 월 5천 원이라던데 여기는 6천 원대네요.",
+          "contact_id": "S014-C1"
+        },
+        {
+          "id": "S014-I2-U06",
+          "start": 51.5,
+          "end": 60.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "콘텐츠 제작이 포함돼서 그렇습니다. 신입 과정으로 가면 인당 단가는 조정해 드릴 수 있어요.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S014-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-15T14:00:00+09:00",
+      "title": "상무 참석 범위 확정",
+      "owner_user_id": 10,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S014-C2",
+        "S014-C3",
+        "S014-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S014-I3-U00",
+          "start": 2.0,
+          "end": 10.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "인사본부 도건우입니다. 어소영 팀장 얘기는 들었고, 전사 도입은 올해 예산상 어렵습니다.",
+          "contact_id": "S014-C2"
+        },
+        {
+          "id": "S014-I3-U01",
+          "start": 11.4,
+          "end": 22.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "내년 1월에 신입 설계사 과정 400명만 먼저 해보죠. 성과를 보고 2027년 하반기에 전사 확대를 검토하겠습니다.",
+          "contact_id": "S014-C2"
+        },
+        {
+          "id": "S014-I3-U02",
+          "start": 23.5,
+          "end": 36.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "9월 23일에 드린 신입 기준 견적 그대로, 인당 월 6천 원이라 연 2,880만 원이고 콘텐츠 제작비 1,200만 원이 별도입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I3-U03",
+          "start": 37.4,
+          "end": 44.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "합쳐서 4천만 원 안쪽이면 제 전결로 됩니다. 구매팀에서 계약서 받으세요.",
+          "contact_id": "S014-C2"
+        },
+        {
+          "id": "S014-I3-U04",
+          "start": 45.4,
+          "end": 53.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "구매팀 황가온입니다. 11월 13일까지 사업자등록증이랑 보안 점검표를 보내주세요.",
+          "contact_id": "S014-C3"
+        },
+        {
+          "id": "S014-I3-U05",
+          "start": 54.1,
+          "end": 57.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 11월 13일까지 보내겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S014-I3-U06",
+          "start": 58.3,
+          "end": 63.7,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "계약은 11월 말에 하고 시작은 1월 5일로 잡을게요.",
+          "contact_id": "S014-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S014-F01",
+      "interaction_id": "S014-I1",
+      "type": "requirement",
+      "said_by": "S014-C1",
+      "content": "지점별 엑셀 출석부와 오프라인 교육으로 관리해 신입의 필수 교육 시간 미이수로 등록이 지연된다.",
+      "source_utterance_ids": [
+        "S014-I1-U02"
+      ]
+    },
+    {
+      "id": "S014-F02",
+      "interaction_id": "S014-I1",
+      "type": "requirement",
+      "said_by": "S014-C1",
+      "content": "설계사가 외근이 많아 모바일 수강이 필수다.",
+      "source_utterance_ids": [
+        "S014-I1-U04"
+      ]
+    },
+    {
+      "id": "S014-F03",
+      "interaction_id": "S014-I1",
+      "type": "requirement",
+      "said_by": "S014-C1",
+      "content": "전사 3,200명을 대상으로 내년 1월 시작을 목표로 한다.",
+      "source_utterance_ids": [
+        "S014-I1-U06"
+      ]
+    },
+    {
+      "id": "S014-F04",
+      "interaction_id": "S014-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "전사 기준 제안서를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S014-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-27",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S014-I2"
+    },
+    {
+      "id": "S014-F05",
+      "interaction_id": "S014-I1",
+      "type": "requirement",
+      "said_by": "S014-C1",
+      "content": "상무 보고용 보안·안정성 자료가 필요하다.",
+      "source_utterance_ids": [
+        "S014-I1-U08"
+      ]
+    },
+    {
+      "id": "S014-F06",
+      "interaction_id": "S014-I2",
+      "type": "price_reaction",
+      "said_by": "S014-C1",
+      "content": "전사 기준 연 2억 4천만 원은 부담이며 올해 남은 교육 예산은 1억 5천만 원이다.",
+      "source_utterance_ids": [
+        "S014-I2-U01"
+      ]
+    },
+    {
+      "id": "S014-F07",
+      "interaction_id": "S014-I2",
+      "type": "requirement",
+      "said_by": "S014-C1",
+      "content": "신입 설계사 과정 위주로 범위를 줄이는 방안을 사내 비공개로 검토 중이다.",
+      "source_utterance_ids": [
+        "S014-I2-U03"
+      ],
+      "supersedes": "S014-F03"
+    },
+    {
+      "id": "S014-F08",
+      "interaction_id": "S014-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "신입 과정 기준 견적을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S014-I2-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-23",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S014-I3"
+    },
+    {
+      "id": "S014-F09",
+      "interaction_id": "S014-I2",
+      "type": "price_reaction",
+      "said_by": "S014-C1",
+      "content": "경쟁사는 인당 월 5천 원인데 우리는 6천 원대라고 지적했다.",
+      "source_utterance_ids": [
+        "S014-I2-U05"
+      ]
+    },
+    {
+      "id": "S014-F10",
+      "interaction_id": "S014-I3",
+      "type": "decision",
+      "said_by": "S014-C2",
+      "content": "내년 1월 신입 설계사 400명으로 시작하고 2027년 하반기에 전사 확대를 검토하기로 했다.",
+      "source_utterance_ids": [
+        "S014-I3-U01"
+      ],
+      "supersedes": "S014-F07"
+    },
+    {
+      "id": "S014-F11",
+      "interaction_id": "S014-I3",
+      "type": "price_reaction",
+      "said_by": "S014-C2",
+      "content": "인당 월 6천 원(연 2,880만 원)에 콘텐츠 제작비 1,200만 원, 합계 4천만 원 안쪽이면 상무 전결로 처리된다.",
+      "source_utterance_ids": [
+        "S014-I3-U03"
+      ]
+    },
+    {
+      "id": "S014-F12",
+      "interaction_id": "S014-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "사업자등록증과 보안 점검표를 구매팀에 보내기로 했다.",
+      "source_utterance_ids": [
+        "S014-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-13",
+      "due_text": "11월 13일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S014-F13",
+      "interaction_id": "S014-I3",
+      "type": "purchase_timing",
+      "said_by": "S014-C1",
+      "content": "계약은 11월 말, 서비스 시작은 1월 5일로 계획한다.",
+      "source_utterance_ids": [
+        "S014-I3-U06"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S014-Q01",
+      "question": "새한라이프 도입 범위가 어떻게 줄었어?",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 10,
+      "relevant_utterance_ids": [
+        "S014-I1-U06",
+        "S014-I2-U03",
+        "S014-I3-U01"
+      ],
+      "answer": "처음 전사 3,200명에서 신입 설계사 400명 과정으로 줄었고 전사 확대는 2027년 하반기 재검토다."
+    },
+    {
+      "id": "S014-Q02",
+      "question": "예산과 가격 때문에 어떤 이야기가 오갔어?",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 10,
+      "relevant_utterance_ids": [
+        "S014-I2-U01",
+        "S014-I2-U05",
+        "S014-I3-U03"
+      ],
+      "answer": "전사 연 2억 4천이 부담(남은 예산 1.5억), 경쟁사 인당 월 5천 원 비교, 신입 기준 4천만 원 안쪽이면 상무 전결."
+    },
+    {
+      "id": "S014-Q03",
+      "question": "새한라이프 담당자가 예산 사정에 대해 뭐라고 했어?",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 109,
+      "relevant_utterance_ids": [
+        "S014-I3-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S014-I2"
+      ],
+      "answer": "열람 가능한 팀 공유 기록에는 신입 기준 합계 4천만 원 안쪽이면 상무 전결이라는 내용만 있다. 비공개 통화 내용은 보여주면 안 된다."
+    },
+    {
+      "id": "S014-Q04",
+      "question": "새한라이프가 처음에 원했던 요구사항이 뭐야?",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 109,
+      "relevant_utterance_ids": [
+        "S014-I1-U02",
+        "S014-I1-U04",
+        "S014-I1-U06"
+      ],
+      "forbidden_interaction_ids": [
+        "S014-I2"
+      ],
+      "answer": "교육 이수 관리 자동화, 모바일 수강, 전사 3,200명 내년 1월 시작."
+    },
+    {
+      "id": "S014-Q05",
+      "question": "새한라이프와 가격 협상이 어디까지 갔어?",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S014-I1",
+        "S014-I2",
+        "S014-I3"
+      ],
+      "answer": "이 사용자는 볼 수 있는 기록이 없다. 어떤 내용도 나오면 안 된다."
+    },
+    {
+      "id": "S014-Q06",
+      "question": "내가 아직 못 한 약속은?",
+      "kind": "structured",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 10,
+      "relevant_fact_ids": [
+        "S014-F12"
+      ],
+      "answer": "11월 13일까지 사업자등록증과 보안 점검표를 구매팀에 보내야 한다."
+    },
+    {
+      "id": "S014-Q01-P1",
+      "question": "처음 계획보다 대상 인원이 얼마나 축소됐어?",
+      "paraphrase_of": "S014-Q01",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 10,
+      "relevant_utterance_ids": [
+        "S014-I1-U06",
+        "S014-I2-U03",
+        "S014-I3-U01"
+      ],
+      "answer": "처음 전사 3,200명에서 신입 설계사 400명 과정으로 줄었고 전사 확대는 2027년 하반기 재검토다."
+    },
+    {
+      "id": "S014-Q01-P2",
+      "question": "전체 대상에서 일부로 한정된 경위를 알려줘.",
+      "paraphrase_of": "S014-Q01",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 10,
+      "relevant_utterance_ids": [
+        "S014-I1-U06",
+        "S014-I2-U03",
+        "S014-I3-U01"
+      ],
+      "answer": "처음 전사 3,200명에서 신입 설계사 400명 과정으로 줄었고 전사 확대는 2027년 하반기 재검토다."
+    },
+    {
+      "id": "S014-Q02-P1",
+      "question": "비용 부담과 관련해 나온 얘기를 정리해줘.",
+      "paraphrase_of": "S014-Q02",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 10,
+      "relevant_utterance_ids": [
+        "S014-I2-U01",
+        "S014-I2-U05",
+        "S014-I3-U03"
+      ],
+      "answer": "전사 연 2억 4천이 부담(남은 예산 1.5억), 경쟁사 인당 월 5천 원 비교, 신입 기준 4천만 원 안쪽이면 상무 전결."
+    },
+    {
+      "id": "S014-Q02-P2",
+      "question": "돈 문제로 고객이 한 말들이 뭐였지?",
+      "paraphrase_of": "S014-Q02",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 10,
+      "relevant_utterance_ids": [
+        "S014-I2-U01",
+        "S014-I2-U05",
+        "S014-I3-U03"
+      ],
+      "answer": "전사 연 2억 4천이 부담(남은 예산 1.5억), 경쟁사 인당 월 5천 원 비교, 신입 기준 4천만 원 안쪽이면 상무 전결."
+    },
+    {
+      "id": "S014-Q03-P1",
+      "question": "고객 쪽 재정 상황에 관해 나온 말을 알려줘.",
+      "paraphrase_of": "S014-Q03",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 109,
+      "relevant_utterance_ids": [
+        "S014-I3-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S014-I2"
+      ],
+      "answer": "열람 가능한 팀 공유 기록에는 신입 기준 합계 4천만 원 안쪽이면 상무 전결이라는 내용만 있다. 비공개 통화 내용은 보여주면 안 된다."
+    },
+    {
+      "id": "S014-Q03-P2",
+      "question": "새한라이프의 비용 결재 한도는 어떻게 된다고 했어?",
+      "paraphrase_of": "S014-Q03",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 109,
+      "relevant_utterance_ids": [
+        "S014-I3-U03"
+      ],
+      "forbidden_interaction_ids": [
+        "S014-I2"
+      ],
+      "answer": "열람 가능한 팀 공유 기록에는 신입 기준 합계 4천만 원 안쪽이면 상무 전결이라는 내용만 있다. 비공개 통화 내용은 보여주면 안 된다."
+    },
+    {
+      "id": "S014-Q04-P1",
+      "question": "고객이 최초에 요청한 기능과 규모는?",
+      "paraphrase_of": "S014-Q04",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 109,
+      "relevant_utterance_ids": [
+        "S014-I1-U02",
+        "S014-I1-U04",
+        "S014-I1-U06"
+      ],
+      "forbidden_interaction_ids": [
+        "S014-I2"
+      ],
+      "answer": "교육 이수 관리 자동화, 모바일 수강, 전사 3,200명 내년 1월 시작."
+    },
+    {
+      "id": "S014-Q04-P2",
+      "question": "초기 미팅에서 나온 필요 조건을 알려줘.",
+      "paraphrase_of": "S014-Q04",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 109,
+      "relevant_utterance_ids": [
+        "S014-I1-U02",
+        "S014-I1-U04",
+        "S014-I1-U06"
+      ],
+      "forbidden_interaction_ids": [
+        "S014-I2"
+      ],
+      "answer": "교육 이수 관리 자동화, 모바일 수강, 전사 3,200명 내년 1월 시작."
+    },
+    {
+      "id": "S014-Q05-P1",
+      "question": "새한라이프 견적 금액과 조정 내용을 알려줘.",
+      "paraphrase_of": "S014-Q05",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S014-I1",
+        "S014-I2",
+        "S014-I3"
+      ],
+      "answer": "이 사용자는 볼 수 있는 기록이 없다. 어떤 내용도 나오면 안 된다."
+    },
+    {
+      "id": "S014-Q05-P2",
+      "question": "그 보험사 건 비용 이야기가 어떻게 진행됐어?",
+      "paraphrase_of": "S014-Q05",
+      "kind": "semantic",
+      "company_id": "S014-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 1,
+      "relevant_utterance_ids": [],
+      "forbidden_interaction_ids": [
+        "S014-I1",
+        "S014-I2",
+        "S014-I3"
+      ],
+      "answer": "이 사용자는 볼 수 있는 기록이 없다. 어떤 내용도 나오면 안 된다."
+    }
+  ]
+}

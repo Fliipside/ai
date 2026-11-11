@@ -1,0 +1,737 @@
+{
+  "scenario_id": "S070",
+  "description": "공기업 지사의 직원 종합검진 업체 선정. 소액수의 계약(견적 2곳 비교, 평가기준표), 건강보험공단 지정기관 요건, 개인정보 위탁·청렴서약서, 연내 집행. 경쟁사 4,180만원 대비 서비스 점수로 선정되어 4,200만원에 성사.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "won",
+  "seller": {
+    "user_id": 28,
+    "team_id": 27,
+    "name": "진하은",
+    "company": "웰핏케어",
+    "product": "기업 단체 건강검진·사내 건강 프로그램"
+  },
+  "users": [
+    {
+      "user_id": 28,
+      "team_id": 27
+    }
+  ],
+  "company": {
+    "id": "S070-CO1",
+    "name": "한누리에너지공사 중부지사",
+    "industry": "공기업(에너지) 지사",
+    "size": "지사 직원 230명"
+  },
+  "contacts": [
+    {
+      "id": "S070-C1",
+      "name": "안재현",
+      "title": "총무부 과장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S070-C2",
+      "name": "맹기용",
+      "title": "총무부장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S070-C3",
+      "name": "노하영",
+      "title": "계약팀 담당",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S070-I1",
+      "kind": "call",
+      "occurred_at": "2026-09-03T14:00:00+09:00",
+      "title": "첫 통화",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S070-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S070-I1-U00",
+          "start": 2.0,
+          "end": 15.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "한누리에너지공사 중부지사 안재현 과장입니다. 올해 직원 종합검진 업체를 새로 선정해야 해서요. 작년 업체와는 대금 문제로 다툼이 있었어요.",
+          "contact_id": "S070-C1"
+        },
+        {
+          "id": "S070-I1-U01",
+          "start": 16.5,
+          "end": 22.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지사 직원이 몇 분이고 예산은 어느 정도로 잡혀 있으세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S070-I1-U02",
+          "start": 22.9,
+          "end": 36.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "직원이 230명이고 올해 복지 예산 중 검진에 4,500만원이 배정돼 있어요. 연말 집행이라 12월 20일 전엔 검진이 끝나야 합니다.",
+          "contact_id": "S070-C1"
+        },
+        {
+          "id": "S070-I1-U03",
+          "start": 37.0,
+          "end": 44.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "4,500이면 1인 평균 19만원 선이네요. 계약 방식은 어떻게 되나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S070-I1-U04",
+          "start": 44.8,
+          "end": 57.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "추정가격이 5천만원 이하라 소액수의 계약이에요. 견적서를 두 곳 이상 받고, 검진기관은 건강보험공단 지정기관이어야 합니다.",
+          "contact_id": "S070-C1"
+        },
+        {
+          "id": "S070-I1-U05",
+          "start": 57.6,
+          "end": 68.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희 제휴 병원은 모두 지정기관입니다. 사업자등록증과 지정기관 증명서를 다음 주 월요일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S070-I1-U06",
+          "start": 69.0,
+          "end": 79.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 직원 개인정보를 맡기는 거라 개인정보 처리 위탁 계약서가 필요해요. 저희 법무 양식으로 써야 합니다.",
+          "contact_id": "S070-C1"
+        },
+        {
+          "id": "S070-I1-U07",
+          "start": 80.4,
+          "end": 83.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "양식 주시면 검토하겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S070-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-10-01T10:00:00+09:00",
+      "title": "지사 방문 견적 설명",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S070-C2",
+        "S070-C3",
+        "S070-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S070-I2-U00",
+          "start": 2.0,
+          "end": 16.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지정기관 증명서는 지난번에 보내드렸고요, 견적서 설명드리겠습니다. 1인 평균 18.7만원으로 230명이면 4,301만원이고 선택검사 2종 포함입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S070-I2-U01",
+          "start": 17.5,
+          "end": 27.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "총무부장 맹기용입니다. 올해 예산 4,500 안이라 맞긴 한데, 작년보다 1인당 1만원 정도 비싸네요.",
+          "contact_id": "S070-C2"
+        },
+        {
+          "id": "S070-I2-U02",
+          "start": 28.4,
+          "end": 41.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "계약팀 노하영입니다. 다른 업체 견적도 받았는데 4,180만원이에요. 소액수의는 낮은 쪽이 원칙이라 선정 이유를 따로 설명해야 합니다.",
+          "contact_id": "S070-C3"
+        },
+        {
+          "id": "S070-I2-U03",
+          "start": 42.5,
+          "end": 51.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 업체는 야간·주말 검진이 안 됩니다. 저희는 토요일 검진과 출장 검진 하루를 포함합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S070-I2-U04",
+          "start": 52.3,
+          "end": 58.2,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "교대 근무자가 70명이라 토요일 검진이 있으면 확실히 좋죠.",
+          "contact_id": "S070-C1"
+        },
+        {
+          "id": "S070-I2-U05",
+          "start": 58.8,
+          "end": 73.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그럼 평가 기준을 가격 70, 서비스 30으로 하면 설명이 돼요. 청렴서약서랑 개인정보 위탁 계약서 양식은 제가 이번 주 금요일까지 드릴게요.",
+          "contact_id": "S070-C3"
+        },
+        {
+          "id": "S070-I2-U06",
+          "start": 73.6,
+          "end": 80.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "견적을 4,200 이하로 조정해 주시면 결재 올리기 수월하겠습니다.",
+          "contact_id": "S070-C2"
+        },
+        {
+          "id": "S070-I2-U07",
+          "start": 80.9,
+          "end": 91.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "4,200으로 맞추려면 선택검사를 한 종 줄여야 합니다. 내부 확인해서 다음 주 목요일까지 알려드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S070-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-29T14:00:00+09:00",
+      "title": "계약 체결 미팅",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S070-C3",
+        "S070-C2",
+        "S070-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S070-I3-U00",
+          "start": 2.0,
+          "end": 11.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "조정안입니다. 선택검사를 1종 줄여서 총 4,200만원, 1인 평균 18.3만원으로 맞췄습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S070-I3-U01",
+          "start": 12.1,
+          "end": 24.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "평가표는 가격 70, 서비스 30으로 작성했고 토요일 검진 덕에 점수가 앞서서 선정 근거가 됩니다. 오늘 날인 가능합니다.",
+          "contact_id": "S070-C3"
+        },
+        {
+          "id": "S070-I3-U02",
+          "start": 24.9,
+          "end": 33.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "계약금액 4,200만원, 검진 기간은 11월 16일부터 12월 18일까지로 합시다.",
+          "contact_id": "S070-C2"
+        },
+        {
+          "id": "S070-I3-U03",
+          "start": 33.8,
+          "end": 43.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대금은 검진 끝나고 청구하시면 검수 후 14일 이내 지급합니다. 계약보증금은 소액이라 면제입니다.",
+          "contact_id": "S070-C3"
+        },
+        {
+          "id": "S070-I3-U04",
+          "start": 44.1,
+          "end": 50.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 개인정보 처리 위탁 계약서와 청렴서약서도 서명했습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S070-I3-U05",
+          "start": 51.4,
+          "end": 60.0,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "직원 안내 공지는 제가 11월 6일까지 올리겠습니다. 예약은 직원이 직접 하게 할게요.",
+          "contact_id": "S070-C1"
+        },
+        {
+          "id": "S070-I3-U06",
+          "start": 60.6,
+          "end": 66.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "예약 시스템 링크와 안내문 초안은 11월 6일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S070-I3-U07",
+          "start": 67.5,
+          "end": 73.1,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "교대 근무자 70명은 토요일 검진을 우선 배정해 주세요.",
+          "contact_id": "S070-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S070-F01",
+      "interaction_id": "S070-I1",
+      "type": "requirement",
+      "said_by": "S070-C1",
+      "content": "올해 직원 종합검진 업체를 새로 선정해야 하며 작년 업체와 대금 문제로 다툼이 있었다.",
+      "source_utterance_ids": [
+        "S070-I1-U00"
+      ]
+    },
+    {
+      "id": "S070-F02",
+      "interaction_id": "S070-I1",
+      "type": "requirement",
+      "said_by": "S070-C1",
+      "content": "직원 230명, 검진 예산 4,500만원이며 12월 20일 전에 검진을 끝내야 한다.",
+      "source_utterance_ids": [
+        "S070-I1-U02"
+      ]
+    },
+    {
+      "id": "S070-F03",
+      "interaction_id": "S070-I1",
+      "type": "requirement",
+      "said_by": "S070-C1",
+      "content": "추정가격 5천만원 이하 소액수의 계약으로 견적 2곳 이상, 건강보험공단 지정기관이어야 한다.",
+      "source_utterance_ids": [
+        "S070-I1-U04"
+      ]
+    },
+    {
+      "id": "S070-F04",
+      "interaction_id": "S070-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "사업자등록증과 지정기관 증명서를 다음 주 월요일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S070-I1-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-07",
+      "due_text": "다음 주 월요일까지",
+      "status": "done",
+      "resolved_in": "S070-I2"
+    },
+    {
+      "id": "S070-F05",
+      "interaction_id": "S070-I1",
+      "type": "requirement",
+      "said_by": "S070-C1",
+      "content": "직원 개인정보를 위탁하므로 법무 양식의 개인정보 처리 위탁 계약서가 필요하다.",
+      "source_utterance_ids": [
+        "S070-I1-U06"
+      ]
+    },
+    {
+      "id": "S070-F06",
+      "interaction_id": "S070-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "1인 평균 18.7만원, 230명 4,301만원(선택검사 2종 포함)으로 견적을 설명했다.",
+      "source_utterance_ids": [
+        "S070-I2-U00"
+      ]
+    },
+    {
+      "id": "S070-F07",
+      "interaction_id": "S070-I2",
+      "type": "price_reaction",
+      "said_by": "S070-C2",
+      "content": "예산 안이라 맞지만 작년보다 1인당 1만원 정도 비싸다고 했다.",
+      "source_utterance_ids": [
+        "S070-I2-U01"
+      ]
+    },
+    {
+      "id": "S070-F08",
+      "interaction_id": "S070-I2",
+      "type": "price_reaction",
+      "said_by": "S070-C3",
+      "content": "타사 견적이 4,180만원이고 소액수의는 낮은 쪽이 원칙이라 선정 이유를 설명해야 한다.",
+      "source_utterance_ids": [
+        "S070-I2-U02"
+      ]
+    },
+    {
+      "id": "S070-F09",
+      "interaction_id": "S070-I2",
+      "type": "buying_signal",
+      "said_by": "S070-C1",
+      "content": "교대 근무자 70명에게 토요일 검진이 있는 점이 확실한 장점이라고 했다.",
+      "source_utterance_ids": [
+        "S070-I2-U04"
+      ]
+    },
+    {
+      "id": "S070-F10",
+      "interaction_id": "S070-I2",
+      "type": "promise",
+      "said_by": "S070-C3",
+      "content": "청렴서약서와 개인정보 위탁 계약서 양식을 이번 주 금요일까지 주기로 했다.",
+      "source_utterance_ids": [
+        "S070-I2-U05"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-02",
+      "due_text": "이번 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S070-I3"
+    },
+    {
+      "id": "S070-F11",
+      "interaction_id": "S070-I2",
+      "type": "price_reaction",
+      "said_by": "S070-C2",
+      "content": "4,200만원 이하로 조정하면 결재 올리기 수월하다고 했다.",
+      "source_utterance_ids": [
+        "S070-I2-U06"
+      ]
+    },
+    {
+      "id": "S070-F12",
+      "interaction_id": "S070-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "선택검사를 줄인 4,200만원 조정안을 다음 주 목요일까지 알려주기로 했다.",
+      "source_utterance_ids": [
+        "S070-I2-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-08",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S070-I3"
+    },
+    {
+      "id": "S070-F13",
+      "interaction_id": "S070-I3",
+      "type": "decision",
+      "said_by": "S070-C2",
+      "content": "계약금액 4,200만원, 검진 기간 2026년 11월 16일~12월 18일로 계약했다.",
+      "source_utterance_ids": [
+        "S070-I3-U02"
+      ]
+    },
+    {
+      "id": "S070-F14",
+      "interaction_id": "S070-I3",
+      "type": "decision",
+      "said_by": "S070-C3",
+      "content": "대금은 검진 후 청구하면 검수 뒤 14일 이내 지급하고 계약보증금은 면제한다.",
+      "source_utterance_ids": [
+        "S070-I3-U03"
+      ]
+    },
+    {
+      "id": "S070-F15",
+      "interaction_id": "S070-I3",
+      "type": "promise",
+      "said_by": "S070-C1",
+      "content": "직원 안내 공지를 11월 6일까지 올리기로 했다.",
+      "source_utterance_ids": [
+        "S070-I3-U05"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S070-F16",
+      "interaction_id": "S070-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "예약 시스템 링크와 안내문 초안을 11월 6일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S070-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S070-Q01",
+      "question": "한누리에너지공사 지사의 예산과 일정 제약은?",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I1-U02"
+      ],
+      "answer": "직원 230명에 검진 예산 4,500만원이고 12월 20일 전에 검진이 끝나야 한다."
+    },
+    {
+      "id": "S070-Q02",
+      "question": "계약 절차와 서류 요건이 뭐였어?",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I1-U04",
+        "S070-I1-U06",
+        "S070-I2-U05"
+      ],
+      "answer": "소액수의 계약으로 견적 2곳 이상, 공단 지정기관, 개인정보 위탁 계약서와 청렴서약서, 가격 70·서비스 30 평가기준이 필요했다."
+    },
+    {
+      "id": "S070-Q03",
+      "question": "경쟁사 대비 우리가 어떻게 선정됐어?",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I2-U02",
+        "S070-I2-U03",
+        "S070-I2-U04",
+        "S070-I3-U01"
+      ],
+      "answer": "경쟁사 견적 4,180만원이 더 낮았지만 토요일·출장 검진 등 서비스 점수로 선정 근거를 만들었다."
+    },
+    {
+      "id": "S070-Q04",
+      "question": "최종 계약 조건이 뭐야?",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I3-U00",
+        "S070-I3-U02",
+        "S070-I3-U03"
+      ],
+      "answer": "4,200만원, 선택검사 1종 축소, 2026년 11월 16일~12월 18일, 검수 후 14일 이내 지급, 보증금 면제."
+    },
+    {
+      "id": "S070-Q05",
+      "question": "교대 근무자에 대해 어떤 요구가 있었어?",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I2-U04",
+        "S070-I3-U07"
+      ],
+      "answer": "교대 근무자 70명에게 토요일 검진을 우선 배정해 달라고 요청했다."
+    },
+    {
+      "id": "S070-Q06",
+      "question": "아직 안 끝난 약속이 뭐야?",
+      "kind": "structured",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_fact_ids": [
+        "S070-F15",
+        "S070-F16"
+      ],
+      "answer": "고객의 직원 안내 공지와 우리의 예약 링크·안내문 초안이 모두 11월 6일까지다."
+    },
+    {
+      "id": "S070-Q07",
+      "question": "이미 이행된 약속은?",
+      "kind": "structured",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_fact_ids": [
+        "S070-F04",
+        "S070-F10",
+        "S070-F12"
+      ],
+      "answer": "지정기관 증명서, 계약 양식 전달, 4,200만원 조정안이 이행됐다."
+    },
+    {
+      "id": "S070-Q01-P1",
+      "question": "이 지사가 쓸 수 있는 금액과 마감 시점을 알려줘.",
+      "paraphrase_of": "S070-Q01",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I1-U02"
+      ],
+      "answer": "직원 230명에 검진 예산 4,500만원이고 12월 20일 전에 검진이 끝나야 한다."
+    },
+    {
+      "id": "S070-Q01-P2",
+      "question": "인원 수, 책정 비용, 연말 기한이 어떻게 됐지?",
+      "paraphrase_of": "S070-Q01",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I1-U02"
+      ],
+      "answer": "직원 230명에 검진 예산 4,500만원이고 12월 20일 전에 검진이 끝나야 한다."
+    },
+    {
+      "id": "S070-Q02-P1",
+      "question": "업체 선정에 필요한 조건과 제출 서류를 정리해줘.",
+      "paraphrase_of": "S070-Q02",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I1-U04",
+        "S070-I1-U06",
+        "S070-I2-U05"
+      ],
+      "answer": "소액수의 계약으로 견적 2곳 이상, 공단 지정기관, 개인정보 위탁 계약서와 청렴서약서, 가격 70·서비스 30 평가기준이 필요했다."
+    },
+    {
+      "id": "S070-Q02-P2",
+      "question": "공공 쪽 계약 규정 때문에 요구된 것들이 뭐야?",
+      "paraphrase_of": "S070-Q02",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I1-U04",
+        "S070-I1-U06",
+        "S070-I2-U05"
+      ],
+      "answer": "소액수의 계약으로 견적 2곳 이상, 공단 지정기관, 개인정보 위탁 계약서와 청렴서약서, 가격 70·서비스 30 평가기준이 필요했다."
+    },
+    {
+      "id": "S070-Q03-P1",
+      "question": "더 싼 곳이 있었는데도 선택된 이유는?",
+      "paraphrase_of": "S070-Q03",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I2-U02",
+        "S070-I2-U03",
+        "S070-I2-U04",
+        "S070-I3-U01"
+      ],
+      "answer": "경쟁사 견적 4,180만원이 더 낮았지만 토요일·출장 검진 등 서비스 점수로 선정 근거를 만들었다."
+    },
+    {
+      "id": "S070-Q03-P2",
+      "question": "타사 금액과 우리의 차별점이 어떻게 평가됐어?",
+      "paraphrase_of": "S070-Q03",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I2-U02",
+        "S070-I2-U03",
+        "S070-I2-U04",
+        "S070-I3-U01"
+      ],
+      "answer": "경쟁사 견적 4,180만원이 더 낮았지만 토요일·출장 검진 등 서비스 점수로 선정 근거를 만들었다."
+    },
+    {
+      "id": "S070-Q04-P1",
+      "question": "합의된 총액과 기간, 대금 지급 방식을 알려줘.",
+      "paraphrase_of": "S070-Q04",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I3-U00",
+        "S070-I3-U02",
+        "S070-I3-U03"
+      ],
+      "answer": "4,200만원, 선택검사 1종 축소, 2026년 11월 16일~12월 18일, 검수 후 14일 이내 지급, 보증금 면제."
+    },
+    {
+      "id": "S070-Q04-P2",
+      "question": "체결된 금액과 검진 시작·종료일, 정산 조건이 뭐야?",
+      "paraphrase_of": "S070-Q04",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I3-U00",
+        "S070-I3-U02",
+        "S070-I3-U03"
+      ],
+      "answer": "4,200만원, 선택검사 1종 축소, 2026년 11월 16일~12월 18일, 검수 후 14일 이내 지급, 보증금 면제."
+    },
+    {
+      "id": "S070-Q05-P1",
+      "question": "근무 시간이 불규칙한 직원 배려 사항은?",
+      "paraphrase_of": "S070-Q05",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I2-U04",
+        "S070-I3-U07"
+      ],
+      "answer": "교대 근무자 70명에게 토요일 검진을 우선 배정해 달라고 요청했다."
+    },
+    {
+      "id": "S070-Q05-P2",
+      "question": "주말 검진 대상과 인원이 어떻게 됐지?",
+      "paraphrase_of": "S070-Q05",
+      "kind": "semantic",
+      "company_id": "S070-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S070-I2-U04",
+        "S070-I3-U07"
+      ],
+      "answer": "교대 근무자 70명에게 토요일 검진을 우선 배정해 달라고 요청했다."
+    }
+  ]
+}

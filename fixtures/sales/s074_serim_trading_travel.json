@@ -1,0 +1,745 @@
+{
+  "scenario_id": "S074",
+  "description": "해외 출장이 잦은 무역회사에 출장 관리·법인카드 정산 서비스 판매. 대화마다 사람 이름과 다른 사람 언급이 많아 말한 사람과 언급된 사람 구분이 필요함. 이용 인원이 20명에서 현지 법인 포함 35명으로 변경. 연 계약 할인 협상 후 12월 시작 합의.",
+  "fictional": true,
+  "as_of": "2026-11-02",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 30,
+    "team_id": 29,
+    "name": "반소희",
+    "company": "트립웍스",
+    "product": "기업 출장 관리·법인카드 정산"
+  },
+  "users": [
+    {
+      "user_id": 30,
+      "team_id": 29
+    }
+  ],
+  "company": {
+    "id": "S074-CO1",
+    "name": "세림무역",
+    "industry": "해외 출장 잦은 무역회사",
+    "size": "직원 140명"
+  },
+  "contacts": [
+    {
+      "id": "S074-C1",
+      "name": "정수아",
+      "title": "총무팀 과장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S074-C2",
+      "name": "홍기범",
+      "title": "해외영업팀장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S074-C3",
+      "name": "서은지",
+      "title": "재무팀 대리",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S074-C4",
+      "name": "윤재호",
+      "title": "영업기획 이사",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S074-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-18T14:00:00+09:00",
+      "title": "총무·해외영업 첫 미팅",
+      "owner_user_id": 30,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S074-C1",
+        "S074-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S074-I1-U00",
+          "start": 2.0,
+          "end": 10.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "안녕하세요, 트립웍스 반소희입니다. 처음 연결해 주신 분이 영업기획 윤재호 이사님이시죠?",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I1-U01",
+          "start": 11.4,
+          "end": 21.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 저는 총무팀 정수아 과장이고요, 윤 이사님이 지난달 박람회에서 반 팀장님 명함을 받으셨다고 했어요.",
+          "contact_id": "S074-C1"
+        },
+        {
+          "id": "S074-I1-U02",
+          "start": 22.4,
+          "end": 35.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "해외영업 홍기범 팀장입니다. 저희가 베트남, 폴란드, 멕시코 출장이 월 평균 25건인데 총무에서 일일이 항공 호텔 잡느라 힘들어요.",
+          "contact_id": "S074-C2"
+        },
+        {
+          "id": "S074-I1-U03",
+          "start": 36.1,
+          "end": 45.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "홍 팀장님 팀이 제일 많이 가세요. 정산은 재무 서은지 대리가 영수증을 엑셀로 받아서 하고요.",
+          "contact_id": "S074-C1"
+        },
+        {
+          "id": "S074-I1-U04",
+          "start": 46.1,
+          "end": 55.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 예약부터 법인카드 정산, 사규 위반 알림까지 한 화면에서 합니다. 출장자가 몇 분이세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I1-U05",
+          "start": 56.2,
+          "end": 63.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "상시 출장자는 스무 명 정도예요. 법인카드는 스무 장 발급 생각입니다.",
+          "contact_id": "S074-C2"
+        },
+        {
+          "id": "S074-I1-U06",
+          "start": 63.8,
+          "end": 70.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "스무 명 기준으로 월 이용료 견적을 9월 4일 금요일까지 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I1-U07",
+          "start": 71.1,
+          "end": 78.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "서 대리한테도 같이 공유해 주세요. 정산은 그 친구가 제일 잘 아니까요.",
+          "contact_id": "S074-C1"
+        }
+      ]
+    },
+    {
+      "id": "S074-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-22T11:00:00+09:00",
+      "title": "견적 확인과 재무 요구 확인",
+      "owner_user_id": 30,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S074-C1",
+        "S074-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S074-I2-U00",
+          "start": 2.0,
+          "end": 16.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "정수아입니다. 견적서는 잘 봤어요. 그런데 홍 팀장님이 말씀하시길 영업 쪽 김태훈 상무님이랑 현지 법인 직원들도 쓰게 되면 서른다섯 명이래요.",
+          "contact_id": "S074-C1"
+        },
+        {
+          "id": "S074-I2-U01",
+          "start": 16.8,
+          "end": 24.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "현지 법인 직원분들까지 포함하면 카드 35장으로 다시 견적을 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I2-U02",
+          "start": 24.8,
+          "end": 33.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "재무 서은지입니다. 해외 결제는 환율 수수료랑 외화 정산이 중요한데 그것도 되나요?",
+          "contact_id": "S074-C3"
+        },
+        {
+          "id": "S074-I2-U03",
+          "start": 33.7,
+          "end": 39.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 카드사 매입 환율로 자동 환산해서 정산서에 붙습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I2-U04",
+          "start": 40.1,
+          "end": 48.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그리고 윤 이사님이 걱정하시는 게 출장비 한도인데, 직급별로 다르게 설정되나요?",
+          "contact_id": "S074-C3"
+        },
+        {
+          "id": "S074-I2-U05",
+          "start": 48.6,
+          "end": 55.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "직급별 일비·숙박 한도가 설정되고 초과하면 팀장 승인으로 넘어갑니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I2-U06",
+          "start": 56.0,
+          "end": 61.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그럼 35명 기준 견적을 다음 주 수요일까지 부탁드려요.",
+          "contact_id": "S074-C1"
+        },
+        {
+          "id": "S074-I2-U07",
+          "start": 62.2,
+          "end": 65.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 9월 30일까지 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S074-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-23T15:00:00+09:00",
+      "title": "이사 참석 가격 협의와 도입 결정",
+      "owner_user_id": 30,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S074-C4",
+        "S074-C1",
+        "S074-C2",
+        "S074-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S074-I3-U00",
+          "start": 2.0,
+          "end": 9.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "윤재호입니다. 박람회에서 뵌 이후 처음이네요. 견적은 정 과장한테 들었습니다.",
+          "contact_id": "S074-C4"
+        },
+        {
+          "id": "S074-I3-U01",
+          "start": 10.3,
+          "end": 18.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "이사님, 반갑습니다. 35명 기준 월 이용료 98만 원에 카드 발급비는 무료입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I3-U02",
+          "start": 19.2,
+          "end": 28.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "연 단위로 하면 할인되나요? 작년에 홍 팀장이 쓰던 국내 업체는 연 계약하면 15% 해줬어요.",
+          "contact_id": "S074-C4"
+        },
+        {
+          "id": "S074-I3-U03",
+          "start": 29.2,
+          "end": 34.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "연 계약이면 12% 하고 도입 교육 2회 넣겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I3-U04",
+          "start": 35.0,
+          "end": 40.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋습니다. 정 과장, 12월부터 쓰는 걸로 진행하세요.",
+          "contact_id": "S074-C4"
+        },
+        {
+          "id": "S074-I3-U05",
+          "start": 41.0,
+          "end": 47.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "네, 이사님. 그럼 계약서 초안을 11월 6일까지 보내주세요.",
+          "contact_id": "S074-C1"
+        },
+        {
+          "id": "S074-I3-U06",
+          "start": 47.7,
+          "end": 51.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "11월 6일 금요일까지 보내겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S074-I3-U07",
+          "start": 51.9,
+          "end": 59.3,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "저희 쪽 법인카드 신청서는 서 대리가 모아서 11월 20일까지 줄 거예요.",
+          "contact_id": "S074-C2"
+        },
+        {
+          "id": "S074-I3-U08",
+          "start": 59.9,
+          "end": 63.3,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "네, 직원 명단 정리해서 드릴게요.",
+          "contact_id": "S074-C3"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S074-F01",
+      "interaction_id": "S074-I1",
+      "type": "requirement",
+      "said_by": "S074-C2",
+      "content": "베트남·폴란드·멕시코 해외 출장이 월 평균 25건이라 총무팀의 항공·호텔 수배 부담이 크다.",
+      "source_utterance_ids": [
+        "S074-I1-U02"
+      ]
+    },
+    {
+      "id": "S074-F02",
+      "interaction_id": "S074-I1",
+      "type": "requirement",
+      "said_by": "S074-C1",
+      "content": "현재 정산은 재무팀 서은지 대리가 영수증을 엑셀로 받아 수작업으로 한다.",
+      "source_utterance_ids": [
+        "S074-I1-U03"
+      ]
+    },
+    {
+      "id": "S074-F03",
+      "interaction_id": "S074-I1",
+      "type": "requirement",
+      "said_by": "S074-C2",
+      "content": "상시 출장자 20명, 법인카드 20장을 발급할 계획이다.",
+      "source_utterance_ids": [
+        "S074-I1-U05"
+      ]
+    },
+    {
+      "id": "S074-F04",
+      "interaction_id": "S074-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "20명 기준 월 이용료 견적을 보낸다.",
+      "source_utterance_ids": [
+        "S074-I1-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-04",
+      "due_text": "9월 4일 금요일까지",
+      "status": "done",
+      "resolved_in": "S074-I2"
+    },
+    {
+      "id": "S074-F05",
+      "interaction_id": "S074-I1",
+      "type": "requirement",
+      "said_by": "S074-C1",
+      "content": "견적서를 재무팀 서은지 대리에게도 함께 공유해 달라고 했다.",
+      "source_utterance_ids": [
+        "S074-I1-U07"
+      ]
+    },
+    {
+      "id": "S074-F06",
+      "interaction_id": "S074-I2",
+      "type": "requirement",
+      "said_by": "S074-C1",
+      "content": "영업 김태훈 상무와 현지 법인 직원까지 쓰게 되어 이용 인원이 35명이다.",
+      "source_utterance_ids": [
+        "S074-I2-U00",
+        "S074-I2-U01"
+      ],
+      "supersedes": "S074-F03"
+    },
+    {
+      "id": "S074-F07",
+      "interaction_id": "S074-I2",
+      "type": "requirement",
+      "said_by": "S074-C3",
+      "content": "해외 결제의 환율 수수료와 외화 정산이 자동으로 되어야 한다.",
+      "source_utterance_ids": [
+        "S074-I2-U02",
+        "S074-I2-U03"
+      ]
+    },
+    {
+      "id": "S074-F08",
+      "interaction_id": "S074-I2",
+      "type": "requirement",
+      "said_by": "S074-C3",
+      "content": "윤재호 이사가 직급별 출장비 한도 설정과 초과 승인 절차를 원한다.",
+      "source_utterance_ids": [
+        "S074-I2-U04",
+        "S074-I2-U05"
+      ]
+    },
+    {
+      "id": "S074-F09",
+      "interaction_id": "S074-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "35명 기준으로 다시 작성한 견적을 보낸다.",
+      "source_utterance_ids": [
+        "S074-I2-U06",
+        "S074-I2-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-30",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S074-I3"
+    },
+    {
+      "id": "S074-F10",
+      "interaction_id": "S074-I3",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "35명 기준 월 이용료 98만 원, 카드 발급비 무료로 안내했다.",
+      "source_utterance_ids": [
+        "S074-I3-U01"
+      ]
+    },
+    {
+      "id": "S074-F11",
+      "interaction_id": "S074-I3",
+      "type": "price_reaction",
+      "said_by": "S074-C4",
+      "content": "기존 국내 업체가 연 계약 시 15% 할인해 줬다며 연 계약 할인을 요구했다.",
+      "source_utterance_ids": [
+        "S074-I3-U02"
+      ]
+    },
+    {
+      "id": "S074-F12",
+      "interaction_id": "S074-I3",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "연 계약 시 12% 할인과 도입 교육 2회를 제안했다.",
+      "source_utterance_ids": [
+        "S074-I3-U03"
+      ]
+    },
+    {
+      "id": "S074-F13",
+      "interaction_id": "S074-I3",
+      "type": "decision",
+      "said_by": "S074-C4",
+      "content": "이사가 12월부터 사용하는 것으로 진행하라고 지시했다.",
+      "source_utterance_ids": [
+        "S074-I3-U04"
+      ]
+    },
+    {
+      "id": "S074-F14",
+      "interaction_id": "S074-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "계약서 초안을 총무팀에 보낸다.",
+      "source_utterance_ids": [
+        "S074-I3-U05",
+        "S074-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S074-F15",
+      "interaction_id": "S074-I3",
+      "type": "promise",
+      "said_by": "S074-C2",
+      "content": "서은지 대리가 법인카드 신청서를 취합해 보낸다.",
+      "source_utterance_ids": [
+        "S074-I3-U07",
+        "S074-I3-U08"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-20",
+      "due_text": "11월 20일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S074-Q01",
+      "question": "세림무역은 출장 관리에서 어떤 점이 힘들대?",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U02",
+        "S074-I1-U03"
+      ],
+      "answer": "월 25건 해외 출장의 항공·호텔 예약을 총무가 직접 하고, 정산도 영수증 엑셀 수작업이다."
+    },
+    {
+      "id": "S074-Q02",
+      "question": "세림무역 이용 인원이 어떻게 변했어?",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U05",
+        "S074-I2-U00",
+        "S074-I2-U01"
+      ],
+      "answer": "처음 20명·카드 20장이었는데 영업 상무와 현지 법인 직원이 포함되어 35명으로 늘었다."
+    },
+    {
+      "id": "S074-Q03",
+      "question": "세림무역 재무 쪽에서 꼭 필요하다는 기능은?",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I2-U02",
+        "S074-I2-U03",
+        "S074-I2-U04",
+        "S074-I2-U05"
+      ],
+      "answer": "해외 결제 환율 자동 환산·외화 정산, 직급별 한도와 초과 시 팀장 승인이다."
+    },
+    {
+      "id": "S074-Q04",
+      "question": "세림무역과 가격은 어떻게 합의했어?",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I3-U01",
+        "S074-I3-U02",
+        "S074-I3-U03",
+        "S074-I3-U04"
+      ],
+      "answer": "35명 월 98만 원 기준, 연 계약 12% 할인과 도입 교육 2회로 이사가 12월 시작을 승인했다."
+    },
+    {
+      "id": "S074-Q05",
+      "question": "세림무역은 우리를 어떻게 알게 됐어?",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U01"
+      ],
+      "answer": "윤재호 이사가 지난달 박람회에서 반소희의 명함을 받아 연결됐다."
+    },
+    {
+      "id": "S074-Q06",
+      "question": "세림무역에 우리가 줘야 할 게 뭐야?",
+      "kind": "structured",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_fact_ids": [
+        "S074-F14"
+      ],
+      "answer": "11월 6일 금요일까지 계약서 초안을 보내야 한다."
+    },
+    {
+      "id": "S074-Q07",
+      "question": "세림무역에서 고객이 하기로 한 게 뭐야?",
+      "kind": "structured",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_fact_ids": [
+        "S074-F15"
+      ],
+      "answer": "재무 서은지 대리가 11월 20일까지 법인카드 신청서를 취합해 주기로 했다."
+    },
+    {
+      "id": "S074-Q01-P1",
+      "question": "세림무역 담당자들이 업무 중 불편해하는 부분이 뭐야?",
+      "paraphrase_of": "S074-Q01",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U02",
+        "S074-I1-U03"
+      ],
+      "answer": "월 25건 해외 출장의 항공·호텔 예약을 총무가 직접 하고, 정산도 영수증 엑셀 수작업이다."
+    },
+    {
+      "id": "S074-Q01-P2",
+      "question": "세림무역이 지금 겪는 번거로운 일들을 정리해 줘.",
+      "paraphrase_of": "S074-Q01",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U02",
+        "S074-I1-U03"
+      ],
+      "answer": "월 25건 해외 출장의 항공·호텔 예약을 총무가 직접 하고, 정산도 영수증 엑셀 수작업이다."
+    },
+    {
+      "id": "S074-Q02-P1",
+      "question": "세림무역에서 쓸 사람 수가 달라진 경위는?",
+      "paraphrase_of": "S074-Q02",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U05",
+        "S074-I2-U00",
+        "S074-I2-U01"
+      ],
+      "answer": "처음 20명·카드 20장이었는데 영업 상무와 현지 법인 직원이 포함되어 35명으로 늘었다."
+    },
+    {
+      "id": "S074-Q02-P2",
+      "question": "세림무역 카드 발급 수량이 처음과 지금 얼마나 달라?",
+      "paraphrase_of": "S074-Q02",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U05",
+        "S074-I2-U00",
+        "S074-I2-U01"
+      ],
+      "answer": "처음 20명·카드 20장이었는데 영업 상무와 현지 법인 직원이 포함되어 35명으로 늘었다."
+    },
+    {
+      "id": "S074-Q03-P1",
+      "question": "세림무역 경리 부서가 챙기는 조건이 뭐야?",
+      "paraphrase_of": "S074-Q03",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I2-U02",
+        "S074-I2-U03",
+        "S074-I2-U04",
+        "S074-I2-U05"
+      ],
+      "answer": "해외 결제 환율 자동 환산·외화 정산, 직급별 한도와 초과 시 팀장 승인이다."
+    },
+    {
+      "id": "S074-Q03-P2",
+      "question": "세림무역이 해외 결제와 경비 통제에서 바라는 점은?",
+      "paraphrase_of": "S074-Q03",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I2-U02",
+        "S074-I2-U03",
+        "S074-I2-U04",
+        "S074-I2-U05"
+      ],
+      "answer": "해외 결제 환율 자동 환산·외화 정산, 직급별 한도와 초과 시 팀장 승인이다."
+    },
+    {
+      "id": "S074-Q04-P1",
+      "question": "세림무역 요금 조건과 최종 승낙 내용은?",
+      "paraphrase_of": "S074-Q04",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I3-U01",
+        "S074-I3-U02",
+        "S074-I3-U03",
+        "S074-I3-U04"
+      ],
+      "answer": "35명 월 98만 원 기준, 연 계약 12% 할인과 도입 교육 2회로 이사가 12월 시작을 승인했다."
+    },
+    {
+      "id": "S074-Q04-P2",
+      "question": "세림무역이 요구한 에누리와 우리가 내놓은 건 뭐였어?",
+      "paraphrase_of": "S074-Q04",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I3-U01",
+        "S074-I3-U02",
+        "S074-I3-U03",
+        "S074-I3-U04"
+      ],
+      "answer": "35명 월 98만 원 기준, 연 계약 12% 할인과 도입 교육 2회로 이사가 12월 시작을 승인했다."
+    },
+    {
+      "id": "S074-Q05-P1",
+      "question": "세림무역과 처음 인연이 된 계기가 뭐야?",
+      "paraphrase_of": "S074-Q05",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U01"
+      ],
+      "answer": "윤재호 이사가 지난달 박람회에서 반소희의 명함을 받아 연결됐다."
+    },
+    {
+      "id": "S074-Q05-P2",
+      "question": "세림무역 첫 접점이 어디 행사였어?",
+      "paraphrase_of": "S074-Q05",
+      "kind": "semantic",
+      "company_id": "S074-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 30,
+      "relevant_utterance_ids": [
+        "S074-I1-U01"
+      ],
+      "answer": "윤재호 이사가 지난달 박람회에서 반소희의 명함을 받아 연결됐다."
+    }
+  ]
+}

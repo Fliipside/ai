@@ -1,0 +1,728 @@
+{
+  "scenario_id": "S028",
+  "description": "지역 농협 미곡종합처리장(RPC) 지붕 태양광. 경쟁입찰·이사회 의결·수의계약 한도 같은 농협 규정이 일정을 좌우하고, 충청도 사투리 구어체가 섞인 대화. 임대료 협상 진행 중 (대화 3건)",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 14,
+    "team_id": 13,
+    "name": "차승우",
+    "company": "썬브릿지에너지",
+    "product": "공장·창고 지붕 태양광 설치 (지붕 임대형 PPA)"
+  },
+  "users": [
+    {
+      "user_id": 14,
+      "team_id": 13
+    }
+  ],
+  "company": {
+    "id": "S028-CO1",
+    "name": "들샘농협 RPC",
+    "industry": "지역 농협 미곡종합처리장",
+    "size": "건조저장시설 포함 지붕 약 8,000제곱미터"
+  },
+  "contacts": [
+    {
+      "id": "S028-C1",
+      "name": "나기순",
+      "title": "조합장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S028-C2",
+      "name": "고만석",
+      "title": "RPC 센터장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S028-C3",
+      "name": "하영미",
+      "title": "경제 담당 상무",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S028-I1",
+      "kind": "call",
+      "occurred_at": "2026-08-27T09:30:00+09:00",
+      "title": "센터장 첫 통화",
+      "owner_user_id": 14,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S028-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S028-I1-U00",
+          "start": 2.0,
+          "end": 12.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "여기 RPC 지붕이 건조저장시설까지 하면 8천 제곱미터쯤 되는디, 노는 지붕 놔두기 아깝다 해서 전화드렸슈.",
+          "contact_id": "S028-C2"
+        },
+        {
+          "id": "S028-I1-U01",
+          "start": 13.4,
+          "end": 17.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "센터장님, 전기는 한 달에 얼마나 쓰시나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I1-U02",
+          "start": 18.3,
+          "end": 26.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "벼 말리는 가을철이 제일 많쥬. 9월부터 11월까지 한 달에 7천만 원씩 나가유.",
+          "contact_id": "S028-C2"
+        },
+        {
+          "id": "S028-I1-U03",
+          "start": 27.0,
+          "end": 32.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "가을 건조 시기에 전력 소비가 몰리면 태양광 효과가 큽니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I1-U04",
+          "start": 33.5,
+          "end": 43.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "근디 우리는 농협이라 맘대로 못 해유. 계약은 경쟁입찰을 해야 하고 이사회 의결도 받아야 혀요.",
+          "contact_id": "S028-C2"
+        },
+        {
+          "id": "S028-I1-U05",
+          "start": 43.6,
+          "end": 49.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 입찰 공고 전에 사업 개요서를 같이 정리해 드릴까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I1-U06",
+          "start": 50.0,
+          "end": 53.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그래 주면 고맙쥬. 언제까지 되겄슈?",
+          "contact_id": "S028-C2"
+        },
+        {
+          "id": "S028-I1-U07",
+          "start": 54.2,
+          "end": 57.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "다음 주 목요일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I1-U08",
+          "start": 58.0,
+          "end": 62.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그라믄 저는 조합장님하고 일정을 잡아 놓을게유.",
+          "contact_id": "S028-C2"
+        }
+      ]
+    },
+    {
+      "id": "S028-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-24T14:00:00+09:00",
+      "title": "조합장 면담",
+      "owner_user_id": 14,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S028-C1",
+        "S028-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S028-I2-U00",
+          "start": 2.0,
+          "end": 10.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "조합장 나기순이유. 센터장한테 얘기는 들었슈. 근디 조합원들이 태양광에 의심이 많아유.",
+          "contact_id": "S028-C1"
+        },
+        {
+          "id": "S028-I2-U01",
+          "start": 11.2,
+          "end": 19.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "상무 하영미입니다. 지붕 임대 수익을 조합원 배당으로 돌릴 수 있는지가 관건이에요.",
+          "contact_id": "S028-C3"
+        },
+        {
+          "id": "S028-I2-U02",
+          "start": 20.1,
+          "end": 28.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지붕 임대료로 연 8천만 원 정도 받는 안과 농협이 직접 투자하는 안이 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I2-U03",
+          "start": 28.8,
+          "end": 35.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "직접 투자는 안 되유. 올해는 투자 여력이 없어서 임대로만 가야 혀요.",
+          "contact_id": "S028-C1"
+        },
+        {
+          "id": "S028-I2-U04",
+          "start": 36.4,
+          "end": 41.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "임대형이면 발전사업 허가랑 REC 판매는 누가 하나요?",
+          "contact_id": "S028-C3"
+        },
+        {
+          "id": "S028-I2-U05",
+          "start": 42.4,
+          "end": 49.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "발전사업 허가와 REC는 저희가 맡고 농협은 지붕만 제공하시면 됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I2-U06",
+          "start": 50.0,
+          "end": 58.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "입찰 규정상 5천만 원 넘는 계약은 수의계약이 안 돼요. 그래서 공고를 내야 합니다.",
+          "contact_id": "S028-C3"
+        },
+        {
+          "id": "S028-I2-U07",
+          "start": 59.1,
+          "end": 65.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "이사회가 11월 25일이니까 그때 입찰 공고 안건을 올려유.",
+          "contact_id": "S028-C1"
+        },
+        {
+          "id": "S028-I2-U08",
+          "start": 65.6,
+          "end": 70.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "입찰 규격 초안은 10월 15일까지 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S028-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-20T10:30:00+09:00",
+      "title": "임대료 협의 통화",
+      "owner_user_id": 14,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S028-C3",
+        "S028-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S028-I3-U00",
+          "start": 2.0,
+          "end": 11.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "규격 초안은 잘 받았어요. 근데 임대료 연 8천만 원은 이사회에서 낮다는 말이 나올 것 같아요.",
+          "contact_id": "S028-C3"
+        },
+        {
+          "id": "S028-I3-U01",
+          "start": 12.1,
+          "end": 21.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지붕 면적이 8천 제곱미터라 연 8천이 기본인데, 구조안전 확인 결과에 따라 달라질 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I3-U02",
+          "start": 22.4,
+          "end": 30.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "건조저장시설 지붕이 오래돼서 구조 진단을 받아야 하는디, 비용은 누가 낸대유?",
+          "contact_id": "S028-C2"
+        },
+        {
+          "id": "S028-I3-U03",
+          "start": 30.7,
+          "end": 34.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "진단 비용은 저희가 부담하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I3-U04",
+          "start": 34.7,
+          "end": 41.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그럼 임대료를 연 1억 원 이상으로 올릴 수 있는지 검토해 주세요.",
+          "contact_id": "S028-C3"
+        },
+        {
+          "id": "S028-I3-U05",
+          "start": 42.0,
+          "end": 53.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "1억은 발전 수익에서 맞추기 어렵습니다. 연 9천 2백만 원까지는 본사에 요청해 보고 11월 6일까지 답드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S028-I3-U06",
+          "start": 54.3,
+          "end": 60.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "알겠어요. 그리고 센터장님이 건축물대장을 갖다 주기로 했죠?",
+          "contact_id": "S028-C3"
+        },
+        {
+          "id": "S028-I3-U07",
+          "start": 60.8,
+          "end": 64.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "예, 11월 2일까지 구해다 드릴게유.",
+          "contact_id": "S028-C2"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S028-F01",
+      "interaction_id": "S028-I1",
+      "type": "requirement",
+      "said_by": "S028-C2",
+      "content": "건조저장시설 포함 지붕이 약 8,000제곱미터이고 가을 건조철에는 월 전기요금이 7,000만 원 나온다.",
+      "source_utterance_ids": [
+        "S028-I1-U00",
+        "S028-I1-U02"
+      ]
+    },
+    {
+      "id": "S028-F02",
+      "interaction_id": "S028-I1",
+      "type": "requirement",
+      "said_by": "S028-C2",
+      "content": "농협이라 계약은 경쟁입찰을 거쳐야 하고 이사회 의결이 필요하다.",
+      "source_utterance_ids": [
+        "S028-I1-U04"
+      ]
+    },
+    {
+      "id": "S028-F03",
+      "interaction_id": "S028-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "입찰 전 사업 개요서를 정리해 보낸다.",
+      "source_utterance_ids": [
+        "S028-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-03",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S028-I2"
+    },
+    {
+      "id": "S028-F04",
+      "interaction_id": "S028-I1",
+      "type": "promise",
+      "said_by": "S028-C2",
+      "content": "조합장과 면담 일정을 잡는다.",
+      "source_utterance_ids": [
+        "S028-I1-U08"
+      ],
+      "owner": "customer",
+      "due_at": null,
+      "due_text": "일정을 잡아 놓을게유",
+      "status": "done",
+      "resolved_in": "S028-I2"
+    },
+    {
+      "id": "S028-F05",
+      "interaction_id": "S028-I2",
+      "type": "requirement",
+      "said_by": "S028-C3",
+      "content": "지붕 임대 수익을 조합원 배당으로 돌릴 수 있는지가 중요하고 조합원들은 태양광을 의심한다.",
+      "source_utterance_ids": [
+        "S028-I2-U00",
+        "S028-I2-U01"
+      ]
+    },
+    {
+      "id": "S028-F06",
+      "interaction_id": "S028-I2",
+      "type": "decision",
+      "said_by": "S028-C1",
+      "content": "올해 투자 여력이 없어 직접 투자는 안 되고 지붕 임대형으로만 간다.",
+      "source_utterance_ids": [
+        "S028-I2-U03"
+      ]
+    },
+    {
+      "id": "S028-F07",
+      "interaction_id": "S028-I2",
+      "type": "requirement",
+      "said_by": "S028-C3",
+      "content": "5천만 원을 넘는 계약은 수의계약이 안 되어 입찰 공고가 필요하다.",
+      "source_utterance_ids": [
+        "S028-I2-U06"
+      ]
+    },
+    {
+      "id": "S028-F08",
+      "interaction_id": "S028-I2",
+      "type": "purchase_timing",
+      "said_by": "S028-C1",
+      "content": "11월 25일 이사회에 입찰 공고 안건을 올린다.",
+      "source_utterance_ids": [
+        "S028-I2-U07"
+      ]
+    },
+    {
+      "id": "S028-F09",
+      "interaction_id": "S028-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "입찰 규격 초안을 보낸다.",
+      "source_utterance_ids": [
+        "S028-I2-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-15",
+      "due_text": "10월 15일까지",
+      "status": "done",
+      "resolved_in": "S028-I3"
+    },
+    {
+      "id": "S028-F10",
+      "interaction_id": "S028-I3",
+      "type": "price_reaction",
+      "said_by": "S028-C3",
+      "content": "연 8천만 원 지붕 임대료는 이사회에서 낮다는 말이 나올 것 같다고 했고 연 1억 원 이상을 요청했다.",
+      "source_utterance_ids": [
+        "S028-I3-U00",
+        "S028-I3-U04"
+      ]
+    },
+    {
+      "id": "S028-F11",
+      "interaction_id": "S028-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "건조저장시설 구조 진단 비용을 부담한다.",
+      "source_utterance_ids": [
+        "S028-I3-U03"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "진단 비용은 저희가 부담하겠습니다",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S028-F12",
+      "interaction_id": "S028-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "임대료 연 9천 2백만 원 가능 여부를 본사에 확인해 답한다.",
+      "source_utterance_ids": [
+        "S028-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S028-F13",
+      "interaction_id": "S028-I3",
+      "type": "promise",
+      "said_by": "S028-C2",
+      "content": "건축물대장을 구해 준다.",
+      "source_utterance_ids": [
+        "S028-I3-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-02",
+      "due_text": "11월 2일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S028-Q01",
+      "question": "들샘농협 RPC는 전기를 언제 많이 써?",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I1-U02"
+      ],
+      "answer": "벼를 말리는 9~11월 가을철에 월 7천만 원 정도 나간다."
+    },
+    {
+      "id": "S028-Q02",
+      "question": "계약 절차에서 농협 규정상 조심할 게 뭐야?",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I1-U04",
+        "S028-I2-U06",
+        "S028-I2-U07"
+      ],
+      "answer": "경쟁입찰과 이사회 의결이 필요하고 5천만 원 초과는 수의계약이 안 된다. 11월 25일 이사회에 입찰 공고 안건을 올린다."
+    },
+    {
+      "id": "S028-Q03",
+      "question": "투자 방식은 어떻게 정해졌어?",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I2-U02",
+        "S028-I2-U03",
+        "S028-I2-U05"
+      ],
+      "answer": "조합이 직접 투자하지 않고 지붕을 임대하는 방식으로 가며 발전사업 허가와 REC는 썬브릿지가 맡는다."
+    },
+    {
+      "id": "S028-Q04",
+      "question": "지붕 임대료 협상은 어떻게 되고 있어?",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I2-U02",
+        "S028-I3-U00",
+        "S028-I3-U04",
+        "S028-I3-U05"
+      ],
+      "answer": "연 8천만 원 제안에 고객이 낮다며 1억 원 이상을 요청했고, 우리는 9천 2백만 원까지 본사에 요청해 보기로 했다."
+    },
+    {
+      "id": "S028-Q05",
+      "question": "구조 진단은 누가 비용을 내?",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I3-U02",
+        "S028-I3-U03"
+      ],
+      "answer": "건조저장시설 지붕이 오래돼 진단이 필요하고 비용은 썬브릿지가 부담한다."
+    },
+    {
+      "id": "S028-Q06",
+      "question": "들샘농협 쪽에서 기한이 지났는데 안 온 게 있어?",
+      "kind": "structured",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_fact_ids": [
+        "S028-F13"
+      ],
+      "answer": "고만석 센터장이 11월 2일까지 주기로 한 건축물대장이 아직 확인되지 않았다."
+    },
+    {
+      "id": "S028-Q07",
+      "question": "우리가 11월에 답해야 하는 건?",
+      "kind": "structured",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_fact_ids": [
+        "S028-F12"
+      ],
+      "answer": "임대료 연 9천 2백만 원 가능 여부를 11월 6일까지 답해야 한다."
+    },
+    {
+      "id": "S028-Q01-P1",
+      "question": "전력 소비가 몰리는 계절과 요금 수준은?",
+      "paraphrase_of": "S028-Q01",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I1-U02"
+      ],
+      "answer": "벼를 말리는 9~11월 가을철에 월 7천만 원 정도 나간다."
+    },
+    {
+      "id": "S028-Q01-P2",
+      "question": "수확기 쌀 건조 때 요금이 얼마나 나와?",
+      "paraphrase_of": "S028-Q01",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I1-U02"
+      ],
+      "answer": "벼를 말리는 9~11월 가을철에 월 7천만 원 정도 나간다."
+    },
+    {
+      "id": "S028-Q02-P1",
+      "question": "수의계약으로 바로 못 하는 이유와 의결 일정은?",
+      "paraphrase_of": "S028-Q02",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I1-U04",
+        "S028-I2-U06",
+        "S028-I2-U07"
+      ],
+      "answer": "경쟁입찰과 이사회 의결이 필요하고 5천만 원 초과는 수의계약이 안 된다. 11월 25일 이사회에 입찰 공고 안건을 올린다."
+    },
+    {
+      "id": "S028-Q02-P2",
+      "question": "조합 내부 규정 때문에 필요한 절차를 알려줘.",
+      "paraphrase_of": "S028-Q02",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I1-U04",
+        "S028-I2-U06",
+        "S028-I2-U07"
+      ],
+      "answer": "경쟁입찰과 이사회 의결이 필요하고 5천만 원 초과는 수의계약이 안 된다. 11월 25일 이사회에 입찰 공고 안건을 올린다."
+    },
+    {
+      "id": "S028-Q03-P1",
+      "question": "자금을 누가 대는 구조로 갔어?",
+      "paraphrase_of": "S028-Q03",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I2-U02",
+        "S028-I2-U03",
+        "S028-I2-U05"
+      ],
+      "answer": "조합이 직접 투자하지 않고 지붕을 임대하는 방식으로 가며 발전사업 허가와 REC는 썬브릿지가 맡는다."
+    },
+    {
+      "id": "S028-Q03-P2",
+      "question": "조합 쪽은 지붕만 내주고 나머지는 우리가 하는 방식이야?",
+      "paraphrase_of": "S028-Q03",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I2-U02",
+        "S028-I2-U03",
+        "S028-I2-U05"
+      ],
+      "answer": "조합이 직접 투자하지 않고 지붕을 임대하는 방식으로 가며 발전사업 허가와 REC는 썬브릿지가 맡는다."
+    },
+    {
+      "id": "S028-Q04-P1",
+      "question": "월세 수준 조율 상황을 알려줘.",
+      "paraphrase_of": "S028-Q04",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I2-U02",
+        "S028-I3-U00",
+        "S028-I3-U04",
+        "S028-I3-U05"
+      ],
+      "answer": "연 8천만 원 제안에 고객이 낮다며 1억 원 이상을 요청했고, 우리는 9천 2백만 원까지 본사에 요청해 보기로 했다."
+    },
+    {
+      "id": "S028-Q04-P2",
+      "question": "임대 수익 금액에 대한 요청과 우리 답변이 뭐였지?",
+      "paraphrase_of": "S028-Q04",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I2-U02",
+        "S028-I3-U00",
+        "S028-I3-U04",
+        "S028-I3-U05"
+      ],
+      "answer": "연 8천만 원 제안에 고객이 낮다며 1억 원 이상을 요청했고, 우리는 9천 2백만 원까지 본사에 요청해 보기로 했다."
+    },
+    {
+      "id": "S028-Q05-P1",
+      "question": "오래된 건물 안전 검사 비용 부담 주체는?",
+      "paraphrase_of": "S028-Q05",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I3-U02",
+        "S028-I3-U03"
+      ],
+      "answer": "건조저장시설 지붕이 오래돼 진단이 필요하고 비용은 썬브릿지가 부담한다."
+    },
+    {
+      "id": "S028-Q05-P2",
+      "question": "지붕 노후 점검 요금을 누가 지불하기로 했지?",
+      "paraphrase_of": "S028-Q05",
+      "kind": "semantic",
+      "company_id": "S028-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S028-I3-U02",
+        "S028-I3-U03"
+      ],
+      "answer": "건조저장시설 지붕이 오래돼 진단이 필요하고 비용은 썬브릿지가 부담한다."
+    }
+  ]
+}

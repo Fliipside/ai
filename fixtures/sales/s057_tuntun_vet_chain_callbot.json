@@ -1,0 +1,771 @@
+{
+  "scenario_id": "S057",
+  "description": "동물병원 7개 지점 체인에 예약·문의 전화 AI 봇. 격식 없는 원장의 구어체, 응급 키워드 시 사람 연결 요구, 지점당 월 25만 원 → 1년 약정 21만 원, 고객이 약속한 차트 프로그램 정보가 계속 지연되어 시작이 10월에서 11월 중순으로 밀림",
+  "fictional": true,
+  "as_of": "2026-11-04",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 24,
+    "team_id": 23,
+    "name": "권태양",
+    "company": "보이스온",
+    "product": "AI 콜봇·상담 자동화"
+  },
+  "users": [
+    {
+      "user_id": 24,
+      "team_id": 23
+    }
+  ],
+  "company": {
+    "id": "S057-CO1",
+    "name": "튼튼동물의료센터",
+    "industry": "동물병원 체인",
+    "size": "7개 지점, 수의사 18명"
+  },
+  "contacts": [
+    {
+      "id": "S057-C1",
+      "name": "계현우",
+      "title": "대표원장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S057-C2",
+      "name": "유미란",
+      "title": "총괄실장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S057-C3",
+      "name": "고재영",
+      "title": "본점 접수팀장",
+      "role_in_deal": "influencer"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S057-I1",
+      "kind": "call",
+      "occurred_at": "2026-08-24T18:30:00+09:00",
+      "title": "원장 직접 문의 전화",
+      "owner_user_id": 24,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S057-C1",
+        "S057-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S057-I1-U00",
+          "start": 2.0,
+          "end": 9.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아, 권 팀장님? 나 계현우 원장인데, 우리 병원 전화 때문에 미치겠어요 진짜.",
+          "contact_id": "S057-C1"
+        },
+        {
+          "id": "S057-I1-U01",
+          "start": 10.5,
+          "end": 14.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "원장님 안녕하세요. 어떤 상황이세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I1-U02",
+          "start": 14.7,
+          "end": 23.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "7개 지점인데 접수 직원이 진료 보면서 전화받고 하니까 놓치는 콜이 하루에 서른 통은 돼요.",
+          "contact_id": "S057-C1"
+        },
+        {
+          "id": "S057-I1-U03",
+          "start": 24.5,
+          "end": 30.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "부재 콜이 하루 30통이면 월로 700건 가까이 되네요.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I1-U04",
+          "start": 30.7,
+          "end": 37.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "예약 변경하고 진료시간 문의, 예방접종 일정 문의가 대부분이야.",
+          "contact_id": "S057-C1"
+        },
+        {
+          "id": "S057-I1-U05",
+          "start": 37.6,
+          "end": 46.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 세 가지는 봇이 충분히 처리합니다. 알림톡으로 예약 확정 문자도 자동 발송되고요.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I1-U06",
+          "start": 46.7,
+          "end": 54.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "우리 실장 불러줄게. 유 실장이 얘기 듣고 결정할 거야. 유 실장, 이쪽으로.",
+          "contact_id": "S057-C1"
+        },
+        {
+          "id": "S057-I1-U07",
+          "start": 55.0,
+          "end": 62.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "유미란 실장입니다. 지금 쓰는 병원 차트 프로그램이랑 예약이 연동되나요?",
+          "contact_id": "S057-C2"
+        },
+        {
+          "id": "S057-I1-U08",
+          "start": 62.8,
+          "end": 70.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "몇 군데 차트 프로그램과 연동했는데 어떤 제품 쓰시는지 알려주시면 확인하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I1-U09",
+          "start": 71.5,
+          "end": 77.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "제품명은 확인해서 이번 주 금요일까지 메일로 보내드릴게요.",
+          "contact_id": "S057-C2"
+        }
+      ]
+    },
+    {
+      "id": "S057-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-22T19:00:00+09:00",
+      "title": "데모와 가격",
+      "owner_user_id": 24,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S057-C3",
+        "S057-C1",
+        "S057-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S057-I2-U00",
+          "start": 2.0,
+          "end": 8.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지난번 말씀하신 세 가지 업무에 응급 연결을 넣은 데모 준비했습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I2-U01",
+          "start": 9.4,
+          "end": 18.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "고재영 팀장입니다. 보호자가 토했어요, 발작 이런 말 하면 바로 사람한테 연결돼야 해요.",
+          "contact_id": "S057-C3"
+        },
+        {
+          "id": "S057-I2-U02",
+          "start": 18.8,
+          "end": 25.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "응급 키워드가 감지되면 즉시 당직 원장 휴대폰으로 연결되게 설정합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I2-U03",
+          "start": 26.4,
+          "end": 29.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그거 좋네. 그게 제일 중요해.",
+          "contact_id": "S057-C1"
+        },
+        {
+          "id": "S057-I2-U04",
+          "start": 30.1,
+          "end": 36.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "가격은 지점당 월 25만 원, 7개 지점 월 175만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I2-U05",
+          "start": 37.0,
+          "end": 47.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "음, 175면 접수 직원 한 명 월급보다 싸긴 한데 처음엔 좀 비싼 느낌이네. 1년 계약하면 깎아줘요?",
+          "contact_id": "S057-C1"
+        },
+        {
+          "id": "S057-I2-U06",
+          "start": 47.9,
+          "end": 55.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "1년 약정이면 지점당 월 21만 원, 7개 지점 월 147만 원으로 하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I2-U07",
+          "start": 56.4,
+          "end": 62.5,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "근데 차트 프로그램 정보는 제가 아직 못 보냈네요. 죄송해요.",
+          "contact_id": "S057-C2"
+        },
+        {
+          "id": "S057-I2-U08",
+          "start": 63.1,
+          "end": 67.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "괜찮습니다. 그걸 받아야 연동 일정이 나와서요.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I2-U09",
+          "start": 68.4,
+          "end": 74.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "응, 일단 본점 한 군데 먼저 해보고 보자고. 10월부터.",
+          "contact_id": "S057-C1"
+        },
+        {
+          "id": "S057-I2-U10",
+          "start": 74.8,
+          "end": 81.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 응급 연결 시연 영상은 이번 달 말일까지 보내드릴게요.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S057-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-20T11:00:00+09:00",
+      "title": "연동 정보 지연과 시작일 조정",
+      "owner_user_id": 24,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S057-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S057-I3-U00",
+          "start": 2.0,
+          "end": 6.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "유 실장님, 영상은 보내드렸는데 보셨나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I3-U01",
+          "start": 6.7,
+          "end": 10.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 원장님도 봤어요. 마음에 들어하세요.",
+          "contact_id": "S057-C2"
+        },
+        {
+          "id": "S057-I3-U02",
+          "start": 11.4,
+          "end": 18.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "다행입니다. 10월 시작하려면 차트 프로그램 정보가 꼭 필요한데요.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I3-U03",
+          "start": 18.7,
+          "end": 27.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아 그게, 차트 업체에 문의해야 하는데 담당자가 휴가래요. 다음 주엔 줄 수 있을 거예요.",
+          "contact_id": "S057-C2"
+        },
+        {
+          "id": "S057-I3-U04",
+          "start": 28.3,
+          "end": 35.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "연동 확인에 열흘 걸려서 이러면 11월 중순 시작이 될 것 같아요.",
+          "contact_id": null
+        },
+        {
+          "id": "S057-I3-U05",
+          "start": 35.6,
+          "end": 41.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네네, 11월 중순 이해합니다. 원장님이 그래도 하신대요.",
+          "contact_id": "S057-C2"
+        },
+        {
+          "id": "S057-I3-U06",
+          "start": 42.0,
+          "end": 49.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 11월 16일 시작을 목표로 하고, 정보 받는 대로 연동 확인할게요.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S057-F01",
+      "interaction_id": "S057-I1",
+      "type": "requirement",
+      "said_by": "S057-C1",
+      "content": "7개 지점에서 접수 직원이 진료 중 전화를 받아 하루 30통 정도 콜을 놓친다.",
+      "source_utterance_ids": [
+        "S057-I1-U02"
+      ]
+    },
+    {
+      "id": "S057-F02",
+      "interaction_id": "S057-I1",
+      "type": "requirement",
+      "said_by": "S057-C1",
+      "content": "문의 대부분은 예약 변경, 진료시간, 예방접종 일정이다.",
+      "source_utterance_ids": [
+        "S057-I1-U04"
+      ]
+    },
+    {
+      "id": "S057-F03",
+      "interaction_id": "S057-I1",
+      "type": "requirement",
+      "said_by": "S057-C2",
+      "content": "병원 차트 프로그램과 예약이 연동되어야 한다.",
+      "source_utterance_ids": [
+        "S057-I1-U07"
+      ]
+    },
+    {
+      "id": "S057-F04",
+      "interaction_id": "S057-I1",
+      "type": "promise",
+      "said_by": "S057-C2",
+      "content": "사용 중인 차트 프로그램 제품명을 메일로 보내기로 했다.",
+      "source_utterance_ids": [
+        "S057-I1-U09"
+      ],
+      "owner": "customer",
+      "due_at": "2026-08-28",
+      "due_text": "이번 주 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S057-F05",
+      "interaction_id": "S057-I2",
+      "type": "requirement",
+      "said_by": "S057-C3",
+      "content": "보호자가 토했다, 발작 같은 응급 표현을 하면 바로 사람에게 연결되어야 한다.",
+      "source_utterance_ids": [
+        "S057-I2-U01"
+      ]
+    },
+    {
+      "id": "S057-F06",
+      "interaction_id": "S057-I2",
+      "type": "buying_signal",
+      "said_by": "S057-C1",
+      "content": "응급 시 당직 원장 연결 기능이 가장 중요하다며 반겼다.",
+      "source_utterance_ids": [
+        "S057-I2-U03"
+      ]
+    },
+    {
+      "id": "S057-F07",
+      "interaction_id": "S057-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "지점당 월 25만 원, 7개 지점 월 175만 원을 제시했다.",
+      "source_utterance_ids": [
+        "S057-I2-U04"
+      ]
+    },
+    {
+      "id": "S057-F08",
+      "interaction_id": "S057-I2",
+      "type": "price_reaction",
+      "said_by": "S057-C1",
+      "content": "처음엔 비싼 느낌이라며 1년 계약 시 할인을 요청했다.",
+      "source_utterance_ids": [
+        "S057-I2-U05"
+      ]
+    },
+    {
+      "id": "S057-F09",
+      "interaction_id": "S057-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "1년 약정이면 지점당 월 21만 원, 7개 지점 월 147만 원으로 제안했다.",
+      "source_utterance_ids": [
+        "S057-I2-U06"
+      ]
+    },
+    {
+      "id": "S057-F10",
+      "interaction_id": "S057-I2",
+      "type": "decision",
+      "said_by": "S057-C1",
+      "content": "본점 한 곳만 먼저 해보고 판단하며 시작은 10월로 잡았다.",
+      "source_utterance_ids": [
+        "S057-I2-U09"
+      ]
+    },
+    {
+      "id": "S057-F11",
+      "interaction_id": "S057-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "응급 연결 시연 영상을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S057-I2-U10"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-30",
+      "due_text": "이번 달 말일까지",
+      "status": "done",
+      "resolved_in": "S057-I3"
+    },
+    {
+      "id": "S057-F12",
+      "interaction_id": "S057-I3",
+      "type": "buying_signal",
+      "said_by": "S057-C2",
+      "content": "원장도 시연 영상을 보고 마음에 들어 한다.",
+      "source_utterance_ids": [
+        "S057-I3-U01"
+      ]
+    },
+    {
+      "id": "S057-F13",
+      "interaction_id": "S057-I3",
+      "type": "promise",
+      "said_by": "S057-C2",
+      "content": "차트 업체에 문의해 차트 프로그램 정보를 다음 주에 주기로 했다.",
+      "source_utterance_ids": [
+        "S057-I3-U03"
+      ],
+      "owner": "customer",
+      "due_at": null,
+      "due_text": "다음 주엔",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S057-F14",
+      "interaction_id": "S057-I3",
+      "type": "purchase_timing",
+      "said_by": "S057-C2",
+      "content": "차트 정보 지연으로 본점 시작이 10월에서 11월 중순으로 밀렸고, 11월 16일을 목표로 한다.",
+      "source_utterance_ids": [
+        "S057-I3-U05"
+      ],
+      "supersedes": "S057-F10"
+    },
+    {
+      "id": "S057-F15",
+      "interaction_id": "S057-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "차트 정보를 받는 대로 연동 가능 여부를 확인하기로 했다.",
+      "source_utterance_ids": [
+        "S057-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "정보 받는 대로",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S057-Q01",
+      "question": "병원 전화 문제가 구체적으로 뭐야?",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U00",
+        "S057-I1-U02",
+        "S057-I1-U04"
+      ],
+      "answer": "접수 직원이 진료 중 전화를 받다 하루 30통쯤 놓치고, 문의는 예약 변경·진료시간·예방접종이 대부분."
+    },
+    {
+      "id": "S057-Q02",
+      "question": "가격은 어떻게 얘기됐어?",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I2-U04",
+        "S057-I2-U05",
+        "S057-I2-U06"
+      ],
+      "answer": "지점당 월 25만 원(7개 175만 원)은 비싸다는 반응, 1년 약정이면 지점당 21만 원(월 147만 원)."
+    },
+    {
+      "id": "S057-Q03",
+      "question": "응급 상황은 어떻게 처리해야 한다고 했어?",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I2-U01",
+        "S057-I2-U02",
+        "S057-I2-U03"
+      ],
+      "answer": "응급 키워드가 나오면 즉시 당직 원장 휴대폰으로 연결, 원장이 가장 중요하게 봄."
+    },
+    {
+      "id": "S057-Q04",
+      "question": "시작이 왜 늦어졌어?",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U09",
+        "S057-I2-U07",
+        "S057-I3-U02",
+        "S057-I3-U03",
+        "S057-I3-U04",
+        "S057-I3-U05"
+      ],
+      "answer": "고객이 약속한 차트 프로그램 정보가 계속 오지 않아 연동 확인이 늦어져 10월에서 11월 중순으로 밀림."
+    },
+    {
+      "id": "S057-Q05",
+      "question": "시스템 연동에서 필요한 건 뭐였지?",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U07",
+        "S057-I1-U08",
+        "S057-I3-U04"
+      ],
+      "answer": "기존 병원 차트 프로그램과 예약 연동을 위해 제품 정보가 필요하고 확인에 열흘 정도 걸림."
+    },
+    {
+      "id": "S057-Q06",
+      "question": "고객이 아직 안 준 게 뭐야?",
+      "kind": "structured",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_fact_ids": [
+        "S057-F04",
+        "S057-F13"
+      ],
+      "answer": "유미란 실장의 차트 프로그램 제품명(8월 28일 약속)과 다음 주에 주기로 한 차트 정보가 아직 안 옴."
+    },
+    {
+      "id": "S057-Q07",
+      "question": "내가 대기 중인 약속은?",
+      "kind": "structured",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_fact_ids": [
+        "S057-F15"
+      ],
+      "answer": "차트 정보를 받는 대로 연동 가능 여부를 확인하기로 함."
+    },
+    {
+      "id": "S057-Q01-P1",
+      "question": "원장이 답답해한 이유가 뭐였지?",
+      "paraphrase_of": "S057-Q01",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U00",
+        "S057-I1-U02",
+        "S057-I1-U04"
+      ],
+      "answer": "접수 직원이 진료 중 전화를 받다 하루 30통쯤 놓치고, 문의는 예약 변경·진료시간·예방접종이 대부분."
+    },
+    {
+      "id": "S057-Q01-P2",
+      "question": "응대하지 못한 연락이 얼마나 되고 주로 무슨 내용이야?",
+      "paraphrase_of": "S057-Q01",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U00",
+        "S057-I1-U02",
+        "S057-I1-U04"
+      ],
+      "answer": "접수 직원이 진료 중 전화를 받다 하루 30통쯤 놓치고, 문의는 예약 변경·진료시간·예방접종이 대부분."
+    },
+    {
+      "id": "S057-Q02-P1",
+      "question": "요금 제시와 할인 조건을 알려줘.",
+      "paraphrase_of": "S057-Q02",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I2-U04",
+        "S057-I2-U05",
+        "S057-I2-U06"
+      ],
+      "answer": "지점당 월 25만 원(7개 175만 원)은 비싸다는 반응, 1년 약정이면 지점당 21만 원(월 147만 원)."
+    },
+    {
+      "id": "S057-Q02-P2",
+      "question": "한 곳당 얼마를 불렀고 약정하면 얼마로 내려갔어?",
+      "paraphrase_of": "S057-Q02",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I2-U04",
+        "S057-I2-U05",
+        "S057-I2-U06"
+      ],
+      "answer": "지점당 월 25만 원(7개 175만 원)은 비싸다는 반응, 1년 약정이면 지점당 21만 원(월 147만 원)."
+    },
+    {
+      "id": "S057-Q03-P1",
+      "question": "위급한 반려동물 보호자 전화는 어떻게 넘기기로 했지?",
+      "paraphrase_of": "S057-Q03",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I2-U01",
+        "S057-I2-U02",
+        "S057-I2-U03"
+      ],
+      "answer": "응급 키워드가 나오면 즉시 당직 원장 휴대폰으로 연결, 원장이 가장 중요하게 봄."
+    },
+    {
+      "id": "S057-Q03-P2",
+      "question": "긴급 증상을 말하면 봇이 어떻게 동작해야 해?",
+      "paraphrase_of": "S057-Q03",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I2-U01",
+        "S057-I2-U02",
+        "S057-I2-U03"
+      ],
+      "answer": "응급 키워드가 나오면 즉시 당직 원장 휴대폰으로 연결, 원장이 가장 중요하게 봄."
+    },
+    {
+      "id": "S057-Q04-P1",
+      "question": "도입 일정이 미뤄진 원인을 설명해줘.",
+      "paraphrase_of": "S057-Q04",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U09",
+        "S057-I2-U07",
+        "S057-I3-U02",
+        "S057-I3-U03",
+        "S057-I3-U04",
+        "S057-I3-U05"
+      ],
+      "answer": "고객이 약속한 차트 프로그램 정보가 계속 오지 않아 연동 확인이 늦어져 10월에서 11월 중순으로 밀림."
+    },
+    {
+      "id": "S057-Q04-P2",
+      "question": "개시일이 뒤로 간 까닭은?",
+      "paraphrase_of": "S057-Q04",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U09",
+        "S057-I2-U07",
+        "S057-I3-U02",
+        "S057-I3-U03",
+        "S057-I3-U04",
+        "S057-I3-U05"
+      ],
+      "answer": "고객이 약속한 차트 프로그램 정보가 계속 오지 않아 연동 확인이 늦어져 10월에서 11월 중순으로 밀림."
+    },
+    {
+      "id": "S057-Q05-P1",
+      "question": "기존 진료 프로그램과 붙이려면 무엇을 알려줘야 해?",
+      "paraphrase_of": "S057-Q05",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U07",
+        "S057-I1-U08",
+        "S057-I3-U04"
+      ],
+      "answer": "기존 병원 차트 프로그램과 예약 연동을 위해 제품 정보가 필요하고 확인에 열흘 정도 걸림."
+    },
+    {
+      "id": "S057-Q05-P2",
+      "question": "예약 데이터 연결을 위한 선행 조건이 뭐야?",
+      "paraphrase_of": "S057-Q05",
+      "kind": "semantic",
+      "company_id": "S057-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 24,
+      "relevant_utterance_ids": [
+        "S057-I1-U07",
+        "S057-I1-U08",
+        "S057-I3-U04"
+      ],
+      "answer": "기존 병원 차트 프로그램과 예약 연동을 위해 제품 정보가 필요하고 확인에 열흘 정도 걸림."
+    }
+  ]
+}

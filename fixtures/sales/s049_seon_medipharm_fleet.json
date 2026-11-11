@@ -1,0 +1,672 @@
+{
+  "scenario_id": "S049",
+  "description": "제약 영업조직 차량 렌트. 담당자가 전임에서 후임으로 교체되고, 영업조직 개편으로 80대 세단에서 65대 하이브리드로 요구 변경.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 21,
+    "team_id": 20,
+    "name": "신가영",
+    "company": "모빌리티원",
+    "product": "법인 차량 장기렌트·차량관제"
+  },
+  "users": [
+    {
+      "user_id": 21,
+      "team_id": 20
+    }
+  ],
+  "company": {
+    "id": "S049-CO1",
+    "name": "세온메디팜",
+    "industry": "제약 영업 조직",
+    "size": "영업사원 80명"
+  },
+  "contacts": [
+    {
+      "id": "S049-C1",
+      "name": "지선우",
+      "title": "총무팀 과장(전임 담당)",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S049-C2",
+      "name": "차예원",
+      "title": "총무팀 대리(후임 담당)",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S049-C3",
+      "name": "서창훈",
+      "title": "영업본부장",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S049-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-27T13:30:00+09:00",
+      "title": "영업사원 차량 상담",
+      "owner_user_id": 21,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S049-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S049-I1-U00",
+          "start": 2.0,
+          "end": 13.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "총무팀 지선우입니다. 저희가 영업사원 80명한테 개인 차량 보조로 월 40만 원씩 드리는데, 법인 렌트로 통일하려고요.",
+          "contact_id": "S049-C1"
+        },
+        {
+          "id": "S049-I1-U01",
+          "start": 14.5,
+          "end": 17.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "차종과 주행 거리는 어떻게 되나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S049-I1-U02",
+          "start": 18.5,
+          "end": 26.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "중형 세단이고요, 연 3만 킬로미터 정도 타요. 초과 주행은 정산이 돼야 합니다.",
+          "contact_id": "S049-C1"
+        },
+        {
+          "id": "S049-I1-U03",
+          "start": 27.2,
+          "end": 35.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "관제는 위치 추적보다 세무서 제출용 업무용 승용차 운행기록부 자동 작성이 핵심이에요.",
+          "contact_id": "S049-C1"
+        },
+        {
+          "id": "S049-I1-U04",
+          "start": 36.3,
+          "end": 43.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 기능이 있습니다. 36개월 기준 대당 월 58만 원 정도 됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S049-I1-U05",
+          "start": 43.7,
+          "end": 48.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희 목표는 대당 월 55만 원이어서 조금 높네요.",
+          "contact_id": "S049-C1"
+        },
+        {
+          "id": "S049-I1-U06",
+          "start": 49.3,
+          "end": 56.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "주행거리 약정별로 견적을 나눠서 다음 주 목요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S049-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-24T16:00:00+09:00",
+      "title": "담당자 교체 안내 통화",
+      "owner_user_id": 21,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S049-C1",
+        "S049-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S049-I2-U00",
+          "start": 2.0,
+          "end": 9.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "실은 제가 10월부터 인사팀으로 가게 됐어요. 후임은 차예원 대리님이고요.",
+          "contact_id": "S049-C1"
+        },
+        {
+          "id": "S049-I2-U01",
+          "start": 10.0,
+          "end": 16.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "아, 그렇군요. 그럼 지금까지 논의한 내용은 어떻게 전달되나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S049-I2-U02",
+          "start": 16.9,
+          "end": 24.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "제가 요구사항 정리본이랑 인수인계 문서를 10월 1일까지 예원 님께 드릴게요.",
+          "contact_id": "S049-C1"
+        },
+        {
+          "id": "S049-I2-U03",
+          "start": 25.2,
+          "end": 33.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "안녕하세요, 차예원입니다. 아직 내용을 몰라서 처음부터 다시 설명 부탁드려도 될까요?",
+          "contact_id": "S049-C2"
+        },
+        {
+          "id": "S049-I2-U04",
+          "start": 34.3,
+          "end": 42.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "물론입니다. 제안서를 처음부터 새로 정리해서 10월 8일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S049-I2-U05",
+          "start": 42.6,
+          "end": 48.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "감사합니다. 제가 하이브리드 차량도 비교하고 싶은데 괜찮을까요?",
+          "contact_id": "S049-C2"
+        },
+        {
+          "id": "S049-I2-U06",
+          "start": 49.5,
+          "end": 58.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "예원 님, 영업본부장님 서창훈 본부장이 최종 결정권자예요. 그분께 먼저 보고드려야 합니다.",
+          "contact_id": "S049-C1"
+        }
+      ]
+    },
+    {
+      "id": "S049-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-22T11:00:00+09:00",
+      "title": "새 담당자·본부장 미팅",
+      "owner_user_id": 21,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S049-C2",
+        "S049-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S049-I3-U00",
+          "start": 2.0,
+          "end": 12.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "인수인계 받은 건 잘 읽었어요. 그런데 본부장님 지시로 영업조직이 개편돼서 영업사원이 65명으로 줄었습니다.",
+          "contact_id": "S049-C2"
+        },
+        {
+          "id": "S049-I3-U01",
+          "start": 13.4,
+          "end": 22.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "영업본부장 서창훈입니다. 차량도 65대로 하고, 연료비 때문에 하이브리드 위주로 가려고 해요.",
+          "contact_id": "S049-C3"
+        },
+        {
+          "id": "S049-I3-U02",
+          "start": 23.4,
+          "end": 32.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "하이브리드는 월 62만 원 정도입니다. 연료비 절감분을 고려하면 총비용은 비슷할 수 있어요.",
+          "contact_id": null
+        },
+        {
+          "id": "S049-I3-U03",
+          "start": 33.2,
+          "end": 39.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "62만 원이면 예산 55만 원을 넘어서 별도 승인을 받아야 합니다.",
+          "contact_id": "S049-C2"
+        },
+        {
+          "id": "S049-I3-U04",
+          "start": 40.5,
+          "end": 49.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 연 3만 킬로미터 약정은 전임자 문서에서 처음 알았어요. 그것도 다시 확인하겠습니다.",
+          "contact_id": "S049-C2"
+        },
+        {
+          "id": "S049-I3-U05",
+          "start": 50.3,
+          "end": 59.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "올해 안에 계약을 해야 내년도 영업 인센티브 예산에 반영할 수 있어요. 연내 마무리합시다.",
+          "contact_id": "S049-C3"
+        },
+        {
+          "id": "S049-I3-U06",
+          "start": 59.9,
+          "end": 66.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "하이브리드 65대 기준 수정 견적을 다음 주 목요일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S049-I3-U07",
+          "start": 67.3,
+          "end": 72.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저는 구매 승인 품의를 11월 12일까지 올리겠습니다.",
+          "contact_id": "S049-C2"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S049-F01",
+      "interaction_id": "S049-I1",
+      "type": "requirement",
+      "said_by": "S049-C1",
+      "content": "영업사원 80명에게 월 40만 원씩 주던 개인 차량 보조를 법인 렌트로 통일하려 한다.",
+      "source_utterance_ids": [
+        "S049-I1-U00"
+      ]
+    },
+    {
+      "id": "S049-F02",
+      "interaction_id": "S049-I1",
+      "type": "requirement",
+      "said_by": "S049-C1",
+      "content": "중형 세단, 연 3만 km 약정, 초과 주행은 정산한다.",
+      "source_utterance_ids": [
+        "S049-I1-U02"
+      ]
+    },
+    {
+      "id": "S049-F03",
+      "interaction_id": "S049-I1",
+      "type": "requirement",
+      "said_by": "S049-C1",
+      "content": "관제는 세무 제출용 업무용 승용차 운행기록부 자동 작성이 핵심이다.",
+      "source_utterance_ids": [
+        "S049-I1-U03"
+      ]
+    },
+    {
+      "id": "S049-F04",
+      "interaction_id": "S049-I1",
+      "type": "price_reaction",
+      "said_by": "S049-C1",
+      "content": "대당 월 58만 원은 목표 55만 원보다 높다고 했다.",
+      "source_utterance_ids": [
+        "S049-I1-U05"
+      ]
+    },
+    {
+      "id": "S049-F05",
+      "interaction_id": "S049-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "주행거리 약정별 견적을 보낸다.",
+      "source_utterance_ids": [
+        "S049-I1-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-03",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S049-I2"
+    },
+    {
+      "id": "S049-F06",
+      "interaction_id": "S049-I2",
+      "type": "decision",
+      "said_by": "S049-C1",
+      "content": "지선우가 10월부터 인사팀으로 이동하고 후임 담당자는 차예원이다.",
+      "source_utterance_ids": [
+        "S049-I2-U02",
+        "S049-I2-U03"
+      ]
+    },
+    {
+      "id": "S049-F07",
+      "interaction_id": "S049-I2",
+      "type": "promise",
+      "said_by": "S049-C1",
+      "content": "요구사항 정리본과 인수인계 문서를 후임 차예원에게 전달한다.",
+      "source_utterance_ids": [
+        "S049-I2-U02"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-01",
+      "due_text": "10월 1일까지",
+      "status": "done",
+      "resolved_in": "S049-I3"
+    },
+    {
+      "id": "S049-F08",
+      "interaction_id": "S049-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "후임 담당자에게 제안서를 처음부터 새로 정리해 보낸다.",
+      "source_utterance_ids": [
+        "S049-I2-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-08",
+      "due_text": "10월 8일까지",
+      "status": "done",
+      "resolved_in": "S049-I3"
+    },
+    {
+      "id": "S049-F09",
+      "interaction_id": "S049-I3",
+      "type": "requirement",
+      "said_by": "S049-C2",
+      "content": "영업조직 개편으로 영업사원이 65명으로 줄어 차량을 65대, 하이브리드 위주로 바꾼다.",
+      "source_utterance_ids": [
+        "S049-I3-U00",
+        "S049-I3-U01"
+      ],
+      "supersedes": "S049-F01"
+    },
+    {
+      "id": "S049-F10",
+      "interaction_id": "S049-I3",
+      "type": "price_reaction",
+      "said_by": "S049-C2",
+      "content": "하이브리드 월 62만 원은 예산 55만 원을 넘어 별도 승인이 필요하다.",
+      "source_utterance_ids": [
+        "S049-I3-U03"
+      ]
+    },
+    {
+      "id": "S049-F11",
+      "interaction_id": "S049-I3",
+      "type": "purchase_timing",
+      "said_by": "S049-C3",
+      "content": "내년도 영업 인센티브 예산 반영을 위해 연내 계약해야 한다.",
+      "source_utterance_ids": [
+        "S049-I3-U05"
+      ]
+    },
+    {
+      "id": "S049-F12",
+      "interaction_id": "S049-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "하이브리드 65대 기준 수정 견적을 보낸다.",
+      "source_utterance_ids": [
+        "S049-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-29",
+      "due_text": "다음 주 목요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S049-F13",
+      "interaction_id": "S049-I3",
+      "type": "promise",
+      "said_by": "S049-C2",
+      "content": "구매 승인 품의를 올린다.",
+      "source_utterance_ids": [
+        "S049-I3-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-12",
+      "due_text": "11월 12일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S049-Q01",
+      "question": "세온메디팜이 렌트로 바꾸려는 이유는?",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I1-U00"
+      ],
+      "answer": "영업사원 80명 개인 차량 보조(월 40만)를 법인 렌트로 통일."
+    },
+    {
+      "id": "S049-Q02",
+      "question": "관제에서 중요하게 보는 기능은?",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I1-U03"
+      ],
+      "answer": "세무서 제출용 운행기록부 자동 작성."
+    },
+    {
+      "id": "S049-Q03",
+      "question": "담당자가 누구로 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I2-U02",
+        "S049-I2-U03"
+      ],
+      "answer": "지선우가 인사팀으로 이동, 후임은 차예원 대리, 10/1까지 인수인계."
+    },
+    {
+      "id": "S049-Q04",
+      "question": "요구 사항이 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I3-U00",
+        "S049-I3-U01"
+      ],
+      "answer": "80대에서 65대로 줄고 하이브리드 위주로 변경."
+    },
+    {
+      "id": "S049-Q05",
+      "question": "계약은 언제까지 해야 해?",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I3-U05",
+        "S049-I3-U07"
+      ],
+      "answer": "내년 인센티브 예산 반영 위해 연내 계약, 11월 12일까지 구매 품의."
+    },
+    {
+      "id": "S049-Q06",
+      "question": "세온메디팜 건 우리가 약속한 것 중 안 끝난 건?",
+      "kind": "structured",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_fact_ids": [
+        "S049-F12"
+      ],
+      "answer": "하이브리드 65대 수정 견적(10/29 기한 지남)."
+    },
+    {
+      "id": "S049-Q07",
+      "question": "세온메디팜 고객 쪽 대기 중인 일은?",
+      "kind": "structured",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_fact_ids": [
+        "S049-F13"
+      ],
+      "answer": "차예원의 구매 승인 품의(11/12까지)."
+    },
+    {
+      "id": "S049-Q01-P1",
+      "question": "왜 직원 차량 지원 방식을 바꾸려고 해?",
+      "paraphrase_of": "S049-Q01",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I1-U00"
+      ],
+      "answer": "영업사원 80명 개인 차량 보조(월 40만)를 법인 렌트로 통일."
+    },
+    {
+      "id": "S049-Q01-P2",
+      "question": "현재 비용 지급 방식이 어떻대?",
+      "paraphrase_of": "S049-Q01",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I1-U00"
+      ],
+      "answer": "영업사원 80명 개인 차량 보조(월 40만)를 법인 렌트로 통일."
+    },
+    {
+      "id": "S049-Q02-P1",
+      "question": "차량 시스템에서 꼭 필요한 게 뭐래?",
+      "paraphrase_of": "S049-Q02",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I1-U03"
+      ],
+      "answer": "세무서 제출용 운행기록부 자동 작성."
+    },
+    {
+      "id": "S049-Q02-P2",
+      "question": "세금 신고와 관련된 요구는?",
+      "paraphrase_of": "S049-Q02",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I1-U03"
+      ],
+      "answer": "세무서 제출용 운행기록부 자동 작성."
+    },
+    {
+      "id": "S049-Q03-P1",
+      "question": "전 담당자는 어디로 갔고 누가 이어받아?",
+      "paraphrase_of": "S049-Q03",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I2-U02",
+        "S049-I2-U03"
+      ],
+      "answer": "지선우가 인사팀으로 이동, 후임은 차예원 대리, 10/1까지 인수인계."
+    },
+    {
+      "id": "S049-Q03-P2",
+      "question": "인수인계 얘기 정리해줘.",
+      "paraphrase_of": "S049-Q03",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I2-U02",
+        "S049-I2-U03"
+      ],
+      "answer": "지선우가 인사팀으로 이동, 후임은 차예원 대리, 10/1까지 인수인계."
+    },
+    {
+      "id": "S049-Q04-P1",
+      "question": "처음과 달라진 차량 대수와 종류는?",
+      "paraphrase_of": "S049-Q04",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I3-U00",
+        "S049-I3-U01"
+      ],
+      "answer": "80대에서 65대로 줄고 하이브리드 위주로 변경."
+    },
+    {
+      "id": "S049-Q04-P2",
+      "question": "조직 개편 영향으로 달라진 게 뭐야?",
+      "paraphrase_of": "S049-Q04",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I3-U00",
+        "S049-I3-U01"
+      ],
+      "answer": "80대에서 65대로 줄고 하이브리드 위주로 변경."
+    },
+    {
+      "id": "S049-Q05-P1",
+      "question": "연말 시한이 있다던데 이유가 뭐지?",
+      "paraphrase_of": "S049-Q05",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I3-U05",
+        "S049-I3-U07"
+      ],
+      "answer": "내년 인센티브 예산 반영 위해 연내 계약, 11월 12일까지 구매 품의."
+    },
+    {
+      "id": "S049-Q05-P2",
+      "question": "결재 일정이 어떻게 돼?",
+      "paraphrase_of": "S049-Q05",
+      "kind": "semantic",
+      "company_id": "S049-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 21,
+      "relevant_utterance_ids": [
+        "S049-I3-U05",
+        "S049-I3-U07"
+      ],
+      "answer": "내년 인센티브 예산 반영 위해 연내 계약, 11월 12일까지 구매 품의."
+    }
+  ]
+}

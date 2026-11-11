@@ -1,0 +1,704 @@
+{
+  "scenario_id": "S092",
+  "description": "경상도 사투리를 쓰는 동네 내과 원장에게 전자차트 판매. 청구 에러·15년 된 프로그램 교체 동기, 가격 조정 후 24개월 약정으로 성사되고 오픈일·교육 일정이 정해진 딜.",
+  "fictional": true,
+  "as_of": "2026-11-04",
+  "deal_status": "won",
+  "seller": {
+    "user_id": 36,
+    "team_id": 35,
+    "name": "공지민",
+    "company": "메디차트",
+    "product": "의원급 전자차트(EMR)"
+  },
+  "users": [
+    {
+      "user_id": 36,
+      "team_id": 35
+    }
+  ],
+  "company": {
+    "id": "S092-CO1",
+    "name": "푸른내과의원",
+    "industry": "동네 내과 의원",
+    "size": "의사 1명, 간호사 2명, 접수 1명"
+  },
+  "contacts": [
+    {
+      "id": "S092-C1",
+      "name": "한상철",
+      "title": "원장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S092-C2",
+      "name": "오미경",
+      "title": "간호실장",
+      "role_in_deal": "influencer"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S092-I1",
+      "kind": "call",
+      "occurred_at": "2026-08-20T10:30:00+09:00",
+      "title": "문의 전화: 15년 된 차트 교체",
+      "owner_user_id": 36,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S092-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S092-I1-U00",
+          "start": 2.0,
+          "end": 13.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아이고 예, 메디차트라꼬 했지요? 우리 차트 프로그램이 십오 년 됐는데 업체가 인자 유지보수 못 한다 캐서요.",
+          "contact_id": "S092-C1"
+        },
+        {
+          "id": "S092-I1-U01",
+          "start": 13.6,
+          "end": 19.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네 원장님, 지금 쓰시는 프로그램에서 제일 불편하신 게 뭘까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I1-U02",
+          "start": 20.5,
+          "end": 29.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "청구가 자꾸 튕깁디더. 월말에 보험 청구할 때 에러 나면 간호사들이 밤새 붙들고 있어요.",
+          "contact_id": "S092-C1"
+        },
+        {
+          "id": "S092-I1-U03",
+          "start": 29.9,
+          "end": 38.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 청구 점검 기능이 있어서 에러를 미리 잡아드립니다. 하루 환자는 몇 분쯤 보세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I1-U04",
+          "start": 39.3,
+          "end": 46.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "하루에 한 백이십 명쯤 봅니더. 의사는 나 혼자고 간호사 둘, 접수 하나.",
+          "contact_id": "S092-C1"
+        },
+        {
+          "id": "S092-I1-U05",
+          "start": 47.3,
+          "end": 52.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그러면 PC 네 대 설치 기준으로 견적 뽑아보겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I1-U06",
+          "start": 53.3,
+          "end": 59.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그라고 예전 환자 기록 팔천 명치 옮겨줘야 되는데, 그거 됩니까?",
+          "contact_id": "S092-C1"
+        },
+        {
+          "id": "S092-I1-U07",
+          "start": 60.4,
+          "end": 68.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "데이터 이전은 저희가 해드립니다. 다음 주 목요일까지 견적서 이메일로 보내드릴게요.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S092-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-25T14:00:00+09:00",
+      "title": "의원 방문 시연과 가격 조정",
+      "owner_user_id": 36,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S092-C2",
+        "S092-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S092-I2-U00",
+          "start": 2.0,
+          "end": 8.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "원장님 얘기 들었어요. 청구 점검이랑 접수 화면부터 보고 싶어요.",
+          "contact_id": "S092-C2"
+        },
+        {
+          "id": "S092-I2-U01",
+          "start": 9.1,
+          "end": 17.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 보여드릴게요. 접수에서 진료, 처방, 청구까지 한 화면 흐름으로 이어집니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I2-U02",
+          "start": 17.8,
+          "end": 23.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "어 이거 괜찮네. 지금 거는 화면을 세 번이나 넘겨야 되는데.",
+          "contact_id": "S092-C2"
+        },
+        {
+          "id": "S092-I2-U03",
+          "start": 24.5,
+          "end": 34.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "근데 가격이 문제라. 설치비 삼백만 원에 월 십삼만 원이라 캤지요? 월 십만 원 안쪽이면 하겠는데.",
+          "contact_id": "S092-C1"
+        },
+        {
+          "id": "S092-I2-U04",
+          "start": 35.0,
+          "end": 42.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "설치비 이백이십만 원, 월 십일만 원에 이십사 개월 약정이면 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I2-U05",
+          "start": 42.8,
+          "end": 51.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그라믄 마 그래 합시더. 대신 데이터 이전은 진료 쉬는 날 해야 되는데, 일요일 괜찮나?",
+          "contact_id": "S092-C1"
+        },
+        {
+          "id": "S092-I2-U06",
+          "start": 52.2,
+          "end": 61.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "일요일 이전 작업으로 맞추겠습니다. 이전 확인용 샘플 환자 오십 명 명단은 병원에서 주셔야 해요.",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I2-U07",
+          "start": 62.5,
+          "end": 66.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "제가 이번 달 말까지 뽑아서 드릴게요.",
+          "contact_id": "S092-C2"
+        }
+      ]
+    },
+    {
+      "id": "S092-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-22T16:00:00+09:00",
+      "title": "계약 확정과 오픈 일정",
+      "owner_user_id": 36,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S092-C1",
+        "S092-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S092-I3-U00",
+          "start": 2.0,
+          "end": 5.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "원장님, 보내드린 계약서 확인하셨어요?",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I3-U01",
+          "start": 6.4,
+          "end": 16.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "어 도장 찍어서 오늘 등기로 부칬어요. 설치비 이백이십만 원에 월 십일만 원, 이십사 개월 맞지요?",
+          "contact_id": "S092-C1"
+        },
+        {
+          "id": "S092-I3-U02",
+          "start": 16.9,
+          "end": 23.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "맞습니다. 부가세는 별도고, 월 이용료는 오픈한 달부터 시작입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I3-U03",
+          "start": 24.2,
+          "end": 31.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "11월 15일 일요일에 데이터 옮기고 16일 월요일부터 새 프로그램 쓰까요?",
+          "contact_id": "S092-C1"
+        },
+        {
+          "id": "S092-I3-U04",
+          "start": 32.4,
+          "end": 37.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 15일 이전, 16일 오픈으로 확정하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S092-I3-U05",
+          "start": 38.0,
+          "end": 43.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "직원 교육은 언제 해줘요? 간호사들이 걱정이 많아서.",
+          "contact_id": "S092-C2"
+        },
+        {
+          "id": "S092-I3-U06",
+          "start": 43.8,
+          "end": 58.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "11월 10일 화요일 진료 끝나고 두 시간 교육 드릴게요. 샘플 명단 주신 걸로 이전 테스트 해서 11월 6일 금요일까지 결과 알려드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S092-F01",
+      "interaction_id": "S092-I1",
+      "type": "requirement",
+      "said_by": "S092-C1",
+      "content": "15년 쓴 차트 프로그램의 업체가 유지보수를 못 한다고 해서 교체가 필요하다.",
+      "source_utterance_ids": [
+        "S092-I1-U00"
+      ]
+    },
+    {
+      "id": "S092-F02",
+      "interaction_id": "S092-I1",
+      "type": "requirement",
+      "said_by": "S092-C1",
+      "content": "월말 보험 청구 때 에러가 자주 나서 간호사들이 밤새 붙들고 있는 것이 가장 큰 불편이다.",
+      "source_utterance_ids": [
+        "S092-I1-U02",
+        "S092-I1-U03"
+      ]
+    },
+    {
+      "id": "S092-F03",
+      "interaction_id": "S092-I1",
+      "type": "requirement",
+      "said_by": "S092-C1",
+      "content": "하루 환자 약 120명, 의사 1명 간호사 2명 접수 1명이며 PC 4대 기준이다.",
+      "source_utterance_ids": [
+        "S092-I1-U04",
+        "S092-I1-U05"
+      ]
+    },
+    {
+      "id": "S092-F04",
+      "interaction_id": "S092-I1",
+      "type": "requirement",
+      "said_by": "S092-C1",
+      "content": "기존 환자 기록 8,000명 분량의 데이터 이전이 필요하다.",
+      "source_utterance_ids": [
+        "S092-I1-U06",
+        "S092-I1-U07"
+      ]
+    },
+    {
+      "id": "S092-F05",
+      "interaction_id": "S092-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "견적서를 이메일로 보낸다.",
+      "source_utterance_ids": [
+        "S092-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-27",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S092-I2"
+    },
+    {
+      "id": "S092-F06",
+      "interaction_id": "S092-I2",
+      "type": "buying_signal",
+      "said_by": "S092-C2",
+      "content": "시연 화면이 마음에 든다. 지금은 세 번 넘기는 것을 한 흐름으로 줄일 수 있다.",
+      "source_utterance_ids": [
+        "S092-I2-U02"
+      ]
+    },
+    {
+      "id": "S092-F07",
+      "interaction_id": "S092-I2",
+      "type": "price_reaction",
+      "said_by": "S092-C1",
+      "content": "견적의 설치비 300만 원, 월 13만 원은 부담이며 월 10만 원 안쪽이면 하겠다.",
+      "source_utterance_ids": [
+        "S092-I2-U03"
+      ]
+    },
+    {
+      "id": "S092-F08",
+      "interaction_id": "S092-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "설치비 220만 원, 월 11만 원, 24개월 약정으로 조정해 제안했다.",
+      "source_utterance_ids": [
+        "S092-I2-U04"
+      ]
+    },
+    {
+      "id": "S092-F09",
+      "interaction_id": "S092-I2",
+      "type": "decision",
+      "said_by": "S092-C1",
+      "content": "조정된 조건을 수락했고, 데이터 이전은 진료가 없는 일요일에 하기로 했다.",
+      "source_utterance_ids": [
+        "S092-I2-U05",
+        "S092-I2-U06"
+      ]
+    },
+    {
+      "id": "S092-F10",
+      "interaction_id": "S092-I2",
+      "type": "promise",
+      "said_by": "S092-C2",
+      "content": "이전 확인용 샘플 환자 50명 명단을 뽑아서 준다.",
+      "source_utterance_ids": [
+        "S092-I2-U06",
+        "S092-I2-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-30",
+      "due_text": "이번 달 말까지",
+      "status": "done",
+      "resolved_in": "S092-I3"
+    },
+    {
+      "id": "S092-F11",
+      "interaction_id": "S092-I3",
+      "type": "decision",
+      "said_by": "S092-C1",
+      "content": "계약서에 날인해 등기로 발송했다. 설치비 220만 원, 월 11만 원, 24개월, 부가세 별도, 월 이용료는 오픈한 달부터.",
+      "source_utterance_ids": [
+        "S092-I3-U01",
+        "S092-I3-U02"
+      ]
+    },
+    {
+      "id": "S092-F12",
+      "interaction_id": "S092-I3",
+      "type": "purchase_timing",
+      "said_by": "S092-C1",
+      "content": "11월 15일 일요일 데이터 이전, 16일 월요일 새 프로그램 오픈으로 확정했다.",
+      "source_utterance_ids": [
+        "S092-I3-U03",
+        "S092-I3-U04"
+      ]
+    },
+    {
+      "id": "S092-F13",
+      "interaction_id": "S092-I3",
+      "type": "requirement",
+      "said_by": "S092-C2",
+      "content": "간호사들이 걱정이 많아 직원 교육을 요청했다.",
+      "source_utterance_ids": [
+        "S092-I3-U05"
+      ]
+    },
+    {
+      "id": "S092-F14",
+      "interaction_id": "S092-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "직원 교육을 2시간 진행한다.",
+      "source_utterance_ids": [
+        "S092-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-10",
+      "due_text": "11월 10일 화요일 진료 끝나고",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S092-F15",
+      "interaction_id": "S092-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "샘플 명단으로 이전 테스트를 해서 결과를 알려준다.",
+      "source_utterance_ids": [
+        "S092-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S092-Q01",
+      "question": "푸른내과는 왜 차트를 바꾸려고 해?",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I1-U00",
+        "S092-I1-U02"
+      ],
+      "answer": "15년 된 프로그램의 유지보수가 끝났고 월말 보험 청구 에러로 간호사들이 밤새 매달린다."
+    },
+    {
+      "id": "S092-Q02",
+      "question": "푸른내과 규모는 어느 정도야?",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I1-U04",
+        "S092-I1-U05",
+        "S092-I1-U06"
+      ],
+      "answer": "하루 환자 약 120명, 의사 1명 간호사 2명 접수 1명, PC 4대, 이전할 환자 기록 8,000명."
+    },
+    {
+      "id": "S092-Q03",
+      "question": "푸른내과와 가격은 어떻게 정해졌어?",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I2-U03",
+        "S092-I2-U04",
+        "S092-I2-U05",
+        "S092-I3-U01",
+        "S092-I3-U02"
+      ],
+      "answer": "처음 설치비 300만 원·월 13만 원이 부담이라 해서 설치비 220만 원·월 11만 원·24개월로 조정, 수락 후 계약서 발송."
+    },
+    {
+      "id": "S092-Q04",
+      "question": "푸른내과 새 프로그램은 언제부터 써?",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I3-U03",
+        "S092-I3-U04",
+        "S092-I2-U05"
+      ],
+      "answer": "11월 15일 일요일 데이터 이전, 16일 월요일 오픈."
+    },
+    {
+      "id": "S092-Q05",
+      "question": "간호사들 교육은 어떻게 하기로 했어?",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I3-U05",
+        "S092-I3-U06"
+      ],
+      "answer": "간호사들이 걱정해서 11월 10일 화요일 진료 후 두 시간 교육하기로 했다."
+    },
+    {
+      "id": "S092-Q06",
+      "question": "푸른내과에 우리가 아직 안 한 약속은?",
+      "kind": "structured",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_fact_ids": [
+        "S092-F14",
+        "S092-F15"
+      ],
+      "answer": "11월 6일까지 이전 테스트 결과 전달, 11월 10일 직원 교육 두 시간."
+    },
+    {
+      "id": "S092-Q01-P1",
+      "question": "지금 쓰는 소프트웨어에 대해 원장이 호소한 문제가 뭐야?",
+      "paraphrase_of": "S092-Q01",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I1-U00",
+        "S092-I1-U02"
+      ],
+      "answer": "15년 된 프로그램의 유지보수가 끝났고 월말 보험 청구 에러로 간호사들이 밤새 매달린다."
+    },
+    {
+      "id": "S092-Q01-P2",
+      "question": "푸른내과가 교체를 서두르는 이유를 알려줘.",
+      "paraphrase_of": "S092-Q01",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I1-U00",
+        "S092-I1-U02"
+      ],
+      "answer": "15년 된 프로그램의 유지보수가 끝났고 월말 보험 청구 에러로 간호사들이 밤새 매달린다."
+    },
+    {
+      "id": "S092-Q02-P1",
+      "question": "이 병원 인원과 설치해야 할 컴퓨터 대수는?",
+      "paraphrase_of": "S092-Q02",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I1-U04",
+        "S092-I1-U05",
+        "S092-I1-U06"
+      ],
+      "answer": "하루 환자 약 120명, 의사 1명 간호사 2명 접수 1명, PC 4대, 이전할 환자 기록 8,000명."
+    },
+    {
+      "id": "S092-Q02-P2",
+      "question": "하루 진료 인원과 옮겨야 할 과거 기록 양이 어떻게 돼?",
+      "paraphrase_of": "S092-Q02",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I1-U04",
+        "S092-I1-U05",
+        "S092-I1-U06"
+      ],
+      "answer": "하루 환자 약 120명, 의사 1명 간호사 2명 접수 1명, PC 4대, 이전할 환자 기록 8,000명."
+    },
+    {
+      "id": "S092-Q03-P1",
+      "question": "금액이 높다는 반응 뒤에 최종 계약 금액과 기간이 어떻게 됐어?",
+      "paraphrase_of": "S092-Q03",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I2-U03",
+        "S092-I2-U04",
+        "S092-I2-U05",
+        "S092-I3-U01",
+        "S092-I3-U02"
+      ],
+      "answer": "처음 설치비 300만 원·월 13만 원이 부담이라 해서 설치비 220만 원·월 11만 원·24개월로 조정, 수락 후 계약서 발송."
+    },
+    {
+      "id": "S092-Q03-P2",
+      "question": "초기 비용과 매달 내는 돈, 그리고 묶이는 기간이 얼마로 확정됐지?",
+      "paraphrase_of": "S092-Q03",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I2-U03",
+        "S092-I2-U04",
+        "S092-I2-U05",
+        "S092-I3-U01",
+        "S092-I3-U02"
+      ],
+      "answer": "처음 설치비 300만 원·월 13만 원이 부담이라 해서 설치비 220만 원·월 11만 원·24개월로 조정, 수락 후 계약서 발송."
+    },
+    {
+      "id": "S092-Q04-P1",
+      "question": "병원이 새 시스템으로 첫 진료를 보는 날은 언제야?",
+      "paraphrase_of": "S092-Q04",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I3-U03",
+        "S092-I3-U04",
+        "S092-I2-U05"
+      ],
+      "answer": "11월 15일 일요일 데이터 이전, 16일 월요일 오픈."
+    },
+    {
+      "id": "S092-Q04-P2",
+      "question": "자료를 옮기는 날과 개시일이 각각 언제로 잡혔어?",
+      "paraphrase_of": "S092-Q04",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I3-U03",
+        "S092-I3-U04",
+        "S092-I2-U05"
+      ],
+      "answer": "11월 15일 일요일 데이터 이전, 16일 월요일 오픈."
+    },
+    {
+      "id": "S092-Q05-P1",
+      "question": "직원 적응을 위해 약속한 연수 일정이 어떻게 돼?",
+      "paraphrase_of": "S092-Q05",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I3-U05",
+        "S092-I3-U06"
+      ],
+      "answer": "간호사들이 걱정해서 11월 10일 화요일 진료 후 두 시간 교육하기로 했다."
+    },
+    {
+      "id": "S092-Q05-P2",
+      "question": "새 시스템 사용법 안내는 언제 얼마나 해주기로 했지?",
+      "paraphrase_of": "S092-Q05",
+      "kind": "semantic",
+      "company_id": "S092-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 36,
+      "relevant_utterance_ids": [
+        "S092-I3-U05",
+        "S092-I3-U06"
+      ],
+      "answer": "간호사들이 걱정해서 11월 10일 화요일 진료 후 두 시간 교육하기로 했다."
+    }
+  ]
+}

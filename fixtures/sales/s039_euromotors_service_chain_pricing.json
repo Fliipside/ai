@@ -1,0 +1,862 @@
+{
+  "scenario_id": "S039",
+  "description": "오토파츠원(하정민)이 서울·경기 6개 지점의 수입차 전문 정비 체인에 OES 부품 공급과 재고 앱을 제안. 고객 4명 동시 참석(성이 같은 구매팀장·정비총괄 이사, 지점장 둘, 짧은 맞장구), 엔진오일 단가가 세 번 오가는 가격 협상과 총액 할인, 6개 지점에서 2개 지점 시범으로 줄어드는 도입 범위를 검증한다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 18,
+    "team_id": 17,
+    "name": "하정민",
+    "company": "오토파츠원",
+    "product": "정비소용 자동차 부품 공급·재고 앱"
+  },
+  "users": [
+    {
+      "user_id": 18,
+      "team_id": 17
+    }
+  ],
+  "company": {
+    "id": "S039-CO1",
+    "name": "유로모터스서비스",
+    "industry": "수입차 전문 정비 체인",
+    "size": "서울·경기 6개 지점, 월 부품비 약 8,000만 원"
+  },
+  "contacts": [
+    {
+      "id": "S039-C1",
+      "name": "최은영",
+      "title": "구매팀장",
+      "role_in_deal": "procurement"
+    },
+    {
+      "id": "S039-C2",
+      "name": "최태호",
+      "title": "정비총괄 이사",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S039-C3",
+      "name": "한상우",
+      "title": "강남점 지점장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S039-C4",
+      "name": "서민규",
+      "title": "분당점 지점장",
+      "role_in_deal": "influencer"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S039-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-27T14:00:00+09:00",
+      "title": "첫 미팅: 본사 구매·정비 책임자와 지점장",
+      "owner_user_id": 18,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S039-C1",
+        "S039-C2",
+        "S039-C3",
+        "S039-C4"
+      ],
+      "utterances": [
+        {
+          "id": "S039-I1-U00",
+          "start": 2.0,
+          "end": 11.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "구매팀 최은영입니다. 저희가 서울, 경기에 여섯 개 지점이 있고 월 부품비가 팔천만 원쯤 돼요.",
+          "contact_id": "S039-C1"
+        },
+        {
+          "id": "S039-I1-U01",
+          "start": 12.1,
+          "end": 22.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "정비는 제가 총괄합니다. 최태호 이사예요. 성이 같아서 헷갈리실 테니 은영 팀장, 태호 이사로 불러 주세요.",
+          "contact_id": "S039-C2"
+        },
+        {
+          "id": "S039-I1-U02",
+          "start": 23.5,
+          "end": 30.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 알겠습니다. 수입차 전문이시니 순정급 대체품 품질이 중요하시겠네요.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I1-U03",
+          "start": 31.3,
+          "end": 40.3,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "맞아요. 저희 강남점은 독일차가 칠십 퍼센트라 인증받은 OES 부품을 쓰는 게 기본이에요.",
+          "contact_id": "S039-C3"
+        },
+        {
+          "id": "S039-I1-U04",
+          "start": 40.9,
+          "end": 46.3,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "분당은 일본차랑 섞여 있어서 호환성 조회가 중요하고요.",
+          "contact_id": "S039-C4"
+        },
+        {
+          "id": "S039-I1-U05",
+          "start": 46.9,
+          "end": 47.9,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "네, 네.",
+          "contact_id": "S039-C3"
+        },
+        {
+          "id": "S039-I1-U06",
+          "start": 48.5,
+          "end": 55.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희 재고 앱은 차대번호로 조회가 되고 OES 인증 여부를 표시합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I1-U07",
+          "start": 56.1,
+          "end": 65.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "가격은요? 지금 엔진오일 합성유 이십 리터 한 말이 십이만 원인데 비교해 주실 수 있어요?",
+          "contact_id": "S039-C1"
+        },
+        {
+          "id": "S039-I1-U08",
+          "start": 65.7,
+          "end": 70.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 십일만 이천 원에 드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I1-U09",
+          "start": 70.6,
+          "end": 74.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "음, 십일만 원 이하면 얘기가 되겠네요.",
+          "contact_id": "S039-C1"
+        },
+        {
+          "id": "S039-I1-U10",
+          "start": 75.2,
+          "end": 79.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "팀장님, 가격만 보지 말고 납기도 같이 보세요.",
+          "contact_id": "S039-C2"
+        },
+        {
+          "id": "S039-I1-U11",
+          "start": 80.5,
+          "end": 88.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "견적서를 여섯 지점 합산 물량 기준으로 다음 주 화요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S039-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-15T15:00:00+09:00",
+      "title": "견적 검토 미팅: 2차 가격 협상",
+      "owner_user_id": 18,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S039-C1",
+        "S039-C2",
+        "S039-C3",
+        "S039-C4"
+      ],
+      "utterances": [
+        {
+          "id": "S039-I2-U00",
+          "start": 2.0,
+          "end": 11.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "견적서 봤는데요, 엔진오일은 십일만 이천 원인데 총액으로 보면 기존 대비 삼 퍼센트밖에 안 싸요.",
+          "contact_id": "S039-C1"
+        },
+        {
+          "id": "S039-I2-U01",
+          "start": 12.3,
+          "end": 16.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "물량 약정을 하시면 더 내릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I2-U02",
+          "start": 17.0,
+          "end": 19.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "약정이 일 년이면 가능할까요?",
+          "contact_id": "S039-C2"
+        },
+        {
+          "id": "S039-I2-U03",
+          "start": 20.5,
+          "end": 26.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "일 년 약정이면 엔진오일은 십만 팔천 원까지 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I2-U04",
+          "start": 26.7,
+          "end": 29.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "십만 오천 원은 어렵습니까?",
+          "contact_id": "S039-C1"
+        },
+        {
+          "id": "S039-I2-U05",
+          "start": 30.0,
+          "end": 39.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "십만 육천 원까지 해보겠습니다. 팀장 승인이 필요해서 이번 주 금요일까지 확정해서 알려드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I2-U06",
+          "start": 40.1,
+          "end": 47.3,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "브레이크 디스크는 어떻게 되죠? 독일 차종은 순정 디스크 값이 비싸서요.",
+          "contact_id": "S039-C3"
+        },
+        {
+          "id": "S039-I2-U07",
+          "start": 47.9,
+          "end": 57.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "순정 대비 OES 디스크는 이십 퍼센트 저렴합니다. 샘플 한 세트씩 강남점과 분당점에 보내드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I2-U08",
+          "start": 58.4,
+          "end": 60.7,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "분당에도 꼭 보내주세요.",
+          "contact_id": "S039-C4"
+        },
+        {
+          "id": "S039-I2-U09",
+          "start": 61.3,
+          "end": 67.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저는 지점별 월 사용량 표를 정리해서 이번 달 말까지 드릴게요.",
+          "contact_id": "S039-C1"
+        }
+      ]
+    },
+    {
+      "id": "S039-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-22T14:00:00+09:00",
+      "title": "3차 협상과 시범 도입 합의",
+      "owner_user_id": 18,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S039-C1",
+        "S039-C2",
+        "S039-C3",
+        "S039-C4"
+      ],
+      "utterances": [
+        {
+          "id": "S039-I3-U00",
+          "start": 2.0,
+          "end": 6.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "구월 말에 보내드린 사용량 표는 보셨죠?",
+          "contact_id": "S039-C1"
+        },
+        {
+          "id": "S039-I3-U01",
+          "start": 6.6,
+          "end": 17.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 잘 받았습니다. 그리고 구월에 말씀드린 엔진오일 십만 육천 원은 팀장 승인이 나서 그대로 유지됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I3-U02",
+          "start": 17.8,
+          "end": 21.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그런데 경쟁사가 십만 사천 원을 불렀어요.",
+          "contact_id": "S039-C1"
+        },
+        {
+          "id": "S039-I3-U03",
+          "start": 22.5,
+          "end": 33.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "십만 사천 원은 저희 마진이 안 남아요. 대신 브레이크 패드를 묶어서 총액에서 이 퍼센트를 더 내려 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I3-U04",
+          "start": 34.1,
+          "end": 38.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "이 퍼센트면 금액으로 얼마나 되는 거죠?",
+          "contact_id": "S039-C2"
+        },
+        {
+          "id": "S039-I3-U05",
+          "start": 38.7,
+          "end": 45.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 팔천만 원 기준 백육십만 원이고, 연으로는 천구백이십만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I3-U06",
+          "start": 46.1,
+          "end": 50.2,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "보내주신 디스크 샘플은 써보니 괜찮았어요.",
+          "contact_id": "S039-C3"
+        },
+        {
+          "id": "S039-I3-U07",
+          "start": 50.8,
+          "end": 59.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋네요. 그 조건으로 여섯 지점 전부 말고 강남, 분당 두 지점에서 석 달 먼저 해봅시다.",
+          "contact_id": "S039-C1"
+        },
+        {
+          "id": "S039-I3-U08",
+          "start": 60.4,
+          "end": 64.0,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "강남은 십일월 둘째 주부터 가능해요.",
+          "contact_id": "S039-C3"
+        },
+        {
+          "id": "S039-I3-U09",
+          "start": 64.6,
+          "end": 69.5,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "분당은 앱 교육부터 해야 해서 십일월 셋째 주요.",
+          "contact_id": "S039-C4"
+        },
+        {
+          "id": "S039-I3-U10",
+          "start": 70.1,
+          "end": 75.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "분당 앱 교육은 십일월 십일에 제가 직접 가서 하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S039-I3-U11",
+          "start": 76.5,
+          "end": 82.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "약정서 사인본은 법무 검토 끝내고 이번 달 말까지 보내드릴게요.",
+          "contact_id": "S039-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S039-F01",
+      "interaction_id": "S039-I1",
+      "type": "requirement",
+      "said_by": "S039-C1",
+      "content": "서울·경기 6개 지점에서 월 부품비가 약 8,000만 원이다.",
+      "source_utterance_ids": [
+        "S039-I1-U00"
+      ]
+    },
+    {
+      "id": "S039-F02",
+      "interaction_id": "S039-I1",
+      "type": "requirement",
+      "said_by": "S039-C3",
+      "content": "강남점은 독일차가 70%라 인증받은 OES 부품 사용이 기본이다. 분당점은 일본차가 섞여 호환성 조회가 중요하다.",
+      "source_utterance_ids": [
+        "S039-I1-U03",
+        "S039-I1-U04"
+      ]
+    },
+    {
+      "id": "S039-F03",
+      "interaction_id": "S039-I1",
+      "type": "price_reaction",
+      "said_by": "S039-C1",
+      "content": "엔진오일 합성유 20L 한 말이 현재 12만 원이며 11만 원 이하면 협의가 가능하다고 했다(우리 첫 제안 11만 2천 원).",
+      "source_utterance_ids": [
+        "S039-I1-U07",
+        "S039-I1-U09"
+      ]
+    },
+    {
+      "id": "S039-F04",
+      "interaction_id": "S039-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "여섯 지점 합산 물량 기준 견적서를 다음 주 화요일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S039-I1-U11"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-01",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S039-I2"
+    },
+    {
+      "id": "S039-F05",
+      "interaction_id": "S039-I2",
+      "type": "price_reaction",
+      "said_by": "S039-C1",
+      "content": "견적이 총액 기준 기존 대비 3%밖에 저렴하지 않다고 했다.",
+      "source_utterance_ids": [
+        "S039-I2-U00"
+      ]
+    },
+    {
+      "id": "S039-F06",
+      "interaction_id": "S039-I2",
+      "type": "requirement",
+      "said_by": "S039-C2",
+      "content": "1년 약정 조건에서 단가를 더 낮추길 원한다.",
+      "source_utterance_ids": [
+        "S039-I2-U02"
+      ]
+    },
+    {
+      "id": "S039-F07",
+      "interaction_id": "S039-I2",
+      "type": "price_reaction",
+      "said_by": "S039-C1",
+      "content": "1년 약정 시 우리 10만 8천 원 제안에 10만 5천 원을 요청했고 우리는 10만 6천 원까지 해보겠다고 했다.",
+      "source_utterance_ids": [
+        "S039-I2-U04",
+        "S039-I2-U05"
+      ]
+    },
+    {
+      "id": "S039-F08",
+      "interaction_id": "S039-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "엔진오일 10만 6천 원 조건을 팀장 승인받아 이번 주 금요일까지 확정해 알리기로 했다.",
+      "source_utterance_ids": [
+        "S039-I2-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-18",
+      "due_text": "이번 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S039-I3"
+    },
+    {
+      "id": "S039-F09",
+      "interaction_id": "S039-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "OES 브레이크 디스크 샘플 한 세트씩을 강남점과 분당점에 보내기로 했다.",
+      "source_utterance_ids": [
+        "S039-I2-U07",
+        "S039-I2-U08"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "샘플 한 세트씩 보내드릴게요",
+      "status": "done",
+      "resolved_in": "S039-I3"
+    },
+    {
+      "id": "S039-F10",
+      "interaction_id": "S039-I2",
+      "type": "promise",
+      "said_by": "S039-C1",
+      "content": "구매팀장이 지점별 월 사용량 표를 이번 달 말(9월 30일)까지 주기로 했다.",
+      "source_utterance_ids": [
+        "S039-I2-U09"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-30",
+      "due_text": "이번 달 말까지",
+      "status": "done",
+      "resolved_in": "S039-I3"
+    },
+    {
+      "id": "S039-F11",
+      "interaction_id": "S039-I3",
+      "type": "price_reaction",
+      "said_by": "S039-C1",
+      "content": "경쟁사가 엔진오일을 10만 4천 원에 제안했다고 했다.",
+      "source_utterance_ids": [
+        "S039-I3-U02"
+      ]
+    },
+    {
+      "id": "S039-F12",
+      "interaction_id": "S039-I3",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "경쟁사 가격은 맞출 수 없어 브레이크 패드를 묶어 총액에서 2%를 추가 인하하기로 했다. 월 160만 원, 연 1,920만 원 절감이다.",
+      "source_utterance_ids": [
+        "S039-I3-U03",
+        "S039-I3-U05"
+      ]
+    },
+    {
+      "id": "S039-F13",
+      "interaction_id": "S039-I3",
+      "type": "decision",
+      "said_by": "S039-C1",
+      "content": "6개 지점 전체 대신 강남점과 분당점 두 지점에서 석 달 먼저 시범 도입하기로 했다.",
+      "source_utterance_ids": [
+        "S039-I3-U07"
+      ]
+    },
+    {
+      "id": "S039-F14",
+      "interaction_id": "S039-I3",
+      "type": "purchase_timing",
+      "said_by": "S039-C3",
+      "content": "강남점은 11월 둘째 주, 분당점은 앱 교육 후 11월 셋째 주부터 시작한다.",
+      "source_utterance_ids": [
+        "S039-I3-U08",
+        "S039-I3-U09"
+      ]
+    },
+    {
+      "id": "S039-F15",
+      "interaction_id": "S039-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "분당점 앱 교육을 11월 10일에 직접 가서 하기로 했다.",
+      "source_utterance_ids": [
+        "S039-I3-U10"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-10",
+      "due_text": "십일월 십일에",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S039-F16",
+      "interaction_id": "S039-I3",
+      "type": "promise",
+      "said_by": "S039-C1",
+      "content": "구매팀장이 법무 검토를 마치고 약정서 사인본을 이번 달 말(10월 30일)까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S039-I3-U11"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-30",
+      "due_text": "이번 달 말까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S039-Q01",
+      "question": "엔진오일 가격 협상이 어떻게 오갔어?",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U07",
+        "S039-I1-U08",
+        "S039-I2-U03",
+        "S039-I2-U04",
+        "S039-I2-U05",
+        "S039-I3-U02",
+        "S039-I3-U03"
+      ],
+      "answer": "기존 12만 원 → 우리 11만 2천 원 → 1년 약정 10만 8천 원 → 고객 10만 5천 원 요구 → 10만 6천 원 확정 → 경쟁사 10만 4천 원 제시 → 우리는 총액 2% 추가 인하로 대응."
+    },
+    {
+      "id": "S039-Q02",
+      "question": "성이 같은 두 사람이 각각 무슨 일을 맡아?",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U00",
+        "S039-I1-U01"
+      ],
+      "answer": "최은영은 구매팀장, 최태호는 정비를 총괄하는 이사다."
+    },
+    {
+      "id": "S039-Q03",
+      "question": "강남점과 분당점이 중요하게 보는 조건이 달라?",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U03",
+        "S039-I1-U04"
+      ],
+      "answer": "강남점은 독일차 70%라 인증 OES 부품이, 분당점은 일본차가 섞여 호환성 조회가 중요하다."
+    },
+    {
+      "id": "S039-Q04",
+      "question": "시범 도입은 어떻게 시작하기로 했어?",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I3-U07",
+        "S039-I3-U08",
+        "S039-I3-U09",
+        "S039-I3-U10"
+      ],
+      "answer": "강남점과 분당점에서 석 달 시범. 강남은 11월 둘째 주, 분당은 앱 교육(11/10) 후 셋째 주부터 시작한다."
+    },
+    {
+      "id": "S039-Q05",
+      "question": "총액 할인으로 얼마나 아낄 수 있대?",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I3-U03",
+        "S039-I3-U04",
+        "S039-I3-U05"
+      ],
+      "answer": "총액에서 2% 추가 인하로 월 160만 원, 연 1,920만 원이다."
+    },
+    {
+      "id": "S039-Q06",
+      "question": "아직 끝나지 않은 약속이 뭐가 있어?",
+      "kind": "structured",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_fact_ids": [
+        "S039-F15",
+        "S039-F16"
+      ],
+      "answer": "우리: 분당점 앱 교육(11/10). 고객: 약정서 사인본 송부(10/30 기한이 지남)."
+    },
+    {
+      "id": "S039-Q07",
+      "question": "고객이 기한을 넘긴 약속이 있어?",
+      "kind": "structured",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_fact_ids": [
+        "S039-F16"
+      ],
+      "answer": "구매팀장이 10월 말까지 보내기로 한 약정서 사인본이 아직 오지 않았다."
+    },
+    {
+      "id": "S039-Q01-P1",
+      "question": "윤활유 말통 값이 단계별로 어떻게 변했어?",
+      "paraphrase_of": "S039-Q01",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U07",
+        "S039-I1-U08",
+        "S039-I2-U03",
+        "S039-I2-U04",
+        "S039-I2-U05",
+        "S039-I3-U02",
+        "S039-I3-U03"
+      ],
+      "answer": "기존 12만 원 → 우리 11만 2천 원 → 1년 약정 10만 8천 원 → 고객 10만 5천 원 요구 → 10만 6천 원 확정 → 경쟁사 10만 4천 원 제시 → 우리는 총액 2% 추가 인하로 대응."
+    },
+    {
+      "id": "S039-Q01-P2",
+      "question": "오일 단가 흥정 경과를 정리해 줘",
+      "paraphrase_of": "S039-Q01",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U07",
+        "S039-I1-U08",
+        "S039-I2-U03",
+        "S039-I2-U04",
+        "S039-I2-U05",
+        "S039-I3-U02",
+        "S039-I3-U03"
+      ],
+      "answer": "기존 12만 원 → 우리 11만 2천 원 → 1년 약정 10만 8천 원 → 고객 10만 5천 원 요구 → 10만 6천 원 확정 → 경쟁사 10만 4천 원 제시 → 우리는 총액 2% 추가 인하로 대응."
+    },
+    {
+      "id": "S039-Q02-P1",
+      "question": "같은 성씨의 두 책임자 역할 구분이 어떻게 돼?",
+      "paraphrase_of": "S039-Q02",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U00",
+        "S039-I1-U01"
+      ],
+      "answer": "최은영은 구매팀장, 최태호는 정비를 총괄하는 이사다."
+    },
+    {
+      "id": "S039-Q02-P2",
+      "question": "조달 쪽 책임자와 정비 쪽 책임자가 누구야?",
+      "paraphrase_of": "S039-Q02",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U00",
+        "S039-I1-U01"
+      ],
+      "answer": "최은영은 구매팀장, 최태호는 정비를 총괄하는 이사다."
+    },
+    {
+      "id": "S039-Q03-P1",
+      "question": "지점별 취급 차종과 필요한 기능이 뭐였지?",
+      "paraphrase_of": "S039-Q03",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U03",
+        "S039-I1-U04"
+      ],
+      "answer": "강남점은 독일차 70%라 인증 OES 부품이, 분당점은 일본차가 섞여 호환성 조회가 중요하다."
+    },
+    {
+      "id": "S039-Q03-P2",
+      "question": "각 매장이 우선하는 요건을 알려줘",
+      "paraphrase_of": "S039-Q03",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I1-U03",
+        "S039-I1-U04"
+      ],
+      "answer": "강남점은 독일차 70%라 인증 OES 부품이, 분당점은 일본차가 섞여 호환성 조회가 중요하다."
+    },
+    {
+      "id": "S039-Q04-P1",
+      "question": "처음 적용 범위와 개시 시기가 어떻게 돼?",
+      "paraphrase_of": "S039-Q04",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I3-U07",
+        "S039-I3-U08",
+        "S039-I3-U09",
+        "S039-I3-U10"
+      ],
+      "answer": "강남점과 분당점에서 석 달 시범. 강남은 11월 둘째 주, 분당은 앱 교육(11/10) 후 셋째 주부터 시작한다."
+    },
+    {
+      "id": "S039-Q04-P2",
+      "question": "시험 도입 대상 지점과 기간을 알려줘",
+      "paraphrase_of": "S039-Q04",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I3-U07",
+        "S039-I3-U08",
+        "S039-I3-U09",
+        "S039-I3-U10"
+      ],
+      "answer": "강남점과 분당점에서 석 달 시범. 강남은 11월 둘째 주, 분당은 앱 교육(11/10) 후 셋째 주부터 시작한다."
+    },
+    {
+      "id": "S039-Q05-P1",
+      "question": "묶음 인하로 절감되는 금액이 연으로 얼마야?",
+      "paraphrase_of": "S039-Q05",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I3-U03",
+        "S039-I3-U04",
+        "S039-I3-U05"
+      ],
+      "answer": "총액에서 2% 추가 인하로 월 160만 원, 연 1,920만 원이다."
+    },
+    {
+      "id": "S039-Q05-P2",
+      "question": "추가 할인율과 한 해 절약액을 알려줘",
+      "paraphrase_of": "S039-Q05",
+      "kind": "semantic",
+      "company_id": "S039-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S039-I3-U03",
+        "S039-I3-U04",
+        "S039-I3-U05"
+      ],
+      "answer": "총액에서 2% 추가 인하로 월 160만 원, 연 1,920만 원이다."
+    }
+  ]
+}

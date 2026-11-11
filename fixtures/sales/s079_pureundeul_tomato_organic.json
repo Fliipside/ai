@@ -1,0 +1,733 @@
+{
+  "scenario_id": "S079",
+  "description": "시설 토마토 농업회사법인의 내년 친환경 인증 전환에 맞춘 유기농업자재 공급. 인증 신청 시기, 유기농업자재 공시, 친환경 직불금 증빙, 부가세 포함 견적 등 규제·보조금 조건. 고객이 약속한 토양 검정 성적서가 계속 지연(고객 약속 지연)되고 12동에서 6동 시범으로 범위 축소.",
+  "fictional": true,
+  "as_of": "2026-11-06",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 31,
+    "team_id": 30,
+    "name": "석진우",
+    "company": "팜그로우",
+    "product": "비료·농자재·드론 방제"
+  },
+  "users": [
+    {
+      "user_id": 31,
+      "team_id": 30
+    }
+  ],
+  "company": {
+    "id": "S079-CO1",
+    "name": "푸른들토마토농업회사법인",
+    "industry": "시설채소 농업회사법인",
+    "size": "시설 토마토 12동 1.8헥타"
+  },
+  "contacts": [
+    {
+      "id": "S079-C1",
+      "name": "문영수",
+      "title": "대표",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S079-C2",
+      "name": "고선희",
+      "title": "재배 책임자",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S079-C3",
+      "name": "마수정",
+      "title": "경리",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S079-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-20T13:30:00+09:00",
+      "title": "친환경 전환 상담",
+      "owner_user_id": 31,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S079-C1",
+        "S079-C2",
+        "S079-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S079-I1-U00",
+          "start": 2.0,
+          "end": 10.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희가 시설 토마토 12동, 총 1.8헥타 하는데 내년부터 친환경 인증으로 전환하려고요.",
+          "contact_id": "S079-C1"
+        },
+        {
+          "id": "S079-I1-U01",
+          "start": 11.4,
+          "end": 22.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "친환경이면 유기농업자재 공시 제품만 쓰셔야 하는데, 저희 비료랑 천적·미생물 제제가 전부 공시를 받은 겁니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I1-U02",
+          "start": 23.0,
+          "end": 33.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "재배 책임자예요. 지금 쓰는 화학비료를 끊으면 수량이 걱정이에요. 토양 검정 결과를 봐야 처방이 나오겠죠?",
+          "contact_id": "S079-C2"
+        },
+        {
+          "id": "S079-I1-U03",
+          "start": 34.2,
+          "end": 42.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 토양 검정을 먼저 하고 처방 설계를 해드립니다. 검정 성적서를 보내주세요.",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I1-U04",
+          "start": 42.7,
+          "end": 49.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "12동 토양 시료를 채취해서 9월 중순까지 성적서 보내드릴게요.",
+          "contact_id": "S079-C2"
+        },
+        {
+          "id": "S079-I1-U05",
+          "start": 49.6,
+          "end": 56.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "친환경 인증 신청 시기가 12월이라서 그 전에 자재 결정을 하고 싶어요.",
+          "contact_id": "S079-C1"
+        },
+        {
+          "id": "S079-I1-U06",
+          "start": 57.4,
+          "end": 65.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 인증기관에 제출하는 자재 목록은 제가 11월 초까지 정리해 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I1-U07",
+          "start": 65.7,
+          "end": 72.5,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "경리 마수정입니다. 친환경 직불금 신청에 자재 구입 증빙이 필요해요.",
+          "contact_id": "S079-C3"
+        }
+      ]
+    },
+    {
+      "id": "S079-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-24T11:00:00+09:00",
+      "title": "성적서 지연 확인과 예비 견적",
+      "owner_user_id": 31,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S079-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S079-I2-U00",
+          "start": 2.0,
+          "end": 8.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "고 책임님, 토양 검정 성적서를 아직 못 받았는데 어떻게 됐을까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I2-U01",
+          "start": 9.3,
+          "end": 17.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "죄송해요, 시료 채취가 태풍 때문에 늦어졌어요. 10월 첫째 주에는 꼭 보내드릴게요.",
+          "contact_id": "S079-C2"
+        },
+        {
+          "id": "S079-I2-U02",
+          "start": 18.4,
+          "end": 29.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 성적서 없이 일단 예비 견적부터 드려도 될까요? 12동 기준 연간 자재비가 약 4,200만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I2-U03",
+          "start": 30.3,
+          "end": 36.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "4,200이면 지금 화학비료 쓰는 거보다 1.5배는 되네요.",
+          "contact_id": "S079-C2"
+        },
+        {
+          "id": "S079-I2-U04",
+          "start": 36.8,
+          "end": 42.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "친환경 직불금을 받으시는 부분도 같이 감안하셔야 합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I2-U05",
+          "start": 43.0,
+          "end": 51.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대표님께 말씀드려 볼게요. 인증 심사 기준에 맞는 자재인지 목록 확인이 우선이에요.",
+          "contact_id": "S079-C2"
+        }
+      ]
+    },
+    {
+      "id": "S079-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-29T14:00:00+09:00",
+      "title": "대표 참석 일정과 범위 조정 미팅",
+      "owner_user_id": 31,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S079-C1",
+        "S079-C2",
+        "S079-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S079-I3-U00",
+          "start": 2.0,
+          "end": 9.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "자재 목록 정리해 왔습니다. 모두 유기농업자재 공시 번호가 있는 제품입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I3-U01",
+          "start": 10.2,
+          "end": 14.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋네요. 고 책임님, 성적서는 어떻게 됐어요?",
+          "contact_id": "S079-C1"
+        },
+        {
+          "id": "S079-I3-U02",
+          "start": 15.3,
+          "end": 23.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "아직 받지 못했습니다. 검정 기관에서 지연되고 있대요. 이번 주 안에 재촉해 볼게요.",
+          "contact_id": "S079-C2"
+        },
+        {
+          "id": "S079-I3-U03",
+          "start": 24.4,
+          "end": 36.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "성적서 없이는 처방을 못 하니까, 처방은 성적서 오는 대로 하고 계약은 내년 1월로 가죠. 인증은 12월에 신청합니다.",
+          "contact_id": "S079-C1"
+        },
+        {
+          "id": "S079-I3-U04",
+          "start": 36.9,
+          "end": 49.1,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "경리 마수정입니다. 직불금 신청하려면 12월 15일까지 자재 구입 계획서가 필요하고 견적서는 부가세 포함으로 받아야 해요.",
+          "contact_id": "S079-C3"
+        },
+        {
+          "id": "S079-I3-U05",
+          "start": 49.7,
+          "end": 56.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "계획서용 견적서를 부가세 포함으로 12월 10일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I3-U06",
+          "start": 56.8,
+          "end": 64.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 처음에는 6동만 시범으로 시작하고 싶어요. 6동이면 얼마로 보면 돼요?",
+          "contact_id": "S079-C1"
+        },
+        {
+          "id": "S079-I3-U07",
+          "start": 65.1,
+          "end": 69.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "6동이면 연 2,300만 원 정도입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S079-I3-U08",
+          "start": 69.7,
+          "end": 71.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그 정도면 가능합니다.",
+          "contact_id": "S079-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S079-F01",
+      "interaction_id": "S079-I1",
+      "type": "requirement",
+      "said_by": "S079-C1",
+      "content": "시설 토마토 12동 1.8헥타를 내년부터 친환경 인증으로 전환하며 인증 신청은 12월이다.",
+      "source_utterance_ids": [
+        "S079-I1-U00",
+        "S079-I1-U05"
+      ]
+    },
+    {
+      "id": "S079-F02",
+      "interaction_id": "S079-I1",
+      "type": "requirement",
+      "said_by": "S079-C2",
+      "content": "화학비료를 끊으면 수량이 걱정이라 토양 검정 결과를 바탕으로 처방을 받고 싶어 한다.",
+      "source_utterance_ids": [
+        "S079-I1-U02",
+        "S079-I1-U03"
+      ]
+    },
+    {
+      "id": "S079-F03",
+      "interaction_id": "S079-I1",
+      "type": "promise",
+      "said_by": "S079-C2",
+      "content": "12동 토양 검정 성적서를 보낸다.",
+      "source_utterance_ids": [
+        "S079-I1-U04"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-18",
+      "due_text": "9월 중순까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S079-F04",
+      "interaction_id": "S079-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "인증기관에 제출할 유기농업자재 목록을 정리해 준다.",
+      "source_utterance_ids": [
+        "S079-I1-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-05",
+      "due_text": "11월 초까지",
+      "status": "done",
+      "resolved_in": "S079-I3"
+    },
+    {
+      "id": "S079-F05",
+      "interaction_id": "S079-I1",
+      "type": "requirement",
+      "said_by": "S079-C3",
+      "content": "친환경 직불금 신청에 자재 구입 증빙이 필요하다.",
+      "source_utterance_ids": [
+        "S079-I1-U07"
+      ]
+    },
+    {
+      "id": "S079-F06",
+      "interaction_id": "S079-I2",
+      "type": "promise",
+      "said_by": "S079-C2",
+      "content": "태풍으로 늦어진 토양 검정 성적서를 다시 약속하며 10월 첫째 주에 보낸다.",
+      "source_utterance_ids": [
+        "S079-I2-U01"
+      ],
+      "supersedes": "S079-F03",
+      "owner": "customer",
+      "due_at": "2026-10-07",
+      "due_text": "10월 첫째 주에는 꼭",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S079-F07",
+      "interaction_id": "S079-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "12동 기준 예비 견적은 연간 자재비 약 4,200만 원이다.",
+      "source_utterance_ids": [
+        "S079-I2-U02"
+      ]
+    },
+    {
+      "id": "S079-F08",
+      "interaction_id": "S079-I2",
+      "type": "price_reaction",
+      "said_by": "S079-C2",
+      "content": "4,200만 원은 현재 화학비료보다 1.5배 비싸다고 했다.",
+      "source_utterance_ids": [
+        "S079-I2-U03"
+      ]
+    },
+    {
+      "id": "S079-F09",
+      "interaction_id": "S079-I2",
+      "type": "requirement",
+      "said_by": "S079-C2",
+      "content": "인증 심사 기준에 맞는 자재인지 목록 확인이 우선이다.",
+      "source_utterance_ids": [
+        "S079-I2-U05"
+      ]
+    },
+    {
+      "id": "S079-F10",
+      "interaction_id": "S079-I3",
+      "type": "decision",
+      "said_by": "S079-C1",
+      "content": "성적서가 오는 대로 처방하고 정식 계약은 내년 1월로, 인증 신청은 12월에 한다.",
+      "source_utterance_ids": [
+        "S079-I3-U03"
+      ]
+    },
+    {
+      "id": "S079-F11",
+      "interaction_id": "S079-I3",
+      "type": "requirement",
+      "said_by": "S079-C3",
+      "content": "직불금 신청을 위해 12월 15일까지 자재 구입 계획서가 필요하고 견적서는 부가세 포함이어야 한다.",
+      "source_utterance_ids": [
+        "S079-I3-U04"
+      ]
+    },
+    {
+      "id": "S079-F12",
+      "interaction_id": "S079-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "부가세 포함 계획서용 견적서를 보낸다.",
+      "source_utterance_ids": [
+        "S079-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-12-10",
+      "due_text": "12월 10일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S079-F13",
+      "interaction_id": "S079-I3",
+      "type": "requirement",
+      "said_by": "S079-C1",
+      "content": "12동 전체 대신 6동만 시범으로 먼저 시작하고 싶어 한다.",
+      "source_utterance_ids": [
+        "S079-I3-U06"
+      ],
+      "supersedes": "S079-F01"
+    },
+    {
+      "id": "S079-F14",
+      "interaction_id": "S079-I3",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "6동 시범은 연 2,300만 원 정도로 안내했고 고객이 그 정도면 가능하다고 했다.",
+      "source_utterance_ids": [
+        "S079-I3-U07",
+        "S079-I3-U08"
+      ]
+    },
+    {
+      "id": "S079-F15",
+      "interaction_id": "S079-I3",
+      "type": "promise",
+      "said_by": "S079-C2",
+      "content": "검정 기관에 재촉해 토양 검정 성적서를 이번 주 안에 받아 보낸다.",
+      "source_utterance_ids": [
+        "S079-I3-U02"
+      ],
+      "supersedes": "S079-F06",
+      "owner": "customer",
+      "due_at": "2026-10-30",
+      "due_text": "이번 주 안에",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S079-Q01",
+      "question": "푸른들토마토는 내년에 어떻게 바꾸려고 해?",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U00",
+        "S079-I1-U05"
+      ],
+      "answer": "12동 1.8헥타를 내년부터 친환경 인증으로 전환하며 12월에 인증 신청을 한다."
+    },
+    {
+      "id": "S079-Q02",
+      "question": "푸른들토마토 토양 검정 성적서는 왜 안 와?",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U04",
+        "S079-I2-U00",
+        "S079-I2-U01",
+        "S079-I3-U01",
+        "S079-I3-U02"
+      ],
+      "answer": "처음 9월 중순 약속이 태풍으로 늦어지고 다시 검정 기관 지연으로 밀려 10월 말에도 받지 못했다."
+    },
+    {
+      "id": "S079-Q03",
+      "question": "푸른들토마토는 가격에 어떻게 반응했어?",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I2-U02",
+        "S079-I2-U03",
+        "S079-I3-U06",
+        "S079-I3-U07",
+        "S079-I3-U08"
+      ],
+      "answer": "12동 연 4,200만 원은 화학비료의 1.5배라 부담스러워했고, 6동 시범 연 2,300만 원은 가능하다고 했다."
+    },
+    {
+      "id": "S079-Q04",
+      "question": "푸른들토마토 보조금 신청에 필요한 서류는?",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U07",
+        "S079-I3-U04",
+        "S079-I3-U05"
+      ],
+      "answer": "직불금 신청을 위해 12월 15일까지 자재 구입 계획서와 부가세 포함 견적서, 구입 증빙이 필요하다."
+    },
+    {
+      "id": "S079-Q05",
+      "question": "푸른들토마토 계약 시기와 범위는 어떻게 정리됐어?",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I3-U03",
+        "S079-I3-U06"
+      ],
+      "answer": "성적서가 오는 대로 처방하고 정식 계약은 내년 1월, 먼저 6동만 시범으로 시작한다."
+    },
+    {
+      "id": "S079-Q06",
+      "question": "푸른들토마토에서 고객이 아직 안 준 게 뭐야?",
+      "kind": "structured",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_fact_ids": [
+        "S079-F15"
+      ],
+      "answer": "고선희 책임자가 약속한 토양 검정 성적서가 10월 30일 기한을 넘기고도 아직 오지 않았다."
+    },
+    {
+      "id": "S079-Q07",
+      "question": "푸른들토마토에 우리가 남은 약속은?",
+      "kind": "structured",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_fact_ids": [
+        "S079-F12"
+      ],
+      "answer": "12월 10일까지 부가세 포함 계획서용 견적서를 보내야 한다."
+    },
+    {
+      "id": "S079-Q01-P1",
+      "question": "푸른들토마토의 재배 방식 전환 계획과 신청 시점은?",
+      "paraphrase_of": "S079-Q01",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U00",
+        "S079-I1-U05"
+      ],
+      "answer": "12동 1.8헥타를 내년부터 친환경 인증으로 전환하며 12월에 인증 신청을 한다."
+    },
+    {
+      "id": "S079-Q01-P2",
+      "question": "푸른들토마토 온실 농사를 내년에 어떤 인증으로 바꿀 예정이야?",
+      "paraphrase_of": "S079-Q01",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U00",
+        "S079-I1-U05"
+      ],
+      "answer": "12동 1.8헥타를 내년부터 친환경 인증으로 전환하며 12월에 인증 신청을 한다."
+    },
+    {
+      "id": "S079-Q02-P1",
+      "question": "푸른들토마토 흙 분석 결과가 늦어지는 사정은?",
+      "paraphrase_of": "S079-Q02",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U04",
+        "S079-I2-U00",
+        "S079-I2-U01",
+        "S079-I3-U01",
+        "S079-I3-U02"
+      ],
+      "answer": "처음 9월 중순 약속이 태풍으로 늦어지고 다시 검정 기관 지연으로 밀려 10월 말에도 받지 못했다."
+    },
+    {
+      "id": "S079-Q02-P2",
+      "question": "푸른들토마토 시험 결과 서류 지연이 몇 번 반복됐어?",
+      "paraphrase_of": "S079-Q02",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U04",
+        "S079-I2-U00",
+        "S079-I2-U01",
+        "S079-I3-U01",
+        "S079-I3-U02"
+      ],
+      "answer": "처음 9월 중순 약속이 태풍으로 늦어지고 다시 검정 기관 지연으로 밀려 10월 말에도 받지 못했다."
+    },
+    {
+      "id": "S079-Q03-P1",
+      "question": "푸른들토마토에 말한 연간 비용과 고객 반응은?",
+      "paraphrase_of": "S079-Q03",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I2-U02",
+        "S079-I2-U03",
+        "S079-I3-U06",
+        "S079-I3-U07",
+        "S079-I3-U08"
+      ],
+      "answer": "12동 연 4,200만 원은 화학비료의 1.5배라 부담스러워했고, 6동 시범 연 2,300만 원은 가능하다고 했다."
+    },
+    {
+      "id": "S079-Q03-P2",
+      "question": "푸른들토마토가 금액이 높다고 한 부분과 수용한 금액은?",
+      "paraphrase_of": "S079-Q03",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I2-U02",
+        "S079-I2-U03",
+        "S079-I3-U06",
+        "S079-I3-U07",
+        "S079-I3-U08"
+      ],
+      "answer": "12동 연 4,200만 원은 화학비료의 1.5배라 부담스러워했고, 6동 시범 연 2,300만 원은 가능하다고 했다."
+    },
+    {
+      "id": "S079-Q04-P1",
+      "question": "푸른들토마토 정부 지원금을 받으려면 뭘 내야 해?",
+      "paraphrase_of": "S079-Q04",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U07",
+        "S079-I3-U04",
+        "S079-I3-U05"
+      ],
+      "answer": "직불금 신청을 위해 12월 15일까지 자재 구입 계획서와 부가세 포함 견적서, 구입 증빙이 필요하다."
+    },
+    {
+      "id": "S079-Q04-P2",
+      "question": "푸른들토마토 경리가 요청한 증빙 자료가 뭐였지?",
+      "paraphrase_of": "S079-Q04",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I1-U07",
+        "S079-I3-U04",
+        "S079-I3-U05"
+      ],
+      "answer": "직불금 신청을 위해 12월 15일까지 자재 구입 계획서와 부가세 포함 견적서, 구입 증빙이 필요하다."
+    },
+    {
+      "id": "S079-Q05-P1",
+      "question": "푸른들토마토 서명 시기와 초기 규모는?",
+      "paraphrase_of": "S079-Q05",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I3-U03",
+        "S079-I3-U06"
+      ],
+      "answer": "성적서가 오는 대로 처방하고 정식 계약은 내년 1월, 먼저 6동만 시범으로 시작한다."
+    },
+    {
+      "id": "S079-Q05-P2",
+      "question": "푸른들토마토 처음 몇 동으로 언제 거래하기로 했어?",
+      "paraphrase_of": "S079-Q05",
+      "kind": "semantic",
+      "company_id": "S079-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S079-I3-U03",
+        "S079-I3-U06"
+      ],
+      "answer": "성적서가 오는 대로 처방하고 정식 계약은 내년 1월, 먼저 6동만 시범으로 시작한다."
+    }
+  ]
+}

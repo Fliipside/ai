@@ -1,0 +1,840 @@
+{
+  "scenario_id": "S089",
+  "description": "저속 자율주행 셔틀을 만드는 스타트업 로드아이 모빌리티에 LiDAR 3D 라벨링 외주를 제안. 고객 샘플 전달이 늦어져 파일럿 결과 기한이 9월 25일에서 10월 9일로 미뤄지고 새 약속이 이전 약속을 대체한다. 요구도 LiDAR 단독 2만 프레임에서 카메라 퓨전·차선 포함 3만 5천 프레임으로, 합격 기준 95%에서 98%로 바뀌며 단가가 조정된다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 35,
+    "team_id": 34,
+    "name": "함예린",
+    "company": "라벨웍스",
+    "product": "데이터 라벨링 외주"
+  },
+  "users": [
+    {
+      "user_id": 35,
+      "team_id": 34
+    }
+  ],
+  "company": {
+    "id": "S089-CO1",
+    "name": "로드아이 모빌리티",
+    "industry": "자율주행 스타트업",
+    "size": "직원 약 60명, 저속 자율주행 셔틀 개발, 인식팀 내부 인턴 4명이 라벨링 중"
+  },
+  "contacts": [
+    {
+      "id": "S089-C1",
+      "name": "소하준",
+      "title": "데이터팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S089-C2",
+      "name": "유채원",
+      "title": "인식팀 선임 엔지니어",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S089-C3",
+      "name": "나경호",
+      "title": "CTO",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S089-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-27T14:00:00+09:00",
+      "title": "3D 라벨링 첫 상담",
+      "owner_user_id": 35,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S089-C1",
+        "S089-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S089-I1-U00",
+          "start": 2.0,
+          "end": 10.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "로드아이 모빌리티 데이터팀장 소하준입니다. 저희는 저속 자율주행 셔틀을 개발합니다.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I1-U01",
+          "start": 10.9,
+          "end": 19.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "인식팀 유채원이에요. 지금 라벨링을 내부 인턴 네 명이 하는데 속도가 너무 안 나요.",
+          "contact_id": "S089-C2"
+        },
+        {
+          "id": "S089-I1-U02",
+          "start": 20.0,
+          "end": 25.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "라벨웍스 함예린입니다. 어떤 데이터를 라벨링하시나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I1-U03",
+          "start": 25.8,
+          "end": 39.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "LiDAR 포인트클라우드에 3D 큐보이드를 씌우는 작업이고, 보행자, 차량, 자전거, 콘 네 클래스예요. 프레임은 2만 장 정도입니다.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I1-U04",
+          "start": 39.9,
+          "end": 45.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "올해 안에 모델을 한 번 재학습해야 해서 시간이 빠듯합니다.",
+          "contact_id": "S089-C2"
+        },
+        {
+          "id": "S089-I1-U05",
+          "start": 46.4,
+          "end": 54.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "3D 큐보이드는 프레임당 5,500원이고 2만 장이면 1억 1천만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I1-U06",
+          "start": 54.6,
+          "end": 62.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "단가는 예상 범위인데 품질이 걱정이에요. 인턴 정확도가 90%도 안 나와서요.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I1-U07",
+          "start": 62.9,
+          "end": 67.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 이중 검수로 정확도 95% 이상을 맞춥니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I1-U08",
+          "start": 68.5,
+          "end": 77.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "보안도 중요해요. 도로 영상에 번호판이랑 얼굴이 찍혀 있어서 외부 반출이 부담입니다.",
+          "contact_id": "S089-C2"
+        },
+        {
+          "id": "S089-I1-U09",
+          "start": 77.6,
+          "end": 87.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희 보안 작업장에서 반출 없이 원격 접속으로 작업하고, 보안 서약서를 받은 인력만 투입합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I1-U10",
+          "start": 87.7,
+          "end": 95.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "일단 파일럿부터 해보죠. 샘플 1,000프레임을 9월 4일까지 보내드릴게요.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I1-U11",
+          "start": 95.9,
+          "end": 101.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 샘플로 파일럿 결과를 9월 25일까지 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S089-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-17T11:00:00+09:00",
+      "title": "파일럿 지연과 요구 변경",
+      "owner_user_id": 35,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S089-C1",
+        "S089-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S089-I2-U00",
+          "start": 2.0,
+          "end": 8.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "파일럿 샘플은 14일에 받았습니다. 약속하신 4일보다 열흘 늦었네요.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I2-U01",
+          "start": 9.4,
+          "end": 13.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "죄송해요, 보안 승인을 받느라 늦었어요.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I2-U02",
+          "start": 14.0,
+          "end": 26.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "괜찮습니다. 다만 그 때문에 파일럿 결과는 9월 25일에서 10월 9일로 미뤄야겠습니다. 10월 9일에는 반드시 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I2-U03",
+          "start": 27.2,
+          "end": 33.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "열흘 넘게 밀리면 대표님 보고 일정이 빠듯한데... 알겠습니다.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I2-U04",
+          "start": 34.1,
+          "end": 44.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "샘플을 보다 보니 요구가 바뀌었어요. 카메라 영상과 포인트클라우드를 같이 보는 퓨전 라벨링이 필요해요.",
+          "contact_id": "S089-C2"
+        },
+        {
+          "id": "S089-I2-U05",
+          "start": 45.0,
+          "end": 50.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "퓨전은 작업이 늘어서 프레임당 7,500원이 됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I2-U06",
+          "start": 50.8,
+          "end": 55.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그리고 차선도 폴리라인으로 같이 따야 하고요.",
+          "contact_id": "S089-C2"
+        },
+        {
+          "id": "S089-I2-U07",
+          "start": 55.9,
+          "end": 60.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "차선 추가는 프레임당 1,000원이 더 붙습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I2-U08",
+          "start": 61.4,
+          "end": 69.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그럼 8,500원이네요. 물량도 2만 장에서 3만 5천 장으로 늘리려고 해요.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I2-U09",
+          "start": 69.7,
+          "end": 79.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "3만 5천 장이면 물량 할인으로 프레임당 8,000원, 총 2억 8천만 원에 맞춰드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I2-U10",
+          "start": 79.7,
+          "end": 83.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋아요. 그 조건으로 견적서 부탁드립니다.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I2-U11",
+          "start": 84.4,
+          "end": 88.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "수정 견적서는 9월 24일까지 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S089-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-22T15:00:00+09:00",
+      "title": "파일럿 결과와 계약 조건",
+      "owner_user_id": 35,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S089-C3",
+        "S089-C2",
+        "S089-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S089-I3-U00",
+          "start": 2.0,
+          "end": 8.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "파일럿 결과는 10월 9일에 드렸고 정확도가 97.2%로 나왔습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I3-U01",
+          "start": 9.4,
+          "end": 16.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "CTO 나경호입니다. 결과 봤어요. 인턴 때보다 오류가 확 줄었더군요.",
+          "contact_id": "S089-C3"
+        },
+        {
+          "id": "S089-I3-U02",
+          "start": 17.0,
+          "end": 24.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "다만 합격 기준을 95%에서 98%로 올리고 싶어요. 안전 인증 심사 때문에요.",
+          "contact_id": "S089-C2"
+        },
+        {
+          "id": "S089-I3-U03",
+          "start": 25.5,
+          "end": 37.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "98%로 올리면 검수 단계를 하나 더 해야 해서 단가가 8,000원에서 8,400원이 되고, 총 2억 9,400만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I3-U04",
+          "start": 38.5,
+          "end": 46.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "400원 오르는 건 이해합니다. 총액 2억 9천만 원에 맞춰주시면 계약하죠.",
+          "contact_id": "S089-C3"
+        },
+        {
+          "id": "S089-I3-U05",
+          "start": 46.7,
+          "end": 59.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "2억 9천만 원으로 맞추겠습니다. 대신 1차 5천 장은 11월 20일까지, 전체는 2027년 2월 26일까지 나눠서 납품합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S089-I3-U06",
+          "start": 60.1,
+          "end": 66.0,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "저희 데이터는 11월 5일까지 1차분 5천 장을 전달할게요.",
+          "contact_id": "S089-C1"
+        },
+        {
+          "id": "S089-I3-U07",
+          "start": 66.6,
+          "end": 72.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "계약서는 법무 확인 후 제가 11월 12일까지 날인하겠습니다.",
+          "contact_id": "S089-C3"
+        },
+        {
+          "id": "S089-I3-U08",
+          "start": 73.3,
+          "end": 77.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "계약서 초안은 10월 30일까지 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S089-F01",
+      "interaction_id": "S089-I1",
+      "type": "requirement",
+      "said_by": "S089-C1",
+      "content": "LiDAR 포인트클라우드 3D 큐보이드로 보행자, 차량, 자전거, 콘 네 클래스를 약 2만 프레임 라벨링한다.",
+      "source_utterance_ids": [
+        "S089-I1-U03"
+      ]
+    },
+    {
+      "id": "S089-F02",
+      "interaction_id": "S089-I1",
+      "type": "price_reaction",
+      "said_by": "S089-C1",
+      "content": "프레임당 5,500원은 예상 범위이나 인턴 정확도가 90% 미만이라 품질을 걱정했다.",
+      "source_utterance_ids": [
+        "S089-I1-U05",
+        "S089-I1-U06"
+      ]
+    },
+    {
+      "id": "S089-F03",
+      "interaction_id": "S089-I1",
+      "type": "requirement",
+      "said_by": "S089-C2",
+      "content": "도로 영상에 번호판과 얼굴이 있어 외부 반출이 부담이라 보안 작업 환경을 요구했다.",
+      "source_utterance_ids": [
+        "S089-I1-U08"
+      ]
+    },
+    {
+      "id": "S089-F04",
+      "interaction_id": "S089-I1",
+      "type": "promise",
+      "said_by": "S089-C1",
+      "content": "파일럿용 샘플 1,000프레임을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S089-I1-U10"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-04",
+      "due_text": "9월 4일까지",
+      "status": "done",
+      "resolved_in": "S089-I2"
+    },
+    {
+      "id": "S089-F05",
+      "interaction_id": "S089-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "샘플로 파일럿 결과를 주기로 했다.",
+      "source_utterance_ids": [
+        "S089-I1-U11"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-25",
+      "due_text": "9월 25일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S089-F06",
+      "interaction_id": "S089-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "샘플 전달이 늦어져 파일럿 결과 기한을 10월 9일로 미뤘다.",
+      "source_utterance_ids": [
+        "S089-I2-U02"
+      ],
+      "supersedes": "S089-F05",
+      "owner": "me",
+      "due_at": "2026-10-09",
+      "due_text": "10월 9일",
+      "status": "done",
+      "resolved_in": "S089-I3"
+    },
+    {
+      "id": "S089-F07",
+      "interaction_id": "S089-I2",
+      "type": "requirement",
+      "said_by": "S089-C2",
+      "content": "카메라와 포인트클라우드를 함께 보는 퓨전 라벨링과 차선 폴리라인이 필요해졌다.",
+      "source_utterance_ids": [
+        "S089-I2-U04",
+        "S089-I2-U06"
+      ]
+    },
+    {
+      "id": "S089-F08",
+      "interaction_id": "S089-I2",
+      "type": "requirement",
+      "said_by": "S089-C1",
+      "content": "물량이 2만 장에서 3만 5천 장으로 늘어난다.",
+      "source_utterance_ids": [
+        "S089-I2-U08"
+      ],
+      "supersedes": "S089-F01"
+    },
+    {
+      "id": "S089-F09",
+      "interaction_id": "S089-I2",
+      "type": "price_reaction",
+      "said_by": "S089-C1",
+      "content": "퓨전과 차선 포함 프레임당 8,500원이 3만 5천 장 물량 할인으로 8,000원, 총 2억 8천만 원이 되는 안을 수락했다.",
+      "source_utterance_ids": [
+        "S089-I2-U08",
+        "S089-I2-U09",
+        "S089-I2-U10"
+      ]
+    },
+    {
+      "id": "S089-F10",
+      "interaction_id": "S089-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "수정 견적서를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S089-I2-U11"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-24",
+      "due_text": "9월 24일까지",
+      "status": "done",
+      "resolved_in": "S089-I3"
+    },
+    {
+      "id": "S089-F11",
+      "interaction_id": "S089-I3",
+      "type": "buying_signal",
+      "said_by": "S089-C3",
+      "content": "파일럿 정확도 97.2%에 CTO가 인턴 때보다 오류가 크게 줄었다고 평가했다.",
+      "source_utterance_ids": [
+        "S089-I3-U00",
+        "S089-I3-U01"
+      ]
+    },
+    {
+      "id": "S089-F12",
+      "interaction_id": "S089-I3",
+      "type": "requirement",
+      "said_by": "S089-C2",
+      "content": "안전 인증 심사 때문에 합격 기준을 95%에서 98%로 올리길 원한다.",
+      "source_utterance_ids": [
+        "S089-I3-U02"
+      ]
+    },
+    {
+      "id": "S089-F13",
+      "interaction_id": "S089-I3",
+      "type": "decision",
+      "said_by": "S089-C3",
+      "content": "98% 기준 검수로 총 2억 9천만 원에 계약하기로 하고 1차 5천 장은 11월 20일, 전체는 2027년 2월 26일까지 분할 납품한다.",
+      "source_utterance_ids": [
+        "S089-I3-U04",
+        "S089-I3-U05"
+      ]
+    },
+    {
+      "id": "S089-F14",
+      "interaction_id": "S089-I3",
+      "type": "promise",
+      "said_by": "S089-C1",
+      "content": "1차분 5천 장 데이터를 전달하기로 했다.",
+      "source_utterance_ids": [
+        "S089-I3-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-05",
+      "due_text": "11월 5일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S089-F15",
+      "interaction_id": "S089-I3",
+      "type": "promise",
+      "said_by": "S089-C3",
+      "content": "법무 확인 후 계약서에 날인하기로 했다.",
+      "source_utterance_ids": [
+        "S089-I3-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-12",
+      "due_text": "11월 12일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S089-F16",
+      "interaction_id": "S089-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "계약서 초안을 보내기로 했다.",
+      "source_utterance_ids": [
+        "S089-I3-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-30",
+      "due_text": "10월 30일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S089-Q01",
+      "question": "로드아이가 라벨링을 맡기려는 데이터와 규모는?",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U03",
+        "S089-I1-U04"
+      ],
+      "answer": "LiDAR 3D 큐보이드로 보행자, 차량, 자전거, 콘을 약 2만 프레임이며 올해 안에 재학습이 필요하다."
+    },
+    {
+      "id": "S089-Q02",
+      "question": "보안 요구는 어떻게 했어?",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U08",
+        "S089-I1-U09"
+      ],
+      "answer": "도로 영상에 번호판과 얼굴이 있어 반출이 부담이라, 보안 작업장 원격 접속과 서약서 받은 인력만 투입하기로 했다."
+    },
+    {
+      "id": "S089-Q03",
+      "question": "파일럿 결과가 왜 늦어졌고 언제로 미뤘어?",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I2-U00",
+        "S089-I2-U01",
+        "S089-I2-U02"
+      ],
+      "answer": "고객이 보안 승인 때문에 샘플을 14일에야 보내서 결과 기한을 9월 25일에서 10월 9일로 미뤘다."
+    },
+    {
+      "id": "S089-Q04",
+      "question": "요구 사항이 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U03",
+        "S089-I2-U04",
+        "S089-I2-U06",
+        "S089-I2-U08",
+        "S089-I3-U02"
+      ],
+      "answer": "LiDAR 2만 프레임에서 카메라 퓨전과 차선 폴리라인 포함 3만 5천 프레임으로 늘고 합격 기준은 95%에서 98%로 올랐다."
+    },
+    {
+      "id": "S089-Q05",
+      "question": "최종 가격과 납품 조건은?",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I3-U03",
+        "S089-I3-U04",
+        "S089-I3-U05"
+      ],
+      "answer": "98% 기준 프레임당 8,400원에서 총액 2억 9천만 원으로 조정해 1차 5천 장 11월 20일, 전체 2027년 2월 26일까지 분할 납품한다."
+    },
+    {
+      "id": "S089-Q06",
+      "question": "우리가 아직 못 끝낸 약속은?",
+      "kind": "structured",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_fact_ids": [
+        "S089-F16"
+      ],
+      "answer": "10월 30일까지 보내기로 한 계약서 초안이 남아 있다."
+    },
+    {
+      "id": "S089-Q07",
+      "question": "고객이 하기로 한 일 중 남은 건?",
+      "kind": "structured",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_fact_ids": [
+        "S089-F14",
+        "S089-F15"
+      ],
+      "answer": "11월 5일까지 1차분 5천 장 전달과 11월 12일까지 계약서 날인이 남아 있다."
+    },
+    {
+      "id": "S089-Q01-P1",
+      "question": "어떤 센서 자료에 어떤 물체를 표시해야 하고 양이 얼마야?",
+      "paraphrase_of": "S089-Q01",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U03",
+        "S089-I1-U04"
+      ],
+      "answer": "LiDAR 3D 큐보이드로 보행자, 차량, 자전거, 콘을 약 2만 프레임이며 올해 안에 재학습이 필요하다."
+    },
+    {
+      "id": "S089-Q01-P2",
+      "question": "모델을 다시 학습시키기 전에 준비해야 할 자료 분량을 알려줘.",
+      "paraphrase_of": "S089-Q01",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U03",
+        "S089-I1-U04"
+      ],
+      "answer": "LiDAR 3D 큐보이드로 보행자, 차량, 자전거, 콘을 약 2만 프레임이며 올해 안에 재학습이 필요하다."
+    },
+    {
+      "id": "S089-Q02-P1",
+      "question": "개인 식별 정보가 담긴 영상은 어떻게 다루기로 했지?",
+      "paraphrase_of": "S089-Q02",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U08",
+        "S089-I1-U09"
+      ],
+      "answer": "도로 영상에 번호판과 얼굴이 있어 반출이 부담이라, 보안 작업장 원격 접속과 서약서 받은 인력만 투입하기로 했다."
+    },
+    {
+      "id": "S089-Q02-P2",
+      "question": "외부로 데이터를 안 내보내는 방식에 대한 논의가 뭐였어?",
+      "paraphrase_of": "S089-Q02",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U08",
+        "S089-I1-U09"
+      ],
+      "answer": "도로 영상에 번호판과 얼굴이 있어 반출이 부담이라, 보안 작업장 원격 접속과 서약서 받은 인력만 투입하기로 했다."
+    },
+    {
+      "id": "S089-Q03-P1",
+      "question": "시험 작업 납품이 밀린 사정과 새 마감을 알려줘.",
+      "paraphrase_of": "S089-Q03",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I2-U00",
+        "S089-I2-U01",
+        "S089-I2-U02"
+      ],
+      "answer": "고객이 보안 승인 때문에 샘플을 14일에야 보내서 결과 기한을 9월 25일에서 10월 9일로 미뤘다."
+    },
+    {
+      "id": "S089-Q03-P2",
+      "question": "처음 약속한 날짜를 못 지킨 까닭이 뭐였어?",
+      "paraphrase_of": "S089-Q03",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I2-U00",
+        "S089-I2-U01",
+        "S089-I2-U02"
+      ],
+      "answer": "고객이 보안 승인 때문에 샘플을 14일에야 보내서 결과 기한을 9월 25일에서 10월 9일로 미뤘다."
+    },
+    {
+      "id": "S089-Q04-P1",
+      "question": "처음 범위와 지금 범위의 차이를 정리해줘.",
+      "paraphrase_of": "S089-Q04",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U03",
+        "S089-I2-U04",
+        "S089-I2-U06",
+        "S089-I2-U08",
+        "S089-I3-U02"
+      ],
+      "answer": "LiDAR 2만 프레임에서 카메라 퓨전과 차선 폴리라인 포함 3만 5천 프레임으로 늘고 합격 기준은 95%에서 98%로 올랐다."
+    },
+    {
+      "id": "S089-Q04-P2",
+      "question": "작업 종류, 물량, 품질 기준이 달라진 내용이 뭐야?",
+      "paraphrase_of": "S089-Q04",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I1-U03",
+        "S089-I2-U04",
+        "S089-I2-U06",
+        "S089-I2-U08",
+        "S089-I3-U02"
+      ],
+      "answer": "LiDAR 2만 프레임에서 카메라 퓨전과 차선 폴리라인 포함 3만 5천 프레임으로 늘고 합격 기준은 95%에서 98%로 올랐다."
+    },
+    {
+      "id": "S089-Q05-P1",
+      "question": "합의한 총액과 나눠 넘기는 일정을 알려줘.",
+      "paraphrase_of": "S089-Q05",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I3-U03",
+        "S089-I3-U04",
+        "S089-I3-U05"
+      ],
+      "answer": "98% 기준 프레임당 8,400원에서 총액 2억 9천만 원으로 조정해 1차 5천 장 11월 20일, 전체 2027년 2월 26일까지 분할 납품한다."
+    },
+    {
+      "id": "S089-Q05-P2",
+      "question": "단가 인상분과 인도 시기가 어떻게 정리됐어?",
+      "paraphrase_of": "S089-Q05",
+      "kind": "semantic",
+      "company_id": "S089-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 35,
+      "relevant_utterance_ids": [
+        "S089-I3-U03",
+        "S089-I3-U04",
+        "S089-I3-U05"
+      ],
+      "answer": "98% 기준 프레임당 8,400원에서 총액 2억 9천만 원으로 조정해 1차 5천 장 11월 20일, 전체 2027년 2월 26일까지 분할 납품한다."
+    }
+  ]
+}

@@ -1,0 +1,792 @@
+{
+  "scenario_id": "S051",
+  "description": "식품 공장에 방역·해충 관리 정기 서비스. HACCP 심사(11/10) 전 업체 교체, 기록 자동화 가치, 약제·이수증 규정, 월 1회 60개소 → 월 2회 84개소로 요구 변경과 24개월 계약 가격 협의, 계약서 회신 대기",
+  "fictional": true,
+  "as_of": "2026-11-04",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 22,
+    "team_id": 21,
+    "name": "표상훈",
+    "company": "위생지킴이",
+    "product": "방역·해충 관리 정기 서비스"
+  },
+  "users": [
+    {
+      "user_id": 22,
+      "team_id": 21
+    }
+  ],
+  "company": {
+    "id": "S051-CO1",
+    "name": "청솔푸드",
+    "industry": "식품 제조",
+    "size": "직원 140명, 공장 2곳(3,200평)"
+  },
+  "contacts": [
+    {
+      "id": "S051-C1",
+      "name": "안소라",
+      "title": "품질관리팀 대리",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S051-C2",
+      "name": "편도현",
+      "title": "공장장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S051-C3",
+      "name": "모세린",
+      "title": "구매팀 대리",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S051-I1",
+      "kind": "call",
+      "occurred_at": "2026-08-12T11:00:00+09:00",
+      "title": "방역 업체 교체 문의",
+      "owner_user_id": 22,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S051-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S051-I1-U00",
+          "start": 2.0,
+          "end": 10.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희 HACCP 정기 심사가 11월 10일이라서요. 방역 업체를 바꾸려고 연락드렸어요.",
+          "contact_id": "S051-C1"
+        },
+        {
+          "id": "S051-I1-U01",
+          "start": 11.2,
+          "end": 18.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 안소라 대리님 반갑습니다. 지금 업체에서 어떤 점이 아쉬우셨어요?",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I1-U02",
+          "start": 18.8,
+          "end": 29.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "월 1회 오는데 포획기 점검 기록지를 매번 손으로 써서요. 지난 심사에서 기록 보완하라고 지적받았어요.",
+          "contact_id": "S051-C1"
+        },
+        {
+          "id": "S051-I1-U03",
+          "start": 29.7,
+          "end": 38.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 태블릿으로 포획 수치랑 사진을 바로 올리고, 날짜별 추이 보고서가 자동으로 나옵니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I1-U04",
+          "start": 39.5,
+          "end": 48.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "오, 그거 좋네요. 저희가 1공장 2공장 합쳐서 3,200평인데요, 포획기가 60개쯤 있어요.",
+          "contact_id": "S051-C1"
+        },
+        {
+          "id": "S051-I1-U05",
+          "start": 49.5,
+          "end": 57.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그 정도면 저희도 그 수준으로 잡겠습니다. 먼저 현장 실사를 나가보겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I1-U06",
+          "start": 57.7,
+          "end": 61.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 내일 목요일 오후 2시 어떠세요?",
+          "contact_id": "S051-C1"
+        },
+        {
+          "id": "S051-I1-U07",
+          "start": 62.1,
+          "end": 67.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "좋습니다. 8월 13일 목요일 2시에 방문하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I1-U08",
+          "start": 67.9,
+          "end": 79.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아, 그리고 심사 때 최근 1년치 포획 기록을 내야 해서, 지금 업체에서 받아 다음 주 수요일까지 보내드릴게요.",
+          "contact_id": "S051-C1"
+        },
+        {
+          "id": "S051-I1-U09",
+          "start": 79.7,
+          "end": 85.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 그걸 보고 월별 추세 맞춰서 제안서 만들겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S051-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-03T14:00:00+09:00",
+      "title": "제안서 설명과 가격 협의",
+      "owner_user_id": 22,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S051-C2",
+        "S051-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S051-I2-U00",
+          "start": 2.0,
+          "end": 13.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "8월 13일 실사 결과 바탕으로 제안서 가져왔습니다. 포획기 62개, 월 1회 방문 기준으로 월 170만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I2-U01",
+          "start": 14.1,
+          "end": 21.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "편도현 공장장입니다. 170이면 지금 쓰는 데보다 30만 원 비싼데요?",
+          "contact_id": "S051-C2"
+        },
+        {
+          "id": "S051-I2-U02",
+          "start": 21.7,
+          "end": 31.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "기록 자동화랑 심사 대응 리포트가 포함된 가격입니다. 기존 업체는 기록 부분이 빠져 있잖아요.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I2-U03",
+          "start": 31.7,
+          "end": 40.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "공장장님, 지난 심사 때 기록 때문에 지적받은 거 기억하시죠. 저는 이 부분이 크다고 봐요.",
+          "contact_id": "S051-C1"
+        },
+        {
+          "id": "S051-I2-U04",
+          "start": 41.5,
+          "end": 47.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그건 맞아요. 그래도 월 150 안쪽이 저희 예산 범위라서요.",
+          "contact_id": "S051-C2"
+        },
+        {
+          "id": "S051-I2-U05",
+          "start": 48.2,
+          "end": 54.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "12개월 계약으로 하시면 월 160만 원까지는 조정해 보겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I2-U06",
+          "start": 55.3,
+          "end": 65.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "160이라... 구매팀하고 상의해야 하는데, 일단 안소라 대리가 받은 기록은 이상 없는지 먼저 봐주세요.",
+          "contact_id": "S051-C2"
+        },
+        {
+          "id": "S051-I2-U07",
+          "start": 66.3,
+          "end": 78.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "보내주신 1년치 기록은 잘 받았습니다. 약제는 식약처 안전성 확인된 것만 쓰고, 방문 기사 위생교육 이수증도 같이 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I2-U08",
+          "start": 79.3,
+          "end": 87.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그것도 심사관이 보는 부분이라 꼭 필요합니다. 이수증 사본 다음 주 금요일까지 주세요.",
+          "contact_id": "S051-C2"
+        },
+        {
+          "id": "S051-I2-U09",
+          "start": 88.5,
+          "end": 93.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 9월 11일 금요일까지 메일로 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S051-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-14T16:00:00+09:00",
+      "title": "방문 횟수 확대와 계약 조건",
+      "owner_user_id": 22,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S051-C2",
+        "S051-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S051-I3-U00",
+          "start": 2.0,
+          "end": 12.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "표 팀장님, 심사가 한 달도 안 남았는데 지난번 지적받은 게 또 있어서요. 방문을 월 2회로 늘리고 싶어요.",
+          "contact_id": "S051-C2"
+        },
+        {
+          "id": "S051-I3-U01",
+          "start": 13.4,
+          "end": 18.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 2회면 격주 방문이네요. 포획기 수량도 달라지나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I3-U02",
+          "start": 19.4,
+          "end": 26.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 포장동을 증설해서 84개로 늘려야 합니다. 이수증은 잘 받았어요.",
+          "contact_id": "S051-C2"
+        },
+        {
+          "id": "S051-I3-U03",
+          "start": 27.0,
+          "end": 33.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 2회에 84개 기준으로 다시 계산하면 월 230만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I3-U04",
+          "start": 33.9,
+          "end": 42.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "구매 담당 모세린인데요. 월 200만 원 넘으면 본사 승인이라 230은 어렵습니다.",
+          "contact_id": "S051-C3"
+        },
+        {
+          "id": "S051-I3-U05",
+          "start": 42.8,
+          "end": 48.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "24개월 계약으로 가시면 월 198만 원에 맞춰 보겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I3-U06",
+          "start": 49.3,
+          "end": 59.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "198이면 공장장 전결이라 빨라요. 계약서 초안 보내주시면 검토해서 다음 주 금요일까지 회신 드릴게요.",
+          "contact_id": "S051-C3"
+        },
+        {
+          "id": "S051-I3-U07",
+          "start": 60.2,
+          "end": 64.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 내일까지 계약서 초안 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S051-I3-U08",
+          "start": 65.1,
+          "end": 69.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "심사 전에 시작해야 하니까 최대한 서두르죠.",
+          "contact_id": "S051-C2"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S051-F01",
+      "interaction_id": "S051-I1",
+      "type": "requirement",
+      "said_by": "S051-C1",
+      "content": "11월 10일 HACCP 정기 심사 전에 방역 업체를 교체하려 한다.",
+      "source_utterance_ids": [
+        "S051-I1-U00"
+      ]
+    },
+    {
+      "id": "S051-F02",
+      "interaction_id": "S051-I1",
+      "type": "requirement",
+      "said_by": "S051-C1",
+      "content": "현 업체는 월 1회 방문하고 포획기 점검 기록을 손글씨로 써서 지난 심사에서 보완 지적을 받았다.",
+      "source_utterance_ids": [
+        "S051-I1-U02"
+      ]
+    },
+    {
+      "id": "S051-F03",
+      "interaction_id": "S051-I1",
+      "type": "requirement",
+      "said_by": "S051-C1",
+      "content": "두 공장 합계 3,200평이고 포획기는 약 60개다.",
+      "source_utterance_ids": [
+        "S051-I1-U04"
+      ]
+    },
+    {
+      "id": "S051-F04",
+      "interaction_id": "S051-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "현장 실사를 위해 8월 13일 목요일 오후 2시에 방문하기로 했다.",
+      "source_utterance_ids": [
+        "S051-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-13",
+      "due_text": "8월 13일 목요일 2시",
+      "status": "done",
+      "resolved_in": "S051-I2"
+    },
+    {
+      "id": "S051-F05",
+      "interaction_id": "S051-I1",
+      "type": "promise",
+      "said_by": "S051-C1",
+      "content": "최근 1년치 해충 포획 기록을 기존 업체에서 받아 전달하기로 했다.",
+      "source_utterance_ids": [
+        "S051-I1-U08"
+      ],
+      "owner": "customer",
+      "due_at": "2026-08-19",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S051-I2"
+    },
+    {
+      "id": "S051-F06",
+      "interaction_id": "S051-I2",
+      "type": "price_reaction",
+      "said_by": "S051-C2",
+      "content": "월 170만 원 제안이 기존보다 30만 원 비싸다고 했고, 예산은 월 150만 원 안쪽이다.",
+      "source_utterance_ids": [
+        "S051-I2-U01",
+        "S051-I2-U04"
+      ]
+    },
+    {
+      "id": "S051-F07",
+      "interaction_id": "S051-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "12개월 계약이면 월 160만 원까지 조정 가능하다고 제시했다.",
+      "source_utterance_ids": [
+        "S051-I2-U05"
+      ]
+    },
+    {
+      "id": "S051-F08",
+      "interaction_id": "S051-I2",
+      "type": "requirement",
+      "said_by": "S051-C2",
+      "content": "약제는 식약처 안전성 확인 품목이어야 하고, 방문 기사의 위생교육 이수증이 심사 대비에 필수다.",
+      "source_utterance_ids": [
+        "S051-I2-U08"
+      ]
+    },
+    {
+      "id": "S051-F09",
+      "interaction_id": "S051-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "방문 기사 위생교육 이수증 사본을 메일로 보내기로 했다.",
+      "source_utterance_ids": [
+        "S051-I2-U09"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-11",
+      "due_text": "다음 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S051-I3"
+    },
+    {
+      "id": "S051-F10",
+      "interaction_id": "S051-I3",
+      "type": "requirement",
+      "said_by": "S051-C2",
+      "content": "포장동 증설로 방문을 월 2회로 늘리고 포획기를 84개로 늘리고 싶다.",
+      "source_utterance_ids": [
+        "S051-I3-U00",
+        "S051-I3-U02"
+      ],
+      "supersedes": "S051-F03"
+    },
+    {
+      "id": "S051-F11",
+      "interaction_id": "S051-I3",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "월 2회 방문, 포획기 84개 기준 월 230만 원을 제시했다.",
+      "source_utterance_ids": [
+        "S051-I3-U03"
+      ]
+    },
+    {
+      "id": "S051-F12",
+      "interaction_id": "S051-I3",
+      "type": "price_reaction",
+      "said_by": "S051-C3",
+      "content": "월 200만 원을 넘으면 본사 승인이 필요해 230만 원은 어렵다.",
+      "source_utterance_ids": [
+        "S051-I3-U04"
+      ]
+    },
+    {
+      "id": "S051-F13",
+      "interaction_id": "S051-I3",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "24개월 계약이면 월 198만 원에 맞추겠다고 제시했다.",
+      "source_utterance_ids": [
+        "S051-I3-U05"
+      ]
+    },
+    {
+      "id": "S051-F14",
+      "interaction_id": "S051-I3",
+      "type": "buying_signal",
+      "said_by": "S051-C3",
+      "content": "월 198만 원이면 공장장 전결로 처리돼 결재가 빠르다.",
+      "source_utterance_ids": [
+        "S051-I3-U06"
+      ]
+    },
+    {
+      "id": "S051-F15",
+      "interaction_id": "S051-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "계약서 초안을 다음 날까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S051-I3-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-15",
+      "due_text": "내일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S051-F16",
+      "interaction_id": "S051-I3",
+      "type": "promise",
+      "said_by": "S051-C3",
+      "content": "계약서 초안을 검토해 회신하기로 했다.",
+      "source_utterance_ids": [
+        "S051-I3-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-23",
+      "due_text": "다음 주 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S051-Q01",
+      "question": "청솔푸드가 방역 업체를 바꾸려는 이유가 뭐야?",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I1-U00",
+        "S051-I1-U02"
+      ],
+      "answer": "11월 10일 HACCP 심사 전에, 현 업체의 월 1회 방문과 손글씨 기록 때문에 심사에서 보완 지적을 받아서."
+    },
+    {
+      "id": "S051-Q02",
+      "question": "가격 협의는 어떻게 오갔어?",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I2-U00",
+        "S051-I2-U01",
+        "S051-I2-U04",
+        "S051-I2-U05",
+        "S051-I3-U03",
+        "S051-I3-U04",
+        "S051-I3-U05"
+      ],
+      "answer": "월 170만 원 제안 후 예산 150만 원 이야기, 12개월 160만 원 조정, 이후 월 2회·84개 기준 230만 원에서 24개월 198만 원으로 맞춤."
+    },
+    {
+      "id": "S051-Q03",
+      "question": "심사 때문에 갖춰야 하는 자격이나 서류는?",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I2-U07",
+        "S051-I2-U08",
+        "S051-I1-U08"
+      ],
+      "answer": "식약처 안전성 확인 약제, 방문 기사 위생교육 이수증, 최근 1년치 포획 기록."
+    },
+    {
+      "id": "S051-Q04",
+      "question": "방문 횟수와 포획기 수량은 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I1-U04",
+        "S051-I3-U00",
+        "S051-I3-U02"
+      ],
+      "answer": "월 1회, 약 60개에서 월 2회, 84개로 늘어남(포장동 증설)."
+    },
+    {
+      "id": "S051-Q05",
+      "question": "계약 결재는 누가 어떻게 해?",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I3-U04",
+        "S051-I3-U06"
+      ],
+      "answer": "월 200만 원 초과는 본사 승인이고, 198만 원이면 공장장 전결로 빨리 처리된다."
+    },
+    {
+      "id": "S051-Q06",
+      "question": "우리가 아직 못 지킨 약속이 있어?",
+      "kind": "structured",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_fact_ids": [
+        "S051-F15"
+      ],
+      "answer": "계약서 초안을 10월 15일까지 보내기로 한 약속이 열려 있음."
+    },
+    {
+      "id": "S051-Q07",
+      "question": "고객이 아직 답을 안 준 게 있어?",
+      "kind": "structured",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_fact_ids": [
+        "S051-F16"
+      ],
+      "answer": "구매 담당 모세린이 10월 23일까지 계약서 회신을 약속했지만 아직 열려 있음."
+    },
+    {
+      "id": "S051-Q01-P1",
+      "question": "청솔푸드가 지금 해충 관리 협력사에 만족하지 못하는 까닭은?",
+      "paraphrase_of": "S051-Q01",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I1-U00",
+        "S051-I1-U02"
+      ],
+      "answer": "11월 10일 HACCP 심사 전에, 현 업체의 월 1회 방문과 손글씨 기록 때문에 심사에서 보완 지적을 받아서."
+    },
+    {
+      "id": "S051-Q01-P2",
+      "question": "왜 거래처 교체를 검토하게 된 거지?",
+      "paraphrase_of": "S051-Q01",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I1-U00",
+        "S051-I1-U02"
+      ],
+      "answer": "11월 10일 HACCP 심사 전에, 현 업체의 월 1회 방문과 손글씨 기록 때문에 심사에서 보완 지적을 받아서."
+    },
+    {
+      "id": "S051-Q02-P1",
+      "question": "금액 조율 경과를 알려줘.",
+      "paraphrase_of": "S051-Q02",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I2-U00",
+        "S051-I2-U01",
+        "S051-I2-U04",
+        "S051-I2-U05",
+        "S051-I3-U03",
+        "S051-I3-U04",
+        "S051-I3-U05"
+      ],
+      "answer": "월 170만 원 제안 후 예산 150만 원 이야기, 12개월 160만 원 조정, 이후 월 2회·84개 기준 230만 원에서 24개월 198만 원으로 맞춤."
+    },
+    {
+      "id": "S051-Q02-P2",
+      "question": "비용 이야기가 어떤 순서로 진행됐지?",
+      "paraphrase_of": "S051-Q02",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I2-U00",
+        "S051-I2-U01",
+        "S051-I2-U04",
+        "S051-I2-U05",
+        "S051-I3-U03",
+        "S051-I3-U04",
+        "S051-I3-U05"
+      ],
+      "answer": "월 170만 원 제안 후 예산 150만 원 이야기, 12개월 160만 원 조정, 이후 월 2회·84개 기준 230만 원에서 24개월 198만 원으로 맞춤."
+    },
+    {
+      "id": "S051-Q03-P1",
+      "question": "감사관이 확인하는 증빙은 무엇이야?",
+      "paraphrase_of": "S051-Q03",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I2-U07",
+        "S051-I2-U08",
+        "S051-I1-U08"
+      ],
+      "answer": "식약처 안전성 확인 약제, 방문 기사 위생교육 이수증, 최근 1년치 포획 기록."
+    },
+    {
+      "id": "S051-Q03-P2",
+      "question": "점검 대비로 필요한 인증이나 문서가 뭐였지?",
+      "paraphrase_of": "S051-Q03",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I2-U07",
+        "S051-I2-U08",
+        "S051-I1-U08"
+      ],
+      "answer": "식약처 안전성 확인 약제, 방문 기사 위생교육 이수증, 최근 1년치 포획 기록."
+    },
+    {
+      "id": "S051-Q04-P1",
+      "question": "점검 빈도와 설치 개소가 달라진 내용은?",
+      "paraphrase_of": "S051-Q04",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I1-U04",
+        "S051-I3-U00",
+        "S051-I3-U02"
+      ],
+      "answer": "월 1회, 약 60개에서 월 2회, 84개로 늘어남(포장동 증설)."
+    },
+    {
+      "id": "S051-Q04-P2",
+      "question": "처음 이야기와 비교해 서비스 규모가 어떻게 커졌지?",
+      "paraphrase_of": "S051-Q04",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I1-U04",
+        "S051-I3-U00",
+        "S051-I3-U02"
+      ],
+      "answer": "월 1회, 약 60개에서 월 2회, 84개로 늘어남(포장동 증설)."
+    },
+    {
+      "id": "S051-Q05-P1",
+      "question": "승인 절차와 금액 기준이 뭐야?",
+      "paraphrase_of": "S051-Q05",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I3-U04",
+        "S051-I3-U06"
+      ],
+      "answer": "월 200만 원 초과는 본사 승인이고, 198만 원이면 공장장 전결로 빨리 처리된다."
+    },
+    {
+      "id": "S051-Q05-P2",
+      "question": "누구 도장이 필요한지 알려줘.",
+      "paraphrase_of": "S051-Q05",
+      "kind": "semantic",
+      "company_id": "S051-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 22,
+      "relevant_utterance_ids": [
+        "S051-I3-U04",
+        "S051-I3-U06"
+      ],
+      "answer": "월 200만 원 초과는 본사 승인이고, 198만 원이면 공장장 전결로 빨리 처리된다."
+    }
+  ]
+}

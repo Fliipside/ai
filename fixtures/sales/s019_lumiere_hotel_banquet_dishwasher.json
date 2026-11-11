@@ -1,0 +1,655 @@
+{
+  "scenario_id": "S019",
+  "description": "호텔 연회장 루미에르호텔에 식기·글라스 세척기 3대 렌탈을 제안해 성사된 딜. 대화 속에서 사람 이름이 거의 나오지 않고 연회팀장, 구매과장, 총지배인, 이사님 같은 직함과 호칭으로만 사람을 가리킨다. 최종 계약 조건(60개월, 월 460만 원, 11월 1일 시작)을 기억해야 한다.",
+  "fictional": true,
+  "as_of": "2026-11-09",
+  "deal_status": "won",
+  "seller": {
+    "user_id": 11,
+    "team_id": 10,
+    "name": "오재혁",
+    "company": "클린웨이브",
+    "product": "업소용 식기세척기 렌탈·관리"
+  },
+  "users": [
+    {
+      "user_id": 11,
+      "team_id": 10
+    }
+  ],
+  "company": {
+    "id": "S019-CO1",
+    "name": "루미에르호텔",
+    "industry": "호텔 연회장",
+    "size": "연회장 3개, 최대 동시 600명"
+  },
+  "contacts": [
+    {
+      "id": "S019-C1",
+      "name": "고세은",
+      "title": "연회팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S019-C2",
+      "name": "나진우",
+      "title": "구매과장",
+      "role_in_deal": "procurement"
+    },
+    {
+      "id": "S019-C3",
+      "name": "엄태식",
+      "title": "총지배인",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S019-I1",
+      "kind": "call",
+      "occurred_at": "2026-08-13T11:00:00+09:00",
+      "title": "연회장 세척 설비 문의",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S019-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S019-I1-U00",
+          "start": 2.0,
+          "end": 9.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "안녕하세요, 연회팀장입니다. 지난번 호텔 협회 행사에서 명함 받았어요.",
+          "contact_id": "S019-C1"
+        },
+        {
+          "id": "S019-I1-U01",
+          "start": 9.6,
+          "end": 17.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "아, 팀장님. 클린웨이브 오재혁입니다. 연회장 설비 고민이 있다고 하셨는데요.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I1-U02",
+          "start": 17.9,
+          "end": 31.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "연회장 3개에서 웨딩이랑 기업 행사를 하는데 한 번에 최대 600명이에요. 접시랑 와인잔 세척기가 도어형 2대인데 하나가 자꾸 고장 나요.",
+          "contact_id": "S019-C1"
+        },
+        {
+          "id": "S019-I1-U03",
+          "start": 32.4,
+          "end": 40.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "글라스는 얼룩이나 파손이 많으시죠? 글라스 전용 세척기를 따로 두는 방법이 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I1-U04",
+          "start": 41.5,
+          "end": 53.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "맞아요. 글라스 얼룩 때문에 컴플레인도 있었어요. 11월 연회 성수기 전에 바꿔야 해서 10월 말에는 설치돼야 해요.",
+          "contact_id": "S019-C1"
+        },
+        {
+          "id": "S019-I1-U05",
+          "start": 53.8,
+          "end": 64.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "도어형 2대 교체에 글라스 전용 1대, 총 3대 기준으로 견적 드리겠습니다. 다음 주 목요일까지 보내드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I1-U06",
+          "start": 65.4,
+          "end": 71.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "구매 과장님도 같이 보셔야 하니까 그쪽에도 메일 주세요.",
+          "contact_id": "S019-C1"
+        }
+      ]
+    },
+    {
+      "id": "S019-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-10T14:00:00+09:00",
+      "title": "견적 검토 미팅",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S019-C2",
+        "S019-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S019-I2-U00",
+          "start": 2.0,
+          "end": 8.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "구매과장입니다. 견적 보니까 3대에 월 540만 원, 48개월이네요.",
+          "contact_id": "S019-C2"
+        },
+        {
+          "id": "S019-I2-U01",
+          "start": 9.4,
+          "end": 17.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 도어형 2대가 대당 월 190만 원이고 글라스 전용이 월 160만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I2-U02",
+          "start": 18.1,
+          "end": 25.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "총지배인님은 월 450만 원 안쪽을 생각하세요. 글라스 전용을 빼면 어때요?",
+          "contact_id": "S019-C2"
+        },
+        {
+          "id": "S019-I2-U03",
+          "start": 26.3,
+          "end": 32.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "글라스 전용은 꼭 필요해요. 차라리 기간을 늘리는 게 낫겠어요.",
+          "contact_id": "S019-C1"
+        },
+        {
+          "id": "S019-I2-U04",
+          "start": 33.2,
+          "end": 38.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "60개월로 하시면 월 480만 원까지 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I2-U05",
+          "start": 38.7,
+          "end": 47.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "480도 높아요. 그건 총지배인님이 직접 보셔야 할 것 같으니 다음 달에 같이 만나요.",
+          "contact_id": "S019-C2"
+        },
+        {
+          "id": "S019-I2-U06",
+          "start": 47.9,
+          "end": 57.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "10월 8일 목요일 오전으로 잡겠습니다. 그 전날까지 60개월 기준 정식 견적서를 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I2-U07",
+          "start": 58.4,
+          "end": 65.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그리고 이사님이 원하시는 건 설치 이후에 점검 리포트를 받아보는 거예요.",
+          "contact_id": "S019-C1"
+        }
+      ]
+    },
+    {
+      "id": "S019-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-08T10:00:00+09:00",
+      "title": "총지배인 참석 계약 미팅",
+      "owner_user_id": 11,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S019-C3",
+        "S019-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S019-I3-U00",
+          "start": 2.0,
+          "end": 9.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "총지배인입니다. 팀장한테 얘기 많이 들었어요. 월 480이면 아직 부담이에요.",
+          "contact_id": "S019-C3"
+        },
+        {
+          "id": "S019-I3-U01",
+          "start": 10.3,
+          "end": 18.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그러면 60개월 약정에 월 460만 원, 설치비 면제로 최종 제안드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I3-U02",
+          "start": 18.6,
+          "end": 27.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "460이면 좋습니다. 대신 고장 나면 당일에 대체기를 지원해 준다는 조건을 넣어 주세요.",
+          "contact_id": "S019-C3"
+        },
+        {
+          "id": "S019-I3-U03",
+          "start": 28.0,
+          "end": 32.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "당일 대체기 지원 조항을 계약서에 넣겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I3-U04",
+          "start": 33.1,
+          "end": 44.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그럼 60개월 월 460만 원으로 오늘 날인하겠습니다. 시작은 11월 1일, 설치는 10월 28일까지 끝내 주세요.",
+          "contact_id": "S019-C3"
+        },
+        {
+          "id": "S019-I3-U05",
+          "start": 45.2,
+          "end": 51.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "감사합니다. 첫 점검 리포트는 설치 후 11월 말까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S019-I3-U06",
+          "start": 52.5,
+          "end": 54.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "이사님이 좋아하시겠네요.",
+          "contact_id": "S019-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S019-F01",
+      "interaction_id": "S019-I1",
+      "type": "requirement",
+      "said_by": "S019-C1",
+      "content": "연회장 3개에서 최대 동시 600명 행사를 하며 접시·와인잔용 도어형 세척기 2대 중 하나가 자주 고장 난다.",
+      "source_utterance_ids": [
+        "S019-I1-U02"
+      ]
+    },
+    {
+      "id": "S019-F02",
+      "interaction_id": "S019-I1",
+      "type": "requirement",
+      "said_by": "S019-C1",
+      "content": "글라스 얼룩 컴플레인이 있었고 11월 연회 성수기 전인 10월 말까지 설치가 필요하다.",
+      "source_utterance_ids": [
+        "S019-I1-U04"
+      ]
+    },
+    {
+      "id": "S019-F03",
+      "interaction_id": "S019-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "도어형 2대와 글라스 전용 1대, 총 3대 견적서를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S019-I1-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-20",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S019-I2"
+    },
+    {
+      "id": "S019-F04",
+      "interaction_id": "S019-I2",
+      "type": "price_reaction",
+      "said_by": "S019-C2",
+      "content": "3대 48개월 월 540만 원은 높고 총지배인은 월 450만 원 안쪽을 생각한다.",
+      "source_utterance_ids": [
+        "S019-I2-U02"
+      ]
+    },
+    {
+      "id": "S019-F05",
+      "interaction_id": "S019-I2",
+      "type": "requirement",
+      "said_by": "S019-C1",
+      "content": "글라스 전용 세척기는 꼭 필요하며 차라리 약정 기간을 늘리는 쪽을 선호한다.",
+      "source_utterance_ids": [
+        "S019-I2-U03"
+      ]
+    },
+    {
+      "id": "S019-F06",
+      "interaction_id": "S019-I2",
+      "type": "price_reaction",
+      "said_by": "S019-C2",
+      "content": "60개월 월 480만 원도 높아 총지배인이 직접 봐야 한다고 했다.",
+      "source_utterance_ids": [
+        "S019-I2-U05"
+      ]
+    },
+    {
+      "id": "S019-F07",
+      "interaction_id": "S019-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "10월 8일 미팅 전날까지 60개월 기준 정식 견적서를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S019-I2-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-07",
+      "due_text": "그 전날까지",
+      "status": "done",
+      "resolved_in": "S019-I3"
+    },
+    {
+      "id": "S019-F08",
+      "interaction_id": "S019-I2",
+      "type": "requirement",
+      "said_by": "S019-C1",
+      "content": "이사가 설치 이후 점검 리포트를 받아보길 원한다.",
+      "source_utterance_ids": [
+        "S019-I2-U07"
+      ]
+    },
+    {
+      "id": "S019-F09",
+      "interaction_id": "S019-I3",
+      "type": "price_reaction",
+      "said_by": "S019-C3",
+      "content": "월 480만 원은 아직 부담이라고 했다.",
+      "source_utterance_ids": [
+        "S019-I3-U00"
+      ]
+    },
+    {
+      "id": "S019-F10",
+      "interaction_id": "S019-I3",
+      "type": "requirement",
+      "said_by": "S019-C3",
+      "content": "고장 시 당일 대체기를 지원한다는 조건을 계약서에 넣어 달라고 했다.",
+      "source_utterance_ids": [
+        "S019-I3-U02"
+      ]
+    },
+    {
+      "id": "S019-F11",
+      "interaction_id": "S019-I3",
+      "type": "decision",
+      "said_by": "S019-C3",
+      "content": "60개월, 월 460만 원, 설치비 면제로 10월 8일 날인했다. 렌탈 시작은 11월 1일, 설치는 10월 28일까지다.",
+      "source_utterance_ids": [
+        "S019-I3-U04"
+      ]
+    },
+    {
+      "id": "S019-F12",
+      "interaction_id": "S019-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "설치 후 첫 점검 리포트를 보내기로 했다.",
+      "source_utterance_ids": [
+        "S019-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-30",
+      "due_text": "11월 말까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S019-Q01",
+      "question": "루미에르호텔 연회장의 설비 문제가 뭐였어?",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I1-U02",
+        "S019-I1-U04"
+      ],
+      "answer": "도어형 세척기 2대 중 하나가 자주 고장 나고 글라스 얼룩 컴플레인이 있어 글라스 전용 기계가 필요하다."
+    },
+    {
+      "id": "S019-Q02",
+      "question": "가격은 어떻게 협상됐어?",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I2-U01",
+        "S019-I2-U02",
+        "S019-I2-U04",
+        "S019-I2-U05",
+        "S019-I3-U01",
+        "S019-I3-U02"
+      ],
+      "answer": "48개월 월 540만 원에서 60개월 480만 원을 거쳐 설치비 면제 월 460만 원으로 합의했다. 총지배인 목표는 450만 원 안쪽이었다."
+    },
+    {
+      "id": "S019-Q03",
+      "question": "최종 계약 조건이 뭐야?",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I3-U02",
+        "S019-I3-U04"
+      ],
+      "answer": "60개월 월 460만 원, 설치비 면제, 고장 시 당일 대체기 지원, 10월 28일까지 설치하고 11월 1일부터 시작."
+    },
+    {
+      "id": "S019-Q04",
+      "question": "설치 시기를 언제까지로 요구했어?",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I1-U04",
+        "S019-I3-U04"
+      ],
+      "answer": "11월 연회 성수기 전인 10월 말까지, 최종 합의는 10월 28일까지 설치, 11월 1일 시작."
+    },
+    {
+      "id": "S019-Q05",
+      "question": "이사님이 원한 게 뭐였어?",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I2-U07",
+        "S019-I3-U05"
+      ],
+      "answer": "설치 이후 점검 리포트를 받아보는 것이며 첫 리포트를 11월 말까지 보내기로 했다."
+    },
+    {
+      "id": "S019-Q06",
+      "question": "내가 아직 해야 할 약속은?",
+      "kind": "structured",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_fact_ids": [
+        "S019-F12"
+      ],
+      "answer": "11월 말까지 설치 후 첫 점검 리포트를 보내야 한다."
+    },
+    {
+      "id": "S019-Q01-P1",
+      "question": "그 숙박업소 행사장에서 그릇 닦는 기계에 생긴 불만을 알려줘.",
+      "paraphrase_of": "S019-Q01",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I1-U02",
+        "S019-I1-U04"
+      ],
+      "answer": "도어형 세척기 2대 중 하나가 자주 고장 나고 글라스 얼룩 컴플레인이 있어 글라스 전용 기계가 필요하다."
+    },
+    {
+      "id": "S019-Q01-P2",
+      "question": "잔 세척 품질과 장비 고장과 관련된 사정이 뭐였지?",
+      "paraphrase_of": "S019-Q01",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I1-U02",
+        "S019-I1-U04"
+      ],
+      "answer": "도어형 세척기 2대 중 하나가 자주 고장 나고 글라스 얼룩 컴플레인이 있어 글라스 전용 기계가 필요하다."
+    },
+    {
+      "id": "S019-Q02-P1",
+      "question": "월 비용이 540에서 어디까지 내려갔는지 알려줘.",
+      "paraphrase_of": "S019-Q02",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I2-U01",
+        "S019-I2-U02",
+        "S019-I2-U04",
+        "S019-I2-U05",
+        "S019-I3-U01",
+        "S019-I3-U02"
+      ],
+      "answer": "48개월 월 540만 원에서 60개월 480만 원을 거쳐 설치비 면제 월 460만 원으로 합의했다. 총지배인 목표는 450만 원 안쪽이었다."
+    },
+    {
+      "id": "S019-Q02-P2",
+      "question": "총괄 책임자가 승낙한 금액과 그 전 단계 제시액은?",
+      "paraphrase_of": "S019-Q02",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I2-U01",
+        "S019-I2-U02",
+        "S019-I2-U04",
+        "S019-I2-U05",
+        "S019-I3-U01",
+        "S019-I3-U02"
+      ],
+      "answer": "48개월 월 540만 원에서 60개월 480만 원을 거쳐 설치비 면제 월 460만 원으로 합의했다. 총지배인 목표는 450만 원 안쪽이었다."
+    },
+    {
+      "id": "S019-Q03-P1",
+      "question": "확정된 기간, 금액, 개시일과 부가 조건을 정리해줘.",
+      "paraphrase_of": "S019-Q03",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I3-U02",
+        "S019-I3-U04"
+      ],
+      "answer": "60개월 월 460만 원, 설치비 면제, 고장 시 당일 대체기 지원, 10월 28일까지 설치하고 11월 1일부터 시작."
+    },
+    {
+      "id": "S019-Q03-P2",
+      "question": "서명한 내용의 핵심 사항이 뭐였지?",
+      "paraphrase_of": "S019-Q03",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I3-U02",
+        "S019-I3-U04"
+      ],
+      "answer": "60개월 월 460만 원, 설치비 면제, 고장 시 당일 대체기 지원, 10월 28일까지 설치하고 11월 1일부터 시작."
+    },
+    {
+      "id": "S019-Q04-P1",
+      "question": "장비를 들여놔야 하는 마감일이 언제야?",
+      "paraphrase_of": "S019-Q04",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I1-U04",
+        "S019-I3-U04"
+      ],
+      "answer": "11월 연회 성수기 전인 10월 말까지, 최종 합의는 10월 28일까지 설치, 11월 1일 시작."
+    },
+    {
+      "id": "S019-Q04-P2",
+      "question": "바쁜 시기 전에 맞추려는 일정이 어땠어?",
+      "paraphrase_of": "S019-Q04",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I1-U04",
+        "S019-I3-U04"
+      ],
+      "answer": "11월 연회 성수기 전인 10월 말까지, 최종 합의는 10월 28일까지 설치, 11월 1일 시작."
+    },
+    {
+      "id": "S019-Q05-P1",
+      "question": "임원급이 관심 가진 사후 보고 요건을 알려줘.",
+      "paraphrase_of": "S019-Q05",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I2-U07",
+        "S019-I3-U05"
+      ],
+      "answer": "설치 이후 점검 리포트를 받아보는 것이며 첫 리포트를 11월 말까지 보내기로 했다."
+    },
+    {
+      "id": "S019-Q05-P2",
+      "question": "설치 뒤에 받아보길 바란 문서가 뭐야?",
+      "paraphrase_of": "S019-Q05",
+      "kind": "semantic",
+      "company_id": "S019-CO1",
+      "as_of": "2026-11-09",
+      "viewer_user_id": 11,
+      "relevant_utterance_ids": [
+        "S019-I2-U07",
+        "S019-I3-U05"
+      ],
+      "answer": "설치 이후 점검 리포트를 받아보는 것이며 첫 리포트를 11월 말까지 보내기로 했다."
+    }
+  ]
+}

@@ -1,0 +1,833 @@
+{
+  "scenario_id": "S026",
+  "description": "냉동창고 운영사 지붕에 태양광 PPA 설치. 경쟁사 단가와 비교하며 kWh 단가 협상이 네 번 오가고, 구조 진단·발전량 보증 조건을 거쳐 최종 계약(성사) (대화 4건)",
+  "fictional": true,
+  "as_of": "2026-11-04",
+  "deal_status": "won",
+  "seller": {
+    "user_id": 14,
+    "team_id": 13,
+    "name": "차승우",
+    "company": "썬브릿지에너지",
+    "product": "공장·창고 지붕 태양광 설치 (PPA 포함)"
+  },
+  "users": [
+    {
+      "user_id": 14,
+      "team_id": 13
+    }
+  ],
+  "company": {
+    "id": "S026-CO1",
+    "name": "북극성냉장",
+    "industry": "냉동창고 운영",
+    "size": "냉동창고 2개 동, 지붕 6,200제곱미터"
+  },
+  "contacts": [
+    {
+      "id": "S026-C1",
+      "name": "도성훈",
+      "title": "대표",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S026-C2",
+      "name": "남유리",
+      "title": "시설관리팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S026-C3",
+      "name": "반기태",
+      "title": "재무팀장",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S026-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-06T14:00:00+09:00",
+      "title": "현장 미팅",
+      "owner_user_id": 14,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S026-C2",
+        "S026-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S026-I1-U00",
+          "start": 2.0,
+          "end": 12.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희 냉동창고 지붕이 6,200제곱미터인데 그냥 놀고 있어요. 전기요금은 한 달에 1억 1천만 원 나가고요.",
+          "contact_id": "S026-C2"
+        },
+        {
+          "id": "S026-I1-U01",
+          "start": 13.4,
+          "end": 24.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "초기 투자 없이 지붕을 빌려주시고 저희가 설치해서 발전한 전기를 싸게 파는 PPA 방식이 맞으실 것 같습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I1-U02",
+          "start": 25.0,
+          "end": 28.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "설치 용량은 어느 정도 나옵니까?",
+          "contact_id": "S026-C1"
+        },
+        {
+          "id": "S026-I1-U03",
+          "start": 28.8,
+          "end": 36.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "6,200제곱미터면 약 1.2메가와트고 연간 150만 kWh 정도 나옵니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I1-U04",
+          "start": 37.0,
+          "end": 41.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "한전 산업용이 지금 kWh에 170원쯤 하죠?",
+          "contact_id": "S026-C1"
+        },
+        {
+          "id": "S026-I1-U05",
+          "start": 42.1,
+          "end": 48.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 저희는 kWh당 150원에 20년 계약을 제안드립니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I1-U06",
+          "start": 48.6,
+          "end": 57.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "20년은 길죠. 그리고 냉동창고라 지붕 하중이 걱정이에요. 구조 진단부터 해야 하지 않나요?",
+          "contact_id": "S026-C1"
+        },
+        {
+          "id": "S026-I1-U07",
+          "start": 58.4,
+          "end": 64.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그렇습니다. 도면을 주시면 저희 구조 기술사가 검토합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I1-U08",
+          "start": 64.8,
+          "end": 69.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "구조 도면은 제가 다음 주 금요일까지 드릴게요.",
+          "contact_id": "S026-C2"
+        }
+      ]
+    },
+    {
+      "id": "S026-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-01T11:00:00+09:00",
+      "title": "구조 검토 결과 통화",
+      "owner_user_id": 14,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S026-C2",
+        "S026-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S026-I2-U00",
+          "start": 2.0,
+          "end": 9.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "도면 검토 결과 지붕 보강 없이 1.1메가와트까지 설치 가능하다는 의견입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I2-U01",
+          "start": 10.3,
+          "end": 13.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "다행이네요. 용량이 줄어드는 거죠?",
+          "contact_id": "S026-C2"
+        },
+        {
+          "id": "S026-I2-U02",
+          "start": 14.3,
+          "end": 20.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 1.1메가와트로 하면 단가는 148원 정도로 조정됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I2-U03",
+          "start": 21.0,
+          "end": 28.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "재무 반기태입니다. 경쟁사는 135원을 제시했어요. 150원 근처면 어렵습니다.",
+          "contact_id": "S026-C3"
+        },
+        {
+          "id": "S026-I2-U04",
+          "start": 29.5,
+          "end": 34.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "경쟁사는 임대료를 따로 받거나 보증금이 있진 않던가요?",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I2-U05",
+          "start": 35.5,
+          "end": 39.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "임대료는 없고 대신 15년 계약이래요.",
+          "contact_id": "S026-C3"
+        },
+        {
+          "id": "S026-I2-U06",
+          "start": 39.9,
+          "end": 48.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "15년이면 단가가 올라갑니다. 20년 기준으로 다시 계산해서 140원대로 맞춰 보겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I2-U07",
+          "start": 49.5,
+          "end": 53.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "140원 이하면 대표님께 올릴 수 있어요.",
+          "contact_id": "S026-C3"
+        },
+        {
+          "id": "S026-I2-U08",
+          "start": 54.2,
+          "end": 58.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "9월 15일까지 수정 제안서 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S026-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-09-29T15:00:00+09:00",
+      "title": "단가 조정 미팅",
+      "owner_user_id": 14,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S026-C1",
+        "S026-C3",
+        "S026-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S026-I3-U00",
+          "start": 2.0,
+          "end": 8.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "수정 제안서대로 20년, 용량 1.1메가와트, 단가 142원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I3-U01",
+          "start": 9.3,
+          "end": 12.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "142면 경쟁사 135보다 높잖아요.",
+          "contact_id": "S026-C1"
+        },
+        {
+          "id": "S026-I3-U02",
+          "start": 13.5,
+          "end": 25.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 20년 동안 발전량 보증 98%와 패널 교체 비용을 전부 저희가 부담하는 조건입니다. 경쟁사는 보증이 90%예요.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I3-U03",
+          "start": 26.2,
+          "end": 30.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그럼 보증 조건은 서면으로 확실히 넣어 주세요.",
+          "contact_id": "S026-C3"
+        },
+        {
+          "id": "S026-I3-U04",
+          "start": 31.5,
+          "end": 35.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그래도 138원이면 오늘 결정하겠습니다.",
+          "contact_id": "S026-C1"
+        },
+        {
+          "id": "S026-I3-U05",
+          "start": 36.1,
+          "end": 42.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "138원으로 하려면 5년마다 물가연동 상한 2%를 넣어야 합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I3-U06",
+          "start": 43.2,
+          "end": 47.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "물가연동은 좀 찜찜한데. 더 생각해 볼게요.",
+          "contact_id": "S026-C1"
+        },
+        {
+          "id": "S026-I3-U07",
+          "start": 48.1,
+          "end": 50.8,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "계약서 초안 보고 판단하죠.",
+          "contact_id": "S026-C2"
+        },
+        {
+          "id": "S026-I3-U08",
+          "start": 51.4,
+          "end": 60.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "물가연동 없이 138원 고정이 가능한지 본사 승인을 받아서 10월 6일까지 답드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S026-I4",
+      "kind": "meeting",
+      "occurred_at": "2026-10-22T14:00:00+09:00",
+      "title": "계약 조건 확정 미팅",
+      "owner_user_id": 14,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S026-C1",
+        "S026-C3",
+        "S026-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S026-I4-U00",
+          "start": 2.0,
+          "end": 12.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "본사 승인받았습니다. 138원 20년 고정, 물가연동 없이 가고 발전량 보증 98%도 계약서에 넣었습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I4-U01",
+          "start": 13.2,
+          "end": 20.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "좋습니다. 그럼 용량 1.1메가와트, 138원, 20년으로 계약하죠.",
+          "contact_id": "S026-C1"
+        },
+        {
+          "id": "S026-I4-U02",
+          "start": 20.6,
+          "end": 28.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "지붕 임대료는 없고 철거와 원상복구 비용은 썬브릿지 부담으로 확인했습니다.",
+          "contact_id": "S026-C3"
+        },
+        {
+          "id": "S026-I4-U03",
+          "start": 28.6,
+          "end": 35.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "맞습니다. 착공은 12월 1일, 준공은 내년 2월 28일 목표입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I4-U04",
+          "start": 36.0,
+          "end": 44.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "한전 계통 연계 신청은 저희 명의로 해야 하죠? 서류는 이번 주 금요일까지 줄게요.",
+          "contact_id": "S026-C1"
+        },
+        {
+          "id": "S026-I4-U05",
+          "start": 44.9,
+          "end": 48.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 위임장 양식 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S026-I4-U06",
+          "start": 48.9,
+          "end": 53.6,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "계약서 날인은 10월 30일에 하는 걸로 하죠.",
+          "contact_id": "S026-C2"
+        },
+        {
+          "id": "S026-I4-U07",
+          "start": 54.2,
+          "end": 57.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그날 방문해서 날인하겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S026-F01",
+      "interaction_id": "S026-I1",
+      "type": "requirement",
+      "said_by": "S026-C2",
+      "content": "냉동창고 지붕이 6,200제곱미터이고 월 전기요금이 약 1억 1천만 원이다.",
+      "source_utterance_ids": [
+        "S026-I1-U00"
+      ]
+    },
+    {
+      "id": "S026-F02",
+      "interaction_id": "S026-I1",
+      "type": "price_reaction",
+      "said_by": "S026-C1",
+      "content": "kWh당 150원 20년 제안에 대해 기간이 길다고 했다.",
+      "source_utterance_ids": [
+        "S026-I1-U05",
+        "S026-I1-U06"
+      ]
+    },
+    {
+      "id": "S026-F03",
+      "interaction_id": "S026-I1",
+      "type": "requirement",
+      "said_by": "S026-C1",
+      "content": "냉동창고라 지붕 하중이 걱정되어 구조 진단이 먼저 필요하다.",
+      "source_utterance_ids": [
+        "S026-I1-U06"
+      ]
+    },
+    {
+      "id": "S026-F04",
+      "interaction_id": "S026-I1",
+      "type": "promise",
+      "said_by": "S026-C2",
+      "content": "구조 도면을 준다.",
+      "source_utterance_ids": [
+        "S026-I1-U08"
+      ],
+      "owner": "customer",
+      "due_at": "2026-08-14",
+      "due_text": "다음 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S026-I2"
+    },
+    {
+      "id": "S026-F05",
+      "interaction_id": "S026-I2",
+      "type": "price_reaction",
+      "said_by": "S026-C3",
+      "content": "경쟁사는 임대료 없이 15년 계약으로 135원을 제시했고, 150원 근처는 어렵다고 했다.",
+      "source_utterance_ids": [
+        "S026-I2-U03",
+        "S026-I2-U05"
+      ]
+    },
+    {
+      "id": "S026-F06",
+      "interaction_id": "S026-I2",
+      "type": "buying_signal",
+      "said_by": "S026-C3",
+      "content": "140원 이하면 대표에게 올릴 수 있다고 했다.",
+      "source_utterance_ids": [
+        "S026-I2-U07"
+      ]
+    },
+    {
+      "id": "S026-F07",
+      "interaction_id": "S026-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "구조 보강 없이 가능한 1.1메가와트 기준 수정 제안서를 보낸다.",
+      "source_utterance_ids": [
+        "S026-I2-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-15",
+      "due_text": "9월 15일까지",
+      "status": "done",
+      "resolved_in": "S026-I3"
+    },
+    {
+      "id": "S026-F08",
+      "interaction_id": "S026-I3",
+      "type": "price_reaction",
+      "said_by": "S026-C1",
+      "content": "142원 제안에 경쟁사 135원보다 높다고 했고, 138원이면 오늘 결정하겠다고 했다.",
+      "source_utterance_ids": [
+        "S026-I3-U01",
+        "S026-I3-U04"
+      ]
+    },
+    {
+      "id": "S026-F09",
+      "interaction_id": "S026-I3",
+      "type": "requirement",
+      "said_by": "S026-C3",
+      "content": "발전량 보증 98% 조건을 서면으로 명확히 넣어 달라고 했다.",
+      "source_utterance_ids": [
+        "S026-I3-U03"
+      ]
+    },
+    {
+      "id": "S026-F10",
+      "interaction_id": "S026-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "물가연동 없이 138원 고정이 가능한지 본사 승인을 받아 답한다.",
+      "source_utterance_ids": [
+        "S026-I3-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-06",
+      "due_text": "10월 6일까지",
+      "status": "done",
+      "resolved_in": "S026-I4"
+    },
+    {
+      "id": "S026-F11",
+      "interaction_id": "S026-I4",
+      "type": "decision",
+      "said_by": "S026-C1",
+      "content": "용량 1.1메가와트, kWh당 138원 고정, 20년, 발전량 보증 98%로 계약하기로 했다. 지붕 임대료는 없고 철거·원상복구는 썬브릿지 부담.",
+      "source_utterance_ids": [
+        "S026-I4-U00",
+        "S026-I4-U01",
+        "S026-I4-U02"
+      ]
+    },
+    {
+      "id": "S026-F12",
+      "interaction_id": "S026-I4",
+      "type": "purchase_timing",
+      "said_by": "me",
+      "content": "착공은 12월 1일, 준공은 내년 2월 28일 목표다.",
+      "source_utterance_ids": [
+        "S026-I4-U03"
+      ]
+    },
+    {
+      "id": "S026-F13",
+      "interaction_id": "S026-I4",
+      "type": "promise",
+      "said_by": "S026-C1",
+      "content": "한전 계통 연계 신청 서류를 준다.",
+      "source_utterance_ids": [
+        "S026-I4-U04"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-23",
+      "due_text": "이번 주 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S026-F14",
+      "interaction_id": "S026-I4",
+      "type": "promise",
+      "said_by": "S026-C2",
+      "content": "10월 30일에 계약서 날인을 한다.",
+      "source_utterance_ids": [
+        "S026-I4-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-30",
+      "due_text": "10월 30일",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S026-Q01",
+      "question": "북극성냉장 최종 계약 조건이 뭐야?",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I4-U00",
+        "S026-I4-U01",
+        "S026-I4-U02"
+      ],
+      "answer": "1.1메가와트, kWh당 138원 고정, 20년, 발전량 보증 98%, 임대료 없음, 철거 원상복구는 우리 부담."
+    },
+    {
+      "id": "S026-Q02",
+      "question": "단가 협상은 어떻게 흘러왔어?",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I1-U05",
+        "S026-I2-U02",
+        "S026-I2-U03",
+        "S026-I3-U00",
+        "S026-I3-U01",
+        "S026-I3-U04",
+        "S026-I4-U00"
+      ],
+      "answer": "150원, 148원, 142원을 거쳐 경쟁사 135원과 비교되다가 138원 고정으로 합의했다."
+    },
+    {
+      "id": "S026-Q03",
+      "question": "경쟁사 조건은 뭐였어?",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I2-U03",
+        "S026-I2-U05",
+        "S026-I3-U02"
+      ],
+      "answer": "경쟁사는 135원, 임대료 없음, 15년 계약, 발전량 보증 90%였다."
+    },
+    {
+      "id": "S026-Q04",
+      "question": "지붕 하중 문제는 어떻게 해결됐어?",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I1-U06",
+        "S026-I1-U07",
+        "S026-I2-U00"
+      ],
+      "answer": "도면을 받아 구조 기술사가 검토해 보강 없이 1.1메가와트까지 가능하다고 확인했다."
+    },
+    {
+      "id": "S026-Q05",
+      "question": "공사 일정은 언제야?",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I4-U03"
+      ],
+      "answer": "12월 1일 착공, 내년 2월 28일 준공 목표."
+    },
+    {
+      "id": "S026-Q06",
+      "question": "북극성냉장이 아직 안 준 게 있어?",
+      "kind": "structured",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_fact_ids": [
+        "S026-F13"
+      ],
+      "answer": "도성훈 대표가 이번 주 금요일(10/23)까지 주기로 한 한전 계통 연계 신청 서류가 아직 확인되지 않았다."
+    },
+    {
+      "id": "S026-Q01-P1",
+      "question": "체결한 용량·단가·기간을 알려줘.",
+      "paraphrase_of": "S026-Q01",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I4-U00",
+        "S026-I4-U01",
+        "S026-I4-U02"
+      ],
+      "answer": "1.1메가와트, kWh당 138원 고정, 20년, 발전량 보증 98%, 임대료 없음, 철거 원상복구는 우리 부담."
+    },
+    {
+      "id": "S026-Q01-P2",
+      "question": "계약서에 들어간 핵심 수치가 뭐야?",
+      "paraphrase_of": "S026-Q01",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I4-U00",
+        "S026-I4-U01",
+        "S026-I4-U02"
+      ],
+      "answer": "1.1메가와트, kWh당 138원 고정, 20년, 발전량 보증 98%, 임대료 없음, 철거 원상복구는 우리 부담."
+    },
+    {
+      "id": "S026-Q02-P1",
+      "question": "kWh 가격 제시가 어떻게 낮아졌어?",
+      "paraphrase_of": "S026-Q02",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I1-U05",
+        "S026-I2-U02",
+        "S026-I2-U03",
+        "S026-I3-U00",
+        "S026-I3-U01",
+        "S026-I3-U04",
+        "S026-I4-U00"
+      ],
+      "answer": "150원, 148원, 142원을 거쳐 경쟁사 135원과 비교되다가 138원 고정으로 합의했다."
+    },
+    {
+      "id": "S026-Q02-P2",
+      "question": "처음 금액에서 합의 금액까지 변화 과정을 알려줘.",
+      "paraphrase_of": "S026-Q02",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I1-U05",
+        "S026-I2-U02",
+        "S026-I2-U03",
+        "S026-I3-U00",
+        "S026-I3-U01",
+        "S026-I3-U04",
+        "S026-I4-U00"
+      ],
+      "answer": "150원, 148원, 142원을 거쳐 경쟁사 135원과 비교되다가 138원 고정으로 합의했다."
+    },
+    {
+      "id": "S026-Q03-P1",
+      "question": "다른 업체가 제시한 요금과 계약 기간, 보증 수준은?",
+      "paraphrase_of": "S026-Q03",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I2-U03",
+        "S026-I2-U05",
+        "S026-I3-U02"
+      ],
+      "answer": "경쟁사는 135원, 임대료 없음, 15년 계약, 발전량 보증 90%였다."
+    },
+    {
+      "id": "S026-Q03-P2",
+      "question": "비교 대상 업체의 제안 내용을 알려줘.",
+      "paraphrase_of": "S026-Q03",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I2-U03",
+        "S026-I2-U05",
+        "S026-I3-U02"
+      ],
+      "answer": "경쟁사는 135원, 임대료 없음, 15년 계약, 발전량 보증 90%였다."
+    },
+    {
+      "id": "S026-Q04-P1",
+      "question": "건물 무게 견디는지 점검 결과가 어땠어?",
+      "paraphrase_of": "S026-Q04",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I1-U06",
+        "S026-I1-U07",
+        "S026-I2-U00"
+      ],
+      "answer": "도면을 받아 구조 기술사가 검토해 보강 없이 1.1메가와트까지 가능하다고 확인했다."
+    },
+    {
+      "id": "S026-Q04-P2",
+      "question": "구조 안전성 검토 결론이 뭐야?",
+      "paraphrase_of": "S026-Q04",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I1-U06",
+        "S026-I1-U07",
+        "S026-I2-U00"
+      ],
+      "answer": "도면을 받아 구조 기술사가 검토해 보강 없이 1.1메가와트까지 가능하다고 확인했다."
+    },
+    {
+      "id": "S026-Q05-P1",
+      "question": "시공 시작과 완공 목표 시점은?",
+      "paraphrase_of": "S026-Q05",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I4-U03"
+      ],
+      "answer": "12월 1일 착공, 내년 2월 28일 준공 목표."
+    },
+    {
+      "id": "S026-Q05-P2",
+      "question": "설치가 언제 시작해서 언제 끝나?",
+      "paraphrase_of": "S026-Q05",
+      "kind": "semantic",
+      "company_id": "S026-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 14,
+      "relevant_utterance_ids": [
+        "S026-I4-U03"
+      ],
+      "answer": "12월 1일 착공, 내년 2월 28일 준공 목표."
+    }
+  ]
+}

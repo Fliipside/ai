@@ -1,0 +1,708 @@
+{
+  "scenario_id": "S097",
+  "description": "지자체 청소행정과의 환경미화원 210명 동계 근무복. 조달 등록·직접생산확인서·입찰 한도, 추경 예산 확정 지연, 시험성적서와 공고 일정이 두 번 미뤄지는 공공 딜.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 37,
+    "team_id": 36,
+    "name": "변우진",
+    "company": "유니폼하우스",
+    "product": "기업 유니폼·작업복 제작"
+  },
+  "users": [
+    {
+      "user_id": 37,
+      "team_id": 36
+    }
+  ],
+  "company": {
+    "id": "S097-CO1",
+    "name": "청솔시청 청소행정과",
+    "industry": "지자체 (환경미화원 근무복)",
+    "size": "환경미화원 210명"
+  },
+  "contacts": [
+    {
+      "id": "S097-C1",
+      "name": "마성호",
+      "title": "주무관",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S097-C2",
+      "name": "추은정",
+      "title": "청소행정팀장",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S097-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-09-10T14:00:00+09:00",
+      "title": "첫 미팅: 환경미화원 동계 근무복",
+      "owner_user_id": 37,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S097-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S097-I1-U00",
+          "start": 2.0,
+          "end": 11.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "청소행정과 주무관입니다. 환경미화원 210명 동계 근무복을 이번 겨울 전에 지급해야 해서요.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I1-U01",
+          "start": 11.8,
+          "end": 14.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지금까지는 어떻게 구매하셨어요?",
+          "contact_id": null
+        },
+        {
+          "id": "S097-I1-U02",
+          "start": 15.5,
+          "end": 25.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "작년까지는 조달청 종합쇼핑몰 등록 업체 제품으로 샀어요. 그래서 등록되어 있는지 확인해야 합니다.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I1-U03",
+          "start": 25.8,
+          "end": 33.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 작업복 직접생산확인서가 있고, 종합쇼핑몰 등록은 이번 달에 갱신 중입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S097-I1-U04",
+          "start": 34.5,
+          "end": 44.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "규격은 반사띠 KS 기준 충족이랑 방한 기능이 필수고요, 한 벌 단가 한도는 예산상 12만 원입니다.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I1-U05",
+          "start": 45.2,
+          "end": 48.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "12만 원 이내로 맞추겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S097-I1-U06",
+          "start": 48.9,
+          "end": 57.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "2천만 원 넘으면 입찰이라, 총액이 2,520만 원쯤 돼서 소액 입찰로 갈 가능성이 커요.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I1-U07",
+          "start": 58.5,
+          "end": 66.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그러면 직접생산확인서 사본이랑 규격서를 다음 주 화요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S097-I2",
+      "kind": "call",
+      "occurred_at": "2026-10-01T10:00:00+09:00",
+      "title": "예산 확정 지연과 시험성적서 요청",
+      "owner_user_id": 37,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S097-C1",
+        "S097-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S097-I2-U00",
+          "start": 2.0,
+          "end": 10.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "서류는 잘 받았어요. 입찰 공고를 10월 중순에 내려고 했는데 예산 확정이 늦어져서요.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I2-U01",
+          "start": 11.2,
+          "end": 19.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "팀장입니다. 추경 편성이 의회 심의를 거쳐야 해서 11월 초에 확정될 것 같아요.",
+          "contact_id": "S097-C2"
+        },
+        {
+          "id": "S097-I2-U02",
+          "start": 19.9,
+          "end": 23.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그러면 공고는 언제쯤 보시나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S097-I2-U03",
+          "start": 23.6,
+          "end": 33.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "11월 2일 월요일에 올리고, 입찰 열흘에 계약 후 납기 30일 기준으로 12월 말 납품이 목표예요.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I2-U04",
+          "start": 34.3,
+          "end": 40.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "제작이 3주 걸리니까 계약 후 30일이면 맞출 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S097-I2-U05",
+          "start": 40.8,
+          "end": 46.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "시험성적서도 필요합니다. 반사 성능이랑 방한 보온율이요.",
+          "contact_id": "S097-C2"
+        },
+        {
+          "id": "S097-I2-U06",
+          "start": 47.0,
+          "end": 54.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "공고 전에 받아야 규격서에 넣을 수 있으니까 10월 16일 금요일까지 주세요.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I2-U07",
+          "start": 55.3,
+          "end": 60.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 10월 16일까지 시험성적서 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S097-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-20T16:00:00+09:00",
+      "title": "시험성적서 지연과 공고 연기",
+      "owner_user_id": 37,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S097-C1",
+        "S097-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S097-I3-U00",
+          "start": 2.0,
+          "end": 10.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "주무관님, 시험성적서가 공인기관 일정 때문에 10월 16일을 못 맞췄습니다. 죄송합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S097-I3-U01",
+          "start": 11.4,
+          "end": 12.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "언제 나와요?",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I3-U02",
+          "start": 13.3,
+          "end": 17.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "11월 6일 금요일까지 확실히 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S097-I3-U03",
+          "start": 18.2,
+          "end": 25.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그럼 규격서 확정이 늦어지니까 입찰 공고도 11월 16일 월요일로 미룰게요.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I3-U04",
+          "start": 26.4,
+          "end": 35.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "납기도 12월 말에서 1월 초로 조정해야겠네요. 혹한기 전에 지급하는 게 원래 목표였는데.",
+          "contact_id": "S097-C2"
+        },
+        {
+          "id": "S097-I3-U05",
+          "start": 36.0,
+          "end": 44.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "미화원 노조에서 방한복 빨리 달라는 민원이 있어서, 윗선 보고는 제가 하겠습니다.",
+          "contact_id": "S097-C1"
+        },
+        {
+          "id": "S097-I3-U06",
+          "start": 44.7,
+          "end": 51.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "일정은 최대한 맞추고, 단가는 12만 원 이내로 확정해 두겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S097-F01",
+      "interaction_id": "S097-I1",
+      "type": "requirement",
+      "said_by": "S097-C1",
+      "content": "환경미화원 210명의 동계 근무복을 이번 겨울 전에 지급해야 한다.",
+      "source_utterance_ids": [
+        "S097-I1-U00"
+      ]
+    },
+    {
+      "id": "S097-F02",
+      "interaction_id": "S097-I1",
+      "type": "requirement",
+      "said_by": "S097-C1",
+      "content": "조달청 종합쇼핑몰 등록 업체 제품으로 구매해 왔고 등록 여부를 확인해야 한다.",
+      "source_utterance_ids": [
+        "S097-I1-U02"
+      ]
+    },
+    {
+      "id": "S097-F03",
+      "interaction_id": "S097-I1",
+      "type": "requirement",
+      "said_by": "S097-C1",
+      "content": "반사띠 KS 기준과 방한 기능이 필수이며 한 벌 단가 한도는 12만 원이다.",
+      "source_utterance_ids": [
+        "S097-I1-U04"
+      ]
+    },
+    {
+      "id": "S097-F04",
+      "interaction_id": "S097-I1",
+      "type": "purchase_timing",
+      "said_by": "S097-C1",
+      "content": "총액이 약 2,520만 원으로 2천만 원을 넘어 소액 입찰로 갈 가능성이 크다.",
+      "source_utterance_ids": [
+        "S097-I1-U06"
+      ]
+    },
+    {
+      "id": "S097-F05",
+      "interaction_id": "S097-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "직접생산확인서 사본과 규격서를 보낸다.",
+      "source_utterance_ids": [
+        "S097-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-15",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S097-I2"
+    },
+    {
+      "id": "S097-F06",
+      "interaction_id": "S097-I2",
+      "type": "purchase_timing",
+      "said_by": "S097-C2",
+      "content": "추경 편성이 의회 심의를 거쳐 11월 초 확정될 예정이라 10월 중순 공고가 미뤄졌다.",
+      "source_utterance_ids": [
+        "S097-I2-U00",
+        "S097-I2-U01"
+      ]
+    },
+    {
+      "id": "S097-F07",
+      "interaction_id": "S097-I2",
+      "type": "promise",
+      "said_by": "S097-C1",
+      "content": "입찰 공고를 올린다. 입찰 열흘, 계약 후 납기 30일 기준 12월 말 납품이 목표다.",
+      "source_utterance_ids": [
+        "S097-I2-U03"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-02",
+      "due_text": "11월 2일 월요일에",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S097-F08",
+      "interaction_id": "S097-I2",
+      "type": "requirement",
+      "said_by": "S097-C2",
+      "content": "반사 성능과 방한 보온율에 대한 시험성적서가 필요하다.",
+      "source_utterance_ids": [
+        "S097-I2-U05"
+      ]
+    },
+    {
+      "id": "S097-F09",
+      "interaction_id": "S097-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "시험성적서를 공고 전까지 보낸다.",
+      "source_utterance_ids": [
+        "S097-I2-U06",
+        "S097-I2-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-16",
+      "due_text": "10월 16일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S097-F10",
+      "interaction_id": "S097-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "시험성적서를 11월 6일까지 전달한다. 공인기관 일정으로 기한을 넘겼다.",
+      "source_utterance_ids": [
+        "S097-I3-U00",
+        "S097-I3-U02"
+      ],
+      "supersedes": "S097-F09",
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S097-F11",
+      "interaction_id": "S097-I3",
+      "type": "promise",
+      "said_by": "S097-C1",
+      "content": "규격서 확정이 늦어져 입찰 공고를 11월 16일로 미룬다.",
+      "source_utterance_ids": [
+        "S097-I3-U03"
+      ],
+      "supersedes": "S097-F07",
+      "owner": "customer",
+      "due_at": "2026-11-16",
+      "due_text": "11월 16일 월요일로",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S097-F12",
+      "interaction_id": "S097-I3",
+      "type": "purchase_timing",
+      "said_by": "S097-C2",
+      "content": "납기 목표가 12월 말에서 1월 초로 조정된다.",
+      "source_utterance_ids": [
+        "S097-I3-U04"
+      ]
+    },
+    {
+      "id": "S097-F13",
+      "interaction_id": "S097-I3",
+      "type": "buying_signal",
+      "said_by": "S097-C1",
+      "content": "미화원 노조에서 방한복을 빨리 달라는 민원이 있어 윗선에 직접 보고하겠다고 했다.",
+      "source_utterance_ids": [
+        "S097-I3-U05"
+      ]
+    },
+    {
+      "id": "S097-F14",
+      "interaction_id": "S097-I3",
+      "type": "decision",
+      "said_by": "me",
+      "content": "일정을 최대한 맞추고 단가는 12만 원 이내로 확정해 두기로 했다.",
+      "source_utterance_ids": [
+        "S097-I3-U06"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S097-Q01",
+      "question": "청솔시청은 어떤 방식으로 구매해?",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I1-U02",
+        "S097-I1-U03",
+        "S097-I1-U06"
+      ],
+      "answer": "조달청 종합쇼핑몰 등록 업체를 확인하며, 총액이 2천만 원을 넘어 소액 입찰로 갈 가능성이 크다."
+    },
+    {
+      "id": "S097-Q02",
+      "question": "청솔시청 근무복 규격과 예산 한도는?",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I1-U04",
+        "S097-I1-U05"
+      ],
+      "answer": "반사띠 KS 기준과 방한 기능이 필수, 한 벌 12만 원 이내."
+    },
+    {
+      "id": "S097-Q03",
+      "question": "청솔시청 입찰 공고가 왜 늦어져?",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U00",
+        "S097-I2-U01",
+        "S097-I3-U03"
+      ],
+      "answer": "추경 예산 확정이 의회 심의 때문에 11월 초로 밀리고, 시험성적서 지연으로 규격서가 늦어 공고가 11월 16일로 연기됐다."
+    },
+    {
+      "id": "S097-Q04",
+      "question": "청솔시청 납품 일정은 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U03",
+        "S097-I2-U04",
+        "S097-I3-U04"
+      ],
+      "answer": "12월 말 납품이 목표였으나 1월 초로 조정. 제작은 3주, 계약 후 납기 30일 기준."
+    },
+    {
+      "id": "S097-Q05",
+      "question": "시험성적서는 왜 필요하고 지금 어떻게 됐어?",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U05",
+        "S097-I2-U06",
+        "S097-I3-U00",
+        "S097-I3-U02"
+      ],
+      "answer": "반사 성능과 보온율 증빙이 규격서에 필요하다. 10월 16일 약속이 공인기관 일정으로 밀려 11월 6일로 재약속했다."
+    },
+    {
+      "id": "S097-Q06",
+      "question": "청솔시청에 우리가 해야 할 약속은?",
+      "kind": "structured",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_fact_ids": [
+        "S097-F10"
+      ],
+      "answer": "시험성적서를 11월 6일까지 전달해야 한다."
+    },
+    {
+      "id": "S097-Q07",
+      "question": "청솔시청이 해야 하는 일은?",
+      "kind": "structured",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_fact_ids": [
+        "S097-F11"
+      ],
+      "answer": "입찰 공고를 11월 16일 월요일에 올린다."
+    },
+    {
+      "id": "S097-Q01-P1",
+      "question": "관공서 구매 절차에서 업체 자격과 계약 방식이 어떻게 돼?",
+      "paraphrase_of": "S097-Q01",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I1-U02",
+        "S097-I1-U03",
+        "S097-I1-U06"
+      ],
+      "answer": "조달청 종합쇼핑몰 등록 업체를 확인하며, 총액이 2천만 원을 넘어 소액 입찰로 갈 가능성이 크다."
+    },
+    {
+      "id": "S097-Q01-P2",
+      "question": "공공 조달 등록 여부와 경쟁 입찰 가능성에 대해 뭐라고 했지?",
+      "paraphrase_of": "S097-Q01",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I1-U02",
+        "S097-I1-U03",
+        "S097-I1-U06"
+      ],
+      "answer": "조달청 종합쇼핑몰 등록 업체를 확인하며, 총액이 2천만 원을 넘어 소액 입찰로 갈 가능성이 크다."
+    },
+    {
+      "id": "S097-Q02-P1",
+      "question": "옷에 꼭 있어야 하는 기능과 한 벌당 비용 상한을 알려줘.",
+      "paraphrase_of": "S097-Q02",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I1-U04",
+        "S097-I1-U05"
+      ],
+      "answer": "반사띠 KS 기준과 방한 기능이 필수, 한 벌 12만 원 이내."
+    },
+    {
+      "id": "S097-Q02-P2",
+      "question": "품질 기준과 개별 금액 제한이 뭐였지?",
+      "paraphrase_of": "S097-Q02",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I1-U04",
+        "S097-I1-U05"
+      ],
+      "answer": "반사띠 KS 기준과 방한 기능이 필수, 한 벌 12만 원 이내."
+    },
+    {
+      "id": "S097-Q03-P1",
+      "question": "공고 일정이 두 번 뒤로 밀린 사연은?",
+      "paraphrase_of": "S097-Q03",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U00",
+        "S097-I2-U01",
+        "S097-I3-U03"
+      ],
+      "answer": "추경 예산 확정이 의회 심의 때문에 11월 초로 밀리고, 시험성적서 지연으로 규격서가 늦어 공고가 11월 16일로 연기됐다."
+    },
+    {
+      "id": "S097-Q03-P2",
+      "question": "나라장터에 올리는 시점이 처음보다 늦어진 배경을 정리해줘.",
+      "paraphrase_of": "S097-Q03",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U00",
+        "S097-I2-U01",
+        "S097-I3-U03"
+      ],
+      "answer": "추경 예산 확정이 의회 심의 때문에 11월 초로 밀리고, 시험성적서 지연으로 규격서가 늦어 공고가 11월 16일로 연기됐다."
+    },
+    {
+      "id": "S097-Q04-P1",
+      "question": "물품이 도착하는 목표 시기가 어떻게 달라졌어?",
+      "paraphrase_of": "S097-Q04",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U03",
+        "S097-I2-U04",
+        "S097-I3-U04"
+      ],
+      "answer": "12월 말 납품이 목표였으나 1월 초로 조정. 제작은 3주, 계약 후 납기 30일 기준."
+    },
+    {
+      "id": "S097-Q04-P2",
+      "question": "제작 기간과 인도 시점 목표를 알려줘.",
+      "paraphrase_of": "S097-Q04",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U03",
+        "S097-I2-U04",
+        "S097-I3-U04"
+      ],
+      "answer": "12월 말 납품이 목표였으나 1월 초로 조정. 제작은 3주, 계약 후 납기 30일 기준."
+    },
+    {
+      "id": "S097-Q05-P1",
+      "question": "성능 검증 문서를 요구한 이유와 전달 기한 변경 내용은?",
+      "paraphrase_of": "S097-Q05",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U05",
+        "S097-I2-U06",
+        "S097-I3-U00",
+        "S097-I3-U02"
+      ],
+      "answer": "반사 성능과 보온율 증빙이 규격서에 필요하다. 10월 16일 약속이 공인기관 일정으로 밀려 11월 6일로 재약속했다."
+    },
+    {
+      "id": "S097-Q05-P2",
+      "question": "공인기관 확인 서류를 두 번째로 약속한 날짜가 언제야?",
+      "paraphrase_of": "S097-Q05",
+      "kind": "semantic",
+      "company_id": "S097-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S097-I2-U05",
+        "S097-I2-U06",
+        "S097-I3-U00",
+        "S097-I3-U02"
+      ],
+      "answer": "반사 성능과 보온율 증빙이 규격서에 필요하다. 10월 16일 약속이 공인기관 일정으로 밀려 11월 6일로 재약속했다."
+    }
+  ]
+}

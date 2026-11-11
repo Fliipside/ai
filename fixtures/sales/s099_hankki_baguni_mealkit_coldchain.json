@@ -1,0 +1,774 @@
+{
+  "scenario_id": "S099",
+  "description": "밀키트 스타트업의 충북 공장 -> 수도권 새벽배송 허브 냉장 운송. 신제품 인기로 주 3회에서 주 5회로 요구가 바뀌고, 고객이 약속한 월별 물량 예측표가 두 번 미뤄진 채 남아 있다.",
+  "fictional": true,
+  "as_of": "2026-11-04",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 38,
+    "team_id": 37,
+    "name": "소윤재",
+    "company": "프레시로드",
+    "product": "냉장·냉동 화물 운송"
+  },
+  "users": [
+    {
+      "user_id": 38,
+      "team_id": 37
+    }
+  ],
+  "company": {
+    "id": "S099-CO1",
+    "name": "한끼바구니",
+    "industry": "밀키트 스타트업",
+    "size": "직원 60명, 충북 음성 공장"
+  },
+  "contacts": [
+    {
+      "id": "S099-C1",
+      "name": "구하윤",
+      "title": "운영팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S099-C2",
+      "name": "나도현",
+      "title": "대표",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S099-C3",
+      "name": "봉서연",
+      "title": "재무매니저",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S099-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-09-03T15:00:00+09:00",
+      "title": "첫 미팅: 음성 공장 -> 수도권 허브 냉장 운송",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S099-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S099-I1-U00",
+          "start": 2.0,
+          "end": 14.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희 밀키트는 충북 음성 공장에서 만들어서 수도권 새벽배송 허브로 올려요. 지금은 주 3회, 한 번에 팔레트 6개쯤이에요.",
+          "contact_id": "S099-C1"
+        },
+        {
+          "id": "S099-I1-U01",
+          "start": 14.8,
+          "end": 17.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "온도 조건은 어떻게 되나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I1-U02",
+          "start": 18.1,
+          "end": 26.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "냉장 0도에서 5도 유지가 필수고, 생고기가 들어가서 온도 이탈 있으면 폐기해야 해요.",
+          "contact_id": "S099-C1"
+        },
+        {
+          "id": "S099-I1-U03",
+          "start": 27.3,
+          "end": 34.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "팔레트 6개면 5톤 냉장 탑차 한 대입니다. 편도 38만 원이에요.",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I1-U04",
+          "start": 34.6,
+          "end": 40.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "허브가 김포랑 성남 두 군데라서 한 대가 나눠서 내려야 해요.",
+          "contact_id": "S099-C1"
+        },
+        {
+          "id": "S099-I1-U05",
+          "start": 41.3,
+          "end": 46.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "경유지가 두 곳이면 하차 추가로 5만 원이 붙습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I1-U06",
+          "start": 47.1,
+          "end": 58.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네. 다음 달 간편식 라인이 나가면 물량이 늘 수 있어서, 월별 물량 예측표를 9월 18일 금요일까지 드릴게요.",
+          "contact_id": "S099-C1"
+        },
+        {
+          "id": "S099-I1-U07",
+          "start": 58.9,
+          "end": 67.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "감사합니다. 저는 다음 주 목요일까지 온도 기록 샘플이랑 계약 초안을 보내겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S099-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-24T11:00:00+09:00",
+      "title": "물량 증가와 단가 조정",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S099-C1",
+        "S099-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S099-I2-U00",
+          "start": 2.0,
+          "end": 6.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "팀장님, 물량 예측표는 아직 못 받았는데요.",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I2-U01",
+          "start": 6.9,
+          "end": 13.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "죄송해요, 마케팅팀이 확정을 안 줬어요. 다음 주 수요일까지 드릴게요.",
+          "contact_id": "S099-C1"
+        },
+        {
+          "id": "S099-I2-U02",
+          "start": 14.5,
+          "end": 21.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "근데 간편식 라인이 반응이 좋아서 주 3회가 아니라 주 5회로 가야겠어요.",
+          "contact_id": "S099-C1"
+        },
+        {
+          "id": "S099-I2-U03",
+          "start": 22.5,
+          "end": 30.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "대표예요. 주 5회면 팔레트도 6개에서 10개로 늘어요. 5톤 한 대로는 안 되죠?",
+          "contact_id": "S099-C2"
+        },
+        {
+          "id": "S099-I2-U04",
+          "start": 31.4,
+          "end": 40.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "팔레트 10개면 11톤 냉장 탑차가 필요합니다. 편도 52만 원이고 경유지 추가 비용은 같아요.",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I2-U05",
+          "start": 41.5,
+          "end": 48.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "52만 원이면 한 달 스무 번에 천사십만 원인데, 단가를 좀 내려주세요.",
+          "contact_id": "S099-C2"
+        },
+        {
+          "id": "S099-I2-U06",
+          "start": 49.3,
+          "end": 55.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "주 5회로 3개월 이상 약정하시면 편도 48만 원으로 하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I2-U07",
+          "start": 56.4,
+          "end": 62.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "48만 원, 검토해볼게요. 재무 쪽에 확인하고 말씀드릴게요.",
+          "contact_id": "S099-C2"
+        },
+        {
+          "id": "S099-I2-U08",
+          "start": 62.9,
+          "end": 68.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "보내주신 온도 기록 샘플이랑 계약 초안은 잘 봤어요.",
+          "contact_id": "S099-C1"
+        }
+      ]
+    },
+    {
+      "id": "S099-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-22T14:00:00+09:00",
+      "title": "재무 합류: 정산 조건",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S099-C3",
+        "S099-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S099-I3-U00",
+          "start": 2.0,
+          "end": 10.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "재무 담당입니다. 48만 원 주 5회 3개월 약정 기준이면 월 960만 원 맞죠?",
+          "contact_id": "S099-C3"
+        },
+        {
+          "id": "S099-I3-U01",
+          "start": 10.7,
+          "end": 18.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네 맞습니다. 부가세 별도이고, 정산은 월말 마감 후 익월 15일 지급입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I3-U02",
+          "start": 19.0,
+          "end": 24.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희는 익월 말일 지급이 기준이라서 그건 조정이 필요해요.",
+          "contact_id": "S099-C3"
+        },
+        {
+          "id": "S099-I3-U03",
+          "start": 25.4,
+          "end": 30.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그러면 익월 25일까지는 맞춰드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I3-U04",
+          "start": 30.7,
+          "end": 41.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "물량 예측표는 간편식 출시가 11월 초로 밀려서 아직 확정이 안 됐어요. 출시 확정되면 바로 드릴게요.",
+          "contact_id": "S099-C1"
+        },
+        {
+          "id": "S099-I3-U05",
+          "start": 41.6,
+          "end": 51.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "예측표가 없으면 차량 확보가 어렵습니다. 11월 중순에 시작하려면 10월 30일까지는 주셔야 해요.",
+          "contact_id": null
+        },
+        {
+          "id": "S099-I3-U06",
+          "start": 52.1,
+          "end": 56.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "알겠습니다. 10월 30일까지 보낼게요.",
+          "contact_id": "S099-C1"
+        },
+        {
+          "id": "S099-I3-U07",
+          "start": 56.7,
+          "end": 64.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "정산일 조정 내용 반영한 계약서 수정본은 11월 6일 금요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S099-F01",
+      "interaction_id": "S099-I1",
+      "type": "requirement",
+      "said_by": "S099-C1",
+      "content": "충북 음성 공장에서 수도권 새벽배송 허브로 주 3회, 회당 팔레트 6개를 올린다.",
+      "source_utterance_ids": [
+        "S099-I1-U00"
+      ]
+    },
+    {
+      "id": "S099-F02",
+      "interaction_id": "S099-I1",
+      "type": "requirement",
+      "said_by": "S099-C1",
+      "content": "냉장 0~5도 유지가 필수이며 온도 이탈 시 폐기해야 한다.",
+      "source_utterance_ids": [
+        "S099-I1-U02"
+      ]
+    },
+    {
+      "id": "S099-F03",
+      "interaction_id": "S099-I1",
+      "type": "decision",
+      "said_by": "me",
+      "content": "팔레트 6개는 5톤 냉장 탑차 한 대이며 편도 38만 원을 안내했다.",
+      "source_utterance_ids": [
+        "S099-I1-U03"
+      ]
+    },
+    {
+      "id": "S099-F04",
+      "interaction_id": "S099-I1",
+      "type": "requirement",
+      "said_by": "S099-C1",
+      "content": "허브가 김포와 성남 두 곳이라 한 대가 나눠 하차해야 하며 경유지 추가 시 5만 원이 붙는다.",
+      "source_utterance_ids": [
+        "S099-I1-U04",
+        "S099-I1-U05"
+      ]
+    },
+    {
+      "id": "S099-F05",
+      "interaction_id": "S099-I1",
+      "type": "promise",
+      "said_by": "S099-C1",
+      "content": "월별 물량 예측표를 보낸다.",
+      "source_utterance_ids": [
+        "S099-I1-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-18",
+      "due_text": "9월 18일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S099-F06",
+      "interaction_id": "S099-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "온도 기록 샘플과 계약 초안을 보낸다.",
+      "source_utterance_ids": [
+        "S099-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-10",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S099-I2"
+    },
+    {
+      "id": "S099-F07",
+      "interaction_id": "S099-I2",
+      "type": "promise",
+      "said_by": "S099-C1",
+      "content": "마케팅팀 확정을 받아 물량 예측표를 보낸다.",
+      "source_utterance_ids": [
+        "S099-I2-U01"
+      ],
+      "supersedes": "S099-F05",
+      "owner": "customer",
+      "due_at": "2026-09-30",
+      "due_text": "다음 주 수요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S099-F08",
+      "interaction_id": "S099-I2",
+      "type": "requirement",
+      "said_by": "S099-C1",
+      "content": "신제품 간편식 반응이 좋아 운행을 주 3회에서 주 5회로 늘린다.",
+      "source_utterance_ids": [
+        "S099-I2-U02"
+      ],
+      "supersedes": "S099-F01"
+    },
+    {
+      "id": "S099-F09",
+      "interaction_id": "S099-I2",
+      "type": "requirement",
+      "said_by": "S099-C2",
+      "content": "주 5회에 팔레트가 6개에서 10개로 늘어 11톤 냉장 탑차가 필요하다.",
+      "source_utterance_ids": [
+        "S099-I2-U03",
+        "S099-I2-U04"
+      ]
+    },
+    {
+      "id": "S099-F10",
+      "interaction_id": "S099-I2",
+      "type": "price_reaction",
+      "said_by": "S099-C2",
+      "content": "11톤 편도 52만 원이면 월 20회 약 1,040만 원이라 단가 인하를 요청했다.",
+      "source_utterance_ids": [
+        "S099-I2-U05"
+      ]
+    },
+    {
+      "id": "S099-F11",
+      "interaction_id": "S099-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "주 5회 3개월 이상 약정 시 편도 48만 원을 제안했고 대표가 재무 확인 후 회신하기로 했다.",
+      "source_utterance_ids": [
+        "S099-I2-U06",
+        "S099-I2-U07"
+      ]
+    },
+    {
+      "id": "S099-F12",
+      "interaction_id": "S099-I3",
+      "type": "buying_signal",
+      "said_by": "S099-C3",
+      "content": "재무가 48만 원, 주 5회, 3개월 약정 기준 월 960만 원으로 계산해 확인했다.",
+      "source_utterance_ids": [
+        "S099-I3-U00",
+        "S099-I3-U01"
+      ]
+    },
+    {
+      "id": "S099-F13",
+      "interaction_id": "S099-I3",
+      "type": "requirement",
+      "said_by": "S099-C3",
+      "content": "정산은 익월 말일 지급이 기준이라 지급일 조정이 필요하며 익월 25일까지는 맞출 수 있다고 협의했다.",
+      "source_utterance_ids": [
+        "S099-I3-U02",
+        "S099-I3-U03"
+      ]
+    },
+    {
+      "id": "S099-F14",
+      "interaction_id": "S099-I3",
+      "type": "purchase_timing",
+      "said_by": "S099-C1",
+      "content": "간편식 출시가 11월 초로 밀려 운행은 11월 중순 시작을 목표로 한다.",
+      "source_utterance_ids": [
+        "S099-I3-U04",
+        "S099-I3-U05"
+      ]
+    },
+    {
+      "id": "S099-F15",
+      "interaction_id": "S099-I3",
+      "type": "promise",
+      "said_by": "S099-C1",
+      "content": "차량 확보를 위해 월별 물량 예측표를 보낸다.",
+      "source_utterance_ids": [
+        "S099-I3-U06"
+      ],
+      "supersedes": "S099-F07",
+      "owner": "customer",
+      "due_at": "2026-10-30",
+      "due_text": "10월 30일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S099-F16",
+      "interaction_id": "S099-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "정산일 조정을 반영한 계약서 수정본을 보낸다.",
+      "source_utterance_ids": [
+        "S099-I3-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S099-Q01",
+      "question": "한끼바구니 운송 조건은 어떻게 돼?",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U00",
+        "S099-I1-U02",
+        "S099-I1-U04"
+      ],
+      "answer": "음성 공장에서 김포·성남 두 허브로, 냉장 0~5도 유지가 필수이며 이탈 시 폐기한다."
+    },
+    {
+      "id": "S099-Q02",
+      "question": "한끼바구니 물량은 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U00",
+        "S099-I2-U02",
+        "S099-I2-U03",
+        "S099-I2-U04"
+      ],
+      "answer": "주 3회 팔레트 6개에서 주 5회 팔레트 10개로 늘어 5톤에서 11톤 차량이 필요해졌다."
+    },
+    {
+      "id": "S099-Q03",
+      "question": "한끼바구니 운임 협상은 어떻게 됐어?",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U03",
+        "S099-I2-U04",
+        "S099-I2-U05",
+        "S099-I2-U06",
+        "S099-I3-U00"
+      ],
+      "answer": "5톤 38만 원에서 11톤 52만 원, 약정 시 48만 원으로 낮췄고 재무가 월 960만 원으로 확인했다."
+    },
+    {
+      "id": "S099-Q04",
+      "question": "한끼바구니 대금 지급 조건 논의는?",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I3-U01",
+        "S099-I3-U02",
+        "S099-I3-U03"
+      ],
+      "answer": "우리는 익월 15일, 고객은 익월 말일 지급이 기준이라 익월 25일까지 조정 가능하다고 했다."
+    },
+    {
+      "id": "S099-Q05",
+      "question": "한끼바구니가 물량 예측표를 왜 안 줘?",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U06",
+        "S099-I2-U00",
+        "S099-I2-U01",
+        "S099-I3-U04",
+        "S099-I3-U05",
+        "S099-I3-U06"
+      ],
+      "answer": "9월 18일, 9월 30일로 미뤘고 마케팅 확정과 간편식 출시 지연으로 못 줬다. 10월 30일까지 다시 약속했다."
+    },
+    {
+      "id": "S099-Q06",
+      "question": "한끼바구니가 지킬 약속은?",
+      "kind": "structured",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_fact_ids": [
+        "S099-F15"
+      ],
+      "answer": "월별 물량 예측표를 10월 30일까지 보내기로 했으나 아직 확인되지 않았다."
+    },
+    {
+      "id": "S099-Q07",
+      "question": "한끼바구니에 내가 남긴 약속은?",
+      "kind": "structured",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_fact_ids": [
+        "S099-F16"
+      ],
+      "answer": "정산일 조정을 반영한 계약서 수정본을 11월 6일까지 보내야 한다."
+    },
+    {
+      "id": "S099-Q01-P1",
+      "question": "제품을 어디에서 어디로 어떤 온도로 옮겨야 해?",
+      "paraphrase_of": "S099-Q01",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U00",
+        "S099-I1-U02",
+        "S099-I1-U04"
+      ],
+      "answer": "음성 공장에서 김포·성남 두 허브로, 냉장 0~5도 유지가 필수이며 이탈 시 폐기한다."
+    },
+    {
+      "id": "S099-Q01-P2",
+      "question": "도착지가 몇 곳이고 품질 때문에 지켜야 할 기온 범위가 뭐야?",
+      "paraphrase_of": "S099-Q01",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U00",
+        "S099-I1-U02",
+        "S099-I1-U04"
+      ],
+      "answer": "음성 공장에서 김포·성남 두 허브로, 냉장 0~5도 유지가 필수이며 이탈 시 폐기한다."
+    },
+    {
+      "id": "S099-Q02-P1",
+      "question": "처음 운행 빈도와 짐 규모가 신제품 이후 어떻게 확대됐지?",
+      "paraphrase_of": "S099-Q02",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U00",
+        "S099-I2-U02",
+        "S099-I2-U03",
+        "S099-I2-U04"
+      ],
+      "answer": "주 3회 팔레트 6개에서 주 5회 팔레트 10개로 늘어 5톤에서 11톤 차량이 필요해졌다."
+    },
+    {
+      "id": "S099-Q02-P2",
+      "question": "차량 크기가 달라진 이유를 알려줘.",
+      "paraphrase_of": "S099-Q02",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U00",
+        "S099-I2-U02",
+        "S099-I2-U03",
+        "S099-I2-U04"
+      ],
+      "answer": "주 3회 팔레트 6개에서 주 5회 팔레트 10개로 늘어 5톤에서 11톤 차량이 필요해졌다."
+    },
+    {
+      "id": "S099-Q03-P1",
+      "question": "처음 가격에서 최종 논의 가격까지 금액 변화를 알려줘.",
+      "paraphrase_of": "S099-Q03",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U03",
+        "S099-I2-U04",
+        "S099-I2-U05",
+        "S099-I2-U06",
+        "S099-I3-U00"
+      ],
+      "answer": "5톤 38만 원에서 11톤 52만 원, 약정 시 48만 원으로 낮췄고 재무가 월 960만 원으로 확인했다."
+    },
+    {
+      "id": "S099-Q03-P2",
+      "question": "한 달 합계와 약정 기간 기준 금액이 얼마로 정리됐지?",
+      "paraphrase_of": "S099-Q03",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U03",
+        "S099-I2-U04",
+        "S099-I2-U05",
+        "S099-I2-U06",
+        "S099-I3-U00"
+      ],
+      "answer": "5톤 38만 원에서 11톤 52만 원, 약정 시 48만 원으로 낮췄고 재무가 월 960만 원으로 확인했다."
+    },
+    {
+      "id": "S099-Q04-P1",
+      "question": "돈을 받는 시기에 대해 양쪽이 어떻게 맞췄어?",
+      "paraphrase_of": "S099-Q04",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I3-U01",
+        "S099-I3-U02",
+        "S099-I3-U03"
+      ],
+      "answer": "우리는 익월 15일, 고객은 익월 말일 지급이 기준이라 익월 25일까지 조정 가능하다고 했다."
+    },
+    {
+      "id": "S099-Q04-P2",
+      "question": "정산 일정이 안 맞았을 때 어떻게 절충했지?",
+      "paraphrase_of": "S099-Q04",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I3-U01",
+        "S099-I3-U02",
+        "S099-I3-U03"
+      ],
+      "answer": "우리는 익월 15일, 고객은 익월 말일 지급이 기준이라 익월 25일까지 조정 가능하다고 했다."
+    },
+    {
+      "id": "S099-Q05-P1",
+      "question": "수요 전망 자료가 계속 늦어지는 사연과 마지막 약속 시한은?",
+      "paraphrase_of": "S099-Q05",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U06",
+        "S099-I2-U00",
+        "S099-I2-U01",
+        "S099-I3-U04",
+        "S099-I3-U05",
+        "S099-I3-U06"
+      ],
+      "answer": "9월 18일, 9월 30일로 미뤘고 마케팅 확정과 간편식 출시 지연으로 못 줬다. 10월 30일까지 다시 약속했다."
+    },
+    {
+      "id": "S099-Q05-P2",
+      "question": "고객 약속이 몇 번 연기됐고 이유가 뭐야?",
+      "paraphrase_of": "S099-Q05",
+      "kind": "semantic",
+      "company_id": "S099-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S099-I1-U06",
+        "S099-I2-U00",
+        "S099-I2-U01",
+        "S099-I3-U04",
+        "S099-I3-U05",
+        "S099-I3-U06"
+      ],
+      "answer": "9월 18일, 9월 30일로 미뤘고 마케팅 확정과 간편식 출시 지연으로 못 줬다. 10월 30일까지 다시 약속했다."
+    }
+  ]
+}

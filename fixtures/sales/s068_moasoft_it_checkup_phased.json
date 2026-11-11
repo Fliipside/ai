@@ -1,0 +1,759 @@
+{
+  "scenario_id": "S068",
+  "description": "IT 회사 인사팀(직원 400명)에 건강검진·마음건강 상담·교정 프로그램. 전사 패키지 1.3억원에서 1단계(검진+상담)로 범위를 줄이고, 1인 검진가가 24만원에서 19.5만원까지 여러 번 오간 끝에 총 9,000만원에 합의한다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 28,
+    "team_id": 27,
+    "name": "진하은",
+    "company": "웰핏케어",
+    "product": "기업 단체 건강검진·사내 건강 프로그램"
+  },
+  "users": [
+    {
+      "user_id": 28,
+      "team_id": 27
+    }
+  ],
+  "company": {
+    "id": "S068-CO1",
+    "name": "모아소프트",
+    "industry": "소프트웨어 개발",
+    "size": "직원 약 400명, 판교"
+  },
+  "contacts": [
+    {
+      "id": "S068-C1",
+      "name": "하윤재",
+      "title": "인사팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S068-C2",
+      "name": "진서윤",
+      "title": "인사팀 대리",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S068-C3",
+      "name": "문태호",
+      "title": "경영지원 이사",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S068-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-25T16:00:00+09:00",
+      "title": "첫 미팅",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S068-C1",
+        "S068-C3",
+        "S068-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S068-I1-U00",
+          "start": 2.0,
+          "end": 12.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희 직원이 400명 정도인데, 매년 검진은 법정 검진만 해왔어요. 올해는 복지 차원에서 확대하고 싶습니다.",
+          "contact_id": "S068-C1"
+        },
+        {
+          "id": "S068-I1-U01",
+          "start": 13.4,
+          "end": 22.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "복지 예산은 어느 정도 잡혀 있으세요? 검진 말고 사내 프로그램까지 보시는지도 궁금합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S068-I1-U02",
+          "start": 23.0,
+          "end": 36.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "경영지원 문태호입니다. 건강 복지 예산이 연 1억 2천만원이에요. 검진, 마음건강 상담, 거북목 교정 프로그램을 한꺼번에 해보고 싶습니다.",
+          "contact_id": "S068-C3"
+        },
+        {
+          "id": "S068-I1-U03",
+          "start": 37.5,
+          "end": 51.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "전사 기준으로 종합검진 1인 24만원, 마음건강 상담 연 100슬롯, 사내 교정 프로그램 월 2회로 구성하면 총액이 약 1억 3천만원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S068-I1-U04",
+          "start": 52.1,
+          "end": 61.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "1.3억이면 예산을 넘네요. 검진 24만원도 다른 곳보다 높고요. 18만원 선은 돼야 합니다.",
+          "contact_id": "S068-C3"
+        },
+        {
+          "id": "S068-I1-U05",
+          "start": 62.1,
+          "end": 73.4,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "저는 인사 담당 진서윤인데요, 직원 설문에서 마음건강 상담 요청이 제일 많았어요. 거북목 프로그램은 그다음이고요.",
+          "contact_id": "S068-C2"
+        },
+        {
+          "id": "S068-I1-U06",
+          "start": 74.0,
+          "end": 85.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그렇다면 우선순위를 나눠서 1단계 범위를 제안드리겠습니다. 다음 주 목요일까지 견적을 다시 정리해서 보내겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S068-I1-U07",
+          "start": 85.9,
+          "end": 91.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 저희는 설문 결과 요약을 이번 주 금요일까지 드릴게요.",
+          "contact_id": "S068-C1"
+        }
+      ]
+    },
+    {
+      "id": "S068-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-29T10:00:00+09:00",
+      "title": "1단계 견적 설명",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S068-C2",
+        "S068-C3",
+        "S068-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S068-I2-U00",
+          "start": 2.0,
+          "end": 7.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "설문 요약은 보내드린 대로 마음건강 상담이 1순위였어요.",
+          "contact_id": "S068-C2"
+        },
+        {
+          "id": "S068-I2-U01",
+          "start": 8.2,
+          "end": 23.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "1단계 견적 설명드립니다. 검진 400명에 1인 21.5만원, 마음건강 상담 연 50슬롯으로 총 1억 800만원이고, 교정 프로그램은 2단계로 미뤘습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S068-I2-U02",
+          "start": 24.3,
+          "end": 36.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "범위를 줄인 건 이해하는데 21.5도 비싸요. 19만원이면 검진만 7,600이니까, 상담까지 해서 1억은 안 넘었으면 합니다.",
+          "contact_id": "S068-C3"
+        },
+        {
+          "id": "S068-I2-U03",
+          "start": 37.5,
+          "end": 46.0,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "그리고 400명 중 해외 근무 인력이 20명이라 검진은 380명 기준으로 봐야 해요.",
+          "contact_id": "S068-C1"
+        },
+        {
+          "id": "S068-I2-U04",
+          "start": 46.6,
+          "end": 59.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "380명에 1인 20만원으로 하고 상담 50슬롯 포함하면 9,700만원입니다. 대신 선택검사를 3종 중 2종으로 줄이는 조건이에요.",
+          "contact_id": null
+        },
+        {
+          "id": "S068-I2-U05",
+          "start": 60.3,
+          "end": 67.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "9,700이면 거의 맞는데, 검진기관 이동이 불편하다는 의견이 있어요.",
+          "contact_id": "S068-C3"
+        },
+        {
+          "id": "S068-I2-U06",
+          "start": 67.9,
+          "end": 78.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "판교역 인근 제휴 병원 두 곳이고 주말 검진도 됩니다. 검진 가능일 목록은 다음 주 화요일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S068-I2-U07",
+          "start": 79.3,
+          "end": 85.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그럼 직원 공지 문안은 제가 쓸게요. 가능일 목록만 주세요.",
+          "contact_id": "S068-C2"
+        },
+        {
+          "id": "S068-I2-U08",
+          "start": 85.8,
+          "end": 93.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "1단계로 이사회에 올려보겠습니다. 결과는 10월 말 전에 알려드리겠습니다.",
+          "contact_id": "S068-C3"
+        }
+      ]
+    },
+    {
+      "id": "S068-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-27T14:00:00+09:00",
+      "title": "이사회 승인 후 조건 확정",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S068-C2",
+        "S068-C3",
+        "S068-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S068-I3-U00",
+          "start": 2.0,
+          "end": 6.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "보내주신 검진 가능일 목록은 잘 받았어요.",
+          "contact_id": "S068-C2"
+        },
+        {
+          "id": "S068-I3-U01",
+          "start": 6.7,
+          "end": 14.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "이사회에서 1단계 승인됐습니다. 다만 금액은 9천만원대 초반으로 맞추라고 하네요.",
+          "contact_id": "S068-C3"
+        },
+        {
+          "id": "S068-I3-U02",
+          "start": 15.4,
+          "end": 28.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그러면 검진 1인 19.5만원으로 380명 7,410만원, 상담 50슬롯 1,590만원해서 총 9,000만원으로 맞추겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S068-I3-U03",
+          "start": 28.6,
+          "end": 38.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "9천이면 가능합니다. 대신 2단계 교정 프로그램은 내년 상반기 예산 보고 그때 협의하는 걸로 해요.",
+          "contact_id": "S068-C3"
+        },
+        {
+          "id": "S068-I3-U04",
+          "start": 39.1,
+          "end": 45.4,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "검진은 11월 23일부터 12월 18일까지 4주로 하고 싶어요.",
+          "contact_id": "S068-C1"
+        },
+        {
+          "id": "S068-I3-U05",
+          "start": 46.0,
+          "end": 52.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "알겠습니다. 계약서와 검진 일정표를 11월 6일까지 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S068-I3-U06",
+          "start": 53.1,
+          "end": 58.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "직원 사전 설문 링크는 11월 9일 전에 공지할게요.",
+          "contact_id": "S068-C2"
+        },
+        {
+          "id": "S068-I3-U07",
+          "start": 58.9,
+          "end": 65.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "계약서는 법무 확인 후 11월 13일까지 날인해서 드리겠습니다.",
+          "contact_id": "S068-C3"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S068-F01",
+      "interaction_id": "S068-I1",
+      "type": "requirement",
+      "said_by": "S068-C1",
+      "content": "직원 약 400명이고 지금은 법정 검진만 하며 올해 복지 차원에서 검진을 확대하려 한다.",
+      "source_utterance_ids": [
+        "S068-I1-U00"
+      ]
+    },
+    {
+      "id": "S068-F02",
+      "interaction_id": "S068-I1",
+      "type": "requirement",
+      "said_by": "S068-C3",
+      "content": "건강 복지 예산은 연 1억 2천만원이고 검진·마음건강 상담·거북목 교정 프로그램을 함께 원한다.",
+      "source_utterance_ids": [
+        "S068-I1-U02"
+      ]
+    },
+    {
+      "id": "S068-F03",
+      "interaction_id": "S068-I1",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "전사 패키지로 검진 1인 24만원 등 총 약 1억 3천만원을 제안했다.",
+      "source_utterance_ids": [
+        "S068-I1-U03"
+      ]
+    },
+    {
+      "id": "S068-F04",
+      "interaction_id": "S068-I1",
+      "type": "price_reaction",
+      "said_by": "S068-C3",
+      "content": "1.3억은 예산 초과이고 검진 24만원은 높아 18만원 선이어야 한다고 했다.",
+      "source_utterance_ids": [
+        "S068-I1-U04"
+      ]
+    },
+    {
+      "id": "S068-F05",
+      "interaction_id": "S068-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "1단계로 나눈 견적을 다음 주 목요일까지 다시 보내기로 했다.",
+      "source_utterance_ids": [
+        "S068-I1-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-03",
+      "due_text": "다음 주 목요일까지",
+      "status": "done",
+      "resolved_in": "S068-I2"
+    },
+    {
+      "id": "S068-F06",
+      "interaction_id": "S068-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "1단계는 검진과 마음건강 상담(연 50슬롯)으로 하고 교정 프로그램은 2단계로 미루는 안을 제시했다.",
+      "source_utterance_ids": [
+        "S068-I2-U01"
+      ]
+    },
+    {
+      "id": "S068-F07",
+      "interaction_id": "S068-I2",
+      "type": "price_reaction",
+      "said_by": "S068-C3",
+      "content": "21.5만원도 비싸다며 19만원 수준에 상담 포함 1억 미만을 원했다.",
+      "source_utterance_ids": [
+        "S068-I2-U02"
+      ]
+    },
+    {
+      "id": "S068-F08",
+      "interaction_id": "S068-I2",
+      "type": "requirement",
+      "said_by": "S068-C1",
+      "content": "해외 근무 20명을 빼 검진 대상은 380명이다.",
+      "source_utterance_ids": [
+        "S068-I2-U03"
+      ],
+      "supersedes": "S068-F01"
+    },
+    {
+      "id": "S068-F09",
+      "interaction_id": "S068-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "380명 1인 20만원에 상담 50슬롯 포함 9,700만원(선택검사 3종 중 2종)을 제안했다.",
+      "source_utterance_ids": [
+        "S068-I2-U04"
+      ]
+    },
+    {
+      "id": "S068-F10",
+      "interaction_id": "S068-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "검진 가능일 목록을 다음 주 화요일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S068-I2-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-06",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S068-I3"
+    },
+    {
+      "id": "S068-F11",
+      "interaction_id": "S068-I2",
+      "type": "promise",
+      "said_by": "S068-C3",
+      "content": "이사회 결과를 10월 말 전에 알려주기로 했다.",
+      "source_utterance_ids": [
+        "S068-I2-U08"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-31",
+      "due_text": "10월 말 전에",
+      "status": "done",
+      "resolved_in": "S068-I3"
+    },
+    {
+      "id": "S068-F12",
+      "interaction_id": "S068-I3",
+      "type": "decision",
+      "said_by": "S068-C3",
+      "content": "이사회가 1단계를 승인했고 금액은 9천만원대 초반으로 맞추라고 했다.",
+      "source_utterance_ids": [
+        "S068-I3-U01"
+      ]
+    },
+    {
+      "id": "S068-F13",
+      "interaction_id": "S068-I3",
+      "type": "decision",
+      "said_by": "S068-C3",
+      "content": "검진 19.5만원·상담 포함 총 9,000만원이면 가능하고 2단계는 내년 상반기 예산 후 협의한다.",
+      "source_utterance_ids": [
+        "S068-I3-U02",
+        "S068-I3-U03"
+      ]
+    },
+    {
+      "id": "S068-F14",
+      "interaction_id": "S068-I3",
+      "type": "purchase_timing",
+      "said_by": "S068-C1",
+      "content": "검진은 11월 23일부터 12월 18일까지 4주간 진행하고 싶다.",
+      "source_utterance_ids": [
+        "S068-I3-U04"
+      ]
+    },
+    {
+      "id": "S068-F15",
+      "interaction_id": "S068-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "계약서와 검진 일정표를 11월 6일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S068-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S068-F16",
+      "interaction_id": "S068-I3",
+      "type": "promise",
+      "said_by": "S068-C3",
+      "content": "법무 확인 후 날인한 계약서를 11월 13일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S068-I3-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-13",
+      "due_text": "11월 13일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S068-Q01",
+      "question": "모아소프트의 예산과 원하는 구성이 뭐였어?",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U02",
+        "S068-I1-U03"
+      ],
+      "answer": "건강 복지 예산 연 1.2억으로 검진, 마음건강 상담, 거북목 교정을 원했고 첫 전사안은 약 1.3억이었다."
+    },
+    {
+      "id": "S068-Q02",
+      "question": "검진 단가 협상은 어떻게 오갔어?",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U03",
+        "S068-I1-U04",
+        "S068-I2-U01",
+        "S068-I2-U02",
+        "S068-I2-U04",
+        "S068-I3-U02",
+        "S068-I3-U03"
+      ],
+      "answer": "24만원 제안, 18만원 요구, 21.5만원, 19만원 요구, 20만원, 최종 19.5만원에 총 9,000만원."
+    },
+    {
+      "id": "S068-Q03",
+      "question": "왜 단계로 나눠서 도입하기로 했어?",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U05",
+        "S068-I2-U01",
+        "S068-I3-U03"
+      ],
+      "answer": "예산을 넘어 우선순위를 나눴다. 1단계는 검진과 상담, 교정 프로그램은 내년 상반기 예산 후 2단계로 협의한다."
+    },
+    {
+      "id": "S068-Q04",
+      "question": "승인과 일정은 어떻게 됐어?",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I2-U08",
+        "S068-I3-U01",
+        "S068-I3-U04"
+      ],
+      "answer": "이사회가 1단계를 승인했고 검진은 11월 23일부터 12월 18일까지 4주 진행 예정이다."
+    },
+    {
+      "id": "S068-Q05",
+      "question": "직원들 수요는 어땠어?",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U05"
+      ],
+      "answer": "직원 설문에서 마음건강 상담 요청이 가장 많았고 거북목 프로그램이 그다음이었다."
+    },
+    {
+      "id": "S068-Q06",
+      "question": "아직 안 끝난 약속이 뭐야?",
+      "kind": "structured",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_fact_ids": [
+        "S068-F15",
+        "S068-F16"
+      ],
+      "answer": "우리의 계약서·일정표 전달(11월 6일)과 고객의 날인 계약서 회신(11월 13일)이 열려 있다."
+    },
+    {
+      "id": "S068-Q07",
+      "question": "이미 지켜진 약속은?",
+      "kind": "structured",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_fact_ids": [
+        "S068-F05",
+        "S068-F10",
+        "S068-F11"
+      ],
+      "answer": "1단계 견적서, 검진 가능일 목록, 이사회 결과 통보가 모두 이행됐다."
+    },
+    {
+      "id": "S068-Q01-P1",
+      "question": "이 회사가 쓸 수 있는 금액과 희망 서비스 종류를 알려줘.",
+      "paraphrase_of": "S068-Q01",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U02",
+        "S068-I1-U03"
+      ],
+      "answer": "건강 복지 예산 연 1.2억으로 검진, 마음건강 상담, 거북목 교정을 원했고 첫 전사안은 약 1.3억이었다."
+    },
+    {
+      "id": "S068-Q01-P2",
+      "question": "처음 논의된 패키지 내용과 총액은?",
+      "paraphrase_of": "S068-Q01",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U02",
+        "S068-I1-U03"
+      ],
+      "answer": "건강 복지 예산 연 1.2억으로 검진, 마음건강 상담, 거북목 교정을 원했고 첫 전사안은 약 1.3억이었다."
+    },
+    {
+      "id": "S068-Q02-P1",
+      "question": "1인당 비용이 단계별로 어떻게 달라졌는지 정리해줘.",
+      "paraphrase_of": "S068-Q02",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U03",
+        "S068-I1-U04",
+        "S068-I2-U01",
+        "S068-I2-U02",
+        "S068-I2-U04",
+        "S068-I3-U02",
+        "S068-I3-U03"
+      ],
+      "answer": "24만원 제안, 18만원 요구, 21.5만원, 19만원 요구, 20만원, 최종 19.5만원에 총 9,000만원."
+    },
+    {
+      "id": "S068-Q02-P2",
+      "question": "값 조율 과정과 마지막 합의 금액은?",
+      "paraphrase_of": "S068-Q02",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U03",
+        "S068-I1-U04",
+        "S068-I2-U01",
+        "S068-I2-U02",
+        "S068-I2-U04",
+        "S068-I3-U02",
+        "S068-I3-U03"
+      ],
+      "answer": "24만원 제안, 18만원 요구, 21.5만원, 19만원 요구, 20만원, 최종 19.5만원에 총 9,000만원."
+    },
+    {
+      "id": "S068-Q03-P1",
+      "question": "처음부터 전부 하지 않고 나눠서 하기로 한 사연은?",
+      "paraphrase_of": "S068-Q03",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U05",
+        "S068-I2-U01",
+        "S068-I3-U03"
+      ],
+      "answer": "예산을 넘어 우선순위를 나눴다. 1단계는 검진과 상담, 교정 프로그램은 내년 상반기 예산 후 2단계로 협의한다."
+    },
+    {
+      "id": "S068-Q03-P2",
+      "question": "나중으로 미룬 프로그램이 뭐고 언제 다시 논의해?",
+      "paraphrase_of": "S068-Q03",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U05",
+        "S068-I2-U01",
+        "S068-I3-U03"
+      ],
+      "answer": "예산을 넘어 우선순위를 나눴다. 1단계는 검진과 상담, 교정 프로그램은 내년 상반기 예산 후 2단계로 협의한다."
+    },
+    {
+      "id": "S068-Q04-P1",
+      "question": "윗선 결재 결과와 검진 진행 기간을 알려줘.",
+      "paraphrase_of": "S068-Q04",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I2-U08",
+        "S068-I3-U01",
+        "S068-I3-U04"
+      ],
+      "answer": "이사회가 1단계를 승인했고 검진은 11월 23일부터 12월 18일까지 4주 진행 예정이다."
+    },
+    {
+      "id": "S068-Q04-P2",
+      "question": "내부 결정이 나왔는지, 언제부터 시작하는지?",
+      "paraphrase_of": "S068-Q04",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I2-U08",
+        "S068-I3-U01",
+        "S068-I3-U04"
+      ],
+      "answer": "이사회가 1단계를 승인했고 검진은 11월 23일부터 12월 18일까지 4주 진행 예정이다."
+    },
+    {
+      "id": "S068-Q05-P1",
+      "question": "구성원 설문 결과에서 인기 있던 항목이 뭐야?",
+      "paraphrase_of": "S068-Q05",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U05"
+      ],
+      "answer": "직원 설문에서 마음건강 상담 요청이 가장 많았고 거북목 프로그램이 그다음이었다."
+    },
+    {
+      "id": "S068-Q05-P2",
+      "question": "임직원이 가장 원한 서비스가 뭐였지?",
+      "paraphrase_of": "S068-Q05",
+      "kind": "semantic",
+      "company_id": "S068-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S068-I1-U05"
+      ],
+      "answer": "직원 설문에서 마음건강 상담 요청이 가장 많았고 거북목 프로그램이 그다음이었다."
+    }
+  ]
+}

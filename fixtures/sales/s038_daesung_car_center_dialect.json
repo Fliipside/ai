@@ -1,0 +1,783 @@
+{
+  "scenario_id": "S038",
+  "description": "오토파츠원(하정민)이 월 부품비 약 2,800만 원의 동네 카센터에 부품 주문·재고 앱을 제안. 사장의 전라도 사투리와 구어체, 대화 중 이름이 거의 나오지 않고 사장님·실장님·사모님 같은 호칭으로만 불리는 상황에서 사람을 올바르게 알아보는지, 외상 정산·반품·수입차 부품 요구를 검증한다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 18,
+    "team_id": 17,
+    "name": "하정민",
+    "company": "오토파츠원",
+    "product": "정비소용 자동차 부품 공급·재고 앱"
+  },
+  "users": [
+    {
+      "user_id": 18,
+      "team_id": 17
+    }
+  ],
+  "company": {
+    "id": "S038-CO1",
+    "name": "대성카센터",
+    "industry": "동네 자동차 정비소",
+    "size": "정비사 4명, 월 부품 매입 약 2,800만 원"
+  },
+  "contacts": [
+    {
+      "id": "S038-C1",
+      "name": "조판석",
+      "title": "사장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S038-C2",
+      "name": "안영훈",
+      "title": "정비 실장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S038-C3",
+      "name": "권숙자",
+      "title": "경리",
+      "role_in_deal": "influencer"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S038-I1",
+      "kind": "call",
+      "occurred_at": "2026-08-25T09:30:00+09:00",
+      "title": "문의 전화: 단골 부품상 폐업",
+      "owner_user_id": 18,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S038-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S038-I1-U00",
+          "start": 2.0,
+          "end": 12.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "여보세요? 거기 부품 대는 데 맞소? 우리 단골 부품상 형님이 가게 접는다 해가꼬 새로 알아보는 중이랑께요.",
+          "contact_id": "S038-C1"
+        },
+        {
+          "id": "S038-I1-U01",
+          "start": 13.4,
+          "end": 19.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네 사장님, 오토파츠원입니다. 지금 월에 부품을 얼마나 쓰세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I1-U02",
+          "start": 20.3,
+          "end": 27.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "이천팔백쯤 쓰지라. 엔진오일이랑 필터, 브레이크 패드가 젤 많이 나가요.",
+          "contact_id": "S038-C1"
+        },
+        {
+          "id": "S038-I1-U03",
+          "start": 28.1,
+          "end": 35.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 앱으로 주문하시면 평일 오후 세 시 전 주문은 당일 배송입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I1-U04",
+          "start": 35.7,
+          "end": 44.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "앱은 내가 잘 몰라서... 우리 실장이 그런 건 잘하니께 그 사람이 쓰게 하면 되것네.",
+          "contact_id": "S038-C1"
+        },
+        {
+          "id": "S038-I1-U05",
+          "start": 44.9,
+          "end": 52.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 실장님이 쓰시면 되죠. 재고 관리도 앱으로 되는데 한번 보여드릴까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I1-U06",
+          "start": 52.9,
+          "end": 59.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그라믄 다음 주에 가게로 와서 보여주쇼. 화요일 오후가 한가해요.",
+          "contact_id": "S038-C1"
+        },
+        {
+          "id": "S038-I1-U07",
+          "start": 60.0,
+          "end": 65.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 다음 주 화요일 오후 두 시에 방문하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I1-U08",
+          "start": 65.6,
+          "end": 71.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아, 그리고 외상 거래 되죠? 우린 월말에 한꺼번에 줘요.",
+          "contact_id": "S038-C1"
+        },
+        {
+          "id": "S038-I1-U09",
+          "start": 72.0,
+          "end": 78.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월말 정산 가능합니다. 신용 한도는 사업자등록증 확인 후 정해져요.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S038-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-01T14:00:00+09:00",
+      "title": "가게 방문: 앱 시연",
+      "owner_user_id": 18,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S038-C2",
+        "S038-C1",
+        "S038-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S038-I2-U00",
+          "start": 2.0,
+          "end": 11.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "사장님, 실장님, 안녕하세요. 앱 보여드리겠습니다. 차량 번호를 넣으면 맞는 부품이 바로 뜹니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I2-U01",
+          "start": 12.3,
+          "end": 22.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "오, 이거 편하네요. 지금은 부품상에 전화로 차종을 불러 주는데 잘못 오는 일이 잦아서 반품이 많아요.",
+          "contact_id": "S038-C2"
+        },
+        {
+          "id": "S038-I2-U02",
+          "start": 23.2,
+          "end": 29.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "한 달에 반품이 열 건도 넘을 거여. 그 반품 처리가 귀찮당께.",
+          "contact_id": "S038-C1"
+        },
+        {
+          "id": "S038-I2-U03",
+          "start": 30.1,
+          "end": 35.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "반품은 앱에서 사진을 올리면 다음 날 수거해 갑니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I2-U04",
+          "start": 35.9,
+          "end": 42.4,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "저기, 그럼 외상 한도는 얼마나 되나요? 우리 월말 정산하거든요.",
+          "contact_id": "S038-C3"
+        },
+        {
+          "id": "S038-I2-U05",
+          "start": 43.0,
+          "end": 50.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "사업자등록증을 주시면 심사해서 천오백만 원 정도 한도로 말씀드릴 수 있어요.",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I2-U06",
+          "start": 51.2,
+          "end": 55.5,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "알겠어요. 내일 사업자등록증 사진 보낼게요.",
+          "contact_id": "S038-C3"
+        },
+        {
+          "id": "S038-I2-U07",
+          "start": 56.1,
+          "end": 65.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "부품 값은 지금 거래처보다 싸야 되는데, 브레이크 패드 앞 한 세트가 지금 오만 팔천 원이요.",
+          "contact_id": "S038-C1"
+        },
+        {
+          "id": "S038-I2-U08",
+          "start": 66.1,
+          "end": 70.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 오만 이천 원에 드릴 수 있어요.",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I2-U09",
+          "start": 70.7,
+          "end": 76.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그럼 해볼 만하네. 우선 소모품부터 앱으로 시켜 볼게요.",
+          "contact_id": "S038-C1"
+        },
+        {
+          "id": "S038-I2-U10",
+          "start": 76.9,
+          "end": 82.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "실장님 계정은 내일 오전까지 문자로 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S038-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-14T10:00:00+09:00",
+      "title": "사용 후기 통화",
+      "owner_user_id": 18,
+      "visibility": "team",
+      "participant_contact_ids": [
+        "S038-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S038-I3-U00",
+          "start": 2.0,
+          "end": 14.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "여보세요, 대성카센터 실장입니다. 앱으로 한 달 써봤는데요, 재고 알림이 진짜 좋아요. 필터류가 떨어지기 전에 알림이 오니까.",
+          "contact_id": "S038-C2"
+        },
+        {
+          "id": "S038-I3-U01",
+          "start": 15.2,
+          "end": 20.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "도움이 되셨다니 다행입니다. 불편한 점은 없으세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I3-U02",
+          "start": 20.8,
+          "end": 29.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "수입차 부품은 없는 게 많아요. 사장님이 수입차도 많이 받으시니까 그게 아쉽다고 하세요.",
+          "contact_id": "S038-C2"
+        },
+        {
+          "id": "S038-I3-U03",
+          "start": 30.2,
+          "end": 41.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "수입차 부품은 주문 제작 방식이라 이틀에서 사흘 걸립니다. 자주 쓰는 품목 리스트를 주시면 재고로 들여놓겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I3-U04",
+          "start": 42.1,
+          "end": 50.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그럼 제가 자주 나가는 수입차 소모품 리스트를 정리해서 이번 주 금요일까지 보내드릴게요.",
+          "contact_id": "S038-C2"
+        },
+        {
+          "id": "S038-I3-U05",
+          "start": 51.5,
+          "end": 59.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 경리 사모님이 정산서 양식을 물어보시던데, 월말에 엑셀로 받을 수 있나요?",
+          "contact_id": "S038-C2"
+        },
+        {
+          "id": "S038-I3-U06",
+          "start": 60.2,
+          "end": 70.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "엑셀 정산서는 월말에 자동으로 메일이 갑니다. 이번 달 말 정산서부터 사모님 메일로 가게 설정해 둘게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S038-I3-U07",
+          "start": 71.2,
+          "end": 78.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "사장님이 요즘 손님이 늘어서 월 삼천오백까지 쓸 것 같다고 하셨어요.",
+          "contact_id": "S038-C2"
+        },
+        {
+          "id": "S038-I3-U08",
+          "start": 78.6,
+          "end": 88.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "참, 사모님이 보내주신 사업자등록증으로 심사한 외상 한도 천오백만 원은 이미 적용돼 있습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S038-F01",
+      "interaction_id": "S038-I1",
+      "type": "requirement",
+      "said_by": "S038-C1",
+      "content": "단골 부품상이 폐업해 새 부품 공급처를 찾고 있다.",
+      "source_utterance_ids": [
+        "S038-I1-U00"
+      ]
+    },
+    {
+      "id": "S038-F02",
+      "interaction_id": "S038-I1",
+      "type": "requirement",
+      "said_by": "S038-C1",
+      "content": "월 부품 매입이 약 2,800만 원이며 엔진오일, 필터, 브레이크 패드가 가장 많다.",
+      "source_utterance_ids": [
+        "S038-I1-U02"
+      ]
+    },
+    {
+      "id": "S038-F03",
+      "interaction_id": "S038-I1",
+      "type": "requirement",
+      "said_by": "S038-C1",
+      "content": "앱은 사장이 잘 몰라 정비 실장이 쓰게 할 예정이다.",
+      "source_utterance_ids": [
+        "S038-I1-U04"
+      ]
+    },
+    {
+      "id": "S038-F04",
+      "interaction_id": "S038-I1",
+      "type": "requirement",
+      "said_by": "S038-C1",
+      "content": "월말에 한꺼번에 정산하는 외상 거래가 필요하다.",
+      "source_utterance_ids": [
+        "S038-I1-U08"
+      ]
+    },
+    {
+      "id": "S038-F05",
+      "interaction_id": "S038-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "다음 주 화요일(9월 1일) 오후 2시에 가게를 방문해 앱을 시연하기로 했다.",
+      "source_utterance_ids": [
+        "S038-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-01",
+      "due_text": "다음 주 화요일 오후 두 시",
+      "status": "done",
+      "resolved_in": "S038-I2"
+    },
+    {
+      "id": "S038-F06",
+      "interaction_id": "S038-I2",
+      "type": "requirement",
+      "said_by": "S038-C2",
+      "content": "전화 주문은 차종이 잘못 전달되어 오배송·반품이 잦아, 차량 번호로 맞는 부품을 조회하는 기능이 필요하다.",
+      "source_utterance_ids": [
+        "S038-I2-U01"
+      ]
+    },
+    {
+      "id": "S038-F07",
+      "interaction_id": "S038-I2",
+      "type": "requirement",
+      "said_by": "S038-C1",
+      "content": "반품이 한 달에 열 건 넘게 생겨 처리가 번거롭다.",
+      "source_utterance_ids": [
+        "S038-I2-U02"
+      ]
+    },
+    {
+      "id": "S038-F08",
+      "interaction_id": "S038-I2",
+      "type": "price_reaction",
+      "said_by": "S038-C1",
+      "content": "브레이크 패드 앞 세트가 현재 58,000원인데 우리 52,000원 제안에 해볼 만하다고 했다.",
+      "source_utterance_ids": [
+        "S038-I2-U07",
+        "S038-I2-U09"
+      ]
+    },
+    {
+      "id": "S038-F09",
+      "interaction_id": "S038-I2",
+      "type": "decision",
+      "said_by": "S038-C1",
+      "content": "우선 소모품부터 앱으로 주문해 보기로 했다.",
+      "source_utterance_ids": [
+        "S038-I2-U09"
+      ]
+    },
+    {
+      "id": "S038-F10",
+      "interaction_id": "S038-I2",
+      "type": "promise",
+      "said_by": "S038-C3",
+      "content": "경리가 외상 한도 심사를 위해 사업자등록증 사진을 다음 날 보내기로 했다.",
+      "source_utterance_ids": [
+        "S038-I2-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-02",
+      "due_text": "내일",
+      "status": "done",
+      "resolved_in": "S038-I3"
+    },
+    {
+      "id": "S038-F11",
+      "interaction_id": "S038-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "정비 실장 앱 계정을 다음 날 오전까지 문자로 보내기로 했다.",
+      "source_utterance_ids": [
+        "S038-I2-U10"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-02",
+      "due_text": "내일 오전까지",
+      "status": "done",
+      "resolved_in": "S038-I3"
+    },
+    {
+      "id": "S038-F12",
+      "interaction_id": "S038-I3",
+      "type": "buying_signal",
+      "said_by": "S038-C2",
+      "content": "한 달 사용 후 재고 알림 기능이 매우 좋다고 했다.",
+      "source_utterance_ids": [
+        "S038-I3-U00"
+      ]
+    },
+    {
+      "id": "S038-F13",
+      "interaction_id": "S038-I3",
+      "type": "requirement",
+      "said_by": "S038-C2",
+      "content": "수입차 부품이 없는 품목이 많아 아쉽다. 수입차 부품은 주문 제작으로 2~3일이 걸린다.",
+      "source_utterance_ids": [
+        "S038-I3-U02",
+        "S038-I3-U03"
+      ]
+    },
+    {
+      "id": "S038-F14",
+      "interaction_id": "S038-I3",
+      "type": "promise",
+      "said_by": "S038-C2",
+      "content": "정비 실장이 자주 나가는 수입차 소모품 리스트를 이번 주 금요일(10월 16일)까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S038-I3-U04"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-16",
+      "due_text": "이번 주 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S038-F15",
+      "interaction_id": "S038-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "월말 엑셀 정산서를 이번 달 말분부터 경리 메일로 가게 설정하기로 했다.",
+      "source_utterance_ids": [
+        "S038-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-31",
+      "due_text": "이번 달 말 정산서부터",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S038-F16",
+      "interaction_id": "S038-I3",
+      "type": "purchase_timing",
+      "said_by": "S038-C2",
+      "content": "손님이 늘어 부품 사용이 월 3,500만 원까지 늘 것으로 본다.",
+      "source_utterance_ids": [
+        "S038-I3-U07"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S038-Q01",
+      "question": "대성카센터가 새 부품 거래처를 찾게 된 이유가 뭐야?",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I1-U00"
+      ],
+      "answer": "오래 거래하던 부품상이 가게를 접어서 새 공급처를 찾고 있다."
+    },
+    {
+      "id": "S038-Q02",
+      "question": "한 달에 부품을 얼마나 쓰고 뭐가 제일 많이 나가?",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I1-U02",
+        "S038-I3-U07"
+      ],
+      "answer": "월 약 2,800만 원이고 엔진오일, 필터, 브레이크 패드가 많으며 앞으로 월 3,500만 원까지 늘 전망이다."
+    },
+    {
+      "id": "S038-Q03",
+      "question": "브레이크 패드 가격 이야기는 어떻게 됐어?",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I2-U07",
+        "S038-I2-U08",
+        "S038-I2-U09"
+      ],
+      "answer": "현재 앞 한 세트 58,000원, 우리는 52,000원을 제시해 해볼 만하다는 반응을 얻었다."
+    },
+    {
+      "id": "S038-Q04",
+      "question": "앱에서 고객이 좋아한 점이 뭐였지?",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I2-U01",
+        "S038-I2-U03",
+        "S038-I3-U00"
+      ],
+      "answer": "차량 번호로 맞는 부품 조회, 사진 반품 수거, 재고 소진 전 알림을 좋아했다."
+    },
+    {
+      "id": "S038-Q05",
+      "question": "수입차 부품은 뭐가 문제였어?",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I3-U02",
+        "S038-I3-U03"
+      ],
+      "answer": "수입차 부품은 재고가 없는 게 많고 주문 제작이라 2~3일이 걸린다. 자주 쓰는 리스트를 받아 재고로 들여놓기로 했다."
+    },
+    {
+      "id": "S038-Q06",
+      "question": "아직 끝나지 않은 약속이 뭐가 있어?",
+      "kind": "structured",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_fact_ids": [
+        "S038-F14",
+        "S038-F15"
+      ],
+      "answer": "고객: 수입차 소모품 리스트(10/16). 우리: 월말 엑셀 정산서를 경리 메일로 설정(10/31)."
+    },
+    {
+      "id": "S038-Q07",
+      "question": "우리가 설정해 주기로 한 건 뭐야?",
+      "kind": "structured",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_fact_ids": [
+        "S038-F15"
+      ],
+      "answer": "월말 엑셀 정산서를 경리 메일로 자동 발송되게 설정하는 것이다."
+    },
+    {
+      "id": "S038-Q01-P1",
+      "question": "기존 부품 공급선과 관계가 끊기게 된 사정이 뭐였지?",
+      "paraphrase_of": "S038-Q01",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I1-U00"
+      ],
+      "answer": "오래 거래하던 부품상이 가게를 접어서 새 공급처를 찾고 있다."
+    },
+    {
+      "id": "S038-Q01-P2",
+      "question": "납품처를 갈아타려는 계기가 뭐라고 했어?",
+      "paraphrase_of": "S038-Q01",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I1-U00"
+      ],
+      "answer": "오래 거래하던 부품상이 가게를 접어서 새 공급처를 찾고 있다."
+    },
+    {
+      "id": "S038-Q02-P1",
+      "question": "매입 규모와 주력 소모품이 뭐고 앞으로 늘 거래?",
+      "paraphrase_of": "S038-Q02",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I1-U02",
+        "S038-I3-U07"
+      ],
+      "answer": "월 약 2,800만 원이고 엔진오일, 필터, 브레이크 패드가 많으며 앞으로 월 3,500만 원까지 늘 전망이다."
+    },
+    {
+      "id": "S038-Q02-P2",
+      "question": "지출 수준과 증가 전망을 알려줘",
+      "paraphrase_of": "S038-Q02",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I1-U02",
+        "S038-I3-U07"
+      ],
+      "answer": "월 약 2,800만 원이고 엔진오일, 필터, 브레이크 패드가 많으며 앞으로 월 3,500만 원까지 늘 전망이다."
+    },
+    {
+      "id": "S038-Q03-P1",
+      "question": "제동 용품 단가 비교가 어땠지?",
+      "paraphrase_of": "S038-Q03",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I2-U07",
+        "S038-I2-U08",
+        "S038-I2-U09"
+      ],
+      "answer": "현재 앞 한 세트 58,000원, 우리는 52,000원을 제시해 해볼 만하다는 반응을 얻었다."
+    },
+    {
+      "id": "S038-Q03-P2",
+      "question": "제동 패드 세트 값을 지금 거래처와 견준 결과가 뭐야?",
+      "paraphrase_of": "S038-Q03",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I2-U07",
+        "S038-I2-U08",
+        "S038-I2-U09"
+      ],
+      "answer": "현재 앞 한 세트 58,000원, 우리는 52,000원을 제시해 해볼 만하다는 반응을 얻었다."
+    },
+    {
+      "id": "S038-Q04-P1",
+      "question": "서비스의 장점으로 꼽은 기능이 뭐야?",
+      "paraphrase_of": "S038-Q04",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I2-U01",
+        "S038-I2-U03",
+        "S038-I3-U00"
+      ],
+      "answer": "차량 번호로 맞는 부품 조회, 사진 반품 수거, 재고 소진 전 알림을 좋아했다."
+    },
+    {
+      "id": "S038-Q04-P2",
+      "question": "써본 소감이 어땠는지 알려줘",
+      "paraphrase_of": "S038-Q04",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I2-U01",
+        "S038-I2-U03",
+        "S038-I3-U00"
+      ],
+      "answer": "차량 번호로 맞는 부품 조회, 사진 반품 수거, 재고 소진 전 알림을 좋아했다."
+    },
+    {
+      "id": "S038-Q05-P1",
+      "question": "외제차 관련 자재가 부족하다는 불만이 뭐였지?",
+      "paraphrase_of": "S038-Q05",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I3-U02",
+        "S038-I3-U03"
+      ],
+      "answer": "수입차 부품은 재고가 없는 게 많고 주문 제작이라 2~3일이 걸린다. 자주 쓰는 리스트를 받아 재고로 들여놓기로 했다."
+    },
+    {
+      "id": "S038-Q05-P2",
+      "question": "해외 브랜드 자재 납기 문제를 어떻게 하기로 했어?",
+      "paraphrase_of": "S038-Q05",
+      "kind": "semantic",
+      "company_id": "S038-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 18,
+      "relevant_utterance_ids": [
+        "S038-I3-U02",
+        "S038-I3-U03"
+      ],
+      "answer": "수입차 부품은 재고가 없는 게 많고 주문 제작이라 2~3일이 걸린다. 자주 쓰는 리스트를 받아 재고로 들여놓기로 했다."
+    }
+  ]
+}

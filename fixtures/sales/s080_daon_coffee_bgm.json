@@ -1,0 +1,722 @@
+{
+  "scenario_id": "S080",
+  "description": "카페 체인 본사에 매장 배경음악 구독과 스피커 설치 판매. 전국 120개 매장 제안이 본사 방침 변경으로 직영 40개로 축소(가맹점은 점주 개별 계약). 경쟁 서비스 가격(매장당 2만 2천 원)과 비교하며 월 구독료를 2만 9천 원에서 2만 6천 원, 2만 4천 원으로 여러 번 협상. 12월 한 달 파일럿.",
+  "fictional": true,
+  "as_of": "2026-11-06",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 32,
+    "team_id": 31,
+    "name": "길나연",
+    "company": "사운드라인",
+    "product": "매장 배경음악 구독·음향 설비"
+  },
+  "users": [
+    {
+      "user_id": 32,
+      "team_id": 31
+    }
+  ],
+  "company": {
+    "id": "S080-CO1",
+    "name": "다온커피",
+    "industry": "카페 체인 본사",
+    "size": "전국 120개 매장(직영 40, 가맹 80)"
+  },
+  "contacts": [
+    {
+      "id": "S080-C1",
+      "name": "구예린",
+      "title": "브랜드마케팅 팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S080-C2",
+      "name": "방준호",
+      "title": "운영팀 매니저",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S080-C3",
+      "name": "소영환",
+      "title": "구매 담당",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S080-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-27T15:00:00+09:00",
+      "title": "본사 브랜드팀 첫 미팅",
+      "owner_user_id": 32,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S080-C1",
+        "S080-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S080-I1-U00",
+          "start": 2.0,
+          "end": 12.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희가 전국에 매장이 120개인데, 지금은 매장마다 직원이 개인 플레이리스트를 틀어서 분위기가 제각각이에요.",
+          "contact_id": "S080-C1"
+        },
+        {
+          "id": "S080-I1-U01",
+          "start": 13.4,
+          "end": 23.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "브랜드 분위기에 맞춘 큐레이션 음원을 시간대별로 자동 송출하고 공연권료도 구독에 포함되어 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I1-U02",
+          "start": 23.9,
+          "end": 31.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "저작권 문제로 작년에 가맹점 한 곳이 민원을 받은 적도 있어서 그게 제일 커요.",
+          "contact_id": "S080-C2"
+        },
+        {
+          "id": "S080-I1-U03",
+          "start": 32.4,
+          "end": 43.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "매장 120개 기준 월 구독료는 매장당 2만 9천 원이고, 스피커 교체 안 하는 매장은 앱만 설치하시면 됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I1-U04",
+          "start": 44.2,
+          "end": 51.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "스피커 상태가 매장마다 달라서 일단 몇 군데 현장 점검을 해주실 수 있어요?",
+          "contact_id": "S080-C1"
+        },
+        {
+          "id": "S080-I1-U05",
+          "start": 52.4,
+          "end": 60.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "서울 직영점 다섯 곳을 9월 둘째 주에 점검하고 결과를 정리해서 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I1-U06",
+          "start": 60.7,
+          "end": 68.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 가맹점은 본사가 일괄 결제하는지 점주가 개별로 내는지 정해야 해요.",
+          "contact_id": "S080-C1"
+        }
+      ]
+    },
+    {
+      "id": "S080-I2",
+      "kind": "call",
+      "occurred_at": "2026-10-01T10:30:00+09:00",
+      "title": "점검 결과와 가격 협상 통화",
+      "owner_user_id": 32,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S080-C1",
+        "S080-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S080-I2-U00",
+          "start": 2.0,
+          "end": 10.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "점검 결과 고마워요. 서울 직영 다섯 곳 중 두 곳은 스피커 교체가 필요하다고 하셨죠.",
+          "contact_id": "S080-C1"
+        },
+        {
+          "id": "S080-I2-U01",
+          "start": 11.2,
+          "end": 18.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 두 곳은 천장 스피커가 고장이라 매장당 90만 원 교체비가 듭니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I2-U02",
+          "start": 19.0,
+          "end": 31.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "구매 담당 소영환입니다. 월 2만 9천 원이 120개면 연 4,176만 원인데, 경쟁 서비스가 매장당 2만 2천 원을 불렀어요.",
+          "contact_id": "S080-C3"
+        },
+        {
+          "id": "S080-I2-U03",
+          "start": 32.4,
+          "end": 43.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그쪽은 공연권료가 별도라 실제로는 비슷합니다. 그래도 연 계약이면 매장당 2만 6천 원으로 맞춰보겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I2-U04",
+          "start": 43.6,
+          "end": 52.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "2만 6천이면 120개 연 3,744만 원. 아직 높아요. 2만 3천 원 안 될까요?",
+          "contact_id": "S080-C3"
+        },
+        {
+          "id": "S080-I2-U05",
+          "start": 52.7,
+          "end": 62.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "2만 3천은 어렵습니다. 본사에 2만 4천 원 승인 요청해 보고 10월 8일까지 답드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I2-U06",
+          "start": 62.8,
+          "end": 74.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그리고 회사 방침이 바뀌어서 가맹점은 점주 개별 계약으로 가기로 했어요. 그럼 본사 직영 40개만 먼저 해야 해요.",
+          "contact_id": "S080-C1"
+        }
+      ]
+    },
+    {
+      "id": "S080-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-28T14:00:00+09:00",
+      "title": "직영점 파일럿 조건 확정 미팅",
+      "owner_user_id": 32,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S080-C3",
+        "S080-C2",
+        "S080-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S080-I3-U00",
+          "start": 2.0,
+          "end": 11.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "본사 승인받았습니다. 직영 40개 기준 매장당 월 2만 4천 원, 연 계약으로 하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I3-U01",
+          "start": 11.6,
+          "end": 21.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "40개면 연 1,152만 원이네요. 2만 4천 원이면 괜찮은데, 스피커 교체 비용은 얼마나 들어요?",
+          "contact_id": "S080-C3"
+        },
+        {
+          "id": "S080-I3-U02",
+          "start": 22.1,
+          "end": 36.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "교체가 필요한 매장이 점검한 5곳 중 2곳이니까, 40개 전체로는 열여섯 곳 정도로 보고 있어요. 매장당 90만 원이라 약 1,440만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I3-U03",
+          "start": 37.3,
+          "end": 43.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "교체비는 올해 예산이 없어서 내년 1월에 같이 청구해 주세요.",
+          "contact_id": "S080-C3"
+        },
+        {
+          "id": "S080-I3-U04",
+          "start": 44.0,
+          "end": 53.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "운영팀 방준호입니다. 설치는 매장 영업시간 외 새벽에 해야 하고, 매장별 일정 협의가 필요해요.",
+          "contact_id": "S080-C2"
+        },
+        {
+          "id": "S080-I3-U05",
+          "start": 54.1,
+          "end": 63.5,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "12월 한 달 파일럿으로 해서 반응 좋으면 내년 2월에 가맹점 희망자까지 확대하는 걸로 가죠.",
+          "contact_id": "S080-C1"
+        },
+        {
+          "id": "S080-I3-U06",
+          "start": 64.1,
+          "end": 70.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "계약서와 매장별 설치 일정표를 11월 13일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S080-I3-U07",
+          "start": 71.2,
+          "end": 75.9,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "매장 리스트는 저희가 11월 9일까지 드릴게요.",
+          "contact_id": "S080-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S080-F01",
+      "interaction_id": "S080-I1",
+      "type": "requirement",
+      "said_by": "S080-C1",
+      "content": "전국 120개 매장이 매장별 직원 개인 플레이리스트를 틀어 분위기가 제각각이라 브랜드에 맞는 통합 음악이 필요하다.",
+      "source_utterance_ids": [
+        "S080-I1-U00"
+      ]
+    },
+    {
+      "id": "S080-F02",
+      "interaction_id": "S080-I1",
+      "type": "requirement",
+      "said_by": "S080-C2",
+      "content": "작년 가맹점 한 곳이 음악 저작권 민원을 받아 저작권 문제 해결이 가장 중요하다.",
+      "source_utterance_ids": [
+        "S080-I1-U02"
+      ]
+    },
+    {
+      "id": "S080-F03",
+      "interaction_id": "S080-I1",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "120개 매장 기준 월 구독료를 매장당 2만 9천 원으로 안내했다.",
+      "source_utterance_ids": [
+        "S080-I1-U03"
+      ]
+    },
+    {
+      "id": "S080-F04",
+      "interaction_id": "S080-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "서울 직영점 5곳 스피커를 점검하고 결과를 정리해 준다.",
+      "source_utterance_ids": [
+        "S080-I1-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-11",
+      "due_text": "9월 둘째 주에",
+      "status": "done",
+      "resolved_in": "S080-I2"
+    },
+    {
+      "id": "S080-F05",
+      "interaction_id": "S080-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "고장 난 천장 스피커는 매장당 90만 원의 교체비가 든다.",
+      "source_utterance_ids": [
+        "S080-I2-U01"
+      ]
+    },
+    {
+      "id": "S080-F06",
+      "interaction_id": "S080-I2",
+      "type": "price_reaction",
+      "said_by": "S080-C3",
+      "content": "120개 연 4,176만 원은 높고, 경쟁 서비스는 매장당 2만 2천 원을 제시했다.",
+      "source_utterance_ids": [
+        "S080-I2-U02"
+      ]
+    },
+    {
+      "id": "S080-F07",
+      "interaction_id": "S080-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "경쟁사는 공연권료가 별도라며 연 계약 시 매장당 2만 6천 원을 제안했다.",
+      "source_utterance_ids": [
+        "S080-I2-U03"
+      ]
+    },
+    {
+      "id": "S080-F08",
+      "interaction_id": "S080-I2",
+      "type": "price_reaction",
+      "said_by": "S080-C3",
+      "content": "2만 6천 원도 높다며 2만 3천 원을 요구했다.",
+      "source_utterance_ids": [
+        "S080-I2-U04"
+      ]
+    },
+    {
+      "id": "S080-F09",
+      "interaction_id": "S080-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "2만 4천 원 승인을 요청하고 결과를 알려준다.",
+      "source_utterance_ids": [
+        "S080-I2-U05"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-08",
+      "due_text": "10월 8일까지",
+      "status": "done",
+      "resolved_in": "S080-I3"
+    },
+    {
+      "id": "S080-F10",
+      "interaction_id": "S080-I2",
+      "type": "requirement",
+      "said_by": "S080-C1",
+      "content": "가맹점은 점주 개별 계약으로 바뀌어 본사 직영 40개 매장만 먼저 진행한다.",
+      "source_utterance_ids": [
+        "S080-I2-U06"
+      ],
+      "supersedes": "S080-F01"
+    },
+    {
+      "id": "S080-F11",
+      "interaction_id": "S080-I3",
+      "type": "price_reaction",
+      "said_by": "S080-C3",
+      "content": "직영 40개 매장당 월 2만 4천 원, 연 1,152만 원이면 괜찮다고 했다.",
+      "source_utterance_ids": [
+        "S080-I3-U00",
+        "S080-I3-U01"
+      ]
+    },
+    {
+      "id": "S080-F12",
+      "interaction_id": "S080-I3",
+      "type": "price_reaction",
+      "said_by": "S080-C3",
+      "content": "스피커 교체비 약 1,440만 원은 올해 예산이 없어 내년 1월에 청구해 달라고 했다.",
+      "source_utterance_ids": [
+        "S080-I3-U03"
+      ]
+    },
+    {
+      "id": "S080-F13",
+      "interaction_id": "S080-I3",
+      "type": "requirement",
+      "said_by": "S080-C2",
+      "content": "설치는 영업시간 외 새벽에 해야 하고 매장별 일정 협의가 필요하다.",
+      "source_utterance_ids": [
+        "S080-I3-U04"
+      ]
+    },
+    {
+      "id": "S080-F14",
+      "interaction_id": "S080-I3",
+      "type": "decision",
+      "said_by": "S080-C1",
+      "content": "12월 한 달 파일럿 후 반응이 좋으면 내년 2월 가맹점 희망자까지 확대한다.",
+      "source_utterance_ids": [
+        "S080-I3-U05"
+      ]
+    },
+    {
+      "id": "S080-F15",
+      "interaction_id": "S080-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "계약서와 매장별 설치 일정표를 보낸다.",
+      "source_utterance_ids": [
+        "S080-I3-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-13",
+      "due_text": "11월 13일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S080-F16",
+      "interaction_id": "S080-I3",
+      "type": "promise",
+      "said_by": "S080-C1",
+      "content": "직영 매장 리스트를 준다.",
+      "source_utterance_ids": [
+        "S080-I3-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-11-09",
+      "due_text": "11월 9일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S080-Q01",
+      "question": "다온커피는 왜 배경음악 서비스를 알아보고 있어?",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I1-U00",
+        "S080-I1-U02"
+      ],
+      "answer": "매장마다 직원 개인 플레이리스트라 분위기가 제각각이고, 작년 가맹점 저작권 민원이 있어 저작권 해결이 가장 중요하다."
+    },
+    {
+      "id": "S080-Q02",
+      "question": "다온커피 가격 협상은 어떻게 진행됐어?",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I1-U03",
+        "S080-I2-U02",
+        "S080-I2-U03",
+        "S080-I2-U04",
+        "S080-I2-U05",
+        "S080-I3-U00",
+        "S080-I3-U01"
+      ],
+      "answer": "매장당 2만 9천 원에서 연 계약 2만 6천 원, 고객 2만 3천 원 요구, 2만 4천 원 본사 승인으로 직영 40개 연 1,152만 원에 수용했다."
+    },
+    {
+      "id": "S080-Q03",
+      "question": "다온커피가 비교하는 경쟁 서비스는 어때?",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U02",
+        "S080-I2-U03"
+      ],
+      "answer": "경쟁 서비스는 매장당 2만 2천 원을 불렀으나 공연권료가 별도라 실제 비용은 비슷하다고 설명했다."
+    },
+    {
+      "id": "S080-Q04",
+      "question": "다온커피 범위가 어떻게 줄었어?",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U06",
+        "S080-I3-U05"
+      ],
+      "answer": "가맹점은 점주 개별 계약으로 바뀌어 직영 40개만 먼저 하고, 12월 파일럿 뒤 내년 2월 확대를 본다."
+    },
+    {
+      "id": "S080-Q05",
+      "question": "다온커피 스피커 교체 비용은 어떻게 처리하기로 했어?",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U01",
+        "S080-I3-U02",
+        "S080-I3-U03"
+      ],
+      "answer": "교체 대상은 매장당 90만 원, 40개 중 약 16곳 1,440만 원이며 올해 예산이 없어 내년 1월에 청구한다."
+    },
+    {
+      "id": "S080-Q06",
+      "question": "다온커피에 우리가 보내야 할 서류는?",
+      "kind": "structured",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_fact_ids": [
+        "S080-F15"
+      ],
+      "answer": "11월 13일까지 계약서와 매장별 설치 일정표를 보내야 한다."
+    },
+    {
+      "id": "S080-Q07",
+      "question": "다온커피가 우리에게 주기로 한 건?",
+      "kind": "structured",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_fact_ids": [
+        "S080-F16"
+      ],
+      "answer": "구예린 팀장이 11월 9일까지 직영 매장 리스트를 주기로 했다."
+    },
+    {
+      "id": "S080-Q01-P1",
+      "question": "다온커피가 매장 음악을 통일하려는 이유는?",
+      "paraphrase_of": "S080-Q01",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I1-U00",
+        "S080-I1-U02"
+      ],
+      "answer": "매장마다 직원 개인 플레이리스트라 분위기가 제각각이고, 작년 가맹점 저작권 민원이 있어 저작권 해결이 가장 중요하다."
+    },
+    {
+      "id": "S080-Q01-P2",
+      "question": "다온커피 점포들의 노래 틀기에서 어떤 문제가 있었어?",
+      "paraphrase_of": "S080-Q01",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I1-U00",
+        "S080-I1-U02"
+      ],
+      "answer": "매장마다 직원 개인 플레이리스트라 분위기가 제각각이고, 작년 가맹점 저작권 민원이 있어 저작권 해결이 가장 중요하다."
+    },
+    {
+      "id": "S080-Q02-P1",
+      "question": "다온커피에 제시한 월 이용료가 어떻게 달라졌지?",
+      "paraphrase_of": "S080-Q02",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I1-U03",
+        "S080-I2-U02",
+        "S080-I2-U03",
+        "S080-I2-U04",
+        "S080-I2-U05",
+        "S080-I3-U00",
+        "S080-I3-U01"
+      ],
+      "answer": "매장당 2만 9천 원에서 연 계약 2만 6천 원, 고객 2만 3천 원 요구, 2만 4천 원 본사 승인으로 직영 40개 연 1,152만 원에 수용했다."
+    },
+    {
+      "id": "S080-Q02-P2",
+      "question": "다온커피와 단가 흥정 결과를 알려줘.",
+      "paraphrase_of": "S080-Q02",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I1-U03",
+        "S080-I2-U02",
+        "S080-I2-U03",
+        "S080-I2-U04",
+        "S080-I2-U05",
+        "S080-I3-U00",
+        "S080-I3-U01"
+      ],
+      "answer": "매장당 2만 9천 원에서 연 계약 2만 6천 원, 고객 2만 3천 원 요구, 2만 4천 원 본사 승인으로 직영 40개 연 1,152만 원에 수용했다."
+    },
+    {
+      "id": "S080-Q03-P1",
+      "question": "다온커피가 받아본 다른 업체 견적과 우리 반박은?",
+      "paraphrase_of": "S080-Q03",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U02",
+        "S080-I2-U03"
+      ],
+      "answer": "경쟁 서비스는 매장당 2만 2천 원을 불렀으나 공연권료가 별도라 실제 비용은 비슷하다고 설명했다."
+    },
+    {
+      "id": "S080-Q03-P2",
+      "question": "다온커피 구매 쪽이 들이댄 더 싼 곳은 어디 조건이야?",
+      "paraphrase_of": "S080-Q03",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U02",
+        "S080-I2-U03"
+      ],
+      "answer": "경쟁 서비스는 매장당 2만 2천 원을 불렀으나 공연권료가 별도라 실제 비용은 비슷하다고 설명했다."
+    },
+    {
+      "id": "S080-Q04-P1",
+      "question": "다온커피 전체 점포 대신 먼저 하는 곳은 어디야?",
+      "paraphrase_of": "S080-Q04",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U06",
+        "S080-I3-U05"
+      ],
+      "answer": "가맹점은 점주 개별 계약으로 바뀌어 직영 40개만 먼저 하고, 12월 파일럿 뒤 내년 2월 확대를 본다."
+    },
+    {
+      "id": "S080-Q04-P2",
+      "question": "다온커피에서 대상 매장이 줄어든 이유와 이후 계획은?",
+      "paraphrase_of": "S080-Q04",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U06",
+        "S080-I3-U05"
+      ],
+      "answer": "가맹점은 점주 개별 계약으로 바뀌어 직영 40개만 먼저 하고, 12월 파일럿 뒤 내년 2월 확대를 본다."
+    },
+    {
+      "id": "S080-Q05-P1",
+      "question": "다온커피 음향 장비 바꾸는 값은 누가 언제 내?",
+      "paraphrase_of": "S080-Q05",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U01",
+        "S080-I3-U02",
+        "S080-I3-U03"
+      ],
+      "answer": "교체 대상은 매장당 90만 원, 40개 중 약 16곳 1,440만 원이며 올해 예산이 없어 내년 1월에 청구한다."
+    },
+    {
+      "id": "S080-Q05-P2",
+      "question": "다온커피 낡은 확성 장치 교체 대금 일정은?",
+      "paraphrase_of": "S080-Q05",
+      "kind": "semantic",
+      "company_id": "S080-CO1",
+      "as_of": "2026-11-06",
+      "viewer_user_id": 32,
+      "relevant_utterance_ids": [
+        "S080-I2-U01",
+        "S080-I3-U02",
+        "S080-I3-U03"
+      ],
+      "answer": "교체 대상은 매장당 90만 원, 40개 중 약 16곳 1,440만 원이며 올해 예산이 없어 내년 1월에 청구한다."
+    }
+  ]
+}

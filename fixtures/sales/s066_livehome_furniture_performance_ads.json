@@ -1,0 +1,787 @@
+{
+  "scenario_id": "S066",
+  "description": "중견 가구 브랜드 온라인몰의 광고 대행 교체. 마케팅 팀장과 퍼포먼스 담당(같은 성 강 씨), 이사, 재무 4명이 동시에 말한다. 월 광고비 8천만원이 1억 2천만원으로, 쇼핑검색만에서 메타·릴스 추가로, ROAS 목표 400에서 350으로 바뀌고 수수료율 협상이 이어진다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 27,
+    "team_id": 26,
+    "name": "피수빈",
+    "company": "마켓부스터",
+    "product": "온라인 광고 대행·퍼포먼스 마케팅"
+  },
+  "users": [
+    {
+      "user_id": 27,
+      "team_id": 26
+    }
+  ],
+  "company": {
+    "id": "S066-CO1",
+    "name": "리브하임가구",
+    "industry": "가구 제조·온라인 판매",
+    "size": "직원 95명, 자체몰 연 매출 약 180억원"
+  },
+  "contacts": [
+    {
+      "id": "S066-C1",
+      "name": "정우진",
+      "title": "이사",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S066-C2",
+      "name": "강다혜",
+      "title": "마케팅팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S066-C3",
+      "name": "강민호",
+      "title": "퍼포먼스 마케팅 대리",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S066-C4",
+      "name": "송지후",
+      "title": "재무팀 과장",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S066-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-27T15:00:00+09:00",
+      "title": "첫 미팅",
+      "owner_user_id": 27,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S066-C2",
+        "S066-C1",
+        "S066-C3",
+        "S066-C4"
+      ],
+      "utterances": [
+        {
+          "id": "S066-I1-U00",
+          "start": 2.0,
+          "end": 10.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희가 소파랑 침대 프레임 만드는 브랜든데요, 지금 대행사 계약이 12월 말에 끝나요.",
+          "contact_id": "S066-C2"
+        },
+        {
+          "id": "S066-I1-U01",
+          "start": 11.2,
+          "end": 19.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "정우진 이사입니다. 올해 자체몰 매출이 180억인데 내년엔 20퍼센트 올리고 싶어요.",
+          "contact_id": "S066-C1"
+        },
+        {
+          "id": "S066-I1-U02",
+          "start": 20.3,
+          "end": 26.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지금 광고비는 어느 정도 쓰시고, 목표 수익률은 어떻게 보세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S066-I1-U03",
+          "start": 27.2,
+          "end": 34.4,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "월 8천만원 정도 쓰고 있고요, ROAS는 400퍼센트 유지가 목표예요.",
+          "contact_id": "S066-C3"
+        },
+        {
+          "id": "S066-I1-U04",
+          "start": 35.0,
+          "end": 46.2,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "민호 씨 말대로 네이버 쇼핑검색 위주고요, 지금 대행사는 보고가 월 단위라 답답했어요. 주 단위로 보고 싶어요.",
+          "contact_id": "S066-C2"
+        },
+        {
+          "id": "S066-I1-U05",
+          "start": 46.8,
+          "end": 54.5,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "재무 송지후입니다. 지금 수수료가 광고비의 15퍼센트인데 그게 좀 부담이에요.",
+          "contact_id": "S066-C4"
+        },
+        {
+          "id": "S066-I1-U06",
+          "start": 55.1,
+          "end": 61.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 광고비의 12퍼센트로 주간 리포트 포함해서 제안드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S066-I1-U07",
+          "start": 62.4,
+          "end": 68.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "12퍼센트면 나쁘진 않은데, 10퍼센트까지는 안 되나요?",
+          "contact_id": "S066-C1"
+        },
+        {
+          "id": "S066-I1-U08",
+          "start": 68.6,
+          "end": 70.9,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "저도 10이면 좋겠어요.",
+          "contact_id": "S066-C3"
+        },
+        {
+          "id": "S066-I1-U09",
+          "start": 71.5,
+          "end": 77.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "내부 확인해서 제안서에 반영해 다음 주 수요일까지 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S066-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-30T14:00:00+09:00",
+      "title": "제안서 설명",
+      "owner_user_id": 27,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S066-C1",
+        "S066-C2",
+        "S066-C3",
+        "S066-C4"
+      ],
+      "utterances": [
+        {
+          "id": "S066-I2-U00",
+          "start": 2.0,
+          "end": 14.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "제안서 보셨죠? 수수료는 11퍼센트로 조정했고, 기본 8퍼센트에 ROAS 400 초과분 성과 보너스 방식도 같이 넣었습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S066-I2-U01",
+          "start": 15.0,
+          "end": 25.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그건 좋은데 그 사이에 계획이 바뀌었어요. 블랙프라이데이 대비해서 월 광고비를 1억 2천으로 늘릴 겁니다.",
+          "contact_id": "S066-C1"
+        },
+        {
+          "id": "S066-I2-U02",
+          "start": 26.2,
+          "end": 33.4,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그리고 쇼핑검색만 하지 말고 메타랑 인스타 릴스도 같이 해 보고 싶어요.",
+          "contact_id": "S066-C2"
+        },
+        {
+          "id": "S066-I2-U03",
+          "start": 34.0,
+          "end": 42.8,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "ROAS 목표는 신규 채널 때문에 350으로 낮춰도 돼요. 대신 매출 규모가 중요합니다.",
+          "contact_id": "S066-C3"
+        },
+        {
+          "id": "S066-I2-U04",
+          "start": 43.4,
+          "end": 53.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "예산이 늘면 수수료는 10.5퍼센트까지 조정 가능합니다. 채널이 늘면 운영 인력이 한 명 더 붙고요.",
+          "contact_id": null
+        },
+        {
+          "id": "S066-I2-U05",
+          "start": 54.1,
+          "end": 57.3,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "10.5퍼센트면 연으로 얼마예요?",
+          "contact_id": "S066-C4"
+        },
+        {
+          "id": "S066-I2-U06",
+          "start": 57.9,
+          "end": 66.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 1.2억 기준 월 수수료 1,260만원이고, 연으로는 1억 5천만원 조금 넘습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S066-I2-U07",
+          "start": 67.1,
+          "end": 77.5,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "비교 견적을 한 곳 더 받아야 해서요. 결재는 이사님이 하시니까 다음 달 초 안에 정리해서 알려드릴게요.",
+          "contact_id": "S066-C4"
+        },
+        {
+          "id": "S066-I2-U08",
+          "start": 78.1,
+          "end": 83.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저는 11월 블프 전에 시작할 수 있으면 좋겠어요.",
+          "contact_id": "S066-C1"
+        }
+      ]
+    },
+    {
+      "id": "S066-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-28T14:00:00+09:00",
+      "title": "수수료 최종 조율",
+      "owner_user_id": 27,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S066-C1",
+        "S066-C4",
+        "S066-C2",
+        "S066-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S066-I3-U00",
+          "start": 2.0,
+          "end": 11.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "비교 견적 결과 말씀드리면, 한 곳은 10퍼센트에 주간 리포트인데 채널이 쇼핑검색뿐이에요.",
+          "contact_id": "S066-C1"
+        },
+        {
+          "id": "S066-I3-U01",
+          "start": 11.6,
+          "end": 25.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저희는 메타와 릴스까지 운영하고 크리에이티브 제작 월 4건이 포함이라서요. 10.5를 10퍼센트로 낮추는 대신 6개월 약정으로 가면 어떨까요?",
+          "contact_id": null
+        },
+        {
+          "id": "S066-I3-U02",
+          "start": 26.4,
+          "end": 39.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "6개월 약정이면 10퍼센트 가능합니다. 대신 ROAS 350 미달이 두 달 연속이면 수수료 1퍼센트포인트 감면 조항을 넣어 주세요.",
+          "contact_id": "S066-C4"
+        },
+        {
+          "id": "S066-I3-U03",
+          "start": 40.1,
+          "end": 48.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "감면 조항은 법무와 확인하겠습니다. 계약서 초안은 11월 6일까지 보내겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S066-I3-U04",
+          "start": 48.6,
+          "end": 56.9,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "계약 전에 11월 16일부터 4주 시범으로 먼저 해볼 수 있을까요? 블프 때문에요.",
+          "contact_id": "S066-C2"
+        },
+        {
+          "id": "S066-I3-U05",
+          "start": 57.5,
+          "end": 62.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "가능합니다. 시범 기간 수수료는 8퍼센트만 받겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S066-I3-U06",
+          "start": 63.5,
+          "end": 70.0,
+          "speaker": "SPEAKER_04",
+          "role": "customer",
+          "text": "그럼 광고 계정 접근 권한은 이번 주 금요일까지 제가 부여할게요.",
+          "contact_id": "S066-C3"
+        },
+        {
+          "id": "S066-I3-U07",
+          "start": 70.6,
+          "end": 75.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "본 계약은 12월 첫 주 결재를 목표로 갑시다.",
+          "contact_id": "S066-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S066-F01",
+      "interaction_id": "S066-I1",
+      "type": "requirement",
+      "said_by": "S066-C2",
+      "content": "현 대행사 계약이 12월 말에 끝나 교체를 검토한다.",
+      "source_utterance_ids": [
+        "S066-I1-U00"
+      ]
+    },
+    {
+      "id": "S066-F02",
+      "interaction_id": "S066-I1",
+      "type": "requirement",
+      "said_by": "S066-C3",
+      "content": "현재 월 광고비는 약 8천만원이다.",
+      "source_utterance_ids": [
+        "S066-I1-U03"
+      ]
+    },
+    {
+      "id": "S066-F03",
+      "interaction_id": "S066-I1",
+      "type": "requirement",
+      "said_by": "S066-C3",
+      "content": "목표 ROAS는 400%다.",
+      "source_utterance_ids": [
+        "S066-I1-U03"
+      ]
+    },
+    {
+      "id": "S066-F04",
+      "interaction_id": "S066-I1",
+      "type": "requirement",
+      "said_by": "S066-C2",
+      "content": "광고는 네이버 쇼핑검색 위주이고 월 단위 보고가 답답해 주간 보고를 원한다.",
+      "source_utterance_ids": [
+        "S066-I1-U04"
+      ]
+    },
+    {
+      "id": "S066-F05",
+      "interaction_id": "S066-I1",
+      "type": "price_reaction",
+      "said_by": "S066-C1",
+      "content": "12% 제안은 나쁘지 않지만 10%까지 낮추기를 원한다.",
+      "source_utterance_ids": [
+        "S066-I1-U07"
+      ]
+    },
+    {
+      "id": "S066-F06",
+      "interaction_id": "S066-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "수수료 조정을 반영한 제안서를 다음 주 수요일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S066-I1-U09"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-02",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S066-I2"
+    },
+    {
+      "id": "S066-F07",
+      "interaction_id": "S066-I1",
+      "type": "requirement",
+      "said_by": "S066-C4",
+      "content": "현 수수료는 광고비의 15%로 부담스럽다.",
+      "source_utterance_ids": [
+        "S066-I1-U05"
+      ]
+    },
+    {
+      "id": "S066-F08",
+      "interaction_id": "S066-I2",
+      "type": "requirement",
+      "said_by": "S066-C1",
+      "content": "블랙프라이데이 대비로 월 광고비를 1억 2천만원으로 늘린다.",
+      "source_utterance_ids": [
+        "S066-I2-U01"
+      ],
+      "supersedes": "S066-F02"
+    },
+    {
+      "id": "S066-F09",
+      "interaction_id": "S066-I2",
+      "type": "requirement",
+      "said_by": "S066-C2",
+      "content": "쇼핑검색뿐 아니라 메타와 인스타 릴스 광고도 함께 하고 싶다.",
+      "source_utterance_ids": [
+        "S066-I2-U02"
+      ],
+      "supersedes": "S066-F04"
+    },
+    {
+      "id": "S066-F10",
+      "interaction_id": "S066-I2",
+      "type": "requirement",
+      "said_by": "S066-C3",
+      "content": "신규 채널 때문에 목표 ROAS를 350%로 낮춰도 되고 매출 규모가 더 중요하다.",
+      "source_utterance_ids": [
+        "S066-I2-U03"
+      ],
+      "supersedes": "S066-F03"
+    },
+    {
+      "id": "S066-F11",
+      "interaction_id": "S066-I2",
+      "type": "promise",
+      "said_by": "S066-C4",
+      "content": "비교 견적을 한 곳 더 받아 다음 달 초 안에 알려주기로 했다.",
+      "source_utterance_ids": [
+        "S066-I2-U07"
+      ],
+      "owner": "customer",
+      "due_at": null,
+      "due_text": "다음 달 초 안에",
+      "status": "done",
+      "resolved_in": "S066-I3"
+    },
+    {
+      "id": "S066-F12",
+      "interaction_id": "S066-I3",
+      "type": "price_reaction",
+      "said_by": "S066-C1",
+      "content": "경쟁 업체는 10%에 주간 리포트를 주지만 쇼핑검색 채널뿐이다.",
+      "source_utterance_ids": [
+        "S066-I3-U00"
+      ]
+    },
+    {
+      "id": "S066-F13",
+      "interaction_id": "S066-I3",
+      "type": "decision",
+      "said_by": "S066-C4",
+      "content": "6개월 약정이면 수수료 10%를 받아들이되 ROAS 350 미달이 두 달 연속이면 1%포인트 감면 조항을 넣어달라고 했다.",
+      "source_utterance_ids": [
+        "S066-I3-U02"
+      ]
+    },
+    {
+      "id": "S066-F14",
+      "interaction_id": "S066-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "감면 조항을 확인하고 계약서 초안을 11월 6일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S066-I3-U03"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S066-F15",
+      "interaction_id": "S066-I3",
+      "type": "decision",
+      "said_by": "S066-C2",
+      "content": "11월 16일부터 4주간 시범 운영하기로 했고 시범 기간 수수료는 8%다.",
+      "source_utterance_ids": [
+        "S066-I3-U04",
+        "S066-I3-U05"
+      ]
+    },
+    {
+      "id": "S066-F16",
+      "interaction_id": "S066-I3",
+      "type": "promise",
+      "said_by": "S066-C3",
+      "content": "광고 계정 접근 권한을 이번 주 금요일까지 부여하기로 했다.",
+      "source_utterance_ids": [
+        "S066-I3-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-10-30",
+      "due_text": "이번 주 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S066-Q01",
+      "question": "리브하임가구가 지금 광고를 어떻게 운영하고 있어?",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U03",
+        "S066-I1-U04"
+      ],
+      "answer": "월 8천만원을 네이버 쇼핑검색 위주로 쓰고 ROAS 400%가 목표이며 보고가 월 단위라 불만이다."
+    },
+    {
+      "id": "S066-Q02",
+      "question": "수수료 협상은 어떻게 진행됐어?",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U05",
+        "S066-I1-U07",
+        "S066-I2-U00",
+        "S066-I2-U04",
+        "S066-I3-U00",
+        "S066-I3-U01",
+        "S066-I3-U02"
+      ],
+      "answer": "15% 부담 → 12% 제안 → 10% 요청 → 11%·10.5% 조정 → 경쟁사 10% → 6개월 약정 시 10%와 ROAS 미달 감면 조항."
+    },
+    {
+      "id": "S066-Q03",
+      "question": "처음 이야기와 비교해서 바뀐 요구가 뭐야?",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I2-U01",
+        "S066-I2-U02",
+        "S066-I2-U03"
+      ],
+      "answer": "월 광고비 8천만원에서 1.2억으로, 쇼핑검색에서 메타·릴스까지 확대, ROAS 목표 400에서 350으로 낮춤."
+    },
+    {
+      "id": "S066-Q04",
+      "question": "시범 운영은 어떻게 하기로 했어?",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I3-U04",
+        "S066-I3-U05",
+        "S066-I3-U07"
+      ],
+      "answer": "11월 16일부터 4주 시범, 시범 수수료 8%, 본 계약은 12월 첫 주 결재 목표."
+    },
+    {
+      "id": "S066-Q05",
+      "question": "재무 담당은 어떤 입장이야?",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U05",
+        "S066-I2-U07",
+        "S066-I3-U02"
+      ],
+      "answer": "수수료 15%가 부담이고 비교 견적을 받으며, 6개월 약정에 10%와 감면 조항을 조건으로 받아들였다."
+    },
+    {
+      "id": "S066-Q06",
+      "question": "아직 남은 약속이 뭐야?",
+      "kind": "structured",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_fact_ids": [
+        "S066-F14",
+        "S066-F16"
+      ],
+      "answer": "우리의 계약서 초안(11월 6일)과 고객의 광고 계정 권한 부여(10월 30일, 기한 경과)가 열려 있다."
+    },
+    {
+      "id": "S066-Q07",
+      "question": "고객이 지킨 약속은?",
+      "kind": "structured",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_fact_ids": [
+        "S066-F11"
+      ],
+      "answer": "비교 견적 결과는 10월 28일 회의에서 알려줬다."
+    },
+    {
+      "id": "S066-Q01-P1",
+      "question": "현재 마케팅 예산 규모와 주력 매체, 불만 사항은?",
+      "paraphrase_of": "S066-Q01",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U03",
+        "S066-I1-U04"
+      ],
+      "answer": "월 8천만원을 네이버 쇼핑검색 위주로 쓰고 ROAS 400%가 목표이며 보고가 월 단위라 불만이다."
+    },
+    {
+      "id": "S066-Q01-P2",
+      "question": "이 가구 회사의 기존 집행 상황을 알려줘.",
+      "paraphrase_of": "S066-Q01",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U03",
+        "S066-I1-U04"
+      ],
+      "answer": "월 8천만원을 네이버 쇼핑검색 위주로 쓰고 ROAS 400%가 목표이며 보고가 월 단위라 불만이다."
+    },
+    {
+      "id": "S066-Q02-P1",
+      "question": "대행 비율이 어떻게 오르내렸는지 순서대로 알려줘.",
+      "paraphrase_of": "S066-Q02",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U05",
+        "S066-I1-U07",
+        "S066-I2-U00",
+        "S066-I2-U04",
+        "S066-I3-U00",
+        "S066-I3-U01",
+        "S066-I3-U02"
+      ],
+      "answer": "15% 부담 → 12% 제안 → 10% 요청 → 11%·10.5% 조정 → 경쟁사 10% → 6개월 약정 시 10%와 ROAS 미달 감면 조항."
+    },
+    {
+      "id": "S066-Q02-P2",
+      "question": "퍼센트 조율 경과와 현재 합의선은?",
+      "paraphrase_of": "S066-Q02",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U05",
+        "S066-I1-U07",
+        "S066-I2-U00",
+        "S066-I2-U04",
+        "S066-I3-U00",
+        "S066-I3-U01",
+        "S066-I3-U02"
+      ],
+      "answer": "15% 부담 → 12% 제안 → 10% 요청 → 11%·10.5% 조정 → 경쟁사 10% → 6개월 약정 시 10%와 ROAS 미달 감면 조항."
+    },
+    {
+      "id": "S066-Q03-P1",
+      "question": "예산과 매체, 수익률 목표가 어떻게 달라졌지?",
+      "paraphrase_of": "S066-Q03",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I2-U01",
+        "S066-I2-U02",
+        "S066-I2-U03"
+      ],
+      "answer": "월 광고비 8천만원에서 1.2억으로, 쇼핑검색에서 메타·릴스까지 확대, ROAS 목표 400에서 350으로 낮춤."
+    },
+    {
+      "id": "S066-Q03-P2",
+      "question": "두 번째 회의에서 새로 나온 조건을 정리해줘.",
+      "paraphrase_of": "S066-Q03",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I2-U01",
+        "S066-I2-U02",
+        "S066-I2-U03"
+      ],
+      "answer": "월 광고비 8천만원에서 1.2억으로, 쇼핑검색에서 메타·릴스까지 확대, ROAS 목표 400에서 350으로 낮춤."
+    },
+    {
+      "id": "S066-Q04-P1",
+      "question": "본 계약 전에 먼저 해보는 기간과 비용 조건은?",
+      "paraphrase_of": "S066-Q04",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I3-U04",
+        "S066-I3-U05",
+        "S066-I3-U07"
+      ],
+      "answer": "11월 16일부터 4주 시범, 시범 수수료 8%, 본 계약은 12월 첫 주 결재 목표."
+    },
+    {
+      "id": "S066-Q04-P2",
+      "question": "블랙프라이데이 대응 사전 집행 계획이 뭐였지?",
+      "paraphrase_of": "S066-Q04",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I3-U04",
+        "S066-I3-U05",
+        "S066-I3-U07"
+      ],
+      "answer": "11월 16일부터 4주 시범, 시범 수수료 8%, 본 계약은 12월 첫 주 결재 목표."
+    },
+    {
+      "id": "S066-Q05-P1",
+      "question": "비용을 따지는 쪽 담당자가 요구한 사항은?",
+      "paraphrase_of": "S066-Q05",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U05",
+        "S066-I2-U07",
+        "S066-I3-U02"
+      ],
+      "answer": "수수료 15%가 부담이고 비교 견적을 받으며, 6개월 약정에 10%와 감면 조항을 조건으로 받아들였다."
+    },
+    {
+      "id": "S066-Q05-P2",
+      "question": "송 과장이 걸었던 조건을 모아줘.",
+      "paraphrase_of": "S066-Q05",
+      "kind": "semantic",
+      "company_id": "S066-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 27,
+      "relevant_utterance_ids": [
+        "S066-I1-U05",
+        "S066-I2-U07",
+        "S066-I3-U02"
+      ],
+      "answer": "수수료 15%가 부담이고 비교 견적을 받으며, 6개월 약정에 10%와 감면 조항을 조건으로 받아들였다."
+    }
+  ]
+}

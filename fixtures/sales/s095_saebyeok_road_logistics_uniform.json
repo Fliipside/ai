@@ -1,0 +1,707 @@
+{
+  "scenario_id": "S095",
+  "description": "물류 회사 현장직 방한복·작업복 납품. 120명에서 190명으로 인원이 바뀌고, 고객이 약속한 사이즈 조사표가 두 번 미뤄져 발주가 막힌 상태.",
+  "fictional": true,
+  "as_of": "2026-11-04",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 37,
+    "team_id": 36,
+    "name": "변우진",
+    "company": "유니폼하우스",
+    "product": "기업 유니폼·작업복 제작"
+  },
+  "users": [
+    {
+      "user_id": 37,
+      "team_id": 36
+    }
+  ],
+  "company": {
+    "id": "S095-CO1",
+    "name": "새벽로드물류",
+    "industry": "물류 회사 (현장직 유니폼)",
+    "size": "물류센터 현장직 120명, 신규 센터 70명 추가 예정"
+  },
+  "contacts": [
+    {
+      "id": "S095-C1",
+      "name": "곽민지",
+      "title": "인사총무팀 대리",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S095-C2",
+      "name": "도석환",
+      "title": "센터장",
+      "role_in_deal": "influencer"
+    },
+    {
+      "id": "S095-C3",
+      "name": "정현우",
+      "title": "구매팀 차장",
+      "role_in_deal": "procurement"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S095-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-27T14:00:00+09:00",
+      "title": "첫 미팅: 겨울 방한복·작업복",
+      "owner_user_id": 37,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S095-C1",
+        "S095-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S095-I1-U00",
+          "start": 2.0,
+          "end": 10.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저희 물류센터 현장직이 120명인데, 올겨울 방한복이랑 작업복을 새로 맞추려고요.",
+          "contact_id": "S095-C1"
+        },
+        {
+          "id": "S095-I1-U01",
+          "start": 10.7,
+          "end": 14.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지금 입으시는 건 몇 년 되셨나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S095-I1-U02",
+          "start": 14.7,
+          "end": 21.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "사 년 됐고요. 냉동 구역이 있어서 방한 기능이 제일 중요해요.",
+          "contact_id": "S095-C1"
+        },
+        {
+          "id": "S095-I1-U03",
+          "start": 21.6,
+          "end": 32.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "현장에서 말씀드리면, 지게차 타는 분들은 소매 안 걸리게 슬림핏이 낫고요. 야광 반사띠는 꼭 있어야 해요.",
+          "contact_id": "S095-C2"
+        },
+        {
+          "id": "S095-I1-U04",
+          "start": 32.8,
+          "end": 42.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "반사띠는 고휘도 반사 원단으로 넣고, 냉동 구역용은 영하 25도 내한 패딩으로 구성하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S095-I1-U05",
+          "start": 42.8,
+          "end": 49.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "색상은 짙은 네이비로 하고, 로고는 왼쪽 가슴이랑 등에 넣을게요.",
+          "contact_id": "S095-C1"
+        },
+        {
+          "id": "S095-I1-U06",
+          "start": 49.9,
+          "end": 58.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "좋습니다. 인원별 사이즈 조사표 양식을 드릴 테니 직원들 사이즈를 받아서 주시겠어요?",
+          "contact_id": null
+        },
+        {
+          "id": "S095-I1-U07",
+          "start": 59.0,
+          "end": 65.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 9월 11일 금요일까지 사이즈 조사표 작성해서 보내드릴게요.",
+          "contact_id": "S095-C1"
+        },
+        {
+          "id": "S095-I1-U08",
+          "start": 66.1,
+          "end": 77.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "저는 다음 주 화요일까지 원단 샘플이랑 단가표를 가져오겠습니다. 세트당 11만 8천 원 선으로 보시면 됩니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S095-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-15T10:30:00+09:00",
+      "title": "인원 증가와 단가 조정",
+      "owner_user_id": 37,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S095-C1",
+        "S095-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S095-I2-U00",
+          "start": 2.0,
+          "end": 12.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "샘플이랑 단가표는 잘 받았어요. 근데 사이즈 조사표는 아직 정리 중이에요. 신규 센터 인원이 합쳐져서요.",
+          "contact_id": "S095-C1"
+        },
+        {
+          "id": "S095-I2-U01",
+          "start": 13.0,
+          "end": 16.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "괜찮습니다. 인원이 어떻게 바뀌었나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S095-I2-U02",
+          "start": 17.4,
+          "end": 26.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "120명에서 190명으로 늘어요. 이천 신규 센터 직원 70명이 11월에 들어오거든요.",
+          "contact_id": "S095-C1"
+        },
+        {
+          "id": "S095-I2-U03",
+          "start": 26.6,
+          "end": 35.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "190명이면 세트 단가를 11만 8천 원에서 10만 5천 원으로 낮춰드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S095-I2-U04",
+          "start": 35.8,
+          "end": 43.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "구매팀 차장입니다. 천 명 넘는 규모도 아닌데, 9만 5천 원까지는 내려주셔야죠.",
+          "contact_id": "S095-C3"
+        },
+        {
+          "id": "S095-I2-U05",
+          "start": 44.5,
+          "end": 56.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "9만 8천 원까지 맞춰보겠습니다. 제작이 4주라서, 11월 20일 입고하려면 10월 20일에는 발주가 들어와야 해요.",
+          "contact_id": null
+        },
+        {
+          "id": "S095-I2-U06",
+          "start": 56.8,
+          "end": 62.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "알겠어요. 사이즈 조사표는 이번엔 진짜 9월 말까지 드릴게요.",
+          "contact_id": "S095-C1"
+        }
+      ]
+    },
+    {
+      "id": "S095-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-14T15:00:00+09:00",
+      "title": "발주 지연 협의",
+      "owner_user_id": 37,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S095-C1",
+        "S095-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S095-I3-U00",
+          "start": 2.0,
+          "end": 7.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "사이즈 조사표가 아직 안 와서 발주를 못 넣고 있는데요.",
+          "contact_id": null
+        },
+        {
+          "id": "S095-I3-U01",
+          "start": 8.2,
+          "end": 15.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "죄송해요. 센터별로 취합 중인데 이천 쪽이 아직 입사 전이라 늦어지고 있어요.",
+          "contact_id": "S095-C1"
+        },
+        {
+          "id": "S095-I3-U02",
+          "start": 16.5,
+          "end": 24.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "기존 120명 거라도 먼저 넣으면 안 돼요? 겨울이 빨라서 냉동 쪽은 급해요.",
+          "contact_id": "S095-C2"
+        },
+        {
+          "id": "S095-I3-U03",
+          "start": 24.8,
+          "end": 36.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "기존 120명분을 먼저 발주하시면 11월 중순 입고 가능합니다. 이천 70명분은 사이즈 오는 대로 2차로 하고요.",
+          "contact_id": null
+        },
+        {
+          "id": "S095-I3-U04",
+          "start": 36.7,
+          "end": 41.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "단가 9만 8천 원으로 보고 내부 결재 올릴게요.",
+          "contact_id": "S095-C1"
+        },
+        {
+          "id": "S095-I3-U05",
+          "start": 42.2,
+          "end": 48.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "120명분 사이즈는 이번 주 금요일까지 확실히 보내드릴게요.",
+          "contact_id": "S095-C1"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S095-F01",
+      "interaction_id": "S095-I1",
+      "type": "requirement",
+      "said_by": "S095-C1",
+      "content": "물류센터 현장직 120명의 방한복과 작업복을 올겨울 새로 맞춘다.",
+      "source_utterance_ids": [
+        "S095-I1-U00"
+      ]
+    },
+    {
+      "id": "S095-F02",
+      "interaction_id": "S095-I1",
+      "type": "requirement",
+      "said_by": "S095-C1",
+      "content": "4년 된 기존 옷을 교체하며 냉동 구역 때문에 방한 기능이 가장 중요하다.",
+      "source_utterance_ids": [
+        "S095-I1-U02"
+      ]
+    },
+    {
+      "id": "S095-F03",
+      "interaction_id": "S095-I1",
+      "type": "requirement",
+      "said_by": "S095-C2",
+      "content": "지게차 운전자를 위해 소매가 걸리지 않는 슬림핏과 야광 반사띠가 필수다.",
+      "source_utterance_ids": [
+        "S095-I1-U03"
+      ]
+    },
+    {
+      "id": "S095-F04",
+      "interaction_id": "S095-I1",
+      "type": "requirement",
+      "said_by": "S095-C1",
+      "content": "짙은 네이비 색상에 왼쪽 가슴과 등에 로고를 넣는다.",
+      "source_utterance_ids": [
+        "S095-I1-U05"
+      ]
+    },
+    {
+      "id": "S095-F05",
+      "interaction_id": "S095-I1",
+      "type": "promise",
+      "said_by": "S095-C1",
+      "content": "직원 사이즈 조사표를 작성해서 보낸다.",
+      "source_utterance_ids": [
+        "S095-I1-U07"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-11",
+      "due_text": "9월 11일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S095-F06",
+      "interaction_id": "S095-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "원단 샘플과 단가표를 가져간다. 세트당 약 11만 8천 원 안내.",
+      "source_utterance_ids": [
+        "S095-I1-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-01",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S095-I2"
+    },
+    {
+      "id": "S095-F07",
+      "interaction_id": "S095-I2",
+      "type": "requirement",
+      "said_by": "S095-C1",
+      "content": "이천 신규 센터 직원 70명이 11월에 합류해 대상이 120명에서 190명으로 늘어난다.",
+      "source_utterance_ids": [
+        "S095-I2-U02"
+      ],
+      "supersedes": "S095-F01"
+    },
+    {
+      "id": "S095-F08",
+      "interaction_id": "S095-I2",
+      "type": "price_reaction",
+      "said_by": "S095-C3",
+      "content": "190명 규모로 세트 단가 10만 5천 원은 부족하며 9만 5천 원까지 내려야 한다고 요구했다.",
+      "source_utterance_ids": [
+        "S095-I2-U03",
+        "S095-I2-U04"
+      ]
+    },
+    {
+      "id": "S095-F09",
+      "interaction_id": "S095-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "세트 단가를 9만 8천 원까지 맞춰보기로 했다.",
+      "source_utterance_ids": [
+        "S095-I2-U05"
+      ]
+    },
+    {
+      "id": "S095-F10",
+      "interaction_id": "S095-I2",
+      "type": "purchase_timing",
+      "said_by": "me",
+      "content": "제작에 4주가 걸려 11월 20일 입고하려면 10월 20일까지 발주가 필요하다.",
+      "source_utterance_ids": [
+        "S095-I2-U05"
+      ]
+    },
+    {
+      "id": "S095-F11",
+      "interaction_id": "S095-I2",
+      "type": "promise",
+      "said_by": "S095-C1",
+      "content": "사이즈 조사표를 9월 말까지 보낸다.",
+      "source_utterance_ids": [
+        "S095-I2-U06"
+      ],
+      "supersedes": "S095-F05",
+      "owner": "customer",
+      "due_at": "2026-09-30",
+      "due_text": "9월 말까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S095-F12",
+      "interaction_id": "S095-I3",
+      "type": "buying_signal",
+      "said_by": "S095-C2",
+      "content": "겨울이 빨라 냉동 구역 직원용은 급해서 기존 120명분을 먼저 발주하길 원한다.",
+      "source_utterance_ids": [
+        "S095-I3-U02"
+      ]
+    },
+    {
+      "id": "S095-F13",
+      "interaction_id": "S095-I3",
+      "type": "decision",
+      "said_by": "me",
+      "content": "기존 120명분을 먼저 발주해 11월 중순 입고하고 이천 70명분은 2차로 한다.",
+      "source_utterance_ids": [
+        "S095-I3-U03"
+      ]
+    },
+    {
+      "id": "S095-F14",
+      "interaction_id": "S095-I3",
+      "type": "decision",
+      "said_by": "S095-C1",
+      "content": "세트 단가 9만 8천 원으로 보고 내부 결재를 올린다.",
+      "source_utterance_ids": [
+        "S095-I3-U04"
+      ]
+    },
+    {
+      "id": "S095-F15",
+      "interaction_id": "S095-I3",
+      "type": "promise",
+      "said_by": "S095-C1",
+      "content": "기존 120명분 사이즈를 보낸다.",
+      "source_utterance_ids": [
+        "S095-I3-U05"
+      ],
+      "supersedes": "S095-F11",
+      "owner": "customer",
+      "due_at": "2026-10-16",
+      "due_text": "이번 주 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S095-Q01",
+      "question": "새벽로드물류 옷에서 현장이 요구한 게 뭐야?",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U02",
+        "S095-I1-U03",
+        "S095-I1-U04",
+        "S095-I1-U05"
+      ],
+      "answer": "냉동 구역 방한, 지게차용 슬림핏, 반사띠, 네이비색에 가슴·등 로고."
+    },
+    {
+      "id": "S095-Q02",
+      "question": "새벽로드물류 인원이 어떻게 바뀌었어?",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U00",
+        "S095-I2-U02"
+      ],
+      "answer": "120명에서 이천 신규 센터 70명이 11월에 합류해 190명으로 늘었다."
+    },
+    {
+      "id": "S095-Q03",
+      "question": "새벽로드물류 단가는 어디까지 내려왔어?",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U08",
+        "S095-I2-U03",
+        "S095-I2-U04",
+        "S095-I2-U05",
+        "S095-I3-U04"
+      ],
+      "answer": "세트당 11만 8천 원에서 10만 5천 원, 구매팀 요구 9만 5천 원을 거쳐 9만 8천 원으로 결재를 올리는 상태."
+    },
+    {
+      "id": "S095-Q04",
+      "question": "새벽로드물류 납기는 어떻게 잡혀 있어?",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I2-U05",
+        "S095-I3-U03"
+      ],
+      "answer": "제작 4주, 11월 20일 입고하려면 10월 20일 발주가 필요했고, 120명분 먼저 발주 시 11월 중순 입고, 이천분은 2차."
+    },
+    {
+      "id": "S095-Q05",
+      "question": "사이즈 조사표는 왜 계속 안 와?",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U07",
+        "S095-I2-U00",
+        "S095-I2-U06",
+        "S095-I3-U00",
+        "S095-I3-U01"
+      ],
+      "answer": "9월 11일, 9월 말로 미뤘으나 센터별 취합과 이천 신규 인원 문제로 계속 지연되어 발주가 막혔다."
+    },
+    {
+      "id": "S095-Q06",
+      "question": "새벽로드물류가 아직 안 한 약속은?",
+      "kind": "structured",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_fact_ids": [
+        "S095-F15"
+      ],
+      "answer": "기존 120명분 사이즈를 10월 16일까지 주기로 했으나 아직 확인되지 않았다."
+    },
+    {
+      "id": "S095-Q01-P1",
+      "question": "차가운 작업장과 장비 운전을 고려해 의복 사양으로 어떤 걸 원했지?",
+      "paraphrase_of": "S095-Q01",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U02",
+        "S095-I1-U03",
+        "S095-I1-U04",
+        "S095-I1-U05"
+      ],
+      "answer": "냉동 구역 방한, 지게차용 슬림핏, 반사띠, 네이비색에 가슴·등 로고."
+    },
+    {
+      "id": "S095-Q01-P2",
+      "question": "디자인과 기능 측면에서 센터장과 인사 담당이 요청한 사항은?",
+      "paraphrase_of": "S095-Q01",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U02",
+        "S095-I1-U03",
+        "S095-I1-U04",
+        "S095-I1-U05"
+      ],
+      "answer": "냉동 구역 방한, 지게차용 슬림핏, 반사띠, 네이비색에 가슴·등 로고."
+    },
+    {
+      "id": "S095-Q02-P1",
+      "question": "처음 대상 직원 수와 늘어난 이유가 뭐야?",
+      "paraphrase_of": "S095-Q02",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U00",
+        "S095-I2-U02"
+      ],
+      "answer": "120명에서 이천 신규 센터 70명이 11월에 합류해 190명으로 늘었다."
+    },
+    {
+      "id": "S095-Q02-P2",
+      "question": "새 지점 때문에 제작 수량이 얼마나 증가했어?",
+      "paraphrase_of": "S095-Q02",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U00",
+        "S095-I2-U02"
+      ],
+      "answer": "120명에서 이천 신규 센터 70명이 11월에 합류해 190명으로 늘었다."
+    },
+    {
+      "id": "S095-Q03-P1",
+      "question": "한 벌당 금액 조율 경과를 알려줘.",
+      "paraphrase_of": "S095-Q03",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U08",
+        "S095-I2-U03",
+        "S095-I2-U04",
+        "S095-I2-U05",
+        "S095-I3-U04"
+      ],
+      "answer": "세트당 11만 8천 원에서 10만 5천 원, 구매팀 요구 9만 5천 원을 거쳐 9만 8천 원으로 결재를 올리는 상태."
+    },
+    {
+      "id": "S095-Q03-P2",
+      "question": "구매 담당이 깎아달라고 한 금액과 우리가 맞춰준 금액은?",
+      "paraphrase_of": "S095-Q03",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U08",
+        "S095-I2-U03",
+        "S095-I2-U04",
+        "S095-I2-U05",
+        "S095-I3-U04"
+      ],
+      "answer": "세트당 11만 8천 원에서 10만 5천 원, 구매팀 요구 9만 5천 원을 거쳐 9만 8천 원으로 결재를 올리는 상태."
+    },
+    {
+      "id": "S095-Q04-P1",
+      "question": "주문 마감과 받을 수 있는 시점이 어떻게 돼?",
+      "paraphrase_of": "S095-Q04",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I2-U05",
+        "S095-I3-U03"
+      ],
+      "answer": "제작 4주, 11월 20일 입고하려면 10월 20일 발주가 필요했고, 120명분 먼저 발주 시 11월 중순 입고, 이천분은 2차."
+    },
+    {
+      "id": "S095-Q04-P2",
+      "question": "몇 주 걸려서 언제까지 주문해야 하고 분할 납품은 어떻게 하기로 했지?",
+      "paraphrase_of": "S095-Q04",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I2-U05",
+        "S095-I3-U03"
+      ],
+      "answer": "제작 4주, 11월 20일 입고하려면 10월 20일 발주가 필요했고, 120명분 먼저 발주 시 11월 중순 입고, 이천분은 2차."
+    },
+    {
+      "id": "S095-Q05-P1",
+      "question": "직원 치수 취합이 늦어지는 사정과 몇 번 미뤘는지 알려줘.",
+      "paraphrase_of": "S095-Q05",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U07",
+        "S095-I2-U00",
+        "S095-I2-U06",
+        "S095-I3-U00",
+        "S095-I3-U01"
+      ],
+      "answer": "9월 11일, 9월 말로 미뤘으나 센터별 취합과 이천 신규 인원 문제로 계속 지연되어 발주가 막혔다."
+    },
+    {
+      "id": "S095-Q05-P2",
+      "question": "고객이 준비해야 할 서류가 기한을 넘기는 이유는?",
+      "paraphrase_of": "S095-Q05",
+      "kind": "semantic",
+      "company_id": "S095-CO1",
+      "as_of": "2026-11-04",
+      "viewer_user_id": 37,
+      "relevant_utterance_ids": [
+        "S095-I1-U07",
+        "S095-I2-U00",
+        "S095-I2-U06",
+        "S095-I3-U00",
+        "S095-I3-U01"
+      ],
+      "answer": "9월 11일, 9월 말로 미뤘으나 센터별 취합과 이천 신규 인원 문제로 계속 지연되어 발주가 막혔다."
+    }
+  ]
+}

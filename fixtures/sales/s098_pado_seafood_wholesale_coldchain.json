@@ -1,0 +1,701 @@
+{
+  "scenario_id": "S098",
+  "description": "부산 수산물 도매 법인 대표(사투리)와 서울 가락시장행 냉동 운송 단가를 여러 번 협상하는 딜. 기존 업체 85만 원, 78 -> 72 -> 75 -> 73만 원이 오가고 최소 물량 약정 횟수를 두고 줄다리기한다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 38,
+    "team_id": 37,
+    "name": "소윤재",
+    "company": "프레시로드",
+    "product": "냉장·냉동 화물 운송"
+  },
+  "users": [
+    {
+      "user_id": 38,
+      "team_id": 37
+    }
+  ],
+  "company": {
+    "id": "S098-CO1",
+    "name": "파도수산유통",
+    "industry": "수산물 도매 법인",
+    "size": "직원 30명, 부산 본사"
+  },
+  "contacts": [
+    {
+      "id": "S098-C1",
+      "name": "표정수",
+      "title": "대표",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S098-C2",
+      "name": "남유리",
+      "title": "물류과장",
+      "role_in_deal": "influencer"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S098-I1",
+      "kind": "call",
+      "occurred_at": "2026-08-26T09:30:00+09:00",
+      "title": "대표 문의 전화: 부산-서울 냉동 운송 단가",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S098-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S098-I1-U00",
+          "start": 2.0,
+          "end": 12.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "어 윤재 씨, 내 파도수산인데, 부산서 서울로 냉동 생선 올리는 차 단가가 문제라서 전화했다 아이가.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I1-U01",
+          "start": 12.7,
+          "end": 16.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네 대표님, 지금은 어떻게 보내고 계세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S098-I1-U02",
+          "start": 17.4,
+          "end": 27.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "지금 업체는 5톤 냉동탑차로 일주일에 닷새, 하루 한 대 올리는데 한 대에 팔십오만 원 달라 카거든.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I1-U03",
+          "start": 28.1,
+          "end": 33.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "새벽에 서울 가락시장에 몇 시까지 도착해야 하죠?",
+          "contact_id": null
+        },
+        {
+          "id": "S098-I1-U04",
+          "start": 33.6,
+          "end": 40.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "새벽 두 시까진 가야 경매 전에 내린다. 늦으면 값 떨어진다 아이가.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I1-U05",
+          "start": 41.0,
+          "end": 49.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 저희가 한 대에 칠십팔만 원으로 맞춰보겠습니다. 온도 기록도 자동으로 보내드립니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S098-I1-U06",
+          "start": 50.4,
+          "end": 58.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "칠십팔만이면 괜찮네. 근데 실시간으로 온도 볼 수 있나? 요새 거래처가 자꾸 물어서.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I1-U07",
+          "start": 59.5,
+          "end": 70.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "앱으로 보시고 기록은 PDF로 뽑아드립니다. 다음 주 월요일까지 운임 견적서하고 샘플 온도 리포트 보내드릴게요.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S098-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-17T10:00:00+09:00",
+      "title": "견적 반응과 약정 조건 협상",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S098-C1",
+        "S098-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S098-I2-U00",
+          "start": 2.0,
+          "end": 10.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "견적 봤는데, 칠십팔만 원 너무 쎄다. 지금 업체가 팔십만 원으로 깎아준다 카데.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I2-U01",
+          "start": 10.7,
+          "end": 18.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "한 달에 스무 번 넘게 쓰시니까, 물량 약정 조건으로 칠십이만 원까지 드릴게요.",
+          "contact_id": null
+        },
+        {
+          "id": "S098-I2-U02",
+          "start": 19.2,
+          "end": 23.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "약정은 부담이다. 비수기에 물량 줄면 우짜노.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I2-U03",
+          "start": 24.3,
+          "end": 34.6,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "물류과장입니다. 저희는 월 18회에서 24회 왔다갔다 해요. 최소 보장은 15회 정도까지만 가능합니다.",
+          "contact_id": "S098-C2"
+        },
+        {
+          "id": "S098-I2-U04",
+          "start": 35.2,
+          "end": 40.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 15회 최소 보장이면 칠십오만 원으로 하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S098-I2-U05",
+          "start": 41.0,
+          "end": 50.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "칠십오만 원, 한번 생각해 보께. 추석 지나서 물량 많아지니까 10월부터 시작하면 되겠다.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I2-U06",
+          "start": 50.6,
+          "end": 58.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "제가 지난 석 달 출하 실적을 엑셀로 9월 24일 목요일까지 보내드릴게요.",
+          "contact_id": "S098-C2"
+        }
+      ]
+    },
+    {
+      "id": "S098-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-29T09:30:00+09:00",
+      "title": "최종 단가 줄다리기",
+      "owner_user_id": 38,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S098-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S098-I3-U00",
+          "start": 2.0,
+          "end": 8.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "대표님, 출하 실적 잘 받았습니다. 석 달 평균 월 21회네요.",
+          "contact_id": null
+        },
+        {
+          "id": "S098-I3-U01",
+          "start": 8.9,
+          "end": 13.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그래, 근데 칠십이만 원 부른 데가 따로 있다.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I3-U02",
+          "start": 14.2,
+          "end": 18.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "월 20회 약정에 칠십삼만 원이면 어떻습니까?",
+          "contact_id": null
+        },
+        {
+          "id": "S098-I3-U03",
+          "start": 19.3,
+          "end": 23.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "칠십이만 원에 월 18회 약정이믄 계약한다.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I3-U04",
+          "start": 24.2,
+          "end": 33.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "칠십이만 원은 회사 승인이 필요해서요. 11월 6일 금요일까지 확인해서 연락드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S098-I3-U05",
+          "start": 33.6,
+          "end": 43.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "계약만 되면 11월 9일 월요일 첫차부터 올릴게. 부산 상차장에는 밤 열두 시 반까지 차 대달라 캐라.",
+          "contact_id": "S098-C1"
+        },
+        {
+          "id": "S098-I3-U06",
+          "start": 44.5,
+          "end": 49.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네 알겠습니다. 그 시간에 맞춰 배차 준비하겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S098-F01",
+      "interaction_id": "S098-I1",
+      "type": "requirement",
+      "said_by": "S098-C1",
+      "content": "부산에서 서울로 냉동 생선을 5톤 냉동탑차로 주 5일, 하루 한 대 올린다.",
+      "source_utterance_ids": [
+        "S098-I1-U00",
+        "S098-I1-U02"
+      ]
+    },
+    {
+      "id": "S098-F02",
+      "interaction_id": "S098-I1",
+      "type": "price_reaction",
+      "said_by": "S098-C1",
+      "content": "기존 업체는 한 대에 85만 원을 받아 단가가 부담이다.",
+      "source_utterance_ids": [
+        "S098-I1-U02"
+      ]
+    },
+    {
+      "id": "S098-F03",
+      "interaction_id": "S098-I1",
+      "type": "requirement",
+      "said_by": "S098-C1",
+      "content": "새벽 2시까지 서울 가락시장에 도착해야 경매 전에 내릴 수 있다.",
+      "source_utterance_ids": [
+        "S098-I1-U04"
+      ]
+    },
+    {
+      "id": "S098-F04",
+      "interaction_id": "S098-I1",
+      "type": "decision",
+      "said_by": "me",
+      "content": "한 대 78만 원에 온도 기록 자동 전송을 포함해 첫 제안을 했다.",
+      "source_utterance_ids": [
+        "S098-I1-U05"
+      ]
+    },
+    {
+      "id": "S098-F05",
+      "interaction_id": "S098-I1",
+      "type": "requirement",
+      "said_by": "S098-C1",
+      "content": "거래처가 묻는 일이 잦아 실시간 온도 확인이 필요하다.",
+      "source_utterance_ids": [
+        "S098-I1-U06"
+      ]
+    },
+    {
+      "id": "S098-F06",
+      "interaction_id": "S098-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "운임 견적서와 샘플 온도 리포트를 보낸다.",
+      "source_utterance_ids": [
+        "S098-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-08-31",
+      "due_text": "다음 주 월요일까지",
+      "status": "done",
+      "resolved_in": "S098-I2"
+    },
+    {
+      "id": "S098-F07",
+      "interaction_id": "S098-I2",
+      "type": "price_reaction",
+      "said_by": "S098-C1",
+      "content": "78만 원은 비싸다. 기존 업체가 80만 원으로 깎아주겠다고 한다.",
+      "source_utterance_ids": [
+        "S098-I2-U00"
+      ]
+    },
+    {
+      "id": "S098-F08",
+      "interaction_id": "S098-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "물량 약정 조건으로 72만 원까지 제안했다.",
+      "source_utterance_ids": [
+        "S098-I2-U01"
+      ]
+    },
+    {
+      "id": "S098-F09",
+      "interaction_id": "S098-I2",
+      "type": "requirement",
+      "said_by": "S098-C2",
+      "content": "월 18~24회 운행하며 최소 보장은 15회까지만 가능하다.",
+      "source_utterance_ids": [
+        "S098-I2-U03"
+      ]
+    },
+    {
+      "id": "S098-F10",
+      "interaction_id": "S098-I2",
+      "type": "decision",
+      "said_by": "me",
+      "content": "월 15회 최소 보장 조건으로 75만 원을 제안했다.",
+      "source_utterance_ids": [
+        "S098-I2-U04"
+      ]
+    },
+    {
+      "id": "S098-F11",
+      "interaction_id": "S098-I2",
+      "type": "purchase_timing",
+      "said_by": "S098-C1",
+      "content": "추석 이후 물량이 늘어나므로 10월부터 시작하면 된다.",
+      "source_utterance_ids": [
+        "S098-I2-U05"
+      ]
+    },
+    {
+      "id": "S098-F12",
+      "interaction_id": "S098-I2",
+      "type": "promise",
+      "said_by": "S098-C2",
+      "content": "지난 3개월 출하 실적을 엑셀로 보낸다.",
+      "source_utterance_ids": [
+        "S098-I2-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-24",
+      "due_text": "9월 24일 목요일까지",
+      "status": "done",
+      "resolved_in": "S098-I3"
+    },
+    {
+      "id": "S098-F13",
+      "interaction_id": "S098-I3",
+      "type": "price_reaction",
+      "said_by": "S098-C1",
+      "content": "다른 곳이 72만 원을 불렀다며 72만 원에 월 18회 약정이면 계약하겠다고 했다.",
+      "source_utterance_ids": [
+        "S098-I3-U01",
+        "S098-I3-U03"
+      ]
+    },
+    {
+      "id": "S098-F14",
+      "interaction_id": "S098-I3",
+      "type": "decision",
+      "said_by": "me",
+      "content": "월 20회 약정에 73만 원을 역제안했다. 3개월 평균 월 21회.",
+      "source_utterance_ids": [
+        "S098-I3-U00",
+        "S098-I3-U02"
+      ]
+    },
+    {
+      "id": "S098-F15",
+      "interaction_id": "S098-I3",
+      "type": "purchase_timing",
+      "said_by": "S098-C1",
+      "content": "계약되면 11월 9일 월요일 첫차부터 운행하며 부산 상차장 도착은 밤 12시 반이다.",
+      "source_utterance_ids": [
+        "S098-I3-U05"
+      ],
+      "supersedes": "S098-F11"
+    },
+    {
+      "id": "S098-F16",
+      "interaction_id": "S098-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "72만 원 조건의 회사 승인 여부를 확인해 연락한다.",
+      "source_utterance_ids": [
+        "S098-I3-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-06",
+      "due_text": "11월 6일 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S098-Q01",
+      "question": "파도수산은 지금 어떻게 운송하고 있고 비용이 얼마야?",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U02",
+        "S098-I1-U04"
+      ],
+      "answer": "5톤 냉동탑차 주 5일 하루 한 대, 기존 업체 한 대 85만 원. 새벽 2시까지 가락시장 도착."
+    },
+    {
+      "id": "S098-Q02",
+      "question": "파도수산 단가 협상 경과는?",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U05",
+        "S098-I2-U00",
+        "S098-I2-U01",
+        "S098-I2-U04",
+        "S098-I3-U02",
+        "S098-I3-U03"
+      ],
+      "answer": "78만 원 제안 후 기존 업체 80만 원 맞대응, 72만 원(약정), 15회 보장 75만 원, 최종 우리는 20회 73만 원 vs 고객은 18회 72만 원."
+    },
+    {
+      "id": "S098-Q03",
+      "question": "월 최소 운행 횟수는 어떻게 논의됐어?",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I2-U02",
+        "S098-I2-U03",
+        "S098-I2-U04",
+        "S098-I3-U00",
+        "S098-I3-U03"
+      ],
+      "answer": "비수기 걱정에 약정을 꺼렸고 평균 18~24회, 최소 보장 15회 가능. 3개월 평균 21회, 고객은 18회 약정을 요구."
+    },
+    {
+      "id": "S098-Q04",
+      "question": "파도수산은 온도 관리에서 뭘 원해?",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U06",
+        "S098-I1-U07"
+      ],
+      "answer": "거래처 문의 때문에 실시간 온도 확인이 필요하다. 앱 확인과 PDF 기록으로 제공."
+    },
+    {
+      "id": "S098-Q05",
+      "question": "파도수산 운행은 언제부터 시작해?",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I3-U05",
+        "S098-I2-U05"
+      ],
+      "answer": "처음엔 10월 시작 예정이었으나 계약이 늦어져 11월 9일 월요일 첫차, 부산 상차장에 밤 12시 반 도착."
+    },
+    {
+      "id": "S098-Q06",
+      "question": "파도수산에 내가 아직 안 한 약속은?",
+      "kind": "structured",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_fact_ids": [
+        "S098-F16"
+      ],
+      "answer": "72만 원 조건의 회사 승인 확인 후 11월 6일까지 대표에게 연락해야 한다."
+    },
+    {
+      "id": "S098-Q01-P1",
+      "question": "지금 거래 중인 차량 규모와 운임, 도착 시한을 알려줘.",
+      "paraphrase_of": "S098-Q01",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U02",
+        "S098-I1-U04"
+      ],
+      "answer": "5톤 냉동탑차 주 5일 하루 한 대, 기존 업체 한 대 85만 원. 새벽 2시까지 가락시장 도착."
+    },
+    {
+      "id": "S098-Q01-P2",
+      "question": "수산 대표가 불만인 현재 물류 방식의 조건은?",
+      "paraphrase_of": "S098-Q01",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U02",
+        "S098-I1-U04"
+      ],
+      "answer": "5톤 냉동탑차 주 5일 하루 한 대, 기존 업체 한 대 85만 원. 새벽 2시까지 가락시장 도착."
+    },
+    {
+      "id": "S098-Q02-P1",
+      "question": "제안 금액이 몇 번 바뀌었고 지금 양쪽 입장 차이가 뭐야?",
+      "paraphrase_of": "S098-Q02",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U05",
+        "S098-I2-U00",
+        "S098-I2-U01",
+        "S098-I2-U04",
+        "S098-I3-U02",
+        "S098-I3-U03"
+      ],
+      "answer": "78만 원 제안 후 기존 업체 80만 원 맞대응, 72만 원(약정), 15회 보장 75만 원, 최종 우리는 20회 73만 원 vs 고객은 18회 72만 원."
+    },
+    {
+      "id": "S098-Q02-P2",
+      "question": "운임 흥정이 어디까지 갔는지 순서대로 알려줘.",
+      "paraphrase_of": "S098-Q02",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U05",
+        "S098-I2-U00",
+        "S098-I2-U01",
+        "S098-I2-U04",
+        "S098-I3-U02",
+        "S098-I3-U03"
+      ],
+      "answer": "78만 원 제안 후 기존 업체 80만 원 맞대응, 72만 원(약정), 15회 보장 75만 원, 최종 우리는 20회 73만 원 vs 고객은 18회 72만 원."
+    },
+    {
+      "id": "S098-Q03-P1",
+      "question": "일정 횟수 이상 쓰겠다고 묶는 조건에 대한 고객 반응은?",
+      "paraphrase_of": "S098-Q03",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I2-U02",
+        "S098-I2-U03",
+        "S098-I2-U04",
+        "S098-I3-U00",
+        "S098-I3-U03"
+      ],
+      "answer": "비수기 걱정에 약정을 꺼렸고 평균 18~24회, 최소 보장 15회 가능. 3개월 평균 21회, 고객은 18회 약정을 요구."
+    },
+    {
+      "id": "S098-Q03-P2",
+      "question": "계약 때 보장하는 운행 건수 논의를 정리해줘.",
+      "paraphrase_of": "S098-Q03",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I2-U02",
+        "S098-I2-U03",
+        "S098-I2-U04",
+        "S098-I3-U00",
+        "S098-I3-U03"
+      ],
+      "answer": "비수기 걱정에 약정을 꺼렸고 평균 18~24회, 최소 보장 15회 가능. 3개월 평균 21회, 고객은 18회 약정을 요구."
+    },
+    {
+      "id": "S098-Q04-P1",
+      "question": "화물 상태를 바로 확인하고 증빙하는 기능에 대한 요구는?",
+      "paraphrase_of": "S098-Q04",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U06",
+        "S098-I1-U07"
+      ],
+      "answer": "거래처 문의 때문에 실시간 온도 확인이 필요하다. 앱 확인과 PDF 기록으로 제공."
+    },
+    {
+      "id": "S098-Q04-P2",
+      "question": "차량 내부 냉기 수치 확인 방식으로 약속한 건 뭐야?",
+      "paraphrase_of": "S098-Q04",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I1-U06",
+        "S098-I1-U07"
+      ],
+      "answer": "거래처 문의 때문에 실시간 온도 확인이 필요하다. 앱 확인과 PDF 기록으로 제공."
+    },
+    {
+      "id": "S098-Q05-P1",
+      "question": "첫 배차일과 상차 시각이 어떻게 돼?",
+      "paraphrase_of": "S098-Q05",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I3-U05",
+        "S098-I2-U05"
+      ],
+      "answer": "처음엔 10월 시작 예정이었으나 계약이 늦어져 11월 9일 월요일 첫차, 부산 상차장에 밤 12시 반 도착."
+    },
+    {
+      "id": "S098-Q05-P2",
+      "question": "개시 시기가 처음 말과 달라졌는지 알려줘.",
+      "paraphrase_of": "S098-Q05",
+      "kind": "semantic",
+      "company_id": "S098-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 38,
+      "relevant_utterance_ids": [
+        "S098-I3-U05",
+        "S098-I2-U05"
+      ],
+      "answer": "처음엔 10월 시작 예정이었으나 계약이 늦어져 11월 9일 월요일 첫차, 부산 상차장에 밤 12시 반 도착."
+    }
+  ]
+}

@@ -1,0 +1,691 @@
+{
+  "scenario_id": "S078",
+  "description": "골프장 코스관리팀에 잔디 비료와 드론 방제 판매. 대화에서 이름 대신 직함(팀장님, 총무과장, 상무님)으로만 부르는 사람 알아보기 시험. 라지패치 방제와 월동 전 칼리 시비. 가격을 묶음으로 협상해 연 6,200만 원에 계약 성사(won).",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "won",
+  "seller": {
+    "user_id": 31,
+    "team_id": 30,
+    "name": "석진우",
+    "company": "팜그로우",
+    "product": "비료·농자재·드론 방제"
+  },
+  "users": [
+    {
+      "user_id": 31,
+      "team_id": 30
+    }
+  ],
+  "company": {
+    "id": "S078-CO1",
+    "name": "솔뫼컨트리클럽",
+    "industry": "골프장 잔디 관리팀",
+    "size": "18홀 회원제 골프장"
+  },
+  "contacts": [
+    {
+      "id": "S078-C1",
+      "name": "한도윤",
+      "title": "코스관리팀장",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S078-C2",
+      "name": "서미경",
+      "title": "총무과장",
+      "role_in_deal": "procurement"
+    },
+    {
+      "id": "S078-C3",
+      "name": "장태석",
+      "title": "운영 상무",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S078-I1",
+      "kind": "meeting",
+      "occurred_at": "2026-08-26T10:00:00+09:00",
+      "title": "코스관리팀 현장 상담",
+      "owner_user_id": 31,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S078-C1",
+        "S078-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S078-I1-U00",
+          "start": 2.0,
+          "end": 11.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "저는 코스관리 팀장입니다. 가을 라지패치가 작년에 그린 둘레랑 페어웨이 3번 홀 쪽에 크게 왔어요.",
+          "contact_id": "S078-C1"
+        },
+        {
+          "id": "S078-I1-U01",
+          "start": 12.5,
+          "end": 16.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "지금 쓰시는 살균제 주기는 어떻게 되세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S078-I1-U02",
+          "start": 17.2,
+          "end": 24.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "3주에 한 번 뿌리는데 인력이 부족해서 18홀 다 돌리는 데 이틀씩 걸립니다.",
+          "contact_id": "S078-C1"
+        },
+        {
+          "id": "S078-I1-U03",
+          "start": 25.5,
+          "end": 33.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "드론으로 하시면 18홀 한나절이면 끝납니다. 살균제 방제는 회당 280만 원입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S078-I1-U04",
+          "start": 34.4,
+          "end": 43.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "총무과장입니다. 팀장님이 제안서 달라고 하셔서 왔는데, 연간으로 계약하면 단가가 어떻게 되나요?",
+          "contact_id": "S078-C2"
+        },
+        {
+          "id": "S078-I1-U05",
+          "start": 44.5,
+          "end": 51.9,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "연간 계약이면 방제 회당 250만 원, 비료는 별도 견적으로 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S078-I1-U06",
+          "start": 52.5,
+          "end": 59.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "비료는 우리가 지금 질소 위주인데, 겨울 대비해서 칼리를 늘리고 싶어요.",
+          "contact_id": "S078-C1"
+        },
+        {
+          "id": "S078-I1-U07",
+          "start": 60.3,
+          "end": 66.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "칼리 강화 시비 설계안을 9월 둘째 주 금요일까지 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S078-I2",
+      "kind": "call",
+      "occurred_at": "2026-09-30T16:00:00+09:00",
+      "title": "묶음 가격 협의 통화",
+      "owner_user_id": 31,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S078-C1",
+        "S078-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S078-I2-U00",
+          "start": 2.0,
+          "end": 12.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "시비 설계안은 잘 받았습니다. 상무님께도 보고드렸는데 방제랑 비료를 묶어서 한 번에 가격을 달라고 하세요.",
+          "contact_id": "S078-C1"
+        },
+        {
+          "id": "S078-I2-U01",
+          "start": 13.2,
+          "end": 23.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "방제 연 8회에 비료 일체를 묶으면 연 6,800만 원인데 묶음 할인으로 6,400만 원까지 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S078-I2-U02",
+          "start": 24.2,
+          "end": 34.3,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "상무입니다. 6,400이면 올해 계획된 예산 6,000만 원을 넘어요. 6,000에 맞출 수 없나요?",
+          "contact_id": "S078-C3"
+        },
+        {
+          "id": "S078-I2-U03",
+          "start": 34.9,
+          "end": 42.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "6,000은 어렵고 6,200만 원에 드론 방제 한 회를 서비스로 넣겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S078-I2-U04",
+          "start": 43.2,
+          "end": 52.9,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "시즌이 11월에 끝나니까 가을 비료는 올해 예산, 방제는 내년 예산으로 나눠서 계약하면 되겠네요.",
+          "contact_id": "S078-C3"
+        },
+        {
+          "id": "S078-I2-U05",
+          "start": 53.5,
+          "end": 59.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그렇게 두 건으로 나눠서 계약서를 10월 중순까지 드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S078-I3",
+      "kind": "meeting",
+      "occurred_at": "2026-10-20T14:00:00+09:00",
+      "title": "계약 체결 미팅",
+      "owner_user_id": 31,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S078-C2",
+        "S078-C3",
+        "S078-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S078-I3-U00",
+          "start": 2.0,
+          "end": 13.7,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "계약서 검토했습니다. 가을 비료 건은 2,400만 원, 내년 방제 건은 3,800만 원으로 총 6,200만 원 맞죠?",
+          "contact_id": "S078-C2"
+        },
+        {
+          "id": "S078-I3-U01",
+          "start": 14.3,
+          "end": 21.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "맞습니다. 방제는 연 8회에 서비스 1회 추가해서 9회로 들어갑니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S078-I3-U02",
+          "start": 21.7,
+          "end": 28.7,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "좋습니다. 서명하죠. 가을 비료는 11월 16일에 첫 납품 부탁합니다.",
+          "contact_id": "S078-C3"
+        },
+        {
+          "id": "S078-I3-U03",
+          "start": 29.3,
+          "end": 37.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "11월 16일 월요일 납품 확정하고, 방제는 내년 3월 첫째 주부터 시작하겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S078-I3-U04",
+          "start": 38.2,
+          "end": 45.4,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "납품할 때 코스 관리 차량이 지나가는 시간은 아침 6시 전이어야 합니다.",
+          "contact_id": "S078-C1"
+        },
+        {
+          "id": "S078-I3-U05",
+          "start": 46.0,
+          "end": 53.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "대금은 납품 후 30일 이내 지급이고, 방제 건은 매 회차 완료 후 정산입니다.",
+          "contact_id": "S078-C2"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S078-F01",
+      "interaction_id": "S078-I1",
+      "type": "requirement",
+      "said_by": "S078-C1",
+      "content": "작년 가을 라지패치가 그린 둘레와 페어웨이 3번 홀 쪽에 크게 발생했다.",
+      "source_utterance_ids": [
+        "S078-I1-U00"
+      ]
+    },
+    {
+      "id": "S078-F02",
+      "interaction_id": "S078-I1",
+      "type": "requirement",
+      "said_by": "S078-C1",
+      "content": "살균제를 3주에 한 번 뿌리는데 인력이 부족해 18홀 방제에 이틀이 걸린다.",
+      "source_utterance_ids": [
+        "S078-I1-U02"
+      ]
+    },
+    {
+      "id": "S078-F03",
+      "interaction_id": "S078-I1",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "드론 방제는 회당 280만 원, 연간 계약이면 회당 250만 원으로 안내했다.",
+      "source_utterance_ids": [
+        "S078-I1-U03",
+        "S078-I1-U05"
+      ]
+    },
+    {
+      "id": "S078-F04",
+      "interaction_id": "S078-I1",
+      "type": "requirement",
+      "said_by": "S078-C1",
+      "content": "질소 위주 시비에서 월동 대비 칼리를 늘리고 싶다.",
+      "source_utterance_ids": [
+        "S078-I1-U06"
+      ]
+    },
+    {
+      "id": "S078-F05",
+      "interaction_id": "S078-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "칼리 강화 시비 설계안을 보낸다.",
+      "source_utterance_ids": [
+        "S078-I1-U07"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-11",
+      "due_text": "9월 둘째 주 금요일까지",
+      "status": "done",
+      "resolved_in": "S078-I2"
+    },
+    {
+      "id": "S078-F06",
+      "interaction_id": "S078-I2",
+      "type": "price_reaction",
+      "said_by": "S078-C1",
+      "content": "상무가 방제와 비료를 묶어 한 번에 가격을 달라고 했다.",
+      "source_utterance_ids": [
+        "S078-I2-U00"
+      ]
+    },
+    {
+      "id": "S078-F07",
+      "interaction_id": "S078-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "방제 연 8회와 비료 일체를 묶어 연 6,800만 원에서 6,400만 원까지 제안했다.",
+      "source_utterance_ids": [
+        "S078-I2-U01"
+      ]
+    },
+    {
+      "id": "S078-F08",
+      "interaction_id": "S078-I2",
+      "type": "price_reaction",
+      "said_by": "S078-C3",
+      "content": "6,400만 원은 올해 예산 6,000만 원을 넘으니 6,000만 원에 맞추길 원했다.",
+      "source_utterance_ids": [
+        "S078-I2-U02"
+      ]
+    },
+    {
+      "id": "S078-F09",
+      "interaction_id": "S078-I2",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "6,000만 원은 어렵다며 6,200만 원에 드론 방제 1회를 서비스로 제안했다.",
+      "source_utterance_ids": [
+        "S078-I2-U03"
+      ]
+    },
+    {
+      "id": "S078-F10",
+      "interaction_id": "S078-I2",
+      "type": "decision",
+      "said_by": "S078-C3",
+      "content": "가을 비료는 올해 예산, 방제는 내년 예산으로 계약을 두 건으로 나누기로 했다.",
+      "source_utterance_ids": [
+        "S078-I2-U04"
+      ]
+    },
+    {
+      "id": "S078-F11",
+      "interaction_id": "S078-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "두 건으로 나눈 계약서를 보낸다.",
+      "source_utterance_ids": [
+        "S078-I2-U05"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "10월 중순까지",
+      "status": "done",
+      "resolved_in": "S078-I3"
+    },
+    {
+      "id": "S078-F12",
+      "interaction_id": "S078-I3",
+      "type": "decision",
+      "said_by": "S078-C3",
+      "content": "총 6,200만 원에 계약했다: 가을 비료 2,400만 원, 내년 방제 3,800만 원(8회+서비스 1회=9회).",
+      "source_utterance_ids": [
+        "S078-I3-U00",
+        "S078-I3-U01",
+        "S078-I3-U02"
+      ]
+    },
+    {
+      "id": "S078-F13",
+      "interaction_id": "S078-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "가을 비료를 첫 납품한다.",
+      "source_utterance_ids": [
+        "S078-I3-U03"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-16",
+      "due_text": "11월 16일 월요일",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S078-F14",
+      "interaction_id": "S078-I3",
+      "type": "purchase_timing",
+      "said_by": "me",
+      "content": "드론 방제는 내년 3월 첫째 주부터 시작한다.",
+      "source_utterance_ids": [
+        "S078-I3-U03"
+      ]
+    },
+    {
+      "id": "S078-F15",
+      "interaction_id": "S078-I3",
+      "type": "requirement",
+      "said_by": "S078-C1",
+      "content": "납품 때 코스 관리 차량이 지나가는 시간인 아침 6시 전에 해야 한다.",
+      "source_utterance_ids": [
+        "S078-I3-U04"
+      ]
+    },
+    {
+      "id": "S078-F16",
+      "interaction_id": "S078-I3",
+      "type": "decision",
+      "said_by": "S078-C2",
+      "content": "비료 대금은 납품 후 30일 이내 지급하고 방제는 회차 완료 후 정산한다.",
+      "source_utterance_ids": [
+        "S078-I3-U05"
+      ]
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S078-Q01",
+      "question": "솔뫼컨트리클럽은 어떤 잔디 병해가 문제야?",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I1-U00",
+        "S078-I1-U02"
+      ],
+      "answer": "가을 라지패치가 그린 둘레와 3번 홀 페어웨이에 크게 오고, 3주 주기 살균제 작업에 이틀이 걸린다."
+    },
+    {
+      "id": "S078-Q02",
+      "question": "솔뫼컨트리클럽 가격 협상이 어떻게 흘러갔어?",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I1-U03",
+        "S078-I1-U05",
+        "S078-I2-U01",
+        "S078-I2-U02",
+        "S078-I2-U03",
+        "S078-I3-U00"
+      ],
+      "answer": "회당 280만 원에서 연간 250만 원, 묶음 6,400만 원, 상무의 6,000만 원 요구, 6,200만 원+1회 서비스로 합의했다."
+    },
+    {
+      "id": "S078-Q03",
+      "question": "솔뫼컨트리클럽 상무는 예산에 대해 어떻게 말했어?",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I2-U02",
+        "S078-I2-U04"
+      ],
+      "answer": "올해 예산 6,000만 원을 넘는다며 맞춰 달라고 했고, 가을 비료는 올해, 방제는 내년 예산으로 나누자고 했다."
+    },
+    {
+      "id": "S078-Q04",
+      "question": "솔뫼컨트리클럽과 최종 계약 조건은?",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I3-U00",
+        "S078-I3-U01",
+        "S078-I3-U02",
+        "S078-I3-U03",
+        "S078-I3-U05"
+      ],
+      "answer": "총 6,200만 원(비료 2,400만+방제 3,800만, 9회), 11월 16일 첫 납품, 내년 3월 첫째 주 방제 시작, 납품 후 30일 내 지급."
+    },
+    {
+      "id": "S078-Q05",
+      "question": "솔뫼컨트리클럽 납품할 때 주의할 점은?",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I3-U04",
+        "S078-I3-U05"
+      ],
+      "answer": "관리 차량이 지나가는 아침 6시 전에 납품하고, 대금은 납품 후 30일 이내 지급된다."
+    },
+    {
+      "id": "S078-Q06",
+      "question": "솔뫼컨트리클럽에 아직 해야 할 우리 약속은?",
+      "kind": "structured",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_fact_ids": [
+        "S078-F13"
+      ],
+      "answer": "11월 16일 월요일에 가을 비료를 첫 납품해야 한다."
+    },
+    {
+      "id": "S078-Q01-P1",
+      "question": "솔뫼컨트리클럽 필드 병 발생 부위와 지금 관리 주기는?",
+      "paraphrase_of": "S078-Q01",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I1-U00",
+        "S078-I1-U02"
+      ],
+      "answer": "가을 라지패치가 그린 둘레와 3번 홀 페어웨이에 크게 오고, 3주 주기 살균제 작업에 이틀이 걸린다."
+    },
+    {
+      "id": "S078-Q01-P2",
+      "question": "솔뫼컨트리클럽 잔디 갈변 문제가 어디서 났어?",
+      "paraphrase_of": "S078-Q01",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I1-U00",
+        "S078-I1-U02"
+      ],
+      "answer": "가을 라지패치가 그린 둘레와 3번 홀 페어웨이에 크게 오고, 3주 주기 살균제 작업에 이틀이 걸린다."
+    },
+    {
+      "id": "S078-Q02-P1",
+      "question": "솔뫼컨트리클럽 금액 조율 과정을 요약해 줘.",
+      "paraphrase_of": "S078-Q02",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I1-U03",
+        "S078-I1-U05",
+        "S078-I2-U01",
+        "S078-I2-U02",
+        "S078-I2-U03",
+        "S078-I3-U00"
+      ],
+      "answer": "회당 280만 원에서 연간 250만 원, 묶음 6,400만 원, 상무의 6,000만 원 요구, 6,200만 원+1회 서비스로 합의했다."
+    },
+    {
+      "id": "S078-Q02-P2",
+      "question": "솔뫼컨트리클럽 요금이 몇 번 오가다 얼마에 정해졌어?",
+      "paraphrase_of": "S078-Q02",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I1-U03",
+        "S078-I1-U05",
+        "S078-I2-U01",
+        "S078-I2-U02",
+        "S078-I2-U03",
+        "S078-I3-U00"
+      ],
+      "answer": "회당 280만 원에서 연간 250만 원, 묶음 6,400만 원, 상무의 6,000만 원 요구, 6,200만 원+1회 서비스로 합의했다."
+    },
+    {
+      "id": "S078-Q03-P1",
+      "question": "솔뫼컨트리클럽 윗선이 돈 한도를 어떻게 얘기했지?",
+      "paraphrase_of": "S078-Q03",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I2-U02",
+        "S078-I2-U04"
+      ],
+      "answer": "올해 예산 6,000만 원을 넘는다며 맞춰 달라고 했고, 가을 비료는 올해, 방제는 내년 예산으로 나누자고 했다."
+    },
+    {
+      "id": "S078-Q03-P2",
+      "question": "솔뫼컨트리클럽 임원이 비용 처리를 어떤 방식으로 제안했어?",
+      "paraphrase_of": "S078-Q03",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I2-U02",
+        "S078-I2-U04"
+      ],
+      "answer": "올해 예산 6,000만 원을 넘는다며 맞춰 달라고 했고, 가을 비료는 올해, 방제는 내년 예산으로 나누자고 했다."
+    },
+    {
+      "id": "S078-Q04-P1",
+      "question": "솔뫼컨트리클럽 체결 내용을 정리해 줘.",
+      "paraphrase_of": "S078-Q04",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I3-U00",
+        "S078-I3-U01",
+        "S078-I3-U02",
+        "S078-I3-U03",
+        "S078-I3-U05"
+      ],
+      "answer": "총 6,200만 원(비료 2,400만+방제 3,800만, 9회), 11월 16일 첫 납품, 내년 3월 첫째 주 방제 시작, 납품 후 30일 내 지급."
+    },
+    {
+      "id": "S078-Q04-P2",
+      "question": "솔뫼컨트리클럽 서명한 금액·일정·결제 방식은?",
+      "paraphrase_of": "S078-Q04",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I3-U00",
+        "S078-I3-U01",
+        "S078-I3-U02",
+        "S078-I3-U03",
+        "S078-I3-U05"
+      ],
+      "answer": "총 6,200만 원(비료 2,400만+방제 3,800만, 9회), 11월 16일 첫 납품, 내년 3월 첫째 주 방제 시작, 납품 후 30일 내 지급."
+    },
+    {
+      "id": "S078-Q05-P1",
+      "question": "솔뫼컨트리클럽에 물건 들일 때 시간 제한이 있어?",
+      "paraphrase_of": "S078-Q05",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I3-U04",
+        "S078-I3-U05"
+      ],
+      "answer": "관리 차량이 지나가는 아침 6시 전에 납품하고, 대금은 납품 후 30일 이내 지급된다."
+    },
+    {
+      "id": "S078-Q05-P2",
+      "question": "솔뫼컨트리클럽 입고 시 지켜야 할 규칙은?",
+      "paraphrase_of": "S078-Q05",
+      "kind": "semantic",
+      "company_id": "S078-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 31,
+      "relevant_utterance_ids": [
+        "S078-I3-U04",
+        "S078-I3-U05"
+      ],
+      "answer": "관리 차량이 지나가는 아침 6시 전에 납품하고, 대금은 납품 후 30일 이내 지급된다."
+    }
+  ]
+}

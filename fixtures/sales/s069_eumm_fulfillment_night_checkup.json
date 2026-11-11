@@ -1,0 +1,777 @@
+{
+  "scenario_id": "S069",
+  "description": "교대 근무자가 많은 물류센터에 야간 특수검진 포함 방문 검진 차량. 통화·현장 대화 중 명단에 없는 작업자(unknown)가 끼어든다. 고객이 약속한 야간조 명단이 몇 달째 늦어져 기한이 계속 연장된다.",
+  "fictional": true,
+  "as_of": "2026-11-05",
+  "deal_status": "open",
+  "seller": {
+    "user_id": 28,
+    "team_id": 27,
+    "name": "진하은",
+    "company": "웰핏케어",
+    "product": "기업 단체 건강검진·사내 건강 프로그램"
+  },
+  "users": [
+    {
+      "user_id": 28,
+      "team_id": 27
+    }
+  ],
+  "company": {
+    "id": "S069-CO1",
+    "name": "이음풀필먼트",
+    "industry": "물류센터(풀필먼트)",
+    "size": "정규 320명 야간조 127명, 경기 이천"
+  },
+  "contacts": [
+    {
+      "id": "S069-C1",
+      "name": "한가은",
+      "title": "총무팀 대리",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S069-C2",
+      "name": "도경태",
+      "title": "센터장",
+      "role_in_deal": "decision_maker"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S069-I1",
+      "kind": "call",
+      "occurred_at": "2026-09-01T10:00:00+09:00",
+      "title": "첫 통화",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S069-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S069-I1-U00",
+          "start": 2.0,
+          "end": 11.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "야간 근무자 특수검진 때문에 연락드렸어요. 지금 업체가 6개월마다 오는데 일정이 계속 안 맞아서요.",
+          "contact_id": "S069-C1"
+        },
+        {
+          "id": "S069-I1-U01",
+          "start": 12.5,
+          "end": 18.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "야간 근무자는 몇 분이고, 주간 근무자도 같이 하시나요?",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I1-U02",
+          "start": 18.7,
+          "end": 28.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "야간조가 127명이고요, 주간까지 합치면 정규직이 320명이에요. 주간은 일반 검진만 하면 돼요.",
+          "contact_id": "S069-C1"
+        },
+        {
+          "id": "S069-I1-U03",
+          "start": 29.0,
+          "end": 38.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "교대 근무시니까 센터 주차장에 검진 차량을 세우고 저녁부터 새벽까지 운영하는 방식이 가능합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I1-U04",
+          "start": 39.1,
+          "end": 46.1,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "그게 좋겠네요. 야간 근무하시는 분들은 낮에 병원 가기 힘들어 하세요.",
+          "contact_id": "S069-C1"
+        },
+        {
+          "id": "S069-I1-U05",
+          "start": 46.7,
+          "end": 51.0,
+          "speaker": "SPEAKER_02",
+          "role": "unknown",
+          "text": "대리님, 3번 도크 지게차 키 어디 있어요?",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I1-U06",
+          "start": 51.6,
+          "end": 56.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아, 책상 서랍에 있어요. 죄송해요, 계속 끊기네요.",
+          "contact_id": "S069-C1"
+        },
+        {
+          "id": "S069-I1-U07",
+          "start": 57.4,
+          "end": 66.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "괜찮습니다. 야간 특수검진에 일반검진을 붙이면 1인 평균 13만원 정도 보시면 됩니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I1-U08",
+          "start": 66.6,
+          "end": 74.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "센터장님께 보고드리고요, 야간조 명단은 제가 다음 주 화요일까지 정리해서 드릴게요.",
+          "contact_id": "S069-C1"
+        }
+      ]
+    },
+    {
+      "id": "S069-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-10-06T15:00:00+09:00",
+      "title": "센터 방문 협의",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S069-C2",
+        "S069-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S069-I2-U00",
+          "start": 2.0,
+          "end": 16.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "센터장님, 차량 방식 설명드리겠습니다. 이틀 연속 오후 6시부터 새벽 2시까지 시간당 25명쯤 가능하고, 이틀이면 약 300명 검진할 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I2-U01",
+          "start": 17.4,
+          "end": 26.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "야간조가 일하다 한 시간씩 빠지면 물량이 밀립니다. 조별로 스무 명씩 돌아가면서 가야 해요.",
+          "contact_id": "S069-C2"
+        },
+        {
+          "id": "S069-I2-U02",
+          "start": 27.2,
+          "end": 36.4,
+          "speaker": "SPEAKER_02",
+          "role": "unknown",
+          "text": "센터장님, 그럼 새벽 2시까지 하면 우리는 퇴근하고 또 와야 하는 겁니까? 그건 안 합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I2-U03",
+          "start": 37.0,
+          "end": 44.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "아, 그건 근무시간 중에 보내는 걸로 하겠습니다. 근무시간 인정해야죠.",
+          "contact_id": "S069-C2"
+        },
+        {
+          "id": "S069-I2-U04",
+          "start": 44.6,
+          "end": 54.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "근무시간 내 검진이면 조별 스무 명 배정표가 필요해서 명단을 먼저 받아야 일정을 짤 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I2-U05",
+          "start": 54.9,
+          "end": 62.1,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "아, 명단 아직 못 드렸죠. 죄송해요. 이번 주 금요일까지 꼭 드릴게요.",
+          "contact_id": "S069-C1"
+        },
+        {
+          "id": "S069-I2-U06",
+          "start": 62.7,
+          "end": 69.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "이번에는 정규직 320명만 하고 계약직, 일용직은 내년에 하겠습니다.",
+          "contact_id": "S069-C2"
+        },
+        {
+          "id": "S069-I2-U07",
+          "start": 70.1,
+          "end": 80.0,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 320명 기준 1인 13만원, 차량 이틀 사용료 포함 총 4,160만원으로 견적 드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I2-U08",
+          "start": 80.6,
+          "end": 86.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "견적서는 다음 주 수요일까지 주세요. 구매팀에서 비교할 겁니다.",
+          "contact_id": "S069-C2"
+        },
+        {
+          "id": "S069-I2-U09",
+          "start": 87.5,
+          "end": 92.5,
+          "speaker": "SPEAKER_02",
+          "role": "unknown",
+          "text": "센터장님, 죄송합니다. 인바운드 트럭 도착했습니다!",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S069-I3",
+      "kind": "call",
+      "occurred_at": "2026-11-02T11:30:00+09:00",
+      "title": "일정 확정 통화",
+      "owner_user_id": 28,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S069-C1",
+        "S069-C2"
+      ],
+      "utterances": [
+        {
+          "id": "S069-I3-U00",
+          "start": 2.0,
+          "end": 10.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "견적서는 지난달에 보내드렸는데요, 명단이 아직 안 와서 일정을 확정 못 하고 있어요.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I3-U01",
+          "start": 11.1,
+          "end": 19.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "정말 죄송해요. 야간조 퇴사자 정리하느라 늦었어요. 이번 주 안에 꼭 드릴게요.",
+          "contact_id": "S069-C1"
+        },
+        {
+          "id": "S069-I3-U02",
+          "start": 19.6,
+          "end": 29.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "견적은 구매팀에서 다른 업체랑 비교해 보니 단가는 비슷했어요. 검진은 12월 둘째 주로 하죠.",
+          "contact_id": "S069-C2"
+        },
+        {
+          "id": "S069-I3-U03",
+          "start": 29.6,
+          "end": 38.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "12월 8일, 9일 이틀로 차량을 예약해 둘까요? 명단이 12월 1일 안에는 와야 합니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I3-U04",
+          "start": 39.2,
+          "end": 42.6,
+          "speaker": "SPEAKER_03",
+          "role": "unknown",
+          "text": "가은 대리, 여기 사인 좀 해줘요.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I3-U05",
+          "start": 43.2,
+          "end": 47.9,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 잠깐만요. 죄송해요, 다시 말씀해 주세요.",
+          "contact_id": "S069-C1"
+        },
+        {
+          "id": "S069-I3-U06",
+          "start": 48.5,
+          "end": 57.1,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "12월 8일, 9일로 확정합니다. 명단이 늦으면 차량 예약 취소 수수료는 어떻게 되죠?",
+          "contact_id": "S069-C2"
+        },
+        {
+          "id": "S069-I3-U07",
+          "start": 57.7,
+          "end": 63.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "차량 예약은 일주일 전인 12월 1일까지 무료 취소입니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S069-I3-U08",
+          "start": 64.1,
+          "end": 70.0,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "알겠어요. 계약서 보내주세요. 이번 달 안에 날인하겠습니다.",
+          "contact_id": "S069-C2"
+        },
+        {
+          "id": "S069-I3-U09",
+          "start": 70.6,
+          "end": 75.1,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "계약서는 다음 주 화요일까지 보내드리겠습니다.",
+          "contact_id": null
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S069-F01",
+      "interaction_id": "S069-I1",
+      "type": "requirement",
+      "said_by": "S069-C1",
+      "content": "야간 근무자 특수검진을 6개월마다 받는데 기존 업체와 일정이 계속 어긋난다.",
+      "source_utterance_ids": [
+        "S069-I1-U00"
+      ]
+    },
+    {
+      "id": "S069-F02",
+      "interaction_id": "S069-I1",
+      "type": "requirement",
+      "said_by": "S069-C1",
+      "content": "야간조 127명, 정규직 320명이며 주간 근무자는 일반 검진만 한다.",
+      "source_utterance_ids": [
+        "S069-I1-U02"
+      ]
+    },
+    {
+      "id": "S069-F03",
+      "interaction_id": "S069-I1",
+      "type": "buying_signal",
+      "said_by": "S069-C1",
+      "content": "야간 근무자가 낮에 병원 가기 힘들어 센터 주차장 검진 차량 방식이 좋다고 했다.",
+      "source_utterance_ids": [
+        "S069-I1-U04"
+      ]
+    },
+    {
+      "id": "S069-F04",
+      "interaction_id": "S069-I1",
+      "type": "price_reaction",
+      "said_by": "me",
+      "content": "야간 특수검진에 일반검진을 합쳐 1인 평균 13만원 정도로 안내했다.",
+      "source_utterance_ids": [
+        "S069-I1-U07"
+      ]
+    },
+    {
+      "id": "S069-F05",
+      "interaction_id": "S069-I1",
+      "type": "promise",
+      "said_by": "S069-C1",
+      "content": "야간조 명단을 다음 주 화요일까지 정리해 주기로 했다.",
+      "source_utterance_ids": [
+        "S069-I1-U08"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-08",
+      "due_text": "다음 주 화요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S069-F06",
+      "interaction_id": "S069-I2",
+      "type": "requirement",
+      "said_by": "S069-C2",
+      "content": "물량이 밀리지 않도록 조별 20명씩 돌아가며 검진을 받아야 한다.",
+      "source_utterance_ids": [
+        "S069-I2-U01"
+      ]
+    },
+    {
+      "id": "S069-F07",
+      "interaction_id": "S069-I2",
+      "type": "decision",
+      "said_by": "S069-C2",
+      "content": "퇴근 후 재방문이 아니라 근무시간 중에 보내고 근무시간으로 인정하기로 했다.",
+      "source_utterance_ids": [
+        "S069-I2-U03"
+      ]
+    },
+    {
+      "id": "S069-F08",
+      "interaction_id": "S069-I2",
+      "type": "promise",
+      "said_by": "S069-C1",
+      "content": "명단을 이번 주 금요일까지 주겠다고 다시 약속했다.",
+      "source_utterance_ids": [
+        "S069-I2-U05"
+      ],
+      "supersedes": "S069-F05",
+      "owner": "customer",
+      "due_at": "2026-10-09",
+      "due_text": "이번 주 금요일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S069-F09",
+      "interaction_id": "S069-I2",
+      "type": "requirement",
+      "said_by": "S069-C2",
+      "content": "이번에는 정규직 320명만 검진하고 계약직·일용직은 내년에 한다.",
+      "source_utterance_ids": [
+        "S069-I2-U06"
+      ],
+      "supersedes": "S069-F02"
+    },
+    {
+      "id": "S069-F10",
+      "interaction_id": "S069-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "320명 기준 총 4,160만원 견적서를 다음 주 수요일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S069-I2-U07",
+        "S069-I2-U08"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-14",
+      "due_text": "다음 주 수요일까지",
+      "status": "done",
+      "resolved_in": "S069-I3"
+    },
+    {
+      "id": "S069-F11",
+      "interaction_id": "S069-I3",
+      "type": "promise",
+      "said_by": "S069-C1",
+      "content": "퇴사자 정리로 늦어진 야간조 명단을 이번 주 안에 주겠다고 했다.",
+      "source_utterance_ids": [
+        "S069-I3-U01"
+      ],
+      "supersedes": "S069-F08",
+      "owner": "customer",
+      "due_at": "2026-11-06",
+      "due_text": "이번 주 안에",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S069-F12",
+      "interaction_id": "S069-I3",
+      "type": "decision",
+      "said_by": "S069-C2",
+      "content": "구매팀 비교 결과 단가가 비슷해 12월 둘째 주에 검진하기로 했다.",
+      "source_utterance_ids": [
+        "S069-I3-U02"
+      ]
+    },
+    {
+      "id": "S069-F13",
+      "interaction_id": "S069-I3",
+      "type": "purchase_timing",
+      "said_by": "S069-C2",
+      "content": "검진 차량은 12월 8일과 9일로 확정했다.",
+      "source_utterance_ids": [
+        "S069-I3-U06"
+      ]
+    },
+    {
+      "id": "S069-F14",
+      "interaction_id": "S069-I3",
+      "type": "requirement",
+      "said_by": "me",
+      "content": "차량 예약은 12월 1일까지 무료 취소가 가능하므로 그 전에 명단이 필요하다.",
+      "source_utterance_ids": [
+        "S069-I3-U07"
+      ]
+    },
+    {
+      "id": "S069-F15",
+      "interaction_id": "S069-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "계약서를 다음 주 화요일까지 보내기로 했다.",
+      "source_utterance_ids": [
+        "S069-I3-U09"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-10",
+      "due_text": "다음 주 화요일까지",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S069-Q01",
+      "question": "이음풀필먼트가 검진 업체를 찾는 이유와 대상 인원은?",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U00",
+        "S069-I1-U02"
+      ],
+      "answer": "야간 특수검진 일정이 기존 업체와 안 맞아서이며 야간조 127명, 정규직 320명이다."
+    },
+    {
+      "id": "S069-Q02",
+      "question": "근무자들 부담과 운영 방식에 대한 논의는?",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I2-U00",
+        "S069-I2-U01",
+        "S069-I2-U02",
+        "S069-I2-U03"
+      ],
+      "answer": "이틀 야간 운영에 조별 20명씩 근무시간 중 검진하고, 퇴근 후 재방문은 거부해 근무시간으로 인정하기로 했다."
+    },
+    {
+      "id": "S069-Q03",
+      "question": "비용은 얼마로 얘기됐어?",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U07",
+        "S069-I2-U06",
+        "S069-I2-U07"
+      ],
+      "answer": "정규직 320명 기준 1인 13만원, 차량 이틀 포함 총 4,160만원."
+    },
+    {
+      "id": "S069-Q04",
+      "question": "야간조 명단은 왜 계속 늦어져?",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U08",
+        "S069-I2-U05",
+        "S069-I3-U00",
+        "S069-I3-U01"
+      ],
+      "answer": "9월 8일, 10월 9일에 이어 퇴사자 정리 때문에 또 늦어져 11월 6일까지 주겠다고 했다."
+    },
+    {
+      "id": "S069-Q05",
+      "question": "검진 날짜는 언제로 정해졌어?",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I3-U02",
+        "S069-I3-U06",
+        "S069-I3-U07"
+      ],
+      "answer": "12월 8일과 9일 이틀로 확정, 차량 예약은 12월 1일까지 무료 취소."
+    },
+    {
+      "id": "S069-Q06",
+      "question": "지금 열려 있는 약속은?",
+      "kind": "structured",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_fact_ids": [
+        "S069-F11",
+        "S069-F15"
+      ],
+      "answer": "고객의 야간조 명단(11월 6일, 이미 두 번 연기)과 우리의 계약서 발송(11월 10일)."
+    },
+    {
+      "id": "S069-Q07",
+      "question": "고객의 약속이 몇 번 바뀌었어?",
+      "kind": "structured",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_fact_ids": [
+        "S069-F05",
+        "S069-F08",
+        "S069-F11"
+      ],
+      "answer": "명단 제출 약속이 9월 8일, 10월 9일, 11월 6일로 세 번 정해졌고 계속 미뤄졌다."
+    },
+    {
+      "id": "S069-Q01-P1",
+      "question": "이 센터가 새 업체에 관심 갖는 배경과 인원 규모를 알려줘.",
+      "paraphrase_of": "S069-Q01",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U00",
+        "S069-I1-U02"
+      ],
+      "answer": "야간 특수검진 일정이 기존 업체와 안 맞아서이며 야간조 127명, 정규직 320명이다."
+    },
+    {
+      "id": "S069-Q01-P2",
+      "question": "밤샘 근로자 정기 검사 일정 문제와 직원 수가 어떻게 돼?",
+      "paraphrase_of": "S069-Q01",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U00",
+        "S069-I1-U02"
+      ],
+      "answer": "야간 특수검진 일정이 기존 업체와 안 맞아서이며 야간조 127명, 정규직 320명이다."
+    },
+    {
+      "id": "S069-Q02-P1",
+      "question": "현장 인력이 검진 때문에 빠지는 문제는 어떻게 풀기로 했어?",
+      "paraphrase_of": "S069-Q02",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I2-U00",
+        "S069-I2-U01",
+        "S069-I2-U02",
+        "S069-I2-U03"
+      ],
+      "answer": "이틀 야간 운영에 조별 20명씩 근무시간 중 검진하고, 퇴근 후 재방문은 거부해 근무시간으로 인정하기로 했다."
+    },
+    {
+      "id": "S069-Q02-P2",
+      "question": "작업자가 퇴근 후 또 오는 것에 반발했을 때 센터장이 한 말은?",
+      "paraphrase_of": "S069-Q02",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I2-U00",
+        "S069-I2-U01",
+        "S069-I2-U02",
+        "S069-I2-U03"
+      ],
+      "answer": "이틀 야간 운영에 조별 20명씩 근무시간 중 검진하고, 퇴근 후 재방문은 거부해 근무시간으로 인정하기로 했다."
+    },
+    {
+      "id": "S069-Q03-P1",
+      "question": "검진에 드는 금액이 사람당, 총액으로 얼마야?",
+      "paraphrase_of": "S069-Q03",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U07",
+        "S069-I2-U06",
+        "S069-I2-U07"
+      ],
+      "answer": "정규직 320명 기준 1인 13만원, 차량 이틀 포함 총 4,160만원."
+    },
+    {
+      "id": "S069-Q03-P2",
+      "question": "견적 규모와 대상 범위를 알려줘.",
+      "paraphrase_of": "S069-Q03",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U07",
+        "S069-I2-U06",
+        "S069-I2-U07"
+      ],
+      "answer": "정규직 320명 기준 1인 13만원, 차량 이틀 포함 총 4,160만원."
+    },
+    {
+      "id": "S069-Q04-P1",
+      "question": "작업자 리스트가 안 오는 사정과 약속 날짜 변천은?",
+      "paraphrase_of": "S069-Q04",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U08",
+        "S069-I2-U05",
+        "S069-I3-U00",
+        "S069-I3-U01"
+      ],
+      "answer": "9월 8일, 10월 9일에 이어 퇴사자 정리 때문에 또 늦어져 11월 6일까지 주겠다고 했다."
+    },
+    {
+      "id": "S069-Q04-P2",
+      "question": "담당자가 자료를 여러 번 미룬 경과를 알려줘.",
+      "paraphrase_of": "S069-Q04",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I1-U08",
+        "S069-I2-U05",
+        "S069-I3-U00",
+        "S069-I3-U01"
+      ],
+      "answer": "9월 8일, 10월 9일에 이어 퇴사자 정리 때문에 또 늦어져 11월 6일까지 주겠다고 했다."
+    },
+    {
+      "id": "S069-Q05-P1",
+      "question": "차량이 오는 날과 취소 가능 기한이 뭐야?",
+      "paraphrase_of": "S069-Q05",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I3-U02",
+        "S069-I3-U06",
+        "S069-I3-U07"
+      ],
+      "answer": "12월 8일과 9일 이틀로 확정, 차량 예약은 12월 1일까지 무료 취소."
+    },
+    {
+      "id": "S069-Q05-P2",
+      "question": "최종 방문 검진 일정과 변경 시 비용 조건은?",
+      "paraphrase_of": "S069-Q05",
+      "kind": "semantic",
+      "company_id": "S069-CO1",
+      "as_of": "2026-11-05",
+      "viewer_user_id": 28,
+      "relevant_utterance_ids": [
+        "S069-I3-U02",
+        "S069-I3-U06",
+        "S069-I3-U07"
+      ],
+      "answer": "12월 8일과 9일 이틀로 확정, 차량 예약은 12월 1일까지 무료 취소."
+    }
+  ]
+}
