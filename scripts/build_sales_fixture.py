@@ -1,40 +1,3 @@
-# [더미 데이터] 짧게 쓴 영업 시나리오 초안을 fixtures/sales 정식 형식으로 바꾸는 도구
-# 발화 id·화자 라벨·발화 시간·전체 id 접두어를 자동으로 채우고, 참조가 맞는지 확인한 뒤 저장합니다.
-"""Expand a short scenario draft into a fixtures/sales file.
-
-Draft shape (ids without the scenario prefix; the script adds "S011-" etc.):
-
-    {
-      "scenario_id": "S011", "slug": "hanbit_logistics_wms",
-      "description": "...", "as_of": "2026-11-02", "deal_status": "open",
-      "seller": {"user_id": 9, "team_id": 8, "name": "...", "company": "...", "product": "..."},
-      "users": [{"user_id": 9, "team_id": 8}],
-      "company": {"name": "...", "industry": "...", "size": "..."},
-      "contacts": [{"name": "...", "title": "...", "role_in_deal": "champion"}],      # -> C1, C2, ...
-      "interactions": [                                                               # -> I1, I2, ...
-        {"kind": "call", "occurred_at": "2026-09-09T11:00:00+09:00", "title": "...",
-         "owner_user_id": 9, "visibility": "private",
-         "lines": [["C1", "고객 발화"], ["me", "영업 담당자 발화"], ["unknown", "명단에 없는 사람"]]}
-      ],                                                                              # line n -> I1-U{n:02d}
-      "facts": [                                                                      # -> F01, F02, ...
-        {"type": "promise", "said_by": "me", "content": "...", "src": ["I1-U04"],
-         "owner": "me", "due_at": "2026-09-14", "due_text": "다음 주 월요일까지", "resolved_in": "I2"},
-        {"type": "requirement", "said_by": "C1", "content": "...", "src": ["I2-U01"], "supersedes": "F01"}
-      ],
-      "queries": [                                                                    # -> Q01, Q02, ...
-        {"question": "...", "kind": "semantic", "viewer_user_id": 9, "utterances": ["I1-U00"],
-         "forbidden": ["I2"], "answer": "...", "paraphrases": ["...", "..."]},
-        {"question": "...", "kind": "structured", "viewer_user_id": 9, "facts": ["F11"], "answer": "..."}
-      ]
-    }
-
-Speaker labels follow diarization: the seller is SPEAKER_00 and the other voices get SPEAKER_01, 02, ...
-in order of first appearance in each conversation, so the same person can have different labels in
-different conversations. A promise is "done" when resolved_in is set, otherwise "open".
-
-    python scripts/build_sales_fixture.py drafts/s011.json [more drafts...]
-"""
-
 import argparse
 import json
 import sys
@@ -179,7 +142,7 @@ def build(draft: dict) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(description="초안 JSON을 fixtures/sales 형식으로 변환")
     parser.add_argument("drafts", nargs="+", type=Path)
     parser.add_argument("--out", type=Path, default=OUT)
     args = parser.parse_args()
