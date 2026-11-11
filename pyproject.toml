@@ -29,3 +29,6 @@ dev = ["pytest>=8,<10"]
 
 [tool.setuptools.packages.find]
 include = ["app*"]
+
+[tool.setuptools.package-data]
+"app.features.memory" = ["prompts/*.txt"]

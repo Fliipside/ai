@@ -139,7 +139,7 @@ python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 
 | 파일 | 하는 일 |
 | ---- | ---- |
-| `app/features/memory/extraction.py` | LLM 지시문, 대화별 추출, 사람 연결(이름 → 성+직함 → 문맥), 기억 반영 |
+| `app/features/memory/extraction.py`, `prompts/extraction_system.txt` | LLM 지시문(텍스트 파일), 대화별 추출, 사람 연결(이름 → 성+직함 → 문맥), 기억 반영 |
 | `app/features/memory/relations.py` | 남은 약속 조회, 관계도 노드·연결선 만들기 |
 | `app/providers/llm/gateway.py` | 대회 LLM 게이트웨이(OpenAI 호환) 호출, 결과 형식 검사·1회 재요청, 토큰 사용량 집계 |
 | `scripts/memory_eval.py` | 더미 데이터로 추출 품질 평가, 고객사별 기억 JSON과 관계도 HTML 저장 |
@@ -194,7 +194,7 @@ uvicorn app.main:app --reload
 | `providers/diarization/pyannote.py`, `providers/speaker_embedding/pyannote.py` (community-1) | 구현 |
 | `providers/diarization/sherpa_onnx.py`, `providers/speaker_embedding/sherpa_onnx.py` | 구현 |
 | `scripts/voice_benchmark.py` (엔진 비교) | 구현 |
-| `fixtures/sales/` (가상 영업 시나리오 100개와 정답셋, [형식](fixtures/sales/README.md)) | 구현 |
+| `fixtures/sales/` (가상 영업 시나리오 100개와 정답셋, [형식](fixtures/sales/README.md), JSON은 git 제외) | 구현 |
 | `features/memory/chunking.py`, `providers/text_embedding/` (청크 생성, 텍스트 임베딩) | 구현 |
 | `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/compare_embeddings.py` (모델·청킹 비교), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
 | `api/v1/memory.py`, `features/memory/service.py`, `providers/rerank/` (대화 기억 API) | 구현 |

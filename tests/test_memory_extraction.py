@@ -80,7 +80,7 @@ def test_conversations_are_extracted_in_date_order_with_earlier_memory() -> None
     _, llm = build()
 
     assert "[I1-U1] SPEAKER_01(고객): 생산관리팀 박지훈 대리입니다." in llm.prompts[0]
-    assert "2026-09-07 (월) 미팅" in llm.prompts[0]
+    assert "2026-09-07 (Mon) 미팅" in llm.prompts[0]
     # The second prompt carries what the first conversation left behind.
     assert "- P1 박지훈 대리, champion, 미팅 I1" in llm.prompts[1]
     assert "- I1-F01 [me] 자료를 보낸다. (기한 2026-09-10)" in llm.prompts[1]
