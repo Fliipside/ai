@@ -389,6 +389,37 @@
       "due_at": "2026-11-13",
       "due_text": "11월 13일까지",
       "status": "open",
+      "resolved_in": null,
+      "supersedes": "S007-F11"
+    },
+    {
+      "id": "S007-F11",
+      "interaction_id": "S007-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "CSAP 간편등급 인증서 사본을 보낸다.",
+      "source_utterance_ids": [
+        "S007-I2-U01"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": null,
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S007-F12",
+      "interaction_id": "S007-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "홈페이지 유지보수 업체에 전달할 연동 가이드를 보낸다.",
+      "source_utterance_ids": [
+        "S007-I2-U03"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": null,
+      "status": "open",
       "resolved_in": null
     }
   ],
@@ -466,9 +497,10 @@
       "as_of": "2026-11-02",
       "viewer_user_id": 6,
       "relevant_fact_ids": [
-        "S007-F10"
+        "S007-F10",
+        "S007-F12"
       ],
-      "answer": "11월 13일까지 견적서, CSAP 인증서 사본, 직접생산확인증명서 발송."
+      "answer": "11월 13일까지 견적서, CSAP 인증서 사본, 직접생산확인증명서 발송. 유지보수 업체용 연동 가이드 전달(기한 없음)."
     },
     {
       "id": "S007-Q01-P1",

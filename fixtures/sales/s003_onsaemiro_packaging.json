@@ -506,6 +506,21 @@
       "due_text": "12월 초에",
       "status": "open",
       "resolved_in": null
+    },
+    {
+      "id": "S003-F18",
+      "interaction_id": "S003-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "금박 로고 크기를 줄인 B안 최종본을 다시 확인받는다.",
+      "source_utterance_ids": [
+        "S003-I3-U01"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": null,
+      "status": "open",
+      "resolved_in": null
     }
   ],
   "gold_queries": [
@@ -571,9 +586,10 @@
       "viewer_user_id": 3,
       "relevant_fact_ids": [
         "S003-F13",
-        "S003-F15"
+        "S003-F15",
+        "S003-F18"
       ],
-      "answer": "시즌 패키지 5천 개 11/18까지 입고, 연간 약정 계약서 발송."
+      "answer": "시안 B안 최종본 확인, 시즌 패키지 5천 개 11/18까지 입고, 연간 약정 계약서 발송."
     },
     {
       "id": "S003-Q06",

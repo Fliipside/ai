@@ -424,7 +424,8 @@
       "due_at": "2026-10-27",
       "due_text": "다음 주 화요일까지",
       "status": "open",
-      "resolved_in": null
+      "resolved_in": null,
+      "supersedes": "S005-F14"
     },
     {
       "id": "S005-F10",
@@ -440,7 +441,8 @@
       "due_at": "2026-11-03",
       "due_text": "11월 3일까지",
       "status": "open",
-      "resolved_in": null
+      "resolved_in": null,
+      "supersedes": "S005-F13"
     },
     {
       "id": "S005-F11",
@@ -461,6 +463,36 @@
       "source_utterance_ids": [
         "S005-I2-U07"
       ]
+    },
+    {
+      "id": "S005-F13",
+      "interaction_id": "S005-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "물량 구간별 정액제 견적을 따로 보낸다.",
+      "source_utterance_ids": [
+        "S005-I1-U14"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": null,
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S005-F14",
+      "interaction_id": "S005-I1",
+      "type": "promise",
+      "said_by": "S005-C1",
+      "content": "WMS API 문서를 정리해 준다.",
+      "source_utterance_ids": [
+        "S005-I1-U07"
+      ],
+      "owner": "customer",
+      "due_at": null,
+      "due_text": null,
+      "status": "open",
+      "resolved_in": null
     }
   ],
   "gold_queries": [

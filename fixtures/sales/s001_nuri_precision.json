@@ -811,7 +811,8 @@
       "due_at": "2026-09-18",
       "due_text": "이번 주 금요일까지",
       "status": "done",
-      "resolved_in": "S001-I3"
+      "resolved_in": "S001-I3",
+      "supersedes": "S001-F36"
     },
     {
       "id": "S001-F11",
@@ -1121,6 +1122,76 @@
       "due_text": "11월 6일까지",
       "status": "open",
       "resolved_in": null
+    },
+    {
+      "id": "S001-F36",
+      "interaction_id": "S001-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "데모 때 더존 ERP 연동 여부를 함께 안내한다.",
+      "source_utterance_ids": [
+        "S001-I1-U11"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "데모 때",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S001-F37",
+      "interaction_id": "S001-I1",
+      "type": "promise",
+      "said_by": "S001-C1",
+      "content": "데모에 최은영 팀장도 참석하도록 한다.",
+      "source_utterance_ids": [
+        "S001-I1-U08"
+      ],
+      "owner": "customer",
+      "due_at": "2026-09-15",
+      "due_text": "그날",
+      "status": "done",
+      "resolved_in": "S001-I2"
+    },
+    {
+      "id": "S001-F38",
+      "interaction_id": "S001-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "연간 계약·라인 수에 따른 가격 조정안을 정리해 전달한다.",
+      "source_utterance_ids": [
+        "S001-I2-U10"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": null,
+      "status": "done",
+      "resolved_in": "S001-I3"
+    },
+    {
+      "id": "S001-F39",
+      "interaction_id": "S001-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "받은 생산일보 데이터로 도입 효과를 계산해 본다.",
+      "source_utterance_ids": [
+        "S001-I2-U15"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": null,
+      "status": "done",
+      "resolved_in": "S001-I3"
+    },
+    {
+      "id": "S001-F40",
+      "interaction_id": "S001-I5",
+      "type": "buying_signal",
+      "said_by": "S001-C1",
+      "content": "공장장(정태호 상무)이 보안 자료를 보고 괜찮다고 했다.",
+      "source_utterance_ids": [
+        "S001-I5-U04"
+      ]
     }
   ],
   "gold_queries": [

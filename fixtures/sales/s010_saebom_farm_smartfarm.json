@@ -392,6 +392,16 @@
         "S010-I3-U05",
         "S010-I3-U06"
       ]
+    },
+    {
+      "id": "S010-F13",
+      "interaction_id": "S010-I2",
+      "type": "requirement",
+      "said_by": "S010-C2",
+      "content": "지원사업 신청에 견적서와 사업계획서가 필요하며, 사업계획서는 고객이 직접 쓴다.",
+      "source_utterance_ids": [
+        "S010-I2-U00"
+      ]
     }
   ],
   "gold_queries": [

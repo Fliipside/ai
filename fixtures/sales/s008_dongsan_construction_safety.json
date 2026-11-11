@@ -410,6 +410,16 @@
       "due_text": "11월 4일까지",
       "status": "open",
       "resolved_in": null
+    },
+    {
+      "id": "S008-F12",
+      "interaction_id": "S008-I1",
+      "type": "requirement",
+      "said_by": "S008-C1",
+      "content": "근로자 위치가 모두 보이면 노조가 감시라고 반발할 수 있다.",
+      "source_utterance_ids": [
+        "S008-I1-U03"
+      ]
     }
   ],
   "gold_queries": [

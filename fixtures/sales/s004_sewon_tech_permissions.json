@@ -371,6 +371,31 @@
       "due_text": "11월 3일까지",
       "status": "open",
       "resolved_in": null
+    },
+    {
+      "id": "S004-F12",
+      "interaction_id": "S004-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "기존 MES와 겹치지 않는 설비 로그 중심 구성으로 제안한다.",
+      "source_utterance_ids": [
+        "S004-I1-U05"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": null,
+      "status": "done",
+      "resolved_in": "S004-I3"
+    },
+    {
+      "id": "S004-F13",
+      "interaction_id": "S004-I3",
+      "type": "buying_signal",
+      "said_by": "S004-C1",
+      "content": "PoC 결과를 본부장 회의 자료로 쓰겠다고 했다.",
+      "source_utterance_ids": [
+        "S004-I3-U04"
+      ]
     }
   ],
   "gold_queries": [
