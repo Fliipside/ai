@@ -15,12 +15,14 @@ app/
 │   │   ├── merge.py         # STT 문장과 화자 구간을 시간 기준으로 합치기
 │   │   └── speaker_id.py    # 사용자 목소리와 비교해 나/고객 라벨링
 │   └── memory/
-│       └── chunking.py      # 대화록을 검색 단위(청크)로 묶기
+│       ├── chunking.py      # 대화록을 검색 단위(청크)로 묶기
+│       └── service.py       # 청크·임베딩, 질문 임베딩, 재정렬
 ├── providers/           # 교체할 수 있는 모델·외부 API (base.py = 인터페이스)
 │   ├── stt/                 # groq.py
 │   ├── diarization/         # pyannote.py, sherpa_onnx.py
 │   ├── speaker_embedding/   # pyannote.py, sherpa_onnx.py
-│   └── text_embedding/      # sentence_transformers.py (bge-m3 등)
+│   ├── text_embedding/      # sentence_transformers.py (bge-m3 등)
+│   └── rerank/              # cross_encoder.py (bge-reranker-v2-m3)
 ├── core/                # 환경 설정과 공통 오류
 └── utils/               # 오디오 변환 등 공통 도구
 scripts/                 # 벤치마크·평가 스크립트
@@ -63,10 +65,26 @@ python scripts/voice_benchmark.py data/voice/*.m4a \
 화자별 대화록 ──▶ 청크 (발화 여러 개를 약 500자로 묶고 앞 청크와 발화 1개 겹침, 시작/끝 시간 유지)
                     ↓ 텍스트 임베딩 (기본 BAAI/bge-m3, 1024차원, 정규화)
                  pgvector 저장 (backend)
-질문 ──▶ 임베딩 ──▶ 고객사·권한 필터 후 코사인 유사도 상위 k개 ──▶ 근거 발화와 시점
+질문 ──▶ 임베딩 ──▶ 고객사·권한 필터 후 코사인 유사도 상위 10개 ──▶ 재정렬 ──▶ 근거 발화와 시점
 ```
 
-임베딩 모델은 `TEXT_EMBEDDING_MODEL`로 바꿀 수 있으며, 서로 다른 모델로 만든 벡터는 비교할 수 없습니다. 벡터 저장과 SQL 검색은 backend가 담당하고, 이 서비스는 청크 생성과 임베딩을 맡습니다.
+임베딩 모델은 `TEXT_EMBEDDING_MODEL`, 재정렬 모델은 `RERANK_MODEL`(기본 `BAAI/bge-reranker-v2-m3`)로 바꿀 수 있으며, 서로 다른 모델로 만든 벡터는 비교할 수 없습니다. 벡터 저장과 SQL 검색은 backend가 담당하고, 이 서비스는 청크 생성·임베딩·재정렬을 맡습니다. 두 모델은 첫 요청 때 한 번 불러오므로 첫 응답만 10초 안팎 걸립니다.
+
+### 대화 기억 API
+
+| 경로 | 요청 | 응답 `data` |
+| ---- | ---- | ---- |
+| `POST /api/v1/memory/chunks` | `utterances[]`(대화 1건, `id`·`start`·`end`·`speaker`·`role`·`text`), `context`(선택: `company`, `kind` meeting\|call, `occurred_at`, `title`) | `model`, `chunks[]`: `text`, `embed_text`, `start`, `end`, `utterance_ids`, `vector` |
+| `POST /api/v1/memory/embed-query` | `text` (1~1000자) | `model`, `vector` |
+| `POST /api/v1/memory/rerank` | `query`, `candidates[]`(`id`, `text`, 최대 50개), `top_k`(선택) | `model`, `results[]`: `id`, `score` (높은 순) |
+
+backend 흐름:
+
+1. 대화가 저장되면 `/chunks`를 호출해 받은 청크의 `text`(화면에 보여줄 원문), `embed_text`, `utterance_ids`, 시간, `vector`, `model`을 pgvector에 저장합니다. `context`를 보내면 청크마다 `회사 | 날짜 미팅/통화 | 제목` 머리말을 붙여 임베딩하며, 검색 정확도가 올라가므로 보내는 것을 권장합니다. 날짜는 `occurred_at`에 적힌 시간대 기준입니다(한국 시간은 `+09:00`).
+2. 질문이 오면 `/embed-query`로 벡터를 받아, 고객사·권한으로 거른 뒤 같은 `model`의 청크 중 코사인 거리(`<=>`) 상위 10개를 고릅니다.
+3. 그 10개의 `embed_text`를 `/rerank`에 보내 다시 정렬하고 상위 결과를 사용합니다.
+
+정답셋 153개 질문 기준으로 1위 정답률은 벡터 검색만 75.2%, 재정렬 후 85.6%입니다. 로컬 CPU(Apple Silicon)에서 모델을 불러온 뒤 응답 시간은 `/embed-query` 약 50ms, `/rerank`(후보 10개) 약 300ms, `/chunks`(대화 1건) 약 140ms입니다.
 
 ### 검색 품질 평가
 
@@ -130,6 +148,9 @@ uvicorn app.main:app --reload
 | `GET /health`                | 없음                  | 200       |
 | `POST /api/v1/voice/analyze` | `file` 오디오 업로드  | 501       |
 | `POST /api/v1/voice/enroll`  | `file` 오디오 업로드  | 501       |
+| `POST /api/v1/memory/chunks` | 대화 1건의 발화 목록 | 200       |
+| `POST /api/v1/memory/embed-query` | 질문 | 200       |
+| `POST /api/v1/memory/rerank` | 질문과 후보 청크 | 200       |
 
 구현 상태:
 
@@ -144,6 +165,7 @@ uvicorn app.main:app --reload
 | `fixtures/sales/` (가상 영업 시나리오 10개와 정답셋, [형식](fixtures/sales/README.md)) | 구현 |
 | `features/memory/chunking.py`, `providers/text_embedding/` (청크 생성, 텍스트 임베딩) | 구현 |
 | `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/compare_embeddings.py` (모델·청킹 비교), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
-| 임베딩 API, pgvector 저장·검색 (backend) | 미구현 |
+| `api/v1/memory.py`, `features/memory/service.py`, `providers/rerank/` (대화 기억 API) | 구현 |
+| pgvector 저장·검색 (backend) | 미구현 |
 
 API 연결 전까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.

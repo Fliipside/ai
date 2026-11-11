@@ -1,3 +1,7 @@
+# [기능 처리] 대화를 검색 단위(청크)로 나누기
+# 발화를 자르지 않고 약 500자씩 묶고, 앞 청크와 발화 1개를 겹칩니다.
+# 청크마다 '회사 | 날짜 미팅/통화 | 제목' 머리말을 붙이는 함수도 여기 있습니다.
+
 from app.schemas.memory import MemoryChunk, StoredUtterance
 
 ROLE_LABELS = {"me": "나", "customer": "고객", "unknown": "미확인"}

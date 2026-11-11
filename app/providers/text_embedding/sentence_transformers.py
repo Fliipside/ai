@@ -1,3 +1,6 @@
+# [AI 모델] 텍스트 임베딩 실제 구현 (기본 bge-m3)
+# 글을 1024차원 벡터로 바꿉니다. 모델은 처음 한 번만 불러와 재사용합니다.
+
 import logging
 import threading
 from functools import lru_cache

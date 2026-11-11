@@ -1,3 +1,6 @@
+# [공통 설정] 환경 변수(.env)로 바꿀 수 있는 설정값
+# API 키, 화자 분리 엔진, 임베딩·재정렬 모델 이름 등을 읽어 옵니다.
+
 from functools import lru_cache
 from typing import Literal
 
@@ -39,6 +42,9 @@ class Settings(BaseSettings):
 
     # Hugging Face sentence-transformers model for conversation memory search.
     text_embedding_model: str = "BAAI/bge-m3"
+    # Cross-encoder that reorders the top pgvector matches.
+    rerank_model: str = "BAAI/bge-reranker-v2-m3"
+
 
 
 @lru_cache
