@@ -80,3 +80,80 @@ class RerankResult(BaseModel):
     model: str
     results: list[RankedCandidate]
 
+
+# Key information extraction (one conversation -> facts) and relationship memory.
+
+FactType = Literal["requirement", "price_reaction", "promise", "purchase_timing", "buying_signal", "decision"]
+DealRole = Literal["champion", "influencer", "decision_maker", "procurement", "unknown"]
+PromiseOwner = Literal["me", "customer"]
+
+
+class Conversation(BaseModel):
+    id: str
+    kind: InteractionKind
+    occurred_at: datetime
+    title: str
+    utterances: list[StoredUtterance]
+
+
+# What the LLM returns for one conversation. Every field is required (null when unknown)
+# so the structured output schema stays strict.
+class ExtractedPerson(BaseModel):
+    speaker: str  # label in this conversation, e.g. "A" or "SPEAKER_01"
+    known_person_id: str | None  # an already known person this speaker is, judged from context
+    name: str | None  # full name, only when said
+    surname: str | None  # family name alone, e.g. "박" from "박 대리님"
+    title: str | None
+    role_in_deal: DealRole
+
+
+class ExtractedFact(BaseModel):
+    type: FactType
+    speaker: str  # "me" or a customer speaker label
+    content: str
+    source_utterance_ids: list[str]
+    owner: PromiseOwner | None  # promise only: who must act
+    due_text: str | None  # promise only: the deadline as said
+    due_date: str | None  # promise only: YYYY-MM-DD resolved from the conversation date
+    supersedes_fact_id: str | None  # an earlier fact this one changes
+
+
+class ConversationExtraction(BaseModel):
+    people: list[ExtractedPerson]
+    facts: list[ExtractedFact]
+    resolved_promise_ids: list[str]  # earlier open promises fulfilled in this conversation
+
+
+class Person(BaseModel):
+    id: str
+    name: str | None
+    surname: str | None = None
+    title: str | None
+    role_in_deal: DealRole
+    # (conversation id, speaker label) pairs this person spoke as
+    appearances: list[tuple[str, str]]
+    # conversations where this person was recognized from context rather than by name
+    inferred_in: list[str] = []
+
+
+class MemoryFact(BaseModel):
+    id: str
+    conversation_id: str
+    type: FactType
+    said_by: str | None  # "me", a person id, or None when the speaker is not identified
+    content: str
+    source_utterance_ids: list[str]
+    owner: PromiseOwner | None = None
+    due_text: str | None = None
+    due_at: str | None = None
+    status: Literal["open", "done"] | None = None  # promise only
+    resolved_in: str | None = None
+    supersedes: str | None = None
+    superseded_by: str | None = None
+
+
+class CompanyMemory(BaseModel):
+    company: str
+    conversations: list[Conversation]
+    people: list[Person]
+    facts: list[MemoryFact]

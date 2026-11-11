@@ -16,13 +16,16 @@ app/
 │   │   └── speaker_id.py    # 사용자 목소리와 비교해 나/고객 라벨링
 │   └── memory/
 │       ├── chunking.py      # 대화록을 검색 단위(청크)로 묶기
-│       └── service.py       # 청크·임베딩, 질문 임베딩, 재정렬
+│       ├── service.py       # 청크·임베딩, 질문 임베딩, 재정렬
+│       ├── extraction.py    # LLM으로 핵심 정보·사람 추출, 기억에 반영
+│       └── relations.py     # 남은 약속 조회, 관계도
 ├── providers/           # 교체할 수 있는 모델·외부 API (base.py = 인터페이스)
 │   ├── stt/                 # groq.py
 │   ├── diarization/         # pyannote.py, sherpa_onnx.py
 │   ├── speaker_embedding/   # pyannote.py, sherpa_onnx.py
 │   ├── text_embedding/      # sentence_transformers.py (bge-m3 등)
-│   └── rerank/              # cross_encoder.py (bge-reranker-v2-m3)
+│   ├── rerank/              # cross_encoder.py (bge-reranker-v2-m3)
+│   └── llm/                 # gateway.py (대회 LLM 게이트웨이)
 ├── core/                # 환경 설정과 공통 오류
 └── utils/               # 오디오 변환 등 공통 도구
 scripts/                 # 벤치마크·평가 스크립트
@@ -123,6 +126,35 @@ python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 
 만든 SQL 파일은 DBeaver에서 열어 스크립트 전체 실행(`⌥ + X`)하거나, 서버의 DB 컨테이너 안에서 `psql`로 실행합니다. 적재에는 DB 비밀번호가 필요 없습니다. SQL 검색 평가(`retrieval_eval.py --backend pg`)만 SSH 터널과 `.env`의 `MEMORY_DB_URL`이 필요합니다(`python -m pip install -e ".[memory-db]"`).
 
+## 핵심 정보 추출·관계 기억 구성
+
+```text
+고객사의 대화들 (날짜 순)
+   ↓ 대화 1건마다 LLM 1번 호출: 대화 + 지금까지의 기억(알려진 사람, 남은 약속, 기존 정보)
+추출 결과: 사람(이름·성·직함·역할), 핵심 정보 6종(요구사항·가격 반응·약속·구매 시기·구매 신호·결정),
+          지켜진 약속, 바뀐 정보(이전 정보를 대체)
+   ↓ 근거 발화·화자가 실제로 있는지 검사하고 기억에 반영
+고객사 기억: 사람, 정보(근거 발화, 약속 상태·기한), 변경 연결 → 관계도(노드·연결선)
+```
+
+| 파일 | 하는 일 |
+| ---- | ---- |
+| `app/features/memory/extraction.py` | LLM 지시문, 대화별 추출, 사람 연결(이름 → 성+직함 → 문맥), 기억 반영 |
+| `app/features/memory/relations.py` | 남은 약속 조회, 관계도 노드·연결선 만들기 |
+| `app/providers/llm/gateway.py` | 대회 LLM 게이트웨이(OpenAI 호환) 호출, 결과 형식 검사·1회 재요청, 토큰 사용량 집계 |
+| `scripts/memory_eval.py` | 더미 데이터로 추출 품질 평가, 고객사별 기억 JSON과 관계도 HTML 저장 |
+
+기본 모델은 `claude-sonnet-5-5`에 사고량 `low`입니다(`LLM_MODEL`, `LLM_REASONING_EFFORT`). Opus는 답보다 숨은 사고 토큰이 10배 넘게 나와 비용의 약 90%를 차지했고, Sonnet low는 비용이 약 15분의 1이면서 정보 찾기 점수는 비슷하거나 높았습니다. `LLM_API_KEY`는 팀 공유 키라 `.env`에만 넣고 커밋하지 않습니다.
+
+```bash
+python -m pip install -e ".[llm]"
+python scripts/memory_eval.py --gold          # LLM 없이 정답으로 기억·관계도 만들기 (채점 확인용)
+python scripts/memory_eval.py                 # 전체 평가 (대화 310건, 약 9천 원)
+python scripts/memory_eval.py fixtures/sales/s01*.json   # 일부만 평가
+```
+
+LLM 답은 `data/memory/extractions/`에 저장해 같은 요청은 다시 호출하지 않으며, 실행이 끝나면 토큰 수와 예상 비용을 출력합니다. 시나리오 번호 끝자리 8·9·0은 지시문 개선에 쓰지 않는 확인용으로 따로 채점합니다.
+
 ## 로컬 실행
 
 Python **3.11.x 고정**입니다 (3.12 이상은 지원하지 않습니다).
@@ -166,6 +198,7 @@ uvicorn app.main:app --reload
 | `features/memory/chunking.py`, `providers/text_embedding/` (청크 생성, 텍스트 임베딩) | 구현 |
 | `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/compare_embeddings.py` (모델·청킹 비교), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
 | `api/v1/memory.py`, `features/memory/service.py`, `providers/rerank/` (대화 기억 API) | 구현 |
+| `features/memory/extraction.py`, `relations.py`, `providers/llm/`, `scripts/memory_eval.py` (핵심 정보 추출·관계 기억·관계도) | 구현 (로컬 더미 데이터) |
 | pgvector 저장·검색 (backend) | 미구현 |
 
 API 연결 전까지 voice API는 501을 반환합니다. "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 엔진 비교 테스트 후 정하며, 설정되지 않은 상태에서 사용자 목소리 정보와 함께 요청하면 503(`VOICE_NOT_CONFIGURED`)을 반환합니다.

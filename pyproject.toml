@@ -21,6 +21,8 @@ dependencies = [
 voice-pyannote = ["pyannote.audio>=4,<5", "torch>=2.8,<2.12", "torchaudio>=2.8,<2.12"]
 voice-sherpa = ["sherpa-onnx>=1.12,<2", "soundfile>=0.12,<1"]
 memory = ["sentence-transformers>=3,<6", "torch>=2.8,<2.12"]
+# Key information extraction through the LLM gateway.
+llm = ["openai>=1.50,<4"]
 # Only for retrieval_eval.py --backend pg; the service itself stores nothing.
 memory-db = ["psycopg[binary]>=3.2,<4"]
 dev = ["pytest>=8,<10"]
