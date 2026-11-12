@@ -1,4 +1,6 @@
 import math
+from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 import httpx
@@ -102,8 +104,25 @@ class GroqSpeechToText:
 
 def _retry_after(response: httpx.Response) -> dict[str, str] | None:
     # Pass Groq's wait time on so backend retries when the quota frees up.
-    try:
-        seconds = math.ceil(float(response.headers["retry-after"]))
-    except (KeyError, ValueError):
+    value = response.headers.get("retry-after")
+    seconds = _retry_after_seconds(value) if value is not None else None
+    if seconds is None:
         return None
-    return {"Retry-After": str(max(seconds, 0))}
+    return {"Retry-After": str(seconds)}
+
+
+def _retry_after_seconds(value: str) -> int | None:
+    # Retry-After is either delay seconds or an HTTP-date (RFC 9110).
+    try:
+        seconds = float(value)
+    except ValueError:
+        try:
+            when = parsedate_to_datetime(value)
+        except (TypeError, ValueError):
+            return None
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=UTC)
+        seconds = (when - datetime.now(UTC)).total_seconds()
+    if not math.isfinite(seconds):
+        return None
+    return max(math.ceil(seconds), 0)
