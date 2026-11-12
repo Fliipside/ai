@@ -1,0 +1,591 @@
+{
+  "scenario_id": "S003",
+  "description": "포장재 납품사(그린팩)가 기존 거래처인 베이커리 프랜차이즈 본사(온새미로)와 단가 인상을 협상하고 시즌 한정 패키지를 수주하는 과정. SaaS가 아닌 실물 납품 업종이라 단가·MOQ·납기·물량 약정 용어가 나온다.",
+  "fictional": true,
+  "as_of": "2026-11-02",
+  "deal_status": "won",
+  "seller": {
+    "user_id": 3,
+    "team_id": 2,
+    "name": "정하늘",
+    "company": "그린팩",
+    "product": "친환경 종이 포장재(케이크 박스·완충재)"
+  },
+  "users": [
+    {
+      "user_id": 3,
+      "team_id": 2
+    }
+  ],
+  "company": {
+    "id": "S003-CO1",
+    "name": "온새미로 베이커리",
+    "industry": "베이커리 프랜차이즈 본사",
+    "size": "가맹점 약 140곳"
+  },
+  "contacts": [
+    {
+      "id": "S003-C1",
+      "name": "배수진",
+      "title": "구매팀 대리",
+      "role_in_deal": "champion"
+    },
+    {
+      "id": "S003-C2",
+      "name": "문경호",
+      "title": "구매팀장",
+      "role_in_deal": "decision_maker"
+    },
+    {
+      "id": "S003-C3",
+      "name": "신예린",
+      "title": "브랜드마케팅 매니저",
+      "role_in_deal": "influencer"
+    }
+  ],
+  "interactions": [
+    {
+      "id": "S003-I1",
+      "kind": "call",
+      "occurred_at": "2026-09-10T13:30:00+09:00",
+      "title": "단가 인상 통보",
+      "owner_user_id": 3,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S003-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S003-I1-U00",
+          "start": 2.0,
+          "end": 16.2,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "대리님, 미리 말씀드려야 할 게 있어서 연락드렸습니다. 펄프 원지 가격이 많이 올라서 10월 발주분부터 단가를 8% 올려야 할 것 같습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I1-U01",
+          "start": 16.8,
+          "end": 24.6,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "8%요? 갑자기 너무 큰데요. 저희 월 평균 2만 개씩 꾸준히 받고 있잖아요.",
+          "contact_id": "S003-C1"
+        },
+        {
+          "id": "S003-I1-U02",
+          "start": 25.2,
+          "end": 33.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 그래서 저희도 최대한 늦춘 겁니다. 원지 가격은 올해만 20% 가까이 올랐어요.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I1-U03",
+          "start": 34.3,
+          "end": 43.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "팀장님께 보고는 드리겠지만, 이 정도면 다른 업체 견적도 한번 받아봐야 할 것 같아요.",
+          "contact_id": "S003-C1"
+        },
+        {
+          "id": "S003-I1-U04",
+          "start": 43.6,
+          "end": 52.5,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "이해합니다. 원지 가격 추이랑 인상 근거를 정리해서 다음 주 화요일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I1-U05",
+          "start": 53.1,
+          "end": 59.8,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "네, 그리고 최소 발주 수량이 지금 3천 개잖아요. 그건 그대로죠?",
+          "contact_id": "S003-C1"
+        },
+        {
+          "id": "S003-I1-U06",
+          "start": 60.4,
+          "end": 64.6,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, MOQ 3천 개는 그대로 유지됩니다.",
+          "contact_id": null
+        }
+      ]
+    },
+    {
+      "id": "S003-I2",
+      "kind": "meeting",
+      "occurred_at": "2026-09-25T15:00:00+09:00",
+      "title": "인상 협상과 시즌 패키지 논의",
+      "owner_user_id": 3,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S003-C1",
+        "S003-C2",
+        "S003-C3"
+      ],
+      "utterances": [
+        {
+          "id": "S003-I2-U00",
+          "start": 2.0,
+          "end": 10.4,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "보내주신 자료는 봤어요. 원가 오른 건 알겠는데, 8%를 그대로 받기는 어렵습니다.",
+          "contact_id": "S003-C2"
+        },
+        {
+          "id": "S003-I2-U01",
+          "start": 11.0,
+          "end": 22.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "그럼 연간 물량을 약정해 주시면 어떨까요? 1년 24만 개를 약정하시면 인상폭을 4%로 낮춰 드릴 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I2-U02",
+          "start": 22.9,
+          "end": 33.3,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "4%면 검토해 볼 만하네요. 다만 연간 약정은 대표님 결재가 필요해서 10월 중순쯤 결론이 날 겁니다.",
+          "contact_id": "S003-C2"
+        },
+        {
+          "id": "S003-I2-U03",
+          "start": 33.9,
+          "end": 44.8,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "저는 다른 건으로 왔는데요, 올해 크리스마스 시즌 한정 케이크 박스를 따로 만들고 싶어요. 5천 개 정도요.",
+          "contact_id": "S003-C3"
+        },
+        {
+          "id": "S003-I2-U04",
+          "start": 45.4,
+          "end": 49.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "좋습니다. 디자인은 정해진 게 있으세요?",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I2-U05",
+          "start": 50.0,
+          "end": 60.2,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "콘셉트만 있어요. 빨간색 말고 크림색 바탕에 금박으로 가고 싶어요. 시안 몇 개 받아볼 수 있을까요?",
+          "contact_id": "S003-C3"
+        },
+        {
+          "id": "S003-I2-U06",
+          "start": 60.8,
+          "end": 65.7,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "시안 두세 개를 10월 2일까지 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I2-U07",
+          "start": 66.3,
+          "end": 76.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "중요한 건 납기예요. 11월 20일까지는 전 매장에 깔려야 해서 그 전에 물류센터 입고가 돼야 해요.",
+          "contact_id": "S003-C3"
+        },
+        {
+          "id": "S003-I2-U08",
+          "start": 77.1,
+          "end": 87.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "금박 후가공이 있으면 제작에 3주 정도 걸려서, 10월 말까지 발주 확정해 주시면 맞출 수 있습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I2-U09",
+          "start": 87.9,
+          "end": 93.9,
+          "speaker": "SPEAKER_03",
+          "role": "customer",
+          "text": "그럼 시안은 신 매니저님이 고르시고, 발주는 제가 넣을게요.",
+          "contact_id": "S003-C1"
+        }
+      ]
+    },
+    {
+      "id": "S003-I3",
+      "kind": "call",
+      "occurred_at": "2026-10-21T10:00:00+09:00",
+      "title": "시즌 패키지 발주 확정과 연간 약정 결과",
+      "owner_user_id": 3,
+      "visibility": "private",
+      "participant_contact_ids": [
+        "S003-C3",
+        "S003-C1"
+      ],
+      "utterances": [
+        {
+          "id": "S003-I3-U00",
+          "start": 2.0,
+          "end": 9.5,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "보내주신 시안 중에 B안으로 할게요. 금박 로고 크기만 조금 줄여 주세요.",
+          "contact_id": "S003-C3"
+        },
+        {
+          "id": "S003-I3-U01",
+          "start": 10.1,
+          "end": 14.3,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "네, 수정해서 최종본 다시 확인받겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I3-U02",
+          "start": 14.9,
+          "end": 22.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "발주는 5천 개로 확정이고요, 물류센터 입고는 11월 18일까지 부탁드려요.",
+          "contact_id": "S003-C1"
+        },
+        {
+          "id": "S003-I3-U03",
+          "start": 23.1,
+          "end": 27.8,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "11월 18일까지 물류센터 입고로 맞추겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I3-U04",
+          "start": 28.4,
+          "end": 39.5,
+          "speaker": "SPEAKER_02",
+          "role": "customer",
+          "text": "그리고 연간 약정 건은 대표님 결재 났어요. 24만 개 약정하고 인상은 4%로 11월 발주분부터 적용하기로요.",
+          "contact_id": "S003-C1"
+        },
+        {
+          "id": "S003-I3-U05",
+          "start": 40.1,
+          "end": 45.4,
+          "speaker": "SPEAKER_00",
+          "role": "me",
+          "text": "감사합니다. 계약서는 바로 준비해서 보내드리겠습니다.",
+          "contact_id": null
+        },
+        {
+          "id": "S003-I3-U06",
+          "start": 46.0,
+          "end": 54.0,
+          "speaker": "SPEAKER_01",
+          "role": "customer",
+          "text": "반응 좋으면 설 명절 패키지도 생각하고 있어요. 12월 초에 다시 연락드릴게요.",
+          "contact_id": "S003-C3"
+        }
+      ]
+    }
+  ],
+  "gold_facts": [
+    {
+      "id": "S003-F01",
+      "interaction_id": "S003-I1",
+      "type": "price_reaction",
+      "said_by": "S003-C1",
+      "content": "10월 발주분부터 단가 8% 인상 통보에 너무 크다며 다른 업체 견적을 받아보겠다고 했다.",
+      "source_utterance_ids": [
+        "S003-I1-U00",
+        "S003-I1-U01",
+        "S003-I1-U03"
+      ]
+    },
+    {
+      "id": "S003-F02",
+      "interaction_id": "S003-I1",
+      "type": "requirement",
+      "said_by": "S003-C1",
+      "content": "월 평균 2만 개를 발주한다.",
+      "source_utterance_ids": [
+        "S003-I1-U01"
+      ]
+    },
+    {
+      "id": "S003-F03",
+      "interaction_id": "S003-I1",
+      "type": "promise",
+      "said_by": "me",
+      "content": "원지 가격 추이와 인상 근거 자료를 보낸다.",
+      "source_utterance_ids": [
+        "S003-I1-U04"
+      ],
+      "owner": "me",
+      "due_at": "2026-09-15",
+      "due_text": "다음 주 화요일까지",
+      "status": "done",
+      "resolved_in": "S003-I2"
+    },
+    {
+      "id": "S003-F04",
+      "interaction_id": "S003-I1",
+      "type": "requirement",
+      "said_by": "S003-C1",
+      "content": "최소 발주 수량(MOQ) 3천 개 유지를 확인했다.",
+      "source_utterance_ids": [
+        "S003-I1-U05",
+        "S003-I1-U06"
+      ]
+    },
+    {
+      "id": "S003-F05",
+      "interaction_id": "S003-I2",
+      "type": "price_reaction",
+      "said_by": "S003-C2",
+      "content": "8% 인상은 받기 어렵고, 연간 24만 개 약정 시 4% 인상은 검토할 만하다고 했다.",
+      "source_utterance_ids": [
+        "S003-I2-U00",
+        "S003-I2-U01",
+        "S003-I2-U02"
+      ]
+    },
+    {
+      "id": "S003-F06",
+      "interaction_id": "S003-I2",
+      "type": "decision",
+      "said_by": "S003-C2",
+      "content": "연간 물량 약정은 대표 결재가 필요하다.",
+      "source_utterance_ids": [
+        "S003-I2-U02"
+      ]
+    },
+    {
+      "id": "S003-F07",
+      "interaction_id": "S003-I2",
+      "type": "purchase_timing",
+      "said_by": "S003-C2",
+      "content": "연간 약정 결론은 10월 중순쯤 난다.",
+      "source_utterance_ids": [
+        "S003-I2-U02"
+      ]
+    },
+    {
+      "id": "S003-F08",
+      "interaction_id": "S003-I2",
+      "type": "requirement",
+      "said_by": "S003-C3",
+      "content": "크리스마스 시즌 한정 케이크 박스 약 5천 개, 크림색 바탕에 금박 디자인을 원한다.",
+      "source_utterance_ids": [
+        "S003-I2-U03",
+        "S003-I2-U05"
+      ]
+    },
+    {
+      "id": "S003-F09",
+      "interaction_id": "S003-I2",
+      "type": "promise",
+      "said_by": "me",
+      "content": "시즌 패키지 디자인 시안 2~3개를 보낸다.",
+      "source_utterance_ids": [
+        "S003-I2-U06"
+      ],
+      "owner": "me",
+      "due_at": "2026-10-02",
+      "due_text": "10월 2일까지",
+      "status": "done",
+      "resolved_in": "S003-I3"
+    },
+    {
+      "id": "S003-F10",
+      "interaction_id": "S003-I2",
+      "type": "requirement",
+      "said_by": "S003-C3",
+      "content": "11월 20일까지 전 매장에 배치되어야 하므로 그 전에 물류센터 입고가 필요하다.",
+      "source_utterance_ids": [
+        "S003-I2-U07",
+        "S003-I2-U08"
+      ]
+    },
+    {
+      "id": "S003-F11",
+      "interaction_id": "S003-I2",
+      "type": "decision",
+      "said_by": "S003-C1",
+      "content": "시안 선택은 신예린 매니저, 발주는 배수진 대리가 담당한다.",
+      "source_utterance_ids": [
+        "S003-I2-U09"
+      ]
+    },
+    {
+      "id": "S003-F12",
+      "interaction_id": "S003-I3",
+      "type": "decision",
+      "said_by": "S003-C3",
+      "content": "시안 B안으로 결정하고 금박 로고 크기를 줄이기로 했다.",
+      "source_utterance_ids": [
+        "S003-I3-U00"
+      ]
+    },
+    {
+      "id": "S003-F13",
+      "interaction_id": "S003-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "시즌 패키지 5천 개를 물류센터에 입고한다.",
+      "source_utterance_ids": [
+        "S003-I3-U02",
+        "S003-I3-U03"
+      ],
+      "owner": "me",
+      "due_at": "2026-11-18",
+      "due_text": "11월 18일까지",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S003-F14",
+      "interaction_id": "S003-I3",
+      "type": "decision",
+      "said_by": "S003-C1",
+      "content": "대표 결재로 연간 24만 개 약정, 11월 발주분부터 4% 인상 적용이 확정됐다.",
+      "source_utterance_ids": [
+        "S003-I3-U04"
+      ]
+    },
+    {
+      "id": "S003-F15",
+      "interaction_id": "S003-I3",
+      "type": "promise",
+      "said_by": "me",
+      "content": "연간 약정 계약서를 준비해 보낸다.",
+      "source_utterance_ids": [
+        "S003-I3-U05"
+      ],
+      "owner": "me",
+      "due_at": null,
+      "due_text": "바로",
+      "status": "open",
+      "resolved_in": null
+    },
+    {
+      "id": "S003-F16",
+      "interaction_id": "S003-I3",
+      "type": "buying_signal",
+      "said_by": "S003-C3",
+      "content": "시즌 패키지 반응이 좋으면 설 명절 패키지도 고려한다.",
+      "source_utterance_ids": [
+        "S003-I3-U06"
+      ]
+    },
+    {
+      "id": "S003-F17",
+      "interaction_id": "S003-I3",
+      "type": "promise",
+      "said_by": "S003-C3",
+      "content": "설 명절 패키지 관련해 다시 연락한다.",
+      "source_utterance_ids": [
+        "S003-I3-U06"
+      ],
+      "owner": "customer",
+      "due_at": "2026-12-01",
+      "due_text": "12월 초에",
+      "status": "open",
+      "resolved_in": null
+    }
+  ],
+  "gold_queries": [
+    {
+      "id": "S003-Q01",
+      "question": "온새미로와 단가 인상은 어떻게 정리됐어?",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U01",
+        "S003-I2-U02",
+        "S003-I3-U04"
+      ],
+      "answer": "8% 인상을 통보했으나 연간 24만 개 약정 조건으로 4%로 낮췄고, 대표 결재로 11월 발주분부터 적용된다."
+    },
+    {
+      "id": "S003-Q02",
+      "question": "시즌 패키지 납기가 언제까지야?",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U07",
+        "S003-I3-U02",
+        "S003-I3-U03"
+      ],
+      "answer": "11월 20일 매장 배치를 위해 11월 18일까지 물류센터 입고로 약속했다."
+    },
+    {
+      "id": "S003-Q03",
+      "question": "온새미로는 한 달에 얼마나 주문해?",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I1-U01"
+      ],
+      "answer": "월 평균 2만 개."
+    },
+    {
+      "id": "S003-Q04",
+      "question": "시즌 패키지 디자인은 누가 정해?",
+      "kind": "semantic",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_utterance_ids": [
+        "S003-I2-U09",
+        "S003-I3-U00"
+      ],
+      "answer": "신예린 매니저가 시안을 고르며 B안으로 결정했다."
+    },
+    {
+      "id": "S003-Q05",
+      "question": "온새미로 건에서 아직 안 끝난 우리 쪽 약속은?",
+      "kind": "structured",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_fact_ids": [
+        "S003-F13",
+        "S003-F15"
+      ],
+      "answer": "시즌 패키지 5천 개 11/18까지 입고, 연간 약정 계약서 발송."
+    },
+    {
+      "id": "S003-Q06",
+      "question": "온새미로가 나중에 연락 주기로 한 게 있어?",
+      "kind": "structured",
+      "company_id": "S003-CO1",
+      "as_of": "2026-11-02",
+      "viewer_user_id": 3,
+      "relevant_fact_ids": [
+        "S003-F17"
+      ],
+      "answer": "신예린 매니저가 설 명절 패키지 관련해 12월 초에 연락하기로 했다."
+    }
+  ]
+}

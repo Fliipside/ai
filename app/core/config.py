@@ -47,6 +47,9 @@ class Settings(BaseSettings):
     # Load models at startup so the first request does not wait for them.
     voice_preload_models: bool = False
 
+    # Hugging Face sentence-transformers model for conversation memory search.
+    text_embedding_model: str = "BAAI/bge-m3"
+
 
 @lru_cache
 def get_settings() -> Settings:
