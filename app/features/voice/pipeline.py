@@ -83,7 +83,12 @@ class VoicePipeline:
 
         async with self._analyze_lock:
             with tempfile.TemporaryDirectory() as tmp:
-                wav = await asyncio.to_thread(to_wav_16k_mono, audio, Path(tmp) / "audio.wav")
+                # Convert at most one second past the limit, so a very long upload does not
+                # hold the lock while ffmpeg decodes all of it; the extra second shows it is over.
+                limit = self.max_audio_seconds + 1 if self.max_audio_seconds else None
+                wav = await asyncio.to_thread(
+                    to_wav_16k_mono, audio, Path(tmp) / "audio.wav", limit
+                )
                 if self.max_audio_seconds and wav_duration(wav) > self.max_audio_seconds:
                     raise AudioTooLongError(self.max_audio_seconds)
                 chunks = await asyncio.to_thread(split_wav, wav, Path(tmp))

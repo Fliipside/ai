@@ -17,7 +17,8 @@ class AudioChunk:
     offset: float  # seconds from the start of the original audio
 
 
-def to_wav_16k_mono(source: Path, dest: Path) -> Path:
+def to_wav_16k_mono(source: Path, dest: Path, max_seconds: float | None = None) -> Path:
+    """Convert to 16kHz mono 16-bit WAV, stopping after max_seconds if given."""
     ffmpeg = shutil.which("ffmpeg")
     if ffmpeg is None:
         raise AppError(
@@ -26,11 +27,13 @@ def to_wav_16k_mono(source: Path, dest: Path) -> Path:
             message="ffmpeg가 설치되지 않았습니다.",
         )
 
+    limit = ["-t", str(max_seconds)] if max_seconds is not None else []
     result = subprocess.run(
         [
             ffmpeg, "-nostdin", "-hide_banner", "-loglevel", "error", "-y",
             "-i", str(source),
             "-vn", "-ac", "1", "-ar", str(SAMPLE_RATE), "-sample_fmt", "s16",
+            *limit,
             str(dest),
         ],
         capture_output=True,

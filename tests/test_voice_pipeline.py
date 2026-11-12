@@ -129,6 +129,24 @@ def test_analyze_rejects_too_long_audio(tmp_path: Path) -> None:
     assert calls == []
 
 
+@requires_ffmpeg
+def test_analyze_converts_only_past_the_limit(tmp_path: Path, monkeypatch) -> None:
+    limits = []
+    original = pipeline_module.to_wav_16k_mono
+
+    def convert(source, dest, max_seconds=None):
+        limits.append(max_seconds)
+        return original(source, dest, max_seconds)
+
+    monkeypatch.setattr(pipeline_module, "to_wav_16k_mono", convert)
+    pipeline = VoicePipeline(FakeStt(), FakeDiarizer(), FakeEmbedder(), max_audio_seconds=1)
+
+    with pytest.raises(AppError):
+        asyncio.run(pipeline.analyze(write_tone(tmp_path / "call.wav", seconds=5)))
+
+    assert limits == [2]
+
+
 def test_analyze_rejects_while_another_runs(tmp_path: Path) -> None:
     pipeline = make_pipeline(busy_retry_seconds=30)
 
