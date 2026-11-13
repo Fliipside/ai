@@ -152,7 +152,7 @@ ai는 backend compose(`~/flipside`)와 따로, 전용 compose 파일 [deploy/doc
 배포 작업(`deploy` job)이 하는 일:
 
 1. 서버에 `~/flipside-ai`를 만들고 `deploy/docker-compose.yml`과 `ai.env`(시크릿 `ENV_FILE`, 권한 600)를 복사합니다.
-2. [deploy/deploy.sh](deploy/deploy.sh)를 서버에서 실행합니다. `flipside-backend` 컨테이너가 붙어 있는 Docker 네트워크를 찾아 `~/flipside-ai/.env`의 `BACKEND_NETWORK`에 적고, `docker compose pull`과 `up -d`를 합니다.
+2. [deploy/deploy.sh](deploy/deploy.sh)를 서버에서 실행합니다. `flipside-backend` 컨테이너가 붙어 있는 Docker 네트워크를 찾아 `~/flipside-ai/.env`의 `BACKEND_NETWORK`에 적고(다른 줄은 그대로 둡니다), `docker compose pull`과 `up -d`를 합니다.
 3. 컨테이너가 healthy가 될 때까지 최대 5분 기다립니다. healthy가 안 되거나 로그에 `Failed to preload voice models`가 있으면 로그 50줄을 출력하고 배포를 실패로 끝냅니다.
 
 서버에 미리 해 둘 일은 없습니다. backend 컨테이너(`flipside-backend`)가 떠 있어야 하고, 폴더·파일·모델은 첫 배포 때 만들어집니다.

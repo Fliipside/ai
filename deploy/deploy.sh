@@ -5,6 +5,13 @@
 set -euo pipefail
 cd ~/flipside-ai
 
+# Set one KEY=value line in .env and leave the other lines as they are.
+set_env() {
+    touch .env
+    { grep -v "^$1=" .env || true; printf '%s=%s\n' "$1" "$2"; } > .env.tmp
+    mv .env.tmp .env
+}
+
 # Join whichever network the backend container is on, so it can call http://ai-service:8000.
 # Saved to .env so manual `docker compose` commands in this folder use the same network.
 backend="${BACKEND_CONTAINER:-flipside-backend}"
@@ -14,7 +21,7 @@ if [ -z "$network" ]; then
     echo "Could not find the Docker network of container '$backend'." >&2
     exit 1
 fi
-printf 'BACKEND_NETWORK=%s\n' "$network" > .env
+set_env BACKEND_NETWORK "$network"
 
 docker compose pull
 docker compose up -d

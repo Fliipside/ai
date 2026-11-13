@@ -37,7 +37,7 @@ volumes:
 
 networks:
   # The network the backend container is on, so it can call http://ai-service:8000.
-  # No host port is published. deploy.sh writes BACKEND_NETWORK to .env from the network
+  # No host port is published. deploy.sh sets BACKEND_NETWORK in .env from the network
   # the backend container is actually on.
   backend:
     external: true
