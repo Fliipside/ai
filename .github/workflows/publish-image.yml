@@ -1,45 +1,151 @@
-name: Publish ARM64 Docker image
+name: Build, publish and deploy
 
+# develop: tests and an image build only (nothing is published).
+# main: the same checks, then the image is published to ghcr.io and deployed to the server.
 on:
+  pull_request:
+    branches:
+      - develop
+      - main
   push:
     branches:
+      - develop
       - main
   workflow_dispatch:
 
 permissions:
   contents: read
-  packages: write
 
-concurrency:
-  group: publish-ai-image
-  cancel-in-progress: true
+env:
+  IMAGE: ghcr.io/fliipside/ai
+  # Publish and deploy only for commits that have landed on main.
+  RELEASE: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
 
 jobs:
-  publish:
-    runs-on: ubuntu-24.04-arm
+  test:
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Check out repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
-      
-      - name: Log in to Github Container Registry
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          pip install ".[dev]"
+
+      - name: Run tests
+        run: python -m pytest -q tests
+
+  build:
+    needs: test
+    runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: read
+      packages: write
+    # A newer commit on the same branch replaces an unfinished build.
+    concurrency:
+      group: build-ai-image-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Build image
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        with:
+          context: .
+          file: ./Dockerfile
+          load: true
+          tags: ${{ env.IMAGE }}:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Check the image imports the voice engine
+        # Catches wheels that install but do not load on ARM64 CPU (e.g. CUDA-linked torchaudio).
+        run: |
+          docker run --rm "$IMAGE:ci" python -c "
+          import torch, torchaudio, torchcodec, pyannote.audio
+          from torchcodec.decoders import AudioDecoder
+          import app.main
+          assert not torch.cuda.is_available()
+          print(torch.__version__, torchaudio.__version__, torchcodec.__version__, pyannote.audio.__version__)"
+
+      - name: Log in to GitHub Container Registry
+        if: env.RELEASE == 'true'
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
-      
-      - name: Build and publish image
+      - name: Publish image
+        if: env.RELEASE == 'true'
+        # Same build as above, so every layer comes from the cache.
         uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
         with:
           context: .
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/fliipside/ai:latest
-            ghcr.io/fliipside/ai:${{ github.sha }}
+            ${{ env.IMAGE }}:latest
+            ${{ env.IMAGE }}:${{ github.sha }}
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: read
+    # Never cancel a deploy halfway; a newer run waits for this one.
+    concurrency:
+      group: deploy-ai
+      cancel-in-progress: false
+    env:
+      TARGET: ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Set up SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+          printf 'Host *\n  IdentityFile ~/.ssh/id_deploy\n  IdentitiesOnly yes\n' > ~/.ssh/config
+
+      - name: Copy compose file and secrets to the server
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: |
+          ssh "$TARGET" 'mkdir -p ~/flipside-ai'
+          scp deploy/docker-compose.yml "$TARGET:flipside-ai/docker-compose.yml"
+          # Sent over stdin so the values never appear in a command line.
+          printf '%s\n' "$ENV_FILE" | ssh "$TARGET" 'umask 077 && cat > ~/flipside-ai/ai.env'
+
+      - name: Deploy to server
+        env:
+          GHCR_USER: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # The image is private: log in with this run's token; deploy.sh logs out again.
+          printf '%s' "$GHCR_TOKEN" | ssh "$TARGET" "docker login ghcr.io -u '$GHCR_USER' --password-stdin"
+          ssh "$TARGET" 'bash -s' < deploy/deploy.sh

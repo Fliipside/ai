@@ -1,11 +1,11 @@
 # Standalone compose for the ai service, kept apart from the backend compose so it can be
-# updated, restarted and inspected on its own. Copy this file to the server (for example
-# ~/flipside-ai/) next to an ai.env holding GROQ_API_KEY and HF_TOKEN.
+# updated, restarted and inspected on its own. publish-image.yml copies this file to
+# ~/flipside-ai/ on the server next to ai.env (GROQ_API_KEY, HF_TOKEN) and runs deploy.sh.
 name: flipside-ai
 
 services:
   ai-service:
-    # Set AI_IMAGE to pin a commit tag (ghcr.io/fliipside/ai:<sha>) for a rollback.
+    # AI_IMAGE overrides the image, e.g. a locally built one when testing this file.
     image: ${AI_IMAGE:-ghcr.io/fliipside/ai:latest}
     container_name: flipside-ai
     restart: unless-stopped
@@ -37,7 +37,8 @@ volumes:
 
 networks:
   # The network the backend container is on, so it can call http://ai-service:8000.
-  # No host port is published; check the name with `docker network ls` on the server.
+  # No host port is published. deploy.sh writes BACKEND_NETWORK to .env from the network
+  # the backend container is actually on.
   backend:
     external: true
     name: ${BACKEND_NETWORK:-flipside_default}
