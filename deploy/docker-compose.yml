@@ -6,7 +6,7 @@ name: flipside-ai
 services:
   ai-service:
     # AI_IMAGE overrides the image, e.g. a locally built one when testing this file.
-    image: ${AI_IMAGE:-ghcr.io/fliipside/ai:latest}
+    image: ${AI_IMAGE:-yjs0120/spring-boot-app:flipside-ai}
     container_name: flipside-ai
     restart: unless-stopped
     env_file:

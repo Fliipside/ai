@@ -1,7 +1,7 @@
 name: Build, publish and deploy
 
 # develop: tests and an image build only (nothing is published).
-# main: the same checks, then the image is published to ghcr.io and deployed to the server.
+# main: the same checks, then the image is published to Docker Hub and deployed to the server.
 on:
   pull_request:
     branches:
@@ -17,7 +17,10 @@ permissions:
   contents: read
 
 env:
-  IMAGE: ghcr.io/fliipside/ai
+  # One private Docker Hub repository holds every Flipside image; the tag says which service.
+  # The backend uses the tag flipside-backend. Each publish overwrites this single tag.
+  IMAGE: yjs0120/spring-boot-app
+  TAG: flipside-ai
   # Publish and deploy only for commits that have landed on main.
   RELEASE: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
 
@@ -47,9 +50,6 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-24.04-arm
-    permissions:
-      contents: read
-      packages: write
     # A newer commit on the same branch replaces an unfinished build.
     concurrency:
       group: build-ai-image-${{ github.ref }}
@@ -68,27 +68,26 @@ jobs:
           context: .
           file: ./Dockerfile
           load: true
-          tags: ${{ env.IMAGE }}:ci
+          tags: flipside-ai:ci
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Check the image imports the voice engine
         # Catches wheels that install but do not load on ARM64 CPU (e.g. CUDA-linked torchaudio).
         run: |
-          docker run --rm "$IMAGE:ci" python -c "
+          docker run --rm flipside-ai:ci python -c "
           import torch, torchaudio, torchcodec, pyannote.audio
           from torchcodec.decoders import AudioDecoder
           import app.main
           assert not torch.cuda.is_available()
           print(torch.__version__, torchaudio.__version__, torchcodec.__version__, pyannote.audio.__version__)"
 
-      - name: Log in to GitHub Container Registry
+      - name: Log in to Docker Hub
         if: env.RELEASE == 'true'
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Publish image
         if: env.RELEASE == 'true'
@@ -98,18 +97,13 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: |
-            ${{ env.IMAGE }}:latest
-            ${{ env.IMAGE }}:${{ github.sha }}
+          tags: ${{ env.IMAGE }}:${{ env.TAG }}
           cache-from: type=gha
 
   deploy:
     needs: build
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
-    permissions:
-      contents: read
-      packages: read
     # Never cancel a deploy halfway; a newer run waits for this one.
     concurrency:
       group: deploy-ai
@@ -142,10 +136,6 @@ jobs:
           printf '%s\n' "$ENV_FILE" | ssh "$TARGET" 'umask 077 && cat > ~/flipside-ai/ai.env'
 
       - name: Deploy to server
-        env:
-          GHCR_USER: ${{ github.actor }}
-          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # The image is private: log in with this run's token; deploy.sh logs out again.
-          printf '%s' "$GHCR_TOKEN" | ssh "$TARGET" "docker login ghcr.io -u '$GHCR_USER' --password-stdin"
-          ssh "$TARGET" 'bash -s' < deploy/deploy.sh
+        # The image is private. The server is already logged in to Docker Hub, the same
+        # login the backend deploy pulls with, so no credentials are sent here.
+        run: ssh "$TARGET" 'bash -s' < deploy/deploy.sh

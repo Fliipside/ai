@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 # Runs on the server in ~/flipside-ai, piped over SSH by .github/workflows/publish-image.yml
-# after it has copied docker-compose.yml and ai.env there and logged in to ghcr.io.
+# after it has copied docker-compose.yml and ai.env there. The image is pulled with the
+# server's own Docker Hub login, which the backend deploy also uses; do not log out here.
 set -euo pipefail
 cd ~/flipside-ai
-
-# The workflow logs in with its short-lived token; do not leave it on the server.
-trap 'docker logout ghcr.io >/dev/null 2>&1 || true' EXIT
 
 # Join whichever network the backend container is on, so it can call http://ai-service:8000.
 # Saved to .env so manual `docker compose` commands in this folder use the same network.
