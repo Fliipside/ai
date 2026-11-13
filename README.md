@@ -123,6 +123,67 @@ uvicorn app.main:app --reload
 
 `.env.example`을 참고해 `.env`를 만듭니다. `.env`는 실행 위치에서 상위 폴더 방향으로 찾으므로, 저장소 루트에 두면 그 아래 모든 worktree가 함께 씁니다. pyannote는 Hugging Face에서 `pyannote/speaker-diarization-community-1` 약관에 동의한 뒤 `HF_TOKEN`을 설정해야 합니다. 모델은 처음 실행할 때 Hugging Face 캐시(`HF_HUB_CACHE`)에 받으며, 받은 뒤에는 토큰 없이도 로드됩니다. pyannote의 사용 통계 전송은 기본으로 끕니다(`PYANNOTE_METRICS_ENABLED=false`). 분석 창(10초)을 옮기는 간격 `PYANNOTE_SEGMENTATION_STEP`은 기본 0.5입니다. pyannote 기본값 0.1보다 약 5배 빠르고, 실제 회의 녹음에서 결과가 98% 같았습니다. 오디오 변환에는 `ffmpeg`가 필요합니다.
 
+## 배포
+
+`main`에 push되면 `.github/workflows/publish-image.yml`이 ARM64 이미지를 만들어 `ghcr.io/fliipside/ai`(`latest`, 커밋 SHA 태그)에 올립니다. 이미지는 비공개이므로 서버에서 `read:packages` 권한 토큰으로 `docker login ghcr.io`를 한 번 해 둡니다.
+
+이미지에는 ffmpeg와 pyannote 엔진(`.[voice-pyannote]`)이 들어 있습니다. 서버에 GPU가 없어 torch·torchaudio·torchcodec은 CPU 전용 빌드(`https://download.pytorch.org/whl/cpu`)로 설치합니다. PyPI의 리눅스 ARM64용 torchaudio 2.11.1은 CUDA 라이브러리를 요구해 CPU torch에서 import가 실패하므로, 같은 인덱스의 2.11.0을 씁니다. 모델과 비밀값은 이미지에 넣지 않습니다.
+
+### 서버 실행
+
+ai는 backend compose(`~/flipside`)와 따로, 전용 compose 파일 [deploy/docker-compose.yml](deploy/docker-compose.yml)로 띄웁니다. 로그 확인과 재시작, 이미지 교체를 backend와 독립적으로 하기 위해서입니다.
+
+```bash
+# 서버에서 (처음 한 번): 폴더를 만들고 compose 파일과 ai.env를 둡니다
+mkdir -p ~/flipside-ai && cd ~/flipside-ai
+# deploy/docker-compose.yml 을 이 폴더에 복사, ai.env 에 GROQ_API_KEY, HF_TOKEN 작성 (chmod 600)
+docker network ls                 # backend 컨테이너가 붙어 있는 네트워크 이름 확인
+docker compose up -d              # 이름이 flipside_default가 아니면 BACKEND_NETWORK=<이름> 을 앞에 붙임
+
+# 이후
+docker compose pull && docker compose up -d     # 새 이미지로 교체
+docker logs -f --tail 100 flipside-ai           # 로그
+docker compose ps                               # 상태 (healthy 여부)
+AI_IMAGE=ghcr.io/fliipside/ai:<커밋 SHA> docker compose up -d   # 특정 버전으로 되돌리기
+```
+
+compose 프로젝트는 달라도 ai 컨테이너가 backend의 Docker 네트워크에 함께 붙으므로, backend는 그대로 `http://ai-service:8000/api/v1`로 호출합니다. 컨테이너 포트는 8000이며 호스트로는 공개하지 않습니다. backend compose를 `down`으로 내릴 때는 ai가 그 네트워크를 쓰고 있어 네트워크 삭제만 건너뜁니다(`up -d`, `pull`에는 영향 없음).
+
+| 환경 변수 | 값 | 설명 |
+| ---- | ---- | ---- |
+| `GROQ_API_KEY` | (비밀값) | Groq Whisper STT. `env_file`로 주입 |
+| `HF_TOKEN` | (비밀값) | pyannote 모델 다운로드. `pyannote/speaker-diarization-community-1` 약관에 동의한 계정의 토큰. `env_file`로 주입 |
+| `DIARIZATION_ENGINE` | `pyannote` | 이미지에 pyannote만 들어 있음 |
+| `VOICE_PRELOAD_MODELS` | `true` (권장) | 시작할 때 모델을 불러와 첫 요청이 기다리지 않게 함 |
+
+- 모델 캐시: 이미지가 `HF_HUB_CACHE=/models/huggingface`로 고정합니다. `/models`에 볼륨을 붙여 컨테이너를 다시 만들어도 모델(약 32MB)을 유지합니다. 서버의 env 파일에는 `HF_HUB_CACHE`를 적지 않습니다(적으면 이미지 값을 덮어씁니다).
+- 상태 확인: `GET /health`. `VOICE_PRELOAD_MODELS=true`이면 모델을 불러온 뒤에 응답하기 시작합니다. 다만 모델 로드에 실패해도 200을 돌려주므로(음성 요청이 503 `DIARIZATION_NOT_CONFIGURED`로 알림), 처음 배포한 뒤에는 로그에 `Failed to preload voice models`가 없는지 확인합니다.
+- 분석은 녹음 길이에 따라 몇 분 걸리므로 backend의 호출 timeout을 넉넉하게 둡니다.
+
+로컬에서 같은 이미지를 확인할 때:
+
+```bash
+docker build -t flipside-ai:local .
+docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일> \
+    -e DIARIZATION_ENGINE=pyannote -e VOICE_PRELOAD_MODELS=true \
+    -v flipside-ai-models:/models flipside-ai:local
+```
+
+### 실측 (Mac ARM64 Docker, CPU 4개로 제한, 2026-11-12)
+
+운영 서버(OCI A1, 4 OCPU)는 코어당 속도가 더 느리므로 시간은 참고값입니다. 서버에서 다시 재야 합니다.
+
+| 항목 | 값 |
+| ---- | ---- |
+| 이미지 크기 | 2.68GB (`docker images` 기준. 이 중 torch·pyannote 레이어 1.47GB, ffmpeg 레이어 398MB) |
+| 시작 → `/health` 200 (preload, 모델 다운로드 포함) | 약 19초 |
+| 시작 → `/health` 200 (preload, 볼륨에 모델 있음) | 약 6초 |
+| preload 없이 첫 요청의 모델 로드 | 목소리 등록 약 3초, 분석 약 2초 추가 |
+| 목소리 등록 (30초 음성) | 0.5~0.7초 |
+| 분석 (90초 녹음) | 약 12초 |
+| 분석 (25분 39초 녹음, 화자 3명) | 약 156초 |
+| 메모리 | 모델 로드 후 대기 약 0.6GB, 분석 중 최대 약 2.9GB (25분 녹음), 분석 후 약 2.4GB 유지 |
+
 ## 현재 API 상태
 
 | 경로                         | 입력                  | 현재 동작 |
