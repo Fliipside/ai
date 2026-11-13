@@ -125,7 +125,22 @@ uvicorn app.main:app --reload
 
 ## 배포
 
-`main`에 push되면 `.github/workflows/publish-image.yml`이 ARM64 이미지를 만들어 `ghcr.io/fliipside/ai`(`latest`, 커밋 SHA 태그)에 올립니다. 이미지는 비공개이므로 서버에서 `read:packages` 권한 토큰으로 `docker login ghcr.io`를 한 번 해 둡니다.
+`.github/workflows/publish-image.yml`이 브랜치에 따라 다음을 합니다.
+
+| 시점 | 테스트 (pytest) | 이미지 빌드 + import 확인 | ghcr 게시 | 서버 배포 |
+| ---- | ---- | ---- | ---- | ---- |
+| `develop`·`main` 대상 PR | O | O | - | - |
+| `develop`에 머지(push) | O | O | - | - |
+| `main`에 머지(push) | O | O | O | O |
+
+`develop`에서는 ARM64 이미지가 빌드되고 그 안에서 torch·torchaudio·torchcodec·pyannote가 import되는지까지만 확인하며, 아무것도 게시하지 않습니다. `main`에 합쳐지면 같은 확인을 거친 뒤 이미지를 `ghcr.io/fliipside/ai`(`latest`, 커밋 SHA 태그)에 올리고, 서버에 SSH로 접속해 새 이미지로 교체합니다. 앞 단계가 실패하면 뒤 단계는 실행되지 않습니다. 이미지는 비공개이며, 서버는 배포할 때마다 그 실행의 임시 토큰으로 로그인해 받고 바로 로그아웃합니다.
+
+저장소 시크릿 (Settings → Secrets and variables → Actions):
+
+| 시크릿 | 내용 |
+| ---- | ---- |
+| `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY` | 서버 접속 정보 (backend 저장소와 같은 값) |
+| `ENV_FILE` | 서버의 `ai.env`가 될 내용. `GROQ_API_KEY=...`, `HF_TOKEN=...` 두 줄 |
 
 이미지에는 ffmpeg와 pyannote 엔진(`.[voice-pyannote]`)이 들어 있습니다. 서버에 GPU가 없어 torch·torchaudio·torchcodec은 CPU 전용 빌드(`https://download.pytorch.org/whl/cpu`)로 설치합니다. PyPI의 리눅스 ARM64용 torchaudio 2.11.1은 CUDA 라이브러리를 요구해 CPU torch에서 import가 실패하므로, 같은 인덱스의 2.11.0을 씁니다. 모델과 비밀값은 이미지에 넣지 않습니다.
 
@@ -133,19 +148,24 @@ uvicorn app.main:app --reload
 
 ai는 backend compose(`~/flipside`)와 따로, 전용 compose 파일 [deploy/docker-compose.yml](deploy/docker-compose.yml)로 띄웁니다. 로그 확인과 재시작, 이미지 교체를 backend와 독립적으로 하기 위해서입니다.
 
-```bash
-# 서버에서 (처음 한 번): 폴더를 만들고 compose 파일과 ai.env를 둡니다
-mkdir -p ~/flipside-ai && cd ~/flipside-ai
-# deploy/docker-compose.yml 을 이 폴더에 복사, ai.env 에 GROQ_API_KEY, HF_TOKEN 작성 (chmod 600)
-docker network ls                 # backend 컨테이너가 붙어 있는 네트워크 이름 확인
-docker compose up -d              # 이름이 flipside_default가 아니면 BACKEND_NETWORK=<이름> 을 앞에 붙임
+배포 작업(`deploy` job)이 하는 일:
 
-# 이후
-docker compose pull && docker compose up -d     # 새 이미지로 교체
-docker logs -f --tail 100 flipside-ai           # 로그
-docker compose ps                               # 상태 (healthy 여부)
-AI_IMAGE=ghcr.io/fliipside/ai:<커밋 SHA> docker compose up -d   # 특정 버전으로 되돌리기
+1. 서버에 `~/flipside-ai`를 만들고 `deploy/docker-compose.yml`과 `ai.env`(시크릿 `ENV_FILE`, 권한 600)를 복사합니다.
+2. [deploy/deploy.sh](deploy/deploy.sh)를 서버에서 실행합니다. `flipside-backend` 컨테이너가 붙어 있는 Docker 네트워크를 찾아 `~/flipside-ai/.env`의 `BACKEND_NETWORK`에 적고, `docker compose pull`과 `up -d`를 합니다.
+3. 컨테이너가 healthy가 될 때까지 최대 5분 기다립니다. healthy가 안 되거나 로그에 `Failed to preload voice models`가 있으면 로그 50줄을 출력하고 배포를 실패로 끝냅니다.
+
+서버에 미리 해 둘 일은 없습니다. backend 컨테이너(`flipside-backend`)가 떠 있어야 하고, 폴더·파일·모델은 첫 배포 때 만들어집니다.
+
+서버에서 직접 볼 때:
+
+```bash
+cd ~/flipside-ai
+docker logs -f --tail 100 flipside-ai    # 로그
+docker compose ps                        # 상태 (healthy 여부)
+docker compose restart                   # 재시작
 ```
+
+이전 버전으로 되돌리려면 GitHub Actions에서 그 버전을 배포했던 실행을 다시 실행(Re-run all jobs)합니다. 서버에는 ghcr 로그인이 남아 있지 않아 `docker compose pull`은 직접 실행할 수 없습니다.
 
 compose 프로젝트는 달라도 ai 컨테이너가 backend의 Docker 네트워크에 함께 붙으므로, backend는 그대로 `http://ai-service:8000/api/v1`로 호출합니다. 컨테이너 포트는 8000이며 호스트로는 공개하지 않습니다. backend compose를 `down`으로 내릴 때는 ai가 그 네트워크를 쓰고 있어 네트워크 삭제만 건너뜁니다(`up -d`, `pull`에는 영향 없음).
 
@@ -156,8 +176,8 @@ compose 프로젝트는 달라도 ai 컨테이너가 backend의 Docker 네트워
 | `DIARIZATION_ENGINE` | `pyannote` | 이미지에 pyannote만 들어 있음 |
 | `VOICE_PRELOAD_MODELS` | `true` (권장) | 시작할 때 모델을 불러와 첫 요청이 기다리지 않게 함 |
 
-- 모델 캐시: 이미지가 `HF_HUB_CACHE=/models/huggingface`로 고정합니다. `/models`에 볼륨을 붙여 컨테이너를 다시 만들어도 모델(약 32MB)을 유지합니다. 서버의 env 파일에는 `HF_HUB_CACHE`를 적지 않습니다(적으면 이미지 값을 덮어씁니다).
-- 상태 확인: `GET /health`. `VOICE_PRELOAD_MODELS=true`이면 모델을 불러온 뒤에 응답하기 시작합니다. 다만 모델 로드에 실패해도 200을 돌려주므로(음성 요청이 503 `DIARIZATION_NOT_CONFIGURED`로 알림), 처음 배포한 뒤에는 로그에 `Failed to preload voice models`가 없는지 확인합니다.
+- 모델 캐시: 이미지가 `HF_HUB_CACHE=/models/huggingface`로 고정합니다. `/models`에 볼륨을 붙여 컨테이너를 다시 만들어도 모델(약 32MB)을 유지합니다. `ENV_FILE`에는 `HF_HUB_CACHE`를 적지 않습니다(적으면 이미지 값을 덮어씁니다).
+- 상태 확인: `GET /health`. `VOICE_PRELOAD_MODELS=true`이면 모델을 불러온 뒤에 응답하기 시작합니다. 다만 모델 로드에 실패해도 200을 돌려주므로(음성 요청이 503 `DIARIZATION_NOT_CONFIGURED`로 알림), 배포 스크립트가 로그의 `Failed to preload voice models`를 따로 확인합니다.
 - 분석은 녹음 길이에 따라 몇 분 걸리므로 backend의 호출 timeout을 넉넉하게 둡니다.
 
 로컬에서 같은 이미지를 확인할 때:
