@@ -46,7 +46,10 @@ def test_model_load_failure_is_not_configured(monkeypatch) -> None:
 
 def test_metrics_are_off_by_default(monkeypatch) -> None:
     monkeypatch.delenv("PYANNOTE_METRICS_ENABLED", raising=False)
-    monkeypatch.setitem(sys.modules, "pyannote.audio", SimpleNamespace())
+    # Fake the parent package too, so this runs without pyannote installed (CI test job).
+    fake_audio = SimpleNamespace()
+    monkeypatch.setitem(sys.modules, "pyannote", SimpleNamespace(audio=fake_audio))
+    monkeypatch.setitem(sys.modules, "pyannote.audio", fake_audio)
 
     diarization.import_pyannote()
 
