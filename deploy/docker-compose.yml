@@ -1,0 +1,44 @@
+# Standalone compose for the ai service, kept apart from the backend compose so it can be
+# updated, restarted and inspected on its own. publish-image.yml copies this file to
+# ~/flipside-ai/ on the server next to ai.env (GROQ_API_KEY, HF_TOKEN) and runs deploy.sh.
+name: flipside-ai
+
+services:
+  ai-service:
+    # AI_IMAGE overrides the image, e.g. a locally built one when testing this file.
+    image: ${AI_IMAGE:-yjs0120/spring-boot-app:flipside-ai}
+    container_name: flipside-ai
+    restart: unless-stopped
+    env_file:
+      - ./ai.env
+    environment:
+      DIARIZATION_ENGINE: pyannote
+      VOICE_PRELOAD_MODELS: "true"
+    volumes:
+      # HF_HUB_CACHE=/models/huggingface in the image; keeps models across re-creates.
+      - models:/models
+    networks:
+      - backend
+    healthcheck:
+      # The image has no curl.
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 120s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  models:
+
+networks:
+  # The network the backend container is on, so it can call http://ai-service:8000.
+  # No host port is published. deploy.sh sets BACKEND_NETWORK in .env from the network
+  # the backend container is actually on.
+  backend:
+    external: true
+    name: ${BACKEND_NETWORK:-flipside_default}
