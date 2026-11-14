@@ -10,3 +10,5 @@ __pycache__/
 models/
 data/
 .vscode/
+# Dummy sales scenarios are shared outside git (fixtures/sales/README.md stays)
+fixtures/sales/*.json

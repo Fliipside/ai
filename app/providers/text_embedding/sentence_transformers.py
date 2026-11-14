@@ -1,3 +1,6 @@
+# [AI 모델] 텍스트 임베딩 실제 구현 (기본 bge-m3)
+# 글을 1024차원 벡터로 바꿉니다. 모델은 처음 한 번만 불러와 재사용합니다.
+
 import logging
 import threading
 from functools import lru_cache
@@ -15,6 +18,11 @@ PREFIXES = {
     "intfloat/multilingual-e5-large": ("query: ", "passage: "),
 }
 
+# Others ship a named instruction prompt for queries instead (sentence-transformers prompt_name).
+QUERY_PROMPTS = {
+    "Qwen/Qwen3-Embedding-0.6B": "query",
+}
+
 encode_lock = threading.Lock()
 
 
@@ -24,19 +32,25 @@ class SentenceTransformerEmbedder:
         self.batch_size = batch_size
         self.name = f"sentence_transformers:{model}"
         self.query_prefix, self.document_prefix = PREFIXES.get(model, ("", ""))
+        self.query_prompt = QUERY_PROMPTS.get(model)
 
     def embed_documents(self, texts: list[str]) -> list[list[float]]:
         return self._encode([self.document_prefix + t for t in texts])
 
     def embed_query(self, text: str) -> list[float]:
-        return self._encode([self.query_prefix + text])[0]
+        return self._encode([self.query_prefix + text], prompt_name=self.query_prompt)[0]
 
-    def _encode(self, texts: list[str]) -> list[list[float]]:
+    def _encode(self, texts: list[str], prompt_name: str | None = None) -> list[list[float]]:
         if not texts:
             return []
         model = load_model(self.model)
         with encode_lock:
-            vectors = model.encode(texts, batch_size=self.batch_size, normalize_embeddings=True)
+            vectors = model.encode(
+                texts,
+                batch_size=self.batch_size,
+                normalize_embeddings=True,
+                prompt_name=prompt_name,
+            )
         return vectors.tolist()
 
 

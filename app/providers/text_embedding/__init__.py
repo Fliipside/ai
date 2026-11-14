@@ -1,3 +1,6 @@
+# [AI 모델] 텍스트 임베딩 모델 고르기
+# 설정(TEXT_EMBEDDING_MODEL)을 보고 사용할 임베딩 모델을 만들어 줍니다.
+
 from app.core.config import Settings
 from app.providers.text_embedding.base import TextEmbedder
 

@@ -100,7 +100,7 @@ def chunk_sql(scenarios, embedder, max_chars, overlap, context) -> list[str]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--model", default=BGE_M3)
-    parser.add_argument("--max-chars", type=int, default=300)
+    parser.add_argument("--max-chars", type=int, default=500)
     parser.add_argument("--overlap", type=int, default=1)
     parser.add_argument("--no-context", action="store_true")
     parser.add_argument("--out", type=Path, default=Path("data/memory/load_fixtures.sql"))
