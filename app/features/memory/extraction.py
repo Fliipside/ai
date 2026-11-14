@@ -38,7 +38,52 @@ def person_label(person: Person) -> str:
     return f"{person.title or '고객'}(이름 미상)"
 
 
-def render_prompt(company: str, conversation: Conversation, memory: CompanyMemory) -> str:
+class PromptIds:
+    """Short ids shown to the LLM (P1, F1, U1) in place of real ids.
+
+    Real ids can be long (e.g. "<analysis job uuid>-0001"); copying them costs tokens, and a
+    single wrong character makes apply_extraction drop the fact.
+    """
+
+    def __init__(self, memory: CompanyMemory, conversation: Conversation) -> None:
+        self.short: dict[str, str] = {}
+        for prefix, ids in (
+            ("P", [p.id for p in memory.people]),
+            ("F", [f.id for f in memory.facts]),
+            ("U", [u.id for u in conversation.utterances]),
+        ):
+            self.short.update({real: f"{prefix}{n}" for n, real in enumerate(ids, start=1)})
+        self.real = {short: real for real, short in self.short.items()}
+
+    def restore(self, value: str | None) -> str | None:
+        # Unknown values pass through; apply_extraction drops ids that point at nothing.
+        return self.real.get(value, value) if value else value
+
+    def restore_extraction(self, extraction: ConversationExtraction) -> ConversationExtraction:
+        return extraction.model_copy(update={
+            "people": [
+                p.model_copy(update={"known_person_id": self.restore(p.known_person_id)})
+                for p in extraction.people
+            ],
+            "facts": [
+                f.model_copy(update={
+                    "source_utterance_ids": [self.restore(i) for i in f.source_utterance_ids],
+                    "supersedes_fact_id": self.restore(f.supersedes_fact_id),
+                })
+                for f in extraction.facts
+            ],
+            "resolved_promise_ids": [self.restore(i) for i in extraction.resolved_promise_ids],
+        })
+
+
+def prompt_memory(memory: CompanyMemory) -> tuple[list[MemoryFact], list[MemoryFact]]:
+    """What the prompt shows from earlier facts: open promises and current (not replaced) other facts."""
+    open_promises = [f for f in memory.facts if f.type == "promise" and f.status == "open" and not f.superseded_by]
+    current = [f for f in memory.facts if f.type != "promise" and f.superseded_by is None]
+    return open_promises, current
+
+
+def render_prompt(company: str, conversation: Conversation, memory: CompanyMemory, ids: PromptIds) -> str:
     when = format_date(conversation.occurred_at.date())
     lines = [
         f"고객사: {company}",
@@ -48,24 +93,23 @@ def render_prompt(company: str, conversation: Conversation, memory: CompanyMemor
     ]
     titles = {c.id: c.title for c in memory.conversations}
     lines += [
-        f"- {p.id} {person_label(p)}, {p.role_in_deal}, "
-        + ", ".join(titles[c] for c in dict.fromkeys(c for c, _ in p.appearances))
+        f"- {ids.short[p.id]} {person_label(p)}, {p.role_in_deal}, "
+        + ", ".join(titles.get(c, c) for c in dict.fromkeys(c for c, _ in p.appearances))
         for p in memory.people
     ] or ["- 없음"]
 
-    open_promises = [f for f in memory.facts if f.type == "promise" and f.status == "open" and not f.superseded_by]
+    open_promises, current = prompt_memory(memory)
     lines += ["", "아직 지켜지지 않은 약속:"]
     lines += [
-        f"- {f.id} [{f.owner}] {f.content} (기한 {f.due_at or f.due_text or '없음'})" for f in open_promises
+        f"- {ids.short[f.id]} [{f.owner}] {f.content} (기한 {f.due_at or f.due_text or '없음'})" for f in open_promises
     ] or ["- 없음"]
 
-    current = [f for f in memory.facts if f.type != "promise" and f.superseded_by is None]
     lines += ["", "이전에 기록된 정보:"]
-    lines += [f"- {f.id} [{f.type}] {f.content}" for f in current] or ["- 없음"]
+    lines += [f"- {ids.short[f.id]} [{f.type}] {f.content}" for f in current] or ["- 없음"]
 
     lines += ["", "대화 (발화 id | 화자 라벨(역할): 내용):"]
     lines += [
-        f"[{u.id}] {speaker_label(u.role, u.speaker)}({ROLE_LABELS[u.role]}): {u.text}"
+        f"[{ids.short[u.id]}] {speaker_label(u.role, u.speaker)}({ROLE_LABELS[u.role]}): {u.text}"
         for u in conversation.utterances
     ]
     return "\n".join(lines)
@@ -91,11 +135,16 @@ class MemoryBuilder:
     def build(self, company: str, conversations: list[Conversation]) -> CompanyMemory:
         memory = CompanyMemory(company=company, conversations=[], people=[], facts=[])
         for conversation in sorted(conversations, key=lambda c: c.occurred_at):
-            extraction = self.llm.generate(
-                SYSTEM_PROMPT, render_prompt(company, conversation, memory), ConversationExtraction
-            )
-            apply_extraction(memory, conversation, extraction)
+            self.add(memory, conversation)
         return memory
+
+    def add(self, memory: CompanyMemory, conversation: Conversation) -> None:
+        """Extract one conversation with the memory so far and apply it to that memory."""
+        ids = PromptIds(memory, conversation)
+        extraction = self.llm.generate(
+            SYSTEM_PROMPT, render_prompt(memory.company, conversation, memory, ids), ConversationExtraction
+        )
+        apply_extraction(memory, conversation, ids.restore_extraction(extraction))
 
 
 def full_name(extracted: ExtractedPerson) -> str | None:
@@ -149,7 +198,8 @@ def apply_extraction(memory: CompanyMemory, conversation: Conversation, extracti
             continue
         person, inferred = find_person(memory, extracted, set(person_of_speaker.values()))
         if person is None:
-            person = Person(id=f"P{len(memory.people) + 1}", name=None, title=None,
+            # Scoped to the conversation so it never collides with ids backend already stores.
+            person = Person(id=f"{conversation.id}-P{len(person_of_speaker) + 1}", name=None, title=None,
                             role_in_deal=extracted.role_in_deal, appearances=[])
             memory.people.append(person)
         person.name = person.name or full_name(extracted)

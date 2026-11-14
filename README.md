@@ -150,7 +150,8 @@ python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 | ---- | ---- |
 | `app/features/memory/extraction.py`, `prompts/extraction_system.txt` | LLM 지시문(텍스트 파일), 대화별 추출, 사람 연결(이름 → 성+직함 → 문맥), 기억 반영 |
 | `app/features/memory/relations.py` | 남은 약속 조회, 관계도 노드·연결선 만들기 |
-| `app/providers/llm/gateway.py` | 대회 LLM 게이트웨이(OpenAI 호환) 호출, 결과 형식 검사·1회 재요청, 토큰 사용량 집계 |
+| `app/providers/llm/gateway.py` | 대회 LLM 게이트웨이(OpenAI 호환) 호출, 결과 형식 검사, 빈 응답·형식 오류·일시 오류 1회 재요청(전체 240초 안), 토큰 사용량 집계 |
+| `app/features/memory/service.py` (`ExtractionService`), `app/api/v1/memory.py` (`/extract`) | 정보 추출 API: 저장된 기억 + 새 대화 1건 → 새로 생기거나 바뀐 사람·정보 |
 | `scripts/memory_eval.py` | 더미 데이터로 추출 품질 평가, 고객사별 기억 JSON과 관계도 HTML 저장 |
 
 기본 모델은 `claude-sonnet-5-5`에 사고량 `low`입니다(`LLM_MODEL`, `LLM_REASONING_EFFORT`). Opus는 답보다 숨은 사고 토큰이 10배 넘게 나와 비용의 약 90%를 차지했고, Sonnet low는 비용이 약 15분의 1이면서 정보 찾기 점수는 비슷하거나 높았습니다. `LLM_API_KEY`는 팀 공유 키라 `.env`에만 넣고 커밋하지 않습니다.
@@ -158,11 +159,33 @@ python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 ```bash
 python -m pip install -e ".[llm]"
 python scripts/memory_eval.py --gold          # LLM 없이 정답으로 기억·관계도 만들기 (채점 확인용)
-python scripts/memory_eval.py                 # 전체 평가 (대화 310건, 약 9천 원)
+python scripts/memory_eval.py                 # 전체 평가 (대화 310건, 약 7천 원)
 python scripts/memory_eval.py fixtures/sales/s01*.json   # 일부만 평가
 ```
 
 LLM 답은 `data/memory/extractions/`에 저장해 같은 요청은 다시 호출하지 않으며, 실행이 끝나면 토큰 수와 예상 비용을 출력합니다. 시나리오 번호 끝자리 8·9·0은 지시문 개선에 쓰지 않는 확인용으로 따로 채점합니다.
+
+LLM에는 실제 id 대신 짧은 별칭(사람 `P1`, 정보 `F1`, 발화 `U1`)을 보여 주고, 답을 받은 뒤 코드에서 실제 id로 되돌립니다. 실제 발화 id는 `분석작업id-순번`처럼 길어서, 그대로 베껴 쓰게 하면 토큰이 늘고 한 글자만 틀려도 그 정보가 버려지기 때문입니다.
+
+### 정보 추출 API
+
+| 경로 | 요청 | 응답 `data` |
+| ---- | ---- | ---- |
+| `POST /api/v1/memory/extract` | `company`, `conversation`(`id`, `kind` meeting\|call, `occurred_at`, `title`, `utterances[]` 1~5000개, 발화 `id`는 대화 안에서 중복 없음), `memory`(선택: 지금까지 저장한 `conversations[]`(발화 없이 `id`·`kind`·`occurred_at`·`title`), `people[]`, `facts[]`) | `model`, `people[]`, `facts[]`: 새로 생기거나 이번 대화로 바뀐 것만 |
+
+ai는 기억을 저장하지 않습니다. backend 흐름:
+
+1. 음성 분석이 끝나 대화를 저장하면, 같은 고객사의 저장된 기억(대화 목록, 사람, 정보)을 `memory`에 담아 `/extract`를 호출합니다. 고객사의 첫 대화면 `memory`를 비웁니다.
+2. 응답의 `people[]`, `facts[]`를 `id` 기준으로 덮어쓰거나 추가합니다(upsert). 다시 나온 사람(`appearances` 추가), 완료된 약속(`status: done`, `resolved_in`), 새 정보로 대체된 정보(`superseded_by`)도 이 목록에 들어 있습니다.
+3. 대화 자체(`id`, `kind`, `occurred_at`, `title`)도 저장해 다음 호출의 `memory.conversations`에 넣습니다.
+
+- id는 대화 id로 시작해 겹치지 않습니다. 새 사람은 `대화id-P1`, 정보는 `대화id-F01` 형식입니다.
+- 이미 `memory.conversations`에 있는 대화를 다시 보내면 `409 CONVERSATION_ALREADY_EXTRACTED`입니다. 같은 정보가 두 번 쌓이는 것을 막습니다.
+- LLM 호출 1번이라 보통 10~40초 걸립니다. ai는 호출 1번을 최대 120초, 다시 시도까지 합쳐 최대 240초 안에 끝내거나 오류를 돌려주므로, backend 요청 타임아웃은 300초로 잡습니다. backend가 먼저 포기하면 ai는 끝까지 실행해 비용만 쓰고, 다시 보내면 비용이 두 번 듭니다. 녹음 분석처럼 작업 큐에서 처리하는 것을 권장합니다.
+- 다시 시도: 빈 응답, 형식이 맞지 않는 답, 일시적인 게이트웨이 오류(시간 초과·연결 끊김·429·5xx)는 남은 시간 안에서 1번 더 요청합니다.
+- 사람, 남은 약속, 현재 정보(대체되지 않은 정보)는 매번 LLM에 모두 들어갑니다. 합계가 600개를 넘으면 `413 MEMORY_TOO_LARGE`로 거절합니다. 한 고객사와 대화 20건이면 약 200개입니다.
+- 같은 고객사의 대화는 날짜 순서대로 하나씩 처리해야 합니다. 동시에 보내면 서로의 결과를 모른 채 추출해 약속 완료·정보 변경을 놓칩니다.
+- 오류: LLM 키 없음·`openai` 미설치 `503 LLM_NOT_CONFIGURED`, 게이트웨이 오류·시간 초과 `502 LLM_UNAVAILABLE`, 빈 응답·형식이 맞지 않는 답(1번 재요청 후) `502 LLM_BAD_RESPONSE`, 기억이 너무 큼 `413 MEMORY_TOO_LARGE`, 요청 형식 오류(id 중복 포함) `422 INVALID_REQUEST`.
 
 ## 로컬 실행
 
@@ -274,6 +297,7 @@ docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일
 | `POST /api/v1/memory/chunks` | 대화 1건의 발화 목록 | 200       |
 | `POST /api/v1/memory/embed-query` | 질문 | 200       |
 | `POST /api/v1/memory/rerank` | 질문과 후보 청크 | 200       |
+| `POST /api/v1/memory/extract` | 대화 1건과 저장된 기억 | 200 (10~40초, 최대 240초) |
 
 구현 상태:
 
@@ -290,6 +314,7 @@ docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일
 | `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/compare_embeddings.py` (모델·청킹 비교), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
 | `api/v1/memory.py`, `features/memory/service.py`, `providers/rerank/` (대화 기억 API) | 구현 |
 | `features/memory/extraction.py`, `relations.py`, `providers/llm/`, `scripts/memory_eval.py` (핵심 정보 추출·관계 기억·관계도) | 구현 (로컬 더미 데이터) |
+| `api/v1/memory.py` `/extract` (정보 추출 API) | 구현 |
 | pgvector 저장·검색 (backend) | 미구현 |
 
 "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 기본 0.5입니다. 실제 회의 녹음에서 사용자는 약 0.84, 다른 사람은 약 0.2였습니다(녹음 2개, 한 사람 기준).

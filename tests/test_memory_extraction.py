@@ -35,13 +35,13 @@ REPLIES = [
                    {"speaker": "SPEAKER_09", "known_person_id": None, "name": "없는 화자", "surname": None,
                     "title": None, "role_in_deal": "unknown"}],
         "facts": [
-            {"type": "promise", "speaker": "me", "content": "자료를 보낸다.", "source_utterance_ids": ["I1-U0"],
+            {"type": "promise", "speaker": "me", "content": "자료를 보낸다.", "source_utterance_ids": ["U1"],
              "owner": "me", "due_text": "목요일까지", "due_date": "2026-09-10", "supersedes_fact_id": None},
             {"type": "requirement", "speaker": "SPEAKER_01", "content": "3개 라인에 적용한다.",
-             "source_utterance_ids": ["I1-U1"], "owner": None, "due_text": None, "due_date": None,
+             "source_utterance_ids": ["U2"], "owner": None, "due_text": None, "due_date": None,
              "supersedes_fact_id": None},
             {"type": "decision", "speaker": "SPEAKER_01", "content": "근거 없는 정보",
-             "source_utterance_ids": ["I9-U9"], "owner": None, "due_text": None, "due_date": None,
+             "source_utterance_ids": ["U9"], "owner": None, "due_text": None, "due_date": None,
              "supersedes_fact_id": None},
         ],
         "resolved_promise_ids": [],
@@ -51,10 +51,10 @@ REPLIES = [
                     "title": "대리", "role_in_deal": "unknown"}],
         "facts": [
             {"type": "requirement", "speaker": "SPEAKER_02", "content": "5개 라인으로 늘린다.",
-             "source_utterance_ids": ["I2-U1"], "owner": None, "due_text": None, "due_date": "아무때나",
-             "supersedes_fact_id": "I1-F02"},
+             "source_utterance_ids": ["U2"], "owner": None, "due_text": None, "due_date": "아무때나",
+             "supersedes_fact_id": "F2"},
         ],
-        "resolved_promise_ids": ["I1-F01", "I1-F99"],
+        "resolved_promise_ids": ["F1", "F99"],
     },
 ]
 
@@ -79,12 +79,12 @@ def build() -> tuple[CompanyMemory, FakeLLM]:
 def test_conversations_are_extracted_in_date_order_with_earlier_memory() -> None:
     _, llm = build()
 
-    assert "[I1-U1] SPEAKER_01(고객): 생산관리팀 박지훈 대리입니다." in llm.prompts[0]
+    assert "[U2] SPEAKER_01(고객): 생산관리팀 박지훈 대리입니다." in llm.prompts[0]
     assert "2026-09-07 (Mon) 미팅" in llm.prompts[0]
     # The second prompt carries what the first conversation left behind.
     assert "- P1 박지훈 대리, champion, 미팅 I1" in llm.prompts[1]
-    assert "- I1-F01 [me] 자료를 보낸다. (기한 2026-09-10)" in llm.prompts[1]
-    assert "- I1-F02 [requirement] 3개 라인에 적용한다." in llm.prompts[1]
+    assert "- F1 [me] 자료를 보낸다. (기한 2026-09-10)" in llm.prompts[1]
+    assert "- F2 [requirement] 3개 라인에 적용한다." in llm.prompts[1]
 
 
 def test_surname_and_title_link_to_the_known_person() -> None:
@@ -127,11 +127,11 @@ def test_graph_links_people_conversations_and_facts() -> None:
     nodes = {n["id"]: n for n in graph["nodes"]}
     edges = {(e["from"], e["to"], e["label"]) for e in graph["edges"]}
 
-    assert nodes["P1"]["label"] == "박지훈 대리\n내부 지지자"
+    assert nodes["I1-P1"]["label"] == "박지훈 대리\n내부 지지자"
     assert nodes["I1-F02"]["group"] == "superseded"
     assert nodes["I1-F01"]["label"] == "약속 · 완료 · ~2026-09-10"
-    assert {("P1", "company", "소속"), ("P1", "I2-F01", "말함"), ("I2-F01", "I1-F02", "변경"),
-            ("I1-F01", "I2", "완료"), ("P1", "I1", "참석")} <= edges
+    assert {("I1-P1", "company", "소속"), ("I1-P1", "I2-F01", "말함"), ("I2-F01", "I1-F02", "변경"),
+            ("I1-F01", "I2", "완료"), ("I1-P1", "I1", "참석")} <= edges
 
 
 def test_overdue_promise_is_marked() -> None:

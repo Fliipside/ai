@@ -2,9 +2,9 @@
 # 필드 이름, 필수 여부, 길이 제한을 정합니다. backend와 맞춰야 하는 계약입니다.
 
 from datetime import datetime
-from typing import Annotated, Literal
+from typing import Annotated, Literal, Self
 
-from pydantic import BaseModel, Field, StringConstraints
+from pydantic import BaseModel, Field, StringConstraints, model_validator
 
 from app.schemas.voice import Utterance
 
@@ -88,12 +88,23 @@ DealRole = Literal["champion", "influencer", "decision_maker", "procurement", "u
 PromiseOwner = Literal["me", "customer"]
 
 
-class Conversation(BaseModel):
-    id: str
+class ConversationRef(BaseModel):
+    # A conversation without its utterances: enough to name it in the prompt and the map.
+    id: str = Field(min_length=1)
     kind: InteractionKind
     occurred_at: datetime
     title: str
-    utterances: list[StoredUtterance]
+
+
+class Conversation(ConversationRef):
+    utterances: list[StoredUtterance] = Field(min_length=1, max_length=5000)
+
+    @model_validator(mode="after")
+    def utterance_ids_are_unique(self) -> Self:
+        # Facts point back to utterances by id, so an id must name one utterance.
+        if len({u.id for u in self.utterances}) != len(self.utterances):
+            raise ValueError("utterance ids must be unique within a conversation")
+        return self
 
 
 # What the LLM returns for one conversation. Every field is required (null when unknown)
@@ -154,6 +165,38 @@ class MemoryFact(BaseModel):
 
 class CompanyMemory(BaseModel):
     company: str
-    conversations: list[Conversation]
+    # Conversations already applied; earlier ones may come without utterances (from MemoryState).
+    conversations: list[ConversationRef]
+    people: list[Person]
+    facts: list[MemoryFact]
+
+
+# POST /memory/extract: backend keeps the memory and sends it with each new conversation.
+
+class MemoryState(BaseModel):
+    # Everything stored so far for this customer company; empty for its first conversation.
+    conversations: list[ConversationRef] = Field(default=[], max_length=1000)
+    people: list[Person] = Field(default=[], max_length=500)
+    facts: list[MemoryFact] = Field(default=[], max_length=5000)
+
+    @model_validator(mode="after")
+    def ids_are_unique(self) -> Self:
+        # Each id gets one short alias in the prompt; a repeated id would make it ambiguous.
+        for name, items in (("conversations", self.conversations), ("people", self.people), ("facts", self.facts)):
+            if len({i.id for i in items}) != len(items):
+                raise ValueError(f"{name} ids must be unique")
+        return self
+
+
+class ExtractRequest(BaseModel):
+    company: str = Field(min_length=1)
+    conversation: Conversation
+    memory: MemoryState = MemoryState()
+
+
+class ExtractResult(BaseModel):
+    model: str
+    # Upsert both by id: new ones plus earlier ones this conversation changed
+    # (a person seen again, a promise now done, a fact replaced by a newer one).
     people: list[Person]
     facts: list[MemoryFact]
