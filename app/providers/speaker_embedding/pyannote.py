@@ -1,3 +1,4 @@
+import threading
 from functools import lru_cache
 from pathlib import Path
 
@@ -5,10 +6,13 @@ from app.core.errors import InvalidAudioError
 from app.providers.diarization.pyannote import (
     COMMUNITY_1,
     import_pyannote,
-    inference_lock,
     model_load_error,
 )
 from app.utils.audio import SAMPLE_RATE, crop_samples, read_wav_samples
+
+# Separate from the diarization lock (a different model object), so enrolling a voice
+# does not wait for a long diarization to finish.
+embedding_lock = threading.Lock()
 
 
 class PyannoteEmbedder:
@@ -32,7 +36,7 @@ class PyannoteEmbedder:
         if samples.size == 0:
             raise InvalidAudioError("목소리 구간이 없습니다.")
 
-        with inference_lock:
+        with embedding_lock:
             vector = inference({"waveform": to_tensor(samples), "sample_rate": SAMPLE_RATE})
         return [float(x) for x in vector.reshape(-1)]
 

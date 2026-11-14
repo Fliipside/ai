@@ -1,3 +1,6 @@
+import math
+from datetime import UTC, datetime
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 import httpx
@@ -63,6 +66,7 @@ class GroqSpeechToText:
                 status_code=429,
                 code="STT_RATE_LIMITED",
                 message="음성 인식 사용량 한도를 초과했습니다. 잠시 후 다시 시도해 주세요.",
+                headers=_retry_after(response),
             )
         if response.status_code != 200:
             raise AppError(
@@ -96,3 +100,29 @@ class GroqSpeechToText:
                 code="STT_FAILED",
                 message="음성 인식 서버에 연결할 수 없습니다.",
             ) from exc
+
+
+def _retry_after(response: httpx.Response) -> dict[str, str] | None:
+    # Pass Groq's wait time on so backend retries when the quota frees up.
+    value = response.headers.get("retry-after")
+    seconds = _retry_after_seconds(value) if value is not None else None
+    if seconds is None:
+        return None
+    return {"Retry-After": str(seconds)}
+
+
+def _retry_after_seconds(value: str) -> int | None:
+    # Retry-After is either delay seconds or an HTTP-date (RFC 9110).
+    try:
+        seconds = float(value)
+    except ValueError:
+        try:
+            when = parsedate_to_datetime(value)
+        except (TypeError, ValueError):
+            return None
+        if when.tzinfo is None:
+            when = when.replace(tzinfo=UTC)
+        seconds = (when - datetime.now(UTC)).total_seconds()
+    if not math.isfinite(seconds):
+        return None
+    return max(math.ceil(seconds), 0)

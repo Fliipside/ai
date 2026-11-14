@@ -19,12 +19,18 @@ inference_lock = threading.Lock()
 class PyannoteDiarizer:
     """pyannote/speaker-diarization-community-1 (requires `voice-pyannote` extra and HF token)."""
 
-    def __init__(self, hf_token: str, model: str = COMMUNITY_1) -> None:
+    def __init__(
+        self,
+        hf_token: str,
+        model: str = COMMUNITY_1,
+        segmentation_step: float = 0.5,
+    ) -> None:
         self.hf_token = hf_token
         self.model = model
+        self.segmentation_step = segmentation_step
 
     def diarize(self, audio: Path, num_speakers: int | None = None) -> list[SpeakerTurn]:
-        pipeline = load_pipeline(self.model, self.hf_token)
+        pipeline = load_pipeline(self.model, self.hf_token, self.segmentation_step)
         waveform = load_waveform(audio)
         with inference_lock:
             output = pipeline(
@@ -42,12 +48,17 @@ class PyannoteDiarizer:
 
 
 @lru_cache
-def load_pipeline(model: str, hf_token: str):
+def load_pipeline(model: str, hf_token: str, segmentation_step: float):
     Pipeline = import_pyannote().Pipeline
     try:
-        return Pipeline.from_pretrained(model, token=hf_token or None)
+        pipeline = Pipeline.from_pretrained(model, token=hf_token or None)
     except Exception as exc:
         raise model_load_error(exc) from exc
+    # The sliding window is built at load time, so set its step on the inference directly.
+    # Most of the time goes into one embedding per window: 0.5 (5s of a 10s window) is about
+    # 5x faster than the default 0.1 and matched it on our recordings.
+    pipeline._segmentation.step = segmentation_step * pipeline._segmentation.duration
+    return pipeline
 
 
 def import_pyannote():

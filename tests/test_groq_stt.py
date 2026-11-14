@@ -1,4 +1,6 @@
 import asyncio
+from datetime import UTC, datetime, timedelta
+from email.utils import format_datetime
 from pathlib import Path
 
 import httpx
@@ -61,3 +63,54 @@ def test_transcribe_requires_api_key(tmp_path: Path) -> None:
         asyncio.run(stt.transcribe(tmp_path / "a.wav"))
 
     assert exc.value.code == "STT_NOT_CONFIGURED"
+
+
+def test_rate_limit_passes_retry_after(tmp_path: Path) -> None:
+    audio = tmp_path / "a.wav"
+    audio.write_bytes(b"RIFF")
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(429, headers={"retry-after": "7.2"}, json={})
+
+    with pytest.raises(AppError) as exc:
+        asyncio.run(make_stt(handler).transcribe(audio))
+
+    assert exc.value.headers == {"Retry-After": "8"}
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        ("7.2", "8"),
+        ("-3", "0"),
+        ("1e400", None),
+        ("nan", None),
+        ("not-a-date", None),
+    ],
+)
+def test_rate_limit_retry_after_values(tmp_path: Path, value: str, expected: str | None) -> None:
+    audio = tmp_path / "a.wav"
+    audio.write_bytes(b"RIFF")
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(429, headers={"retry-after": value}, json={})
+
+    with pytest.raises(AppError) as exc:
+        asyncio.run(make_stt(handler).transcribe(audio))
+
+    assert exc.value.code == "STT_RATE_LIMITED"
+    assert exc.value.headers == (None if expected is None else {"Retry-After": expected})
+
+
+def test_rate_limit_retry_after_http_date(tmp_path: Path) -> None:
+    audio = tmp_path / "a.wav"
+    audio.write_bytes(b"RIFF")
+    when = format_datetime(datetime.now(UTC) + timedelta(seconds=90), usegmt=True)
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(429, headers={"retry-after": when}, json={})
+
+    with pytest.raises(AppError) as exc:
+        asyncio.run(make_stt(handler).transcribe(audio))
+
+    assert 85 <= int(exc.value.headers["Retry-After"]) <= 90

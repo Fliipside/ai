@@ -1,14 +1,18 @@
+import threading
 from functools import lru_cache
 from pathlib import Path
 
 from app.core.errors import InvalidAudioError
 from app.providers.diarization.sherpa_onnx import (
     import_sherpa_onnx,
-    inference_lock,
     not_configured,
     require_model_files,
 )
 from app.utils.audio import SAMPLE_RATE, crop_samples, read_wav_samples
+
+# Separate from the diarization lock (its own extractor), so enrolling a voice
+# does not wait for a long diarization to finish.
+embedding_lock = threading.Lock()
 
 
 class SherpaOnnxEmbedder:
@@ -28,7 +32,7 @@ class SherpaOnnxEmbedder:
         if spans is not None:
             samples = crop_samples(samples, spans)
 
-        with inference_lock:
+        with embedding_lock:
             stream = extractor.create_stream()
             stream.accept_waveform(sample_rate=SAMPLE_RATE, waveform=samples)
             stream.input_finished()
