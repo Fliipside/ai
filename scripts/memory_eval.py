@@ -12,7 +12,8 @@ Writes one memory JSON and one relationship map (HTML) per scenario.
     supersedes      gold changes (later fact replaces an earlier one) linked to the earlier fact
     people          each customer speaker per conversation: right by full name or surname+title,
                     title only, unknown, or wrong (another person); merged = one person covering
-                    several real contacts
+                    several real contacts; linked = a contact seen in several conversations kept
+                    as one person across all of them
     open promises   structured queries answered with exactly the gold promise set
 
 Scenarios S001-S007 are used to tune the prompt; S008-S010 are held out to check it.
@@ -195,6 +196,19 @@ def score_people(scenario: dict, memory: CompanyMemory, contacts: dict) -> Count
             else:
                 result["people_unknown"] += 1
         result["people_merged"] += len(covered) > 1
+    # Contacts who speak in two or more conversations: one person should cover all of them.
+    spoken_in = defaultdict(set)
+    for (conversation_id, _), contact_id in contacts.items():
+        if contact_id in real:
+            spoken_in[contact_id].add(conversation_id)
+    for contact_id, conversations in spoken_in.items():
+        if len(conversations) < 2:
+            continue
+        result["recurring"] += 1
+        result["recurring_linked"] += any(
+            {c for c, s in p.appearances if contacts.get((c, s)) == contact_id} == conversations
+            for p in memory.people
+        )
     return result
 
 
@@ -355,6 +369,7 @@ def print_report(name: str, group: dict, with_extraction: bool) -> None:
         print(f"  고객 알아보기 {pct(right, t['people_seen'])} 맞음 (이름 {t['people_full']}, 성+직함 {t['people_surname']}), "
               f"직함만 {t['people_title']}, 모름 {t['people_unknown']}, 틀림 {t['people_wrong']}, "
               f"잘못 합친 사람 {t['people_merged']}")
+        print(f"  여러 대화에 나온 고객을 한 사람으로 이음 {pct(t['recurring_linked'], t['recurring'])}")
         print(f"  약속: 할 사람 {pct(t['owner_ok'], t['promises'])}  기한 날짜 {pct(t['due_ok'], t['due_total'])}  "
               f"완료 여부 {pct(t['status_ok'], t['promises'])}")
         print(f"  바뀐 정보 연결 {pct(t['changes_linked'], t['changes'])}")
