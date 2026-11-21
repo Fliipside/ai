@@ -139,7 +139,8 @@ def test_stored_memory_round_trip_matches_building_all_at_once() -> None:
 
     # The second prompt carries the stored memory under short ids.
     assert "- P1 박지훈 대리, champion, 미팅 7일" in llm.prompts[1]
-    assert "- F1 [me] 자료를 보낸다. (기한 2026-09-10)" in llm.prompts[1]
+    assert "- F1 [me] me: 자료를 보낸다. (기한 2026-09-10)" in llm.prompts[1]
+    assert "- F2 [requirement] P1: 3개 라인에 적용한다." in llm.prompts[1]
     assert JOB1 not in llm.prompts[1]
 
     whole = MemoryBuilder(ScriptedLLM(REPLIES)).build(

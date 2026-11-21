@@ -196,6 +196,9 @@ def score_people(scenario: dict, memory: CompanyMemory, contacts: dict) -> Count
             else:
                 result["people_unknown"] += 1
         result["people_merged"] += len(covered) > 1
+    # Contact speakers no extracted person covers count as missed, so recognition is out of all of them.
+    found = {a for p in memory.people for a in p.appearances}
+    result["people_missing"] += sum(1 for key, c in contacts.items() if c in real and key not in found)
     # Contacts who speak in two or more conversations: one person should cover all of them.
     spoken_in = defaultdict(set)
     for (conversation_id, _), contact_id in contacts.items():
@@ -366,8 +369,9 @@ def print_report(name: str, group: dict, with_extraction: bool) -> None:
             f"{FACT_LABELS[k]} {pct(by_type[k], gold_by_type[k])}" for k in FACT_LABELS))
         print(f"  말한 사람 {pct(t['speaker_ok'], t['matched'])}")
         right = t["people_full"] + t["people_surname"]
-        print(f"  고객 알아보기 {pct(right, t['people_seen'])} 맞음 (이름 {t['people_full']}, 성+직함 {t['people_surname']}), "
-              f"직함만 {t['people_title']}, 모름 {t['people_unknown']}, 틀림 {t['people_wrong']}, "
+        print(f"  고객 알아보기 {pct(right, t['people_seen'] + t['people_missing'])} 맞음 "
+              f"(이름 {t['people_full']}, 성+직함 {t['people_surname']}), "
+              f"직함만 {t['people_title']}, 모름 {t['people_unknown']}, 틀림 {t['people_wrong']}, 못 찾음 {t['people_missing']}, "
               f"잘못 합친 사람 {t['people_merged']}")
         print(f"  여러 대화에 나온 고객을 한 사람으로 이음 {pct(t['recurring_linked'], t['recurring'])}")
         print(f"  약속: 할 사람 {pct(t['owner_ok'], t['promises'])}  기한 날짜 {pct(t['due_ok'], t['due_total'])}  "

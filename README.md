@@ -148,8 +148,8 @@ python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 
 | 파일 | 하는 일 |
 | ---- | ---- |
-| `app/features/memory/extraction.py`, `prompts/extraction_system.txt` | LLM 지시문(텍스트 파일), 대화별 추출, 사람 연결(이름 → 성+직함 → 문맥), 기억 반영 |
-| `app/features/memory/relations.py` | 남은 약속 조회, 관계도 노드·연결선 만들기 |
+| `app/features/memory/extraction.py`, `prompts/extraction_system.txt` | LLM 지시문(텍스트 파일), 대화별 추출, 사람 연결(이름 → 성+직함 → 문맥; 그 대화에 이름이 안 나오면 추정 연결로 표시), 기억 반영 |
+| `app/features/memory/relations.py` | 남은 약속 조회, 관계도 노드·연결선, 관계 타임라인(대화별 사건·남은 약속), 볼 수 있는 대화만 남기기 |
 | `app/providers/llm/gateway.py` | 대회 LLM 게이트웨이(OpenAI 호환) 호출, 결과 형식 검사, 빈 응답·형식 오류·일시 오류 1회 재요청(전체 240초 안), 토큰 사용량 집계 |
 | `app/features/memory/service.py` (`ExtractionService`), `app/api/v1/memory.py` (`/extract`) | 정보 추출 API: 저장된 기억 + 새 대화 1건 → 새로 생기거나 바뀐 사람·정보 |
 | `scripts/memory_eval.py` | 더미 데이터로 추출 품질 평가, 고객사별 기억 JSON과 관계도 HTML 저장 |
@@ -186,6 +186,20 @@ ai는 기억을 저장하지 않습니다. backend 흐름:
 - 사람, 남은 약속, 현재 정보(대체되지 않은 정보)는 매번 LLM에 모두 들어갑니다. 합계가 600개를 넘으면 `413 MEMORY_TOO_LARGE`로 거절합니다. 한 고객사와 대화 20건이면 약 200개입니다.
 - 같은 고객사의 대화는 날짜 순서대로 하나씩 처리해야 합니다. 동시에 보내면 서로의 결과를 모른 채 추출해 약속 완료·정보 변경을 놓칩니다.
 - 오류: LLM 키 없음·`openai` 미설치 `503 LLM_NOT_CONFIGURED`, 게이트웨이 오류·시간 초과 `502 LLM_UNAVAILABLE`, 빈 응답·형식이 맞지 않는 답(1번 재요청 후) `502 LLM_BAD_RESPONSE`, 기억이 너무 큼 `413 MEMORY_TOO_LARGE`, 요청 형식 오류(id 중복 포함) `422 INVALID_REQUEST`.
+
+### 관계도·관계 타임라인 API
+
+저장된 기억을 받아 화면에 그릴 데이터를 돌려줍니다. LLM을 쓰지 않아 바로 응답하고 비용이 없습니다.
+
+| 경로 | 요청 | 응답 `data` |
+| ---- | ---- | ---- |
+| `POST /api/v1/memory/graph` | `company`, `memory`(`/extract`와 같은 `conversations[]`·`people[]`·`facts[]`), `as_of`(선택, `YYYY-MM-DD`) | `nodes[]`: `id`, `type`(company·me·person·conversation·fact), `group`, `label`, `title`, `role_in_deal`, `inferred_in`, `fact_type`, `status`, `due_at` / `edges[]`: `from`, `to`, `type`, `label`, `dashes` |
+| `POST /api/v1/memory/timeline` | 위와 같음 | `entries[]`(오래된 대화부터): 대화 `conversation_id`·`occurred_at`·`kind`·`title`, `participants[]`(`first_seen`: 처음 나온 사람, `inferred`: 이 대화에서 추정으로 이음), `events[]`(`type`: fact·promise·changed·promise_done, `content`, `said_by`, `previous_content` 등) / `upcoming[]`: 남은 약속(기한 빠른 순, 기한 없는 것은 뒤), `overdue` |
+
+- 관계도는 vis-network 모양(`from`/`to`, `group`, `label`)이라 그대로 그릴 수 있고, 직접 그리는 화면은 `type`과 나머지 필드를 쓰면 됩니다. `group`은 사람이면 역할, 정보면 종류이고, 대체된 정보는 `superseded`, 남은 약속은 `open_promise`, 기한이 지난 약속은 `overdue`입니다.
+- 추정 연결: 이름이 그 대화에 나오지 않았는데 이전 사람과 이은 경우입니다(사람 노드 `inferred_in`, 타임라인 `inferred`). 평가에서 잘못 합친 사람은 모두 이쪽이었으니, 화면에서 "같은 사람이 맞나요?"처럼 확인을 받으면 좋습니다.
+- `as_of`보다 기한이 이른 남은 약속을 기한 지남으로 표시합니다. 비우면 오늘(한국 날짜)입니다.
+- 권한: backend는 사용자가 볼 수 있는 대화만 `memory.conversations`에 넣습니다. 사람·정보는 그대로 보내도 되고, 빠진 대화의 정보·참석 기록과 그 대화로 이어지는 완료·변경 연결은 ai가 지웁니다.
 
 ## 로컬 실행
 
@@ -298,6 +312,8 @@ docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일
 | `POST /api/v1/memory/embed-query` | 질문 | 200       |
 | `POST /api/v1/memory/rerank` | 질문과 후보 청크 | 200       |
 | `POST /api/v1/memory/extract` | 대화 1건과 저장된 기억 | 200 (10~40초, 최대 240초) |
+| `POST /api/v1/memory/graph` | 저장된 기억 | 200 |
+| `POST /api/v1/memory/timeline` | 저장된 기억 | 200 |
 
 구현 상태:
 
@@ -314,7 +330,7 @@ docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일
 | `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/compare_embeddings.py` (모델·청킹 비교), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
 | `api/v1/memory.py`, `features/memory/service.py`, `providers/rerank/` (대화 기억 API) | 구현 |
 | `features/memory/extraction.py`, `relations.py`, `providers/llm/`, `scripts/memory_eval.py` (핵심 정보 추출·관계 기억·관계도) | 구현 (로컬 더미 데이터) |
-| `api/v1/memory.py` `/extract` (정보 추출 API) | 구현 |
+| `api/v1/memory.py` `/extract` (정보 추출 API), `/graph`·`/timeline` (관계도·관계 타임라인 API) | 구현 |
 | pgvector 저장·검색 (backend) | 미구현 |
 
 "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 기본 0.5입니다. 실제 회의 녹음에서 사용자는 약 0.84, 다른 사람은 약 0.2였습니다(녹음 2개, 한 사람 기준).

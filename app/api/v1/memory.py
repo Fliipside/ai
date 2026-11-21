@@ -2,13 +2,14 @@
 # backend 요청을 받아 service.py로 넘기고 결과를 돌려줍니다.
 # /chunks: 대화 → 청크+벡터, /embed-query: 질문 → 벡터, /rerank: 검색 후보 재정렬
 # /extract: 대화 1건 + 지금까지의 기억 → 새로 생기거나 바뀐 사람·핵심 정보
+# /graph, /timeline: 저장된 기억 → 관계도(점과 선), 대화별 타임라인 (LLM 없음)
 
 import asyncio
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Request
 
-from app.features.memory.service import ExtractionService, MemoryService
+from app.features.memory.service import ExtractionService, MemoryService, relation_graph, relation_timeline
 from app.providers.llm import create_llm
 from app.providers.rerank import create_reranker
 from app.providers.text_embedding import create_text_embedder
@@ -19,8 +20,11 @@ from app.schemas.memory import (
     ExtractResult,
     QueryRequest,
     QueryVector,
+    RelationGraph,
+    RelationRequest,
     RerankRequest,
     RerankResult,
+    Timeline,
 )
 from app.schemas.response import ApiResponse
 
@@ -67,3 +71,16 @@ async def rerank(body: RerankRequest, service: Service) -> ApiResponse[RerankRes
 async def extract(body: ExtractRequest, service: Extraction) -> ApiResponse[ExtractResult]:
     # One LLM call, usually 10-60 seconds; backend should run it after saving the analysis.
     return ApiResponse[ExtractResult].ok(await asyncio.to_thread(service.extract, body))
+
+
+@router.post("/graph", response_model=ApiResponse[RelationGraph])
+async def graph(body: RelationRequest) -> ApiResponse[RelationGraph]:
+    # Stored memory -> nodes and edges for the relationship map. Up to about a second for the
+    # largest memory, so it runs off the event loop like the other endpoints.
+    return ApiResponse[RelationGraph].ok(await asyncio.to_thread(relation_graph, body))
+
+
+@router.post("/timeline", response_model=ApiResponse[Timeline])
+async def timeline(body: RelationRequest) -> ApiResponse[Timeline]:
+    # Stored memory -> what happened in each conversation, then the promises still open.
+    return ApiResponse[Timeline].ok(await asyncio.to_thread(relation_timeline, body))

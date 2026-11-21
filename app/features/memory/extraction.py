@@ -2,6 +2,7 @@
 # 대화를 날짜순으로 하나씩 LLM에 보내 요구사항·가격 반응·약속·구매 시기·구매 신호·결정을 뽑고,
 # 사람(화자) 연결, 바뀐 정보(supersedes), 지켜진 약속(resolved)을 이전 기억에 반영합니다.
 
+import re
 from datetime import date
 from pathlib import Path
 
@@ -98,14 +99,19 @@ def render_prompt(company: str, conversation: Conversation, memory: CompanyMemor
         for p in memory.people
     ] or ["- 없음"]
 
+    # Who said each earlier fact, so a speaker who goes on with it can be recognized without a name.
+    def said(f: MemoryFact) -> str:
+        return "me" if f.said_by == "me" else ids.short.get(f.said_by or "", "고객")
+
     open_promises, current = prompt_memory(memory)
-    lines += ["", "아직 지켜지지 않은 약속:"]
+    lines += ["", "아직 지켜지지 않은 약속 (id [할 사람] 말한 사람: 내용):"]
     lines += [
-        f"- {ids.short[f.id]} [{f.owner}] {f.content} (기한 {f.due_at or f.due_text or '없음'})" for f in open_promises
+        f"- {ids.short[f.id]} [{f.owner}] {said(f)}: {f.content} (기한 {f.due_at or f.due_text or '없음'})"
+        for f in open_promises
     ] or ["- 없음"]
 
-    lines += ["", "이전에 기록된 정보:"]
-    lines += [f"- {ids.short[f.id]} [{f.type}] {f.content}" for f in current] or ["- 없음"]
+    lines += ["", "이전에 기록된 정보 (id [종류] 말한 사람: 내용):"]
+    lines += [f"- {ids.short[f.id]} [{f.type}] {said(f)}: {f.content}" for f in current] or ["- 없음"]
 
     lines += ["", "대화 (발화 id | 화자 라벨(역할): 내용):"]
     lines += [
@@ -155,7 +161,25 @@ def full_name(extracted: ExtractedPerson) -> str | None:
     return name
 
 
-def find_person(memory: CompanyMemory, extracted: ExtractedPerson, taken: set[str]) -> tuple[Person | None, bool]:
+# The prompt asks for what someone does ("구매 담당") when no title is said, so such a duty
+# can sit next to any real title and never rules a person out. Two real titles must agree.
+DUTY_WORDS = ("담당", "실무", "책임")
+
+
+def titles_agree(a: str | None, b: str | None) -> bool:
+    if not a or not b or a in b or b in a:
+        return True
+    return any(w in t for t in (a, b) for w in DUTY_WORDS)
+
+
+def named_in(conversation: Conversation, *names: str | None) -> bool:
+    """Whether any of these names is said in the conversation (spaces ignored)."""
+    text = "".join([conversation.title, *(u.text for u in conversation.utterances)]).replace(" ", "")
+    return any(n and n.replace(" ", "") in text for n in names)
+
+
+def find_person(memory: CompanyMemory, conversation: Conversation, extracted: ExtractedPerson,
+                taken: set[str]) -> tuple[Person | None, bool]:
     """The known person this speaker is, and whether that was only inferred from context."""
     people = {p.id: p for p in memory.people if p.id not in taken}
     name, title = full_name(extracted), clean(extracted.title)
@@ -163,27 +187,50 @@ def find_person(memory: CompanyMemory, extracted: ExtractedPerson, taken: set[st
     if name:
         for p in people.values():
             if p.name == name:
-                return p, False
-    if surname:
-        for p in people.values():
-            if (
-                (p.surname == surname or (p.name or "").startswith(surname))
-                and not (name and p.name and p.name != name)
-                and (not title or not p.title or title in p.title or p.title in title)
-            ):
-                return p, False
-    # A context-only link needs something to link on, and nothing that contradicts it;
-    # merging two real people is worse than leaving a speaker unnamed.
+                # Models also copy a known person's name onto a speaker they only guess is that
+                # person; a name this conversation never says is such a guess, so mark it inferred.
+                return p, not named_in(conversation, name, clean(extracted.name))
     known = people.get(extracted.known_person_id or "")
+    if surname:
+        candidates = [
+            p for p in people.values()
+            if (p.surname == surname or (p.name or "").startswith(surname))
+            and not (name and p.name and p.name != name)
+            and titles_agree(title, p.title)
+        ]
+        if candidates:
+            # Two people can share a surname and title (two 박 대리); the model's pick decides.
+            p = known if known in candidates else candidates[0]
+            # Same for a surname: it counts when said with a title ("박 대리") or in the full name.
+            titles = [t.split()[-1] for t in (title, p.title) if t]
+            return p, not named_in(conversation, name, p.name, *(surname + t for t in titles))
+    # A context-only link needs something to link on (a name, a title or what the person said
+    # before, which the prompt shows) and nothing that contradicts it; merging two real people
+    # is worse than leaving a speaker unnamed.
     if (
         known is not None
-        and (known.name or known.surname or known.title)
+        and (known.name or known.surname or known.title or any(f.said_by == known.id for f in memory.facts))
         and not (name and known.name and known.name != name)
         and not (surname and known.surname and known.surname != surname)
-        and not (title and known.title and title not in known.title and known.title not in title)
+        and titles_agree(title, known.title)
     ):
         return known, True
     return None, False
+
+
+# The prompt shows speakers as "A(고객)"; with short labels the model sometimes copies the role too.
+ROLE_SUFFIX = re.compile(r"\s*\([^()]*\)$")
+
+
+def with_own_labels(extraction: ConversationExtraction, speakers: set[str]) -> ConversationExtraction:
+    def own(label: str) -> str:
+        label = label.strip()
+        return label if label in speakers else ROLE_SUFFIX.sub("", label)
+
+    return extraction.model_copy(update={
+        "people": [p.model_copy(update={"speaker": own(p.speaker)}) for p in extraction.people],
+        "facts": [f.model_copy(update={"speaker": own(f.speaker)}) for f in extraction.facts],
+    })
 
 
 def apply_extraction(memory: CompanyMemory, conversation: Conversation, extraction: ConversationExtraction) -> None:
@@ -191,12 +238,13 @@ def apply_extraction(memory: CompanyMemory, conversation: Conversation, extracti
     memory.conversations.append(conversation)
     utterance_ids = {u.id for u in conversation.utterances}
     speakers = {speaker_label(u.role, u.speaker) for u in conversation.utterances}
+    extraction = with_own_labels(extraction, speakers)
 
     person_of_speaker: dict[str, str] = {}
     for extracted in extraction.people:
         if extracted.speaker not in speakers or extracted.speaker == "me" or extracted.speaker in person_of_speaker:
             continue
-        person, inferred = find_person(memory, extracted, set(person_of_speaker.values()))
+        person, inferred = find_person(memory, conversation, extracted, set(person_of_speaker.values()))
         if person is None:
             # Scoped to the conversation so it never collides with ids backend already stores.
             person = Person(id=f"{conversation.id}-P{len(person_of_speaker) + 1}", name=None, title=None,

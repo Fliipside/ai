@@ -1,10 +1,15 @@
 # [기능 처리] 대화 기억 API의 실제 작업
-# 청크 나누기 → 머리말 붙이기 → 임베딩, 질문 임베딩, 후보 재정렬, 대화 1건의 핵심 정보 추출을 합니다.
+# 청크 나누기 → 머리말 붙이기 → 임베딩, 질문 임베딩, 후보 재정렬, 대화 1건의 핵심 정보 추출,
+# 저장된 기억으로 관계도·타임라인 만들기를 합니다.
 # 저장·검색(pgvector)은 하지 않고 backend가 맡습니다.
+
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 from app.core.errors import AppError
 from app.features.memory.chunking import chunk_utterances, with_context
 from app.features.memory.extraction import MemoryBuilder, prompt_memory
+from app.features.memory.relations import build_graph, build_timeline
 from app.providers.llm.base import StructuredLLM
 from app.providers.rerank.base import Reranker
 from app.providers.text_embedding.base import TextEmbedder
@@ -17,8 +22,11 @@ from app.schemas.memory import (
     ExtractResult,
     QueryVector,
     RankedCandidate,
+    RelationGraph,
+    RelationRequest,
     RerankRequest,
     RerankResult,
+    Timeline,
 )
 
 
@@ -100,3 +108,23 @@ class ExtractionService:
             people=[p for p in memory.people if people_before.get(p.id) != p.model_dump()],
             facts=[f for f in memory.facts if facts_before.get(f.id) != f.model_dump()],
         )
+
+
+def stored_memory(request: RelationRequest) -> CompanyMemory:
+    state = request.memory
+    return CompanyMemory(company=request.company, conversations=state.conversations, people=state.people,
+                         facts=state.facts)
+
+
+def as_of_day(request: RelationRequest) -> str:
+    # Due dates are Korean calendar days.
+    day: date = request.as_of or datetime.now(ZoneInfo("Asia/Seoul")).date()
+    return day.isoformat()
+
+
+def relation_graph(request: RelationRequest) -> RelationGraph:
+    return RelationGraph.model_validate(build_graph(stored_memory(request), as_of_day(request)))
+
+
+def relation_timeline(request: RelationRequest) -> Timeline:
+    return build_timeline(stored_memory(request), as_of_day(request))
