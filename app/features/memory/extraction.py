@@ -246,10 +246,14 @@ def full_name(extracted: ExtractedPerson) -> str | None:
 DUTY_WORDS = ("담당", "실무", "책임")
 
 
+def is_duty(title: str) -> bool:
+    return any(w in title for w in DUTY_WORDS)
+
+
 def titles_agree(a: str | None, b: str | None) -> bool:
     if not a or not b or a in b or b in a:
         return True
-    return any(w in t for t in (a, b) for w in DUTY_WORDS)
+    return is_duty(a) or is_duty(b)
 
 
 def named_in(conversation: Conversation, *names: str | None) -> bool:
@@ -332,7 +336,10 @@ def apply_extraction(memory: CompanyMemory, conversation: Conversation, extracti
             memory.people.append(person)
         person.name = person.name or full_name(extracted)
         person.surname = person.surname or clean(extracted.surname) or (person.name or "")[:1] or None
-        person.title = clean(extracted.title) or person.title
+        title = clean(extracted.title)
+        # A duty guessed from what was said never replaces a title someone actually used.
+        if title and not (person.title and is_duty(title) and not is_duty(person.title)):
+            person.title = title
         if extracted.role_in_deal != "unknown":
             person.role_in_deal = extracted.role_in_deal
         person.appearances.append((conversation.id, extracted.speaker))

@@ -253,6 +253,17 @@ def test_duty_description_does_not_rule_out_a_title() -> None:
     assert (p.surname, p.title, len(p.appearances)) == ("정", "팀장", 2)
 
 
+def test_duty_description_does_not_replace_a_title() -> None:
+    memory = build_with([
+        {"people": [person("SPEAKER_01", title="대리")], "facts": [], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_02", title="생산관리 실무 담당", known_person_id="P1")], "facts": [],
+         "resolved_promise_ids": []},
+    ])
+
+    [p] = memory.people
+    assert (p.title, len(p.appearances)) == ("대리", 2)
+
+
 def test_name_not_said_in_the_conversation_links_as_inferred() -> None:
     # Models copy a known name onto a speaker they only guess is that person.
     memory = extract([
