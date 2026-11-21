@@ -102,7 +102,8 @@ class ExtractionService:
                                    f"(사람·남은 약속·현재 정보 합계 {MAX_PROMPT_MEMORY_LINES}개까지).")
         people_before = {p.id: p.model_dump() for p in memory.people}
         facts_before = {f.id: f.model_dump() for f in memory.facts}
-        MemoryBuilder(self.llm).add(memory, request.conversation)
+        # relink: a second call that only matches speakers to known people (fewer wrong merges).
+        MemoryBuilder(self.llm, relink=True).add(memory, request.conversation)
         return ExtractResult(
             model=self.llm.name,
             people=[p for p in memory.people if people_before.get(p.id) != p.model_dump()],

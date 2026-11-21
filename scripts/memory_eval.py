@@ -399,6 +399,8 @@ def main() -> None:
     parser.add_argument("--effort", choices=["low", "medium", "high"],
                         help="reasoning effort sent to the gateway (default: LLM_REASONING_EFFORT)")
     parser.add_argument("--out", type=Path, default=ROOT / "data" / "memory")
+    parser.add_argument("--no-relink", dest="relink", action="store_false",
+                        help="skip the second call that only matches speakers to known people (the API makes it)")
     args = parser.parse_args()
 
     paths = args.fixtures or sorted(FIXTURES.glob("*.json"))
@@ -422,7 +424,7 @@ def main() -> None:
         if args.gold:
             memory, matched = gold_memory(scenario), None
         else:
-            memory = MemoryBuilder(llm).build(scenario["company"]["name"], conversations(scenario))
+            memory = MemoryBuilder(llm, relink=args.relink).build(scenario["company"]["name"], conversations(scenario))
             score = score_extraction(scenario, memory)
             matched = score.pop("matched_pairs")
             group["by_type"] += score.pop("by_type")

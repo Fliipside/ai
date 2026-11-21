@@ -2,10 +2,12 @@
 # 대화를 날짜순으로 하나씩 LLM에 보내 요구사항·가격 반응·약속·구매 시기·구매 신호·결정을 뽑고,
 # 사람(화자) 연결, 바뀐 정보(supersedes), 지켜진 약속(resolved)을 이전 기억에 반영합니다.
 
+import logging
 import re
 from datetime import date
 from pathlib import Path
 
+from app.core.errors import AppError
 from app.features.memory.chunking import KIND_LABELS, ROLE_LABELS
 from app.providers.llm.base import StructuredLLM
 from app.schemas.memory import (
@@ -15,12 +17,16 @@ from app.schemas.memory import (
     ExtractedPerson,
     MemoryFact,
     Person,
+    PersonLinks,
 )
+
+logger = logging.getLogger(__name__)
 
 PROMPTS = Path(__file__).parent / "prompts"
 
 # General rules only; no names or sentences from the evaluation scenarios.
 SYSTEM_PROMPT = (PROMPTS / "extraction_system.txt").read_text(encoding="utf-8").strip()
+LINKING_PROMPT = (PROMPTS / "linking_system.txt").read_text(encoding="utf-8").strip()
 
 
 def format_date(value: date) -> str:
@@ -121,6 +127,31 @@ def render_prompt(company: str, conversation: Conversation, memory: CompanyMemor
     return "\n".join(lines)
 
 
+# What the matching prompt shows of each known person; their latest facts, so the prompt stays
+# bounded for long-running customers (no evaluation scenario has more than 16).
+LINK_FACTS_PER_PERSON = 20
+
+
+def render_link_prompt(company: str, conversation: Conversation, memory: CompanyMemory, ids: PromptIds) -> str:
+    """Known people with what each said before, then this conversation, for matching speakers only."""
+    when = format_date(conversation.occurred_at.date())
+    titles = {c.id: f"{format_date(c.occurred_at.date())} \"{c.title}\"" for c in memory.conversations}
+    lines = [f"고객사: {company}", "", "이전 대화에서 만난 고객 쪽 사람:"]
+    for p in memory.people:
+        seen = ", ".join(titles.get(c, c) for c in dict.fromkeys(c for c, _ in p.appearances))
+        lines.append(f"- {ids.short[p.id]} {person_label(p)}, {p.role_in_deal}, 나온 대화: {seen}")
+        for f in [f for f in memory.facts if f.said_by == p.id][-LINK_FACTS_PER_PERSON:]:
+            status = f" ({'완료' if f.status == 'done' else '남음'})" if f.type == "promise" else ""
+            lines.append(f"  · [{f.type}] {f.content}{status}")
+    lines += ["", f"이번 대화: {when} {KIND_LABELS.get(conversation.kind, conversation.kind)} \"{conversation.title}\"",
+              "(발화 id | 화자 라벨(역할): 내용)"]
+    lines += [
+        f"[{ids.short[u.id]}] {speaker_label(u.role, u.speaker)}({ROLE_LABELS[u.role]}): {u.text}"
+        for u in conversation.utterances
+    ]
+    return "\n".join(lines)
+
+
 def valid_date(value: str | None) -> str | None:
     try:
         return date.fromisoformat(value).isoformat() if value else None
@@ -135,8 +166,10 @@ def clean(value: str | None) -> str | None:
 class MemoryBuilder:
     """Builds one company's memory by extracting its conversations in date order."""
 
-    def __init__(self, llm: StructuredLLM) -> None:
+    def __init__(self, llm: StructuredLLM, relink: bool = False) -> None:
         self.llm = llm
+        # A second call that only matches speakers to known people (see relink()).
+        self.relink = relink
 
     def build(self, company: str, conversations: list[Conversation]) -> CompanyMemory:
         memory = CompanyMemory(company=company, conversations=[], people=[], facts=[])
@@ -150,7 +183,54 @@ class MemoryBuilder:
         extraction = self.llm.generate(
             SYSTEM_PROMPT, render_prompt(memory.company, conversation, memory, ids), ConversationExtraction
         )
-        apply_extraction(memory, conversation, ids.restore_extraction(extraction))
+        extraction = ids.restore_extraction(extraction)
+        if self.relink and memory.people:
+            extraction = self.linked(memory, conversation, extraction, ids)
+        apply_extraction(memory, conversation, extraction)
+
+    def linked(self, memory: CompanyMemory, conversation: Conversation, extraction: ConversationExtraction,
+               ids: PromptIds) -> ConversationExtraction:
+        """The extraction with known_person_id decided by a call that does nothing but match people.
+
+        The extraction call also pairs speakers with known people, but alongside everything else it
+        often skips them or pairs them by speaking order. A name said in this conversation still wins.
+        """
+        try:
+            links = self.llm.generate(
+                LINKING_PROMPT, render_link_prompt(memory.company, conversation, memory, ids), PersonLinks
+            )
+        except AppError as exc:
+            # The extraction already has its own matching; losing this check is better than losing it all.
+            logger.warning("Person matching failed, keeping the extraction's own: %s", exc.message)
+            return extraction
+        speakers = {speaker_label(u.role, u.speaker) for u in conversation.utterances}
+        utterance_ids = {u.id for u in conversation.utterances}
+        known = {p.id for p in memory.people}
+        decided: dict[str, str | None] = {}
+        for link in links.links:
+            label = link.speaker.strip()
+            label = label if label in speakers else ROLE_SUFFIX.sub("", label)
+            person_id = ids.restore(link.known_person_id)
+            evidence = [e for e in map(ids.restore, link.evidence_utterance_ids) if e in utterance_ids]
+            decided[label] = person_id if person_id in known and evidence else None
+
+        people, kept = [], []
+        for p in with_own_labels(extraction, speakers).people:
+            # Not sure here means no better answer: the extraction's own guess stays (it is right
+            # more often than not). A name said in this conversation also stays.
+            if decided.get(p.speaker) is None or named_in(conversation, full_name(p), clean(p.name)):
+                kept.append(p)
+                continue
+            # A name or surname this conversation never says was copied from a guess; drop it so
+            # the speaker is matched only by the decision above.
+            surname, title = clean(p.surname), clean(p.title)
+            said_surname = surname and title and named_in(conversation, surname + title.split()[-1])
+            people.append(p.model_copy(update={
+                "known_person_id": decided[p.speaker], "name": None,
+                "surname": surname if said_surname else None,
+            }))
+        # Matched speakers first, so a kept guess cannot take a person a matched speaker is.
+        return extraction.model_copy(update={"people": people + kept})
 
 
 def full_name(extracted: ExtractedPerson) -> str | None:

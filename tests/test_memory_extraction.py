@@ -326,3 +326,73 @@ def test_known_person_id_picks_between_people_with_the_same_surname_and_title() 
         "박지훈": ["I1"], "박민수": ["I1", "I2"]}
     # "박 대리" is said, so the link is not just a guess.
     assert memory.people[1].inferred_in == []
+
+
+# Two people met in the first meeting; in the second nobody is named.
+MET_TWO = conversation("I1", 7, [
+    ("SPEAKER_00", "me", "두 분 다 와 주셨네요."),
+    ("SPEAKER_01", "customer", "생산관리팀 박지훈 대리입니다. 3개 라인에 쓰려고요."),
+    ("SPEAKER_02", "customer", "구매팀 김서연 과장입니다. 견적은 제가 봅니다."),
+])
+NOBODY_NAMED = conversation("I2", 14, [
+    ("SPEAKER_00", "me", "견적 보셨어요?"),
+    ("SPEAKER_01", "customer", "네, 구매 쪽에서 검토했어요."),
+    ("SPEAKER_02", "customer", "라인은 3개에서 5개로 늘리기로 했어요."),
+])
+
+
+def matched(links: list[dict] | Exception) -> CompanyMemory:
+    """The second meeting where the extraction pairs speakers by order (wrongly), then the matching call."""
+    from app.schemas.memory import PersonLinks
+
+    replies = [
+        {"people": [person("SPEAKER_01", name="박지훈", title="대리"), person("SPEAKER_02", name="김서연", title="과장")],
+         "facts": [], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_01", name="박지훈", known_person_id="P1"),
+                    person("SPEAKER_02", name="김서연", known_person_id="P2")],
+         "facts": [], "resolved_promise_ids": []},
+    ]
+
+    class Scripted:
+        name = "scripted"
+
+        def generate(self, system, prompt, schema):
+            if schema is PersonLinks:
+                if isinstance(links, Exception):
+                    raise links
+                return PersonLinks(links=links)
+            return schema.model_validate(replies.pop(0))
+
+    return MemoryBuilder(Scripted(), relink=True).build("누리정밀", [MET_TWO, NOBODY_NAMED])
+
+
+def link(speaker: str, known: str | None, evidence: list[str]) -> dict:
+    return {"speaker": speaker, "reason": "", "known_person_id": known, "evidence_utterance_ids": evidence}
+
+
+def spoke_as(memory: CompanyMemory) -> dict[str, list]:
+    return {p.name or p.title: [s for c, s in p.appearances if c == "I2"] for p in memory.people}
+
+
+def test_matching_call_overrides_names_paired_by_speaking_order() -> None:
+    memory = matched([link("SPEAKER_01", "P2", ["U2"]), link("SPEAKER_02", "P1", ["U3"])])
+
+    assert spoke_as(memory) == {"박지훈": ["SPEAKER_02"], "김서연": ["SPEAKER_01"]}
+    assert all(p.inferred_in == ["I2"] for p in memory.people)
+
+
+def test_unsure_or_unsupported_match_keeps_the_extraction_guess() -> None:
+    unsure = matched([link("SPEAKER_01", None, []), link("SPEAKER_02", None, [])])
+    # An id without evidence from this conversation counts as unsure.
+    no_evidence = matched([link("SPEAKER_01", "P2", []), link("SPEAKER_02", "P1", ["U99"])])
+
+    for memory in (unsure, no_evidence):
+        assert spoke_as(memory) == {"박지훈": ["SPEAKER_01"], "김서연": ["SPEAKER_02"]}
+
+
+def test_failed_matching_call_keeps_the_extraction() -> None:
+    from app.core.errors import AppError
+
+    memory = matched(AppError(status_code=502, code="LLM_UNAVAILABLE", message="실패"))
+
+    assert spoke_as(memory) == {"박지훈": ["SPEAKER_01"], "김서연": ["SPEAKER_02"]}

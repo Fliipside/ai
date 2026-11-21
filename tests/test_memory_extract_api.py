@@ -10,7 +10,7 @@ from app.core.errors import AppError
 from app.features.memory.extraction import MemoryBuilder
 from app.features.memory.service import ExtractionService
 from app.main import create_app
-from app.schemas.memory import Conversation
+from app.schemas.memory import Conversation, PersonLinks
 
 # Real ids look like analysis job uuids; the LLM only ever sees P1, F1, U1.
 JOB1 = "0b7c6a52-3f8e-4c1d-9a55-2e7f1d0c9b11"
@@ -71,8 +71,13 @@ class ScriptedLLM:
     def __init__(self, replies: list[dict]) -> None:
         self.replies = list(replies)
         self.prompts: list[str] = []
+        self.link_prompts: list[str] = []
 
     def generate(self, system, prompt, schema):
+        if schema is PersonLinks:
+            # The matching call adds nothing here; the extraction replies already link the speakers.
+            self.link_prompts.append(prompt)
+            return PersonLinks(links=[])
         self.prompts.append(prompt)
         return schema.model_validate(self.replies.pop(0))
 
@@ -137,6 +142,10 @@ def test_stored_memory_round_trip_matches_building_all_at_once() -> None:
         assert response.status_code == 200
         backend.save(conv, response.json()["data"])
 
+    # Only the second conversation has known people to match, so only it gets the matching call.
+    [link_prompt] = llm.link_prompts
+    assert "- P1 박지훈 대리, champion, 나온 대화: 2026-09-07 (Mon) \"미팅 7일\"" in link_prompt
+    assert "  · [requirement] 3개 라인에 적용한다." in link_prompt
     # The second prompt carries the stored memory under short ids.
     assert "- P1 박지훈 대리, champion, 미팅 7일" in llm.prompts[1]
     assert "- F1 [me] me: 자료를 보낸다. (기한 2026-09-10)" in llm.prompts[1]

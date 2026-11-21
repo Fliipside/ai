@@ -146,6 +146,18 @@ class ConversationExtraction(BaseModel):
     resolved_promise_ids: list[str]  # earlier open promises fulfilled in this conversation
 
 
+# What the LLM returns when it only matches this conversation's customer speakers to known people.
+class PersonLink(BaseModel):
+    speaker: str
+    reason: str  # one short sentence, written before the decision
+    known_person_id: str | None  # null: not someone met before, or not sure
+    evidence_utterance_ids: list[str]  # utterances that show who the speaker is
+
+
+class PersonLinks(BaseModel):
+    links: list[PersonLink]
+
+
 class Person(BaseModel):
     id: str
     name: str | None

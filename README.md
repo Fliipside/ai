@@ -148,7 +148,7 @@ python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 
 | 파일 | 하는 일 |
 | ---- | ---- |
-| `app/features/memory/extraction.py`, `prompts/extraction_system.txt` | LLM 지시문(텍스트 파일), 대화별 추출, 사람 연결(이름 → 성+직함 → 문맥; 그 대화에 이름이 안 나오면 추정 연결로 표시), 기억 반영 |
+| `app/features/memory/extraction.py`, `prompts/extraction_system.txt`, `prompts/linking_system.txt` | LLM 지시문(텍스트 파일), 대화별 추출, 사람 맞추기 전용 확인 호출, 사람 연결(이름 → 성+직함 → 문맥; 그 대화에 이름이 안 나오면 추정 연결로 표시), 기억 반영 |
 | `app/features/memory/relations.py` | 남은 약속 조회, 관계도 노드·연결선, 관계 타임라인(대화별 사건·남은 약속), 볼 수 있는 대화만 남기기 |
 | `app/providers/llm/gateway.py` | 대회 LLM 게이트웨이(OpenAI 호환) 호출, 결과 형식 검사, 빈 응답·형식 오류·일시 오류 1회 재요청(전체 240초 안), 토큰 사용량 집계 |
 | `app/features/memory/service.py` (`ExtractionService`), `app/api/v1/memory.py` (`/extract`) | 정보 추출 API: 저장된 기억 + 새 대화 1건 → 새로 생기거나 바뀐 사람·정보 |
@@ -181,7 +181,7 @@ ai는 기억을 저장하지 않습니다. backend 흐름:
 
 - id는 대화 id로 시작해 겹치지 않습니다. 새 사람은 `대화id-P1`, 정보는 `대화id-F01` 형식입니다.
 - 이미 `memory.conversations`에 있는 대화를 다시 보내면 `409 CONVERSATION_ALREADY_EXTRACTED`입니다. 같은 정보가 두 번 쌓이는 것을 막습니다.
-- LLM 호출 1번이라 보통 10~40초 걸립니다. ai는 호출 1번을 최대 120초, 다시 시도까지 합쳐 최대 240초 안에 끝내거나 오류를 돌려주므로, backend 요청 타임아웃은 300초로 잡습니다. backend가 먼저 포기하면 ai는 끝까지 실행해 비용만 쓰고, 다시 보내면 비용이 두 번 듭니다. 녹음 분석처럼 작업 큐에서 처리하는 것을 권장합니다.
+- 이전 기억에 사람이 있으면 LLM을 2번 부릅니다. 1번째는 정보·사람 추출, 2번째는 이번 대화의 고객 화자가 이전에 만난 누구인지만 따로 확인합니다(근거 발화가 있을 때만 바꾸고, 모르겠으면 1번째 결과를 그대로 둡니다. 2번째가 실패해도 1번째 결과로 응답합니다). 보통 20~60초 걸립니다. ai는 호출 1번을 최대 120초, 다시 시도까지 합쳐 최대 240초로 제한하므로 최악은 약 480초이고, backend 요청 타임아웃은 540초로 잡습니다. backend가 먼저 포기하면 ai는 끝까지 실행해 비용만 쓰고, 다시 보내면 비용이 두 번 듭니다. 녹음 분석처럼 작업 큐에서 처리하는 것을 권장합니다.
 - 다시 시도: 빈 응답, 형식이 맞지 않는 답, 일시적인 게이트웨이 오류(시간 초과·연결 끊김·429·5xx)는 남은 시간 안에서 1번 더 요청합니다.
 - 사람, 남은 약속, 현재 정보(대체되지 않은 정보)는 매번 LLM에 모두 들어갑니다. 합계가 600개를 넘으면 `413 MEMORY_TOO_LARGE`로 거절합니다. 한 고객사와 대화 20건이면 약 200개입니다.
 - 같은 고객사의 대화는 날짜 순서대로 하나씩 처리해야 합니다. 동시에 보내면 서로의 결과를 모른 채 추출해 약속 완료·정보 변경을 놓칩니다.
@@ -312,7 +312,7 @@ docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN, LLM_API_KEY만 
 | `POST /api/v1/memory/chunks` | 대화 1건의 발화 목록 | 200       |
 | `POST /api/v1/memory/embed-query` | 질문 | 200       |
 | `POST /api/v1/memory/rerank` | 질문과 후보 청크 | 200       |
-| `POST /api/v1/memory/extract` | 대화 1건과 저장된 기억 | 200 (10~40초, 최대 240초) |
+| `POST /api/v1/memory/extract` | 대화 1건과 저장된 기억 | 200 (20~60초, 최대 약 480초) |
 | `POST /api/v1/memory/graph` | 저장된 기억 | 200 |
 | `POST /api/v1/memory/timeline` | 저장된 기억 | 200 |
 
