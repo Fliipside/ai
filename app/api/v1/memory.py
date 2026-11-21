@@ -69,7 +69,8 @@ async def rerank(body: RerankRequest, service: Service) -> ApiResponse[RerankRes
 
 @router.post("/extract", response_model=ApiResponse[ExtractResult])
 async def extract(body: ExtractRequest, service: Extraction) -> ApiResponse[ExtractResult]:
-    # One LLM call, usually 10-60 seconds; backend should run it after saving the analysis.
+    # One LLM call, plus a second that matches speakers when people are already known; usually
+    # 20-60 seconds. Backend should run it after saving the analysis.
     return ApiResponse[ExtractResult].ok(await asyncio.to_thread(service.extract, body))
 
 
