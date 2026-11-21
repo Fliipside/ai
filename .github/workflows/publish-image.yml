@@ -72,12 +72,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Check the image imports the voice engine
+      - name: Check the image imports the voice engine and memory dependencies
         # Catches wheels that install but do not load on ARM64 CPU (e.g. CUDA-linked torchaudio).
         run: |
           docker run --rm flipside-ai:ci python -c "
           import torch, torchaudio, torchcodec, pyannote.audio
           from torchcodec.decoders import AudioDecoder
+          import sentence_transformers, openai
           import app.main
           assert not torch.cuda.is_available()
           print(torch.__version__, torchaudio.__version__, torchcodec.__version__, pyannote.audio.__version__)"

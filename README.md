@@ -237,9 +237,9 @@ uvicorn app.main:app --reload
 | ---- | ---- |
 | `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY` | 서버 접속 정보 (backend 저장소와 같은 값) |
 | `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN` | Docker Hub 로그인 정보 (backend 저장소와 같은 값) |
-| `ENV_FILE` | 서버의 `ai.env`가 될 내용. `GROQ_API_KEY=...`, `HF_TOKEN=...` 두 줄 |
+| `ENV_FILE` | 서버의 `ai.env`가 될 내용. `GROQ_API_KEY=...`, `HF_TOKEN=...`, `LLM_API_KEY=...` 세 줄 |
 
-이미지에는 ffmpeg와 pyannote 엔진(`.[voice-pyannote]`)이 들어 있습니다. 서버에 GPU가 없어 torch·torchaudio·torchcodec은 CPU 전용 빌드(`https://download.pytorch.org/whl/cpu`)로 설치합니다. PyPI의 리눅스 ARM64용 torchaudio 2.11.1은 CUDA 라이브러리를 요구해 CPU torch에서 import가 실패하므로, 같은 인덱스의 2.11.0을 씁니다. 모델과 비밀값은 이미지에 넣지 않습니다.
+이미지에는 ffmpeg와 pyannote 엔진, 대화 기억 의존성(`.[voice-pyannote,memory,llm]`)이 들어 있습니다. 서버에 GPU가 없어 torch·torchaudio·torchcodec은 CPU 전용 빌드(`https://download.pytorch.org/whl/cpu`)로 설치합니다. PyPI의 리눅스 ARM64용 torchaudio 2.11.1은 CUDA 라이브러리를 요구해 CPU torch에서 import가 실패하므로, 같은 인덱스의 2.11.0을 씁니다. 모델과 비밀값은 이미지에 넣지 않습니다.
 
 ### 서버 실행
 
@@ -270,10 +270,11 @@ compose 프로젝트는 달라도 ai 컨테이너가 backend의 Docker 네트워
 | ---- | ---- | ---- |
 | `GROQ_API_KEY` | (비밀값) | Groq Whisper STT. `env_file`로 주입 |
 | `HF_TOKEN` | (비밀값) | pyannote 모델 다운로드. `pyannote/speaker-diarization-community-1` 약관에 동의한 계정의 토큰. `env_file`로 주입 |
+| `LLM_API_KEY` | (비밀값) | 정보 추출(`/memory/extract`)용 LLM 게이트웨이 키. 없으면 `/extract`만 503. `env_file`로 주입 |
 | `DIARIZATION_ENGINE` | `pyannote` | 이미지에 pyannote만 들어 있음 |
 | `VOICE_PRELOAD_MODELS` | `true` (권장) | 시작할 때 모델을 불러와 첫 요청이 기다리지 않게 함 |
 
-- 모델 캐시: 이미지가 `HF_HUB_CACHE=/models/huggingface`로 고정합니다. `/models`에 볼륨을 붙여 컨테이너를 다시 만들어도 모델(약 32MB)을 유지합니다. `ENV_FILE`에는 `HF_HUB_CACHE`를 적지 않습니다(적으면 이미지 값을 덮어씁니다).
+- 모델 캐시: 이미지가 `HF_HUB_CACHE=/models/huggingface`로 고정합니다. `/models`에 볼륨을 붙여 컨테이너를 다시 만들어도 모델을 유지합니다. 음성 모델은 약 32MB이고, 대화 기억의 임베딩·재정렬 모델(bge-m3, bge-reranker-v2-m3, 각 약 2.3GB)은 `/chunks`·`/embed-query`·`/rerank`를 처음 부를 때 받습니다. `/extract`·`/graph`·`/timeline`은 이 모델이 필요 없습니다. `ENV_FILE`에는 `HF_HUB_CACHE`를 적지 않습니다(적으면 이미지 값을 덮어씁니다).
 - 상태 확인: `GET /health`. `VOICE_PRELOAD_MODELS=true`이면 모델을 불러온 뒤에 응답하기 시작합니다. 다만 모델 로드에 실패해도 200을 돌려주므로(음성 요청이 503 `DIARIZATION_NOT_CONFIGURED`로 알림), 배포 스크립트가 로그의 `Failed to preload voice models`를 따로 확인합니다.
 - 분석은 녹음 길이에 따라 몇 분 걸리므로 backend의 호출 timeout을 넉넉하게 둡니다.
 
@@ -281,7 +282,7 @@ compose 프로젝트는 달라도 ai 컨테이너가 backend의 Docker 네트워
 
 ```bash
 docker build -t flipside-ai:local .
-docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일> \
+docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN, LLM_API_KEY만 적은 파일> \
     -e DIARIZATION_ENGINE=pyannote -e VOICE_PRELOAD_MODELS=true \
     -v flipside-ai-models:/models flipside-ai:local
 ```
