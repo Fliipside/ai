@@ -92,9 +92,17 @@ python scripts/voice_benchmark.py data/voice/*.m4a \
 
 backend 흐름:
 
-1. 대화가 저장되면 `/chunks`를 호출해 받은 청크의 `text`(화면에 보여줄 원문), `embed_text`, `utterance_ids`, 시간, `vector`, `model`을 pgvector에 저장합니다. `context`를 보내면 청크마다 `회사 | 날짜 미팅/통화 | 제목` 머리말을 붙여 임베딩하며, 검색 정확도가 올라가므로 보내는 것을 권장합니다. 날짜는 `occurred_at`에 적힌 시간대 기준입니다(한국 시간은 `+09:00`).
+1. 대화가 저장되면 `/chunks`를 호출해 받은 청크의 `utterance_ids`, 시간, `vector`, `model`만 pgvector에 저장합니다. 글(`text`, `embed_text`)은 저장하지 않습니다. 대화 원문은 음성 분석 결과에 이미 있으므로 두 번 저장하지 않고, 필요할 때 `utterance_ids`로 꺼냅니다. `context`를 보내면 청크마다 `회사 | 날짜 미팅/통화 | 제목` 머리말을 붙여 임베딩하며, 검색 정확도가 올라가므로 보내는 것을 권장합니다. 날짜는 `occurred_at`에 적힌 시간대 기준입니다(한국 시간은 `+09:00`).
 2. 질문이 오면 `/embed-query`로 벡터를 받아, 고객사·권한으로 거른 뒤 같은 `model`의 청크 중 코사인 거리(`<=>`) 상위 10개를 고릅니다.
-3. 그 10개의 `embed_text`를 `/rerank`에 보내 다시 정렬하고 상위 결과를 사용합니다.
+3. 그 10개의 글을 원문에서 다시 만들어 `/rerank`에 보내 다시 정렬하고 상위 결과를 사용합니다. 임베딩할 때와 같은 모양이어야 하며, `/chunks` 응답의 `embed_text`와 같습니다.
+
+```text
+{company} | {occurred_at 앞 10자리(YYYY-MM-DD)} {미팅|통화} | {title}
+[고객] 첫 발화 text
+[나] 다음 발화 text
+```
+
+발화 한 줄은 `[역할] text`이고 역할은 `me` → 나, `customer` → 고객, `unknown` → 미확인입니다. `utterance_ids` 순서대로 줄바꿈으로 잇습니다.
 
 정답셋 1,467개 질문(시나리오 100개, 바꿔 말한 질문 978개 포함) 기준으로 1위 정답률은 벡터 검색만 80.9%, 재정렬 후 87.5%입니다. 권한 위반과 다른 고객사 결과는 0건입니다. 로컬 CPU(Apple Silicon)에서 모델을 불러온 뒤 응답 시간은 `/embed-query` 약 50ms, `/rerank`(후보 10개) 약 300ms, `/chunks`(대화 1건) 약 140ms입니다.
 
