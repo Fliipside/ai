@@ -18,11 +18,12 @@ embedding_lock = threading.Lock()
 class PyannoteEmbedder:
     """Embedding model bundled with community-1 (WeSpeaker ResNet34, 256 dims)."""
 
-    name = "pyannote"
-
     def __init__(self, hf_token: str, model: str = COMMUNITY_1) -> None:
         self.hf_token = hf_token
         self.model = model
+        # Voiceprints are only comparable within one model. The default model keeps the
+        # plain name, so voiceprints enrolled before this check still match.
+        self.name = "pyannote" if model == COMMUNITY_1 else f"pyannote:{model}"
 
     def embed(
         self,

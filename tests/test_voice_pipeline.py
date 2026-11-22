@@ -177,3 +177,24 @@ def test_enroll_rejects_short_audio(tmp_path: Path) -> None:
         asyncio.run(make_pipeline(enroll_min_seconds=5).enroll(write_tone(tmp_path / "me.wav", seconds=1)))
 
     assert exc.value.code == "INVALID_AUDIO"
+
+
+@requires_ffmpeg
+def test_enroll_rejects_too_long_audio_before_embedding(tmp_path: Path, monkeypatch) -> None:
+    limits = []
+    original = pipeline_module.to_wav_16k_mono
+
+    def convert(source, dest, max_seconds=None):
+        limits.append(max_seconds)
+        return original(source, dest, max_seconds)
+
+    monkeypatch.setattr(pipeline_module, "to_wav_16k_mono", convert)
+    embedder = FakeEmbedder()
+    pipeline = VoicePipeline(FakeStt(), FakeDiarizer(), embedder, max_audio_seconds=1)
+
+    with pytest.raises(AppError) as exc:
+        asyncio.run(pipeline.enroll(write_tone(tmp_path / "me.wav", seconds=5)))
+
+    assert (exc.value.status_code, exc.value.code) == (400, "AUDIO_TOO_LONG")
+    assert limits == [2]  # converted only one second past the limit
+    assert embedder.calls == []

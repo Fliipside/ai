@@ -124,3 +124,9 @@ def test_load_pipeline_sets_window_step(monkeypatch) -> None:
 
     assert diarization.load_pipeline("model", "", 0.5) is loaded
     assert inference.step == 5.0
+
+
+def test_embedder_name_tells_other_models_apart() -> None:
+    # The default model keeps the plain name that already stored voiceprints carry.
+    assert embedding.PyannoteEmbedder(hf_token="").name == "pyannote"
+    assert embedding.PyannoteEmbedder(hf_token="", model="/models/other").name == "pyannote:/models/other"

@@ -41,7 +41,7 @@ class AudioTooLongError(AppError):
         super().__init__(
                 status_code=400,
                 code="AUDIO_TOO_LONG",
-                message=f"녹음은 최대 {max_seconds / 60:g}분까지 분석할 수 있습니다.",
+                message=f"녹음은 최대 {max_seconds / 60:g}분까지 올릴 수 있습니다.",
             )
 
 
