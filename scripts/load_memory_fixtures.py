@@ -52,9 +52,16 @@ def row(table: str, values: list) -> str:
 def source_sql(scenarios: list[dict]) -> list[str]:
     lines = []
     for user_id, team_id in sorted(user_teams(scenarios).items()):
+        # app_users is shared with rows that are not fixtures: an existing user is never
+        # changed. A user already in another team stops the load (the transaction rolls back).
         lines.append(
-            f"INSERT INTO memory.app_users VALUES ({user_id}, {team_id}) "
-            "ON CONFLICT (user_id) DO UPDATE SET team_id = EXCLUDED.team_id;"
+            f"DO $$ BEGIN IF EXISTS (SELECT 1 FROM memory.app_users WHERE user_id = {user_id} "
+            f"AND team_id <> {team_id}) THEN RAISE EXCEPTION "
+            f"'app_users.user_id={user_id} already belongs to another team; expected team {team_id}'; "
+            "END IF; END $$;"
+        )
+        lines.append(
+            f"INSERT INTO memory.app_users VALUES ({user_id}, {team_id}) ON CONFLICT (user_id) DO NOTHING;"
         )
     for s in scenarios:
         company = s["company"]

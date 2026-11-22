@@ -11,9 +11,10 @@ Writes one memory JSON and one relationship map (HTML) per scenario.
     promise fields  owner / due date / open-done status of matched promises
     supersedes      gold changes (later fact replaces an earlier one) linked to the earlier fact
     people          each customer speaker per conversation: right by full name or surname+title,
-                    title only, unknown, or wrong (another person); merged = one person covering
-                    several real contacts
-    open promises   structured queries answered with exactly the gold promise set
+                    title only, unknown, wrong (another person), or missing (not extracted);
+                    merged = one person covering several real contacts
+    open promises   structured queries answered with exactly the gold promise set: the same
+                    evidence, the same owner and the same due date (the wording is not compared)
 
 Scenarios S001-S007 are used to tune the prompt; S008-S010 are held out to check it.
 
@@ -26,6 +27,7 @@ Usage:
 import argparse
 import hashlib
 import json
+from html import escape
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -85,7 +87,7 @@ def gold_memory(scenario: dict) -> CompanyMemory:
 
 
 class CachedLLM:
-    """Reuses a saved reply when the same model gets exactly the same request."""
+    """Reuses a saved reply when the same model at the same gateway gets exactly the same request."""
 
     def __init__(self, llm, cache_dir: Path) -> None:
         self.llm = llm
@@ -94,7 +96,11 @@ class CachedLLM:
         self.calls = 0
 
     def generate(self, system, prompt, schema):
-        key = hashlib.sha256(f"{self.name}\n{system}\n{prompt}\n{schema.__name__}".encode()).hexdigest()[:16]
+        # The gateway address and the schema's fields are part of the key: another gateway,
+        # or a schema changed under the same name, must not get an old reply.
+        fields = json.dumps(schema.model_json_schema(), sort_keys=True, ensure_ascii=False)
+        request = [self.name, getattr(self.llm, "base_url", ""), system, prompt, schema.__name__, fields]
+        key = hashlib.sha256("\n".join(request).encode()).hexdigest()[:16]
         path = self.cache_dir / f"{key}.json"
         if path.exists():
             return schema.model_validate_json(path.read_text(encoding="utf-8"))
@@ -105,21 +111,62 @@ class CachedLLM:
         return result
 
 
+# Worth more than any amount of evidence overlap in one conversation (overlap is at most 1 a pair).
+SAME_TYPE = 1000.0
+
+
 def match_facts(predicted: list[MemoryFact], gold: list[dict]) -> dict[str, str]:
-    """Pair predicted and gold facts of one conversation: same type first, then evidence overlap."""
-    pairs = []
-    for p in predicted:
-        for g in gold:
+    """Pair predicted and gold facts of one conversation that share evidence utterances.
+
+    The pairing with the most same-type pairs wins; among those, the one with the most
+    evidence overlap. (Taking the best-overlapping pair first can block two other pairs.)
+    """
+    weights = [[0.0] * len(gold) for _ in predicted]
+    for i, p in enumerate(predicted):
+        for j, g in enumerate(gold):
             shared = set(p.source_utterance_ids) & set(g["source_utterance_ids"])
             if shared:
                 union = set(p.source_utterance_ids) | set(g["source_utterance_ids"])
-                pairs.append(((p.type == g["type"], len(shared) / len(union)), p.id, g["id"]))
-    matched, used = {}, set()
-    for _, p, g in sorted(pairs, reverse=True):
-        if p not in matched and g not in used:
-            matched[p] = g
-            used.add(g)
-    return matched
+                weights[i][j] = (SAME_TYPE if p.type == g["type"] else 0.0) + len(shared) / len(union)
+    return {
+        predicted[i].id: gold[j]["id"]
+        for i, j in best_assignment(weights) if weights[i][j] > 0  # 0 = no shared evidence
+    }
+
+
+def best_assignment(weights: list[list[float]]) -> list[tuple[int, int]]:
+    """One-to-one (row, column) pairs with the largest total weight (Hungarian algorithm)."""
+    if not weights or not weights[0]:
+        return []
+    if len(weights) > len(weights[0]):  # the algorithm needs rows <= columns
+        return [(i, j) for j, i in best_assignment([list(column) for column in zip(*weights)])]
+    n, m = len(weights), len(weights[0])
+    row_potential, column_potential = [0.0] * (n + 1), [0.0] * (m + 1)
+    row_of, came_from = [0] * (m + 1), [0] * (m + 1)  # 1-based; column 0 is a helper
+    for row in range(1, n + 1):
+        row_of[0], column = row, 0
+        slack, used = [float("inf")] * (m + 1), [False] * (m + 1)
+        while row_of[column]:
+            used[column] = True
+            current, step, next_column = row_of[column], float("inf"), 0
+            for j in range(1, m + 1):
+                if not used[j]:
+                    cost = -weights[current - 1][j - 1] - row_potential[current] - column_potential[j]
+                    if cost < slack[j]:
+                        slack[j], came_from[j] = cost, column
+                    if slack[j] < step:
+                        step, next_column = slack[j], j
+            for j in range(m + 1):
+                if used[j]:
+                    row_potential[row_of[j]] += step
+                    column_potential[j] -= step
+                else:
+                    slack[j] -= step
+            column = next_column
+        while column:
+            row_of[column] = row_of[came_from[column]]
+            column = came_from[column]
+    return [(row_of[j] - 1, j - 1) for j in range(1, m + 1) if row_of[j]]
 
 
 def score_extraction(scenario: dict, memory: CompanyMemory) -> dict:
@@ -175,26 +222,31 @@ def title_matches(predicted: str | None, gold: str | None) -> bool:
 
 def score_people(scenario: dict, memory: CompanyMemory, contacts: dict) -> Counter:
     real = {c["id"]: c for c in scenario["contacts"]}
+    person_of = {appearance: p for p in memory.people for appearance in p.appearances}
     result = Counter()
-    for p in memory.people:
-        covered = set()
-        for conversation_id, speaker in p.appearances:
-            contact = real.get(contacts.get((conversation_id, speaker), ""))
-            if contact is None:  # e.g. a worker who is not a listed contact
-                continue
-            covered.add(contact["id"])
-            result["people_seen"] += 1
-            surname = p.surname or (p.name or "")[:1]
-            if p.name:
-                result["people_full" if p.name == contact["name"] else "people_wrong"] += 1
-            elif surname:
-                ok = contact["name"].startswith(surname) and (not p.title or title_matches(p.title, contact.get("title")))
-                result["people_surname" if ok else "people_wrong"] += 1
-            elif p.title:
-                result["people_title" if title_matches(p.title, contact.get("title")) else "people_wrong"] += 1
-            else:
-                result["people_unknown"] += 1
-        result["people_merged"] += len(covered) > 1
+    covered = defaultdict(set)
+    # Counted over the gold speakers, so a speaker the model left out lowers the rate.
+    for appearance, contact_id in contacts.items():
+        contact = real.get(contact_id)
+        if contact is None:  # the seller, or e.g. a worker who is not a listed contact
+            continue
+        result["people_seen"] += 1
+        p = person_of.get(appearance)
+        if p is None:
+            result["people_missing"] += 1
+            continue
+        covered[p.id].add(contact["id"])
+        surname = p.surname or (p.name or "")[:1]
+        if p.name:
+            result["people_full" if p.name == contact["name"] else "people_wrong"] += 1
+        elif surname:
+            ok = contact["name"].startswith(surname) and (not p.title or title_matches(p.title, contact.get("title")))
+            result["people_surname" if ok else "people_wrong"] += 1
+        elif p.title:
+            result["people_title" if title_matches(p.title, contact.get("title")) else "people_wrong"] += 1
+        else:
+            result["people_unknown"] += 1
+    result["people_merged"] = sum(len(contact_ids) > 1 for contact_ids in covered.values())
     return result
 
 
@@ -218,6 +270,7 @@ def open_promise_query(scenario: dict, query: dict) -> set[str] | None:
 
 
 def score_queries(scenario: dict, memory: CompanyMemory, matched: dict[str, str] | None) -> list[dict]:
+    gold = {f["id"]: f for f in scenario["gold_facts"]}
     results = []
     for q in scenario["gold_queries"]:
         owners = open_promise_query(scenario, q) if q["kind"] == "structured" else None
@@ -227,10 +280,25 @@ def score_queries(scenario: dict, memory: CompanyMemory, matched: dict[str, str]
         found = [f for owner in sorted(owners) for f in open_promises(memory, owner, visible)]
         ids = {matched.get(f.id, f.id) if matched is not None else f.id for f in found}
         expected = set(q["relevant_fact_ids"])
-        results.append({"id": q["id"], "question": q["question"], "exact": ids == expected,
+        # Sharing evidence with a gold promise does not make an answer that promise: the model
+        # may have read something else into the same utterance. "exact" also needs each answer
+        # to agree with its gold promise on who must act and by which date. The wording is not
+        # compared; "answer" and "gold_answer" are saved side by side for reading.
+        same = all(same_promise(f, gold[matched[f.id]]) for f in found if f.id in matched) if matched else True
+        results.append({"id": q["id"], "question": q["question"],
+                        "evidence_exact": ids == expected, "exact": ids == expected and same,
                         "found": len(ids & expected), "expected": len(expected), "extra": len(ids - expected),
-                        "answer": [f.content for f in found]})
+                        "answer": [f.content for f in found],
+                        "gold_answer": [gold[i]["content"] for i in sorted(expected)]})
     return results
+
+
+def same_promise(predicted: MemoryFact, gold: dict) -> bool:
+    return (
+        gold["type"] == "promise"
+        and predicted.owner == gold.get("owner")
+        and (not gold.get("due_at") or predicted.due_at == gold["due_at"])
+    )
 
 
 GROUP_STYLE = {
@@ -263,21 +331,25 @@ def render_html(memory: CompanyMemory, graph: dict, as_of: str, source: str) -> 
     )
 
     def items(owner: str) -> str:
-        rows = [f"<li>{f.content} <em>({f.due_at or f.due_text or '기한 없음'})</em></li>"
+        rows = [f"<li>{escape(f.content)} <em>({escape(f.due_at or f.due_text or '기한 없음')})</em></li>"
                 for f in open_promises(memory, owner)]
         return "".join(rows) or "<li>없음</li>"
 
     people = "".join(
-        f"<li><b>{person_label(p)}</b> · {ROLE_IN_DEAL_LABELS[p.role_in_deal]}"
+        f"<li><b>{escape(person_label(p))}</b> · {ROLE_IN_DEAL_LABELS[p.role_in_deal]}"
         f"{' · 일부 대화는 추정 연결' if p.inferred_in else ''}</li>"
         for p in memory.people
     )
     counts = Counter(f.type for f in memory.facts)
     summary = " · ".join(f"{FACT_LABELS[t]} {counts[t]}" for t in FACT_LABELS if counts[t])
-    data = json.dumps(graph, ensure_ascii=False)
+    # Names and fact text come from conversations and the model, so they are escaped as text.
+    # Inside <script>, "<" is written as \u003c: the browser ends the script at "</script>"
+    # even in the middle of a JSON string.
+    data = json.dumps(graph, ensure_ascii=False).replace("<", "\\u003c")
+    company, as_of, source = escape(memory.company), escape(as_of), escape(source)
     return f"""<!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{memory.company} 관계도</title>
+<title>{company} 관계도</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/standalone/umd/vis-network.min.js"></script>
 <style>
 body {{ margin:0; font-family:-apple-system, 'Apple SD Gothic Neo', sans-serif; background:#fafafa; color:#222; display:flex; height:100vh; }}
@@ -289,7 +361,7 @@ h1 {{ font-size:20px; margin:0 0 4px; }} h2 {{ font-size:14px; margin:18px 0 6px
 #detail {{ font-size:13px; background:#f4f6f8; padding:8px; border-radius:6px; min-height:40px; }}
 </style></head><body>
 <div id="side">
-<h1>{memory.company}</h1>
+<h1>{company}</h1>
 <div class="meta">기준일 {as_of} · {source} · 대화 {len(memory.conversations)}건 · {summary}</div>
 <h2>우리 쪽 남은 할 일</h2><ul>{items("me")}</ul>
 <h2>고객에게 받을 것</h2><ul>{items("customer")}</ul>
@@ -354,13 +426,15 @@ def print_report(name: str, group: dict, with_extraction: bool) -> None:
         right = t["people_full"] + t["people_surname"]
         print(f"  고객 알아보기 {pct(right, t['people_seen'])} 맞음 (이름 {t['people_full']}, 성+직함 {t['people_surname']}), "
               f"직함만 {t['people_title']}, 모름 {t['people_unknown']}, 틀림 {t['people_wrong']}, "
+              f"못 찾음 {t['people_missing']}, "
               f"잘못 합친 사람 {t['people_merged']}")
         print(f"  약속: 할 사람 {pct(t['owner_ok'], t['promises'])}  기한 날짜 {pct(t['due_ok'], t['due_total'])}  "
               f"완료 여부 {pct(t['status_ok'], t['promises'])}")
         print(f"  바뀐 정보 연결 {pct(t['changes_linked'], t['changes'])}")
     queries = group["queries"]
     exact = sum(q["exact"] for q in queries)
-    print(f"  남은 약속 질문 {pct(exact, len(queries))} 정확히 일치  "
+    evidence = sum(q["evidence_exact"] for q in queries)
+    print(f"  남은 약속 질문 {pct(exact, len(queries))} 정확히 일치 (근거만 보면 {pct(evidence, len(queries))})  "
           f"(찾음 {sum(q['found'] for q in queries)}/{sum(q['expected'] for q in queries)}, "
           f"불필요 {sum(q['extra'] for q in queries)}개)")
     for q in queries:

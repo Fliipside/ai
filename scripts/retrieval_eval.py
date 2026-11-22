@@ -7,7 +7,9 @@ rank by cosine similarity, keep the top k.
     hit@k     a top-k chunk contains at least one relevant utterance
     recall@k  share of relevant utterances covered by the top-k chunks
     MRR       1 / rank of the first chunk with a relevant utterance
-    leaks     top-k chunks from interactions the viewer must not see (must be 0)
+    leaks     top-k chunks from interactions the viewer must not see (must be 0): checked for
+              every returned chunk from the interaction's owner, team and visibility, and
+              against the query's forbidden_interaction_ids
 
 Usage:
     python scripts/retrieval_eval.py --model BAAI/bge-m3 --k 5 --max-chars 500 --overlap 1
@@ -179,12 +181,36 @@ def psql_search(psql: list[str], embedder, company_filter):
     return search
 
 
+PG_COUNT = "SELECT count(*) FROM memory.memory_chunks WHERE embedding_model = %(model)s"
+
+
+def psql_count(psql: list[str], model: str) -> int:
+    import subprocess
+
+    sql = "SELECT count(*) FROM memory.memory_chunks WHERE embedding_model = '" + model.replace("'", "''") + "';"
+    out = subprocess.run(psql + ["-q", "-t", "-A", "-v", "ON_ERROR_STOP=1"],
+                         input=sql, capture_output=True, text=True, check=True).stdout
+    return int(out.strip())
+
+
+def require_chunks(model: str, count: int) -> None:
+    """Stop before scoring: the search filters by model, so no chunks would read as 0% quality."""
+    if count == 0:
+        sys.exit(f"DB에 {model} 모델로 만든 청크가 없습니다. 같은 모델로 먼저 적재해 주세요: "
+                 f"python scripts/load_memory_fixtures.py --model <모델>")
+
+
 def to_vector_literal(vector: list[float]) -> str:
     return "[" + ",".join(f"{x:.7f}" for x in vector) + "]"
 
 
 def evaluate(scenarios, search, k, reranker=None, pool=10) -> list[dict]:
     teams = user_teams(scenarios)
+    # Who may see each interaction, from the fixtures and not from what the search returned.
+    access = {
+        i["id"]: {"owner_user_id": i["owner_user_id"], "visibility": i["visibility"]}
+        for scenario in scenarios for i in scenario["interactions"]
+    }
     results = []
     for scenario in scenarios:
         for query in scenario["gold_queries"]:
@@ -211,7 +237,13 @@ def evaluate(scenarios, search, k, reranker=None, pool=10) -> list[dict]:
                 "hit": first is not None,
                 "recall": len(covered) / len(relevant) if relevant else None,
                 "rr": 1 / first if first else 0.0,
-                "leaks": sum(c["interaction_id"] in forbidden for c in top),
+                # An interaction that is not in the loaded fixtures cannot be judged here.
+                "leaks": sum(
+                    c["interaction_id"] in forbidden
+                    or (c["interaction_id"] in access
+                        and not visible(access[c["interaction_id"]], query["viewer_user_id"], teams))
+                    for c in top
+                ),
                 "other_company": sum(c["company_id"] != query["company_id"] for c in top),
                 "top1": top[0]["text"] if top else None,
             })
@@ -293,10 +325,13 @@ def main() -> None:
 
         if not args.psql:
             sys.exit("--backend psql에는 --psql 명령이 필요합니다.")
-        search = psql_search(shlex.split(args.psql), embedder, company_filter)
+        psql = shlex.split(args.psql)
+        require_chunks(embedder.name, psql_count(psql, embedder.name))
+        search = psql_search(psql, embedder, company_filter)
         print(f"{embedder.name}: pgvector memory 스키마 검색 (psql)")
     elif args.backend == "pg":
         conn = connect()
+        require_chunks(embedder.name, conn.execute(PG_COUNT, {"model": embedder.name}).fetchone()[0])
         search = pg_search(conn, embedder, company_filter)
         print(f"{embedder.name}: pgvector memory 스키마 검색")
     else:
