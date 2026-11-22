@@ -53,10 +53,13 @@ tests/
 
 - STT를 먼저 하고 화자 분리를 합니다. Groq 한도(429)에 걸리면 몇 분짜리 화자 분리를 하기 전에 실패하고, Groq의 `Retry-After`를 그대로 전달합니다.
 - 분석은 한 번에 하나만 합니다. 분석 중에 다시 요청하면 503 `VOICE_BUSY`와 `Retry-After`(`VOICE_BUSY_RETRY_SECONDS`, 기본 60초)를 돌려줍니다. 목소리 등록은 별도 lock을 써서 분석 중에도 바로 처리됩니다.
-- 녹음은 `VOICE_MAX_AUDIO_SECONDS`(기본 3600초)까지 받습니다. 넘으면 모델을 돌리기 전에 400 `AUDIO_TOO_LONG`입니다. 등록 음성은 `VOICE_ENROLL_MIN_SECONDS`(기본 5초) 이상이어야 합니다.
+- 녹음은 `VOICE_MAX_AUDIO_SECONDS`(기본 3600초)까지 받습니다. 넘으면 모델을 돌리기 전에 400 `AUDIO_TOO_LONG`입니다. 분석과 목소리 등록 모두 같은 상한을 씁니다. 등록 음성은 `VOICE_ENROLL_MIN_SECONDS`(기본 5초) 이상이어야 합니다.
 - 서버 시작 시 모델을 미리 불러오려면 `VOICE_PRELOAD_MODELS=true`로 둡니다(운영 권장).
 
-화자 분리 엔진은 `DIARIZATION_ENGINE`(`pyannote` | `sherpa_onnx`)으로 고릅니다. 사용자 목소리 임베딩은 같은 엔진으로 만든 것끼리만 비교할 수 있습니다. sherpa-onnx는 임베딩 모델을 바꿀 수 있으므로 엔진 이름에 모델명이 들어갑니다(예: `sherpa_onnx:wespeaker_en_voxceleb_resnet34_LM`).
+화자 분리 엔진은 `DIARIZATION_ENGINE`(`pyannote` | `sherpa_onnx`)으로 고릅니다. 사용자 목소리 임베딩은 같은 엔진·같은 모델로 만든 것끼리만 비교할 수 있어, 등록 결과의 `engine`에 모델 정보도 들어갑니다. 값이 다르면 분석이 `VOICEPRINT_ENGINE_MISMATCH`로 거절되므로 다시 등록해야 합니다.
+
+- pyannote: 기본 모델(community-1)은 `pyannote`, `PYANNOTE_MODEL`을 바꾸면 `pyannote:<모델>`
+- sherpa-onnx: `sherpa_onnx:<모델 파일명>:<파일 해시 앞 8자리>` (예: `sherpa_onnx:wespeaker_en_voxceleb_resnet34_LM:1a2b3c4d`). 폴더만 다른 같은 이름의 파일도 구분합니다.
 
 sherpa-onnx 모델은 [k2-fsa/sherpa-onnx releases](https://github.com/k2-fsa/sherpa-onnx/releases)에서 받아 `SHERPA_SEGMENTATION_MODEL`(`speaker-segmentation-models`의 `sherpa-onnx-pyannote-segmentation-3-0/model.onnx`)과 `SHERPA_EMBEDDING_MODEL`(`speaker-recongition-models`의 `.onnx`)에 경로를 적습니다. 화자 수를 모를 때는 `SHERPA_CLUSTER_THRESHOLD`로 화자를 묶습니다.
 
@@ -162,7 +165,12 @@ python scripts/memory_eval.py                 # 전체 평가 (대화 310건, �
 python scripts/memory_eval.py fixtures/sales/s01*.json   # 일부만 평가
 ```
 
-LLM 답은 `data/memory/extractions/`에 저장해 같은 요청은 다시 호출하지 않으며, 실행이 끝나면 토큰 수와 예상 비용을 출력합니다. 시나리오 번호 끝자리 8·9·0은 지시문 개선에 쓰지 않는 확인용으로 따로 채점합니다.
+LLM 답은 `data/memory/extractions/`에 저장해 같은 요청(모델, 게이트웨이 주소, 지시문, 대화, 응답 형식이 모두 같음)은 다시 호출하지 않으며, 실행이 끝나면 토큰 수와 예상 비용을 출력합니다. 시나리오 번호 끝자리 8·9·0은 지시문 개선에 쓰지 않는 확인용으로 따로 채점합니다.
+
+기억 처리 규칙:
+
+- 대화 시각(`occurred_at`)에 시간대가 없으면 한국 시간(UTC+9)으로 읽습니다. 대화를 날짜순으로 처리하기 위해서입니다.
+- 고객사 기억은 하나를 함께 씁니다. 약속의 완료·변경 상태는 조회하는 사람과 관계없이 같습니다. 남은 약속 조회의 권한 필터는 볼 수 없는 대화에서 나온 약속만 가립니다. 따라서 볼 수 없는 대화에서 완료되거나 바뀐 약속도 남은 약속 목록에서 빠집니다.
 
 ## 로컬 실행
 
@@ -200,7 +208,10 @@ uvicorn app.main:app --reload
 | ---- | ---- |
 | `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY` | 서버 접속 정보 (backend 저장소와 같은 값) |
 | `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN` | Docker Hub 로그인 정보 (backend 저장소와 같은 값) |
+| `SSH_KNOWN_HOSTS` | 서버의 **공개** 호스트 키(`known_hosts` 형식 한 줄 이상). 배포는 이 키와 일치하는 서버에만 접속합니다 |
 | `ENV_FILE` | 서버의 `ai.env`가 될 내용. `GROQ_API_KEY=...`, `HF_TOKEN=...` 두 줄 |
+
+`SSH_KNOWN_HOSTS` 값은 `ssh-keyscan -t ed25519 <SSH_HOST>`의 출력입니다. 넣기 전에 서버에서 `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub`로 본 지문과, 받은 줄을 `ssh-keygen -lf -`에 넣어 본 지문이 같은지 확인합니다. 서버의 개인 키(`.pub`이 없는 파일)는 어디에도 올리지 않습니다. 서버를 다시 만들어 호스트 키가 바뀌면 이 값도 바꿔야 합니다.
 
 이미지에는 ffmpeg와 pyannote 엔진(`.[voice-pyannote]`)이 들어 있습니다. 서버에 GPU가 없어 torch·torchaudio·torchcodec은 CPU 전용 빌드(`https://download.pytorch.org/whl/cpu`)로 설치합니다. PyPI의 리눅스 ARM64용 torchaudio 2.11.1은 CUDA 라이브러리를 요구해 CPU torch에서 import가 실패하므로, 같은 인덱스의 2.11.0을 씁니다. 모델과 비밀값은 이미지에 넣지 않습니다.
 
@@ -211,8 +222,10 @@ ai는 backend compose(`~/flipside`)와 따로, 전용 compose 파일 [deploy/doc
 배포 작업(`deploy` job)이 하는 일:
 
 1. 서버에 `~/flipside-ai`를 만들고 `deploy/docker-compose.yml`과 `ai.env`(시크릿 `ENV_FILE`, 권한 600)를 복사합니다.
-2. [deploy/deploy.sh](deploy/deploy.sh)를 서버에서 실행합니다. `flipside-backend` 컨테이너가 붙어 있는 Docker 네트워크를 찾아 `~/flipside-ai/.env`의 `BACKEND_NETWORK`에 적고(다른 줄은 그대로 둡니다), `docker compose pull`과 `up -d`를 합니다.
+2. [deploy/deploy.sh](deploy/deploy.sh)를 서버에서 실행합니다. `flipside-backend` 컨테이너가 붙어 있는 Docker 네트워크를 찾아 `~/flipside-ai/.env`의 `BACKEND_NETWORK`에, 이번 실행이 올린 이미지를 digest(`yjs0120/spring-boot-app@sha256:...`)로 `AI_IMAGE`에 적고(다른 줄은 그대로 둡니다), `docker compose pull`과 `up -d`를 합니다. 태그는 다른 실행이 덮어쓸 수 있어 digest로 받습니다.
 3. 컨테이너가 healthy가 될 때까지 최대 5분 기다립니다. healthy가 안 되거나 로그에 `Failed to preload voice models`가 있으면 로그 50줄을 출력하고 배포를 실패로 끝냅니다.
+
+`main`에 더 새로운 커밋이 이미 있으면 그 실행은 게시와 배포를 건너뜁니다(테스트가 늦게 끝난 이전 커밋이 새 버전을 덮어쓰지 않게 함). 사람이 다시 실행한 경우(Re-run)는 건너뛰지 않습니다.
 
 서버에 미리 해 둘 일은 없습니다. backend 컨테이너(`flipside-backend`)가 떠 있어야 하고, 폴더·파일·모델은 첫 배포 때 만들어집니다.
 
@@ -271,9 +284,11 @@ docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일
 | `GET /health`                | 없음                  | 200       |
 | `POST /api/v1/voice/analyze` | `file` 오디오 + 선택 `voiceprint`(JSON 문자열) | 200 (몇 분 걸림) |
 | `POST /api/v1/voice/enroll`  | `file` 사용자 혼자 말한 오디오(5초 이상) | 200       |
-| `POST /api/v1/memory/chunks` | 대화 1건의 발화 목록 | 200       |
-| `POST /api/v1/memory/embed-query` | 질문 | 200       |
-| `POST /api/v1/memory/rerank` | 질문과 후보 청크 | 200       |
+| `POST /api/v1/memory/chunks` | 대화 1건의 발화 목록 | 로컬 200, 배포 서버 503 |
+| `POST /api/v1/memory/embed-query` | 질문 | 로컬 200, 배포 서버 503 |
+| `POST /api/v1/memory/rerank` | 질문과 후보 청크 | 로컬 200, 배포 서버 503 |
+
+대화 기억 API는 `.[memory]`를 설치한 로컬에서만 동작합니다. 배포 이미지에는 음성 분석 의존성(`.[voice-pyannote]`)만 들어 있어, 서버에서는 503(`EMBEDDING_NOT_CONFIGURED`, 재정렬은 `RERANK_NOT_CONFIGURED`)을 돌려줍니다.
 
 구현 상태:
 
