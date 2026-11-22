@@ -12,6 +12,14 @@ from app.schemas.voice import Utterance
 InteractionKind = Literal["meeting", "call"]
 QueryText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=1000)]
 KST = ZoneInfo("Asia/Seoul")
+# Fixed node ids in the relationship map; "me" is also said_by for our side.
+RESERVED_IDS = {"company", "me"}
+
+
+def not_reserved(value: str) -> str:
+    if value in RESERVED_IDS:
+        raise ValueError(f"id must not be one of {sorted(RESERVED_IDS)}")
+    return value
 
 
 def korean_time_if_naive(value: datetime) -> datetime:
@@ -101,7 +109,7 @@ PromiseOwner = Literal["me", "customer"]
 
 class ConversationRef(BaseModel):
     # A conversation without its utterances: enough to name it in the prompt and the map.
-    id: str = Field(min_length=1)
+    id: Annotated[str, Field(min_length=1), AfterValidator(not_reserved)]
     kind: InteractionKind
     occurred_at: ConversationTime
     title: str
@@ -204,10 +212,13 @@ class MemoryState(BaseModel):
 
     @model_validator(mode="after")
     def ids_are_unique(self) -> Self:
-        # Each id gets one short alias in the prompt; a repeated id would make it ambiguous.
-        for name, items in (("conversations", self.conversations), ("people", self.people), ("facts", self.facts)):
-            if len({i.id for i in items}) != len(items):
-                raise ValueError(f"{name} ids must be unique")
+        # Each id gets one short alias in the prompt and one node in the relationship map,
+        # so a repeated id, even across kinds, would make it ambiguous.
+        ids = [i.id for items in (self.conversations, self.people, self.facts) for i in items]
+        if len(set(ids)) != len(ids):
+            raise ValueError("conversation, person and fact ids must all be unique")
+        for i in ids:
+            not_reserved(i)
         return self
 
 

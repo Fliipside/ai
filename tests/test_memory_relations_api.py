@@ -107,6 +107,10 @@ def test_hidden_conversations_leave_no_dangling_links(client) -> None:
     assert next(n for n in graph["nodes"] if n["id"] == f"{JOB1}-F02")["group"] == "requirement"
     assert [e["conversation_id"] for e in timeline["entries"]] == [JOB1]
     assert all(e["type"] != "promise_done" for e in timeline["entries"][0]["events"])
+    # It was kept in the hidden conversation, so to this viewer it is still open.
+    promise = next(n for n in graph["nodes"] if n["id"] == f"{JOB1}-F01")
+    assert (promise["status"], promise["group"]) == ("open", "overdue")
+    assert [u["fact_id"] for u in timeline["upcoming"]] == [f"{JOB1}-F01"]
 
 
 def test_guessed_link_is_marked_for_a_check(client) -> None:
@@ -119,6 +123,24 @@ def test_guessed_link_is_marked_for_a_check(client) -> None:
     person = next(n for n in graph["nodes"] if n["id"] == f"{JOB1}-P1")
     assert person["inferred_in"] == [JOB2] and "추정 연결" in person["label"]
     assert [e["participants"][0]["inferred"] for e in timeline["entries"]] == [False, True]
+
+
+@pytest.mark.parametrize("kind", ["conversations", "people", "facts"])
+def test_ids_that_clash_with_graph_nodes_are_rejected(client, kind) -> None:
+    # Every id becomes a node id, next to the fixed "company" and "me" nodes.
+    memory = stored(FIRST)
+    memory[kind][0]["id"] = "me"
+    response = client.post("/api/v1/memory/graph", json={"company": "누리정밀", "memory": memory})
+
+    assert response.status_code == 422
+
+
+def test_ids_must_differ_across_kinds(client) -> None:
+    memory = stored(FIRST)
+    memory["facts"][0]["id"] = memory["people"][0]["id"]
+    response = client.post("/api/v1/memory/graph", json={"company": "누리정밀", "memory": memory})
+
+    assert response.status_code == 422
 
 
 def test_empty_memory(client) -> None:

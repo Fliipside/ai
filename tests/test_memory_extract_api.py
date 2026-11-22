@@ -194,6 +194,7 @@ def test_same_conversation_twice_is_rejected() -> None:
     FIRST | {"utterances": [FIRST["utterances"][0], FIRST["utterances"][0]]},
     FIRST | {"kind": "email"},
     FIRST | {"id": ""},
+    FIRST | {"id": "company"},
 ])
 def test_invalid_conversation_is_rejected_without_calling_the_llm(conversation) -> None:
     llm = ScriptedLLM(REPLIES)

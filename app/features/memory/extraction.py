@@ -214,20 +214,30 @@ class MemoryBuilder:
             evidence = [e for e in map(ids.restore, link.evidence_utterance_ids) if e in utterance_ids]
             decided[label] = person_id if person_id in known and evidence else None
 
+        by_id = {p.id: p for p in memory.people}
         people, kept = [], []
         for p in with_own_labels(extraction, speakers).people:
+            chosen = by_id.get(decided.get(p.speaker) or "")
             # Not sure here means no better answer: the extraction's own guess stays (it is right
-            # more often than not). A name said in this conversation also stays.
-            if decided.get(p.speaker) is None or named_in(conversation, full_name(p), clean(p.name)):
+            # more often than not). A name said in this conversation also stays, unless only the
+            # speaker says it and it is another known person's ("김서연 과장님께 전달했습니다").
+            name = full_name(p)
+            if chosen is None or name and said_of(conversation, p.speaker, name, clean(p.name),
+                                                  fits=not any(k.name == name and k is not chosen
+                                                               for k in memory.people)):
                 kept.append(p)
                 continue
-            # A name or surname this conversation never says was copied from a guess; drop it so
-            # the speaker is matched only by the decision above.
+            # A name or surname not said for this speaker was copied from a guess; drop it so the
+            # speaker is matched only by the decision above. The title stays even when not said: it
+            # is often guessed right from what the speaker does, and one that disagrees with the
+            # person picked keeps a wrong pick from merging two people (S086 in the eval).
             surname, title = clean(p.surname), clean(p.title)
-            said_surname = surname and title and named_in(conversation, surname + title.split()[-1])
+            said_surname = surname and title and said_of(
+                conversation, p.speaker, surname + title.split()[-1],
+                fits=surname == chosen.surname or (chosen.name or "").startswith(surname)
+                or not (chosen.surname or chosen.name))
             people.append(p.model_copy(update={
-                "known_person_id": decided[p.speaker], "name": None,
-                "surname": surname if said_surname else None,
+                "known_person_id": chosen.id, "name": None, "surname": surname if said_surname else None,
             }))
         # Matched speakers first, so a kept guess cannot take a person a matched speaker is.
         return extraction.model_copy(update={"people": people + kept})
@@ -243,7 +253,8 @@ def full_name(extracted: ExtractedPerson) -> str | None:
 
 # The prompt asks for what someone does ("구매 담당") when no title is said, so such a duty
 # can sit next to any real title and never rules a person out. Two real titles must agree.
-DUTY_WORDS = ("담당", "실무", "책임")
+# "책임자" and not "책임": 책임 and 책임연구원 are real titles.
+DUTY_WORDS = ("담당", "실무", "책임자")
 
 
 def is_duty(title: str) -> bool:
@@ -256,10 +267,18 @@ def titles_agree(a: str | None, b: str | None) -> bool:
     return is_duty(a) or is_duty(b)
 
 
-def named_in(conversation: Conversation, *names: str | None) -> bool:
-    """Whether any of these names is said in the conversation (spaces ignored)."""
-    text = "".join([conversation.title, *(u.text for u in conversation.utterances)]).replace(" ", "")
+def named_in(conversation: Conversation, *names: str | None, not_by: str | None = None) -> bool:
+    """Whether any of these names is said in the conversation (spaces ignored), leaving out what
+    the speaker `not_by` says."""
+    said = (u.text for u in conversation.utterances if speaker_label(u.role, u.speaker) != not_by)
+    text = "".join([conversation.title, *said]).replace(" ", "")
     return any(n and n.replace(" ", "") in text for n in names)
+
+
+def said_of(conversation: Conversation, speaker: str, *names: str | None, fits: bool) -> bool:
+    """Whether a name is said for this speaker: by someone else (calling them by it), or by the
+    speaker themselves when it fits the person matched (introducing themselves, not someone else)."""
+    return named_in(conversation, *names, not_by=speaker) or fits and named_in(conversation, *names)
 
 
 def find_person(memory: CompanyMemory, conversation: Conversation, extracted: ExtractedPerson,

@@ -264,6 +264,17 @@ def test_duty_description_does_not_replace_a_title() -> None:
     assert (p.title, len(p.appearances)) == ("대리", 2)
 
 
+def test_new_research_title_replaces_the_old_one() -> None:
+    # 책임연구원 is a real title, not a duty like 현장 책임자.
+    memory = build_with([
+        {"people": [person("SPEAKER_01", name="박지훈", title="선임연구원")], "facts": [], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_02", name="박지훈", title="책임연구원")], "facts": [], "resolved_promise_ids": []},
+    ])
+
+    [p] = memory.people
+    assert (p.title, len(p.appearances)) == ("책임연구원", 2)
+
+
 def test_name_not_said_in_the_conversation_links_as_inferred() -> None:
     # Models copy a known name onto a speaker they only guess is that person.
     memory = extract([
@@ -352,15 +363,16 @@ NOBODY_NAMED = conversation("I2", 14, [
 ])
 
 
-def matched(links: list[dict] | Exception) -> CompanyMemory:
+def matched(links: list[dict] | Exception, second: list[dict] | None = None,
+            later: Conversation = NOBODY_NAMED) -> CompanyMemory:
     """The second meeting where the extraction pairs speakers by order (wrongly), then the matching call."""
     from app.schemas.memory import PersonLinks
 
     replies = [
         {"people": [person("SPEAKER_01", name="박지훈", title="대리"), person("SPEAKER_02", name="김서연", title="과장")],
          "facts": [], "resolved_promise_ids": []},
-        {"people": [person("SPEAKER_01", name="박지훈", known_person_id="P1"),
-                    person("SPEAKER_02", name="김서연", known_person_id="P2")],
+        {"people": second or [person("SPEAKER_01", name="박지훈", known_person_id="P1"),
+                              person("SPEAKER_02", name="김서연", known_person_id="P2")],
          "facts": [], "resolved_promise_ids": []},
     ]
 
@@ -374,7 +386,7 @@ def matched(links: list[dict] | Exception) -> CompanyMemory:
                 return PersonLinks(links=links)
             return schema.model_validate(replies.pop(0))
 
-    return MemoryBuilder(Scripted(), relink=True).build("누리정밀", [MET_TWO, NOBODY_NAMED])
+    return MemoryBuilder(Scripted(), relink=True).build("누리정밀", [MET_TWO, later])
 
 
 def link(speaker: str, known: str | None, evidence: list[str]) -> dict:
@@ -390,6 +402,42 @@ def test_matching_call_overrides_names_paired_by_speaking_order() -> None:
 
     assert spoke_as(memory) == {"박지훈": ["SPEAKER_02"], "김서연": ["SPEAKER_01"]}
     assert all(p.inferred_in == ["I2"] for p in memory.people)
+
+
+def test_title_that_disagrees_with_the_pick_keeps_the_speaker_apart() -> None:
+    # Nobody says a title here; the extraction's guess may be right or copied from a wrong guess.
+    # Either way it disagrees with the person picked, and leaving a speaker unlinked is better
+    # than merging two people.
+    memory = matched([link("SPEAKER_01", "P2", ["U2"]), link("SPEAKER_02", "P1", ["U3"])], second=[
+        person("SPEAKER_01", name="박지훈", title="대리", known_person_id="P1"),
+        person("SPEAKER_02", name="김서연", title="과장", known_person_id="P2"),
+    ])
+
+    assert spoke_as(memory) == {"박지훈": [], "김서연": [], "대리": ["SPEAKER_01"], "과장": ["SPEAKER_02"]}
+
+
+def test_name_the_speaker_says_about_someone_else_does_not_keep_the_guess() -> None:
+    later = conversation("I2", 14, [
+        ("SPEAKER_00", "me", "견적 보셨어요?"),
+        ("SPEAKER_01", "customer", "네, 김서연 과장님께 전달했습니다."),
+    ])
+
+    memory = matched([link("SPEAKER_01", "P1", ["U1"])], later=later,
+                     second=[person("SPEAKER_01", name="김서연", known_person_id="P2")])
+
+    assert spoke_as(memory) == {"박지훈": ["SPEAKER_01"], "김서연": []}
+
+
+def test_name_others_call_the_speaker_by_keeps_the_guess() -> None:
+    later = conversation("I2", 14, [
+        ("SPEAKER_00", "me", "김서연 과장님, 견적 보셨어요?"),
+        ("SPEAKER_01", "customer", "네, 봤습니다."),
+    ])
+
+    memory = matched([link("SPEAKER_01", "P1", ["U1"])], later=later,
+                     second=[person("SPEAKER_01", name="김서연", title="과장", known_person_id="P2")])
+
+    assert spoke_as(memory) == {"박지훈": [], "김서연": ["SPEAKER_01"]}
 
 
 def test_unsure_or_unsupported_match_keeps_the_extraction_guess() -> None:

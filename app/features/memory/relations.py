@@ -58,9 +58,11 @@ def visible_part(memory: CompanyMemory) -> CompanyMemory:
                 "appearances": appearances, "inferred_in": [c for c in p.inferred_in if c in shown],
             }))
     known = {p.id for p in people}
+    # A promise kept in a conversation left out still looks open; that it was kept comes from that conversation.
     facts = [
         f.model_copy(update={"said_by": f.said_by if f.said_by in known or f.said_by == "me" else None,
-                             "resolved_in": f.resolved_in if f.resolved_in in shown else None})
+                             "resolved_in": f.resolved_in if f.resolved_in in shown else None,
+                             "status": "open" if f.status == "done" and f.resolved_in not in shown else f.status})
         for f in memory.facts if f.conversation_id in shown
     ]
     ids = {f.id for f in facts}
