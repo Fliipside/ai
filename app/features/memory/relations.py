@@ -27,7 +27,13 @@ def open_promises(
     owner: PromiseOwner,
     visible_conversations: set[str] | None = None,
 ) -> list[MemoryFact]:
-    """Promises not yet fulfilled; owner "me" = our to-dos, "customer" = what we are waiting for."""
+    """Promises not yet fulfilled; owner "me" = our to-dos, "customer" = what we are waiting for.
+
+    A company has one shared memory: whether a promise is done or replaced is the same for
+    every viewer. visible_conversations only hides promises made in conversations the viewer
+    cannot see. So a promise fulfilled or changed in a conversation the viewer cannot see is
+    still left out here, although the viewer never sees that conversation itself.
+    """
     return [
         f for f in memory.facts
         if f.type == "promise" and f.status == "open" and f.owner == owner and f.superseded_by is None

@@ -1,12 +1,15 @@
 # [데이터 형식] 대화 기억 API의 요청·응답 모양
 # 필드 이름, 필수 여부, 길이 제한을 정합니다. backend와 맞춰야 하는 계약입니다.
 
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from typing import Annotated, Literal
 
-from pydantic import BaseModel, Field, StringConstraints
+from pydantic import BaseModel, Field, StringConstraints, field_validator
 
 from app.schemas.voice import Utterance
+
+# Korean time (no daylight saving), for times sent without an offset.
+DEFAULT_TIMEZONE = timezone(timedelta(hours=9), "KST")
 
 InteractionKind = Literal["meeting", "call"]
 QueryText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=1000)]
@@ -91,9 +94,16 @@ PromiseOwner = Literal["me", "customer"]
 class Conversation(BaseModel):
     id: str
     kind: InteractionKind
+    # A value without an offset is read as Korean time, so conversations can always be
+    # put in date order (Python cannot compare times with and without an offset).
     occurred_at: datetime
     title: str
     utterances: list[StoredUtterance]
+
+    @field_validator("occurred_at")
+    @classmethod
+    def with_timezone(cls, value: datetime) -> datetime:
+        return value if value.tzinfo is not None else value.replace(tzinfo=DEFAULT_TIMEZONE)
 
 
 # What the LLM returns for one conversation. Every field is required (null when unknown)

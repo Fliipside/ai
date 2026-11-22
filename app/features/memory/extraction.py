@@ -115,14 +115,17 @@ def find_person(memory: CompanyMemory, extracted: ExtractedPerson, taken: set[st
         for p in people.values():
             if p.name == name:
                 return p, False
-    if surname:
-        for p in people.values():
-            if (
-                (p.surname == surname or (p.name or "").startswith(surname))
-                and not (name and p.name and p.name != name)
-                and (not title or not p.title or title in p.title or p.title in title)
-            ):
-                return p, False
+
+    def same_surname_and_title(p: Person) -> bool:
+        return bool(
+            surname
+            and (p.surname == surname or (p.name or "").startswith(surname))
+            and not (name and p.name and p.name != name)
+            and (not title or not p.title or title in p.title or p.title in title)
+        )
+
+    # The person the model pointed at comes before a surname/title search: two people can
+    # share both ("박 대리"), and the search would stop at whichever was recorded first.
     # A context-only link needs something to link on, and nothing that contradicts it;
     # merging two real people is worse than leaving a speaker unnamed.
     known = people.get(extracted.known_person_id or "")
@@ -133,7 +136,10 @@ def find_person(memory: CompanyMemory, extracted: ExtractedPerson, taken: set[st
         and not (surname and known.surname and known.surname != surname)
         and not (title and known.title and title not in known.title and known.title not in title)
     ):
-        return known, True
+        return known, not same_surname_and_title(known)
+    for p in people.values():
+        if same_surname_and_title(p):
+            return p, False
     return None, False
 
 

@@ -206,3 +206,63 @@ def test_given_name_only_is_joined_with_the_surname() -> None:
 
     [p] = memory.people
     assert (p.name, p.appearances) == ("박지훈", [("I1", "SPEAKER_01"), ("I2", "SPEAKER_02")])
+
+
+def test_known_person_wins_over_another_person_with_the_same_surname_and_title() -> None:
+    first = conversation("I1", 7, [
+        ("A", "customer", "박지훈 대리입니다."),
+        ("B", "customer", "박민수 대리입니다."),
+    ])
+    later = conversation("I2", 14, [("C", "customer", "박 대리입니다. 다음 주에 발주하겠습니다.")])
+    replies = [
+        {"people": [person("A", name="박지훈", title="대리"), person("B", name="박민수", title="대리")],
+         "facts": [], "resolved_promise_ids": []},
+        {"people": [person("C", surname="박", title="대리", known_person_id="P2")],
+         "facts": [{"type": "purchase_timing", "speaker": "C", "content": "다음 주에 발주한다.",
+                    "source_utterance_ids": ["I2-U0"], "owner": None, "due_text": None, "due_date": None,
+                    "supersedes_fact_id": None}],
+         "resolved_promise_ids": []},
+    ]
+
+    class Scripted:
+        name = "scripted"
+
+        def generate(self, system, prompt, schema):
+            return schema.model_validate(replies.pop(0))
+
+    memory = MemoryBuilder(Scripted()).build("누리정밀", [first, later])
+
+    assert [(p.name, p.appearances) for p in memory.people] == [
+        ("박지훈", [("I1", "A")]),
+        ("박민수", [("I1", "B"), ("I2", "C")]),
+    ]
+    assert [f.said_by for f in memory.facts] == ["P2"]
+    # The surname and title also fit, so this is not a context-only guess.
+    assert memory.people[1].inferred_in == []
+
+
+def test_time_without_offset_is_read_as_korean_time() -> None:
+    def at(cid: str, when: str) -> Conversation:
+        return Conversation(id=cid, kind="call", occurred_at=when, title=cid, utterances=[])
+
+    # 2026-09-08 23:00 UTC is 2026-09-09 08:00 in Korea, after the 07:00 conversation without an offset.
+    late = at("with-offset", "2026-09-08T23:00:00+00:00")
+    early = at("without-offset", "2026-09-09T07:00:00")
+
+    class Empty:
+        name = "empty"
+
+        def generate(self, system, prompt, schema):
+            return schema.model_validate({"people": [], "facts": [], "resolved_promise_ids": []})
+
+    memory = MemoryBuilder(Empty()).build("누리정밀", [late, early])
+
+    assert early.occurred_at.utcoffset().total_seconds() == 9 * 3600
+    assert [c.id for c in memory.conversations] == ["without-offset", "with-offset"]
+
+
+def test_promise_done_in_a_hidden_conversation_is_done_for_every_viewer() -> None:
+    # Promise state is shared by everyone who can see the company (see open_promises).
+    memory, _ = build()
+
+    assert open_promises(memory, "me", visible_conversations={"I1"}) == []
