@@ -92,9 +92,17 @@ python scripts/voice_benchmark.py data/voice/*.m4a \
 
 backend 흐름:
 
-1. 대화가 저장되면 `/chunks`를 호출해 받은 청크의 `text`(화면에 보여줄 원문), `embed_text`, `utterance_ids`, 시간, `vector`, `model`을 pgvector에 저장합니다. `context`를 보내면 청크마다 `회사 | 날짜 미팅/통화 | 제목` 머리말을 붙여 임베딩하며, 검색 정확도가 올라가므로 보내는 것을 권장합니다. 날짜는 `occurred_at`에 적힌 시간대 기준입니다(한국 시간은 `+09:00`).
+1. 대화가 저장되면 `/chunks`를 호출해 받은 청크의 `utterance_ids`, 시간, `vector`, `model`만 pgvector에 저장합니다. 글(`text`, `embed_text`)은 저장하지 않습니다. 대화 원문은 음성 분석 결과에 이미 있으므로 두 번 저장하지 않고, 필요할 때 `utterance_ids`로 꺼냅니다. `context`를 보내면 청크마다 `회사 | 날짜 미팅/통화 | 제목` 머리말을 붙여 임베딩하며, 검색 정확도가 올라가므로 보내는 것을 권장합니다. 날짜는 `occurred_at`에 적힌 시간대 기준입니다(한국 시간은 `+09:00`).
 2. 질문이 오면 `/embed-query`로 벡터를 받아, 고객사·권한으로 거른 뒤 같은 `model`의 청크 중 코사인 거리(`<=>`) 상위 10개를 고릅니다.
-3. 그 10개의 `embed_text`를 `/rerank`에 보내 다시 정렬하고 상위 결과를 사용합니다.
+3. 그 10개의 글을 원문에서 다시 만들어 `/rerank`에 보내 다시 정렬하고 상위 결과를 사용합니다. 임베딩할 때와 같은 모양이어야 하며, `/chunks` 응답의 `embed_text`와 같습니다.
+
+```text
+{company} | {occurred_at 앞 10자리(YYYY-MM-DD)} {미팅|통화} | {title}
+[고객] 첫 발화 text
+[나] 다음 발화 text
+```
+
+발화 한 줄은 `[역할] text`이고 역할은 `me` → 나, `customer` → 고객, `unknown` → 미확인입니다. `utterance_ids` 순서대로 줄바꿈으로 잇습니다.
 
 정답셋 1,467개 질문(시나리오 100개, 바꿔 말한 질문 978개 포함) 기준으로 1위 정답률은 벡터 검색만 80.9%, 재정렬 후 87.5%입니다. 권한 위반과 다른 고객사 결과는 0건입니다. 로컬 CPU(Apple Silicon)에서 모델을 불러온 뒤 응답 시간은 `/embed-query` 약 50ms, `/rerank`(후보 10개) 약 300ms, `/chunks`(대화 1건) 약 140ms입니다.
 
@@ -148,9 +156,10 @@ python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 
 | 파일 | 하는 일 |
 | ---- | ---- |
-| `app/features/memory/extraction.py`, `prompts/extraction_system.txt` | LLM 지시문(텍스트 파일), 대화별 추출, 사람 연결(이름 → 성+직함 → 문맥), 기억 반영 |
-| `app/features/memory/relations.py` | 남은 약속 조회, 관계도 노드·연결선 만들기 |
-| `app/providers/llm/gateway.py` | 대회 LLM 게이트웨이(OpenAI 호환) 호출, 결과 형식 검사·1회 재요청, 토큰 사용량 집계 |
+| `app/features/memory/extraction.py`, `prompts/extraction_system.txt`, `prompts/linking_system.txt` | LLM 지시문(텍스트 파일), 대화별 추출, 사람 맞추기 전용 확인 호출, 사람 연결(이름 → 성+직함 → 문맥; 그 대화에 이름이 안 나오면 추정 연결로 표시), 기억 반영 |
+| `app/features/memory/relations.py` | 남은 약속 조회, 관계도 노드·연결선, 관계 타임라인(대화별 사건·남은 약속), 볼 수 있는 대화만 남기기 |
+| `app/providers/llm/gateway.py` | 대회 LLM 게이트웨이(OpenAI 호환) 호출, 결과 형식 검사, 빈 응답·형식 오류·일시 오류 1회 재요청(전체 240초 안), 토큰 사용량 집계 |
+| `app/features/memory/service.py` (`ExtractionService`), `app/api/v1/memory.py` (`/extract`) | 정보 추출 API: 저장된 기억 + 새 대화 1건 → 새로 생기거나 바뀐 사람·정보 |
 | `scripts/memory_eval.py` | 더미 데이터로 추출 품질 평가, 고객사별 기억 JSON과 관계도 HTML 저장 |
 
 기본 모델은 `claude-sonnet-5-5`에 사고량 `low`입니다(`LLM_MODEL`, `LLM_REASONING_EFFORT`). Opus는 답보다 숨은 사고 토큰이 10배 넘게 나와 비용의 약 90%를 차지했고, Sonnet low는 비용이 약 15분의 1이면서 정보 찾기 점수는 비슷하거나 높았습니다. `LLM_API_KEY`는 팀 공유 키라 `.env`에만 넣고 커밋하지 않습니다.
@@ -158,11 +167,48 @@ python scripts/load_memory_fixtures.py --out data/memory/load_fixtures.sql
 ```bash
 python -m pip install -e ".[llm]"
 python scripts/memory_eval.py --gold          # LLM 없이 정답으로 기억·관계도 만들기 (채점 확인용)
-python scripts/memory_eval.py                 # 전체 평가 (대화 310건, 약 9천 원)
+python scripts/memory_eval.py                 # 전체 평가 (대화 310건, 약 7천 원)
 python scripts/memory_eval.py fixtures/sales/s01*.json   # 일부만 평가
 ```
 
 LLM 답은 `data/memory/extractions/`에 저장해 같은 요청은 다시 호출하지 않으며, 실행이 끝나면 토큰 수와 예상 비용을 출력합니다. 시나리오 번호 끝자리 8·9·0은 지시문 개선에 쓰지 않는 확인용으로 따로 채점합니다.
+
+LLM에는 실제 id 대신 짧은 별칭(사람 `P1`, 정보 `F1`, 발화 `U1`)을 보여 주고, 답을 받은 뒤 코드에서 실제 id로 되돌립니다. 실제 발화 id는 `분석작업id-순번`처럼 길어서, 그대로 베껴 쓰게 하면 토큰이 늘고 한 글자만 틀려도 그 정보가 버려지기 때문입니다.
+
+### 정보 추출 API
+
+| 경로 | 요청 | 응답 `data` |
+| ---- | ---- | ---- |
+| `POST /api/v1/memory/extract` | `company`, `conversation`(`id`, `kind` meeting\|call, `occurred_at`, `title`, `utterances[]` 1~5000개, 발화 `id`는 대화 안에서 중복 없음), `memory`(선택: 지금까지 저장한 `conversations[]`(발화 없이 `id`·`kind`·`occurred_at`·`title`), `people[]`, `facts[]`) | `model`, `people[]`, `facts[]`: 새로 생기거나 이번 대화로 바뀐 것만 |
+
+ai는 기억을 저장하지 않습니다. backend 흐름:
+
+1. 음성 분석이 끝나 대화를 저장하면, 같은 고객사의 저장된 기억(대화 목록, 사람, 정보)을 `memory`에 담아 `/extract`를 호출합니다. 고객사의 첫 대화면 `memory`를 비웁니다.
+2. 응답의 `people[]`, `facts[]`를 `id` 기준으로 덮어쓰거나 추가합니다(upsert). 다시 나온 사람(`appearances` 추가), 완료된 약속(`status: done`, `resolved_in`), 새 정보로 대체된 정보(`superseded_by`)도 이 목록에 들어 있습니다.
+3. 대화 자체(`id`, `kind`, `occurred_at`, `title`)도 저장해 다음 호출의 `memory.conversations`에 넣습니다.
+
+- id는 대화 id로 시작해 겹치지 않습니다. 새 사람은 `대화id-P1`, 정보는 `대화id-F01` 형식입니다.
+- 대화·사람·정보 id는 종류가 달라도 서로 겹치면 안 되고, `company`, `me`는 쓸 수 없습니다(관계도의 고정 점 이름). 어기면 `422 INVALID_REQUEST`입니다. 대화 id로 UUID를 쓰면 걱정할 필요가 없습니다.
+- 이미 `memory.conversations`에 있는 대화를 다시 보내면 `409 CONVERSATION_ALREADY_EXTRACTED`입니다. 같은 정보가 두 번 쌓이는 것을 막습니다.
+- 이전 기억에 사람이 있으면 LLM을 2번 부릅니다. 1번째는 정보·사람 추출, 2번째는 이번 대화의 고객 화자가 이전에 만난 누구인지만 따로 확인합니다(근거 발화가 있을 때만 바꾸고, 모르겠으면 1번째 결과를 그대로 둡니다. 2번째가 실패해도 1번째 결과로 응답합니다). 보통 20~60초 걸립니다. ai는 호출 1번을 최대 120초, 다시 시도까지 합쳐 최대 240초로 제한하므로 최악은 약 480초이고, backend 요청 타임아웃은 540초로 잡습니다. backend가 먼저 포기하면 ai는 끝까지 실행해 비용만 쓰고, 다시 보내면 비용이 두 번 듭니다. 녹음 분석처럼 작업 큐에서 처리하는 것을 권장합니다.
+- 다시 시도: 빈 응답, 형식이 맞지 않는 답, 일시적인 게이트웨이 오류(시간 초과·연결 끊김·429·5xx)는 남은 시간 안에서 1번 더 요청합니다.
+- 사람, 남은 약속, 현재 정보(대체되지 않은 정보)는 매번 LLM에 모두 들어갑니다. 합계가 600개를 넘으면 `413 MEMORY_TOO_LARGE`로 거절합니다. 한 고객사와 대화 20건이면 약 200개입니다.
+- 같은 고객사의 대화는 날짜 순서대로 하나씩 처리해야 합니다. 동시에 보내면 서로의 결과를 모른 채 추출해 약속 완료·정보 변경을 놓칩니다.
+- 오류: LLM 키 없음·`openai` 미설치 `503 LLM_NOT_CONFIGURED`, 게이트웨이 오류·시간 초과 `502 LLM_UNAVAILABLE`, 빈 응답·형식이 맞지 않는 답(1번 재요청 후) `502 LLM_BAD_RESPONSE`, 기억이 너무 큼 `413 MEMORY_TOO_LARGE`, 요청 형식 오류(id 중복 포함) `422 INVALID_REQUEST`.
+
+### 관계도·관계 타임라인 API
+
+저장된 기억을 받아 화면에 그릴 데이터를 돌려줍니다. LLM을 쓰지 않아 바로 응답하고 비용이 없습니다.
+
+| 경로 | 요청 | 응답 `data` |
+| ---- | ---- | ---- |
+| `POST /api/v1/memory/graph` | `company`, `memory`(`/extract`와 같은 `conversations[]`·`people[]`·`facts[]`), `as_of`(선택, `YYYY-MM-DD`) | `nodes[]`: `id`, `type`(company·me·person·conversation·fact), `group`, `label`, `title`, `role_in_deal`, `inferred_in`, `fact_type`, `status`, `due_at` / `edges[]`: `from`, `to`, `type`, `label`, `dashes` |
+| `POST /api/v1/memory/timeline` | 위와 같음 | `entries[]`(오래된 대화부터): 대화 `conversation_id`·`occurred_at`·`kind`·`title`, `participants[]`(`first_seen`: 처음 나온 사람, `inferred`: 이 대화에서 추정으로 이음), `events[]`(`type`: fact·promise·changed·promise_done, `content`, `said_by`, `previous_content` 등) / `upcoming[]`: 남은 약속(기한 빠른 순, 기한 없는 것은 뒤), `overdue` |
+
+- 관계도는 vis-network 모양(`from`/`to`, `group`, `label`)이라 그대로 그릴 수 있고, 직접 그리는 화면은 `type`과 나머지 필드를 쓰면 됩니다. `group`은 사람이면 역할, 정보면 종류이고, 대체된 정보는 `superseded`, 남은 약속은 `open_promise`, 기한이 지난 약속은 `overdue`입니다.
+- 추정 연결: 이름이 그 대화에 나오지 않았는데 이전 사람과 이은 경우입니다(사람 노드 `inferred_in`, 타임라인 `inferred`). 평가에서 잘못 합친 사람은 모두 이쪽이었으니, 화면에서 "같은 사람이 맞나요?"처럼 확인을 받으면 좋습니다.
+- `as_of`보다 기한이 이른 남은 약속을 기한 지남으로 표시합니다. 비우면 오늘(한국 날짜)입니다.
+- 권한: backend는 사용자가 볼 수 있는 대화만 `memory.conversations`에 넣습니다. 사람·정보는 그대로 보내도 되고, 빠진 대화의 정보·참석 기록과 그 대화로 이어지는 완료·변경 연결은 ai가 지웁니다.
 
 ## 로컬 실행
 
@@ -201,8 +247,9 @@ uvicorn app.main:app --reload
 | `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY` | 서버 접속 정보 (backend 저장소와 같은 값) |
 | `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN` | Docker Hub 로그인 정보 (backend 저장소와 같은 값) |
 | `ENV_FILE` | 서버의 `ai.env`가 될 내용. `GROQ_API_KEY=...`, `HF_TOKEN=...` 두 줄 |
+| `LLM_API_KEY` | LLM 게이트웨이 팀 공용 키(값만). 배포할 때 `ai.env` 끝에 `LLM_API_KEY=...` 줄로 붙고, `ENV_FILE`에 같은 줄이 있어도 이 값이 쓰입니다. 비어 있으면 배포가 멈춥니다 |
 
-이미지에는 ffmpeg와 pyannote 엔진(`.[voice-pyannote]`)이 들어 있습니다. 서버에 GPU가 없어 torch·torchaudio·torchcodec은 CPU 전용 빌드(`https://download.pytorch.org/whl/cpu`)로 설치합니다. PyPI의 리눅스 ARM64용 torchaudio 2.11.1은 CUDA 라이브러리를 요구해 CPU torch에서 import가 실패하므로, 같은 인덱스의 2.11.0을 씁니다. 모델과 비밀값은 이미지에 넣지 않습니다.
+이미지에는 ffmpeg와 pyannote 엔진, 대화 기억 의존성(`.[voice-pyannote,memory,llm]`)이 들어 있습니다. 서버에 GPU가 없어 torch·torchaudio·torchcodec은 CPU 전용 빌드(`https://download.pytorch.org/whl/cpu`)로 설치합니다. PyPI의 리눅스 ARM64용 torchaudio 2.11.1은 CUDA 라이브러리를 요구해 CPU torch에서 import가 실패하므로, 같은 인덱스의 2.11.0을 씁니다. 모델과 비밀값은 이미지에 넣지 않습니다.
 
 ### 서버 실행
 
@@ -210,7 +257,7 @@ ai는 backend compose(`~/flipside`)와 따로, 전용 compose 파일 [deploy/doc
 
 배포 작업(`deploy` job)이 하는 일:
 
-1. 서버에 `~/flipside-ai`를 만들고 `deploy/docker-compose.yml`과 `ai.env`(시크릿 `ENV_FILE`, 권한 600)를 복사합니다.
+1. 서버에 `~/flipside-ai`를 만들고 `deploy/docker-compose.yml`과 `ai.env`(시크릿 `ENV_FILE` 뒤에 `LLM_API_KEY` 한 줄, 권한 600)를 복사합니다.
 2. [deploy/deploy.sh](deploy/deploy.sh)를 서버에서 실행합니다. `flipside-backend` 컨테이너가 붙어 있는 Docker 네트워크를 찾아 `~/flipside-ai/.env`의 `BACKEND_NETWORK`에 적고(다른 줄은 그대로 둡니다), `docker compose pull`과 `up -d`를 합니다.
 3. 컨테이너가 healthy가 될 때까지 최대 5분 기다립니다. healthy가 안 되거나 로그에 `Failed to preload voice models`가 있으면 로그 50줄을 출력하고 배포를 실패로 끝냅니다.
 
@@ -233,10 +280,11 @@ compose 프로젝트는 달라도 ai 컨테이너가 backend의 Docker 네트워
 | ---- | ---- | ---- |
 | `GROQ_API_KEY` | (비밀값) | Groq Whisper STT. `env_file`로 주입 |
 | `HF_TOKEN` | (비밀값) | pyannote 모델 다운로드. `pyannote/speaker-diarization-community-1` 약관에 동의한 계정의 토큰. `env_file`로 주입 |
+| `LLM_API_KEY` | (비밀값) | 정보 추출(`/memory/extract`)용 LLM 게이트웨이 키. 없으면 `/extract`만 503. `env_file`로 주입 |
 | `DIARIZATION_ENGINE` | `pyannote` | 이미지에 pyannote만 들어 있음 |
 | `VOICE_PRELOAD_MODELS` | `true` (권장) | 시작할 때 모델을 불러와 첫 요청이 기다리지 않게 함 |
 
-- 모델 캐시: 이미지가 `HF_HUB_CACHE=/models/huggingface`로 고정합니다. `/models`에 볼륨을 붙여 컨테이너를 다시 만들어도 모델(약 32MB)을 유지합니다. `ENV_FILE`에는 `HF_HUB_CACHE`를 적지 않습니다(적으면 이미지 값을 덮어씁니다).
+- 모델 캐시: 이미지가 `HF_HUB_CACHE=/models/huggingface`로 고정합니다. `/models`에 볼륨을 붙여 컨테이너를 다시 만들어도 모델을 유지합니다. 음성 모델은 약 32MB이고, 대화 기억의 임베딩·재정렬 모델(bge-m3, bge-reranker-v2-m3, 각 약 2.3GB)은 `/chunks`·`/embed-query`·`/rerank`를 처음 부를 때 받습니다. `/extract`·`/graph`·`/timeline`은 이 모델이 필요 없습니다. `ENV_FILE`에는 `HF_HUB_CACHE`를 적지 않습니다(적으면 이미지 값을 덮어씁니다).
 - 상태 확인: `GET /health`. `VOICE_PRELOAD_MODELS=true`이면 모델을 불러온 뒤에 응답하기 시작합니다. 다만 모델 로드에 실패해도 200을 돌려주므로(음성 요청이 503 `DIARIZATION_NOT_CONFIGURED`로 알림), 배포 스크립트가 로그의 `Failed to preload voice models`를 따로 확인합니다.
 - 분석은 녹음 길이에 따라 몇 분 걸리므로 backend의 호출 timeout을 넉넉하게 둡니다.
 
@@ -244,7 +292,7 @@ compose 프로젝트는 달라도 ai 컨테이너가 backend의 Docker 네트워
 
 ```bash
 docker build -t flipside-ai:local .
-docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일> \
+docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN, LLM_API_KEY만 적은 파일> \
     -e DIARIZATION_ENGINE=pyannote -e VOICE_PRELOAD_MODELS=true \
     -v flipside-ai-models:/models flipside-ai:local
 ```
@@ -274,6 +322,9 @@ docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일
 | `POST /api/v1/memory/chunks` | 대화 1건의 발화 목록 | 200       |
 | `POST /api/v1/memory/embed-query` | 질문 | 200       |
 | `POST /api/v1/memory/rerank` | 질문과 후보 청크 | 200       |
+| `POST /api/v1/memory/extract` | 대화 1건과 저장된 기억 | 200 (20~60초, 최대 약 480초) |
+| `POST /api/v1/memory/graph` | 저장된 기억 | 200 |
+| `POST /api/v1/memory/timeline` | 저장된 기억 | 200 |
 
 구현 상태:
 
@@ -290,6 +341,7 @@ docker run --rm -p 8000:8000 --env-file <GROQ_API_KEY, HF_TOKEN만 적은 파일
 | `scripts/retrieval_eval.py` (검색 품질 평가), `scripts/compare_embeddings.py` (모델·청킹 비교), `scripts/load_memory_fixtures.py`, `scripts/sql/` (스키마 `memory`) | 구현 |
 | `api/v1/memory.py`, `features/memory/service.py`, `providers/rerank/` (대화 기억 API) | 구현 |
 | `features/memory/extraction.py`, `relations.py`, `providers/llm/`, `scripts/memory_eval.py` (핵심 정보 추출·관계 기억·관계도) | 구현 (로컬 더미 데이터) |
+| `api/v1/memory.py` `/extract` (정보 추출 API), `/graph`·`/timeline` (관계도·관계 타임라인 API) | 구현 |
 | pgvector 저장·검색 (backend) | 미구현 |
 
 "나" 판정 기준값 `VOICE_MATCH_THRESHOLD`(코사인 유사도)는 기본 0.5입니다. 실제 회의 녹음에서 사용자는 약 0.84, 다른 사람은 약 0.2였습니다(녹음 2개, 한 사람 기준).

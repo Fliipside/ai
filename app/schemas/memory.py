@@ -1,15 +1,34 @@
 # [데이터 형식] 대화 기억 API의 요청·응답 모양
 # 필드 이름, 필수 여부, 길이 제한을 정합니다. backend와 맞춰야 하는 계약입니다.
 
-from datetime import datetime
-from typing import Annotated, Literal
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
+from typing import Annotated, Literal, Self
 
-from pydantic import BaseModel, Field, StringConstraints
+from pydantic import AfterValidator, BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
 from app.schemas.voice import Utterance
 
 InteractionKind = Literal["meeting", "call"]
 QueryText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=1000)]
+KST = ZoneInfo("Asia/Seoul")
+# Fixed node ids in the relationship map; "me" is also said_by for our side.
+RESERVED_IDS = {"company", "me"}
+
+
+def not_reserved(value: str) -> str:
+    if value in RESERVED_IDS:
+        raise ValueError(f"id must not be one of {sorted(RESERVED_IDS)}")
+    return value
+
+
+def korean_time_if_naive(value: datetime) -> datetime:
+    # Conversations are sorted by time; one without an offset cannot be compared with one that has
+    # it, so a missing offset is read as Korean time, where the recordings are made.
+    return value.replace(tzinfo=KST) if value.tzinfo is None else value
+
+
+ConversationTime = Annotated[datetime, AfterValidator(korean_time_if_naive)]
 
 
 class StoredUtterance(Utterance):
@@ -88,12 +107,23 @@ DealRole = Literal["champion", "influencer", "decision_maker", "procurement", "u
 PromiseOwner = Literal["me", "customer"]
 
 
-class Conversation(BaseModel):
-    id: str
+class ConversationRef(BaseModel):
+    # A conversation without its utterances: enough to name it in the prompt and the map.
+    id: Annotated[str, Field(min_length=1), AfterValidator(not_reserved)]
     kind: InteractionKind
-    occurred_at: datetime
+    occurred_at: ConversationTime
     title: str
-    utterances: list[StoredUtterance]
+
+
+class Conversation(ConversationRef):
+    utterances: list[StoredUtterance] = Field(min_length=1, max_length=5000)
+
+    @model_validator(mode="after")
+    def utterance_ids_are_unique(self) -> Self:
+        # Facts point back to utterances by id, so an id must name one utterance.
+        if len({u.id for u in self.utterances}) != len(self.utterances):
+            raise ValueError("utterance ids must be unique within a conversation")
+        return self
 
 
 # What the LLM returns for one conversation. Every field is required (null when unknown)
@@ -122,6 +152,18 @@ class ConversationExtraction(BaseModel):
     people: list[ExtractedPerson]
     facts: list[ExtractedFact]
     resolved_promise_ids: list[str]  # earlier open promises fulfilled in this conversation
+
+
+# What the LLM returns when it only matches this conversation's customer speakers to known people.
+class PersonLink(BaseModel):
+    speaker: str
+    reason: str  # one short sentence, written before the decision
+    known_person_id: str | None  # null: not someone met before, or not sure
+    evidence_utterance_ids: list[str]  # utterances that show who the speaker is
+
+
+class PersonLinks(BaseModel):
+    links: list[PersonLink]
 
 
 class Person(BaseModel):
@@ -154,6 +196,133 @@ class MemoryFact(BaseModel):
 
 class CompanyMemory(BaseModel):
     company: str
-    conversations: list[Conversation]
+    # Conversations already applied; earlier ones may come without utterances (from MemoryState).
+    conversations: list[ConversationRef]
     people: list[Person]
     facts: list[MemoryFact]
+
+
+# POST /memory/extract: backend keeps the memory and sends it with each new conversation.
+
+class MemoryState(BaseModel):
+    # Everything stored so far for this customer company; empty for its first conversation.
+    conversations: list[ConversationRef] = Field(default=[], max_length=1000)
+    people: list[Person] = Field(default=[], max_length=500)
+    facts: list[MemoryFact] = Field(default=[], max_length=5000)
+
+    @model_validator(mode="after")
+    def ids_are_unique(self) -> Self:
+        # Each id gets one short alias in the prompt and one node in the relationship map,
+        # so a repeated id, even across kinds, would make it ambiguous.
+        ids = [i.id for items in (self.conversations, self.people, self.facts) for i in items]
+        if len(set(ids)) != len(ids):
+            raise ValueError("conversation, person and fact ids must all be unique")
+        for i in ids:
+            not_reserved(i)
+        return self
+
+
+class ExtractRequest(BaseModel):
+    company: str = Field(min_length=1)
+    conversation: Conversation
+    memory: MemoryState = MemoryState()
+
+
+class ExtractResult(BaseModel):
+    model: str
+    # Upsert both by id: new ones plus earlier ones this conversation changed
+    # (a person seen again, a promise now done, a fact replaced by a newer one).
+    people: list[Person]
+    facts: list[MemoryFact]
+
+
+# POST /memory/graph and /memory/timeline: drawn from the stored memory, no LLM call.
+
+class RelationRequest(BaseModel):
+    company: str = Field(min_length=1)
+    # Send only what the viewer may see; facts of conversations left out are dropped.
+    memory: MemoryState
+    # Promises due before this day are marked overdue; today in Korea when left out.
+    as_of: date | None = None
+
+
+GraphNodeType = Literal["company", "me", "person", "conversation", "fact"]
+GraphEdgeType = Literal["sells_to", "member_of", "attended", "mentioned_in", "said", "todo", "changed", "resolved_in"]
+
+
+class GraphNode(BaseModel):
+    id: str
+    type: GraphNodeType
+    # Style group: a role for people, a fact type or superseded / open_promise / overdue for facts.
+    group: str
+    label: str
+    title: str | None = None  # full text of a fact
+    role_in_deal: DealRole | None = None
+    # person only: conversations where this person was linked by a guess, not by a name said there
+    inferred_in: list[str] | None = None
+    fact_type: FactType | None = None
+    status: Literal["open", "done"] | None = None
+    due_at: str | None = None
+
+
+class GraphEdge(BaseModel):
+    # vis-network names the ends from/to; `from` is a Python keyword, hence the alias.
+    model_config = ConfigDict(populate_by_name=True)
+
+    from_: str = Field(alias="from")
+    to: str
+    type: GraphEdgeType
+    label: str
+    dashes: bool = False
+
+
+class RelationGraph(BaseModel):
+    nodes: list[GraphNode]
+    edges: list[GraphEdge]
+
+
+class TimelinePerson(BaseModel):
+    id: str
+    label: str
+    role_in_deal: DealRole
+    first_seen: bool  # this is the first conversation this person appears in
+    inferred: bool = False  # linked to the earlier person by a guess here; worth a check by the user
+
+
+class TimelineEvent(BaseModel):
+    # fact: new information, promise: a new promise, changed: replaces an earlier fact
+    # (previous_content), promise_done: an earlier promise fulfilled in this conversation.
+    type: Literal["fact", "promise", "changed", "promise_done"]
+    fact_id: str
+    fact_type: FactType
+    content: str
+    said_by: str | None  # "나", a person's label, or None when not identified
+    owner: PromiseOwner | None = None
+    due_at: str | None = None
+    previous_content: str | None = None
+
+
+class TimelineEntry(BaseModel):
+    conversation_id: str
+    occurred_at: datetime
+    kind: InteractionKind
+    title: str
+    participants: list[TimelinePerson]
+    events: list[TimelineEvent]
+
+
+class UpcomingPromise(BaseModel):
+    fact_id: str
+    conversation_id: str
+    owner: PromiseOwner | None
+    content: str
+    due_at: str | None
+    due_text: str | None
+    overdue: bool
+
+
+class Timeline(BaseModel):
+    company: str
+    as_of: str | None
+    entries: list[TimelineEntry]  # oldest conversation first
+    upcoming: list[UpcomingPromise]  # open promises, earliest due first, undated last

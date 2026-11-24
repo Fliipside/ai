@@ -4,6 +4,7 @@
 import json
 import logging
 import re
+import time
 from collections import Counter
 from typing import TypeVar
 
@@ -18,6 +19,12 @@ T = TypeVar("T", bound=BaseModel)
 GATEWAY_URL = "https://gateway.aitestbed.kr/v1"
 CLAUDE_SONNET = "claude-sonnet-5-5"
 FENCE = re.compile(r"^```(?:json)?\s*|\s*```$")
+# Below this many seconds left, another call would only time out.
+MIN_CALL_SECONDS = 10
+
+
+class TransientLLMError(Exception):
+    """Timeout, dropped connection, rate limit or gateway 5xx: worth one more try."""
 
 
 def compact_schema(schema: type[BaseModel]) -> str:
@@ -44,12 +51,17 @@ def compact_schema(schema: type[BaseModel]) -> str:
 
 class GatewayLLM:
     def __init__(self, api_key: str, model: str = CLAUDE_SONNET, base_url: str = GATEWAY_URL,
-                 reasoning_effort: str | None = "low", attempts: int = 2, max_tokens: int = 4096) -> None:
+                 reasoning_effort: str | None = "low", attempts: int = 2, max_tokens: int = 4096,
+                 call_timeout: float = 120, total_timeout: float = 240) -> None:
         self.api_key = api_key
         self.model = model
         self.base_url = base_url
         self.reasoning_effort = reasoning_effort
         self.attempts = attempts
+        # One extraction took 10-40 seconds. total_timeout bounds all attempts together so a
+        # caller with a longer timeout never gives up while this is still running (and billing).
+        self.call_timeout = call_timeout
+        self.total_timeout = total_timeout
         # The JSON reply is about 1.5k tokens. Some replies kept generating after the JSON until
         # the limit, and every one of those tokens is billed, so keep the limit close to need.
         self.max_tokens = max_tokens
@@ -67,9 +79,24 @@ class GatewayLLM:
             f"모든 키를 쓰고 모르는 값은 null이다.\n{compact_schema(schema)}"
         )
         messages = [{"role": "system", "content": instructions}, {"role": "user", "content": prompt}]
-        error = ""
-        for attempt in range(self.attempts):
-            text = self._complete(client, messages)
+        error, unavailable = "", False
+        deadline = time.monotonic() + self.total_timeout
+        for _ in range(self.attempts):
+            remaining = deadline - time.monotonic()
+            if remaining < MIN_CALL_SECONDS:
+                break
+            try:
+                text = self._complete(client, messages, min(self.call_timeout, remaining))
+            except TransientLLMError as exc:
+                error, unavailable = str(exc), True
+                self.usage["retries"] += 1
+                continue
+            unavailable = False
+            if text is None:
+                # The gateway now and then ends a reply with no content; the same request again works.
+                error = "빈 응답"
+                self.usage["retries"] += 1
+                continue
             try:
                 return schema.model_validate_json(FENCE.sub("", text.strip()))
             except ValidationError as exc:
@@ -80,6 +107,9 @@ class GatewayLLM:
                     {"role": "assistant", "content": text},
                     {"role": "user", "content": f"모양과 맞지 않습니다. 오류를 고쳐 JSON만 다시 답하세요.\n{error}"},
                 ]
+        if unavailable:
+            raise AppError(status_code=502, code="LLM_UNAVAILABLE",
+                           message=f"LLM 게이트웨이 호출에 실패했습니다: {error[:200]}")
         raise AppError(status_code=502, code="LLM_BAD_RESPONSE",
                        message=f"LLM 응답이 형식에 맞지 않습니다: {error[:200]}")
 
@@ -93,11 +123,12 @@ class GatewayLLM:
             raise AppError(status_code=503, code="LLM_NOT_CONFIGURED",
                            message="LLM_API_KEY가 설정되지 않았습니다.")
         if self._client is None:
-            self._client = OpenAI(base_url=self.base_url, api_key=self.api_key, timeout=300)
+            # Retries are done in generate() so they stay within total_timeout.
+            self._client = OpenAI(base_url=self.base_url, api_key=self.api_key, max_retries=0)
         return self._client
 
-    def _complete(self, client, messages: list[dict]) -> str:
-        from openai import APIError
+    def _complete(self, client, messages: list[dict], timeout: float) -> str | None:
+        from openai import APIConnectionError, APIError, InternalServerError, RateLimitError
 
         extra = {"reasoning_effort": self.reasoning_effort} if self.reasoning_effort else {}
         try:
@@ -105,8 +136,13 @@ class GatewayLLM:
                 model=self.model,
                 messages=messages,
                 max_tokens=self.max_tokens,
+                timeout=timeout,
                 **extra,
             )
+        except (APIConnectionError, RateLimitError, InternalServerError) as exc:
+            # APIConnectionError includes timeouts.
+            logger.warning("LLM gateway error, may retry: %s", exc)
+            raise TransientLLMError(type(exc).__name__) from exc
         except APIError as exc:
             logger.error("LLM gateway error: %s", exc)
             raise AppError(status_code=502, code="LLM_UNAVAILABLE",
@@ -114,8 +150,9 @@ class GatewayLLM:
         self._count(response.usage)
         choice = response.choices[0]
         if not choice.message.content:
-            raise AppError(status_code=502, code="LLM_BAD_RESPONSE",
-                           message=f"LLM 응답이 비었거나 잘렸습니다 ({choice.finish_reason}).")
+            logger.warning("LLM reply was empty (finish_reason=%s, %s tokens)", choice.finish_reason,
+                           response.usage and response.usage.completion_tokens)
+            return None
         if choice.finish_reason == "length":
             # Output limit hit; the JSON may still be complete, so let validation decide.
             logger.warning("LLM reply hit max_tokens (%s tokens)", response.usage and response.usage.completion_tokens)
