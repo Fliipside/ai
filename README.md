@@ -246,7 +246,8 @@ uvicorn app.main:app --reload
 | ---- | ---- |
 | `SSH_HOST`, `SSH_USER`, `SSH_PRIVATE_KEY` | 서버 접속 정보 (backend 저장소와 같은 값) |
 | `DOCKERHUB_USERNAME`, `DOCKERHUB_TOKEN` | Docker Hub 로그인 정보 (backend 저장소와 같은 값) |
-| `ENV_FILE` | 서버의 `ai.env`가 될 내용. `GROQ_API_KEY=...`, `HF_TOKEN=...`, `LLM_API_KEY=...` 세 줄 |
+| `ENV_FILE` | 서버의 `ai.env`가 될 내용. `GROQ_API_KEY=...`, `HF_TOKEN=...` 두 줄 |
+| `LLM_API_KEY` | LLM 게이트웨이 팀 공용 키(값만). 배포할 때 `ai.env` 끝에 `LLM_API_KEY=...` 줄로 붙고, `ENV_FILE`에 같은 줄이 있어도 이 값이 쓰입니다. 비어 있으면 배포가 멈춥니다 |
 
 이미지에는 ffmpeg와 pyannote 엔진, 대화 기억 의존성(`.[voice-pyannote,memory,llm]`)이 들어 있습니다. 서버에 GPU가 없어 torch·torchaudio·torchcodec은 CPU 전용 빌드(`https://download.pytorch.org/whl/cpu`)로 설치합니다. PyPI의 리눅스 ARM64용 torchaudio 2.11.1은 CUDA 라이브러리를 요구해 CPU torch에서 import가 실패하므로, 같은 인덱스의 2.11.0을 씁니다. 모델과 비밀값은 이미지에 넣지 않습니다.
 
@@ -256,7 +257,7 @@ ai는 backend compose(`~/flipside`)와 따로, 전용 compose 파일 [deploy/doc
 
 배포 작업(`deploy` job)이 하는 일:
 
-1. 서버에 `~/flipside-ai`를 만들고 `deploy/docker-compose.yml`과 `ai.env`(시크릿 `ENV_FILE`, 권한 600)를 복사합니다.
+1. 서버에 `~/flipside-ai`를 만들고 `deploy/docker-compose.yml`과 `ai.env`(시크릿 `ENV_FILE` 뒤에 `LLM_API_KEY` 한 줄, 권한 600)를 복사합니다.
 2. [deploy/deploy.sh](deploy/deploy.sh)를 서버에서 실행합니다. `flipside-backend` 컨테이너가 붙어 있는 Docker 네트워크를 찾아 `~/flipside-ai/.env`의 `BACKEND_NETWORK`에 적고(다른 줄은 그대로 둡니다), `docker compose pull`과 `up -d`를 합니다.
 3. 컨테이너가 healthy가 될 때까지 최대 5분 기다립니다. healthy가 안 되거나 로그에 `Failed to preload voice models`가 있으면 로그 50줄을 출력하고 배포를 실패로 끝냅니다.
 
