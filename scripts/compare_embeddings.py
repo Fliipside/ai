@@ -36,6 +36,8 @@ from retrieval_eval import (  # noqa: E402
     evaluate,
     load_scenarios,
     memory_search,
+    user_teams,
+    visible,
 )
 
 MODELS = [
@@ -68,7 +70,9 @@ def hit1(rows: list[dict]) -> float | None:
 
 
 def random_hit1(scenarios, chunks) -> float:
-    """Expected hit@1 of a random pick among the chunks the company filter leaves."""
+    """Expected hit@1 of a random pick among the chunks the search itself chooses from
+    (same company, and visible to the viewer)."""
+    teams = user_teams(scenarios)
     rates = []
     for scenario in scenarios:
         candidates = [c for c in chunks if c["company_id"] == scenario["company"]["id"]]
@@ -76,9 +80,11 @@ def random_hit1(scenarios, chunks) -> float:
             relevant = set(query.get("relevant_utterance_ids", []))
             if query["kind"] != "semantic" or not relevant:
                 continue
-            visible = [c for c in candidates if c["interaction_id"] not in
-                       set(query.get("forbidden_interaction_ids", []))]
-            rates.append(sum(bool(c["utterance_ids"] & relevant) for c in visible) / len(visible))
+            forbidden = set(query.get("forbidden_interaction_ids", []))
+            allowed = [c for c in candidates if visible(c, query["viewer_user_id"], teams)
+                       and c["interaction_id"] not in forbidden]
+            if allowed:
+                rates.append(sum(bool(c["utterance_ids"] & relevant) for c in allowed) / len(allowed))
     return sum(rates) / len(rates)
 
 
@@ -147,11 +153,16 @@ def compare_models(scenarios, models, max_chars, overlap) -> list[dict]:
             print(f"  {model}: 불러오기 실패 ({exc})")
             continue
         load_seconds = time.perf_counter() - started
-        row = {"model": model, "load_seconds": load_seconds,
-               **run(scenarios, embedder, max_chars, overlap, True)}
+        try:
+            row = {"model": model, "load_seconds": load_seconds,
+                   **run(scenarios, embedder, max_chars, overlap, True)}
+        except Exception as exc:  # a model can load and still fail while embedding
+            print(f"  {model}: 평가 실패 ({exc})")
+            continue
+        finally:
+            release(model)
         rows.append(row)
         print(f"  {model}: hit@1 {row['hit@1']:.1%}  hit@3 {row['hit@3']:.1%}  MRR {row['mrr']:.3f}")
-        release(model)
     return rows
 
 

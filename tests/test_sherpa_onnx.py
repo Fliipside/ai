@@ -109,3 +109,16 @@ def test_embed_rejects_too_short_audio(tmp_path, monkeypatch) -> None:
 
     with pytest.raises(InvalidAudioError):
         embedding.SherpaOnnxEmbedder("emb.onnx").embed(wav, [(0.5, 0.5)])
+
+
+def test_embedder_name_tells_same_named_model_files_apart(tmp_path) -> None:
+    names = []
+    for version, content in (("v1", b"one"), ("v2", b"two"), ("copy", b"one")):
+        folder = tmp_path / version
+        folder.mkdir()
+        (folder / "model.onnx").write_bytes(content)
+        names.append(embedding.SherpaOnnxEmbedder(str(folder / "model.onnx")).name)
+
+    assert all(name.startswith("sherpa_onnx:model:") for name in names)
+    assert names[0] != names[1]
+    assert names[0] == names[2]  # the same file elsewhere is the same model

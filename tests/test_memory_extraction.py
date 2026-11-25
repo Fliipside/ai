@@ -455,3 +455,31 @@ def test_failed_matching_call_keeps_the_extraction() -> None:
     memory = matched(AppError(status_code=502, code="LLM_UNAVAILABLE", message="실패"))
 
     assert spoke_as(memory) == {"박지훈": ["SPEAKER_01"], "김서연": ["SPEAKER_02"]}
+
+
+def test_time_without_offset_is_read_as_korean_time() -> None:
+    def at(cid: str, when: str) -> Conversation:
+        return Conversation(id=cid, kind="call", occurred_at=when, title=cid, utterances=[
+            {"id": f"{cid}-U0", "start": 0, "end": 1, "speaker": "A", "role": "me", "text": "여보세요."}])
+
+    # 2026-09-08 23:00 UTC is 2026-09-09 08:00 in Korea, after the 07:00 conversation without an offset.
+    late = at("with-offset", "2026-09-08T23:00:00+00:00")
+    early = at("without-offset", "2026-09-09T07:00:00")
+
+    class Empty:
+        name = "empty"
+
+        def generate(self, system, prompt, schema):
+            return schema.model_validate({"people": [], "facts": [], "resolved_promise_ids": []})
+
+    memory = MemoryBuilder(Empty()).build("누리정밀", [late, early])
+
+    assert early.occurred_at.utcoffset().total_seconds() == 9 * 3600
+    assert [c.id for c in memory.conversations] == ["without-offset", "with-offset"]
+
+
+def test_promise_done_in_a_hidden_conversation_is_left_out_of_open_promises() -> None:
+    # open_promises reads the state from the whole memory; the graph and timeline APIs do not.
+    memory, _ = build()
+
+    assert open_promises(memory, "me", visible_conversations={"I1"}) == []

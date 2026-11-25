@@ -39,7 +39,13 @@ def open_promises(
     owner: PromiseOwner,
     visible_conversations: set[str] | None = None,
 ) -> list[MemoryFact]:
-    """Promises not yet fulfilled; owner "me" = our to-dos, "customer" = what we are waiting for."""
+    """Promises not yet fulfilled; owner "me" = our to-dos, "customer" = what we are waiting for.
+
+    Used by the evaluation script. Whether a promise is done or replaced is read from the whole
+    memory; visible_conversations only hides promises made in conversations the viewer cannot
+    see. So a promise fulfilled or changed in a conversation the viewer cannot see is left out
+    here. The graph and timeline APIs differ: visible_part shows such a promise as still open.
+    """
     return [
         f for f in memory.facts
         if f.type == "promise" and f.status == "open" and f.owner == owner and f.superseded_by is None

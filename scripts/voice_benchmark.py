@@ -28,6 +28,7 @@ from app.schemas.voice import SpeakerTurn  # noqa: E402
 from app.utils.audio import to_wav_16k_mono  # noqa: E402
 
 FRAME = 0.01  # seconds per frame when comparing engines
+OVERLAP = "<overlap>"  # a frame where one engine hears more than one speaker
 
 
 def build_engines(names: list[str], sherpa_embeddings: list[str]) -> dict:
@@ -77,19 +78,29 @@ def speaker_spans(turns: list[SpeakerTurn]) -> dict[str, list[tuple[float, float
 
 
 def to_frames(turns: list[SpeakerTurn], length: int) -> list[str | None]:
+    """The speaker of each frame: None for silence, OVERLAP when turns of two speakers cover it.
+
+    The result does not depend on the order of the turns.
+    """
     frames: list[str | None] = [None] * length
     for turn in turns:
         for i in range(int(turn.start / FRAME), min(int(turn.end / FRAME), length)):
-            frames[i] = turn.speaker
+            frames[i] = turn.speaker if frames[i] in (None, turn.speaker) else OVERLAP
     return frames
 
 
 def agreement(a: list[SpeakerTurn], b: list[SpeakerTurn], duration: float) -> float:
-    """Share of frames where either engine hears speech and both agree, after the best label mapping."""
+    """Share of frames where either engine hears speech and both agree, after the best label mapping.
+
+    Frames where either engine hears two speakers at once are left out: a frame holds one
+    label, so there is no single right answer to compare there.
+    """
     length = int(duration / FRAME)
     fa, fb = to_frames(a, length), to_frames(b, length)
     counts: dict[tuple[str | None, str | None], int] = {}
     for x, y in zip(fa, fb):
+        if OVERLAP in (x, y):
+            continue
         if x is not None or y is not None:
             counts[(x, y)] = counts.get((x, y), 0) + 1
     total = sum(counts.values())

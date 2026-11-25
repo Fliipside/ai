@@ -54,6 +54,9 @@ jobs:
     concurrency:
       group: build-ai-image-${{ github.ref }}
       cancel-in-progress: true
+    outputs:
+      # The exact image this run published; the deploy pulls it by digest, not by tag.
+      digest: ${{ steps.publish.outputs.digest }}
 
     steps:
       - name: Check out repository
@@ -83,15 +86,30 @@ jobs:
           assert not torch.cuda.is_available()
           print(torch.__version__, torchaudio.__version__, torchcodec.__version__, pyannote.audio.__version__)"
 
-      - name: Log in to Docker Hub
+      - name: Check this is still the newest commit on main
+        id: fresh
         if: env.RELEASE == 'true'
+        # The concurrency group only stops a run that is still going. A run whose tests
+        # finished late would otherwise publish and deploy over a newer commit.
+        # Re-running a run by hand (attempt 2 or later) is how an old version is rolled
+        # back to, so that is allowed.
+        run: |
+          tip=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$GITHUB_RUN_ATTEMPT" = "1" ] && [ "$tip" != "$GITHUB_SHA" ]; then
+            echo "::notice::main is now at $tip; skipping this older commit ($GITHUB_SHA)."
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Log in to Docker Hub
+        if: env.RELEASE == 'true' && steps.fresh.outputs.stale != 'true'
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Publish image
-        if: env.RELEASE == 'true'
+        id: publish
+        if: env.RELEASE == 'true' && steps.fresh.outputs.stale != 'true'
         # Same build as above, so every layer comes from the cache.
         uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
         with:
@@ -103,7 +121,8 @@ jobs:
 
   deploy:
     needs: build
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    # No digest means the build skipped publishing (a newer commit was already on main).
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.build.outputs.digest != ''
     runs-on: ubuntu-24.04
     # Never cancel a deploy halfway; a newer run waits for this one.
     concurrency:
@@ -116,18 +135,40 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
+      - name: Check this is still the newest commit on main
+        id: fresh
+        # Checked again here, inside the deploy queue: a newer commit may have landed
+        # while this run was building or waiting for another deploy.
+        # Re-running a run by hand (attempt 2 or later) is how an old version is rolled
+        # back to, so that is allowed.
+        run: |
+          tip=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$GITHUB_RUN_ATTEMPT" = "1" ] && [ "$tip" != "$GITHUB_SHA" ]; then
+            echo "::notice::main is now at $tip; skipping this older commit ($GITHUB_SHA)."
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up SSH
+        if: steps.fresh.outputs.stale != 'true'
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
+          # The server's public host key as known_hosts lines, checked by hand once.
+          # ssh-keyscan at deploy time would trust whichever machine answers, and
+          # ai.env (API keys) is sent over this connection.
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
         run: |
+          if [ -z "$SSH_KNOWN_HOSTS" ]; then
+            echo "::error::Secret SSH_KNOWN_HOSTS is empty. Add the server's host key (see README)."
+            exit 1
+          fi
           install -m 700 -d ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_deploy
           chmod 600 ~/.ssh/id_deploy
-          ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
-          printf 'Host *\n  IdentityFile ~/.ssh/id_deploy\n  IdentitiesOnly yes\n' > ~/.ssh/config
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          printf 'Host *\n  IdentityFile ~/.ssh/id_deploy\n  IdentitiesOnly yes\n  StrictHostKeyChecking yes\n' > ~/.ssh/config
 
       - name: Copy compose file and secrets to the server
+        if: steps.fresh.outputs.stale != 'true'
         env:
           ENV_FILE: ${{ secrets.ENV_FILE }}
           # Its own secret so it can change without rewriting ENV_FILE; written last, so it wins.
@@ -144,6 +185,11 @@ jobs:
             | ssh "$TARGET" 'umask 077 && cat > ~/flipside-ai/ai.env'
 
       - name: Deploy to server
+        if: steps.fresh.outputs.stale != 'true'
         # The image is private. The server is already logged in to Docker Hub, the same
         # login the backend deploy pulls with, so no credentials are sent here.
-        run: ssh "$TARGET" 'bash -s' < deploy/deploy.sh
+        # The image is named by digest: the tag is shared, and another run may have
+        # overwritten it since this run published.
+        env:
+          AI_IMAGE: ${{ env.IMAGE }}@${{ needs.build.outputs.digest }}
+        run: ssh "$TARGET" "AI_IMAGE='$AI_IMAGE' bash -s" < deploy/deploy.sh

@@ -37,6 +37,7 @@ class VoiceAnalysis(BaseModel):
 
 
 class Voiceprint(BaseModel):
-    # Embeddings are only comparable when produced by the same engine.
+    # Embeddings are only comparable when produced by the same engine and model, so this
+    # also names the model when it is not the engine's default (e.g. "sherpa_onnx:<file>:<hash>").
     engine: str
     vector: list[float]

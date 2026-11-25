@@ -23,6 +23,13 @@ if [ -z "$network" ]; then
 fi
 set_env BACKEND_NETWORK "$network"
 
+# The workflow passes the image it just published, by digest (repo@sha256:...), so this
+# deploy cannot pull an image another run pushed to the shared tag. Saved to .env so manual
+# `docker compose` commands keep using the deployed image. Without it the tag is used.
+if [ -n "${AI_IMAGE:-}" ]; then
+    set_env AI_IMAGE "$AI_IMAGE"
+fi
+
 docker compose pull
 docker compose up -d
 docker image prune -f

@@ -131,7 +131,14 @@ class VoicePipeline:
 
     async def enroll(self, audio: Path) -> Voiceprint:
         with tempfile.TemporaryDirectory() as tmp:
-            wav = await asyncio.to_thread(to_wav_16k_mono, audio, Path(tmp) / "audio.wav")
+            # Same limit as analyze: convert one second past it at most, then reject, so a
+            # very long upload is never decoded in full or embedded.
+            limit = self.max_audio_seconds + 1 if self.max_audio_seconds else None
+            wav = await asyncio.to_thread(
+                to_wav_16k_mono, audio, Path(tmp) / "audio.wav", limit
+            )
+            if self.max_audio_seconds and wav_duration(wav) > self.max_audio_seconds:
+                raise AudioTooLongError(self.max_audio_seconds)
             if wav_duration(wav) < self.enroll_min_seconds:
                 raise InvalidAudioError(
                     f"목소리 등록에는 {self.enroll_min_seconds:g}초 이상의 음성이 필요합니다."
