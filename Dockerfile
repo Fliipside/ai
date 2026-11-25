@@ -21,7 +21,8 @@ RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu 
 
 COPY pyproject.toml ./
 COPY app ./app
-RUN pip install --no-cache-dir ".[voice-pyannote]"
+# memory: embeddings and reranking for conversation memory; llm: key information extraction.
+RUN pip install --no-cache-dir ".[voice-pyannote,memory,llm]"
 
 EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,6 +1,6 @@
 # Standalone compose for the ai service, kept apart from the backend compose so it can be
 # updated, restarted and inspected on its own. publish-image.yml copies this file to
-# ~/flipside-ai/ on the server next to ai.env (GROQ_API_KEY, HF_TOKEN) and runs deploy.sh.
+# ~/flipside-ai/ on the server next to ai.env (GROQ_API_KEY, HF_TOKEN, LLM_API_KEY) and runs deploy.sh.
 name: flipside-ai
 
 services:

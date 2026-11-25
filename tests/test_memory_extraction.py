@@ -35,13 +35,13 @@ REPLIES = [
                    {"speaker": "SPEAKER_09", "known_person_id": None, "name": "없는 화자", "surname": None,
                     "title": None, "role_in_deal": "unknown"}],
         "facts": [
-            {"type": "promise", "speaker": "me", "content": "자료를 보낸다.", "source_utterance_ids": ["I1-U0"],
+            {"type": "promise", "speaker": "me", "content": "자료를 보낸다.", "source_utterance_ids": ["U1"],
              "owner": "me", "due_text": "목요일까지", "due_date": "2026-09-10", "supersedes_fact_id": None},
             {"type": "requirement", "speaker": "SPEAKER_01", "content": "3개 라인에 적용한다.",
-             "source_utterance_ids": ["I1-U1"], "owner": None, "due_text": None, "due_date": None,
+             "source_utterance_ids": ["U2"], "owner": None, "due_text": None, "due_date": None,
              "supersedes_fact_id": None},
             {"type": "decision", "speaker": "SPEAKER_01", "content": "근거 없는 정보",
-             "source_utterance_ids": ["I9-U9"], "owner": None, "due_text": None, "due_date": None,
+             "source_utterance_ids": ["U9"], "owner": None, "due_text": None, "due_date": None,
              "supersedes_fact_id": None},
         ],
         "resolved_promise_ids": [],
@@ -51,10 +51,10 @@ REPLIES = [
                     "title": "대리", "role_in_deal": "unknown"}],
         "facts": [
             {"type": "requirement", "speaker": "SPEAKER_02", "content": "5개 라인으로 늘린다.",
-             "source_utterance_ids": ["I2-U1"], "owner": None, "due_text": None, "due_date": "아무때나",
-             "supersedes_fact_id": "I1-F02"},
+             "source_utterance_ids": ["U2"], "owner": None, "due_text": None, "due_date": "아무때나",
+             "supersedes_fact_id": "F2"},
         ],
-        "resolved_promise_ids": ["I1-F01", "I1-F99"],
+        "resolved_promise_ids": ["F1", "F99"],
     },
 ]
 
@@ -79,12 +79,13 @@ def build() -> tuple[CompanyMemory, FakeLLM]:
 def test_conversations_are_extracted_in_date_order_with_earlier_memory() -> None:
     _, llm = build()
 
-    assert "[I1-U1] SPEAKER_01(고객): 생산관리팀 박지훈 대리입니다." in llm.prompts[0]
+    assert "[U2] SPEAKER_01(고객): 생산관리팀 박지훈 대리입니다." in llm.prompts[0]
     assert "2026-09-07 (Mon) 미팅" in llm.prompts[0]
     # The second prompt carries what the first conversation left behind.
     assert "- P1 박지훈 대리, champion, 미팅 I1" in llm.prompts[1]
-    assert "- I1-F01 [me] 자료를 보낸다. (기한 2026-09-10)" in llm.prompts[1]
-    assert "- I1-F02 [requirement] 3개 라인에 적용한다." in llm.prompts[1]
+    assert "- F1 [me] me: 자료를 보낸다. (기한 2026-09-10)" in llm.prompts[1]
+    # Earlier facts name who said them, so an unnamed speaker can be recognized.
+    assert "- F2 [requirement] P1: 3개 라인에 적용한다." in llm.prompts[1]
 
 
 def test_surname_and_title_link_to_the_known_person() -> None:
@@ -127,11 +128,11 @@ def test_graph_links_people_conversations_and_facts() -> None:
     nodes = {n["id"]: n for n in graph["nodes"]}
     edges = {(e["from"], e["to"], e["label"]) for e in graph["edges"]}
 
-    assert nodes["P1"]["label"] == "박지훈 대리\n내부 지지자"
+    assert nodes["I1-P1"]["label"] == "박지훈 대리\n내부 지지자"
     assert nodes["I1-F02"]["group"] == "superseded"
     assert nodes["I1-F01"]["label"] == "약속 · 완료 · ~2026-09-10"
-    assert {("P1", "company", "소속"), ("P1", "I2-F01", "말함"), ("I2-F01", "I1-F02", "변경"),
-            ("I1-F01", "I2", "완료"), ("P1", "I1", "참석")} <= edges
+    assert {("I1-P1", "company", "소속"), ("I1-P1", "I2-F01", "말함"), ("I2-F01", "I1-F02", "변경"),
+            ("I1-F01", "I2", "완료"), ("I1-P1", "I1", "참석")} <= edges
 
 
 def test_overdue_promise_is_marked() -> None:
@@ -147,7 +148,14 @@ def person(speaker: str, **fields) -> dict:
             "role_in_deal": "unknown", **fields}
 
 
-def extract(people_per_conversation: list[list[dict]]) -> CompanyMemory:
+# The second conversation without anyone's name in it.
+UNNAMED = conversation("I2", 14, [
+    ("SPEAKER_00", "me", "보내드린 자료 보셨죠?"),
+    ("SPEAKER_02", "customer", "네, 라인은 5개로 늘리기로 했어요."),
+])
+
+
+def extract(people_per_conversation: list[list[dict]], second: Conversation = SECOND) -> CompanyMemory:
     replies = [{"people": people, "facts": [], "resolved_promise_ids": []} for people in people_per_conversation]
 
     class Scripted:
@@ -156,17 +164,17 @@ def extract(people_per_conversation: list[list[dict]]) -> CompanyMemory:
         def generate(self, system, prompt, schema):
             return schema.model_validate(replies.pop(0))
 
-    return MemoryBuilder(Scripted()).build("누리정밀", [FIRST, SECOND][:len(people_per_conversation)])
+    return MemoryBuilder(Scripted()).build("누리정밀", [FIRST, second][:len(people_per_conversation)])
 
 
 def test_context_link_is_marked_as_inferred() -> None:
     memory = extract([
-        [person("SPEAKER_01", name="최은영", title="팀장", role_in_deal="influencer")],
+        [person("SPEAKER_01", name="박지훈", title="팀장", role_in_deal="influencer")],
         [person("SPEAKER_02", known_person_id="P1", title="팀장")],
     ])
 
     [p] = memory.people
-    assert (p.name, p.inferred_in) == ("최은영", ["I2"])
+    assert (p.name, p.inferred_in) == ("박지훈", ["I2"])
 
 
 def test_partial_names_stay_separate_people_and_label_what_is_known() -> None:
@@ -190,10 +198,11 @@ def test_context_link_needs_identifying_details_without_conflict() -> None:
 
 
 def test_conflicting_full_names_are_not_merged() -> None:
+    other = conversation("I2", 14, [("SPEAKER_02", "customer", "구매팀 박민수 대리입니다.")])
     memory = extract([
         [person("SPEAKER_01", name="박지훈", title="대리")],
         [person("SPEAKER_02", name="박민수", known_person_id="P1", title="대리")],
-    ])
+    ], second=other)
 
     assert [p.name for p in memory.people] == ["박지훈", "박민수"]
 
@@ -208,20 +217,123 @@ def test_given_name_only_is_joined_with_the_surname() -> None:
     assert (p.name, p.appearances) == ("박지훈", [("I1", "SPEAKER_01"), ("I2", "SPEAKER_02")])
 
 
-def test_known_person_wins_over_another_person_with_the_same_surname_and_title() -> None:
-    first = conversation("I1", 7, [
-        ("A", "customer", "박지훈 대리입니다."),
-        ("B", "customer", "박민수 대리입니다."),
-    ])
-    later = conversation("I2", 14, [("C", "customer", "박 대리입니다. 다음 주에 발주하겠습니다.")])
-    replies = [
-        {"people": [person("A", name="박지훈", title="대리"), person("B", name="박민수", title="대리")],
-         "facts": [], "resolved_promise_ids": []},
-        {"people": [person("C", surname="박", title="대리", known_person_id="P2")],
-         "facts": [{"type": "purchase_timing", "speaker": "C", "content": "다음 주에 발주한다.",
-                    "source_utterance_ids": ["I2-U0"], "owner": None, "due_text": None, "due_date": None,
-                    "supersedes_fact_id": None}],
+def build_with(replies: list[dict]) -> CompanyMemory:
+    class Scripted:
+        name = "scripted"
+
+        def generate(self, system, prompt, schema):
+            return schema.model_validate(replies.pop(0))
+
+    return MemoryBuilder(Scripted()).build("누리정밀", [FIRST, SECOND])
+
+
+def said(speaker: str, source: str) -> dict:
+    return {"type": "requirement", "speaker": speaker, "content": "3개 라인에 적용한다.", "source_utterance_ids": [source],
+            "owner": None, "due_text": None, "due_date": None, "supersedes_fact_id": None}
+
+
+def test_unnamed_person_is_linked_by_what_they_said_before() -> None:
+    memory = build_with([
+        {"people": [person("SPEAKER_01")], "facts": [said("SPEAKER_01", "U2")], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_02", known_person_id="P1")], "facts": [],
          "resolved_promise_ids": []},
+    ])
+
+    [p] = memory.people
+    assert (p.appearances, p.inferred_in) == ([("I1", "SPEAKER_01"), ("I2", "SPEAKER_02")], ["I2"])
+
+
+def test_duty_description_does_not_rule_out_a_title() -> None:
+    memory = build_with([
+        {"people": [person("SPEAKER_01", title="도입 실무 담당")], "facts": [], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_02", surname="정", title="팀장", known_person_id="P1")], "facts": [], "resolved_promise_ids": []},
+    ])
+
+    [p] = memory.people
+    assert (p.surname, p.title, len(p.appearances)) == ("정", "팀장", 2)
+
+
+def test_duty_description_does_not_replace_a_title() -> None:
+    memory = build_with([
+        {"people": [person("SPEAKER_01", title="대리")], "facts": [], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_02", title="생산관리 실무 담당", known_person_id="P1")], "facts": [],
+         "resolved_promise_ids": []},
+    ])
+
+    [p] = memory.people
+    assert (p.title, len(p.appearances)) == ("대리", 2)
+
+
+def test_new_research_title_replaces_the_old_one() -> None:
+    # 책임연구원 is a real title, not a duty like 현장 책임자.
+    memory = build_with([
+        {"people": [person("SPEAKER_01", name="박지훈", title="선임연구원")], "facts": [], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_02", name="박지훈", title="책임연구원")], "facts": [], "resolved_promise_ids": []},
+    ])
+
+    [p] = memory.people
+    assert (p.title, len(p.appearances)) == ("책임연구원", 2)
+
+
+def test_name_not_said_in_the_conversation_links_as_inferred() -> None:
+    # Models copy a known name onto a speaker they only guess is that person.
+    memory = extract([
+        [person("SPEAKER_01", name="박지훈", title="대리")],
+        [person("SPEAKER_02", name="박지훈", title="대리")],
+    ], second=UNNAMED)
+
+    [p] = memory.people
+    assert (len(p.appearances), p.inferred_in) == (2, ["I2"])
+
+
+def test_name_said_in_the_conversation_links_for_sure() -> None:
+    memory = extract([
+        [person("SPEAKER_01", name="박지훈", title="대리")],
+        [person("SPEAKER_02", name="박지훈", title="대리")],
+    ])
+
+    [p] = memory.people
+    assert (len(p.appearances), p.inferred_in) == (2, [])
+
+
+def test_speaker_label_copied_with_its_role_still_counts() -> None:
+    # The prompt shows "SPEAKER_01(고객)"; models sometimes copy the role along with the label.
+    memory = build_with([
+        {"people": [person("SPEAKER_01(고객)", name="박지훈")],
+         "facts": [said("SPEAKER_01(고객)", "U2"), said("me(나)", "U1")], "resolved_promise_ids": []},
+        {"people": [], "facts": [], "resolved_promise_ids": []},
+    ])
+
+    [p] = memory.people
+    assert p.appearances == [("I1", "SPEAKER_01")]
+    assert [f.said_by for f in memory.facts] == [p.id, "me"]
+
+
+def test_surname_not_said_with_a_title_links_as_inferred() -> None:
+    memory = extract([
+        [person("SPEAKER_01", name="박지훈", title="대리")],
+        [person("SPEAKER_02", surname="박", title="대리")],
+    ], second=UNNAMED)
+
+    [p] = memory.people
+    assert p.inferred_in == ["I2"]
+
+
+def test_known_person_id_picks_between_people_with_the_same_surname_and_title() -> None:
+    first = conversation("I1", 7, [
+        ("SPEAKER_00", "me", "두 분 다 와 주셨네요."),
+        ("SPEAKER_01", "customer", "생산관리팀 박지훈 대리입니다."),
+        ("SPEAKER_03", "customer", "구매팀 박민수 대리입니다."),
+    ])
+    later = conversation("I2", 14, [
+        ("SPEAKER_00", "me", "박 대리님, 견적 보셨어요?"),
+        ("SPEAKER_02", "customer", "네, 구매팀에서 검토했습니다."),
+    ])
+    replies = [
+        {"people": [person("SPEAKER_01", name="박지훈", title="대리"), person("SPEAKER_03", name="박민수", title="대리")],
+         "facts": [], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_02", surname="박", title="대리", known_person_id="P2")],
+         "facts": [], "resolved_promise_ids": []},
     ]
 
     class Scripted:
@@ -232,18 +344,123 @@ def test_known_person_wins_over_another_person_with_the_same_surname_and_title()
 
     memory = MemoryBuilder(Scripted()).build("누리정밀", [first, later])
 
-    assert [(p.name, p.appearances) for p in memory.people] == [
-        ("박지훈", [("I1", "A")]),
-        ("박민수", [("I1", "B"), ("I2", "C")]),
-    ]
-    assert [f.said_by for f in memory.facts] == ["P2"]
-    # The surname and title also fit, so this is not a context-only guess.
+    assert {p.name: [c for c, _ in p.appearances] for p in memory.people} == {
+        "박지훈": ["I1"], "박민수": ["I1", "I2"]}
+    # "박 대리" is said, so the link is not just a guess.
     assert memory.people[1].inferred_in == []
+
+
+# Two people met in the first meeting; in the second nobody is named.
+MET_TWO = conversation("I1", 7, [
+    ("SPEAKER_00", "me", "두 분 다 와 주셨네요."),
+    ("SPEAKER_01", "customer", "생산관리팀 박지훈 대리입니다. 3개 라인에 쓰려고요."),
+    ("SPEAKER_02", "customer", "구매팀 김서연 과장입니다. 견적은 제가 봅니다."),
+])
+NOBODY_NAMED = conversation("I2", 14, [
+    ("SPEAKER_00", "me", "견적 보셨어요?"),
+    ("SPEAKER_01", "customer", "네, 구매 쪽에서 검토했어요."),
+    ("SPEAKER_02", "customer", "라인은 3개에서 5개로 늘리기로 했어요."),
+])
+
+
+def matched(links: list[dict] | Exception, second: list[dict] | None = None,
+            later: Conversation = NOBODY_NAMED) -> CompanyMemory:
+    """The second meeting where the extraction pairs speakers by order (wrongly), then the matching call."""
+    from app.schemas.memory import PersonLinks
+
+    replies = [
+        {"people": [person("SPEAKER_01", name="박지훈", title="대리"), person("SPEAKER_02", name="김서연", title="과장")],
+         "facts": [], "resolved_promise_ids": []},
+        {"people": second or [person("SPEAKER_01", name="박지훈", known_person_id="P1"),
+                              person("SPEAKER_02", name="김서연", known_person_id="P2")],
+         "facts": [], "resolved_promise_ids": []},
+    ]
+
+    class Scripted:
+        name = "scripted"
+
+        def generate(self, system, prompt, schema):
+            if schema is PersonLinks:
+                if isinstance(links, Exception):
+                    raise links
+                return PersonLinks(links=links)
+            return schema.model_validate(replies.pop(0))
+
+    return MemoryBuilder(Scripted(), relink=True).build("누리정밀", [MET_TWO, later])
+
+
+def link(speaker: str, known: str | None, evidence: list[str]) -> dict:
+    return {"speaker": speaker, "reason": "", "known_person_id": known, "evidence_utterance_ids": evidence}
+
+
+def spoke_as(memory: CompanyMemory) -> dict[str, list]:
+    return {p.name or p.title: [s for c, s in p.appearances if c == "I2"] for p in memory.people}
+
+
+def test_matching_call_overrides_names_paired_by_speaking_order() -> None:
+    memory = matched([link("SPEAKER_01", "P2", ["U2"]), link("SPEAKER_02", "P1", ["U3"])])
+
+    assert spoke_as(memory) == {"박지훈": ["SPEAKER_02"], "김서연": ["SPEAKER_01"]}
+    assert all(p.inferred_in == ["I2"] for p in memory.people)
+
+
+def test_title_that_disagrees_with_the_pick_keeps_the_speaker_apart() -> None:
+    # Nobody says a title here; the extraction's guess may be right or copied from a wrong guess.
+    # Either way it disagrees with the person picked, and leaving a speaker unlinked is better
+    # than merging two people.
+    memory = matched([link("SPEAKER_01", "P2", ["U2"]), link("SPEAKER_02", "P1", ["U3"])], second=[
+        person("SPEAKER_01", name="박지훈", title="대리", known_person_id="P1"),
+        person("SPEAKER_02", name="김서연", title="과장", known_person_id="P2"),
+    ])
+
+    assert spoke_as(memory) == {"박지훈": [], "김서연": [], "대리": ["SPEAKER_01"], "과장": ["SPEAKER_02"]}
+
+
+def test_name_the_speaker_says_about_someone_else_does_not_keep_the_guess() -> None:
+    later = conversation("I2", 14, [
+        ("SPEAKER_00", "me", "견적 보셨어요?"),
+        ("SPEAKER_01", "customer", "네, 김서연 과장님께 전달했습니다."),
+    ])
+
+    memory = matched([link("SPEAKER_01", "P1", ["U1"])], later=later,
+                     second=[person("SPEAKER_01", name="김서연", known_person_id="P2")])
+
+    assert spoke_as(memory) == {"박지훈": ["SPEAKER_01"], "김서연": []}
+
+
+def test_name_others_call_the_speaker_by_keeps_the_guess() -> None:
+    later = conversation("I2", 14, [
+        ("SPEAKER_00", "me", "김서연 과장님, 견적 보셨어요?"),
+        ("SPEAKER_01", "customer", "네, 봤습니다."),
+    ])
+
+    memory = matched([link("SPEAKER_01", "P1", ["U1"])], later=later,
+                     second=[person("SPEAKER_01", name="김서연", title="과장", known_person_id="P2")])
+
+    assert spoke_as(memory) == {"박지훈": [], "김서연": ["SPEAKER_01"]}
+
+
+def test_unsure_or_unsupported_match_keeps_the_extraction_guess() -> None:
+    unsure = matched([link("SPEAKER_01", None, []), link("SPEAKER_02", None, [])])
+    # An id without evidence from this conversation counts as unsure.
+    no_evidence = matched([link("SPEAKER_01", "P2", []), link("SPEAKER_02", "P1", ["U99"])])
+
+    for memory in (unsure, no_evidence):
+        assert spoke_as(memory) == {"박지훈": ["SPEAKER_01"], "김서연": ["SPEAKER_02"]}
+
+
+def test_failed_matching_call_keeps_the_extraction() -> None:
+    from app.core.errors import AppError
+
+    memory = matched(AppError(status_code=502, code="LLM_UNAVAILABLE", message="실패"))
+
+    assert spoke_as(memory) == {"박지훈": ["SPEAKER_01"], "김서연": ["SPEAKER_02"]}
 
 
 def test_time_without_offset_is_read_as_korean_time() -> None:
     def at(cid: str, when: str) -> Conversation:
-        return Conversation(id=cid, kind="call", occurred_at=when, title=cid, utterances=[])
+        return Conversation(id=cid, kind="call", occurred_at=when, title=cid, utterances=[
+            {"id": f"{cid}-U0", "start": 0, "end": 1, "speaker": "A", "role": "me", "text": "여보세요."}])
 
     # 2026-09-08 23:00 UTC is 2026-09-09 08:00 in Korea, after the 07:00 conversation without an offset.
     late = at("with-offset", "2026-09-08T23:00:00+00:00")
@@ -261,8 +478,8 @@ def test_time_without_offset_is_read_as_korean_time() -> None:
     assert [c.id for c in memory.conversations] == ["without-offset", "with-offset"]
 
 
-def test_promise_done_in_a_hidden_conversation_is_done_for_every_viewer() -> None:
-    # Promise state is shared by everyone who can see the company (see open_promises).
+def test_promise_done_in_a_hidden_conversation_is_left_out_of_open_promises() -> None:
+    # open_promises reads the state from the whole memory; the graph and timeline APIs do not.
     memory, _ = build()
 
     assert open_promises(memory, "me", visible_conversations={"I1"}) == []

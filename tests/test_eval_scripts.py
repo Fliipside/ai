@@ -72,7 +72,8 @@ def test_customer_the_model_left_out_counts_against_recognition() -> None:
 
     result = memory_eval.score_people(SCENARIO, memory_with(people, []), contacts)
 
-    assert (result["people_seen"], result["people_full"], result["people_missing"]) == (2, 1, 1)
+    # people_seen counts the speakers an extracted person covers; the rate is out of seen + missing.
+    assert (result["people_seen"], result["people_full"], result["people_missing"]) == (1, 1, 1)
 
 
 def test_open_promise_answer_needs_the_same_owner_and_due_date_not_only_the_same_evidence() -> None:

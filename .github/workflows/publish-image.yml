@@ -75,12 +75,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Check the image imports the voice engine
+      - name: Check the image imports the voice engine and memory dependencies
         # Catches wheels that install but do not load on ARM64 CPU (e.g. CUDA-linked torchaudio).
         run: |
           docker run --rm flipside-ai:ci python -c "
           import torch, torchaudio, torchcodec, pyannote.audio
           from torchcodec.decoders import AudioDecoder
+          import sentence_transformers, openai
           import app.main
           assert not torch.cuda.is_available()
           print(torch.__version__, torchaudio.__version__, torchcodec.__version__, pyannote.audio.__version__)"
@@ -170,11 +171,18 @@ jobs:
         if: steps.fresh.outputs.stale != 'true'
         env:
           ENV_FILE: ${{ secrets.ENV_FILE }}
+          # Its own secret so it can change without rewriting ENV_FILE; written last, so it wins.
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
         run: |
+          if [ -z "$LLM_API_KEY" ]; then
+            echo "::error::Repository secret LLM_API_KEY is empty; /memory/extract and /memory/ask would fail."
+            exit 1
+          fi
           ssh "$TARGET" 'mkdir -p ~/flipside-ai'
           scp deploy/docker-compose.yml "$TARGET:flipside-ai/docker-compose.yml"
           # Sent over stdin so the values never appear in a command line.
-          printf '%s\n' "$ENV_FILE" | ssh "$TARGET" 'umask 077 && cat > ~/flipside-ai/ai.env'
+          printf '%s\nLLM_API_KEY=%s\n' "$ENV_FILE" "$LLM_API_KEY" \
+            | ssh "$TARGET" 'umask 077 && cat > ~/flipside-ai/ai.env'
 
       - name: Deploy to server
         if: steps.fresh.outputs.stale != 'true'

@@ -11,8 +11,9 @@ Writes one memory JSON and one relationship map (HTML) per scenario.
     promise fields  owner / due date / open-done status of matched promises
     supersedes      gold changes (later fact replaces an earlier one) linked to the earlier fact
     people          each customer speaker per conversation: right by full name or surname+title,
-                    title only, unknown, wrong (another person), or missing (not extracted);
-                    merged = one person covering several real contacts
+                    title only, unknown, or wrong (another person); merged = one person covering
+                    several real contacts; linked = a contact seen in several conversations kept
+                    as one person across all of them
     open promises   structured queries answered with exactly the gold promise set: the same
                     evidence, the same owner and the same due date (the wording is not compared)
 
@@ -222,31 +223,42 @@ def title_matches(predicted: str | None, gold: str | None) -> bool:
 
 def score_people(scenario: dict, memory: CompanyMemory, contacts: dict) -> Counter:
     real = {c["id"]: c for c in scenario["contacts"]}
-    person_of = {appearance: p for p in memory.people for appearance in p.appearances}
     result = Counter()
-    covered = defaultdict(set)
-    # Counted over the gold speakers, so a speaker the model left out lowers the rate.
-    for appearance, contact_id in contacts.items():
-        contact = real.get(contact_id)
-        if contact is None:  # the seller, or e.g. a worker who is not a listed contact
+    for p in memory.people:
+        covered = set()
+        for conversation_id, speaker in p.appearances:
+            contact = real.get(contacts.get((conversation_id, speaker), ""))
+            if contact is None:  # e.g. a worker who is not a listed contact
+                continue
+            covered.add(contact["id"])
+            result["people_seen"] += 1
+            surname = p.surname or (p.name or "")[:1]
+            if p.name:
+                result["people_full" if p.name == contact["name"] else "people_wrong"] += 1
+            elif surname:
+                ok = contact["name"].startswith(surname) and (not p.title or title_matches(p.title, contact.get("title")))
+                result["people_surname" if ok else "people_wrong"] += 1
+            elif p.title:
+                result["people_title" if title_matches(p.title, contact.get("title")) else "people_wrong"] += 1
+            else:
+                result["people_unknown"] += 1
+        result["people_merged"] += len(covered) > 1
+    # Contact speakers no extracted person covers count as missed, so recognition is out of all of them.
+    found = {a for p in memory.people for a in p.appearances}
+    result["people_missing"] += sum(1 for key, c in contacts.items() if c in real and key not in found)
+    # Contacts who speak in two or more conversations: one person should cover all of them.
+    spoken_in = defaultdict(set)
+    for (conversation_id, _), contact_id in contacts.items():
+        if contact_id in real:
+            spoken_in[contact_id].add(conversation_id)
+    for contact_id, conversations in spoken_in.items():
+        if len(conversations) < 2:
             continue
-        result["people_seen"] += 1
-        p = person_of.get(appearance)
-        if p is None:
-            result["people_missing"] += 1
-            continue
-        covered[p.id].add(contact["id"])
-        surname = p.surname or (p.name or "")[:1]
-        if p.name:
-            result["people_full" if p.name == contact["name"] else "people_wrong"] += 1
-        elif surname:
-            ok = contact["name"].startswith(surname) and (not p.title or title_matches(p.title, contact.get("title")))
-            result["people_surname" if ok else "people_wrong"] += 1
-        elif p.title:
-            result["people_title" if title_matches(p.title, contact.get("title")) else "people_wrong"] += 1
-        else:
-            result["people_unknown"] += 1
-    result["people_merged"] = sum(len(contact_ids) > 1 for contact_ids in covered.values())
+        result["recurring"] += 1
+        result["recurring_linked"] += any(
+            {c for c, s in p.appearances if contacts.get((c, s)) == contact_id} == conversations
+            for p in memory.people
+        )
     return result
 
 
@@ -424,10 +436,11 @@ def print_report(name: str, group: dict, with_extraction: bool) -> None:
             f"{FACT_LABELS[k]} {pct(by_type[k], gold_by_type[k])}" for k in FACT_LABELS))
         print(f"  말한 사람 {pct(t['speaker_ok'], t['matched'])}")
         right = t["people_full"] + t["people_surname"]
-        print(f"  고객 알아보기 {pct(right, t['people_seen'])} 맞음 (이름 {t['people_full']}, 성+직함 {t['people_surname']}), "
-              f"직함만 {t['people_title']}, 모름 {t['people_unknown']}, 틀림 {t['people_wrong']}, "
-              f"못 찾음 {t['people_missing']}, "
+        print(f"  고객 알아보기 {pct(right, t['people_seen'] + t['people_missing'])} 맞음 "
+              f"(이름 {t['people_full']}, 성+직함 {t['people_surname']}), "
+              f"직함만 {t['people_title']}, 모름 {t['people_unknown']}, 틀림 {t['people_wrong']}, 못 찾음 {t['people_missing']}, "
               f"잘못 합친 사람 {t['people_merged']}")
+        print(f"  여러 대화에 나온 고객을 한 사람으로 이음 {pct(t['recurring_linked'], t['recurring'])}")
         print(f"  약속: 할 사람 {pct(t['owner_ok'], t['promises'])}  기한 날짜 {pct(t['due_ok'], t['due_total'])}  "
               f"완료 여부 {pct(t['status_ok'], t['promises'])}")
         print(f"  바뀐 정보 연결 {pct(t['changes_linked'], t['changes'])}")
@@ -454,6 +467,8 @@ def main() -> None:
     parser.add_argument("--effort", choices=["low", "medium", "high"],
                         help="reasoning effort sent to the gateway (default: LLM_REASONING_EFFORT)")
     parser.add_argument("--out", type=Path, default=ROOT / "data" / "memory")
+    parser.add_argument("--no-relink", dest="relink", action="store_false",
+                        help="skip the second call that only matches speakers to known people (the API makes it)")
     args = parser.parse_args()
 
     paths = args.fixtures or sorted(FIXTURES.glob("*.json"))
@@ -477,7 +492,7 @@ def main() -> None:
         if args.gold:
             memory, matched = gold_memory(scenario), None
         else:
-            memory = MemoryBuilder(llm).build(scenario["company"]["name"], conversations(scenario))
+            memory = MemoryBuilder(llm, relink=args.relink).build(scenario["company"]["name"], conversations(scenario))
             score = score_extraction(scenario, memory)
             matched = score.pop("matched_pairs")
             group["by_type"] += score.pop("by_type")
