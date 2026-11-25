@@ -302,8 +302,14 @@ def find_person(memory: CompanyMemory, conversation: Conversation, extracted: Ex
             and titles_agree(title, p.title)
         ]
         if candidates:
-            # Two people can share a surname and title (two 박 대리); the model's pick decides.
-            p = known if known in candidates else candidates[0]
+            # Two people can share a surname and title (two 박 대리); the model's pick decides, and
+            # without one the speaker stays apart: merging two people is worse than not linking.
+            if known in candidates:
+                p = known
+            elif len(candidates) == 1:
+                [p] = candidates
+            else:
+                return None, False
             # Same for a surname: it counts when said with a title ("박 대리") or in the full name.
             titles = [t.split()[-1] for t in (title, p.title) if t]
             return p, not named_in(conversation, name, p.name, *(surname + t for t in titles))
@@ -336,8 +342,21 @@ def with_own_labels(extraction: ConversationExtraction, speakers: set[str]) -> C
     })
 
 
+def unused_id(memory: CompanyMemory, prefix: str, n: int, width: int = 1) -> str:
+    """`{prefix}{n}`, or the next number free of every stored id (backend may send any ids)."""
+    used = {i.id for items in (memory.conversations, memory.people, memory.facts) for i in items}
+    while f"{prefix}{n:0{width}d}" in used:
+        n += 1
+    return f"{prefix}{n:0{width}d}"
+
+
 def apply_extraction(memory: CompanyMemory, conversation: Conversation, extraction: ConversationExtraction) -> None:
     """Add one conversation's extraction, dropping anything that does not point at real data."""
+    # A conversation may come after later ones (backend retrying a failed one). What it says can
+    # then change or settle only what was said before it; a newer fact stays the current one.
+    occurred = {c.id: c.occurred_at for c in memory.conversations}
+    not_newer = {f.id for f in memory.facts if occurred.get(f.conversation_id, conversation.occurred_at)
+                 <= conversation.occurred_at}
     memory.conversations.append(conversation)
     utterance_ids = {u.id for u in conversation.utterances}
     speakers = {speaker_label(u.role, u.speaker) for u in conversation.utterances}
@@ -350,7 +369,8 @@ def apply_extraction(memory: CompanyMemory, conversation: Conversation, extracti
         person, inferred = find_person(memory, conversation, extracted, set(person_of_speaker.values()))
         if person is None:
             # Scoped to the conversation so it never collides with ids backend already stores.
-            person = Person(id=f"{conversation.id}-P{len(person_of_speaker) + 1}", name=None, title=None,
+            person = Person(id=unused_id(memory, f"{conversation.id}-P", len(person_of_speaker) + 1),
+                            name=None, title=None,
                             role_in_deal=extracted.role_in_deal, appearances=[])
             memory.people.append(person)
         person.name = person.name or full_name(extracted)
@@ -373,7 +393,7 @@ def apply_extraction(memory: CompanyMemory, conversation: Conversation, extracti
             continue
         said_by = "me" if extracted.speaker == "me" else person_of_speaker.get(extracted.speaker)
         fact = MemoryFact(
-            id=f"{conversation.id}-F{n:02d}",
+            id=unused_id(memory, f"{conversation.id}-F", n, width=2),
             conversation_id=conversation.id,
             type=extracted.type,
             said_by=said_by,
@@ -387,12 +407,18 @@ def apply_extraction(memory: CompanyMemory, conversation: Conversation, extracti
             fact.status = "open"
         previous = facts.get(extracted.supersedes_fact_id or "")
         if previous is not None and previous.superseded_by is None:
-            fact.supersedes = previous.id
-            previous.superseded_by = fact.id
+            if previous.id in not_newer:
+                fact.supersedes = previous.id
+                previous.superseded_by = fact.id
+            else:
+                # The prompt shows only current facts, so a late conversation can only be matched
+                # with the newer fact on the same point; that one replaced this, not the reverse.
+                fact.superseded_by = previous.id
+                previous.supersedes = previous.supersedes or fact.id
         memory.facts.append(fact)
 
     for fact_id in extraction.resolved_promise_ids:
         promise = facts.get(fact_id)
-        if promise is not None and promise.type == "promise" and promise.status == "open":
+        if promise is not None and promise.id in not_newer and promise.type == "promise" and promise.status == "open":
             promise.status = "done"
             promise.resolved_in = conversation.id

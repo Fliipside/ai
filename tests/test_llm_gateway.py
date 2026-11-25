@@ -1,6 +1,9 @@
 # [테스트] LLM 게이트웨이 테스트
 # 실제 호출 없이 정해진 답을 돌려줘서 빈 응답·형식 오류·일시 오류 재요청, 전체 시간 제한, 코드 블록 제거, 최종 실패 코드를 확인합니다.
 
+import asyncio
+import time
+
 import pytest
 from pydantic import BaseModel
 
@@ -32,7 +35,7 @@ class ScriptedGateway(GatewayLLM):
     def _get_client(self):
         return object()
 
-    def _complete(self, client, messages, timeout):
+    def _complete(self, messages, timeout):
         self.sent.append(list(messages))
         self.timeouts.append(timeout)
         reply = self.replies.pop(0)
@@ -108,9 +111,9 @@ def test_each_call_waits_at_most_what_is_left_of_the_total(monkeypatch) -> None:
     monkeypatch.setattr(gateway.time, "monotonic", clock)
 
     class Slow(ScriptedGateway):
-        def _complete(self, client, messages, timeout):
+        def _complete(self, messages, timeout):
             clock.now += 100  # the first call used 100 of the 150 seconds
-            return super()._complete(client, messages, timeout)
+            return super()._complete(messages, timeout)
 
     llm = Slow([None, '{"answer": "네", "score": 1}'], call_timeout=120, total_timeout=150)
 
@@ -123,9 +126,9 @@ def test_no_new_call_when_too_little_time_is_left(monkeypatch) -> None:
     monkeypatch.setattr(gateway.time, "monotonic", clock)
 
     class Slow(ScriptedGateway):
-        def _complete(self, client, messages, timeout):
+        def _complete(self, messages, timeout):
             clock.now += 115
-            return super()._complete(client, messages, timeout)
+            return super()._complete(messages, timeout)
 
     llm = Slow([TRANSIENT, '{"answer": "네", "score": 1}'], call_timeout=120, total_timeout=120)
 
@@ -153,7 +156,7 @@ def openai_error(name: str):
 
 
 class RaisingClient:
-    """Stands in for the OpenAI client and raises the given error from chat.completions.create."""
+    """Stands in for the async OpenAI client and raises the given error from chat.completions.create."""
 
     def __init__(self, error: Exception) -> None:
         self.error = error
@@ -161,16 +164,38 @@ class RaisingClient:
         self.chat = self
         self.completions = self
 
-    def create(self, **kwargs):
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *exc) -> None:
+        pass
+
+    async def create(self, **kwargs):
         self.calls.append(kwargs)
         raise self.error
+
+
+class HangingClient(RaisingClient):
+    """A gateway that never answers; records whether the request was cancelled."""
+
+    def __init__(self) -> None:
+        super().__init__(error=None)
+        self.cancelled = 0
+
+    async def create(self, **kwargs):
+        self.calls.append(kwargs)
+        try:
+            await asyncio.sleep(60)
+        except asyncio.CancelledError:
+            self.cancelled += 1
+            raise
 
 
 @pytest.mark.parametrize("name", ["timeout", "rate_limit", "server"])
 def test_openai_transient_errors_are_retried(name) -> None:
     client = RaisingClient(openai_error(name))
     llm = GatewayLLM(api_key="test")
-    llm._client = client
+    llm._get_client = lambda: client
 
     with pytest.raises(AppError) as error:
         llm.generate("지시", "입력", Reply)
@@ -183,7 +208,7 @@ def test_openai_transient_errors_are_retried(name) -> None:
 def test_openai_request_error_is_not_retried() -> None:
     client = RaisingClient(openai_error("bad_request"))
     llm = GatewayLLM(api_key="test")
-    llm._client = client
+    llm._get_client = lambda: client
 
     with pytest.raises(AppError) as error:
         llm.generate("지시", "입력", Reply)
@@ -196,3 +221,19 @@ def test_client_leaves_retries_to_generate() -> None:
     pytest.importorskip("openai")
 
     assert GatewayLLM(api_key="test")._get_client().max_retries == 0
+
+
+def test_request_still_running_at_the_limit_is_cancelled() -> None:
+    # httpx limits each read, not the whole request, so each call's limit (at most what is
+    # left of the total) is enforced around it.
+    client = HangingClient()
+    llm = GatewayLLM(api_key="test", call_timeout=0.1, total_timeout=60)
+    llm._get_client = lambda: client
+
+    started = time.monotonic()
+    with pytest.raises(AppError) as error:
+        llm.generate("지시", "입력", Reply)
+
+    assert error.value.code == "LLM_UNAVAILABLE"
+    assert time.monotonic() - started < 1
+    assert client.cancelled == len(client.calls) == 2

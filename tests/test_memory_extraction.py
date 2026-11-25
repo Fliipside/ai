@@ -483,3 +483,106 @@ def test_promise_done_in_a_hidden_conversation_is_left_out_of_open_promises() ->
     memory, _ = build()
 
     assert open_promises(memory, "me", visible_conversations={"I1"}) == []
+
+
+def test_same_surname_and_title_without_a_pick_stays_a_new_person() -> None:
+    first = conversation("I1", 7, [
+        ("SPEAKER_00", "me", "두 분 다 와 주셨네요."),
+        ("SPEAKER_01", "customer", "생산관리팀 박지훈 대리입니다."),
+        ("SPEAKER_03", "customer", "구매팀 박서준 대리입니다."),
+    ])
+    later = conversation("I2", 14, [
+        ("SPEAKER_00", "me", "안녕하세요."),
+        ("SPEAKER_02", "customer", "박 대리입니다."),
+    ])
+    replies = [
+        {"people": [person("SPEAKER_01", name="박지훈", title="대리"), person("SPEAKER_03", name="박서준", title="대리")],
+         "facts": [], "resolved_promise_ids": []},
+        {"people": [person("SPEAKER_02", surname="박", title="대리")], "facts": [], "resolved_promise_ids": []},
+    ]
+
+    class Scripted:
+        name = "scripted"
+
+        def generate(self, system, prompt, schema):
+            return schema.model_validate(replies.pop(0))
+
+    memory = MemoryBuilder(Scripted()).build("누리정밀", [first, later])
+
+    assert [[c for c, _ in p.appearances] for p in memory.people] == [["I1"], ["I1"], ["I2"]]
+
+
+def test_new_ids_skip_ids_already_stored() -> None:
+    # backend may store any ids; a person or fact made here must not take one of them.
+    memory = MemoryBuilder(FakeLLM()).build("누리정밀", [FIRST])
+    memory.people[0].id = "I2-P1"
+    memory.facts[0].id = "I2-F01"
+    second = UNNAMED.model_copy(update={"utterances": [
+        UNNAMED.utterances[0], UNNAMED.utterances[1].model_copy(update={"speaker": "SPEAKER_05"})]})
+    REPLY = REPLIES[1] | {"people": [person("SPEAKER_05", role_in_deal="champion")]}
+
+    class Scripted:
+        name = "scripted"
+
+        def generate(self, system, prompt, schema):
+            return schema.model_validate(REPLY)
+
+    MemoryBuilder(Scripted()).add(memory, second)
+
+    ids = [p.id for p in memory.people] + [f.id for f in memory.facts]
+    assert len(ids) == len(set(ids))
+    assert ("I2-P2", "I2-F02") == (memory.people[-1].id, memory.facts[-1].id)
+
+
+def test_older_conversation_does_not_change_or_settle_newer_facts() -> None:
+    # A conversation extracted after a later one (backend retrying it) may point at newer facts.
+    memory, _ = build()
+    between = conversation("I3", 10, [
+        ("SPEAKER_00", "me", "중간 점검입니다."),
+        ("SPEAKER_01", "customer", "4개 라인으로 하죠. 자료도 받았습니다."),
+    ])
+    memory.facts.append(memory.facts[0].model_copy(update={"id": "I2-F02", "conversation_id": "I2",
+                                                            "status": "open", "resolved_in": None}))
+    reply = {"people": [], "resolved_promise_ids": ["I2-F02"], "facts": [
+        {"type": "requirement", "speaker": "SPEAKER_01", "content": "4개 라인에 적용한다.",
+         "source_utterance_ids": ["I3-U1"], "owner": None, "due_text": None, "due_date": None,
+         "supersedes_fact_id": "I2-F01"}]}
+
+    class Scripted:
+        name = "scripted"
+
+        def generate(self, system, prompt, schema):
+            return schema.model_validate(reply)
+
+    MemoryBuilder(Scripted()).add(memory, between)
+
+    facts = {f.id: f for f in memory.facts}
+    # The newer fact stays current and is what replaced the late one.
+    assert (facts["I2-F01"].superseded_by, facts["I3-F01"].supersedes) == (None, None)
+    assert facts["I3-F01"].superseded_by == "I2-F01"
+    assert facts["I2-F02"].status == "open"
+
+
+def test_late_conversation_becomes_what_the_newer_fact_replaced() -> None:
+    # Only FIRST (9/7) was extracted when SECOND (9/14) came; now a 9/10 call comes in late.
+    memory = MemoryBuilder(FakeLLM()).build("누리정밀", [FIRST])
+    between = conversation("I3", 10, [("SPEAKER_00", "me", "중간 점검입니다."), ("SPEAKER_01", "customer", "4개 라인으로 하죠.")])
+    newest = memory.facts[1].model_copy(update={"id": "I2-F01", "conversation_id": "I2", "content": "5개 라인"})
+    memory.conversations.append(SECOND)
+    memory.facts.append(newest)
+    reply = {"people": [], "resolved_promise_ids": [], "facts": [
+        {"type": "requirement", "speaker": "SPEAKER_01", "content": "4개 라인에 적용한다.",
+         "source_utterance_ids": ["I3-U1"], "owner": None, "due_text": None, "due_date": None,
+         "supersedes_fact_id": "I2-F01"}]}
+
+    class Scripted:
+        name = "scripted"
+
+        def generate(self, system, prompt, schema):
+            return schema.model_validate(reply)
+
+    MemoryBuilder(Scripted()).add(memory, between)
+
+    facts = {f.id: f for f in memory.facts}
+    assert (facts["I3-F01"].superseded_by, facts["I2-F01"].supersedes) == ("I2-F01", "I3-F01")
+    assert facts["I2-F01"].superseded_by is None

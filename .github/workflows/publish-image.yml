@@ -50,9 +50,12 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-24.04-arm
-    # A newer commit on the same branch replaces an unfinished build.
+    # A newer commit on the same branch replaces an unfinished build, except on main: there an
+    # older commit's build that started late would cancel the newer one's, then skip publishing
+    # as stale, so neither deployed. On main each commit has its own group, and an older build
+    # skips publishing itself (the newest-commit check below).
     concurrency:
-      group: build-ai-image-${{ github.ref }}
+      group: build-ai-image-${{ github.ref }}${{ github.ref == 'refs/heads/main' && format('-{0}', github.sha) || '' }}
       cancel-in-progress: true
     outputs:
       # The exact image this run published; the deploy pulls it by digest, not by tag.

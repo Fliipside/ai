@@ -1,6 +1,7 @@
 # [AI 모델] 대회 지원 LLM 게이트웨이 (OpenAI 호환, 기본 claude-sonnet-5-5 + 사고 low)
 # 지시문과 대화를 보내고, 정해진 모양(JSON)대로 검증된 결과를 받습니다. 토큰 사용량도 셉니다.
 
+import asyncio
 import json
 import logging
 import re
@@ -68,10 +69,9 @@ class GatewayLLM:
         self.name = f"gateway:{model}" + (f":{reasoning_effort}" if reasoning_effort else "")
         # prompt / completion / reasoning / cached tokens, calls, retries
         self.usage: Counter = Counter()
-        self._client = None
 
     def generate(self, system: str, prompt: str, schema: type[T]) -> T:
-        client = self._get_client()
+        self._client_class()  # fail fast when not configured
         # The shape is written into the instructions and validated here instead of using
         # response_format: JSON mode made models behind the gateway run to the output limit.
         instructions = (
@@ -86,7 +86,7 @@ class GatewayLLM:
             if remaining < MIN_CALL_SECONDS:
                 break
             try:
-                text = self._complete(client, messages, min(self.call_timeout, remaining))
+                text = self._complete(messages, min(self.call_timeout, remaining))
             except TransientLLMError as exc:
                 error, unavailable = str(exc), True
                 self.usage["retries"] += 1
@@ -113,35 +113,47 @@ class GatewayLLM:
         raise AppError(status_code=502, code="LLM_BAD_RESPONSE",
                        message=f"LLM 응답이 형식에 맞지 않습니다: {error[:200]}")
 
-    def _get_client(self):
+    def _client_class(self):
         try:
-            from openai import OpenAI
+            from openai import AsyncOpenAI
         except ImportError as exc:
             raise AppError(status_code=503, code="LLM_NOT_CONFIGURED",
                            message="openai 패키지가 설치되지 않았습니다.") from exc
         if not self.api_key:
             raise AppError(status_code=503, code="LLM_NOT_CONFIGURED",
                            message="LLM_API_KEY가 설정되지 않았습니다.")
-        if self._client is None:
-            # Retries are done in generate() so they stay within total_timeout.
-            self._client = OpenAI(base_url=self.base_url, api_key=self.api_key, max_retries=0)
-        return self._client
+        return AsyncOpenAI
 
-    def _complete(self, client, messages: list[dict], timeout: float) -> str | None:
+    def _get_client(self):
+        # Retries are done in generate() so they stay within total_timeout. A new client per call:
+        # each call runs in its own event loop (see _complete), and an async client is tied to one.
+        return self._client_class()(base_url=self.base_url, api_key=self.api_key, max_retries=0)
+
+    def _complete(self, messages: list[dict], timeout: float) -> str | None:
         from openai import APIConnectionError, APIError, InternalServerError, RateLimitError
 
         extra = {"reasoning_effort": self.reasoning_effort} if self.reasoning_effort else {}
+
+        async def call():
+            async with self._get_client() as client:
+                # httpx's timeout limits each step (connect, each read), not the whole request,
+                # so a slow reply could run past the total. wait_for cancels the request itself
+                # at the limit, which closes the connection, instead of only no longer waiting.
+                return await asyncio.wait_for(client.chat.completions.create(
+                    model=self.model,
+                    messages=messages,
+                    max_tokens=self.max_tokens,
+                    timeout=timeout,
+                    **extra,
+                ), timeout)
+
         try:
-            response = client.chat.completions.create(
-                model=self.model,
-                messages=messages,
-                max_tokens=self.max_tokens,
-                timeout=timeout,
-                **extra,
-            )
-        except (APIConnectionError, RateLimitError, InternalServerError) as exc:
+            # generate() is called from worker threads (asyncio.to_thread) and scripts, never
+            # from inside a running event loop.
+            response = asyncio.run(call())
+        except (TimeoutError, APIConnectionError, RateLimitError, InternalServerError) as exc:
             # APIConnectionError includes timeouts.
-            logger.warning("LLM gateway error, may retry: %s", exc)
+            logger.warning("LLM gateway error, may retry: %s %s", type(exc).__name__, exc)
             raise TransientLLMError(type(exc).__name__) from exc
         except APIError as exc:
             logger.error("LLM gateway error: %s", exc)
