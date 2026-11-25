@@ -32,8 +32,9 @@ class ScriptedGateway(GatewayLLM):
         self.sent: list[list[dict]] = []
         self.timeouts: list[float] = []
 
-    def _get_client(self):
-        return object()
+    def _client_class(self):
+        # Runs without the openai package, as in CI.
+        return object
 
     def _complete(self, messages, timeout):
         self.sent.append(list(messages))
@@ -226,6 +227,7 @@ def test_client_leaves_retries_to_generate() -> None:
 def test_request_still_running_at_the_limit_is_cancelled() -> None:
     # httpx limits each read, not the whole request, so each call's limit (at most what is
     # left of the total) is enforced around it.
+    pytest.importorskip("openai")
     client = HangingClient()
     llm = GatewayLLM(api_key="test", call_timeout=0.1, total_timeout=60)
     llm._get_client = lambda: client
