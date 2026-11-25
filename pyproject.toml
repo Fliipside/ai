@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flipside-ai"
+version = "0.1.0"
+description = "Flipside AI inference service"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn[standard]>=0.30,<1",
+    "python-multipart>=0.0.9,<1",
+    "python-dotenv>=1,<2",
+    "pydantic-settings>=2,<3",
+    "httpx>=0.27,<1",
+]
+
+[project.optional-dependencies]
+# torchaudio no longer pins torch; keep the pair on the version tested together (2.11).
+voice-pyannote = ["pyannote.audio>=4,<5", "torch>=2.8,<2.12", "torchaudio>=2.8,<2.12"]
+voice-sherpa = ["sherpa-onnx>=1.12,<2", "soundfile>=0.12,<1"]
+memory = ["sentence-transformers>=3,<6", "torch>=2.8,<2.12"]
+# Key information extraction through the LLM gateway.
+llm = ["openai>=1.50,<4"]
+# Only for retrieval_eval.py --backend pg; the service itself stores nothing.
+memory-db = ["psycopg[binary]>=3.2,<4"]
+dev = ["pytest>=8,<10"]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+"app.features.memory" = ["prompts/*.txt"]

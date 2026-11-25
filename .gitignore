@@ -2,3 +2,13 @@
 .local_agent_docs/
 sample.txt
 .DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+models/
+data/
+.vscode/
+# Dummy sales scenarios are shared outside git (fixtures/sales/README.md stays)
+fixtures/sales/*.json
