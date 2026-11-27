@@ -156,6 +156,8 @@ jobs:
           # ssh-keyscan at deploy time would trust whichever machine answers, and
           # ai.env (API keys) is sent over this connection.
           SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          # Same host the backend deploy uses (appleboy/ssh-action, default port 22).
+          SSH_HOST: ${{ secrets.SSH_HOST }}
         run: |
           if [ -z "$SSH_KNOWN_HOSTS" ]; then
             echo "::error::Secret SSH_KNOWN_HOSTS is empty. Add the server's host key (see README)."
@@ -164,8 +166,40 @@ jobs:
           install -m 700 -d ~/.ssh
           printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_deploy
           chmod 600 ~/.ssh/id_deploy
-          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          # Only the key type and key of each line are kept; the host name is set to
+          # SSH_HOST. ssh looks keys up by the exact host it connects to, so a line
+          # saved under another name (domain vs IP, hashed |1|..., a .pub file with no
+          # host) is never found and fails with "No ... host key is known".
+          # The key itself is still pinned, so this trusts nothing extra.
+          printf '%s\n' "$SSH_KNOWN_HOSTS" | tr -d '\r' | awk -v host="$SSH_HOST" '
+            /^[[:space:]]*(#|$)/ { next }
+            {
+              for (i = 1; i < NF; i++)
+                if ($i ~ /^(ssh-|ecdsa-|sk-)/) { print host, $i, $(i + 1); next }
+            }' > ~/.ssh/known_hosts
+          if [ ! -s ~/.ssh/known_hosts ]; then
+            echo "::error::Secret SSH_KNOWN_HOSTS has no host key line (expected e.g. 'host ssh-ed25519 AAAA...')."
+            exit 1
+          fi
+          echo "Pinned host key(s):"
+          ssh-keygen -lf ~/.ssh/known_hosts
           printf 'Host *\n  IdentityFile ~/.ssh/id_deploy\n  IdentitiesOnly yes\n  StrictHostKeyChecking yes\n' > ~/.ssh/config
+
+          # Diagnostic only, never trusted: if the server answers with keys and none of
+          # them is the pinned one, stop here with both fingerprints so the secret can
+          # be checked (e.g. the server was rebuilt and got a new host key).
+          scanned=$(ssh-keyscan -T 10 "$SSH_HOST" 2>/dev/null || true)
+          if [ -n "$scanned" ]; then
+            pinned=$(awk '{ print $3 }' ~/.ssh/known_hosts)
+            if ! printf '%s\n' "$scanned" | awk '{ print $3 }' | grep -qxF -f <(printf '%s\n' "$pinned"); then
+              echo "Server host key(s):"
+              printf '%s\n' "$scanned" | ssh-keygen -lf -
+              echo "::error::None of the server's host keys matches SSH_KNOWN_HOSTS. Verify the fingerprint on the server (see README) and update the secret."
+              exit 1
+            fi
+          else
+            echo "::warning::ssh-keyscan got no answer from SSH_HOST; skipping the mismatch check."
+          fi
 
       - name: Copy compose file and secrets to the server
         if: steps.fresh.outputs.stale != 'true'
